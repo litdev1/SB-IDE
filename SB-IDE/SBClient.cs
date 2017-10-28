@@ -99,8 +99,11 @@ namespace SBDebugger
                                 }
                                 else if (message.ToUpper().StartsWith("RESUME"))
                                 {
-                                    applicationThread.Resume();
-                                    if (null != currentThread) currentThread.Resume();
+                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
+                                    {
+                                        applicationThread.Resume();
+                                        if (null != currentThread) currentThread.Resume();
+                                    }
                                 }
                                 else if (message.ToUpper().StartsWith("ADDBREAK"))
                                 {
@@ -121,8 +124,11 @@ namespace SBDebugger
                                 else if (message.ToUpper().StartsWith("STEP"))
                                 {
                                     bStep = true;
-                                    applicationThread.Resume();
-                                    if (null != currentThread) currentThread.Resume();
+                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
+                                    {
+                                        applicationThread.Resume();
+                                        if (null != currentThread) currentThread.Resume();
+                                    }
                                 }
                                 else if (message.ToUpper().StartsWith("IGNORE"))
                                 {

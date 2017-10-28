@@ -174,11 +174,13 @@ namespace SB_IDE
             zoom = Properties.Settings.Default.Zoom;
             theme = Properties.Settings.Default.Theme;
             SBInterop.Language = Properties.Settings.Default.Language;
+            SBInterop.Version = Properties.Settings.Default.Version;
             debugData.Clear();
             for (i = 1; i < Properties.Settings.Default.WatchList.Count; i++)
             {
                 debugData.Add(new DebugData() { Variable = Properties.Settings.Default.WatchList[i] });
             }
+
         }
 
         private Grid Ellipsis(string txt)
@@ -230,6 +232,7 @@ namespace SB_IDE
             Properties.Settings.Default.Zoom = zoom;
             Properties.Settings.Default.Theme = theme;
             Properties.Settings.Default.Language = SBInterop.Language;
+            Properties.Settings.Default.Version = SBInterop.Version;
             Properties.Settings.Default.WatchList.Clear();
             Properties.Settings.Default.WatchList.Add("Empty");
             for (int i = 0; i < debugData.Count; i++)

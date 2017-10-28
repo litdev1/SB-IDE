@@ -13,6 +13,8 @@ namespace SB_IDE
 {
     public class SBInterop
     {
+        int currentVersion = 1;
+
         object Service = null;
         MethodInfo SaveProgram = null;
         MethodInfo PublishProgramDetails = null;
@@ -23,6 +25,7 @@ namespace SB_IDE
         bool overwriteSBDebug = false;
 
         public static string Language = "";
+        public static int Version = 0;
 
         public SBInterop()
         {
@@ -281,8 +284,8 @@ namespace SB_IDE
 
                 if (File.Exists(extPath) && !bOverwrite)
                 {
-                    Assembly dbAssembly = Assembly.LoadFile(extPath);
-                    if (dbAssembly.GetName().Version == new Version(1,0,0,0)) return;
+                    if (Version >= currentVersion) return;
+                    Version = currentVersion;
                 }
 
                 MainWindow.Help();
