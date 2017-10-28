@@ -247,7 +247,7 @@ namespace SB_IDE
                     Send("ADDBREAK " + line.Index);
                 }
             }
-            Send("IGNORE " + MainWindow.ignoreBP);
+            Send("IGNORE " + MainWindow.ignoreBP); 
         }
 
         private void Listen()
