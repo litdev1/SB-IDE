@@ -362,5 +362,11 @@
   <ItemGroup>
     <Resource Include="images\AppIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\StepOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\StepOver.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

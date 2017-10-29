@@ -174,6 +174,16 @@ namespace SB_IDE
             Step();
         }
 
+        private void debugStepOver_Click(object sender, RoutedEventArgs e)
+        {
+            StepOver();
+        }
+
+        private void debugStepOut_Click(object sender, RoutedEventArgs e)
+        {
+            StepOut();
+        }
+
         private void breakpointIgnore_Click(object sender, RoutedEventArgs e)
         {
             Ignore();

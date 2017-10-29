@@ -857,6 +857,33 @@ namespace SB_IDE
             debugUpdated = false;
         }
 
+        private void StepOut()
+        {
+            if (null == activeDocument.debug) return;
+            activeDocument.debug.StepOut();
+            debugUpdated = false;
+        }
+
+        private void StepOver()
+        {
+            if (null == activeDocument.debug) return;
+            activeDocument.debug.StepOver();
+            debugUpdated = false;
+        }
+
+        private void Step()
+        {
+            if (null == activeDocument.debug)
+            {
+                Debug(false);
+            }
+            else
+            {
+                activeDocument.debug.Step();
+            }
+            debugUpdated = false;
+        }
+
         private void Resume()
         {
             if (null == activeDocument.debug) return;
@@ -925,19 +952,6 @@ namespace SB_IDE
             if (null == activeDocument.debug) return;
             activeDocument.debug.Dispose();
             activeDocument.debug = null;
-        }
-
-        private void Step()
-        {
-            if (null == activeDocument.debug)
-            {
-                Debug(false);
-            }
-            else
-            {
-                activeDocument.debug.Step();
-            }
-            debugUpdated = false;
         }
 
         private void Ignore()

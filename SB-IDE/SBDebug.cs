@@ -128,11 +128,47 @@ namespace SB_IDE
             }
         }
 
-        public void Pause()
+        public void Step()
         {
             try
             {
                 Send("STEP");
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("Step : " + ex.Message));
+            }
+        }
+
+        public void StepOver()
+        {
+            try
+            {
+                Send("STEPOVER");
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("StepOver : " + ex.Message));
+            }
+        }
+
+        public void StepOut()
+        {
+            try
+            {
+                Send("STEPOUT");
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("StepOut : " + ex.Message));
+            }
+        }
+
+        public void Pause()
+        {
+            try
+            {
+                Send("PAUSE");
             }
             catch (Exception ex)
             {
@@ -177,11 +213,6 @@ namespace SB_IDE
             {
                 MainWindow.Errors.Add(new Error("Resume : " + ex.Message));
             }
-        }
-
-        public void Step()
-        {
-            Send("STEP");
         }
 
         public void Ignore(bool state)
@@ -356,6 +387,14 @@ namespace SB_IDE
                     if (value.Length > maxValueLen) value = value.Substring(0, maxValueLen) + " ...";
                     sbDocument.TextArea.CallTipShow(sbDocument.Lexer.toolTipPosition, value);
                     sbDocument.TextArea.CallTipSetHlt(0, value.Length);
+                }
+                else if (message.ToUpper().StartsWith("STACKLEVEL"))
+                {
+                    message = message.Substring(11).Trim();
+                }
+                else if (message.ToUpper().StartsWith("STACK"))
+                {
+                    message = message.Substring(6).Trim();
                 }
             }
         }

@@ -23,7 +23,10 @@ namespace SBDebugger
 
         private static string[] separators = new string[] { "\0" };
         private static bool bStep = false;
+        private static bool bStepOver = false;
+        private static bool bStepOut = false;
         private static bool ignoreBP = false;
+        private static int stackLevel = 0;
 
         private static Type PrimitiveType = typeof(Primitive);
         private static MethodInfo GetArrayValue = PrimitiveType.GetMethod("GetArrayValue", BindingFlags.Public | BindingFlags.Static | BindingFlags.IgnoreCase);
@@ -42,14 +45,39 @@ namespace SBDebugger
         [HideFromIntellisense]
         public static void Break(Primitive line)
         {
-            if (!ignoreBP  && (bStep || lineBreaks.Contains(line)))
+            if (bStep || (!ignoreBP && lineBreaks.Contains(line)))
             {
                 Send("BREAK " + line);
                 bStep = false;
-                //if (null != currentThread) currentThread.Resume();
                 //currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
                 //if (null != currentThread) currentThread.Suspend();
                 applicationThread.Suspend();
+            }
+            else if (bStepOut)
+            {
+                int curStackLevel = GetStackLevel();
+                if (curStackLevel > 0 && curStackLevel < stackLevel)
+                {
+                    Send("BREAK " + line);
+                    bStepOut = false;
+                    stackLevel = 0;
+                    //currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
+                    //if (null != currentThread) currentThread.Suspend();
+                    applicationThread.Suspend();
+                }
+            }
+            else if (bStepOver)
+            {
+                int curStackLevel = GetStackLevel();
+                if (curStackLevel > 0 && curStackLevel <= stackLevel)
+                {
+                    Send("BREAK " + line);
+                    bStepOver = false;
+                    stackLevel = 0;
+                    //currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
+                    //if (null != currentThread) currentThread.Suspend();
+                    applicationThread.Suspend();
+                }
             }
         }
 
@@ -95,14 +123,17 @@ namespace SBDebugger
                             {
                                 if (message.ToUpper().StartsWith("PAUSE"))
                                 {
-                                    applicationThread.Suspend();
+                                    if (applicationThread.ThreadState != System.Threading.ThreadState.Suspended)
+                                    {
+                                        bStep = true;
+                                    }
                                 }
                                 else if (message.ToUpper().StartsWith("RESUME"))
                                 {
                                     if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
                                     {
                                         applicationThread.Resume();
-                                        if (null != currentThread) currentThread.Resume();
+                                        if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
                                     }
                                 }
                                 else if (message.ToUpper().StartsWith("ADDBREAK"))
@@ -121,13 +152,33 @@ namespace SBDebugger
                                 {
                                     lineBreaks.Clear();
                                 }
+                                else if (message.ToUpper().StartsWith("STEPOUT"))
+                                {
+                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
+                                    {
+                                        stackLevel = GetStackLevel();
+                                        if (stackLevel > 0) bStepOut = true;
+                                        applicationThread.Resume();
+                                        if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
+                                    }
+                                }
+                                else if (message.ToUpper().StartsWith("STEPOVER"))
+                                {
+                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
+                                    {
+                                        stackLevel = GetStackLevel();
+                                        if (stackLevel > 0) bStepOver = true;
+                                        applicationThread.Resume();
+                                        if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
+                                    }
+                                }
                                 else if (message.ToUpper().StartsWith("STEP"))
                                 {
                                     bStep = true;
                                     if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
                                     {
                                         applicationThread.Resume();
-                                        if (null != currentThread) currentThread.Resume();
+                                        if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
                                     }
                                 }
                                 else if (message.ToUpper().StartsWith("IGNORE"))
@@ -269,6 +320,46 @@ namespace SBDebugger
             {
                 return "";
                 return ex.Message;
+            }
+        }
+
+        private static int GetStackLevel()
+        {
+            int result = 0;
+            try
+            {
+                StackTrace stackTrace = new StackTrace(applicationThread, false);
+                for (int i = 0; i < stackTrace.FrameCount; i++)
+                {
+                    StackFrame frame = stackTrace.GetFrame(i);
+                    MethodBase method = frame.GetMethod();
+                    if (method.DeclaringType.Name == "_SmallBasicProgram") result++;
+                }
+                return result;
+            }
+            catch
+            {
+                return result;
+            }
+        }
+
+        private static List<string> GetStack()
+        {
+            try
+            {
+                List<string> result = new List<string>();
+                StackTrace stackTrace = new StackTrace(applicationThread, false);
+                for (int i = 0; i < stackTrace.FrameCount; i++)
+                {
+                    StackFrame frame = stackTrace.GetFrame(i);
+                    MethodBase method = frame.GetMethod();
+                    if (method.DeclaringType.Name == "_SmallBasicProgram") result.Add(method.Name);
+                }
+                return result;
+            }
+            catch
+            {
+                return null;
             }
         }
     }

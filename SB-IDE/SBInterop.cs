@@ -13,7 +13,7 @@ namespace SB_IDE
 {
     public class SBInterop
     {
-        int currentVersion = 1;
+        int currentVersion = 2;
 
         object Service = null;
         MethodInfo SaveProgram = null;
@@ -285,7 +285,6 @@ namespace SB_IDE
                 if (File.Exists(extPath) && !bOverwrite)
                 {
                     if (Version >= currentVersion) return;
-                    Version = currentVersion;
                 }
 
                 MainWindow.Help();
@@ -323,6 +322,8 @@ namespace SB_IDE
                     command += " & move /Y \"" + tempPath + "\" \"" + extPath + "\"";
                     UACcommand(command);
                 }
+
+                Version = currentVersion;
             }
             catch (Exception ex)
             {
