@@ -102,6 +102,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialogs\FileSearcher.xaml.cs">
+      <DependentUpon>FileSearcher.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FindAndReplace.xaml.cs">
       <DependentUpon>FindAndReplace.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
     <Compile Include="SearchManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Settings1.cs" />
+    <Page Include="Dialogs\FileSearcher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\FindAndReplace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -367,6 +374,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\StepOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Search computer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

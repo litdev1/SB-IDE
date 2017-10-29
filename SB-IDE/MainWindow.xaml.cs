@@ -48,6 +48,11 @@ namespace SB_IDE
 
             e.Cancel = CloseTab(tabControlSB2);
             if (e.Cancel) return;
+
+            foreach (Window item in App.Current.Windows)
+            {
+                if (item != this) item.Close();
+            }
         }
 
         private void fileNew_Click(object sender, RoutedEventArgs e)
@@ -458,6 +463,12 @@ namespace SB_IDE
             {
                 activeDocument.SelectLine(error.Row - 1);
             }
+        }
+
+        private void fileSearcher_Click(object sender, RoutedEventArgs e)
+        {
+            Dialogs.FileSearcher fs = new Dialogs.FileSearcher();
+            fs.Show();
         }
     }
 }

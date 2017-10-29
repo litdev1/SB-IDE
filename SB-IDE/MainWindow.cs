@@ -180,7 +180,7 @@ namespace SB_IDE
             {
                 debugData.Add(new DebugData() { Variable = Properties.Settings.Default.WatchList[i] });
             }
-
+            FileSearcher.RootPath = Properties.Settings.Default.RootPath;
         }
 
         private Grid Ellipsis(string txt)
@@ -239,6 +239,7 @@ namespace SB_IDE
             {
                 Properties.Settings.Default.WatchList.Add(debugData[i].Variable);
             }
+            Properties.Settings.Default.RootPath = FileSearcher.RootPath;
 
             Properties.Settings.Default.Save();
         }
@@ -429,6 +430,7 @@ namespace SB_IDE
                     UpdateOutput();
                     UpdateRun();
                     UpdateIntellisense(showObject, showMember);
+                    UpdateFileSeracher();
                 }
                 else
                 {
@@ -439,6 +441,7 @@ namespace SB_IDE
                         UpdateOutput();
                         UpdateRun();
                         UpdateIntellisense(showObject, showMember);
+                        UpdateFileSeracher();
                     });
                 }
             }
@@ -457,7 +460,7 @@ namespace SB_IDE
                 if (TabHeader.MarkedForDelete.Count > 0)
                 {
                     TabItem curTab = activeTab;
-                    activeTab = TabHeader.MarkedForDelete.Pop();
+                    activeTab = TabHeader.MarkedForDelete.Dequeue();
                     activeDocument = GetDocument();
                     DeleteDocument();
                     if (null != curTab && null != curTab.Parent)
@@ -798,6 +801,17 @@ namespace SB_IDE
             catch (Exception ex)
             {
 
+            }
+        }
+
+        private void UpdateFileSeracher()
+        {
+            if (FileSearcher.MarkedForAdd.Count > 0)
+            {
+                AddDocument();
+                string path = FileSearcher.MarkedForAdd.Dequeue();
+                activeDocument.LoadDataFromFile(path);
+                activeTab.Header = new TabHeader(path);
             }
         }
 
@@ -1249,7 +1263,7 @@ namespace SB_IDE
     {
         public string FilePath;
         public string FileName;
-        public static Stack<TabItem> MarkedForDelete = new Stack<TabItem>();
+        public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
         public TextBlock textBlock = new TextBlock() { FontWeight = FontWeights.Bold, FontSize = 12 };
 
         public TabHeader(string filePath)
@@ -1285,7 +1299,7 @@ namespace SB_IDE
 
         private void OnClick(Object sender, RoutedEventArgs e)
         {
-            MarkedForDelete.Push((TabItem)Parent);
+            MarkedForDelete.Enqueue((TabItem)Parent);
         }
     }
 

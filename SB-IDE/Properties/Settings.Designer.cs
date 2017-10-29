@@ -146,5 +146,17 @@ namespace SB_IDE.Properties {
                 this["Version"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RootPath {
+            get {
+                return ((string)(this["RootPath"]));
+            }
+            set {
+                this["RootPath"] = value;
+            }
+        }
     }
 }

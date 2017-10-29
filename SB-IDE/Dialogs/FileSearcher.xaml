@@ -1,0 +1,59 @@
+﻿<Window x:Class="SB_IDE.Dialogs.FileSearcher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_IDE.Dialogs"
+        mc:Ignorable="d"
+        Title="File Searcher" Height="600" Width="800" Deactivated="Window_Deactivated">
+    <Grid>
+        <Label x:Name="label" Content="Root Folder" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonSearcherBrowse" Content="Browse" HorizontalAlignment="Right" Margin="0,10,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherBrowse_Click"/>
+        <TextBox x:Name="textBoxSearcherRoot" Height="23" Margin="87,10,146.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Grid Margin="10,41,146.6,9.4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="0" Grid.Row="0" >
+                <DataGrid x:Name="dataGridSearcher" ItemsSource="{Binding}" SelectionChanged="dataGridSearcher_SelectionChanged" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray">
+                    <DataGrid.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="File Name" Binding="{Binding FileName}"/>
+                        <DataGridTextColumn Header="Line Count" Binding="{Binding LineCount}"/>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                        <DataGridTextColumn Header="Folder" Binding="{Binding Folder}"/>
+                    </DataGrid.Columns>
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="FontWeight"  Value="Bold" />
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                </DataGrid>
+                <!--<ListView x:Name="listViewSearcher" Margin="0,0,-0.2,9.8" SelectionChanged="listViewSearcher_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="File Name" DisplayMemberBinding="{Binding FileName}"/>
+                            <GridViewColumn Header="Line Count" DisplayMemberBinding="{Binding LineCount}"/>
+                            <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
+                            <GridViewColumn Header="Folder" DisplayMemberBinding="{Binding Folder}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>-->
+            </Grid>
+            <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1"/>
+            <Grid x:Name="gridSearcherPreview" Margin="0" Grid.Row="2"/>
+        </Grid>
+        <CheckBox x:Name="checkBoxSearcherWord" Content="Whole Word" HorizontalAlignment="Right" Margin="0,34,10.6,0" VerticalAlignment="Top" Width="131"/>
+        <TextBox x:Name="textBoxSearcherText" HorizontalAlignment="Right" Height="23" Margin="0,55,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
+        <Button x:Name="buttonSearcherFilter" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,83,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherFilter_Click"/>
+        <Button x:Name="buttonSearcherOpen" Content="Open" HorizontalAlignment="Right" Margin="0,107,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherOpen_Click"/>
+
+    </Grid>
+</Window>
