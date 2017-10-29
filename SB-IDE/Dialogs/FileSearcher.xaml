@@ -17,7 +17,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Margin="0" Grid.Row="0" >
-                <DataGrid x:Name="dataGridSearcher" ItemsSource="{Binding}" SelectionChanged="dataGridSearcher_SelectionChanged" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray">
+                <DataGrid x:Name="dataGridSearcher" IsReadOnly="True" ItemsSource="{Binding}" SelectionChanged="dataGridSearcher_SelectionChanged" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray">
                     <DataGrid.Resources>
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
@@ -34,11 +34,12 @@
             <Grid x:Name="gridSearcherPreview" Margin="0" Grid.Row="2"/>
         </Grid>
         <CheckBox x:Name="checkBoxSearcherWord" ToolTip="Filter on whole words only" Content="Whole Word" HorizontalAlignment="Right" Margin="0,34,10.6,0" VerticalAlignment="Top" Width="131"/>
-        <TextBox x:Name="textBoxSearcherText" ToolTip="Only show files containing the filter text" HorizontalAlignment="Right" Height="23" Margin="0,55,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
-        <Button x:Name="buttonSearcherFilter" ToolTip="Perform a filter on files, blank filter text to reshow all files" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,83,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherFilter_Click"/>
-        <Button x:Name="buttonSearcherOpen" ToolTip="Open the current selected file in SB-IDE" Content="Open" HorizontalAlignment="Right" Margin="0,107,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherOpen_Click"/>
-        <TextBox x:Name="textBoxCount" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,131,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
-        <TextBox x:Name="textBoxMatches" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,159,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
+        <TextBox x:Name="textBoxSearcherText" ToolTip="Only show files containing the filter text" HorizontalAlignment="Right" Height="23" Margin="0,86,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
+        <Button x:Name="buttonSearcherFilter" ToolTip="Perform a filter on files, blank filter text to reshow all files" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,114,8.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherFilter_Click"/>
+        <Button x:Name="buttonSearcherOpen" ToolTip="Open the current selected file in SB-IDE" Content="Open" HorizontalAlignment="Right" Margin="0,138,8.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherOpen_Click"/>
+        <TextBox x:Name="textBoxCount" ToolTip="The number of files meeting filter" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,162,8.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
+        <TextBox x:Name="textBoxMatches" ToolTip ="The number of filter matches in the selected file" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,190,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
+        <Label x:Name="label1" Content="Filter Text" HorizontalAlignment="Right" Margin="0,55,9.6,0" VerticalAlignment="Top" Width="132" HorizontalContentAlignment="Center"/>
 
     </Grid>
 </Window>
