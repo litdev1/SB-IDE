@@ -28,13 +28,6 @@
                         <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
                         <DataGridTextColumn Header="Folder" Binding="{Binding Folder}"/>
                     </DataGrid.Columns>
-                    <DataGrid.ColumnHeaderStyle>
-                        <Style TargetType="{x:Type DataGridColumnHeader}">
-                            <Setter Property="FontWeight"  Value="Bold" />
-                            <Setter Property="HorizontalAlignment" Value="Center" />
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        </Style>
-                    </DataGrid.ColumnHeaderStyle>
                 </DataGrid>
             </Grid>
             <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1"/>

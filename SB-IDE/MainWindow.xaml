@@ -190,7 +190,7 @@
                     <RibbonButton Label="Zoom out" SmallImageSource="Images/Zoom Out.png" KeyTip="R" Click="viewZoomOut_Click" ToolTipTitle="Zoom out (smaller font)"/>
                     <RibbonButton Label="Reset Zoom" SmallImageSource="Images/Zoom.png" KeyTip="R" Click="viewZoomReset_Click" ToolTipTitle="Reset zoom (default font)"/>
                     <RibbonToggleButton Name="toggleTheme" Label="Dark Theme" SmallImageSource="Images/Color palette.png" KeyTip="R" Click="viewTheme_Click" ToolTipTitle="Use a dark theme (reverse video)"/>
-                    <RibbonTextBox x:Name="viewLanguage" Label="Language Code" KeyTip="R" TextBoxWidth="30" ToolTipTitle="Change the intellisence locale (e.g. 'de' for German, requires restart)" TextChanged="viewLanguage_TextChanged"/>
+                    <RibbonTextBox x:Name="viewLanguage" Label="Language Code" KeyTip="R" TextBoxWidth="30" ToolTipTitle="Change the intellisence locale (e.g. 'de' for German, restart SB-IDE to take effect)" TextChanged="viewLanguage_TextChanged"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
@@ -247,13 +247,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Output, Errors and Warnings" Width="2*" Binding="{Binding Message}"/>
                             </DataGrid.Columns>
-                            <DataGrid.ColumnHeaderStyle>
+                            <!--<DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="{x:Type DataGridColumnHeader}">
                                     <Setter Property="FontWeight"  Value="Bold" />
                                     <Setter Property="HorizontalAlignment" Value="Center" />
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
                                 </Style>
-                            </DataGrid.ColumnHeaderStyle>
+                            </DataGrid.ColumnHeaderStyle>-->
                         </DataGrid>
                     </Grid>
                 </TabItem>
@@ -289,13 +289,13 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
-                            <DataGrid.ColumnHeaderStyle>
+                            <!--<DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="{x:Type DataGridColumnHeader}">
                                     <Setter Property="FontWeight"  Value="Bold" />
                                     <Setter Property="HorizontalAlignment" Value="Center" />
                                     <Setter Property="HorizontalContentAlignment" Value="Center" />
                                 </Style>
-                            </DataGrid.ColumnHeaderStyle>
+                            </DataGrid.ColumnHeaderStyle>-->
                         </DataGrid>
                     </Grid>
                 </TabItem>
