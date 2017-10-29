@@ -101,6 +101,7 @@ namespace SB_IDE.Dialogs
             }
             searchFiles.Sort();
             dataGridSearcher.ItemsSource = searchFiles;
+            textBoxCount.Text = searchFiles.Count+" files found";
         }
 
         private void Filter()
@@ -111,14 +112,15 @@ namespace SB_IDE.Dialogs
 
             string keyword = textBoxSearcherText.Text;
             List<SearchFile> filterFiles = new List<SearchFile>();
+            RegexOptions caseSensitive = RegexOptions.IgnoreCase;
+            string wholeWord = (bool)checkBoxSearcherWord.IsChecked ? "\\b" + keyword + "\\b" : keyword;
             foreach (SearchFile file in searchFiles)
             {
-                RegexOptions caseSensitive =  RegexOptions.IgnoreCase;
-                string wholeWord = (bool)checkBoxSearcherWord.IsChecked ? "\\b" + keyword + "\\b" : keyword;
                 bool isFound = Regex.IsMatch(string.Concat(file.Text), wholeWord, caseSensitive);
                 if (keyword == "" || file.FilePath.ToLower().Contains(keyword.ToLower()) || isFound) filterFiles.Add(file);
             }
             dataGridSearcher.ItemsSource = filterFiles;
+            textBoxCount.Text = filterFiles.Count + " files found";
         }
 
         private void DisplayFile(SearchFile searchFile)
@@ -142,12 +144,20 @@ namespace SB_IDE.Dialogs
             {
                 doc.TextArea.TargetStart = 0;
                 doc.TextArea.TargetEnd = doc.TextArea.TextLength;
-                while (doc.TextArea.SearchInTarget(textBoxSearcherText.Text) != -1)
+
+                string keyword = textBoxSearcherText.Text;
+                RegexOptions caseSensitive = RegexOptions.IgnoreCase;
+                string wholeWord = (bool)checkBoxSearcherWord.IsChecked ? "\\b" + keyword + "\\b" : keyword;
+                MatchCollection matches = Regex.Matches(doc.TextArea.Text, wholeWord, caseSensitive);
+                foreach (Match match in matches)
                 {
-                    doc.TextArea.IndicatorFillRange(doc.TextArea.TargetStart, doc.TextArea.TargetEnd - doc.TextArea.TargetStart);
-                    doc.TextArea.TargetStart = doc.TextArea.TargetEnd;
-                    doc.TextArea.TargetEnd = doc.TextArea.TextLength;
+                    doc.TextArea.IndicatorFillRange(match.Index, match.Length);
                 }
+                textBoxMatches.Text = matches.Count + " matches found";
+            }
+            else
+            {
+                textBoxMatches.Text = "";
             }
             doc.TextArea.CurrentPosition = 0;
             doc.TextArea.ScrollCaret();
@@ -182,7 +192,7 @@ namespace SB_IDE.Dialogs
 
         public int CompareTo(Object obj)
         {
-            return FilePath.CompareTo(((SearchFile)obj).FilePath);
+            return FileName.CompareTo(((SearchFile)obj).FileName);
         }
     }
 }

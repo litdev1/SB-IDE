@@ -8,7 +8,7 @@
         Title="File Searcher" Height="600" Width="800" Deactivated="Window_Deactivated">
     <Grid>
         <Label x:Name="label" Content="Root Folder" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonSearcherBrowse" Content="Browse" HorizontalAlignment="Right" Margin="0,10,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherBrowse_Click"/>
+        <Button x:Name="buttonSearcherBrowse" ToolTip="Select a root folder to recursively search for Small Basic files" Content="Browse" HorizontalAlignment="Right" Margin="0,10,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherBrowse_Click"/>
         <TextBox x:Name="textBoxSearcherRoot" Height="23" Margin="87,10,146.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Grid Margin="10,41,146.6,9.4">
             <Grid.RowDefinitions>
@@ -36,24 +36,16 @@
                         </Style>
                     </DataGrid.ColumnHeaderStyle>
                 </DataGrid>
-                <!--<ListView x:Name="listViewSearcher" Margin="0,0,-0.2,9.8" SelectionChanged="listViewSearcher_SelectionChanged">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="File Name" DisplayMemberBinding="{Binding FileName}"/>
-                            <GridViewColumn Header="Line Count" DisplayMemberBinding="{Binding LineCount}"/>
-                            <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}"/>
-                            <GridViewColumn Header="Folder" DisplayMemberBinding="{Binding Folder}"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>-->
             </Grid>
             <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1"/>
             <Grid x:Name="gridSearcherPreview" Margin="0" Grid.Row="2"/>
         </Grid>
-        <CheckBox x:Name="checkBoxSearcherWord" Content="Whole Word" HorizontalAlignment="Right" Margin="0,34,10.6,0" VerticalAlignment="Top" Width="131"/>
-        <TextBox x:Name="textBoxSearcherText" HorizontalAlignment="Right" Height="23" Margin="0,55,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
-        <Button x:Name="buttonSearcherFilter" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,83,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherFilter_Click"/>
-        <Button x:Name="buttonSearcherOpen" Content="Open" HorizontalAlignment="Right" Margin="0,107,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherOpen_Click"/>
+        <CheckBox x:Name="checkBoxSearcherWord" ToolTip="Filter on whole words only" Content="Whole Word" HorizontalAlignment="Right" Margin="0,34,10.6,0" VerticalAlignment="Top" Width="131"/>
+        <TextBox x:Name="textBoxSearcherText" ToolTip="Only show files containing the filter text" HorizontalAlignment="Right" Height="23" Margin="0,55,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
+        <Button x:Name="buttonSearcherFilter" ToolTip="Perform a filter on files, blank filter text to reshow all files" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,83,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherFilter_Click"/>
+        <Button x:Name="buttonSearcherOpen" ToolTip="Open the current selected file in SB-IDE" Content="Open" HorizontalAlignment="Right" Margin="0,107,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherOpen_Click"/>
+        <TextBox x:Name="textBoxCount" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,131,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
+        <TextBox x:Name="textBoxMatches" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,159,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
 
     </Grid>
 </Window>
