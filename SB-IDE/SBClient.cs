@@ -49,9 +49,9 @@ namespace SBDebugger
             {
                 Send("BREAK " + line);
                 bStep = false;
-                //currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
-                //if (null != currentThread) currentThread.Suspend();
                 applicationThread.Suspend();
+                currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
+                if (null != currentThread) currentThread.Suspend();
             }
             else if (bStepOut)
             {
@@ -61,9 +61,9 @@ namespace SBDebugger
                     Send("BREAK " + line);
                     bStepOut = false;
                     stackLevel = 0;
-                    //currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
-                    //if (null != currentThread) currentThread.Suspend();
                     applicationThread.Suspend();
+                    currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
+                    if (null != currentThread) currentThread.Suspend();
                 }
             }
             else if (bStepOver)
@@ -74,9 +74,9 @@ namespace SBDebugger
                     Send("BREAK " + line);
                     bStepOver = false;
                     stackLevel = 0;
-                    //currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
-                    //if (null != currentThread) currentThread.Suspend();
                     applicationThread.Suspend();
+                    currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
+                    if (null != currentThread) currentThread.Suspend();
                 }
             }
         }
@@ -132,8 +132,8 @@ namespace SBDebugger
                                 {
                                     if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
                                     {
-                                        applicationThread.Resume();
                                         if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
+                                        applicationThread.Resume();
                                     }
                                 }
                                 else if (message.ToUpper().StartsWith("ADDBREAK"))
@@ -158,8 +158,8 @@ namespace SBDebugger
                                     {
                                         stackLevel = GetStackLevel();
                                         if (stackLevel > 0) bStepOut = true;
-                                        applicationThread.Resume();
                                         if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
+                                        else applicationThread.Resume();
                                     }
                                 }
                                 else if (message.ToUpper().StartsWith("STEPOVER"))
@@ -168,8 +168,8 @@ namespace SBDebugger
                                     {
                                         stackLevel = GetStackLevel();
                                         if (stackLevel > 0) bStepOver = true;
-                                        applicationThread.Resume();
                                         if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
+                                        else applicationThread.Resume();
                                     }
                                 }
                                 else if (message.ToUpper().StartsWith("STEP"))
@@ -177,8 +177,8 @@ namespace SBDebugger
                                     bStep = true;
                                     if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
                                     {
-                                        applicationThread.Resume();
                                         if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
+                                        else applicationThread.Resume();
                                     }
                                 }
                                 else if (message.ToUpper().StartsWith("IGNORE"))
@@ -213,6 +213,20 @@ namespace SBDebugger
                                         if (result != "") Send("VALUE " + var + " " + result);
                                     }
                                 }
+                                else if (message.ToUpper().StartsWith("GETSTACKLEVEL"))
+                                {
+                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
+                                    {
+                                        Send("STACKLEVEL " + GetStackLevel());
+                                    }
+                                }
+                                else if (message.ToUpper().StartsWith("GETSTACK"))
+                                {
+                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
+                                    {
+                                        Send("STACK " + string.Join(", ", GetStack()));
+                                    }
+                                }
                             }
                         }
                     }
@@ -222,8 +236,9 @@ namespace SBDebugger
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Send("DEBUG "+ex.Message);
             }
         }
 
@@ -335,6 +350,17 @@ namespace SBDebugger
                     MethodBase method = frame.GetMethod();
                     if (method.DeclaringType.Name == "_SmallBasicProgram") result++;
                 }
+                if (null != currentThread)
+                {
+                    stackTrace = new StackTrace(currentThread, false);
+                    for (int i = 0; i < stackTrace.FrameCount; i++)
+                    {
+                        StackFrame frame = stackTrace.GetFrame(i);
+                        MethodBase method = frame.GetMethod();
+                        if (method.DeclaringType.Name == "_SmallBasicProgram") result++;
+                    }
+                }
+
                 return result;
             }
             catch
@@ -348,7 +374,18 @@ namespace SBDebugger
             try
             {
                 List<string> result = new List<string>();
-                StackTrace stackTrace = new StackTrace(applicationThread, false);
+                StackTrace stackTrace;
+                if (null != currentThread)
+                {
+                    stackTrace = new StackTrace(currentThread, false);
+                    for (int i = 0; i < stackTrace.FrameCount; i++)
+                    {
+                        StackFrame frame = stackTrace.GetFrame(i);
+                        MethodBase method = frame.GetMethod();
+                        if (method.DeclaringType.Name == "_SmallBasicProgram") result.Add(method.Name);
+                    }
+                }
+                stackTrace = new StackTrace(applicationThread, false);
                 for (int i = 0; i < stackTrace.FrameCount; i++)
                 {
                     StackFrame frame = stackTrace.GetFrame(i);

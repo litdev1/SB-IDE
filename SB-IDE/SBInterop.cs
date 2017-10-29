@@ -22,8 +22,11 @@ namespace SB_IDE
         MethodInfo CompileProgram = null;
         MethodInfo CompileVB = null;
         List<string> extensions = new List<string>();
+#if DEBUG
+        bool overwriteSBDebug = true;
+#else
         bool overwriteSBDebug = false;
-
+#endif
         public static string Language = "";
         public static int Version = 0;
 

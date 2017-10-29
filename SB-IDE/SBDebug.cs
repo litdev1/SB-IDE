@@ -396,6 +396,10 @@ namespace SB_IDE
                 {
                     message = message.Substring(6).Trim();
                 }
+                else if (message.ToUpper().StartsWith("DEBUG"))
+                {
+                    message = message.Substring(6).Trim();
+                }
             }
         }
 

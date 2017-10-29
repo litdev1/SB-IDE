@@ -396,8 +396,7 @@ namespace SB_IDE
                 "SB-IDE should work with any installed version of Small Basic.\n\n" +
                 "To enable this with debugging an extension is directly compiled and installed in the lib folder the first time SB-IDE is started, requiring User Account Control (UAC) permission.\n\n" +
                 "Additionally UAC is required the first time a debug session is performed to allow required communication between applications.\n\n" +
-                "Debugging requires running to break points or 'stepping' through the code.  Once paused, values can be be viewed by hovering the mouse over a variable, or by adding variable names to the watch list in the debug tab.  Watch list variables may be viewed as they change and may also be modified.  Array values with [] syntax may also be viewed and modified.\n\n" +
-                "Breakpoints inside event subroutines is tricky and best avoided.",
+                "Debugging requires running to break points or 'stepping' through the code.  Once paused, values can be be viewed by hovering the mouse over a variable, or by adding variable names to the watch list in the debug tab.  Watch list variables may be viewed as they change and may also be modified.  Array values with [] syntax may also be viewed and modified.\n\n",
                 "SB_IDE", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
