@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SB_IDE
 {
-    public class SBDocument
+    internal class SBDocument
     {
         private Scintilla textArea;
         private SBLexer lexer;

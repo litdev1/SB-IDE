@@ -25,11 +25,11 @@ namespace SB_IDE
 {
     public partial class MainWindow
     {
-        public static List<Error> Errors = new List<Error>();
-        public static SBObject showObject = null;
-        public static SBObject showObjectLast = null;
-        public static Member showMember = null;
-        public static Member showMemberLast = null;
+        internal static List<Error> Errors = new List<Error>();
+        internal static SBObject showObject = null;
+        internal static SBObject showObjectLast = null;
+        internal static Member showMember = null;
+        internal static Member showMemberLast = null;
         public static string InstallDir = "";
         public static string ImportProgram = "";
         public static bool ignoreBP = false;
@@ -44,7 +44,7 @@ namespace SB_IDE
         public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
         public static Queue<string> MarkedForOpen = new Queue<string>();
 
-        public List<DebugData> debugData = new List<DebugData>();
+        internal List<DebugData> debugData = new List<DebugData>();
         SBInterop sbInterop;
         SBplugin sbPlugin;
         SBDocument activeDocument;
@@ -140,7 +140,7 @@ namespace SB_IDE
             threadTimer.Change(100, 100);
         }
 
-        public SBDocument GetActiveDocument()
+        internal SBDocument GetActiveDocument()
         {
             return activeDocument;
         }
@@ -1268,7 +1268,7 @@ namespace SB_IDE
         }
     }
 
-    public class TabHeader : Grid
+    internal class TabHeader : Grid
     {
         public string FilePath;
         public string FileName;
@@ -1311,13 +1311,13 @@ namespace SB_IDE
         }
     }
 
-    public class DebugData
+    internal class DebugData
     {
         public string Variable { get; set; }
         public string Value { get; set; }
     }
 
-    public class Error
+    internal class Error
     {
         public string Message { get; set; }
         public int Row { get; set; }

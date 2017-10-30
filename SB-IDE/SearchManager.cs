@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace SB_IDE
 {
-    public class SearchManager
+    internal class SearchManager
     {
 		public Scintilla TextArea;
 		public static TextBox SearchBox;

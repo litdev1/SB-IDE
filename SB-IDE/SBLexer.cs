@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SB_IDE
 {
-    public class SBStyle
+    internal class SBStyle
     {
         public int style;
         public Regex regex;
@@ -20,7 +20,7 @@ namespace SB_IDE
         }
     }
 
-    public class SBLexer
+    internal class SBLexer
     {
         private SBDocument sbDocument;
         private Scintilla textArea;

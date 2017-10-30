@@ -15,7 +15,7 @@ namespace SB_IDE
     {
     }
 
-    class SBplugin
+    internal class SBplugin
     {
         List<Plugin> plugins = new List<Plugin>();
         MainWindow mainWindow;
@@ -76,7 +76,7 @@ namespace SB_IDE
         }
     }
 
-    class Plugin
+    internal class Plugin
     {
         public string name { get; set; }
         public Bitmap bitmap { get; set; }

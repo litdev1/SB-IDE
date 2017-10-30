@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SB_IDE
 {
-    public class Setting
+    internal class Setting
     {
         private string key;
         private string property;
@@ -32,7 +32,7 @@ namespace SB_IDE
         }
     }
 
-    public static class Settings
+    internal static class Settings
     {
         private static List<Setting> settings = null;
 

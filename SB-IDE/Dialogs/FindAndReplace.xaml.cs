@@ -21,7 +21,7 @@ namespace SB_IDE.Dialogs
     {
         SBDocument sbDocument;
 
-        public FindAndReplace(SBDocument sbDocument)
+        internal FindAndReplace(SBDocument sbDocument)
         {
             this.sbDocument = sbDocument;
             InitializeComponent();

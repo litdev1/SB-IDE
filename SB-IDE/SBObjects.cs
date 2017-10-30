@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SB_IDE
 {
-    public class SBObjects
+    internal class SBObjects
     {
         public static List<SBObject> objects = new List<SBObject>();
         public static List<string> keywords = new List<string>() { "Sub", "EndSub", "For", "To", "Step", "EndFor", "If", "Then", "Else", "ElseIf", "EndIf", "While", "EndWhile", "Goto" };
@@ -155,14 +155,14 @@ namespace SB_IDE
         }
     }
 
-    public class SBObject
+    internal class SBObject
     {
         public string name;
         public string summary;
         public List<Member> members = new List<Member>();
     }
 
-    public class Member : IComparable
+    internal class Member : IComparable
     {
         public string name;
         public MemberTypes type;

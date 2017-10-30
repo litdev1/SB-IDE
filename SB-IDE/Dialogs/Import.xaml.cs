@@ -21,7 +21,7 @@ namespace SB_IDE.Dialogs
     {
         SBInterop sbInterop;
 
-        public Import(SBInterop sbInterop)
+        internal Import(SBInterop sbInterop)
         {
             this.sbInterop = sbInterop;
 

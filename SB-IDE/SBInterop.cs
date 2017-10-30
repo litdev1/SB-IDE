@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 namespace SB_IDE
 {
-    public class SBInterop
+    internal class SBInterop
     {
         int currentVersion = 4;
 
