@@ -26,7 +26,6 @@ namespace SB_IDE.Dialogs
     {
         private List<SearchFile> searchFiles = new List<SearchFile>();
         public static string RootPath = "";
-        public static Queue<string> MarkedForAdd = new Queue<string>();
 
         public FileSearcher()
         {
@@ -61,7 +60,7 @@ namespace SB_IDE.Dialogs
         private void buttonSearcherOpen_Click(object sender, RoutedEventArgs e)
         {
             SearchFile searchFile = (SearchFile)dataGridSearcher.SelectedItem;
-            if (null != searchFile) MarkedForAdd.Enqueue(searchFile.FilePath);
+            if (null != searchFile) MainWindow.MarkedForOpen.Enqueue(searchFile.FilePath);
         }
 
         private void dataGridSearcher_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -78,7 +77,6 @@ namespace SB_IDE.Dialogs
             List<string> files = new List<string>();
             dirs.Push(RootPath);
 
-            int i = 0;
             while (dirs.Count > 0)
             {
                 string dir = dirs.Pop();
@@ -93,7 +91,6 @@ namespace SB_IDE.Dialogs
                     if (_file.EndsWith(".sb") || _file.EndsWith(".smallbasic")) files.Add(_file);
                 }
             }
-            i = 0;
             searchFiles.Clear();
             foreach (string file in files)
             {

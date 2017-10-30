@@ -13,7 +13,7 @@ namespace SB_IDE
 {
     public class SBInterop
     {
-        int currentVersion = 3;
+        int currentVersion = 4;
 
         object Service = null;
         MethodInfo SaveProgram = null;

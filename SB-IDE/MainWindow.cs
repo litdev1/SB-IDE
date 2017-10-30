@@ -41,6 +41,8 @@ namespace SB_IDE
         public static int theme = 0;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
+        public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
+        public static Queue<string> MarkedForOpen = new Queue<string>();
 
         public List<DebugData> debugData = new List<DebugData>();
         SBInterop sbInterop;
@@ -457,10 +459,10 @@ namespace SB_IDE
             if (null != tabHeader)
             {
                 tabHeader.SetDirty(activeDocument.IsDirty);
-                if (TabHeader.MarkedForDelete.Count > 0)
+                if (MarkedForDelete.Count > 0)
                 {
                     TabItem curTab = activeTab;
-                    activeTab = TabHeader.MarkedForDelete.Dequeue();
+                    activeTab = MarkedForDelete.Dequeue();
                     activeDocument = GetDocument();
                     DeleteDocument();
                     if (null != curTab && null != curTab.Parent)
@@ -806,10 +808,10 @@ namespace SB_IDE
 
         private void UpdateFileSeracher()
         {
-            if (FileSearcher.MarkedForAdd.Count > 0)
+            if (MarkedForOpen.Count > 0)
             {
                 AddDocument();
-                string path = FileSearcher.MarkedForAdd.Dequeue();
+                string path = MarkedForOpen.Dequeue();
                 activeDocument.LoadDataFromFile(path);
                 activeTab.Header = new TabHeader(path);
             }
@@ -1263,7 +1265,6 @@ namespace SB_IDE
     {
         public string FilePath;
         public string FileName;
-        public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
         public TextBlock textBlock = new TextBlock() { FontWeight = FontWeights.Bold, FontSize = 12 };
 
         public TabHeader(string filePath)
@@ -1299,7 +1300,7 @@ namespace SB_IDE
 
         private void OnClick(Object sender, RoutedEventArgs e)
         {
-            MarkedForDelete.Enqueue((TabItem)Parent);
+            MainWindow.MarkedForDelete.Enqueue((TabItem)Parent);
         }
     }
 

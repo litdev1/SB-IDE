@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SB_IDE
 {
-    class SBStyle
+    public class SBStyle
     {
         public int style;
         public Regex regex;
@@ -169,7 +169,7 @@ namespace SB_IDE
 
             styles.Add(new SBStyle(STYLE_SPACE, new Regex("^[\\s+]")));
             styles.Add(new SBStyle(STYLE_COMMENT, new Regex("^[\'].*")));
-            styles.Add(new SBStyle(STYLE_STRING, new Regex("^[\"][^\"?]*[\"]")));
+            styles.Add(new SBStyle(STYLE_STRING, new Regex("^[\"][^\"\\n?]*[\"\\n]")));
             styles.Add(new SBStyle(STYLE_OPERATOR, new Regex("^[\\+|-|*|/|<|>|=]|^(AND|OR)")));
             styles.Add(new SBStyle(STYLE_KEYWORD, new Regex(keywords)));
             styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[A-Za-z_][\\w]*[\\.][A-Za-z_][\\w]*")));
