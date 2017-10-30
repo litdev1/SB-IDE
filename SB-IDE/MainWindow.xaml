@@ -101,10 +101,10 @@
                     <RibbonApplicationMenuItem x:Name="fileNew" Header="New" ImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="Start a new program"/>
                     <RibbonApplicationMenuItem x:Name="fileOpen" Header="Open" ImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="Open an existing program"/>
                     <RibbonApplicationMenuItem x:Name="fileClose" Header="Close" ImageSource="Images/Close file.png" KeyTip="C" Click="fileClose_Click" ToolTipTitle="Close current program"/>
-                    <RibbonApplicationMenuItem x:Name="fileSave" Header="Save" ImageSource="Images/Save.png" KeyTip="C" Click="fileSave_Click" ToolTipTitle="Save current program"/>
-                    <RibbonApplicationMenuItem x:Name="fileSaveAs" Header="Save As" ImageSource="Images/Save as.png" KeyTip="C" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>
-                    <RibbonApplicationMenuItem x:Name="fileSaveAll" Header="Save All" ImageSource="Images/Save all.png" KeyTip="C" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>
-                    <RibbonApplicationMenuItem x:Name="filePrint" Header="Print" ImageSource="Images/Print.png" KeyTip="C" Click="filePrint_Click" ToolTipTitle="Save all programs"/>
+                    <RibbonApplicationMenuItem x:Name="fileSave" Header="Save" ImageSource="Images/Save.png" KeyTip="SV" Click="fileSave_Click" ToolTipTitle="Save current program"/>
+                    <RibbonApplicationMenuItem x:Name="fileSaveAs" Header="Save As" ImageSource="Images/Save as.png" KeyTip="SA" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>
+                    <RibbonApplicationMenuItem x:Name="fileSaveAll" Header="Save All" ImageSource="Images/Save all.png" KeyTip="A" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>
+                    <RibbonApplicationMenuItem x:Name="filePrint" Header="Print" ImageSource="Images/Print.png" KeyTip="P" Click="filePrint_Click" ToolTipTitle="Save all programs"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <!-- Ribbon Tab #1: Home -->
@@ -113,84 +113,84 @@
                 <RibbonGroup x:Name="FileGroup" Header="File">
                     <RibbonButton Label="New" SmallImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="Start a new program"/>
                     <RibbonButton Label="Open" SmallImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="Open an existing program"/>
-                    <RibbonButton Label="Close" SmallImageSource="Images/Close file.png" KeyTip="C" Click="fileClose_Click" ToolTipTitle="Close current program"/>
-                    <RibbonButton Label="Save" SmallImageSource="Images/Save.png" KeyTip="C" Click="fileSave_Click" ToolTipTitle="Save current program"/>
-                    <RibbonButton Label="Save As" SmallImageSource="Images/Save as.png" KeyTip="C" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>
-                    <RibbonButton Label="Save All" SmallImageSource="Images/Save all.png" KeyTip="C" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>
+                    <RibbonButton Label="Close" SmallImageSource="Images/Close file.png" KeyTip="CL" Click="fileClose_Click" ToolTipTitle="Close current program"/>
+                    <RibbonButton Label="Save" SmallImageSource="Images/Save.png" KeyTip="SV" Click="fileSave_Click" ToolTipTitle="Save current program"/>
+                    <RibbonButton Label="Save As" SmallImageSource="Images/Save as.png" KeyTip="SA" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>
+                    <RibbonButton Label="Save All" SmallImageSource="Images/Save all.png" KeyTip="A" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>
                 </RibbonGroup>
                 <!-- Home/Program group-->
                 <RibbonGroup x:Name="Program" Header="Program">
-                    <RibbonButton Label="Stop" LargeImageSource="Images/Stop playing.png" KeyTip="D" Click="programStop_Click" ToolTipTitle="Stop current program"/>
-                    <RibbonButton Label="Run" LargeImageSource="Images/Play.png" KeyTip="D" Click="programRun_Click" ToolTipTitle="Run current program"/>
+                    <RibbonButton Label="Stop" LargeImageSource="Images/Stop playing.png" KeyTip="ST" Click="programStop_Click" ToolTipTitle="Stop current program"/>
+                    <RibbonButton Label="Run" LargeImageSource="Images/Play.png" KeyTip="R" Click="programRun_Click" ToolTipTitle="Run current program"/>
                 </RibbonGroup>
                 <!-- Home/Edit group-->
                 <RibbonGroup x:Name="EditGroup" Header="Edit">
-                    <RibbonButton Label="Copy" SmallImageSource="Images/Copy.png" KeyTip="N" Click="editCopy_Click" ToolTipTitle="Copy current selection to clipboard"/>
-                    <RibbonButton Label="Paste" SmallImageSource="Images/Paste.png" KeyTip="N" Click="editPaste_Click" ToolTipTitle="Past clipboard at current selection"/>
-                    <RibbonButton Label="Cut" SmallImageSource="Images/Cut.png" KeyTip="N" Click="editCut_Click" ToolTipTitle="Delete current selection to clipboard"/>
-                    <RibbonButton Label="Delete" SmallImageSource="Images/Delete.png" KeyTip="N" Click="editDelete_Click" ToolTipTitle="Delete current selection"/>
-                    <RibbonButton Label="Select All" SmallImageSource="Images/Selection.png" KeyTip="N" Click="editSelectAll_Click" ToolTipTitle="Select complete program"/>
-                    <RibbonButton Label="Format" SmallImageSource="Images/Form.png" KeyTip="N" Click="editFormat_Click" ToolTipTitle="Format current program"/>
-                    <RibbonButton Label="Undo" SmallImageSource="Images/Undo.png" KeyTip="N" Click="editUndo_Click" ToolTipTitle="Undo last action"/>
-                    <RibbonButton Label="Redo" SmallImageSource="Images/Redo.png" KeyTip="N" Click="editRedo_Click" ToolTipTitle="Redo last action"/>
+                    <RibbonButton Label="Copy" SmallImageSource="Images/Copy.png" KeyTip="CP" Click="editCopy_Click" ToolTipTitle="Copy current selection to clipboard"/>
+                    <RibbonButton Label="Paste" SmallImageSource="Images/Paste.png" KeyTip="V" Click="editPaste_Click" ToolTipTitle="Past clipboard at current selection"/>
+                    <RibbonButton Label="Cut" SmallImageSource="Images/Cut.png" KeyTip="X" Click="editCut_Click" ToolTipTitle="Delete current selection to clipboard"/>
+                    <RibbonButton Label="Delete" SmallImageSource="Images/Delete.png" KeyTip="D" Click="editDelete_Click" ToolTipTitle="Delete current selection"/>
+                    <RibbonButton Label="Select All" SmallImageSource="Images/Selection.png" KeyTip="SE" Click="editSelectAll_Click" ToolTipTitle="Select complete program"/>
+                    <RibbonButton Label="Format" SmallImageSource="Images/Form.png" KeyTip="FM" Click="editFormat_Click" ToolTipTitle="Format current program"/>
+                    <RibbonButton Label="Undo" SmallImageSource="Images/Undo.png" KeyTip="Z" Click="editUndo_Click" ToolTipTitle="Undo last action"/>
+                    <RibbonButton Label="Redo" SmallImageSource="Images/Redo.png" KeyTip="Y" Click="editRedo_Click" ToolTipTitle="Redo last action"/>
                 </RibbonGroup>
                 <!-- Home/Web group-->
                 <RibbonGroup x:Name="Web" Header="Web">
-                    <RibbonButton Label="Publish" LargeImageSource="Images/Publish.png" KeyTip="N" Click="webPublish_Click" ToolTipTitle="Publish current program to the web"/>
-                    <RibbonButton Label="Import" LargeImageSource="Images/Import.png" KeyTip="N" Click="webImport_Click" ToolTipTitle="Import a program from the web"/>
+                    <RibbonButton Label="Publish" LargeImageSource="Images/Publish.png" KeyTip="P" Click="webPublish_Click" ToolTipTitle="Publish current program to the web"/>
+                    <RibbonButton Label="Import" LargeImageSource="Images/Import.png" KeyTip="I" Click="webImport_Click" ToolTipTitle="Import a program from the web"/>
                 </RibbonGroup>
                 <!-- Home/Search group-->
                 <RibbonGroup x:Name="Search" Header="Search">
-                    <RibbonButton Label="Find Next" SmallImageSource="Images/Down.png" KeyTip="R" Click="searchNext_Click" ToolTipTitle="Quick find next"/>
-                    <RibbonButton Label="Find Previous" SmallImageSource="Images/Up.png" KeyTip="R" Click="searchPrevious_Click" ToolTipTitle="Quick find previous"/>
-                    <RibbonButton Label="Find and Replace" SmallImageSource="Images/Find.png" KeyTip="R" Click="searchReplace_Click" ToolTipTitle="Find and replace dialog"/>
-                    <RibbonTextBox x:Name="tbFind" Label="Find" KeyTip="R" TextBoxWidth="160" KeyDown="tbFind_KeyDown"/>
-                    <RibbonButton Label="File Searcher" LargeImageSource="Images/Search computer.png" KeyTip="N" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
+                    <RibbonButton Label="Find Next" SmallImageSource="Images/Down.png" KeyTip="FN" Click="searchNext_Click" ToolTipTitle="Quick find next"/>
+                    <RibbonButton Label="Find Previous" SmallImageSource="Images/Up.png" KeyTip="FP" Click="searchPrevious_Click" ToolTipTitle="Quick find previous"/>
+                    <RibbonButton Label="Find and Replace" SmallImageSource="Images/Find.png" KeyTip="H" Click="searchReplace_Click" ToolTipTitle="Find and replace dialog"/>
+                    <RibbonTextBox x:Name="tbFind" Label="Find" KeyTip="FD" TextBoxWidth="160" KeyDown="tbFind_KeyDown"/>
+                    <RibbonButton Label="File Searcher" LargeImageSource="Images/Search computer.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Debug" KeyTip="D" >
                 <!-- Home/Debug group-->
                 <RibbonGroup x:Name="DebugGroup" Header="Debug">
-                    <RibbonButton Label="Stop" LargeImageSource="Images/Stop playing.png" KeyTip="R" Click="debugStop_Click" ToolTipTitle="Stop current program"/>
+                    <RibbonButton Label="Stop" LargeImageSource="Images/Stop playing.png" KeyTip="ST" Click="debugStop_Click" ToolTipTitle="Stop current program"/>
                     <RibbonButton Label="Pause" LargeImageSource="Images/Pause.png" KeyTip="P" Click="debugPause_Click" ToolTipTitle="Pause current program"/>
-                    <RibbonButton Label="Step Out" LargeImageSource="Images/StepOut.png" KeyTip="P" Click="debugStepOut_Click" ToolTipTitle="Step out of the current subroutine"/>
-                    <RibbonButton Label="Step Over" LargeImageSource="Images/StepOver.png" KeyTip="P" Click="debugStepOver_Click" ToolTipTitle="Step over the next statement if it is a subroutine"/>
-                    <RibbonButton Label="Step" LargeImageSource="Images/Step.png" KeyTip="P" Click="debugStep_Click" ToolTipTitle="Step through current program to next statement"/>
-                    <RibbonButton Label="Start/Resume" LargeImageSource="Images/Play.png" KeyTip="D" Click="debugDebug_Click" ToolTipTitle="Start/Resume current program"/>
+                    <RibbonButton Label="Step Out" LargeImageSource="Images/StepOut.png" KeyTip="SO" Click="debugStepOut_Click" ToolTipTitle="Step out of the current subroutine"/>
+                    <RibbonButton Label="Step Over" LargeImageSource="Images/StepOver.png" KeyTip="SV" Click="debugStepOver_Click" ToolTipTitle="Step over the next statement if it is a subroutine"/>
+                    <RibbonButton Label="Step" LargeImageSource="Images/Step.png" KeyTip="SP" Click="debugStep_Click" ToolTipTitle="Step through current program to next statement"/>
+                    <RibbonButton Label="Start/Resume" LargeImageSource="Images/Play.png" KeyTip="R" Click="debugDebug_Click" ToolTipTitle="Start/Resume current program"/>
                 </RibbonGroup>
                 <!-- Home/Debug group-->
                 <RibbonGroup x:Name="BreakpointGroup" Header="Breakpoints">
-                    <RibbonButton Label="Toggle Breakpoint" SmallImageSource="Images/Breakpoint.png" KeyTip="R" Click="breakpointToggle_Click" ToolTipTitle="Toggle breakpoint at current line"/>
-                    <RibbonButton Label="Clear Breakpoints" SmallImageSource="Images/BreakpointOff.png" KeyTip="R" Click="breakpointClear_Click" ToolTipTitle="Clear all breakpoints"/>
-                    <RibbonToggleButton Label="Ignore Breakpoints" SmallImageSource="Images/BreakpointIgnore.png" KeyTip="R" Click="breakpointIgnore_Click" ToolTipTitle="Ignore all breakpoints"/>
+                    <RibbonButton Label="Toggle Breakpoint" SmallImageSource="Images/Breakpoint.png" KeyTip="BB" Click="breakpointToggle_Click" ToolTipTitle="Toggle breakpoint at current line"/>
+                    <RibbonButton Label="Clear Breakpoints" SmallImageSource="Images/BreakpointOff.png" KeyTip="BC" Click="breakpointClear_Click" ToolTipTitle="Clear all breakpoints"/>
+                    <RibbonToggleButton Label="Ignore Breakpoints" SmallImageSource="Images/BreakpointIgnore.png" KeyTip="BI" Click="breakpointIgnore_Click" ToolTipTitle="Ignore all breakpoints"/>
                 </RibbonGroup>
                 <!-- Home/Bookmarks group-->
                 <RibbonGroup x:Name="Bookmarks" Header="Bookmarks">
-                    <RibbonButton Label="Toggle Bookmark" SmallImageSource="Images/Bookmark.png" KeyTip="R" Click="bookmarkToggle_Click" ToolTipTitle="Toggle bookmark at current line"/>
-                    <RibbonButton Label="Clear Bookmarks" SmallImageSource="Images/BookmarkOff.png" KeyTip="R" Click="bookmarkClear_Click" ToolTipTitle="Clear all bookmarks"/>
-                    <RibbonButton Label="Next Bookmark" SmallImageSource="Images/BookmarkNext.png" KeyTip="R" Click="bookmarkNext_Click" ToolTipTitle="Move to next bookmark down"/>
-                    <RibbonButton Label="Previous Bookmark" SmallImageSource="Images/BookmarkPrevious.png" KeyTip="R" Click="bookmarkPrevious_Click" ToolTipTitle="Move to previous bookmark up"/>
+                    <RibbonButton Label="Toggle Bookmark" SmallImageSource="Images/Bookmark.png" KeyTip="KB" Click="bookmarkToggle_Click" ToolTipTitle="Toggle bookmark at current line"/>
+                    <RibbonButton Label="Clear Bookmarks" SmallImageSource="Images/BookmarkOff.png" KeyTip="KC" Click="bookmarkClear_Click" ToolTipTitle="Clear all bookmarks"/>
+                    <RibbonButton Label="Next Bookmark" SmallImageSource="Images/BookmarkNext.png" KeyTip="KN" Click="bookmarkNext_Click" ToolTipTitle="Move to next bookmark down"/>
+                    <RibbonButton Label="Previous Bookmark" SmallImageSource="Images/BookmarkPrevious.png" KeyTip="KP" Click="bookmarkPrevious_Click" ToolTipTitle="Move to previous bookmark up"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Advanced" KeyTip="A" >
                 <!-- Home/Extensions group-->
                 <RibbonGroup x:Name="Extend" Header="Extend">
-                    <RibbonButton Label="Extension Manager" LargeImageSource="Images/Objects.png" KeyTip="N" Click="extensionsManage_Click" ToolTipTitle="Manage extensions"/>
-                    <RibbonButton Label="Graduate" LargeImageSource="Images/Graduate.png" KeyTip="N" Click="graduateVB_Click" ToolTipTitle="Graduate current program to Visual Basic"/>
+                    <RibbonButton Label="Extension Manager" LargeImageSource="Images/Objects.png" KeyTip="EM" Click="extensionsManage_Click" ToolTipTitle="Manage extensions"/>
+                    <RibbonButton Label="Graduate" LargeImageSource="Images/Graduate.png" KeyTip="G" Click="graduateVB_Click" ToolTipTitle="Graduate current program to Visual Basic"/>
                 </RibbonGroup>
                 <!-- Home/View group-->
                 <RibbonGroup x:Name="View" Header="View">
-                    <RibbonButton Label="Collapse All" SmallImageSource="Images/Collapse.png" KeyTip="R" Click="viewCollapse_Click" ToolTipTitle="Collapse all folding"/>
-                    <RibbonButton Label="Expand All" SmallImageSource="Images/Expand.png" KeyTip="R" Click="viewExpand_Click" ToolTipTitle="Expand all folding"/>
-                    <RibbonToggleButton Name="toggleSplit" Label="Split Screen" SmallImageSource="Images/Monitors.png" KeyTip="R" Click="viewDual_Click" ToolTipTitle="Toggle split screen program layout"/>
-                    <RibbonToggleButton Name="toggleWrap" Label="Word Wrap" SmallImageSource="Images/WordWrap.png" KeyTip="R" Click="viewWrap_Click" ToolTipTitle="Toggle text wrap mode"/>
-                    <RibbonToggleButton Name="toggleIndent" Label="Indent Guides" SmallImageSource="Images/Indent.png" KeyTip="R" Click="viewIndent_Click" ToolTipTitle="Toggle indent guides" IsChecked="True"/>
-                    <RibbonToggleButton Name="toggleWhiteSpace" Label="View Whitespace" SmallImageSource="Images/WhiteSpace.png" KeyTip="R" Click="viewWhitespace_Click" ToolTipTitle="Toggle show whitespace"/>
-                    <RibbonButton Label="Zoom in" SmallImageSource="Images/Zoom In.png" KeyTip="R" Click="viewZoomIn_Click" ToolTipTitle="Zoom in (larger font)"/>
-                    <RibbonButton Label="Zoom out" SmallImageSource="Images/Zoom Out.png" KeyTip="R" Click="viewZoomOut_Click" ToolTipTitle="Zoom out (smaller font)"/>
-                    <RibbonButton Label="Reset Zoom" SmallImageSource="Images/Zoom.png" KeyTip="R" Click="viewZoomReset_Click" ToolTipTitle="Reset zoom (default font)"/>
-                    <RibbonToggleButton Name="toggleTheme" Label="Dark Theme" SmallImageSource="Images/Color palette.png" KeyTip="R" Click="viewTheme_Click" ToolTipTitle="Use a dark theme (reverse video)"/>
-                    <RibbonTextBox x:Name="viewLanguage" Label="Language Code" KeyTip="R" TextBoxWidth="30" ToolTipTitle="Change the intellisence locale (e.g. 'de' for German, restart SB-IDE to take effect)" TextChanged="viewLanguage_TextChanged"/>
+                    <RibbonButton Label="Collapse All" SmallImageSource="Images/Collapse.png" KeyTip="C" Click="viewCollapse_Click" ToolTipTitle="Collapse all folding"/>
+                    <RibbonButton Label="Expand All" SmallImageSource="Images/Expand.png" KeyTip="EA" Click="viewExpand_Click" ToolTipTitle="Expand all folding"/>
+                    <RibbonToggleButton Name="toggleSplit" Label="Split Screen" SmallImageSource="Images/Monitors.png" KeyTip="S" Click="viewDual_Click" ToolTipTitle="Toggle split screen program layout"/>
+                    <RibbonToggleButton Name="toggleWrap" Label="Word Wrap" SmallImageSource="Images/WordWrap.png" KeyTip="WW" Click="viewWrap_Click" ToolTipTitle="Toggle text wrap mode"/>
+                    <RibbonToggleButton Name="toggleIndent" Label="Indent Guides" SmallImageSource="Images/Indent.png" KeyTip="I" Click="viewIndent_Click" ToolTipTitle="Toggle indent guides" IsChecked="True"/>
+                    <RibbonToggleButton Name="toggleWhiteSpace" Label="View Whitespace" SmallImageSource="Images/WhiteSpace.png" KeyTip="WS" Click="viewWhitespace_Click" ToolTipTitle="Toggle show whitespace"/>
+                    <RibbonButton Label="Zoom in" SmallImageSource="Images/Zoom In.png" KeyTip="+" Click="viewZoomIn_Click" ToolTipTitle="Zoom in (larger font)"/>
+                    <RibbonButton Label="Zoom out" SmallImageSource="Images/Zoom Out.png" KeyTip="-" Click="viewZoomOut_Click" ToolTipTitle="Zoom out (smaller font)"/>
+                    <RibbonButton Label="Reset Zoom" SmallImageSource="Images/Zoom.png" KeyTip="0" Click="viewZoomReset_Click" ToolTipTitle="Reset zoom (default font)"/>
+                    <RibbonToggleButton Name="toggleTheme" Label="Dark Theme" SmallImageSource="Images/Color palette.png" KeyTip="T" Click="viewTheme_Click" ToolTipTitle="Use a dark theme (reverse video)"/>
+                    <RibbonTextBox x:Name="viewLanguage" Label="Language Code" KeyTip="L" TextBoxWidth="30" ToolTipTitle="Change the intellisence locale (e.g. 'de' for German, restart SB-IDE to take effect)" TextChanged="viewLanguage_TextChanged"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
