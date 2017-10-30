@@ -46,6 +46,7 @@ namespace SB_IDE
 
         public List<DebugData> debugData = new List<DebugData>();
         SBInterop sbInterop;
+        SBplugin sbPlugin;
         SBDocument activeDocument;
         TabItem activeTab;
         Timer threadTimer;
@@ -57,6 +58,7 @@ namespace SB_IDE
             Errors.Add(new Error("Welcome to Small Basic IDE"));
 
             sbInterop = new SBInterop();
+            sbPlugin = new SBplugin(this);
 
             // CREATE CONTROLS
             for (int i = tabControlSB1.Items.Count - 1; i >= 0; i--) tabControlSB1.Items.RemoveAt(i);
@@ -136,6 +138,11 @@ namespace SB_IDE
 
             threadTimer = new Timer(new TimerCallback(ThreadTimerCallback));
             threadTimer.Change(100, 100);
+        }
+
+        public SBDocument GetActiveDocument()
+        {
+            return activeDocument;
         }
 
         private void GridDebugClick(object sender, RoutedEventArgs e)

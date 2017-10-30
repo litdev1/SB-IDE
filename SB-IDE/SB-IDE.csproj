@@ -124,6 +124,7 @@
     <Compile Include="SBInterop.cs" />
     <Compile Include="SBLexer.cs" />
     <Compile Include="SBObjects.cs" />
+    <Compile Include="SBPlugin.cs" />
     <Compile Include="SearchManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Settings1.cs" />
