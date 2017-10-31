@@ -379,5 +379,14 @@
   <ItemGroup>
     <Resource Include="images\Search computer.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SBPlugins\SBPlugins.csproj">
+      <Project>{70c29965-7b5d-4ead-8bf1-33ad8da3586d}</Project>
+      <Name>SBPlugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Plugin.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
