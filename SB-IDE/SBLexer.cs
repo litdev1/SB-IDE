@@ -47,6 +47,9 @@ namespace SB_IDE
         public SBObjects sbObjects = new SBObjects();
         public int toolTipPosition = 0;
         int theme = 0;
+        Regex keyword1 = new Regex("^[\\W](IF|SUB|WHILE|FOR)[\\W]");
+        Regex keyword2 = new Regex("^[\\W](ENDSUB|ENDFOR|ENDIF|ENDWHILE)[\\W]");
+        Regex keyword3 = new Regex("^[\\W](ELSE|ELSEIF)[\\W]");
 
         public SBLexer(SBDocument sbDocument, Scintilla textArea)
         {
@@ -96,19 +99,19 @@ namespace SB_IDE
             {
                 textArea.Lines[lineCur].FoldLevel = fold;
                 string text = textArea.Lines[lineCur].Text.Trim().ToUpper();
-                if (text.StartsWith("IF") || text.StartsWith("SUB") || text.StartsWith("WHILE") || text.StartsWith("FOR"))
+                if (keyword1.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
                 {
                     fold++;
                     textArea.Lines[lineCur].FoldLevelFlags = FoldLevelFlags.Header;
                 }
-                else if (text.StartsWith("ENDIF") || text.StartsWith("ENDSUB") || text.StartsWith("ENDWHILE") || text.StartsWith("ENDFOR"))
+                else if (keyword2.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
                 {
                     fold--;
                     textArea.Lines[lineCur].FoldLevel--;
                     textArea.Lines[lineCur].FoldLevelFlags = FoldLevelFlags.White;
                     if (fold < foldBase) fold = foldBase;
                 }
-                else if (text.StartsWith("ELSE") || text.StartsWith("ELSEIF"))
+                else if (keyword3.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
                 {
                     textArea.Lines[lineCur].FoldLevel--;
                     textArea.Lines[lineCur].FoldLevelFlags = FoldLevelFlags.White;
@@ -396,19 +399,19 @@ namespace SB_IDE
                 {
                     textArea.Lines[i].FoldLevel = fold;
                     string text = textArea.Lines[i].Text.Trim().ToUpper();
-                    if (text.StartsWith("IF") || text.StartsWith("SUB") || text.StartsWith("WHILE") || text.StartsWith("FOR"))
+                    if (keyword1.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
                     {
                         fold++;
                         textArea.Lines[i].FoldLevelFlags = FoldLevelFlags.Header;
                     }
-                    else if (text.StartsWith("ENDIF") || text.StartsWith("ENDSUB") || text.StartsWith("ENDWHILE") || text.StartsWith("ENDFOR"))
+                    else if (keyword2.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
                     {
                         fold--;
                         textArea.Lines[i].FoldLevel--;
                         textArea.Lines[i].FoldLevelFlags = FoldLevelFlags.White;
                         if (fold < foldBase) fold = foldBase;
                     }
-                    else if (text.StartsWith("ELSE") || text.StartsWith("ELSEIF"))
+                    else if (keyword2.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
                     {
                         textArea.Lines[i].FoldLevel--;
                         textArea.Lines[i].FoldLevelFlags = FoldLevelFlags.White;
