@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace SB_IDE
 {
-	internal class HotKeyManager
+	public class HotKeyManager
     {
 		public static bool Enable = true;
 

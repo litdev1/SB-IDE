@@ -25,11 +25,11 @@ namespace SB_IDE
 {
     public partial class MainWindow
     {
-        internal static List<Error> Errors = new List<Error>();
-        internal static SBObject showObject = null;
-        internal static SBObject showObjectLast = null;
-        internal static Member showMember = null;
-        internal static Member showMemberLast = null;
+        public static List<Error> Errors = new List<Error>();
+        public static SBObject showObject = null;
+        public static SBObject showObjectLast = null;
+        public static Member showMember = null;
+        public static Member showMemberLast = null;
         public static string InstallDir = "";
         public static string ImportProgram = "";
         public static bool ignoreBP = false;
@@ -44,7 +44,7 @@ namespace SB_IDE
         public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
         public static Queue<string> MarkedForOpen = new Queue<string>();
 
-        internal List<DebugData> debugData = new List<DebugData>();
+        public List<DebugData> debugData = new List<DebugData>();
         SBInterop sbInterop;
         SBplugin sbPlugin;
         SBDocument activeDocument;
@@ -72,9 +72,23 @@ namespace SB_IDE
             toggleTheme.IsChecked = theme > 0;
             viewLanguage.Text = SBInterop.Language;
 
+            // DEFAULT FILE
             AddDocument(1);
             AddDocument(2);
             tabControlSB1.Focus();
+            App app = (App)Application.Current;
+            for (int i = 0; i < app.Arguments.Length; i++)
+            {
+                if (i == 0)
+                {
+                    activeDocument.LoadDataFromFile(app.Arguments[i]);
+                    activeTab.Header = new TabHeader(app.Arguments[i]);
+                }
+                else
+                {
+                    MarkedForOpen.Enqueue(app.Arguments[i]);
+                }
+            }
 
             ImageSource imgSource = ImageSourceFromBitmap(Properties.Resources.Erase);
             Image img = new Image()
@@ -101,10 +115,6 @@ namespace SB_IDE
             clear.Click += new RoutedEventHandler(GridDebugClick);
             menu.Items.Add(clear);
             dataGridDebug.ContextMenu = menu;
-
-            // DEFAULT FILE
-            //string sample = Properties.Resources.PaddleGame;
-            //activeDocument.LoadDataFromText(sample);
 
             CollectionViewSource itemCollectionViewSource;
             itemCollectionViewSource = (CollectionViewSource)(FindResource("DebugDataSource"));
@@ -140,7 +150,7 @@ namespace SB_IDE
             threadTimer.Change(100, 100);
         }
 
-        internal SBDocument GetActiveDocument()
+        public SBDocument GetActiveDocument()
         {
             return activeDocument;
         }
@@ -1268,7 +1278,7 @@ namespace SB_IDE
         }
     }
 
-    internal class TabHeader : Grid
+    public class TabHeader : Grid
     {
         public string FilePath;
         public string FileName;
@@ -1311,13 +1321,13 @@ namespace SB_IDE
         }
     }
 
-    internal class DebugData
+    public class DebugData
     {
         public string Variable { get; set; }
         public string Value { get; set; }
     }
 
-    internal class Error
+    public class Error
     {
         public string Message { get; set; }
         public int Row { get; set; }

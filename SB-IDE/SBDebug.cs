@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SB_IDE
 {
-    internal class SBDebug : IDisposable
+    public class SBDebug : IDisposable
     {
         SBInterop sbInterop;
         SBDocument sbDocument;

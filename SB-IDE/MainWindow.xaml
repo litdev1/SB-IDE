@@ -136,8 +136,8 @@
                 </RibbonGroup>
                 <!-- Home/Web group-->
                 <RibbonGroup x:Name="Web" Header="Web">
-                    <RibbonButton Label="Publish" LargeImageSource="Images/Publish.png" KeyTip="P" Click="webPublish_Click" ToolTipTitle="Publish current program to the web"/>
                     <RibbonButton Label="Import" LargeImageSource="Images/Import.png" KeyTip="I" Click="webImport_Click" ToolTipTitle="Import a program from the web"/>
+                    <RibbonButton Label="Publish" LargeImageSource="Images/Publish.png" KeyTip="P" Click="webPublish_Click" ToolTipTitle="Publish current program to the web"/>
                 </RibbonGroup>
                 <!-- Home/Search group-->
                 <RibbonGroup x:Name="Search" Header="Search">

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SB_IDE
 {
-    internal class SBStyle
+    public class SBStyle
     {
         public int style;
         public Regex regex;
@@ -20,7 +20,7 @@ namespace SB_IDE
         }
     }
 
-    internal class SBLexer
+    public class SBLexer
     {
         private SBDocument sbDocument;
         private Scintilla textArea;
@@ -47,6 +47,7 @@ namespace SB_IDE
         public SBObjects sbObjects = new SBObjects();
         public int toolTipPosition = 0;
         int theme = 0;
+        string keywords = "Sub|EndSub|For|To|Step|EndFor|If|Then|Else|ElseIf|EndIf|While|EndWhile|Goto";
         Regex keyword1 = new Regex("^[\\W](IF|SUB|WHILE|FOR)[\\W]");
         Regex keyword2 = new Regex("^[\\W](ENDSUB|ENDFOR|ENDIF|ENDWHILE)[\\W]");
         Regex keyword3 = new Regex("^[\\W](ELSE|ELSEIF)[\\W]");
@@ -130,6 +131,20 @@ namespace SB_IDE
                 textArea.SetTargetRange(iStart, iStart + iLen);
                 textArea.ReplaceTarget(indents);
             }
+
+            //foreach (string keyword in keywords.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries ))
+            //{
+            //    MatchCollection matches = Regex.Matches(('\n' + textArea.Text.ToUpper() + '\n'), "^[\\W](" + keyword.ToUpper() + ")[\\W]");
+            //    foreach (Match match in matches)
+            //    {
+            //        int start = Math.Max(0, match.Index-1);
+            //        int len = match.Length - 2;
+
+            //        sbDocument.TextArea.SetTargetRange(start, len);
+            //        sbDocument.TextArea.ReplaceTarget(keyword);
+            //    }
+            //}
+
             isDirty = true;
         }
 
@@ -168,13 +183,11 @@ namespace SB_IDE
             textArea.Styles[STYLE_COMMENT].Italic = true;
             textArea.Styles[STYLE_KEYWORD].Bold = true;
 
-            string keywords = "^[\\W](SUB|ENDSUB|FOR|TO|STEP|ENDFOR|IF|THEN|ELSE|ELSEIF|ENDIF|WHILE|ENDWHILE|GOTO)[\\W]";
-
             styles.Add(new SBStyle(STYLE_SPACE, new Regex("^[\\s+]")));
             styles.Add(new SBStyle(STYLE_COMMENT, new Regex("^[\'].*")));
             styles.Add(new SBStyle(STYLE_STRING, new Regex("^[\"][^\"\\n?]*[\"\\n]")));
             styles.Add(new SBStyle(STYLE_OPERATOR, new Regex("^[\\+|-|*|/|<|>|=]|^(AND|OR)")));
-            styles.Add(new SBStyle(STYLE_KEYWORD, new Regex(keywords)));
+            styles.Add(new SBStyle(STYLE_KEYWORD, new Regex("^[\\W]("+keywords.ToUpper()+")[\\W]")));
             styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[A-Za-z_][\\w]*[\\.][A-Za-z_][\\w]*")));
             styles.Add(new SBStyle(STYLE_SUBROUTINE, new Regex("^[A-Za-z_][\\w]*[(]")));
             styles.Add(new SBStyle(STYLE_LABEL, new Regex("^[A-Za-z_][\\w]*[:]")));

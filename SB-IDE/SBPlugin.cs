@@ -11,7 +11,7 @@ using System.Windows.Controls.Ribbon;
 
 namespace SB_IDE
 {
-    internal class SBplugin
+    public class SBplugin
     {
         List<Plugin> plugins = new List<Plugin>();
         MainWindow mainWindow;
@@ -42,15 +42,24 @@ namespace SB_IDE
                         {
                             if (null != GetValue(type, "GetGroupName")) group.Header = (string)GetValue(type, "GetGroupName");
 
-                            Plugin plugin = new Plugin();
+                            Plugin plugin = new Plugin(mainWindow);
                             plugins.Add(plugin);
+                            plugin.type = type;
                             if (null != GetValue(type, "GetName")) plugin.name = (string)GetValue(type, "GetName");
                             if (null != GetValue(type, "GetBitmap")) plugin.bitmap = (Bitmap)GetValue(type, "GetBitmap");
                             if (null != GetValue(type, "LargeButton")) plugin.largeButton = (bool)GetValue(type, "LargeButton");
                             if (null != GetValue(type, "GetToolTip")) plugin.tooltip = (string)GetValue(type, "GetToolTip");
-                            plugin.run = type.GetMethod("Run", BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Static);
+                            MethodInfo[] methods = type.GetMethods(BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Static);
+                            foreach (MethodInfo method in methods)
+                            {
+                                ParameterInfo[] args = method.GetParameters();
+                                if (args.Length == 1 && args[0].ParameterType == typeof(string))
+                                    plugin.runText = method;
+                                if (args.Length == 1 && args[0].ParameterType == typeof(MainWindow))
+                                    plugin.runMainWindow = method;
+                            }
 
-                            if (plugin.name != "" && null != plugin.run)
+                            if (plugin.name != "" && (null != plugin.runText || null != plugin.runMainWindow))
                             {
                                 if (!bCreated) mainWindow.ribbon.Items.Add(tab);
                                 bCreated = true;
@@ -63,7 +72,7 @@ namespace SB_IDE
                             }
                             else
                             {
-                                MainWindow.Errors.Add(new Error("Plugin Add : Failed to add a plugin in " + group.Header));
+                                MainWindow.Errors.Add(new Error("Plugin Add : Failed to add a plugin in group " + group.Header));
                             }
                         }
                     }
@@ -91,40 +100,42 @@ namespace SB_IDE
 
         private void pluginClick(object sender, RoutedEventArgs e)
         {
-            RibbonButton button = (RibbonButton)sender;
-            Plugin plugin = (Plugin)button.Tag;
-            plugin.Run(mainWindow.GetActiveDocument().TextArea.Text);
-        }
-    }
-
-    internal class Plugin
-    {
-        public string name { get; set; }
-        public Bitmap bitmap { get; set; }
-        public bool largeButton { get; set; }
-        public string tooltip { get; set; }
-        public MethodInfo run { get; set; }
-
-        public Plugin()
-        {
-            name = "";
-            bitmap = Properties.Resources.Plugin;
-            largeButton = true;
-            tooltip = "";
-            run = null;
-        }
-
-        public bool Run(string text)
-        {
             try
             {
-                return (bool)run.Invoke(null, new object[] { text });
+                RibbonButton button = (RibbonButton)sender;
+                Plugin plugin = (Plugin)button.Tag;
+                if (null != plugin.runText) plugin.runText.Invoke(null, new object[] { mainWindow.GetActiveDocument().TextArea.Text });
+                if (null != plugin.runMainWindow) plugin.runMainWindow.Invoke(null, new object[] { mainWindow });
             }
             catch (Exception ex)
             {
                 MainWindow.Errors.Add(new Error("Plugin Run : " + ex.Message));
-                return false;
             }
+        }
+    }
+
+    public class Plugin
+    {
+        MainWindow mainindow;
+
+        public string name;
+        public Bitmap bitmap;
+        public bool largeButton;
+        public string tooltip;
+        public MethodInfo runText;
+        public MethodInfo runMainWindow;
+        public Type type;
+
+        public Plugin(MainWindow mainindow)
+        {
+            this.mainindow = mainindow;
+            name = "";
+            bitmap = Properties.Resources.Plugin;
+            largeButton = true;
+            tooltip = "";
+            runText = null;
+            runMainWindow = null;
+            type = null;
         }
     }
 }
