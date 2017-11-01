@@ -49,9 +49,9 @@ namespace SBDebugger
             {
                 Send("BREAK " + line);
                 bStep = false;
-                applicationThread.Suspend();
+                if (applicationThread.ThreadState == System.Threading.ThreadState.Running) applicationThread.Suspend();
                 currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
-                if (null != currentThread) currentThread.Suspend();
+                if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Running) currentThread.Suspend();
             }
             else if (bStepOut)
             {
@@ -61,9 +61,9 @@ namespace SBDebugger
                     Send("BREAK " + line);
                     bStepOut = false;
                     stackLevel = 0;
-                    applicationThread.Suspend();
+                    if (applicationThread.ThreadState == System.Threading.ThreadState.Running) applicationThread.Suspend();
                     currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
-                    if (null != currentThread) currentThread.Suspend();
+                    if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Running) currentThread.Suspend();
                 }
             }
             else if (bStepOver)
@@ -74,9 +74,9 @@ namespace SBDebugger
                     Send("BREAK " + line);
                     bStepOver = false;
                     stackLevel = 0;
-                    applicationThread.Suspend();
+                    if (applicationThread.ThreadState == System.Threading.ThreadState.Running) applicationThread.Suspend();
                     currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
-                    if (null != currentThread) currentThread.Suspend();
+                    if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Running) currentThread.Suspend();
                 }
             }
         }
@@ -123,18 +123,15 @@ namespace SBDebugger
                             {
                                 if (message.ToUpper().StartsWith("PAUSE"))
                                 {
-                                    if (applicationThread.ThreadState != System.Threading.ThreadState.Suspended)
+                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Running)
                                     {
                                         bStep = true;
                                     }
                                 }
                                 else if (message.ToUpper().StartsWith("RESUME"))
                                 {
-                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
-                                    {
-                                        if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
-                                        applicationThread.Resume();
-                                    }
+                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended) applicationThread.Resume();
+                                    if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
                                 }
                                 else if (message.ToUpper().StartsWith("ADDBREAK"))
                                 {
@@ -158,8 +155,13 @@ namespace SBDebugger
                                     {
                                         stackLevel = GetStackLevel();
                                         if (stackLevel > 0) bStepOut = true;
-                                        if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
-                                        else applicationThread.Resume();
+                                        applicationThread.Resume();
+                                    }
+                                    if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended)
+                                    {
+                                        stackLevel = GetStackLevel();
+                                        if (stackLevel > 0) bStepOut = true;
+                                        currentThread.Resume();
                                     }
                                 }
                                 else if (message.ToUpper().StartsWith("STEPOVER"))
@@ -168,18 +170,20 @@ namespace SBDebugger
                                     {
                                         stackLevel = GetStackLevel();
                                         if (stackLevel > 0) bStepOver = true;
-                                        if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
-                                        else applicationThread.Resume();
+                                        applicationThread.Resume();
+                                    }
+                                    if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended)
+                                    {
+                                        stackLevel = GetStackLevel();
+                                        if (stackLevel > 0) bStepOver = true;
+                                        currentThread.Resume();
                                     }
                                 }
                                 else if (message.ToUpper().StartsWith("STEP"))
                                 {
                                     bStep = true;
-                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
-                                    {
-                                        if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
-                                        else applicationThread.Resume();
-                                    }
+                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended) applicationThread.Resume();
+                                    if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Suspended) currentThread.Resume();
                                 }
                                 else if (message.ToUpper().StartsWith("IGNORE"))
                                 {
@@ -187,45 +191,30 @@ namespace SBDebugger
                                 }
                                 else if (message.ToUpper().StartsWith("GETVALUE"))
                                 {
-                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
-                                    {
-                                        string var = message.Substring(8).Trim();
-                                        Send("VALUE " + var + " " + GetValue(var));
-                                    }
+                                    string var = message.Substring(8).Trim();
+                                    Send("VALUE " + var + " " + GetValue(var));
                                 }
                                 else if (message.ToUpper().StartsWith("GETHOVER"))
                                 {
-                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
-                                    {
-                                        string var = message.Substring(8).Trim();
-                                        Send("HOVER " + var + " " + GetValue(var));
-                                    }
+                                    string var = message.Substring(8).Trim();
+                                    Send("HOVER " + var + " " + GetValue(var));
                                 }
                                 else if (message.ToUpper().StartsWith("SETVALUE"))
                                 {
-                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
-                                    {
-                                        message = message.Substring(8).Trim();
-                                        int pos = message.IndexOf(' ');
-                                        string var = message.Substring(0, pos).Trim();
-                                        string value = message.Substring(pos).Trim();
-                                        string result = SetValue(var, value);
-                                        if (result != "") Send("VALUE " + var + " " + result);
-                                    }
+                                    message = message.Substring(8).Trim();
+                                    int pos = message.IndexOf(' ');
+                                    string var = message.Substring(0, pos).Trim();
+                                    string value = message.Substring(pos).Trim();
+                                    string result = SetValue(var, value);
+                                    if (result != "") Send("VALUE " + var + " " + result);
                                 }
                                 else if (message.ToUpper().StartsWith("GETSTACKLEVEL"))
                                 {
-                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
-                                    {
-                                        Send("STACKLEVEL " + GetStackLevel());
-                                    }
+                                    Send("STACKLEVEL " + GetStackLevel());
                                 }
                                 else if (message.ToUpper().StartsWith("GETSTACK"))
                                 {
-                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Suspended)
-                                    {
-                                        Send("STACK " + string.Join(", ", GetStack()));
-                                    }
+                                    Send("STACK " + string.Join(", ", GetStack()));
                                 }
                             }
                         }
@@ -257,10 +246,9 @@ namespace SBDebugger
         {
             try
             {
-                if (applicationThread.ThreadState != System.Threading.ThreadState.Suspended) return "";
-                StackTrace stackTrace = new StackTrace(applicationThread, false);
-                StackFrame frame = stackTrace.GetFrame(stackTrace.FrameCount - 1);
-                MethodBase method = frame.GetMethod();
+                MethodBase method = GetMethodBase();
+                if (null == method) return "";
+
                 Type type = method.DeclaringType;
                 //Primitive result = (Primitive)type.GetField(var, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.IgnoreCase).GetValue(null);
                 string[] data = var.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
@@ -294,10 +282,9 @@ namespace SBDebugger
         {
             try
             {
-                if (applicationThread.ThreadState != System.Threading.ThreadState.Suspended) return "";
-                StackTrace stackTrace = new StackTrace(applicationThread, false);
-                StackFrame frame = stackTrace.GetFrame(stackTrace.FrameCount - 1);
-                MethodBase method = frame.GetMethod();
+                MethodBase method = GetMethodBase();
+                if (null == method) return "";
+
                 Type type = method.DeclaringType;
                 //type.GetField(var, BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.IgnoreCase).SetValue(null, (Primitive)value);
                 string[] data = var.Split(new char[] { '[', ']' }, StringSplitOptions.RemoveEmptyEntries);
@@ -398,6 +385,29 @@ namespace SBDebugger
             {
                 return null;
             }
+        }
+
+        private static MethodInfo GetMethodBase()
+        {
+            StackTrace stackTrace = new StackTrace(applicationThread, false);
+            MethodBase method = null;
+            for (int i = 0; i < stackTrace.FrameCount; i++)
+            {
+                StackFrame frame = stackTrace.GetFrame(i);
+                method = frame.GetMethod();
+                if (method.DeclaringType.Name == "_SmallBasicProgram") break;
+            }
+            if (null != currentThread)
+            {
+                stackTrace = new StackTrace(currentThread, false);
+                for (int i = 0; i < stackTrace.FrameCount; i++)
+                {
+                    StackFrame frame = stackTrace.GetFrame(i);
+                    method = frame.GetMethod();
+                    if (method.DeclaringType.Name == "_SmallBasicProgram") break;
+                }
+            }
+            return method;
         }
     }
 }

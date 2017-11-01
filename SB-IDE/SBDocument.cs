@@ -1,5 +1,6 @@
 ﻿using ScintillaNET;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -18,14 +19,14 @@ namespace SB_IDE
         public Process Proc = null;
         public SearchManager searchManager = new SearchManager();
 
-        // Text Area Clours
-        private const int BACK_MARGIN_COLOR = 0xF8F8F8;
-        private const int FORE_MARGIN_COLOR = 0x5C5C5C;
-        private const int BACK_BOOKMARK_COLOR = 0x5050A0;
-        private const int FORE_BOOKMARK_COLOR = 0x5050A0;
-        private const int BACK_BREAKPOINT_COLOR = 0xFF003B;
-        private const int FORE_BREAKPOINT_COLOR = 0xFF003B;
-        private const int SELECT_COLOR = 0xCCDDFF;
+        // Text Area Colors
+        private int BACK_MARGIN_COLOR = 0xF8F8F8;
+        private int FORE_MARGIN_COLOR = 0x5C5C5C;
+        private int BACK_BOOKMARK_COLOR = 0x5050A0;
+        private int FORE_BOOKMARK_COLOR = 0x5050A0;
+        private int BACK_BREAKPOINT_COLOR = 0xFF003B;
+        private int FORE_BREAKPOINT_COLOR = 0xFF003B;
+        private int SELECT_COLOR = 0xCCDDFF;
 
         public SBDocument()
         {

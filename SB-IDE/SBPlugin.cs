@@ -63,7 +63,8 @@ namespace SB_IDE
                             {
                                 if (!bCreated) mainWindow.ribbon.Items.Add(tab);
                                 bCreated = true;
-                                RibbonButton button = new RibbonButton() { Label = plugin.name, ToolTipTitle = plugin.tooltip };
+                                RibbonButton button = new RibbonButton() { Label = plugin.name };
+                                if (plugin.tooltip != "") button.ToolTip = plugin.tooltip;
                                 if (plugin.largeButton) button.LargeImageSource = MainWindow.ImageSourceFromBitmap(plugin.bitmap);
                                 else button.SmallImageSource = MainWindow.ImageSourceFromBitmap(plugin.bitmap);
                                 group.Items.Add(button);

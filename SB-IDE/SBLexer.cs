@@ -25,17 +25,28 @@ namespace SB_IDE
         private SBDocument sbDocument;
         private Scintilla textArea;
 
-        private const int STYLE_SPACE = 0;
-        private const int STYLE_COMMENT = 1;
-        private const int STYLE_STRING = 2;
-        private const int STYLE_OPERATOR = 3;
-        private const int STYLE_KEYWORD = 4;
-        private const int STYLE_OBJECT = 5;
-        private const int STYLE_METHOD = 6;
-        private const int STYLE_VARIABLE = 7;
-        private const int STYLE_SUBROUTINE = 8;
-        private const int STYLE_LABEL = 9;
-        private const int STYLE_LITERAL = 10;
+        private int STYLE_SPACE = 0;
+        private int STYLE_COMMENT = 1;
+        private int STYLE_STRING = 2;
+        private int STYLE_OPERATOR = 3;
+        private int STYLE_KEYWORD = 4;
+        private int STYLE_OBJECT = 5;
+        private int STYLE_METHOD = 6;
+        private int STYLE_VARIABLE = 7;
+        private int STYLE_SUBROUTINE = 8;
+        private int STYLE_LABEL = 9;
+        private int STYLE_LITERAL = 10;
+
+        // Lexer Colors
+        private int FORE_COLOR = 0x000000;
+        private int BACK_COLOR = 0xFFFFFF;
+        private int COMMENT_COLOR = 0x008020;
+        private int STRING_COLOR = 0xCC6633;
+        private int OPERATOR_COLOR = 0x800000;
+        private int KEYWORD_COLOR = 0x7777FF;
+        private int OBJECT_COLOR = 0x006060;
+        private int METHOD_COLOR = 0x802020;
+        private int LITERAL_COLOR = 0xDD6633;
 
         List<SBStyle> styles = new List<SBStyle>();
         int LastLineCount = 0;
@@ -155,12 +166,12 @@ namespace SB_IDE
 
         private void InitSyntaxColoring()
         {
-            Color foreColor = Color.Black;
-            Color backColor = Color.White;
+            Color foreColor = IntToColor(FORE_COLOR);
+            Color backColor = IntToColor(BACK_COLOR);
             if (theme == 1)
             {
-                foreColor = Color.White;
-                backColor = Color.Black;
+                foreColor = IntToColor(BACK_COLOR);
+                backColor = IntToColor(FORE_COLOR);
             }
 
             // Configure the default style
@@ -169,21 +180,21 @@ namespace SB_IDE
             textArea.Styles[Style.Default].Size = 10;
             textArea.Styles[Style.Default].BackColor = backColor;
             textArea.Styles[Style.Default].ForeColor = foreColor;
-            textArea.CaretForeColor = Color.Black;
+            textArea.CaretForeColor = foreColor;
             textArea.TabWidth = 2;
             textArea.StyleClearAll();
 
             textArea.Styles[STYLE_SPACE].ForeColor = foreColor;
-            textArea.Styles[STYLE_COMMENT].ForeColor = IntToColor(0x008020);
-            textArea.Styles[STYLE_STRING].ForeColor = IntToColor(0xCC6633);
-            textArea.Styles[STYLE_OPERATOR].ForeColor = IntToColor(0x800000);
-            textArea.Styles[STYLE_KEYWORD].ForeColor = IntToColor(0x7777FF);
-            textArea.Styles[STYLE_OBJECT].ForeColor = IntToColor(0x006060);
-            textArea.Styles[STYLE_METHOD].ForeColor = IntToColor(0x802020);
+            textArea.Styles[STYLE_COMMENT].ForeColor = IntToColor(COMMENT_COLOR);
+            textArea.Styles[STYLE_STRING].ForeColor = IntToColor(STRING_COLOR);
+            textArea.Styles[STYLE_OPERATOR].ForeColor = IntToColor(OPERATOR_COLOR);
+            textArea.Styles[STYLE_KEYWORD].ForeColor = IntToColor(KEYWORD_COLOR);
+            textArea.Styles[STYLE_OBJECT].ForeColor = IntToColor(OBJECT_COLOR);
+            textArea.Styles[STYLE_METHOD].ForeColor = IntToColor(METHOD_COLOR);
             textArea.Styles[STYLE_SUBROUTINE].ForeColor = foreColor;
             textArea.Styles[STYLE_LABEL].ForeColor = foreColor;
             textArea.Styles[STYLE_VARIABLE].ForeColor = foreColor;
-            textArea.Styles[STYLE_LITERAL].ForeColor = IntToColor(0xDD6633);
+            textArea.Styles[STYLE_LITERAL].ForeColor = IntToColor(LITERAL_COLOR);
 
             textArea.Styles[STYLE_COMMENT].Italic = true;
             textArea.Styles[STYLE_KEYWORD].Bold = true;
