@@ -100,19 +100,19 @@ namespace SB_IDE
             {
                 textArea.Lines[lineCur].FoldLevel = fold;
                 string text = textArea.Lines[lineCur].Text.Trim().ToUpper();
-                if (keyword1.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
+                if (keyword1.Match((' ' + text + ' ').ToUpper()).Value.Length > 0)
                 {
                     fold++;
                     textArea.Lines[lineCur].FoldLevelFlags = FoldLevelFlags.Header;
                 }
-                else if (keyword2.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
+                else if (keyword2.Match((' ' + text + ' ').ToUpper()).Value.Length > 0)
                 {
                     fold--;
                     textArea.Lines[lineCur].FoldLevel--;
                     textArea.Lines[lineCur].FoldLevelFlags = FoldLevelFlags.White;
                     if (fold < foldBase) fold = foldBase;
                 }
-                else if (keyword3.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
+                else if (keyword3.Match((' ' + text + ' ').ToUpper()).Value.Length > 0)
                 {
                     textArea.Lines[lineCur].FoldLevel--;
                     textArea.Lines[lineCur].FoldLevelFlags = FoldLevelFlags.White;
@@ -132,18 +132,23 @@ namespace SB_IDE
                 textArea.ReplaceTarget(indents);
             }
 
-            //foreach (string keyword in keywords.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries ))
-            //{
-            //    MatchCollection matches = Regex.Matches(('\n' + textArea.Text.ToUpper() + '\n'), "^[\\W](" + keyword.ToUpper() + ")[\\W]");
-            //    foreach (Match match in matches)
-            //    {
-            //        int start = Math.Max(0, match.Index-1);
-            //        int len = match.Length - 2;
+            foreach (string keyword in keywords.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                int pos = 0;
+                Match match = Regex.Match(' ' + textArea.Text.Substring(pos).ToUpper() + ' ', "[\\W](" + keyword.ToUpper() + ")[\\W]");
+                while (match.Success)
+                {
+                    int start = Math.Max(0, pos + match.Index);
+                    int len = match.Length - 2;
 
-            //        sbDocument.TextArea.SetTargetRange(start, len);
-            //        sbDocument.TextArea.ReplaceTarget(keyword);
-            //    }
-            //}
+                    sbDocument.TextArea.SetTargetRange(start, start+len);
+                    sbDocument.TextArea.ReplaceTarget(keyword);
+
+                    pos += match.Index + len;
+                    if (pos >= textArea.Text.Length) break;
+                    match = Regex.Match(' ' + textArea.Text.Substring(pos).ToUpper() + ' ', "[\\W](" + keyword.ToUpper() + ")[\\W]");
+                }
+            }
 
             isDirty = true;
         }
@@ -318,7 +323,7 @@ namespace SB_IDE
                 {
                     if (style.style == STYLE_KEYWORD)
                     {
-                        value = style.regex.Match(('\n' + text + '\n').ToUpper()).Value;
+                        value = style.regex.Match((' ' + text + ' ').ToUpper()).Value;
                         length = value.Length - 2;
                     }
                     else if (style.style == STYLE_OPERATOR)
