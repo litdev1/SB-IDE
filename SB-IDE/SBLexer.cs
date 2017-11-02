@@ -164,6 +164,37 @@ namespace SB_IDE
             isDirty = true;
         }
 
+        public Dictionary<string,int> Colors
+        {
+            get
+            {
+                Dictionary<string, int> colors = new Dictionary<string, int>();
+                colors["Foreground"] = FORE_COLOR;
+                colors["Background"] = BACK_COLOR;
+                colors["Comment"] = COMMENT_COLOR;
+                colors["String"] = STRING_COLOR;
+                colors["Operator"] = OPERATOR_COLOR;
+                colors["Keyword"] = KEYWORD_COLOR;
+                colors["Object"] = OBJECT_COLOR;
+                colors["Method"] = METHOD_COLOR;
+                colors["Literal"] = LITERAL_COLOR;
+                return colors;
+            }
+            set
+            {
+                Dictionary<string, int> colors = value;
+                FORE_COLOR = colors["Foreground"];
+                BACK_COLOR = colors["Background"];
+                COMMENT_COLOR = colors["Comment"];
+                STRING_COLOR = colors["String"];
+                OPERATOR_COLOR = colors["Operator"];
+                KEYWORD_COLOR = colors["Keyword"];
+                OBJECT_COLOR = colors["Object"];
+                METHOD_COLOR = colors["Method"];
+                LITERAL_COLOR = colors["Literal"];
+            }
+        }
+
         private void InitSyntaxColoring()
         {
             Color foreColor = IntToColor(FORE_COLOR);

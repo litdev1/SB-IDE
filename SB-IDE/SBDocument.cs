@@ -138,6 +138,33 @@ namespace SB_IDE
             get { return filepath; }
         }
 
+        public Dictionary<string, int> Colors
+        {
+            get
+            {
+                Dictionary<string, int> colors = new Dictionary<string, int>();
+                colors["Margin Background"] = BACK_MARGIN_COLOR;
+                colors["Margin Foreground"] = FORE_MARGIN_COLOR;
+                colors["Bookmark Background"] = BACK_BOOKMARK_COLOR;
+                colors["Bookmark Foreground"] = FORE_BOOKMARK_COLOR;
+                colors["Breakpoint Background"] = BACK_BREAKPOINT_COLOR;
+                colors["Breakpoint Foreground"] = FORE_BREAKPOINT_COLOR;
+                colors["Select"] = SELECT_COLOR;
+                return colors;
+            }
+            set
+            {
+                Dictionary<string, int> colors = value;
+                BACK_MARGIN_COLOR = colors["Margin Background"];
+                FORE_MARGIN_COLOR = colors["Margin Foreground"];
+                BACK_BOOKMARK_COLOR = colors["Bookmark Background"];
+                FORE_BOOKMARK_COLOR = colors["Bookmark Foreground"];
+                BACK_BREAKPOINT_COLOR = colors["Breakpoint Background"];
+                FORE_BREAKPOINT_COLOR = colors["Breakpoint Foreground"];
+                SELECT_COLOR = colors["Select"];
+            }
+        }
+
         private void InitColors()
         {
             textArea.SetSelectionBackColor(true, IntToColor(SELECT_COLOR));
