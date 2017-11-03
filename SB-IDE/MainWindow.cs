@@ -121,6 +121,19 @@ namespace SB_IDE
             itemCollectionViewSource = (CollectionViewSource)(FindResource("DebugDataSource"));
             itemCollectionViewSource.Source = debugData;
 
+            InitIntellisense();
+
+            threadTimer = new Timer(new TimerCallback(ThreadTimerCallback));
+            threadTimer.Change(100, 100);
+        }
+
+        public SBDocument GetActiveDocument()
+        {
+            return activeDocument;
+        }
+
+        private void InitIntellisense()
+        {
             canvasInfo.Children.Clear();
             TextBlock tb = new TextBlock()
             {
@@ -132,12 +145,12 @@ namespace SB_IDE
             canvasInfo.Children.Add(tb);
             tb.Measure(size);
             double canvasWidth = Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
-            Canvas.SetLeft(tb, (canvasWidth - tb.DesiredSize.Width)/2);
+            Canvas.SetLeft(tb, (canvasWidth - tb.DesiredSize.Width) / 2);
             Canvas.SetTop(tb, 25);
 
             tb = new TextBlock()
             {
-                Text = "Intellisense will appear here when you hover over objects and methods as well as when you type and view potential options.\n\n"+
+                Text = "Intellisense will appear here when you hover over objects and methods as well as when you type and view potential options.\n\n" +
                 "Additionally, a popup description for methods can be viewed in this window by hovering the mouse over methods, properties or events when viewing an object.",
                 TextWrapping = TextWrapping.Wrap,
                 HorizontalAlignment = HorizontalAlignment.Left,
@@ -148,13 +161,7 @@ namespace SB_IDE
             Canvas.SetLeft(tb, 25);
             Canvas.SetTop(tb, 75);
 
-            threadTimer = new Timer(new TimerCallback(ThreadTimerCallback));
-            threadTimer.Change(100, 100);
-        }
-
-        public SBDocument GetActiveDocument()
-        {
-            return activeDocument;
+            canvasInfo.MinHeight = 100 + tb.DesiredSize.Height;
         }
 
         private void GridDebugClick(object sender, RoutedEventArgs e)
