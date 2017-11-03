@@ -5,15 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE"
         mc:Ignorable="d"
-        Title="SB-IDE" Height="600" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" Icon="AppIcon.ico" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="SB-IDE" Height="600" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" Icon="AppIcon.ico" WindowStartupLocation="CenterScreen">
     <RibbonWindow.Resources>
         <CollectionViewSource x:Key="DebugDataSource"  CollectionViewType="ListCollectionView"/>
     </RibbonWindow.Resources>
     <DockPanel Margin="0">
         <StatusBar Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
-            <TextBlock x:Name="statusVersion">
-                SB-IDE Version 1.0
-            </TextBlock>
+            <StatusBarItem x:Name="statusVersion" Content="Version"/>
+            <Separator/>
+            <StatusBarItem x:Name="statusLines" Content="Lines"/>
+            <StatusBarItem HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <StatusBarItem x:Name="statusCaps" Content="Caps"/>
+                    <Separator/>
+                    <StatusBarItem x:Name="statusInsert" Content="Insert"/>
+                </StackPanel>
+            </StatusBarItem>
         </StatusBar>
         <Ribbon x:Name="ribbon" VerticalAlignment="Top"  DockPanel.Dock="Top" Margin="0" SelectedIndex="0" SelectionChanged="ribbon_SelectionChanged">
             <!-- Help Pane, located at the right-hand side -->
@@ -204,7 +211,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="10" />
-                    <ColumnDefinition Width="*" MaxWidth="350" />
+                    <ColumnDefinition Width="350" MaxWidth="350" />
                 </Grid.ColumnDefinitions>
                 <Grid x:Name="documentGrid" Grid.Row="0" Margin="0,0,0,0">
                     <Grid.ColumnDefinitions>

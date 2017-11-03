@@ -55,7 +55,7 @@ namespace SB_IDE
 
         private void InitWindow()
         {
-            statusVersion.Text = "SB-IDE Version 1.0." + SBInterop.CurrentVersion;
+            statusVersion.Content = "SB-IDE Version 1.0." + SBInterop.CurrentVersion;
             Errors.Add(new Error("Welcome to Small Basic IDE"));
 
             sbInterop = new SBInterop();
@@ -131,7 +131,8 @@ namespace SB_IDE
             };
             canvasInfo.Children.Add(tb);
             tb.Measure(size);
-            Canvas.SetLeft(tb, (canvasInfo.ActualWidth - tb.DesiredSize.Width)/2);
+            double canvasWidth = Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
+            Canvas.SetLeft(tb, (canvasWidth - tb.DesiredSize.Width)/2);
             Canvas.SetTop(tb, 25);
 
             tb = new TextBlock()
@@ -141,7 +142,7 @@ namespace SB_IDE
                 TextWrapping = TextWrapping.Wrap,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 FontSize = 14,
-                Width = (canvasInfo.ActualWidth - 50)
+                Width = (canvasWidth - 50)
             };
             canvasInfo.Children.Add(tb);
             Canvas.SetLeft(tb, 25);
@@ -170,6 +171,16 @@ namespace SB_IDE
 
         private void LoadSettings()
         {
+            Top = Properties.Settings.Default.Top;
+            Left = Properties.Settings.Default.Left;
+            Height = Properties.Settings.Default.Height;
+            Width = Properties.Settings.Default.Width;
+            // Very quick and dirty - but it does the job
+            if (Properties.Settings.Default.Maximized)
+            {
+                WindowState = WindowState.Maximized;
+            }
+
             int i;
             for (i = Properties.Settings.Default.MRU.Count - 1; i > 0; i--)
             {
@@ -231,6 +242,24 @@ namespace SB_IDE
 
         private void SaveSettings()
         {
+            if (WindowState == WindowState.Maximized)
+            {
+                // Use the RestoreBounds as the current values will be 0, 0 and the size of the screen
+                Properties.Settings.Default.Top = RestoreBounds.Top;
+                Properties.Settings.Default.Left = RestoreBounds.Left;
+                Properties.Settings.Default.Height = RestoreBounds.Height;
+                Properties.Settings.Default.Width = RestoreBounds.Width;
+                Properties.Settings.Default.Maximized = true;
+            }
+            else
+            {
+                Properties.Settings.Default.Top = Top;
+                Properties.Settings.Default.Left = Left;
+                Properties.Settings.Default.Height = Height;
+                Properties.Settings.Default.Width = Width;
+                Properties.Settings.Default.Maximized = false;
+            }
+
             foreach (TabItem tab in tabControlSB2.Items)
             {
                 SBDocument doc = (SBDocument)tab.Tag;
@@ -451,6 +480,7 @@ namespace SB_IDE
                     UpdateRun();
                     UpdateIntellisense(showObject, showMember);
                     UpdateFileSeracher();
+                    UpdateStatusBar();
                 }
                 else
                 {
@@ -462,6 +492,7 @@ namespace SB_IDE
                         UpdateRun();
                         UpdateIntellisense(showObject, showMember);
                         UpdateFileSeracher();
+                        UpdateStatusBar();
                     });
                 }
             }
@@ -846,6 +877,13 @@ namespace SB_IDE
                 activeDocument.LoadDataFromFile(path);
                 activeTab.Header = new TabHeader(path);
             }
+        }
+
+        private void UpdateStatusBar()
+        {
+            statusLines.Content = activeDocument.TextArea.Lines.Count + " lines";
+            statusCaps.Content = Keyboard.IsKeyToggled(Key.CapsLock) ? "Caps Lock" : "";
+            statusInsert.Content = Keyboard.IsKeyToggled(Key.Insert) ? "Insert" : "";
         }
 
         private void methodInfo(object sender, MouseEventArgs e)
