@@ -18,7 +18,7 @@ namespace SB_IDE
         public SBDebug debug = null;
         public Process Proc = null;
         public SearchManager searchManager = new SearchManager();
-        public Dictionary<string, int> DefaultColors;
+        public Dictionary<string, int> DefaultColors { get; }
 
         // Text Area Colors
         private int BACK_MARGIN_COLOR = 0xF8F8F8;
