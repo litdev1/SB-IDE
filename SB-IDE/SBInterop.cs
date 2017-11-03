@@ -165,7 +165,9 @@ namespace SB_IDE
                                             string[] parts = memberInfo.ToString().Split(' ');
                                             string fullName = memberInfo.DeclaringType.FullName + ".";
                                             for (int i = 1; i < parts.Length; i++) fullName += parts[i];
-                                            if (!xmlNode.Attributes["name"].InnerText.Contains(fullName)) continue;
+                                            string xmlName = xmlNode.Attributes["name"].InnerText;
+                                            if (!xmlName.EndsWith(")")) xmlName += "()";
+                                            if (!xmlName.Contains(fullName)) continue;
 
                                             if (memberInfo.MemberType == MemberTypes.Method)
                                             {

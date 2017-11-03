@@ -470,5 +470,24 @@ namespace SB_IDE
             Dialogs.FileSearcher fs = new Dialogs.FileSearcher();
             fs.Show();
         }
+
+        private bool isManualEditCommit = false;
+        private void dataGridDebug_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            try
+            {
+                if (!isManualEditCommit)
+                {
+                    isManualEditCommit = true;
+                    DataGrid grid = (DataGrid)sender;
+                    grid.CommitEdit(DataGridEditingUnit.Row, true);
+                    isManualEditCommit = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

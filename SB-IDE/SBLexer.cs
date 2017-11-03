@@ -56,6 +56,7 @@ namespace SB_IDE
         string AutoCData = "";
         Timer AutoCTimer;
         public SBObjects sbObjects = new SBObjects();
+        public Dictionary<string, int> DefaultColors;
         public int toolTipPosition = 0;
         int theme = 0;
         string keywords = "Sub|EndSub|For|To|Step|EndFor|If|Then|Else|ElseIf|EndIf|While|EndWhile|Goto";
@@ -69,6 +70,7 @@ namespace SB_IDE
             this.textArea = textArea;
 
             // STYLING
+            DefaultColors = Colors;
             InitSyntaxColoring();
             InitAutoComplete();
 

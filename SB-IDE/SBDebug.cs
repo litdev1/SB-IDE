@@ -113,6 +113,7 @@ namespace SB_IDE
                     if (null == tcpServer || !tcpServer.Connected) Thread.Sleep(1000);
                     if (null == tcpServer || !tcpServer.Connected) return null;
                     SetBreakPoints();
+                    SetWatches();
                     if (bContinue) Resume();
                     else Step();
                     Thread worker = new Thread(new ThreadStart(Listen));
@@ -182,6 +183,7 @@ namespace SB_IDE
             {
                 sbDocument.TextArea.ClearSelections();
                 paused = false;
+                SetWatches();
                 Send("RESUME");
             }
             catch (Exception ex)
@@ -246,6 +248,16 @@ namespace SB_IDE
             Send("SETVALUE " + var + " " + value);
         }
 
+        public void ClearConditions()
+        {
+            Send("CLEARWATCHES");
+        }
+
+        public void SetCondition(DebugData data)
+        {
+            Send("SETWATCH " + data.Variable + "?" + data.LessThan + "?" + data.GreaterThan + "?" + data.Equal + "?" + data.Changes);
+        }
+
         private void ThreadTimerCallback(object state)
         {
             try
@@ -279,6 +291,15 @@ namespace SB_IDE
                 }
             }
             Send("IGNORE " + MainWindow.ignoreBP); 
+        }
+
+        private void SetWatches()
+        {
+            ClearConditions();
+            foreach (DebugData data in mainWindow.debugData)
+            {
+                SetCondition(data);
+            }
         }
 
         private void Listen()

@@ -243,7 +243,7 @@
             <TabControl x:Name="tabControlResults" Margin="10" Grid.Row="2" HorizontalContentAlignment="Stretch" TabStripPlacement="Bottom" VerticalContentAlignment="Stretch">
                 <TabItem x:Name="tabOutput" Header="Output">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGridResults" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" AlternatingRowBackground="#FFCCDDFF" AlternationCount="1" SelectionChanged="dataGridResults_SelectionChanged">
+                        <DataGrid x:Name="dataGridResults" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" SelectionChanged="dataGridResults_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Output, Errors and Warnings" Width="2*" Binding="{Binding Message}"/>
                             </DataGrid.Columns>
@@ -259,7 +259,7 @@
                 </TabItem>
                 <TabItem x:Name="tabDebug" Header="Debug">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGridDebug" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AlternatingRowBackground="#FFCCDDFF" AlternationCount="1" VerticalGridLinesBrush="Gray">
+                        <DataGrid x:Name="dataGridDebug" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding">
                             <DataGrid.Resources>
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
@@ -288,6 +288,10 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Break if &lt;" Binding="{Binding LessThan}"/>
+                                <DataGridTextColumn Header="Break if &gt;" Binding="{Binding GreaterThan}"/>
+                                <DataGridTextColumn Header="Break if =" Binding="{Binding Equal}"/>
+                                <DataGridCheckBoxColumn Header="Break if changes" Binding="{Binding Changes}" />
                             </DataGrid.Columns>
                             <!--<DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="{x:Type DataGridColumnHeader}">

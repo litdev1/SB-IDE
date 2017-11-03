@@ -20,6 +20,7 @@ namespace SBDebugger
         private static Thread applicationThread;
         private static Thread currentThread = null;
         private static List<int> lineBreaks = new List<int>();
+        private static List<Watch> watches = new List<Watch>();
 
         private static string[] separators = new string[] { "\0" };
         private static bool bStep = false;
@@ -77,6 +78,20 @@ namespace SBDebugger
                     if (applicationThread.ThreadState == System.Threading.ThreadState.Running) applicationThread.Suspend();
                     currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
                     if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Running) currentThread.Suspend();
+                }
+            }
+            else if (watches.Count > 0)
+            {
+                foreach (Watch watch in watches)
+                {
+                    if (watch.Compare(GetValue(watch.Variable)))
+                    {
+                        Send("BREAK " + line);
+                        if (applicationThread.ThreadState == System.Threading.ThreadState.Running) applicationThread.Suspend();
+                        currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
+                        if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Running) currentThread.Suspend();
+                        break;
+                    }
                 }
             }
         }
@@ -216,6 +231,30 @@ namespace SBDebugger
                                 {
                                     Send("STACK " + string.Join(", ", GetStack()));
                                 }
+                                else if (message.ToUpper().StartsWith("CLEARWATCHES"))
+                                {
+                                    watches.Clear();
+                                }
+                                else if (message.ToUpper().StartsWith("SETWATCH"))
+                                {
+                                    message = message.Substring(8).Trim();
+                                    message = message.ToUpper();
+                                    string[] data = message.Split(new char[] { '?' });
+                                    if (data.Length == 5)
+                                    {
+                                        Watch watch = new Watch();
+                                        watches.Add(watch);
+                                        watch.Variable = data[0].ToUpper();
+                                        watch.LessThan = data[1].ToUpper();
+                                        watch.GreaterThan = data[2].ToUpper();
+                                        watch.Equal = data[3].ToUpper();
+                                        if (data[4] == "TRUE")
+                                        {
+                                            watch.bChanges = true;
+                                            watch.Changes = GetValue(data[0]).ToUpper();
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -242,7 +281,7 @@ namespace SBDebugger
             }
         }
 
-        private static Primitive GetValue(string var)
+        private static string GetValue(string var)
         {
             try
             {
@@ -387,7 +426,7 @@ namespace SBDebugger
             }
         }
 
-        private static MethodInfo GetMethodBase()
+        private static MethodBase GetMethodBase()
         {
             StackTrace stackTrace = new StackTrace(applicationThread, false);
             MethodBase method = null;
@@ -408,6 +447,73 @@ namespace SBDebugger
                 }
             }
             return method;
+        }
+    }
+
+    class Watch
+    {
+        public string Variable = "";
+        public string LessThan = "";
+        public string GreaterThan = "";
+        public string Equal = "";
+        public string Changes = "";
+        public bool bChanges = false;
+
+        public bool Compare(string value)
+        {
+            Decimal val, Val;
+            value = value.ToUpper();
+
+            if (bChanges)
+            {
+                if (decimal.TryParse(value, out val) && decimal.TryParse(Changes, out Val))
+                {
+                    if (val != Val)
+                    {
+                        Changes = value;
+                        return true;
+                    }
+                }
+                else if (value.CompareTo(Changes) != 0)
+                {
+                    Changes = value;
+                    return true;
+                }
+            }
+            if (LessThan != "")
+            {
+                if (decimal.TryParse(value, out val) && decimal.TryParse(LessThan, out Val))
+                {
+                    if (val < Val) return true;
+                }
+                else if (value.CompareTo(LessThan) < 0)
+                {
+                    return true;
+                }
+            }
+            if (GreaterThan != "")
+            {
+                if (decimal.TryParse(value, out val) && decimal.TryParse(GreaterThan, out Val))
+                {
+                    if (val > Val) return true;
+                }
+                else if (value.CompareTo(GreaterThan) > 0)
+                {
+                    return true;
+                }
+            }
+            if (Equal != "")
+            {
+                if (decimal.TryParse(value, out val) && decimal.TryParse(Equal, out Val))
+                {
+                    if (val == Val) return true;
+                }
+                else if (value.CompareTo(Equal) == 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

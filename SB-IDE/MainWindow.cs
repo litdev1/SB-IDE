@@ -501,9 +501,11 @@ namespace SB_IDE
 
             if (!debugUpdated)
             {
+                activeDocument.debug.ClearConditions();
                 foreach (DebugData data in debugData)
                 {
                     activeDocument.debug.GetValue(data.Variable);
+                    activeDocument.debug.SetCondition(data);
                 }
                 debugUpdated = true;
             }
@@ -572,7 +574,7 @@ namespace SB_IDE
 
                     tb = new TextBlock()
                     {
-                        Text = obj.summary,
+                        Text = FormatIntellisense(obj.summary),
                         Width = 250,
                         TextWrapping  = TextWrapping.Wrap,
                         FontSize = 14
@@ -625,7 +627,7 @@ namespace SB_IDE
                         tb.MouseEnter += new MouseEventHandler(methodInfo);
                         tb.ToolTip = new TextBlock()
                         {
-                            Text = mem.summary,
+                            Text = FormatIntellisense(mem.summary),
                             Width = 200,
                             TextWrapping = TextWrapping.Wrap,
                             FontSize = 12
@@ -654,6 +656,10 @@ namespace SB_IDE
                                     if (i < member.arguments.Count - 1) name += ',';
                                 }
                                 name += ")";
+                            }
+                            else
+                            {
+                                name += "()";
                             }
                             break;
                         case System.Reflection.MemberTypes.Property:
@@ -690,7 +696,7 @@ namespace SB_IDE
 
                     tb = new TextBlock()
                     {
-                        Text = member.summary,
+                        Text = FormatIntellisense(member.summary),
                         Width = 250,
                         TextWrapping = TextWrapping.Wrap,
                         FontSize = 14
@@ -735,7 +741,7 @@ namespace SB_IDE
 
                             tb = new TextBlock()
                             {
-                                Text = pair.Value,
+                                Text = FormatIntellisense(pair.Value),
                                 Width = 300,
                                 TextWrapping = TextWrapping.Wrap,
                                 FontSize = 12
@@ -766,7 +772,7 @@ namespace SB_IDE
 
                         tb = new TextBlock()
                         {
-                            Text = member.returns,
+                            Text = FormatIntellisense(member.returns),
                             Width = 300,
                             TextWrapping = TextWrapping.Wrap,
                             FontSize = 12
@@ -798,7 +804,7 @@ namespace SB_IDE
 
                             tb = new TextBlock()
                             {
-                                Text = pair.Value,
+                                Text = FormatIntellisense(pair.Value),
                                 Width = 300,
                                 TextWrapping = TextWrapping.Wrap,
                                 FontSize = 12
@@ -821,6 +827,13 @@ namespace SB_IDE
             {
 
             }
+        }
+
+        private string FormatIntellisense(string text)
+        {
+            string result = text;
+            while (result.Contains("\n ")) result = result.Replace("\n ", "\n");
+            return result;
         }
 
         private void UpdateFileSeracher()
@@ -1325,6 +1338,20 @@ namespace SB_IDE
     {
         public string Variable { get; set; }
         public string Value { get; set; }
+        public string LessThan { get; set; }
+        public string GreaterThan { get; set; }
+        public string Equal { get; set; }
+        public bool Changes { get; set; }
+
+        public DebugData()
+        {
+            Variable = "";
+            Value = "";
+            LessThan = "";
+            GreaterThan = "";
+            Equal = "";
+            Changes = false;
+        }
     }
 
     public class Error
