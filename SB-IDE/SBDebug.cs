@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace SB_IDE
 {
@@ -368,7 +369,9 @@ namespace SB_IDE
                 if (message.ToUpper().StartsWith("BREAK"))
                 {
                     int iLine = -1;
-                    int.TryParse(message.Substring(5), out iLine);
+                    message = message.Substring(5);
+                    string[] data = message.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (data.Length > 0) int.TryParse(data[0], out iLine);
                     if (iLine >= 0)
                     {
                         Line line = sbDocument.TextArea.Lines[iLine];
@@ -376,6 +379,19 @@ namespace SB_IDE
                         sbDocument.TextArea.CurrentPosition = line.Position;
                         sbDocument.TextArea.SetSelection(line.Position, line.Position + line.Length);
                         sbDocument.TextArea.ScrollCaret();
+                    }
+                    if (data.Length > 1)
+                    {
+                        mainWindow.dataGridDebug.SelectedCells.Clear();
+                        foreach (DebugData item in mainWindow.debugData)
+                        {
+                            if (item.Variable.ToUpper() == data[1])
+                            {
+                                mainWindow.dataGridDebug.ScrollIntoView(item);
+                                mainWindow.dataGridDebug.CurrentCell = new DataGridCellInfo(item, mainWindow.dataGridDebug.Columns[1]);
+                                mainWindow.dataGridDebug.SelectedCells.Add(mainWindow.dataGridDebug.CurrentCell);
+                            }
+                        }
                     }
                     paused = true;
                 }

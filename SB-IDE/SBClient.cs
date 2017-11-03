@@ -86,7 +86,7 @@ namespace SBDebugger
                 {
                     if (watch.Compare(GetValue(watch.Variable)))
                     {
-                        Send("BREAK " + line);
+                        Send("BREAK " + line + " " + watch.Variable);
                         if (applicationThread.ThreadState == System.Threading.ThreadState.Running) applicationThread.Suspend();
                         currentThread = applicationThread == Thread.CurrentThread ? null : Thread.CurrentThread;
                         if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Running) currentThread.Suspend();
