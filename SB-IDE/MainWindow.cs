@@ -136,7 +136,7 @@ namespace SB_IDE
             tb = new TextBlock()
             {
                 Text = "Intellisense will appear here when you hover over objects and methods as well as when you type and view potential options.\n\n"+
-                "Additionally, a popup description for methods can be viewd in this window by hovering the mouse over methods, properties or events when viewing an object.",
+                "Additionally, a popup description for methods can be viewed in this window by hovering the mouse over methods, properties or events when viewing an object.",
                 TextWrapping = TextWrapping.Wrap,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 FontSize = 14,
