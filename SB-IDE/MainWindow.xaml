@@ -11,7 +11,7 @@
     </RibbonWindow.Resources>
     <DockPanel Margin="0">
         <StatusBar Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
-            <TextBlock>
+            <TextBlock x:Name="statusVersion">
                 SB-IDE Version 1.0
             </TextBlock>
         </StatusBar>

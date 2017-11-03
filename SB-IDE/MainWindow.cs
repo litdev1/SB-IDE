@@ -55,6 +55,7 @@ namespace SB_IDE
 
         private void InitWindow()
         {
+            statusVersion.Text = "SB-IDE Version 1.0." + SBInterop.CurrentVersion;
             Errors.Add(new Error("Welcome to Small Basic IDE"));
 
             sbInterop = new SBInterop();

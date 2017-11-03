@@ -13,7 +13,7 @@ namespace SB_IDE
 {
     public class SBInterop
     {
-        int currentVersion = 6;
+        public const int CurrentVersion = 6;
 
         object Service = null;
         MethodInfo SaveProgram = null;
@@ -289,7 +289,7 @@ namespace SB_IDE
 
                 if (File.Exists(extPath) && !bOverwrite)
                 {
-                    if (Version >= currentVersion) return;
+                    if (Version >= CurrentVersion) return;
                 }
 
                 MainWindow.Help();
@@ -328,7 +328,7 @@ namespace SB_IDE
                     UACcommand(command);
                 }
 
-                Version = currentVersion;
+                Version = CurrentVersion;
             }
             catch (Exception ex)
             {
