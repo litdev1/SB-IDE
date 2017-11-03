@@ -72,6 +72,8 @@ namespace SB_IDE.Dialogs
         private void GetFiles()
         {
             if (!Directory.Exists(RootPath)) return;
+            System.Windows.Input.Cursor cursor = Mouse.OverrideCursor;
+            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
 
             Stack<string> dirs = new Stack<string>();
             List<string> files = new List<string>();
@@ -99,6 +101,8 @@ namespace SB_IDE.Dialogs
             searchFiles.Sort();
             dataGridSearcher.ItemsSource = searchFiles;
             textBoxCount.Text = searchFiles.Count+" files found";
+
+            Mouse.OverrideCursor = cursor;
         }
 
         private void Filter()
