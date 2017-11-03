@@ -80,7 +80,7 @@ namespace SBDebugger
                     if (null != currentThread && currentThread.ThreadState == System.Threading.ThreadState.Running) currentThread.Suspend();
                 }
             }
-            else if (watches.Count > 0)
+            else if (!ignoreBP && watches.Count > 0)
             {
                 foreach (Watch watch in watches)
                 {
