@@ -138,10 +138,8 @@ namespace SBDebugger
                             {
                                 if (message.ToUpper().StartsWith("PAUSE"))
                                 {
-                                    if (applicationThread.ThreadState == System.Threading.ThreadState.Running)
-                                    {
-                                        bStep = true;
-                                    }
+                                    if (applicationThread.ThreadState != System.Threading.ThreadState.Suspended) bStep = true;
+                                    if (null != currentThread && currentThread.ThreadState != System.Threading.ThreadState.Suspended) bStep = true;
                                 }
                                 else if (message.ToUpper().StartsWith("RESUME"))
                                 {
