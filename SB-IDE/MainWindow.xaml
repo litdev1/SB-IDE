@@ -277,21 +277,21 @@
                                 <DataGridTemplateColumn Header="Change Value">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Set" Click="debugDataSet" Tag="{Binding}"/>
+                                            <Button Content="Set" Click="debugDataSet" ToolTip="Change the value of watch variable" Tag="{Binding}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn Header="Refresh Data">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Refresh" Click="debugDataRefresh" Tag="{Binding}"/>
+                                            <Button Content="Refresh" Click="debugDataRefresh" ToolTip="Refresh the value of watch variable" Tag="{Binding}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn Header="Remove Watch">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Delete" Click="debugDataDelete" Tag="{Binding}"/>
+                                            <Button Content="Delete" Click="debugDataDelete" ToolTip="Delete watch variable.  To add, select variable and use Crtl+W" Tag="{Binding}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

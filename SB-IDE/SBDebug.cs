@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -375,10 +376,12 @@ namespace SB_IDE
                     if (iLine >= 0)
                     {
                         Line line = sbDocument.TextArea.Lines[iLine];
-                        sbDocument.TextArea.ClearSelections();
                         sbDocument.TextArea.CurrentPosition = line.Position;
-                        sbDocument.TextArea.SetSelection(line.Position, line.Position + line.Length);
                         sbDocument.TextArea.ScrollCaret();
+                        sbDocument.TextArea.ClearSelections();
+
+                        sbDocument.ClearHighlights();
+                        sbDocument.HighlightLine(line);
                     }
                     if (data.Length > 1)
                     {
@@ -507,6 +510,7 @@ namespace SB_IDE
                 // free managed resources
                 try
                 {
+                    sbDocument.ClearHighlights();
                     if (null != tcpServer) tcpServer.Close();
                     if (null != tcpListener) tcpListener.Stop();
                     tcpServer = null;

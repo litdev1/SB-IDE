@@ -43,6 +43,7 @@ namespace SB_IDE
         public static bool CompileError = false;
         public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
         public static Queue<string> MarkedForOpen = new Queue<string>();
+        public static Queue<string> MarkedForWatch = new Queue<string>();
 
         public List<DebugData> debugData = new List<DebugData>();
         SBInterop sbInterop;
@@ -120,7 +121,7 @@ namespace SB_IDE
             clear.Click += new RoutedEventHandler(GridDebugClick);
             clear = new MenuItem();
             menu.Items.Add(clear);
-            clear.Header = "Clear Watch Data";
+            clear.Header = "Clear Watch Conditions";
             clear.Icon = new Image()
             {
                 Width = 14,
@@ -179,7 +180,7 @@ namespace SB_IDE
         private void GridDebugClick(object sender, RoutedEventArgs e)
         {
             MenuItem item = (MenuItem)sender;
-            if ((string)item.Header == "Clear Watch Data")
+            if ((string)item.Header == "Clear Watch Conditions")
             {
                 foreach (DebugData data in debugData)
                 {
@@ -559,6 +560,11 @@ namespace SB_IDE
 
         private void UpdateDebug()
         {
+            if (MarkedForWatch.Count > 0)
+            {
+                debugData.Add(new DebugData() { Variable = MarkedForWatch.Dequeue() });
+                dataGridDebug.Items.Refresh();
+            }
             if (null == activeDocument.debug || !activeDocument.debug.IsPaused())
             {
                 debugUpdated = false;

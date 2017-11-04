@@ -28,6 +28,7 @@ namespace SB_IDE
         private int BACK_BREAKPOINT_COLOR = 0xFF003B;
         private int FORE_BREAKPOINT_COLOR = 0xFF003B;
         private int SELECT_COLOR = 0xCCDDFF;
+        private int HIGHLIGHT_COLOR = 0xFFFF50;
 
         public SBDocument()
         {
@@ -152,6 +153,7 @@ namespace SB_IDE
                 colors["Breakpoint Background"] = BACK_BREAKPOINT_COLOR;
                 colors["Breakpoint Foreground"] = FORE_BREAKPOINT_COLOR;
                 colors["Select"] = SELECT_COLOR;
+                colors["Highlight"] = HIGHLIGHT_COLOR;
                 return colors;
             }
             set
@@ -164,7 +166,24 @@ namespace SB_IDE
                 BACK_BREAKPOINT_COLOR = colors["Breakpoint Background"];
                 FORE_BREAKPOINT_COLOR = colors["Breakpoint Foreground"];
                 SELECT_COLOR = colors["Select"];
+                HIGHLIGHT_COLOR = colors["Highlight"];
             }
+        }
+
+        public void ClearHighlights()
+        {
+            foreach (Line line in textArea.Lines)
+            {
+                line.MarkerDelete(HIGHLIGHT_MARKER);
+            }
+        }
+
+        public void HighlightLine(Line line)
+        {
+            Marker marker = textArea.Markers[SBDocument.HIGHLIGHT_MARKER];
+            marker.Symbol = MarkerSymbol.Background;
+            marker.SetBackColor(IntToColor(HIGHLIGHT_COLOR));
+            line.MarkerAdd(HIGHLIGHT_MARKER);
         }
 
         private void InitColors()
@@ -180,6 +199,7 @@ namespace SB_IDE
             HotKeyManager.AddHotKey(textArea, ZoomIn, Keys.Oemplus, true);
             HotKeyManager.AddHotKey(textArea, ZoomOut, Keys.OemMinus, true);
             HotKeyManager.AddHotKey(textArea, ZoomDefault, Keys.D0, true);
+            HotKeyManager.AddHotKey(textArea, AddWatch, Keys.W, true);
 
             // remove conflicting hotkeys from scintilla
             textArea.ClearCmdKey(Keys.Control | Keys.F);
@@ -187,6 +207,7 @@ namespace SB_IDE
             textArea.ClearCmdKey(Keys.Control | Keys.H);
             textArea.ClearCmdKey(Keys.Control | Keys.L);
             textArea.ClearCmdKey(Keys.Control | Keys.U);
+            textArea.ClearCmdKey(Keys.Control | Keys.W);
         }
 
         #region Numbers, Bookmarks, Code Folding
@@ -203,6 +224,7 @@ namespace SB_IDE
         public const int BOOKMARK_MARKER = 3;
         public const int BREAKPOINT_MARGIN = 1;
         public const int BREAKPOINT_MARKER = 1;
+        public const int HIGHLIGHT_MARKER = 0;
 
         /// <summary>
         /// change this to whatever margin you want the code folding tree (+/-) to show in
@@ -533,6 +555,11 @@ namespace SB_IDE
         public void ZoomDefault()
         {
             textArea.Zoom = 0;
+        }
+
+        public void AddWatch()
+        {
+            MainWindow.MarkedForWatch.Enqueue(textArea.SelectedText);
         }
 
         #endregion
