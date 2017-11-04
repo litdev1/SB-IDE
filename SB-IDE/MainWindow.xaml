@@ -162,7 +162,7 @@
                     <RibbonButton Label="Pause" LargeImageSource="Images/Pause.png" KeyTip="P" Click="debugPause_Click" ToolTipTitle="Pause current program"/>
                     <RibbonButton Label="Step Out" LargeImageSource="Images/StepOut.png" KeyTip="SO" Click="debugStepOut_Click" ToolTipTitle="Step out of the current subroutine"/>
                     <RibbonButton Label="Step Over" LargeImageSource="Images/StepOver.png" KeyTip="SV" Click="debugStepOver_Click" ToolTipTitle="Step over the next statement if it is a subroutine"/>
-                    <RibbonButton Label="Step" LargeImageSource="Images/Step.png" KeyTip="SP" Click="debugStep_Click" ToolTipTitle="Step through current program to next statement"/>
+                    <RibbonButton Label="Step" LargeImageSource="Images/Step.png" KeyTip="SP" Click="debugStep_Click" ToolTipTitle="Step through current program, or start and pause at first statement"/>
                     <RibbonButton Label="Start/Resume" LargeImageSource="Images/Play.png" KeyTip="R" Click="debugDebug_Click" ToolTipTitle="Start/Resume current program"/>
                 </RibbonGroup>
                 <!-- Home/Debug group-->
