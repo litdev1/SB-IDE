@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="HotKeyManager.cs" />
     <Compile Include="MainWindow.cs" />
+    <Compile Include="SBContext.cs" />
     <Compile Include="SBDebug.cs" />
     <Compile Include="SBDocument.cs" />
     <Compile Include="SBInterop.cs" />

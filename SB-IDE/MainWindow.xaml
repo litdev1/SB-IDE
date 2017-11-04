@@ -291,7 +291,7 @@
                                 <DataGridTemplateColumn Header="Remove Watch">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Delete" Click="debugDataDelete" ToolTip="Delete watch variable.  To add, select variable and use Crtl+W" Tag="{Binding}"/>
+                                            <Button Content="Delete" Click="debugDataDelete" ToolTip="Delete watch variable" Tag="{Binding}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

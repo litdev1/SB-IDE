@@ -13,6 +13,7 @@ namespace SB_IDE
     {
         private Scintilla textArea;
         private SBLexer lexer;
+        private SBContext sbContext;
         private string filepath = "";
         public TabItem Tab;
         public SBDebug debug = null;
@@ -36,6 +37,8 @@ namespace SB_IDE
             textArea = new Scintilla();
             lexer = new SBLexer(this, textArea);
             textArea.Dock = DockStyle.Fill;
+            sbContext = new SBContext(this);
+            textArea.UsePopup(false);
 
             // INITIAL VIEW CONFIG
             textArea.WrapMode = WrapMode.None;
@@ -250,6 +253,7 @@ namespace SB_IDE
             nums.Mask = 0;
 
             textArea.MarginClick += TextArea_MarginClick;
+            textArea.MouseDown += TextArea_MouseDown;
         }
 
         private void InitBookmarkMargin()
@@ -329,6 +333,14 @@ namespace SB_IDE
                 // Do we have a marker for this line?
                 var line = textArea.Lines[textArea.LineFromPosition(e.Position)];
                 ToggleBP(line);
+            }
+        }
+
+        private void TextArea_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                sbContext.SetMenu();
             }
         }
 
