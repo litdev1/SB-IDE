@@ -489,5 +489,9 @@ namespace SB_IDE
 
             }
         }
+
+        private void dataGridDebug_CurrentCellChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

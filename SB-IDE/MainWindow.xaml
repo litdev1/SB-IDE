@@ -266,7 +266,7 @@
                 </TabItem>
                 <TabItem x:Name="tabDebug" Header="Debug">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGridDebug" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding">
+                        <DataGrid x:Name="dataGridDebug" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged">
                             <DataGrid.Resources>
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />

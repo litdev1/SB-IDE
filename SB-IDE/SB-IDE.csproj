@@ -388,5 +388,8 @@
   <ItemGroup>
     <Resource Include="images\Plugin.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Delete frame.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

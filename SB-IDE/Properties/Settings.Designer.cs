@@ -218,5 +218,17 @@ namespace SB_IDE.Properties {
                 this["Maximized"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("150")]
+        public double OutputHeight {
+            get {
+                return ((double)(this["OutputHeight"]));
+            }
+            set {
+                this["OutputHeight"] = value;
+            }
+        }
     }
 }

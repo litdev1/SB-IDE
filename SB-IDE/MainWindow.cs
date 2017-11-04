@@ -91,31 +91,43 @@ namespace SB_IDE
                 }
             }
 
-            ImageSource imgSource = ImageSourceFromBitmap(Properties.Resources.Erase);
-            Image img = new Image()
-            {
-                Width = 14,
-                Height = 14,
-                Source = imgSource
-            };
-
             dataGridResults.Tag = 0;
             dataGridResults.ItemsSource = Errors;
             ContextMenu menu = new ContextMenu();
-            MenuItem clear = new MenuItem();
-            clear.Header = "Clear";
-            clear.Icon = img;
-            clear.Click += new RoutedEventHandler(GridResultsClick);
-            menu.Items.Add(clear);
             dataGridResults.ContextMenu = menu;
+            MenuItem clear = new MenuItem();
+            menu.Items.Add(clear);
+            clear.Header = "Clear";
+            clear.Icon = new Image()
+            {
+                Width = 14,
+                Height = 14,
+                Source = ImageSourceFromBitmap(Properties.Resources.Erase)
+            };
+            clear.Click += new RoutedEventHandler(GridResultsClick);
 
             menu = new ContextMenu();
-            clear = new MenuItem();
-            clear.Header = "Clear";
-            clear.Icon = img;
-            clear.Click += new RoutedEventHandler(GridDebugClick);
-            menu.Items.Add(clear);
             dataGridDebug.ContextMenu = menu;
+            clear = new MenuItem();
+            menu.Items.Add(clear);
+            clear.Header = "Clear";
+            clear.Icon = new Image()
+            {
+                Width = 14,
+                Height = 14,
+                Source = ImageSourceFromBitmap(Properties.Resources.Erase)
+            };
+            clear.Click += new RoutedEventHandler(GridDebugClick);
+            clear = new MenuItem();
+            menu.Items.Add(clear);
+            clear.Header = "Clear Watch Data";
+            clear.Icon = new Image()
+            {
+                Width = 14,
+                Height = 14,
+                Source = ImageSourceFromBitmap(Properties.Resources.Delete_frame)
+            };
+            clear.Click += new RoutedEventHandler(GridDebugClick);
 
             CollectionViewSource itemCollectionViewSource;
             itemCollectionViewSource = (CollectionViewSource)(FindResource("DebugDataSource"));
@@ -166,7 +178,18 @@ namespace SB_IDE
 
         private void GridDebugClick(object sender, RoutedEventArgs e)
         {
-            debugData.Clear();
+            MenuItem item = (MenuItem)sender;
+            if ((string)item.Header == "Clear Watch Data")
+            {
+                foreach (DebugData data in debugData)
+                {
+                    data.ClearWatch();
+                }
+            }
+            else
+            {
+                debugData.Clear();
+            }
             dataGridDebug.Items.Refresh();
         }
 
@@ -216,9 +239,12 @@ namespace SB_IDE
             debugData.Clear();
             for (i = 1; i < Properties.Settings.Default.WatchList.Count; i++)
             {
-                debugData.Add(new DebugData() { Variable = Properties.Settings.Default.WatchList[i] });
+                DebugData data = new DebugData();
+                data.Group = Properties.Settings.Default.WatchList[i];
+                debugData.Add(data);
             }
             FileSearcher.RootPath = Properties.Settings.Default.RootPath;
+            mainGrid.RowDefinitions[2].Height = new GridLength(Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 150);
         }
 
         private Grid Ellipsis(string txt)
@@ -293,9 +319,10 @@ namespace SB_IDE
             Properties.Settings.Default.WatchList.Add("Empty");
             for (int i = 0; i < debugData.Count; i++)
             {
-                Properties.Settings.Default.WatchList.Add(debugData[i].Variable);
+                Properties.Settings.Default.WatchList.Add(debugData[i].Group);
             }
             Properties.Settings.Default.RootPath = FileSearcher.RootPath;
+            Properties.Settings.Default.OutputHeight = mainGrid.RowDefinitions[2].ActualHeight;
 
             Properties.Settings.Default.Save();
         }
@@ -1393,6 +1420,32 @@ namespace SB_IDE
         {
             Variable = "";
             Value = "";
+            LessThan = "";
+            GreaterThan = "";
+            Equal = "";
+            Changes = false;
+        }
+
+        public string Group
+        {
+            get
+            {
+                return Variable + "?" + LessThan + "?" + GreaterThan + "?" + Equal + "?" + Changes;
+            }
+            set
+            {
+                string[] bits = value.Split('?');
+                int i = 0;
+                if (i < bits.Length) Variable = bits[i++];
+                if (i < bits.Length) LessThan = bits[i++];
+                if (i < bits.Length) GreaterThan = bits[i++];
+                if (i < bits.Length) Equal = bits[i++];
+                if (i < bits.Length) Changes = bits[i++] == true.ToString();
+            }
+        }
+
+        public void ClearWatch()
+        {
             LessThan = "";
             GreaterThan = "";
             Equal = "";
