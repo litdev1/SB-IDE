@@ -607,6 +607,7 @@ namespace SB_IDE
                 if (null == activeDocument.debug) return;
                 activeDocument.debug.Dispose();
                 activeDocument.debug = null;
+                activeDocument.ClearHighlights();
             }
         }
 
@@ -803,7 +804,7 @@ namespace SB_IDE
                                 Width = 300,
                                 TextWrapping = TextWrapping.Wrap,
                                 FontSize = 14,
-                                Foreground = new SolidColorBrush(Colors.Blue)
+                                Foreground = new SolidColorBrush(Colors.Crimson)
                             };
                             canvasInfo.Children.Add(tb);
                             Canvas.SetLeft(tb, left);

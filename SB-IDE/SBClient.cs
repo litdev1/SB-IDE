@@ -229,7 +229,11 @@ namespace SBDebugger
                                 }
                                 else if (message.ToUpper().StartsWith("GETSTACK"))
                                 {
-                                    Send("STACK " + string.Join(", ", GetStack()));
+                                    Send("STACK " + string.Join("?", GetStack()));
+                                }
+                                else if (message.ToUpper().StartsWith("GETVARIABLES"))
+                                {
+                                    Send("VARIABLES " + string.Join("?", GetVariables()));
                                 }
                                 else if (message.ToUpper().StartsWith("CLEARWATCHES"))
                                 {
@@ -424,6 +428,23 @@ namespace SBDebugger
             {
                 return null;
             }
+        }
+
+        private static List<string> GetVariables()
+        {
+            List<string> result = new List<string>();
+
+            MethodBase method = GetMethodBase();
+            if (null == method) return result;
+
+            Type type = method.DeclaringType;
+            FieldInfo[] fields = type.GetFields(BindingFlags.Static | BindingFlags.NonPublic);
+            for (int i = 0; i < fields.Length; i++)
+            {
+                result.Add(fields[i].Name);
+            }
+            result.Sort();
+            return result;
         }
 
         private static MethodBase GetMethodBase()

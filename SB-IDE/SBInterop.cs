@@ -13,7 +13,7 @@ namespace SB_IDE
 {
     public class SBInterop
     {
-        public const int CurrentVersion = 6;
+        public const int CurrentVersion = 7;
 
         object Service = null;
         MethodInfo SaveProgram = null;

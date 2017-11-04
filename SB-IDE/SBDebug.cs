@@ -435,6 +435,12 @@ namespace SB_IDE
                 else if (message.ToUpper().StartsWith("STACK"))
                 {
                     message = message.Substring(6).Trim();
+                    string[] data = message.Split(new char[] { '?' }, StringSplitOptions.RemoveEmptyEntries);
+                }
+                else if (message.ToUpper().StartsWith("VARIABLES"))
+                {
+                    message = message.Substring(10).Trim();
+                    string[] data = message.Split(new char[] { '?' }, StringSplitOptions.RemoveEmptyEntries);
                 }
                 else if (message.ToUpper().StartsWith("DEBUG"))
                 {
