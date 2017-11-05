@@ -29,10 +29,13 @@ namespace SB_IDE
     {
         // Main Window Colors
         public static int BACKGROUND_COLOR = 0xDFE9F5;
+        public static int FOREGROUND_COLOR = 0x000000;
         public static int SPLITTER_COLOR = 0x96AFFF;
         // Text Area Colors
-        public static int BACK_MARGIN_COLOR = 0xF8F8F8;
+        public static int BACK_MARGIN_COLOR = 0xF0F0F0;
         public static int FORE_MARGIN_COLOR = 0x5C5C5C;
+        public static int BACK_FOLDING_COLOR = 0xF8F8F8;
+        public static int FORE_FOLDING_COLOR = 0x5C5C5C;
         public static int BACK_BOOKMARK_COLOR = 0x5050A0;
         public static int FORE_BOOKMARK_COLOR = 0x5050A0;
         public static int BACK_BREAKPOINT_COLOR = 0xFF003B;
@@ -66,10 +69,13 @@ namespace SB_IDE
                 Dictionary<string, int> colors = new Dictionary<string, int>();
 
                 colors["W:Background"] = BACKGROUND_COLOR;
+                colors["W:Foreground"] = FOREGROUND_COLOR;
                 colors["W:Splitter"] = SPLITTER_COLOR;
 
                 colors["D:Margin Background"] = BACK_MARGIN_COLOR;
                 colors["D:Margin Foreground"] = FORE_MARGIN_COLOR;
+                colors["D:Folding Background"] = BACK_FOLDING_COLOR;
+                colors["D:Folding Foreground"] = FORE_FOLDING_COLOR;
                 colors["D:Bookmark Background"] = BACK_BOOKMARK_COLOR;
                 colors["D:Bookmark Foreground"] = FORE_BOOKMARK_COLOR;
                 colors["D:Breakpoint Background"] = BACK_BREAKPOINT_COLOR;
@@ -94,10 +100,13 @@ namespace SB_IDE
                 Dictionary<string, int> colors = value;
 
                 BACKGROUND_COLOR = colors["W:Background"];
+                FOREGROUND_COLOR = colors["W:Foreground"];
                 SPLITTER_COLOR = colors["W:Splitter"];
 
                 BACK_MARGIN_COLOR = colors["D:Margin Background"];
                 FORE_MARGIN_COLOR = colors["D:Margin Foreground"];
+                BACK_FOLDING_COLOR = colors["D:Folding Background"];
+                FORE_FOLDING_COLOR = colors["D:Folding Foreground"];
                 BACK_BOOKMARK_COLOR = colors["D:Bookmark Background"];
                 FORE_BOOKMARK_COLOR = colors["D:Bookmark Foreground"];
                 BACK_BREAKPOINT_COLOR = colors["D:Breakpoint Background"];

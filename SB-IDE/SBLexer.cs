@@ -173,6 +173,11 @@ namespace SB_IDE
             textArea.TabWidth = 2;
             textArea.StyleClearAll();
 
+            textArea.Styles[Style.LineNumber].ForeColor = IntToColor(MainWindow.FORE_MARGIN_COLOR);
+            textArea.Styles[Style.LineNumber].BackColor = IntToColor(MainWindow.BACK_MARGIN_COLOR);
+            textArea.Styles[Style.IndentGuide].ForeColor = IntToColor(MainWindow.FORE_FOLDING_COLOR);
+            textArea.Styles[Style.IndentGuide].BackColor = IntToColor(MainWindow.BACK_FOLDING_COLOR);
+
             textArea.Styles[STYLE_SPACE].ForeColor = foreColor;
             textArea.Styles[STYLE_COMMENT].ForeColor = IntToColor(MainWindow.COMMENT_COLOR);
             textArea.Styles[STYLE_STRING].ForeColor = IntToColor(MainWindow.STRING_COLOR);

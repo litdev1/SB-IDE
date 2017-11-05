@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE.Dialogs"
         mc:Ignorable="d"
-        Title="Colours" Height="500" Width="500">
+        Title="Colours" Height="550" Width="500">
     <Grid>
         <DataGrid x:Name="dataGridColours" CanUserAddRows="False" ItemsSource="{Binding}" SelectionChanged="dataGridColours_SelectionChanged" AutoGenerateColumns="False" Margin="10,10,9.8,34.4" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" Grid.Row="2">
             <DataGrid.Resources>
@@ -22,9 +22,9 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Red" Binding="{Binding R}"/>
-                <DataGridTextColumn Header="Green" Binding="{Binding G}"/>
-                <DataGridTextColumn Header="Blue" Binding="{Binding B}"/>
+                <DataGridTextColumn Header="Red" Width="50" Binding="{Binding R}"/>
+                <DataGridTextColumn Header="Green" Width="50" Binding="{Binding G}"/>
+                <DataGridTextColumn Header="Blue" Width="50" Binding="{Binding B}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="buttonDefaults" Content="Defaults" HorizontalAlignment="Right" Margin="0,0,169.8,4.4" VerticalAlignment="Bottom" Width="75" ToolTip="Reset to defaults" Click="buttonDefaults_Click" RenderTransformOrigin="-1.179,0.469"/>

@@ -200,11 +200,6 @@ namespace SB_IDE
 
         private void InitNumberMargin()
         {
-            textArea.Styles[Style.LineNumber].ForeColor = IntToColor(MainWindow.FORE_MARGIN_COLOR);
-            textArea.Styles[Style.LineNumber].BackColor = IntToColor(MainWindow.BACK_MARGIN_COLOR);
-            textArea.Styles[Style.IndentGuide].ForeColor = IntToColor(MainWindow.FORE_MARGIN_COLOR);
-            textArea.Styles[Style.IndentGuide].BackColor = IntToColor(MainWindow.BACK_MARGIN_COLOR);
-
             var nums = textArea.Margins[NUMBER_MARGIN];
             nums.Width = 50;
             nums.Type = MarginType.Number;
@@ -217,8 +212,6 @@ namespace SB_IDE
 
         private void InitBookmarkMargin()
         {
-            textArea.SetFoldMarginColor(true, IntToColor(MainWindow.BACK_MARGIN_COLOR));
-
             var margin = textArea.Margins[BOOKMARK_MARGIN];
             margin.Width = 15;
             margin.Sensitive = true;
@@ -246,8 +239,8 @@ namespace SB_IDE
 
         private void InitCodeFolding()
         {
-            textArea.SetFoldMarginColor(true, IntToColor(MainWindow.BACK_MARGIN_COLOR));
-            textArea.SetFoldMarginHighlightColor(true, IntToColor(MainWindow.BACK_MARGIN_COLOR));
+            textArea.SetFoldMarginColor(true, IntToColor(MainWindow.BACK_FOLDING_COLOR));
+            textArea.SetFoldMarginHighlightColor(true, IntToColor(MainWindow.BACK_FOLDING_COLOR));
 
             // Enable code folding
             textArea.SetProperty("fold", "1");
@@ -262,8 +255,8 @@ namespace SB_IDE
             // Set colors for all folding markers
             for (int i = 25; i <= 31; i++)
             {
-                textArea.Markers[i].SetForeColor(IntToColor(MainWindow.BACK_MARGIN_COLOR)); // styles for [+] and [-]
-                textArea.Markers[i].SetBackColor(IntToColor(MainWindow.FORE_MARGIN_COLOR)); // styles for [+] and [-]
+                textArea.Markers[i].SetForeColor(IntToColor(MainWindow.BACK_FOLDING_COLOR)); // styles for [+] and [-]
+                textArea.Markers[i].SetBackColor(IntToColor(MainWindow.FORE_FOLDING_COLOR)); // styles for [+] and [-]
             }
 
             // Configure folding markers with respective symbols

@@ -9,7 +9,8 @@
     <RibbonWindow.Resources>
         <CollectionViewSource x:Key="DebugDataSource"  CollectionViewType="ListCollectionView"/>
         <SolidColorBrush x:Key="SplitterBrush" Color="#FFF0F0F0"/>
-        <SolidColorBrush x:Key="GridBrush" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="GridBrushBackground" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="GridBrushForeground" Color="#FF000000"/>
     </RibbonWindow.Resources>
     <DockPanel Margin="0">
         <StatusBar Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
@@ -24,7 +25,7 @@
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
-        <Ribbon x:Name="ribbon" VerticalAlignment="Top"  DockPanel.Dock="Top" Margin="0" SelectedIndex="0" SelectionChanged="ribbon_SelectionChanged" Background="{DynamicResource GridBrush}">
+        <Ribbon x:Name="ribbon" VerticalAlignment="Top"  DockPanel.Dock="Top" Margin="0" SelectedIndex="0" SelectionChanged="ribbon_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}">
             <!-- Help Pane, located at the right-hand side -->
             <Ribbon.HelpPaneContent>
                 <RibbonButton SmallImageSource="Images\Help.png" Click="helpClick"/>
@@ -203,11 +204,11 @@
                 </RibbonGroup>
                 <!-- Advanced/Settings group-->
                 <RibbonGroup x:Name="Settings" Header="Settings">
-                    <RibbonButton Name="settingsColor" Label="Colours" LargeImageSource="Images/Color palette.png" KeyTip="SR" Click="settingsColor_Click" ToolTipTitle="Change the application colour"/>
+                    <RibbonButton Name="settingsColor" Label="Colours" LargeImageSource="Images/Color palette.png" KeyTip="SR" Click="settingsColor_Click" ToolTipTitle="Change the application colours"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-        <Grid x:Name="mainGrid" Margin="0,0,0,0" DockPanel.Dock="Bottom" Background="{DynamicResource GridBrush}">
+        <Grid x:Name="mainGrid" Margin="0,0,0,0" DockPanel.Dock="Bottom" Background="{DynamicResource GridBrushBackground}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="6"/>
@@ -256,23 +257,32 @@
             <TabControl x:Name="tabControlResults" Margin="0" Grid.Row="2" HorizontalContentAlignment="Stretch" TabStripPlacement="Bottom" VerticalContentAlignment="Stretch">
                 <TabItem x:Name="tabOutput" Header="Output">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGridResults" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" SelectionChanged="dataGridResults_SelectionChanged">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Output, Errors and Warnings" Width="2*" Binding="{Binding Message}"/>
-                            </DataGrid.Columns>
+                        <DataGrid x:Name="dataGridResults" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" SelectionChanged="dataGridResults_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}">
                             <!--<DataGrid.ColumnHeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="FontWeight"  Value="Bold" />
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource GridBrushForeground}"/>
                                 </Style>
                             </DataGrid.ColumnHeaderStyle>-->
+                            <DataGrid.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Output, Errors and Warnings" Width="1*" Binding="{Binding Message}"/>
+                            </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="tabDebug" Header="Debug">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGridDebug" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged">
+                        <DataGrid x:Name="dataGridDebug" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}">
+                            <!--<DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource GridBrushForeground}"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>-->
                             <DataGrid.Resources>
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
