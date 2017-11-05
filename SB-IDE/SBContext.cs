@@ -24,15 +24,15 @@ namespace SB_IDE
             ContextMenuStrip menu = new ContextMenuStrip();
             textArea.ContextMenuStrip = menu;
 
-            menu.Items.Add(new ToolStripMenuItem("Undo Ctrl-Z", null, (s, ea) => textArea.Undo()) { Enabled = textArea.CanUndo });
-            menu.Items.Add(new ToolStripMenuItem("Redo Ctrl-Y", null, (s, ea) => textArea.Redo()) { Enabled = textArea.CanRedo });
+            menu.Items.Add(new ToolStripMenuItem("Undo Ctrl+Z", null, (s, ea) => textArea.Undo()) { Enabled = textArea.CanUndo });
+            menu.Items.Add(new ToolStripMenuItem("Redo Ctrl+Y", null, (s, ea) => textArea.Redo()) { Enabled = textArea.CanRedo });
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Cut Ctrl-X", null, (s, ea) => textArea.Cut()) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripMenuItem("Copy Ctrl-C", null, (s, ea) => textArea.Copy()) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripMenuItem("Paste Ctrl-V", null, (s, ea) => textArea.Paste()) { Enabled = textArea.CanPaste });
+            menu.Items.Add(new ToolStripMenuItem("Cut Ctrl+X", null, (s, ea) => textArea.Cut()) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem("Copy Ctrl+C", null, (s, ea) => textArea.Copy()) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem("Paste Ctrl+V", null, (s, ea) => textArea.Paste()) { Enabled = textArea.CanPaste });
             menu.Items.Add(new ToolStripMenuItem("Delete", null, (s, ea) => textArea.DeleteRange(textArea.SelectionStart, textArea.SelectionEnd - textArea.SelectionStart)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Select All Ctrl-A", null, (s, ea) => textArea.SelectAll()));
+            menu.Items.Add(new ToolStripMenuItem("Select All Ctrl+A", null, (s, ea) => textArea.SelectAll()));
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem("Collapse Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Contract)));
             menu.Items.Add(new ToolStripMenuItem("Expand Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Expand)));

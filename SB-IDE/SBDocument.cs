@@ -19,17 +19,6 @@ namespace SB_IDE
         public SBDebug debug = null;
         public Process Proc = null;
         public SearchManager searchManager = new SearchManager();
-        public Dictionary<string, int> DefaultColors { get; }
-
-        // Text Area Colors
-        private int BACK_MARGIN_COLOR = 0xF8F8F8;
-        private int FORE_MARGIN_COLOR = 0x5C5C5C;
-        private int BACK_BOOKMARK_COLOR = 0x5050A0;
-        private int FORE_BOOKMARK_COLOR = 0x5050A0;
-        private int BACK_BREAKPOINT_COLOR = 0xFF003B;
-        private int FORE_BREAKPOINT_COLOR = 0xFF003B;
-        private int SELECT_COLOR = 0xCCDDFF;
-        private int HIGHLIGHT_COLOR = 0xFFFF50;
 
         public SBDocument()
         {
@@ -46,7 +35,6 @@ namespace SB_IDE
             textArea.ScrollWidth = 0;
 
             // STYLING
-            DefaultColors = Colors;
             InitColors();
 
             // NUMBER MARGIN
@@ -144,35 +132,6 @@ namespace SB_IDE
             get { return filepath; }
         }
 
-        public Dictionary<string, int> Colors
-        {
-            get
-            {
-                Dictionary<string, int> colors = new Dictionary<string, int>();
-                colors["Margin Background"] = BACK_MARGIN_COLOR;
-                colors["Margin Foreground"] = FORE_MARGIN_COLOR;
-                colors["Bookmark Background"] = BACK_BOOKMARK_COLOR;
-                colors["Bookmark Foreground"] = FORE_BOOKMARK_COLOR;
-                colors["Breakpoint Background"] = BACK_BREAKPOINT_COLOR;
-                colors["Breakpoint Foreground"] = FORE_BREAKPOINT_COLOR;
-                colors["Select"] = SELECT_COLOR;
-                colors["Highlight"] = HIGHLIGHT_COLOR;
-                return colors;
-            }
-            set
-            {
-                Dictionary<string, int> colors = value;
-                BACK_MARGIN_COLOR = colors["Margin Background"];
-                FORE_MARGIN_COLOR = colors["Margin Foreground"];
-                BACK_BOOKMARK_COLOR = colors["Bookmark Background"];
-                FORE_BOOKMARK_COLOR = colors["Bookmark Foreground"];
-                BACK_BREAKPOINT_COLOR = colors["Breakpoint Background"];
-                FORE_BREAKPOINT_COLOR = colors["Breakpoint Foreground"];
-                SELECT_COLOR = colors["Select"];
-                HIGHLIGHT_COLOR = colors["Highlight"];
-            }
-        }
-
         public void ClearHighlights()
         {
             foreach (Line line in textArea.Lines)
@@ -185,13 +144,13 @@ namespace SB_IDE
         {
             Marker marker = textArea.Markers[SBDocument.HIGHLIGHT_MARKER];
             marker.Symbol = MarkerSymbol.Background;
-            marker.SetBackColor(IntToColor(HIGHLIGHT_COLOR));
+            marker.SetBackColor(IntToColor(MainWindow.HIGHLIGHT_COLOR));
             line.MarkerAdd(HIGHLIGHT_MARKER);
         }
 
         private void InitColors()
         {
-            textArea.SetSelectionBackColor(true, IntToColor(SELECT_COLOR));
+            textArea.SetSelectionBackColor(true, IntToColor(MainWindow.SELECT_COLOR));
         }
 
         private void InitHotkeys()
@@ -241,10 +200,10 @@ namespace SB_IDE
 
         private void InitNumberMargin()
         {
-            textArea.Styles[Style.LineNumber].ForeColor = IntToColor(FORE_MARGIN_COLOR);
-            textArea.Styles[Style.LineNumber].BackColor = IntToColor(BACK_MARGIN_COLOR);
-            textArea.Styles[Style.IndentGuide].ForeColor = IntToColor(FORE_MARGIN_COLOR);
-            textArea.Styles[Style.IndentGuide].BackColor = IntToColor(BACK_MARGIN_COLOR);
+            textArea.Styles[Style.LineNumber].ForeColor = IntToColor(MainWindow.FORE_MARGIN_COLOR);
+            textArea.Styles[Style.LineNumber].BackColor = IntToColor(MainWindow.BACK_MARGIN_COLOR);
+            textArea.Styles[Style.IndentGuide].ForeColor = IntToColor(MainWindow.FORE_MARGIN_COLOR);
+            textArea.Styles[Style.IndentGuide].BackColor = IntToColor(MainWindow.BACK_MARGIN_COLOR);
 
             var nums = textArea.Margins[NUMBER_MARGIN];
             nums.Width = 50;
@@ -258,7 +217,7 @@ namespace SB_IDE
 
         private void InitBookmarkMargin()
         {
-            textArea.SetFoldMarginColor(true, IntToColor(BACK_MARGIN_COLOR));
+            textArea.SetFoldMarginColor(true, IntToColor(MainWindow.BACK_MARGIN_COLOR));
 
             var margin = textArea.Margins[BOOKMARK_MARGIN];
             margin.Width = 15;
@@ -268,8 +227,8 @@ namespace SB_IDE
 
             var marker = textArea.Markers[BOOKMARK_MARGIN];
             marker.Symbol = MarkerSymbol.Bookmark;
-            marker.SetBackColor(IntToColor(BACK_BOOKMARK_COLOR));
-            marker.SetForeColor(IntToColor(FORE_BOOKMARK_COLOR));
+            marker.SetBackColor(IntToColor(MainWindow.BACK_BOOKMARK_COLOR));
+            marker.SetForeColor(IntToColor(MainWindow.FORE_BOOKMARK_COLOR));
             marker.SetAlpha(100);
 
             margin = textArea.Margins[BREAKPOINT_MARGIN];
@@ -280,15 +239,15 @@ namespace SB_IDE
 
             marker = textArea.Markers[BREAKPOINT_MARKER];
             marker.Symbol = MarkerSymbol.Circle;
-            marker.SetBackColor(IntToColor(BACK_BREAKPOINT_COLOR));
-            marker.SetForeColor(IntToColor(FORE_BREAKPOINT_COLOR));
+            marker.SetBackColor(IntToColor(MainWindow.BACK_BREAKPOINT_COLOR));
+            marker.SetForeColor(IntToColor(MainWindow.FORE_BREAKPOINT_COLOR));
             marker.SetAlpha(100);
         }
 
         private void InitCodeFolding()
         {
-            textArea.SetFoldMarginColor(true, IntToColor(BACK_MARGIN_COLOR));
-            textArea.SetFoldMarginHighlightColor(true, IntToColor(BACK_MARGIN_COLOR));
+            textArea.SetFoldMarginColor(true, IntToColor(MainWindow.BACK_MARGIN_COLOR));
+            textArea.SetFoldMarginHighlightColor(true, IntToColor(MainWindow.BACK_MARGIN_COLOR));
 
             // Enable code folding
             textArea.SetProperty("fold", "1");
@@ -303,8 +262,8 @@ namespace SB_IDE
             // Set colors for all folding markers
             for (int i = 25; i <= 31; i++)
             {
-                textArea.Markers[i].SetForeColor(IntToColor(BACK_MARGIN_COLOR)); // styles for [+] and [-]
-                textArea.Markers[i].SetBackColor(IntToColor(FORE_MARGIN_COLOR)); // styles for [+] and [-]
+                textArea.Markers[i].SetForeColor(IntToColor(MainWindow.BACK_MARGIN_COLOR)); // styles for [+] and [-]
+                textArea.Markers[i].SetBackColor(IntToColor(MainWindow.FORE_MARGIN_COLOR)); // styles for [+] and [-]
             }
 
             // Configure folding markers with respective symbols

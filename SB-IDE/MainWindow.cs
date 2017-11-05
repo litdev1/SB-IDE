@@ -65,6 +65,7 @@ namespace SB_IDE
             // CREATE CONTROLS
             for (int i = tabControlSB1.Items.Count - 1; i >= 0; i--) tabControlSB1.Items.RemoveAt(i);
             for (int i = tabControlSB2.Items.Count - 1; i >= 0; i--) tabControlSB2.Items.RemoveAt(i);
+            documentGrid.ColumnDefinitions[1].MaxWidth = dualScreen ? 6 : 0;
             documentGrid.ColumnDefinitions[2].MaxWidth = dualScreen ? double.PositiveInfinity : 0;
 
             toggleSplit.IsChecked = dualScreen;
@@ -136,6 +137,8 @@ namespace SB_IDE
 
             InitIntellisense();
 
+            SetWindowColors();
+
             threadTimer = new Timer(new TimerCallback(ThreadTimerCallback));
             threadTimer.Change(100, 100);
         }
@@ -143,6 +146,12 @@ namespace SB_IDE
         public SBDocument GetActiveDocument()
         {
             return activeDocument;
+        }
+
+        private void SetWindowColors()
+        {
+            Resources["GridBrush"] = new SolidColorBrush(IntToColor(BACKGROUND_COLOR));
+            Resources["SplitterBrush"] = new SolidColorBrush(IntToColor(SPLITTER_COLOR));
         }
 
         private void InitIntellisense()
@@ -212,12 +221,7 @@ namespace SB_IDE
                 WindowState = WindowState.Maximized;
             }
 
-            int i;
-            for (i = Properties.Settings.Default.MRU.Count - 1; i > 0; i--)
-            {
-                if (Properties.Settings.Default.MRU[i] == "Empty") Properties.Settings.Default.MRU.RemoveAt(i);
-            }
-            i = 0;
+            int i = 0;
             if (Properties.Settings.Default.MRU.Count > i) MRU1.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU2.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU3.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
@@ -238,7 +242,7 @@ namespace SB_IDE
             SBInterop.Language = Properties.Settings.Default.Language;
             SBInterop.Version = Properties.Settings.Default.Version;
             debugData.Clear();
-            for (i = 1; i < Properties.Settings.Default.WatchList.Count; i++)
+            for (i = 0; i < Properties.Settings.Default.WatchList.Count; i++)
             {
                 DebugData data = new DebugData();
                 data.Group = Properties.Settings.Default.WatchList[i];
@@ -246,6 +250,23 @@ namespace SB_IDE
             }
             FileSearcher.RootPath = Properties.Settings.Default.RootPath;
             mainGrid.RowDefinitions[2].Height = new GridLength(Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 150);
+            var ideColors = IDEColors;
+            for (i = 0; i < Properties.Settings.Default.Colors.Count; i++)
+            {
+                string[] data = Properties.Settings.Default.Colors[i].Split('?');
+                if (data.Length != 2) continue;
+                int value = 0;
+                int.TryParse(data[1], out value);
+                ideColors[data[0]] = value;
+            }
+            IDEColors = ideColors;
+        }
+
+        private void ResetSettings()
+        {
+            Properties.Settings.Default.Reset();
+            Properties.Settings.Default.Save();
+            LoadSettings();
         }
 
         private Grid Ellipsis(string txt)
@@ -317,13 +338,17 @@ namespace SB_IDE
             Properties.Settings.Default.Language = SBInterop.Language;
             Properties.Settings.Default.Version = SBInterop.Version;
             Properties.Settings.Default.WatchList.Clear();
-            Properties.Settings.Default.WatchList.Add("Empty");
             for (int i = 0; i < debugData.Count; i++)
             {
                 Properties.Settings.Default.WatchList.Add(debugData[i].Group);
             }
             Properties.Settings.Default.RootPath = FileSearcher.RootPath;
             Properties.Settings.Default.OutputHeight = mainGrid.RowDefinitions[2].ActualHeight;
+            Properties.Settings.Default.Colors.Clear();
+            foreach (KeyValuePair<string,int> kvp in IDEColors)
+            {
+                Properties.Settings.Default.Colors.Add(kvp.Key + "?" + kvp.Value);
+            }
 
             Properties.Settings.Default.Save();
         }
@@ -1202,6 +1227,7 @@ namespace SB_IDE
         private void DualScreen()
         {
             dualScreen = !dualScreen;
+            documentGrid.ColumnDefinitions[1].MaxWidth = dualScreen ? 6 : 0;
             documentGrid.ColumnDefinitions[2].MaxWidth = dualScreen ? double.PositiveInfinity : 0;
         }
 

@@ -37,17 +37,6 @@ namespace SB_IDE
         private int STYLE_LABEL = 9;
         private int STYLE_LITERAL = 10;
 
-        // Lexer Colors
-        private int FORE_COLOR = 0x000000;
-        private int BACK_COLOR = 0xFFFFFF;
-        private int COMMENT_COLOR = 0x008020;
-        private int STRING_COLOR = 0xCC6633;
-        private int OPERATOR_COLOR = 0x800000;
-        private int KEYWORD_COLOR = 0x7777FF;
-        private int OBJECT_COLOR = 0x006060;
-        private int METHOD_COLOR = 0x802020;
-        private int LITERAL_COLOR = 0xDD6633;
-
         List<SBStyle> styles = new List<SBStyle>();
         int LastLineCount = 0;
         bool isDirty = false;
@@ -56,7 +45,6 @@ namespace SB_IDE
         string AutoCData = "";
         Timer AutoCTimer;
         public SBObjects sbObjects = new SBObjects();
-        public Dictionary<string, int> DefaultColors { get; }
         public int toolTipPosition = 0;
         int theme = 0;
         string keywords = "Sub|EndSub|For|To|Step|EndFor|If|Then|Else|ElseIf|EndIf|While|EndWhile|Goto";
@@ -70,7 +58,6 @@ namespace SB_IDE
             this.textArea = textArea;
 
             // STYLING
-            DefaultColors = Colors;
             InitSyntaxColoring();
             InitAutoComplete();
 
@@ -166,45 +153,14 @@ namespace SB_IDE
             isDirty = true;
         }
 
-        public Dictionary<string,int> Colors
-        {
-            get
-            {
-                Dictionary<string, int> colors = new Dictionary<string, int>();
-                colors["Foreground"] = FORE_COLOR;
-                colors["Background"] = BACK_COLOR;
-                colors["Comment"] = COMMENT_COLOR;
-                colors["String"] = STRING_COLOR;
-                colors["Operator"] = OPERATOR_COLOR;
-                colors["Keyword"] = KEYWORD_COLOR;
-                colors["Object"] = OBJECT_COLOR;
-                colors["Method"] = METHOD_COLOR;
-                colors["Literal"] = LITERAL_COLOR;
-                return colors;
-            }
-            set
-            {
-                Dictionary<string, int> colors = value;
-                FORE_COLOR = colors["Foreground"];
-                BACK_COLOR = colors["Background"];
-                COMMENT_COLOR = colors["Comment"];
-                STRING_COLOR = colors["String"];
-                OPERATOR_COLOR = colors["Operator"];
-                KEYWORD_COLOR = colors["Keyword"];
-                OBJECT_COLOR = colors["Object"];
-                METHOD_COLOR = colors["Method"];
-                LITERAL_COLOR = colors["Literal"];
-            }
-        }
-
         private void InitSyntaxColoring()
         {
-            Color foreColor = IntToColor(FORE_COLOR);
-            Color backColor = IntToColor(BACK_COLOR);
+            Color foreColor = IntToColor(MainWindow.FORE_COLOR);
+            Color backColor = IntToColor(MainWindow.BACK_COLOR);
             if (theme == 1)
             {
-                foreColor = IntToColor(BACK_COLOR);
-                backColor = IntToColor(FORE_COLOR);
+                foreColor = IntToColor(MainWindow.BACK_COLOR);
+                backColor = IntToColor(MainWindow.FORE_COLOR);
             }
 
             // Configure the default style
@@ -218,16 +174,16 @@ namespace SB_IDE
             textArea.StyleClearAll();
 
             textArea.Styles[STYLE_SPACE].ForeColor = foreColor;
-            textArea.Styles[STYLE_COMMENT].ForeColor = IntToColor(COMMENT_COLOR);
-            textArea.Styles[STYLE_STRING].ForeColor = IntToColor(STRING_COLOR);
-            textArea.Styles[STYLE_OPERATOR].ForeColor = IntToColor(OPERATOR_COLOR);
-            textArea.Styles[STYLE_KEYWORD].ForeColor = IntToColor(KEYWORD_COLOR);
-            textArea.Styles[STYLE_OBJECT].ForeColor = IntToColor(OBJECT_COLOR);
-            textArea.Styles[STYLE_METHOD].ForeColor = IntToColor(METHOD_COLOR);
+            textArea.Styles[STYLE_COMMENT].ForeColor = IntToColor(MainWindow.COMMENT_COLOR);
+            textArea.Styles[STYLE_STRING].ForeColor = IntToColor(MainWindow.STRING_COLOR);
+            textArea.Styles[STYLE_OPERATOR].ForeColor = IntToColor(MainWindow.OPERATOR_COLOR);
+            textArea.Styles[STYLE_KEYWORD].ForeColor = IntToColor(MainWindow.KEYWORD_COLOR);
+            textArea.Styles[STYLE_OBJECT].ForeColor = IntToColor(MainWindow.OBJECT_COLOR);
+            textArea.Styles[STYLE_METHOD].ForeColor = IntToColor(MainWindow.METHOD_COLOR);
             textArea.Styles[STYLE_SUBROUTINE].ForeColor = foreColor;
             textArea.Styles[STYLE_LABEL].ForeColor = foreColor;
             textArea.Styles[STYLE_VARIABLE].ForeColor = foreColor;
-            textArea.Styles[STYLE_LITERAL].ForeColor = IntToColor(LITERAL_COLOR);
+            textArea.Styles[STYLE_LITERAL].ForeColor = IntToColor(MainWindow.LITERAL_COLOR);
 
             textArea.Styles[STYLE_COMMENT].Italic = true;
             textArea.Styles[STYLE_KEYWORD].Bold = true;

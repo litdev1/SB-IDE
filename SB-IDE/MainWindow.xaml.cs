@@ -27,9 +27,99 @@ namespace SB_IDE
     /// </summary>
     public partial class MainWindow : RibbonWindow
     {
+        // Main Window Colors
+        public static int BACKGROUND_COLOR = 0xDFE9F5;
+        public static int SPLITTER_COLOR = 0x96AFFF;
+        // Text Area Colors
+        public static int BACK_MARGIN_COLOR = 0xF8F8F8;
+        public static int FORE_MARGIN_COLOR = 0x5C5C5C;
+        public static int BACK_BOOKMARK_COLOR = 0x5050A0;
+        public static int FORE_BOOKMARK_COLOR = 0x5050A0;
+        public static int BACK_BREAKPOINT_COLOR = 0xFF003B;
+        public static int FORE_BREAKPOINT_COLOR = 0xFF003B;
+        public static int SELECT_COLOR = 0xCCDDFF;
+        public static int HIGHLIGHT_COLOR = 0xFFFF50;
+        // Lexer Colors
+        public static int FORE_COLOR = 0x000000;
+        public static int BACK_COLOR = 0xFFFFFF;
+        public static int COMMENT_COLOR = 0x008020;
+        public static int STRING_COLOR = 0xCC6633;
+        public static int OPERATOR_COLOR = 0x800000;
+        public static int KEYWORD_COLOR = 0x7777FF;
+        public static int OBJECT_COLOR = 0x006060;
+        public static int METHOD_COLOR = 0x802020;
+        public static int LITERAL_COLOR = 0xDD6633;
+
+        public Dictionary<string, int> DefaultColors { get; }
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DefaultColors = IDEColors;
+        }
+
+        public Dictionary<string, int> IDEColors
+        {
+            get
+            {
+                Dictionary<string, int> colors = new Dictionary<string, int>();
+
+                colors["W:Background"] = BACKGROUND_COLOR;
+                colors["W:Splitter"] = SPLITTER_COLOR;
+
+                colors["D:Margin Background"] = BACK_MARGIN_COLOR;
+                colors["D:Margin Foreground"] = FORE_MARGIN_COLOR;
+                colors["D:Bookmark Background"] = BACK_BOOKMARK_COLOR;
+                colors["D:Bookmark Foreground"] = FORE_BOOKMARK_COLOR;
+                colors["D:Breakpoint Background"] = BACK_BREAKPOINT_COLOR;
+                colors["D:Breakpoint Foreground"] = FORE_BREAKPOINT_COLOR;
+                colors["D:Select"] = SELECT_COLOR;
+                colors["D:Highlight"] = HIGHLIGHT_COLOR;
+
+                colors["L:Foreground"] = FORE_COLOR;
+                colors["L:Background"] = BACK_COLOR;
+                colors["L:Comment"] = COMMENT_COLOR;
+                colors["L:String"] = STRING_COLOR;
+                colors["L:Operator"] = OPERATOR_COLOR;
+                colors["L:Keyword"] = KEYWORD_COLOR;
+                colors["L:Object"] = OBJECT_COLOR;
+                colors["L:Method"] = METHOD_COLOR;
+                colors["L:Literal"] = LITERAL_COLOR;
+
+                return colors;
+            }
+            set
+            {
+                Dictionary<string, int> colors = value;
+
+                BACKGROUND_COLOR = colors["W:Background"];
+                SPLITTER_COLOR = colors["W:Splitter"];
+
+                BACK_MARGIN_COLOR = colors["D:Margin Background"];
+                FORE_MARGIN_COLOR = colors["D:Margin Foreground"];
+                BACK_BOOKMARK_COLOR = colors["D:Bookmark Background"];
+                FORE_BOOKMARK_COLOR = colors["D:Bookmark Foreground"];
+                BACK_BREAKPOINT_COLOR = colors["D:Breakpoint Background"];
+                FORE_BREAKPOINT_COLOR = colors["D:Breakpoint Foreground"];
+                SELECT_COLOR = colors["D:Select"];
+                HIGHLIGHT_COLOR = colors["D:Highlight"];
+
+                FORE_COLOR = colors["L:Foreground"];
+                BACK_COLOR = colors["L:Background"];
+                COMMENT_COLOR = colors["L:Comment"];
+                STRING_COLOR = colors["L:String"];
+                OPERATOR_COLOR = colors["L:Operator"];
+                KEYWORD_COLOR = colors["L:Keyword"];
+                OBJECT_COLOR = colors["L:Object"];
+                METHOD_COLOR = colors["L:Method"];
+                LITERAL_COLOR = colors["L:Literal"];
+            }
+        }
+
+        public static Color IntToColor(int rgb)
+        {
+            return Color.FromArgb(255, (byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -492,6 +582,13 @@ namespace SB_IDE
 
         private void dataGridDebug_CurrentCellChanged(object sender, EventArgs e)
         {
+        }
+
+        private void settingsColor_Click(object sender, RoutedEventArgs e)
+        {
+            Dialogs.Colours fs = new Dialogs.Colours(this);
+            fs.ShowDialog();
+            SetWindowColors();
         }
     }
 }

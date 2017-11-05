@@ -102,6 +102,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialogs\Colours.xaml.cs">
+      <DependentUpon>Colours.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FileSearcher.xaml.cs">
       <DependentUpon>FileSearcher.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
     <Compile Include="SearchManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Settings1.cs" />
+    <Page Include="Dialogs\Colours.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\FileSearcher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -391,6 +398,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Delete frame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Contrast.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
