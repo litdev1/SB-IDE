@@ -142,61 +142,54 @@ namespace SB_IDE
                         {
                             if (type.IsPublic && type.IsDefined(SmallBasicTypeAttribute, false))
                             {
-                                foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
+                                obj = new SBObject();
+                                SBObjects.objects.Add(obj);
+                                obj.name = type.Name;
+
+                                MemberInfo[] memberInfos = type.GetMembers();
+                                foreach (MemberInfo memberInfo in memberInfos)
                                 {
-                                    if (xmlNode.Attributes["name"].InnerText == "T:" + type.FullName)
+                                    if (memberInfo.Name.StartsWith("add_") || memberInfo.Name.StartsWith("set_") || memberInfo.Name.StartsWith("get_")) continue;
+
+                                    if (memberInfo.MemberType == MemberTypes.Method)
                                     {
-                                        obj = new SBObject();
-                                        SBObjects.objects.Add(obj);
-                                        obj.name = type.Name;
-                                        XmlNode node1 = xmlNode.FirstChild;
-                                        if (node1.Name == "summary") obj.summary = node1.InnerText.Trim();
-                                    }
-                                    else if (xmlNode.Attributes["name"].InnerText.Contains(type.FullName + "."))
-                                    {
-                                        MemberInfo[] memberInfos = type.GetMembers();
-                                        foreach (MemberInfo memberInfo in memberInfos)
+                                        MethodInfo methodInfo = (MethodInfo)memberInfo;
+                                        if (!methodInfo.IsPublic || !methodInfo.IsStatic || methodInfo.IsDefined(HideFromIntellisenseAttribute, false)) continue;
+                                        if (methodInfo.ReturnType != Primitive && methodInfo.ReturnType != typeof(void)) continue;
+                                        bool parmOK = true;
+                                        foreach (ParameterInfo parameterInfo in methodInfo.GetParameters())
                                         {
-                                            if (memberInfo.Name.StartsWith("add_") || memberInfo.Name.StartsWith("set_") || memberInfo.Name.StartsWith("get_")) continue;
+                                            if (parameterInfo.ParameterType != Primitive) parmOK = false;
+                                        }
+                                        if (!parmOK) continue;
+                                    }
+                                    else if (memberInfo.MemberType == MemberTypes.Property)
+                                    {
+                                        if (((PropertyInfo)memberInfo).IsDefined(HideFromIntellisenseAttribute, false)) continue;
+                                    }
+                                    else if (memberInfo.MemberType == MemberTypes.Event)
+                                    {
+                                        if (((EventInfo)memberInfo).IsDefined(HideFromIntellisenseAttribute, false)) continue;
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
 
-                                            //MethodInfo methodInfo = (MethodInfo)memberInfo;
-                                            string[] parts = memberInfo.ToString().Split(' ');
-                                            string fullName = memberInfo.DeclaringType.FullName + ".";
-                                            for (int i = 1; i < parts.Length; i++) fullName += parts[i];
-                                            string xmlName = xmlNode.Attributes["name"].InnerText;
-                                            if (xmlName.StartsWith("M:") && !xmlName.EndsWith(")")) xmlName += "()";
-                                            if (!xmlName.EndsWith(fullName)) continue;
+                                    Member member = new Member();
+                                    obj.members.Add(member);
+                                    member.name = memberInfo.Name;
+                                    member.type = memberInfo.MemberType;
 
-                                            if (memberInfo.MemberType == MemberTypes.Method)
-                                            {
-                                                MethodInfo methodInfo = (MethodInfo)memberInfo;
-                                                if (!methodInfo.IsPublic || !methodInfo.IsStatic || methodInfo.IsDefined(HideFromIntellisenseAttribute, false)) continue;
-                                                if (methodInfo.ReturnType != Primitive && methodInfo.ReturnType != typeof(void)) continue;
-                                                bool parmOK = true;
-                                                foreach (ParameterInfo parameterInfo in methodInfo.GetParameters())
-                                                {
-                                                    if (parameterInfo.ParameterType != Primitive) parmOK = false;
-                                                }
-                                                if (!parmOK) continue;
-                                            }
-                                            else if (memberInfo.MemberType == MemberTypes.Property)
-                                            {
-                                                if (((PropertyInfo)memberInfo).IsDefined(HideFromIntellisenseAttribute, false)) continue;
-                                            }
-                                            else if (memberInfo.MemberType == MemberTypes.Event)
-                                            {
-                                                if (((EventInfo)memberInfo).IsDefined(HideFromIntellisenseAttribute, false)) continue;
-                                            }
-                                            else
-                                            {
-                                                continue;
-                                            }
-
-                                            Member member = new Member();
-                                            obj.members.Add(member);
-                                            member.name = memberInfo.Name;
-                                            member.type = memberInfo.MemberType;
-
+                                    foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
+                                    {
+                                        if (xmlNode.Attributes["name"].InnerText == "T:" + type.FullName)
+                                        {
+                                            XmlNode node1 = xmlNode.FirstChild;
+                                            if (node1.Name == "summary") obj.summary = node1.InnerText.Trim();
+                                        }
+                                        else if (xmlNode.Attributes["name"].InnerText.Contains(type.FullName + "."))
+                                        {
                                             foreach (XmlNode node in xmlNode.ChildNodes)
                                             {
                                                 switch (node.Name)
@@ -223,7 +216,6 @@ namespace SB_IDE
                                                         break;
                                                 }
                                             }
-                                            break;
                                         }
                                     }
                                 }
