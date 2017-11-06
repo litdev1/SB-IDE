@@ -117,10 +117,6 @@ namespace SB_IDE.Dialogs
             Close();
         }
 
-        private void DataGridTextColumn_PastingCellClipboardContent(object sender, DataGridCellClipboardEventArgs e)
-        {
-        }
-
         private void dataGridColours_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.V && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)

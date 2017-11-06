@@ -22,7 +22,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Red" Width="50" Binding="{Binding R}" PastingCellClipboardContent="DataGridTextColumn_PastingCellClipboardContent"/>
+                <DataGridTextColumn Header="Red" Width="50" Binding="{Binding R}"/>
                 <DataGridTextColumn Header="Green" Width="50" Binding="{Binding G}"/>
                 <DataGridTextColumn Header="Blue" Width="50" Binding="{Binding B}"/>
             </DataGrid.Columns>
