@@ -628,12 +628,12 @@ namespace SB_IDE
         {
             if (null != activeDocument.Proc && activeDocument.Proc.HasExited)
             {
+                activeDocument.ClearHighlights();
                 Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
                 activeDocument.Proc = null;
                 if (null == activeDocument.debug) return;
                 activeDocument.debug.Dispose();
                 activeDocument.debug = null;
-                activeDocument.ClearHighlights();
             }
         }
 

@@ -144,18 +144,16 @@ namespace SB_IDE
                             {
                                 foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
                                 {
-                                    if (xmlNode.Attributes["name"].InnerText.Contains(type.FullName))
+                                    if (xmlNode.Attributes["name"].InnerText == "T:" + type.FullName)
                                     {
-                                        if (xmlNode.Attributes["name"].InnerText.StartsWith("T:"))
-                                        {
-                                            obj = new SBObject();
-                                            SBObjects.objects.Add(obj);
-                                            obj.name = type.Name;
-                                            XmlNode node1 = xmlNode.FirstChild;
-                                            if (node1.Name == "summary") obj.summary = node1.InnerText.Trim();
-                                            continue;
-                                        }
-
+                                        obj = new SBObject();
+                                        SBObjects.objects.Add(obj);
+                                        obj.name = type.Name;
+                                        XmlNode node1 = xmlNode.FirstChild;
+                                        if (node1.Name == "summary") obj.summary = node1.InnerText.Trim();
+                                    }
+                                    else if (xmlNode.Attributes["name"].InnerText.Contains(type.FullName + "."))
+                                    {
                                         MemberInfo[] memberInfos = type.GetMembers();
                                         foreach (MemberInfo memberInfo in memberInfos)
                                         {
@@ -166,18 +164,20 @@ namespace SB_IDE
                                             string fullName = memberInfo.DeclaringType.FullName + ".";
                                             for (int i = 1; i < parts.Length; i++) fullName += parts[i];
                                             string xmlName = xmlNode.Attributes["name"].InnerText;
-                                            if (!xmlName.EndsWith(")")) xmlName += "()";
-                                            if (!xmlName.Contains(fullName)) continue;
+                                            if (xmlName.StartsWith("M:") && !xmlName.EndsWith(")")) xmlName += "()";
+                                            if (!xmlName.EndsWith(fullName)) continue;
 
                                             if (memberInfo.MemberType == MemberTypes.Method)
                                             {
                                                 MethodInfo methodInfo = (MethodInfo)memberInfo;
                                                 if (!methodInfo.IsPublic || !methodInfo.IsStatic || methodInfo.IsDefined(HideFromIntellisenseAttribute, false)) continue;
                                                 if (methodInfo.ReturnType != Primitive && methodInfo.ReturnType != typeof(void)) continue;
+                                                bool parmOK = true;
                                                 foreach (ParameterInfo parameterInfo in methodInfo.GetParameters())
                                                 {
-                                                    if (parameterInfo.GetType() != Primitive) continue;
+                                                    if (parameterInfo.ParameterType != Primitive) parmOK = false;
                                                 }
+                                                if (!parmOK) continue;
                                             }
                                             else if (memberInfo.MemberType == MemberTypes.Property)
                                             {
