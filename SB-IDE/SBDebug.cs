@@ -352,10 +352,14 @@ namespace SB_IDE
                 }
                 if (null != sbDocument.Proc)
                 {
+                    sbDocument.ClearHighlights();
                     MainWindow.Errors.Add(new Error("Run : " + "Successfully terminated run with process " + sbDocument.Proc.Id));
-                    sbDocument.Proc = null;
                 }
                 File.Delete(tempExe);
+                sbDocument.Proc = null;
+                if (null == sbDocument.debug) return;
+                sbDocument.debug.Dispose();
+                sbDocument.debug = null;
             }
             catch
             {
@@ -516,7 +520,6 @@ namespace SB_IDE
                 // free managed resources
                 try
                 {
-                    sbDocument.ClearHighlights();
                     if (null != tcpServer) tcpServer.Close();
                     if (null != tcpListener) tcpListener.Stop();
                     tcpServer = null;
@@ -524,6 +527,7 @@ namespace SB_IDE
                     if (!process.HasExited) process.Kill();
                     if (null != sbDocument.Proc)
                     {
+                        sbDocument.ClearHighlights();
                         MainWindow.Errors.Add(new Error("Run : " + "Successfully terminated run with process " + sbDocument.Proc.Id));
                         sbDocument.Proc = null;
                     }

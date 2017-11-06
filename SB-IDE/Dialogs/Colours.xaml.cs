@@ -116,6 +116,45 @@ namespace SB_IDE.Dialogs
             mainWindow.IDEColors = ideColors;
             Close();
         }
+
+        private void DataGridTextColumn_PastingCellClipboardContent(object sender, DataGridCellClipboardEventArgs e)
+        {
+        }
+
+        private void dataGridColours_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.V && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                try
+                {
+                    string data = (string)Clipboard.GetData(DataFormats.Text);
+                    string[] rows = data.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (rows.Length == colours.Count)
+                    {
+                        for (int i = 0; i < rows.Length; i++)
+                        {
+                            string row = rows[i];
+                            string[] cols = row.Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                            if (cols.Length >= 3)
+                            {
+                                byte R = 0, G = 0, B = 0;
+                                if (byte.TryParse(cols[cols.Length - 3], out R) && byte.TryParse(cols[cols.Length - 2], out G) && byte.TryParse(cols[cols.Length - 1], out B))
+                                {
+                                    colours[i].R = R;
+                                    colours[i].G = G;
+                                    colours[i].B = B;
+                                }
+                            }
+                        }
+                    }
+                    dataGridColours.Items.Refresh();
+                }
+                catch
+                {
+
+                }
+            }
+        }
     }
 
     public class ColourData
