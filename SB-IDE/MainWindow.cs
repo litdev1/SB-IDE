@@ -691,13 +691,30 @@ namespace SB_IDE
                         ImageSource imgSource = null;
                         switch (mem.type)
                         {
-                            case System.Reflection.MemberTypes.Method:
+                            case MemberTypes.Method:
                                 imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseMethod);
                                 break;
-                            case System.Reflection.MemberTypes.Property:
-                                imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseProperty);
+                            case MemberTypes.Property:
+                                if (obj.name == "LDColours")
+                                {
+                                    try
+                                    {
+                                        System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(50, 50);
+                                        System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmp);
+                                        g.Clear(System.Drawing.Color.FromName(mem.name));
+                                        imgSource = ImageSourceFromBitmap(bmp);
+                                    }
+                                    catch
+                                    {
+                                        imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseProperty);
+                                    }
+                                }
+                                else
+                                {
+                                    imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseProperty);
+                                }
                                 break;
-                            case System.Reflection.MemberTypes.Event:
+                            case MemberTypes.Event:
                                 imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseEvent);
                                 break;
                         }
@@ -724,13 +741,16 @@ namespace SB_IDE
                         tb.Measure(size);
                         top += 10 + tb.DesiredSize.Height;
                         tb.MouseEnter += new MouseEventHandler(methodInfo);
-                        tb.ToolTip = new TextBlock()
+                        if (mem.summary != "")
                         {
-                            Text = FormatIntellisense(mem.summary),
-                            Width = 200,
-                            TextWrapping = TextWrapping.Wrap,
-                            FontSize = 12
-                        };
+                            tb.ToolTip = new TextBlock()
+                            {
+                                Text = FormatIntellisense(mem.summary),
+                                Width = 200,
+                                TextWrapping = TextWrapping.Wrap,
+                                FontSize = 12
+                            };
+                        }
                     }
 
                     canvasInfo.MinHeight = top + 20;
@@ -743,7 +763,7 @@ namespace SB_IDE
                     string name = "";
                     switch (member.type)
                     {
-                        case System.Reflection.MemberTypes.Method:
+                        case MemberTypes.Method:
                             imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseMethod);
                             name = member.name;
                             if (member.arguments.Count > 0)
@@ -761,11 +781,11 @@ namespace SB_IDE
                                 name += "()";
                             }
                             break;
-                        case System.Reflection.MemberTypes.Property:
+                        case MemberTypes.Property:
                             imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseProperty);
                             name = member.name;
                             break;
-                        case System.Reflection.MemberTypes.Event:
+                        case MemberTypes.Event:
                             imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseEvent);
                             name = member.name;
                             break;

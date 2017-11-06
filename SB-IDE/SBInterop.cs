@@ -180,15 +180,22 @@ namespace SB_IDE
                                     obj.members.Add(member);
                                     member.name = memberInfo.Name;
                                     member.type = memberInfo.MemberType;
+                                    member.summary = "";
 
+                                    string[] array = memberInfo.ToString().Split(new char[] { ' ' });
+                                    string dllName = memberInfo.DeclaringType.FullName + ".";
+                                    for (int i = 1; i < array.Length; i++) dllName += array[i];
+                                    if (dllName.EndsWith("()")) dllName = dllName.Substring(0, dllName.Length - 2);
+
+                                    XmlNode node1 = null;
                                     foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
                                     {
                                         if (xmlNode.Attributes["name"].InnerText == "T:" + type.FullName)
                                         {
-                                            XmlNode node1 = xmlNode.FirstChild;
+                                            node1 = xmlNode.FirstChild;
                                             if (node1.Name == "summary") obj.summary = node1.InnerText.Trim();
                                         }
-                                        else if (xmlNode.Attributes["name"].InnerText.Contains(type.FullName + "."))
+                                        else if (null != node1 && xmlNode.Attributes["name"].InnerText.EndsWith(dllName))
                                         {
                                             foreach (XmlNode node in xmlNode.ChildNodes)
                                             {
@@ -217,8 +224,12 @@ namespace SB_IDE
                                                 }
                                             }
                                         }
+                                        else if (null != node1 && !xmlNode.Attributes["name"].InnerText.Contains(type.FullName))
+                                        {
+                                            break;
+                                        }
                                     }
-                                }
+                               }
                             }
                             if (null != obj) obj.members.Sort();
                         }
