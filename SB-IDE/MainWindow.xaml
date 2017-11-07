@@ -68,7 +68,7 @@
                                        VerticalContentAlignment="Center" Content="Recent File List" FontWeight="Bold"  />
                                 </StackPanel>
                             </Border>
-                            <ListBox x:Name="listBoxRecent" Grid.Row="1">
+                            <ListBox Grid.Row="1">
                                 <ListBox.Background>
                                     <ImageBrush ImageSource="images/appworkspace.png"/>
                                 </ListBox.Background>

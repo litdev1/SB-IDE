@@ -222,18 +222,7 @@ namespace SB_IDE
                 WindowState = WindowState.Maximized;
             }
 
-            int i = 0;
-            if (Properties.Settings.Default.MRU.Count > i) MRU1.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU2.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU3.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU4.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU5.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU6.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU7.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU8.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU9.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU10.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-
+            int i;
             dualScreen = Properties.Settings.Default.SplitScreen;
             wrap = Properties.Settings.Default.WordWrap;
             indent = Properties.Settings.Default.IndentGuides;
@@ -261,6 +250,18 @@ namespace SB_IDE
                 ideColors[data[0]] = value;
             }
             IDEColors = ideColors;
+
+            i = 0;
+            if (Properties.Settings.Default.MRU.Count > i) MRU1.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            if (Properties.Settings.Default.MRU.Count > i) MRU2.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            if (Properties.Settings.Default.MRU.Count > i) MRU3.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            if (Properties.Settings.Default.MRU.Count > i) MRU4.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            if (Properties.Settings.Default.MRU.Count > i) MRU5.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            if (Properties.Settings.Default.MRU.Count > i) MRU6.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            if (Properties.Settings.Default.MRU.Count > i) MRU7.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            if (Properties.Settings.Default.MRU.Count > i) MRU8.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            if (Properties.Settings.Default.MRU.Count > i) MRU9.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            if (Properties.Settings.Default.MRU.Count > i) MRU10.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
         }
 
         private void ResetSettings()
@@ -980,8 +981,6 @@ namespace SB_IDE
             FontSize = 12 + zoom;
             statusBar.FontSize = 12 + zoom;
             ribbon.FontSize = 12 + zoom;
-            listBoxRecent.FontSize = 12 + zoom;
-            glyphRun.FontRenderingEmSize = 12 + zoom;
         }
 
         private void methodInfo(object sender, MouseEventArgs e)
