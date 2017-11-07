@@ -88,23 +88,18 @@
                     <RibbonApplicationMenu.SmallImageSource>
                         <DrawingImage>
                             <DrawingImage.Drawing>
-                                <GlyphRunDrawing ForegroundBrush="White">
-                                    <GlyphRunDrawing.GlyphRun>
-                                        <GlyphRun x:Name="glyphRun"
-                            CaretStops="{x:Null}" 
-                            ClusterMap="{x:Null}" 
-                            IsSideways="False" 
-                            GlyphOffsets="{x:Null}" 
-                            GlyphIndices="41 76 79 72" 
-                            FontRenderingEmSize="12" 
-                            DeviceFontName="{x:Null}" 
-                            AdvanceWidths="5.859375 2.90625 2.90625 6.275390625">
-                                            <GlyphRun.GlyphTypeface>
-                                                <GlyphTypeface FontUri="C:\WINDOWS\Fonts\SEGOEUI.TTF"/>
-                                            </GlyphRun.GlyphTypeface>
-                                        </GlyphRun>
-                                    </GlyphRunDrawing.GlyphRun>
-                                </GlyphRunDrawing>
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry Rect="0,0,20,20"></RectangleGeometry>
+                                    </GeometryDrawing.Geometry>
+                                    <GeometryDrawing.Brush>
+                                        <VisualBrush Stretch="Uniform">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="File" Foreground="White" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </GeometryDrawing.Brush>
+                                </GeometryDrawing>
                             </DrawingImage.Drawing>
                         </DrawingImage>
                     </RibbonApplicationMenu.SmallImageSource>
