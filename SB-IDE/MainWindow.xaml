@@ -13,7 +13,7 @@
         <SolidColorBrush x:Key="GridBrushForeground" Color="#FF000000"/>
     </RibbonWindow.Resources>
     <DockPanel Margin="0">
-        <StatusBar Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
+        <StatusBar x:Name="statusBar" Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
             <StatusBarItem x:Name="statusVersion" Content="Version"/>
             <Separator/>
             <StatusBarItem x:Name="statusLines" Content="Lines"/>
@@ -68,7 +68,7 @@
                                        VerticalContentAlignment="Center" Content="Recent File List" FontWeight="Bold"  />
                                 </StackPanel>
                             </Border>
-                            <ListBox Grid.Row="1">
+                            <ListBox x:Name="listBoxRecent" Grid.Row="1">
                                 <ListBox.Background>
                                     <ImageBrush ImageSource="images/appworkspace.png"/>
                                 </ListBox.Background>
@@ -90,7 +90,7 @@
                             <DrawingImage.Drawing>
                                 <GlyphRunDrawing ForegroundBrush="White">
                                     <GlyphRunDrawing.GlyphRun>
-                                        <GlyphRun
+                                        <GlyphRun x:Name="glyphRun"
                             CaretStops="{x:Null}" 
                             ClusterMap="{x:Null}" 
                             IsSideways="False" 

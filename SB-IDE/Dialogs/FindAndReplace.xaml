@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="Find and Replace" Height="204" Width="444.6" ShowInTaskbar="False" Deactivated="Window_Deactivated">
     <Grid Margin="0">
-        <TextBox x:Name="textBoxFind" Margin="70,10,10,0" TextWrapping="Wrap" Height="25" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="Find" Margin="10,10,0,0" VerticalAlignment="Top" Height="25" Width="55" HorizontalAlignment="Left"/>
-        <TextBox x:Name="textBoxReplace" Margin="70,40,10,0" TextWrapping="Wrap" Height="25" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy" Content="Replace" Margin="10,40,0,0" VerticalAlignment="Top" Height="25" Width="55" HorizontalAlignment="Left"/>
-        <Button x:Name="buttonFind" Content="Find" HorizontalAlignment="Right" Margin="0,89,10,0" VerticalAlignment="Top" Width="75" Click="buttonFind_Click"/>
-        <Button x:Name="buttonReplace" Content="Replace" HorizontalAlignment="Right" Margin="0,113,10,0" VerticalAlignment="Top" Width="75" Click="buttonReplace_Click"/>
-        <Button x:Name="buttonReplaceAll" Content="Replace All" HorizontalAlignment="Right" Margin="0,137,10,0" VerticalAlignment="Top" Width="75" Click="buttonReplaceAll_Click"/>
+        <TextBox x:Name="textBoxFind" Margin="69,10,10.4,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Find" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="textBoxReplace" Margin="69,40,10.4,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy" Content="Replace" Margin="10,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Button x:Name="buttonFind" Content="Find" HorizontalAlignment="Right" Margin="0,0,10.4,58.4" VerticalAlignment="Bottom" Click="buttonFind_Click" RenderTransformOrigin="0.523,-0.562" MinWidth="75"/>
+        <Button x:Name="buttonReplace" Content="Replace" HorizontalAlignment="Right" Margin="0,0,10.4,34.4" VerticalAlignment="Bottom" Click="buttonReplace_Click" MinWidth="75"/>
+        <Button x:Name="buttonReplaceAll" Content="Replace All" HorizontalAlignment="Right" Margin="0,0,10.4,10.4" VerticalAlignment="Bottom" Click="buttonReplaceAll_Click" MinWidth="75"/>
 
     </Grid>
 </Window>

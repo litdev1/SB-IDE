@@ -163,8 +163,8 @@ namespace SB_IDE
                 Text = "Intellisense",
                 TextWrapping = TextWrapping.Wrap,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                FontSize = 24
-            };
+                FontSize = 24 + zoom
+        };
             canvasInfo.Children.Add(tb);
             tb.Measure(size);
             double canvasWidth = Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
@@ -177,7 +177,7 @@ namespace SB_IDE
                 "Additionally, a popup description for methods can be viewed in this window by hovering the mouse over methods, properties or events when viewing an object.",
                 TextWrapping = TextWrapping.Wrap,
                 HorizontalAlignment = HorizontalAlignment.Left,
-                FontSize = 14,
+                FontSize = 14 + zoom,
                 Width = (canvasWidth - 50)
             };
             canvasInfo.Children.Add(tb);
@@ -272,7 +272,7 @@ namespace SB_IDE
 
         private Grid Ellipsis(string txt)
         {
-            TextBlock tb = new TextBlock() { Text = txt, FontSize = 14, FontWeight = FontWeights.DemiBold };
+            TextBlock tb = new TextBlock() { Text = txt, FontSize = 14 + zoom, FontWeight = FontWeights.DemiBold };
             tb.ToolTip = txt;
             tb.Text = Path.GetFileName(txt);
 
@@ -542,6 +542,7 @@ namespace SB_IDE
                     UpdateIntellisense(showObject, showMember);
                     UpdateFileSeracher();
                     UpdateStatusBar();
+                    UpdateZoom();
                 }
                 else
                 {
@@ -554,6 +555,7 @@ namespace SB_IDE
                         UpdateIntellisense(showObject, showMember);
                         UpdateFileSeracher();
                         UpdateStatusBar();
+                        UpdateZoom();
                     });
                 }
             }
@@ -663,7 +665,7 @@ namespace SB_IDE
                         Text = obj.name,
                         Width = 250,
                         TextWrapping = TextWrapping.Wrap,
-                        FontSize = 18
+                        FontSize = 18 + zoom
                     };
                     canvasInfo.Children.Add(tb);
                     Canvas.SetLeft(tb, 2+left+50);
@@ -676,7 +678,7 @@ namespace SB_IDE
                         Text = FormatIntellisense(obj.summary),
                         Width = 250,
                         TextWrapping  = TextWrapping.Wrap,
-                        FontSize = 14
+                        FontSize = 14 + zoom
                     };
                     canvasInfo.Children.Add(tb);
                     Canvas.SetLeft(tb, 2 + left + 50);
@@ -733,7 +735,7 @@ namespace SB_IDE
                             Text = mem.name,
                             Width = 300,
                             TextWrapping = TextWrapping.Wrap,
-                            FontSize = 12
+                            FontSize = 12 + zoom
                         };
                         canvasInfo.Children.Add(tb);
                         Canvas.SetLeft(tb, left+25);
@@ -748,7 +750,7 @@ namespace SB_IDE
                                 Text = FormatIntellisense(mem.summary),
                                 Width = 200,
                                 TextWrapping = TextWrapping.Wrap,
-                                FontSize = 12
+                                FontSize = 12 + zoom
                             };
                         }
                     }
@@ -805,7 +807,7 @@ namespace SB_IDE
                         Text = name,
                         Width = 250,
                         TextWrapping = TextWrapping.Wrap,
-                        FontSize = 18
+                        FontSize = 18 + zoom
                     };
                     canvasInfo.Children.Add(tb);
                     Canvas.SetLeft(tb, 2 + left + 50);
@@ -818,7 +820,7 @@ namespace SB_IDE
                         Text = FormatIntellisense(member.summary),
                         Width = 250,
                         TextWrapping = TextWrapping.Wrap,
-                        FontSize = 14
+                        FontSize = 14 + zoom
                     };
                     canvasInfo.Children.Add(tb);
                     Canvas.SetLeft(tb, 2 + left + 50);
@@ -833,7 +835,7 @@ namespace SB_IDE
                             Text = "Arguments",
                             Width = 300,
                             TextWrapping = TextWrapping.Wrap,
-                            FontSize = 14,
+                            FontSize = 14 + zoom,
                             FontWeight = FontWeights.Bold
                         };
                         canvasInfo.Children.Add(tb);
@@ -849,7 +851,7 @@ namespace SB_IDE
                                 Text = pair.Key,
                                 Width = 300,
                                 TextWrapping = TextWrapping.Wrap,
-                                FontSize = 14,
+                                FontSize = 14 + zoom,
                                 Foreground = new SolidColorBrush(Colors.Crimson)
                             };
                             canvasInfo.Children.Add(tb);
@@ -863,7 +865,7 @@ namespace SB_IDE
                                 Text = FormatIntellisense(pair.Value),
                                 Width = 300,
                                 TextWrapping = TextWrapping.Wrap,
-                                FontSize = 12
+                                FontSize = 12 + zoom
                             };
                             canvasInfo.Children.Add(tb);
                             Canvas.SetLeft(tb, left);
@@ -880,7 +882,7 @@ namespace SB_IDE
                             Text = "Returns",
                             Width = 300,
                             TextWrapping = TextWrapping.Wrap,
-                            FontSize = 14,
+                            FontSize = 14 + zoom,
                             FontWeight = FontWeights.Bold
                         };
                         canvasInfo.Children.Add(tb);
@@ -894,7 +896,7 @@ namespace SB_IDE
                             Text = FormatIntellisense(member.returns),
                             Width = 300,
                             TextWrapping = TextWrapping.Wrap,
-                            FontSize = 12
+                            FontSize = 12 + zoom
                         };
                         canvasInfo.Children.Add(tb);
                         Canvas.SetLeft(tb, left);
@@ -912,7 +914,7 @@ namespace SB_IDE
                                 Text = pair.Key,
                                 Width = 300,
                                 TextWrapping = TextWrapping.Wrap,
-                                FontSize = 14,
+                                FontSize = 14 + zoom,
                                 FontWeight = FontWeights.Bold
                             };
                             canvasInfo.Children.Add(tb);
@@ -926,7 +928,7 @@ namespace SB_IDE
                                 Text = FormatIntellisense(pair.Value),
                                 Width = 300,
                                 TextWrapping = TextWrapping.Wrap,
-                                FontSize = 12
+                                FontSize = 12 + zoom
                             };
                             canvasInfo.Children.Add(tb);
                             Canvas.SetLeft(tb, left);
@@ -971,6 +973,15 @@ namespace SB_IDE
             statusLines.Content = activeDocument.TextArea.Lines.Count + " lines";
             statusCaps.Content = Keyboard.IsKeyToggled(Key.CapsLock) ? "Caps Lock" : "";
             statusInsert.Content = Keyboard.IsKeyToggled(Key.Insert) ? "Insert" : "";
+        }
+
+        private void UpdateZoom()
+        {
+            FontSize = 12 + zoom;
+            statusBar.FontSize = 12 + zoom;
+            ribbon.FontSize = 12 + zoom;
+            listBoxRecent.FontSize = 12 + zoom;
+            glyphRun.FontRenderingEmSize = 12 + zoom;
         }
 
         private void methodInfo(object sender, MouseEventArgs e)
@@ -1424,7 +1435,7 @@ namespace SB_IDE
     {
         public string FilePath;
         public string FileName;
-        public TextBlock textBlock = new TextBlock() { FontWeight = FontWeights.Bold, FontSize = 12 };
+        public TextBlock textBlock = new TextBlock() { FontWeight = FontWeights.Bold, FontSize = 12 + MainWindow.zoom };
 
         public TabHeader(string filePath)
         {

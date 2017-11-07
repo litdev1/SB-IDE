@@ -23,6 +23,9 @@ namespace SB_IDE.Dialogs
         {
             InitializeComponent();
 
+            FontSize = 12 + MainWindow.zoom;
+            label.FontSize = 16 + MainWindow.zoom;
+
             textBoxPublish.Focus();
             textBoxPublish.Text = key;
         }

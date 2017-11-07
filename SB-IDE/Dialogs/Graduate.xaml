@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Graduate" Height="210.89" Width="300">
     <Grid>
-        <Label Content="Export to Visual Basic" Margin="10,0,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>
+        <Label x:Name="label" Content="Export to Visual Basic" Margin="10,0,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>
         <TextBlock TextWrapping="WrapWithOverflow" Margin="10,37,9.6,0" VerticalAlignment="Top" Height="39">
 This wizard will convert your Small Basic program to Microsoft Visual Basic
         </TextBlock>

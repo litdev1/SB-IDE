@@ -31,6 +31,8 @@ namespace SB_IDE.Dialogs
         {
             InitializeComponent();
 
+            FontSize = 12 + MainWindow.zoom;
+
             Topmost = true;
             textBoxSearcherRoot.Text = RootPath;
             checkBoxSearcherWord.IsChecked = true;

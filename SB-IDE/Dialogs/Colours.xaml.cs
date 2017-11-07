@@ -28,6 +28,8 @@ namespace SB_IDE.Dialogs
 
             InitializeComponent();
 
+            FontSize = 12 + MainWindow.zoom;
+
             dataGridColours.ItemsSource = colours;
 
             var ideColors = mainWindow.IDEColors;

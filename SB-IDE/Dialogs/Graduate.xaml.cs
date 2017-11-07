@@ -28,6 +28,9 @@ namespace SB_IDE.Dialogs
         {
             InitializeComponent();
 
+            FontSize = 12 + MainWindow.zoom;
+            label.FontSize = 16 + MainWindow.zoom;
+
             OK = false;
             textBoxGraduate.Focus();
             textBoxGraduate.Text = ProjectPath;

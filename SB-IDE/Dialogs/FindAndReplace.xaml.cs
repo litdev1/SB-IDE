@@ -26,6 +26,8 @@ namespace SB_IDE.Dialogs
             this.sbDocument = sbDocument;
             InitializeComponent();
 
+            FontSize = 12 + MainWindow.zoom;
+
             Topmost = true;
             if (sbDocument.TextArea.SelectedText != "") textBoxFind.Text = sbDocument.TextArea.SelectedText;
             textBoxFind.Focus();
