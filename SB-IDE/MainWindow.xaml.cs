@@ -25,7 +25,7 @@ namespace SB_IDE
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : RibbonWindow
+    public partial class MainWindow : Window
     {
         // Main Window Colors
         public static int BACKGROUND_COLOR = 0xDFE9F5;

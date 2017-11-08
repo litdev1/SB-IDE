@@ -1,4 +1,4 @@
-﻿<RibbonWindow x:Class="SB_IDE.MainWindow"
+﻿<Window x:Class="SB_IDE.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:SB_IDE"
         mc:Ignorable="d"
         Title="SB-IDE" Height="600" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" Icon="AppIcon.ico" WindowStartupLocation="CenterScreen">
-    <RibbonWindow.Resources>
+    <Window.Resources>
         <CollectionViewSource x:Key="DebugDataSource"  CollectionViewType="ListCollectionView"/>
         <SolidColorBrush x:Key="SplitterBrush" Color="#FFF0F0F0"/>
         <SolidColorBrush x:Key="GridBrushBackground" Color="#FFF0F0F0"/>
         <SolidColorBrush x:Key="GridBrushForeground" Color="#FF000000"/>
-    </RibbonWindow.Resources>
+    </Window.Resources>
     <DockPanel Margin="0">
         <StatusBar x:Name="statusBar" Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
             <StatusBarItem x:Name="statusVersion" Content="Version"/>
@@ -39,19 +39,7 @@
                     <RibbonButton Label="Save" SmallImageSource="Images/Save.png" KeyTip="C" Click="fileSave_Click" ToolTipTitle="Save current program"/>
                     <RibbonButton Label="Save As" SmallImageSource="Images/Save as.png" KeyTip="C" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>
                     <RibbonButton Label="Save All" SmallImageSource="Images/Save all.png" KeyTip="C" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>
-                    -->
-            <!--<RibbonButton x:Name ="Save" SmallImageSource="Images\Save.png" />
-                    <RibbonSplitButton x:Name ="Undo" SmallImageSource="Images\Save.png" >
-                        <RibbonSplitMenuItem Header="Undo action #1" />
-                        <RibbonSplitMenuItem Header="Undo action #2" />
-                        <RibbonSplitMenuItem Header="Undo action #3" />
-                    </RibbonSplitButton>
-                    <RibbonSplitButton x:Name="Redo" SmallImageSource="Images\Save.png" >
-                        <RibbonSplitMenuItem Header="Redo action #1" />
-                        <RibbonSplitMenuItem Header="Redo action #2" />
-                    </RibbonSplitButton>-->
-            <!--
-                </RibbonQuickAccessToolBar>
+               </RibbonQuickAccessToolBar>
             </Ribbon.QuickAccessToolBar>-->
             <!-- Application Menu, located at the left-hand side (down arrow) -->
             <Ribbon.ApplicationMenu>
@@ -222,19 +210,18 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TabControl x:Name="tabControlSB1" Grid.Column="0" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="tabControlSB1_SelectionChanged" MouseDown="tabControlSB1_MouseDown" GotFocus="tabControlSB1_GotFocus">
-                        <TabItem Header="TabItem">
-                            <Grid Background="#FFE5E5E5"/>
-                        </TabItem>
-                        <TabItem Header="TabItem">
-                            <Grid Background="#FFE5E5E5"/>
+                        <TabItem Header="Untitled1">
+                            <Grid Background="#FFE5E5E5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80*"/>
+                                    <ColumnDefinition Width="229*"/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
                         </TabItem>
                     </TabControl>
                     <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
                     <TabControl x:Name="tabControlSB2" Grid.Column="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="tabControlSB2_SelectionChanged" MouseDown="tabControlSB2_MouseDown" GotFocus="tabControlSB2_GotFocus">
-                        <TabItem Header="TabItem">
-                            <Grid Background="#FFE5E5E5"/>
-                        </TabItem>
-                        <TabItem Header="TabItem">
+                        <TabItem Header="Untitled2">
                             <Grid Background="#FFE5E5E5"/>
                         </TabItem>
                     </TabControl>
@@ -324,4 +311,4 @@
             </TabControl>
         </Grid>
     </DockPanel>
-</RibbonWindow>
+</Window>
