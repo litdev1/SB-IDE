@@ -470,7 +470,7 @@ namespace SB_IDE
                     sbDocument.debug.GetHover(currentWord);
                 }
             }
-            else if (currentWord != "" && sbObjects.GetObjects(currentWord) != "")
+            if (currentWord != "" && sbObjects.GetObjects(currentWord) != "")
             {
                 showObjectData(currentWord);
              }
