@@ -15,10 +15,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Region" IsReadOnly="True" Binding="{Binding Region}"/>
                 <DataGridTextColumn Header="Label" IsReadOnly="True" Binding="{Binding Label}"/>
-                <DataGridTemplateColumn Header="Colour" IsReadOnly="True" Width="*" >
+                <DataGridTemplateColumn Header="Color" IsReadOnly="True" Width="*" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="dataGridColoursSet" ToolTip="Click to set colour" Tag="{Binding}" Loaded="Button_Loaded"/>
+                            <Button Click="dataGridColoursSet" ToolTip="Click to set color" Tag="{Binding}" Loaded="Button_Loaded"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
