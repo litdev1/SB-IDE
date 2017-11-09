@@ -456,7 +456,7 @@ namespace SB_IDE
 
             if (activeDocument.IsDirty)
             {
-                System.Windows.Forms.DialogResult dlg = System.Windows.Forms.MessageBox.Show("The text in " + ((TabHeader)activeTab.Header).FileName + " has changed.\n\nDo you want to save the changes?", "SBIDE", System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Question);
+                System.Windows.Forms.DialogResult dlg = System.Windows.Forms.MessageBox.Show("The text in " + ((TabHeader)activeTab.Header).FileName + " has changed.\n\nDo you want to save the changes?", "SB-IDE", System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Question);
                 if (dlg == System.Windows.Forms.DialogResult.Cancel) return dlg;
                 else if (dlg == System.Windows.Forms.DialogResult.Yes)
                 {
