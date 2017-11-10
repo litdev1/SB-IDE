@@ -117,6 +117,9 @@
     <Compile Include="Dialogs\Import.xaml.cs">
       <DependentUpon>Import.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\PopupList.xaml.cs">
+      <DependentUpon>PopupList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Publish.xaml.cs">
       <DependentUpon>Publish.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\Import.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\PopupList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

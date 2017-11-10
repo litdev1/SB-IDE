@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using SB_IDE.Dialogs;
 
 namespace SB_IDE
 {
@@ -54,9 +55,9 @@ namespace SB_IDE
         private void Insert(object sender, EventArgs e)
         {
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
-            textArea.InsertText(textArea.CurrentPosition, "\"" + menuItem.Text + "\"");
-            textArea.CurrentPosition += 2 + menuItem.Text.Length;
-            textArea.ClearSelections();
+            textArea.ReplaceSelection("\"" + menuItem.Text + "\"");
+            textArea.SelectionStart = textArea.CurrentPosition;
+            textArea.SelectionEnd = textArea.CurrentPosition;
         }
 
         private ToolStripMenuItem SetColors()
@@ -71,10 +72,12 @@ namespace SB_IDE
             {
                 if (allColors[i] < KnownColor.Transparent || allColors[i] >= KnownColor.ButtonFace) continue;
                 String name = allColors[i].ToString();
-                Bitmap bmp = new Bitmap(50, 50);
+                Bitmap bmp = new Bitmap(24, 24);
                 Graphics g = Graphics.FromImage(bmp);
                 g.Clear(Color.FromName(allColors[i].ToString()));
-                menuItem.DropDownItems.Add(new ToolStripMenuItem(name, bmp, Insert));
+                ToolStripMenuItem item = new ToolStripMenuItem(name, bmp, Insert);
+                item.ImageScaling = ToolStripItemImageScaling.None;
+                menuItem.DropDownItems.Add(item);
             }
 
             return menuItem;
@@ -84,7 +87,6 @@ namespace SB_IDE
         {
             ToolStripMenuItem menuItem = new ToolStripMenuItem("Insert Font");
 
-            int i = 0;
             foreach (FontFamily font in FontFamily.Families)
             {
                 //if (font.Name == "Cambria Math") continue;
@@ -92,7 +94,7 @@ namespace SB_IDE
                 //if (font.Name == "Jokerman") continue;
 
                 int size = 24;
-                Bitmap bmp = new Bitmap(4*size, 3*size/2);
+                Bitmap bmp = new Bitmap(4*size, 5*size/4);
                 Graphics g = Graphics.FromImage(bmp);
                 g.SmoothingMode = SmoothingMode.HighQuality;
                 g.InterpolationMode = InterpolationMode.HighQualityBicubic;
@@ -103,7 +105,6 @@ namespace SB_IDE
                 item.ImageScaling = ToolStripItemImageScaling.None;
                 //item.Font = new Font(item.Font.FontFamily, 24, FontStyle.Regular, GraphicsUnit.Point);
                 menuItem.DropDownItems.Add(item);
-                i++;
             }
 
             return menuItem;
