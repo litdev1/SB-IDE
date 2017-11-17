@@ -7,12 +7,12 @@
         mc:Ignorable="d" SizeToContent="WidthAndHeight" Deactivated="Window_Deactivated" Topmost="True" ResizeMode="CanMinimize" Icon="/SB-IDE;component/AppIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing" ShowInTaskbar="False">
     <Grid>
         <ListView x:Name="listViewPopup" Height="500" Margin="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="listViewPopup_SelectionChanged">
-            <ListView.ItemsPanel>
+            <!--<ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid x:Name="uniformGridPopup" Columns="4">
+                    <UniformGrid Columns="4">
                     </UniformGrid>
                 </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+            </ListView.ItemsPanel>-->
         </ListView>
     </Grid>
 </Window>

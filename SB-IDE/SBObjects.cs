@@ -174,6 +174,7 @@ namespace SB_IDE
 
     public class SBObject
     {
+        public string extension;
         public string name;
         public string summary;
         public List<Member> members = new List<Member>();

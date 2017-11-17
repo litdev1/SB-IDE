@@ -161,6 +161,7 @@ namespace SB_IDE
                             {
                                 obj = new SBObject();
                                 SBObjects.objects.Add(obj);
+                                obj.extension = extension.Split('\\').Last();
                                 obj.name = type.Name;
 
                                 MemberInfo[] memberInfos = type.GetMembers();

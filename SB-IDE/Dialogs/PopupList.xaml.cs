@@ -36,12 +36,17 @@ namespace SB_IDE.Dialogs
             Topmost = true;
             FontSize = 12 + MainWindow.zoom;
 
+            FrameworkElementFactory fef = new FrameworkElementFactory(typeof(UniformGrid));
+            listViewPopup.ItemsPanel = new ItemsPanelTemplate(fef);
+
             switch (mode)
             {
                 case 0:
+                    fef.SetValue(UniformGrid.ColumnsProperty, 4);
                     SetColors();
                     break;
                 case 1:
+                    fef.SetValue(UniformGrid.ColumnsProperty, 3);
                     SetFonts();
                     break;
             }
