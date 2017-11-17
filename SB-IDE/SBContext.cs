@@ -1,4 +1,21 @@
-﻿using ScintillaNET;
+﻿//The following Copyright applies to SB-IDE for Small Basic and files in the namespace SB_IDE. 
+//Copyright (C) <2017> litdev@hotmail.co.uk 
+//This file is part of SB-IDE for Small Basic. 
+
+//SB-IDE for Small Basic is free software: you can redistribute it and/or modify 
+//it under the terms of the GNU General Public License as published by 
+//the Free Software Foundation, either version 3 of the License, or 
+//(at your option) any later version. 
+
+//SB-IDE for Small Basic is distributed in the hope that it will be useful, 
+//but WITHOUT ANY WARRANTY; without even the implied warranty of 
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+//GNU General Public License for more details.  
+
+//You should have received a copy of the GNU General Public License 
+//along with SB-IDE for Small Basic.  If not, see <http://www.gnu.org/licenses/>. 
+
+using ScintillaNET;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +25,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using SB_IDE.Dialogs;
+using System.Reflection;
 
 namespace SB_IDE
 {
@@ -45,11 +63,11 @@ namespace SB_IDE
             menu.Items.Add(new ToolStripMenuItem("Collapse Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Contract)));
             menu.Items.Add(new ToolStripMenuItem("Expand Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Expand)));
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));
-            menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(menuColors);
             menu.Items.Add(menuFonts);
+            menu.Items.Add(new ToolStripSeparator());
+            menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));
         }
 
         private void Insert(object sender, EventArgs e)
@@ -62,21 +80,26 @@ namespace SB_IDE
 
         private ToolStripMenuItem SetColors()
         {
-            Array colorsArray = Enum.GetValues(typeof(KnownColor));
-            KnownColor[] allColors = new KnownColor[colorsArray.Length];
-            Array.Copy(colorsArray, allColors, colorsArray.Length);
-
             ToolStripMenuItem menuItem = new ToolStripMenuItem("Insert Color");
 
-            for (int i = 0; i < allColors.Length; i++)
+            Type colorsType = typeof(System.Windows.Media.Colors);
+            PropertyInfo[] colorsTypePropertyInfos = colorsType.GetProperties(BindingFlags.Public | BindingFlags.Static);
+
+            Dictionary<string, float> colors = new Dictionary<string, float>();
+            foreach (PropertyInfo colorsTypePropertyInfo in colorsTypePropertyInfos)
             {
-                if (allColors[i] < KnownColor.Transparent || allColors[i] >= KnownColor.ButtonFace) continue;
-                String name = allColors[i].ToString();
+                string colorName = colorsTypePropertyInfo.Name;
+                colors[colorName] = Color.FromName(colorName).GetHue();
+            }
+
+            foreach (KeyValuePair<string, float> color in colors.OrderBy(kvp => kvp.Value))
+            {
                 Bitmap bmp = new Bitmap(24, 24);
                 Graphics g = Graphics.FromImage(bmp);
-                g.Clear(Color.FromName(allColors[i].ToString()));
-                ToolStripMenuItem item = new ToolStripMenuItem(name, bmp, Insert);
+                g.Clear(Color.FromName(color.Key));
+                ToolStripMenuItem item = new ToolStripMenuItem(color.Key, bmp, Insert);
                 item.ImageScaling = ToolStripItemImageScaling.None;
+
                 menuItem.DropDownItems.Add(item);
             }
 
@@ -104,6 +127,7 @@ namespace SB_IDE
                 ToolStripMenuItem item = new ToolStripMenuItem(font.Name, bmp, Insert);
                 item.ImageScaling = ToolStripItemImageScaling.None;
                 //item.Font = new Font(item.Font.FontFamily, 24, FontStyle.Regular, GraphicsUnit.Point);
+
                 menuItem.DropDownItems.Add(item);
             }
 

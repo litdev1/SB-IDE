@@ -1,4 +1,21 @@
-﻿using ScintillaNET;
+﻿//The following Copyright applies to SB-IDE for Small Basic and files in the namespace SB_IDE. 
+//Copyright (C) <2017> litdev@hotmail.co.uk 
+//This file is part of SB-IDE for Small Basic. 
+
+//SB-IDE for Small Basic is free software: you can redistribute it and/or modify 
+//it under the terms of the GNU General Public License as published by 
+//the Free Software Foundation, either version 3 of the License, or 
+//(at your option) any later version. 
+
+//SB-IDE for Small Basic is distributed in the hope that it will be useful, 
+//but WITHOUT ANY WARRANTY; without even the implied warranty of 
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+//GNU General Public License for more details.  
+
+//You should have received a copy of the GNU General Public License 
+//along with SB-IDE for Small Basic.  If not, see <http://www.gnu.org/licenses/>. 
+
+using ScintillaNET;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -33,6 +50,11 @@ namespace SB_IDE
         Timer threadTimer;
         bool paused = false;
         int maxValueLen = 500;
+
+        public bool IsDebug()
+        {
+            return debug;
+        }
 
         public SBDebug(MainWindow mainWindow, SBInterop sbInterop, SBDocument sbDocument, bool debug)
         {
@@ -95,11 +117,6 @@ namespace SB_IDE
         {
             try
             {
-                if (debug != this.debug)
-                {
-                    MainWindow.Errors.Add(new Error("Run : " + "Cannot mix debug and non-debug runs"));
-                    return null;
-                }
                 if (tempExe == "")
                 {
                     MainWindow.Errors.Add(new Error("Run : " + "Cannot run case since exe has not been successfully compiled"));
@@ -135,6 +152,9 @@ namespace SB_IDE
         {
             try
             {
+                sbDocument.TextArea.ClearSelections();
+                if (paused) SetWatches();
+                paused = false;
                 Send("STEP");
             }
             catch (Exception ex)
@@ -147,6 +167,9 @@ namespace SB_IDE
         {
             try
             {
+                sbDocument.TextArea.ClearSelections();
+                if (paused) SetWatches();
+                paused = false;
                 Send("STEPOVER");
             }
             catch (Exception ex)
@@ -159,6 +182,9 @@ namespace SB_IDE
         {
             try
             {
+                sbDocument.TextArea.ClearSelections();
+                if (paused) SetWatches();
+                paused = false;
                 Send("STEPOUT");
             }
             catch (Exception ex)
@@ -184,8 +210,8 @@ namespace SB_IDE
             try
             {
                 sbDocument.TextArea.ClearSelections();
+                if (paused) SetWatches();
                 paused = false;
-                SetWatches();
                 Send("RESUME");
             }
             catch (Exception ex)
@@ -346,19 +372,19 @@ namespace SB_IDE
                 if (null != tcpListener) tcpListener.Stop();
                 tcpServer = null;
                 tcpListener = null;
-                if (!process.HasExited)
-                {
-                    process.Kill();
-                }
-                if (null != sbDocument.Proc)
-                {
-                    sbDocument.ClearHighlights();
-                    MainWindow.Errors.Add(new Error("Run : " + "Successfully terminated run with process " + sbDocument.Proc.Id));
-                }
+                //if (!process.HasExited)
+                //{
+                //    process.Kill();
+                //}
+                //if (null != sbDocument.Proc)
+                //{
+                //    sbDocument.ClearHighlights();
+                //    MainWindow.Errors.Add(new Error("Run : " + "Successfully terminated run with process " + sbDocument.Proc.Id));
+                //}
                 File.Delete(tempExe);
                 sbDocument.Proc = null;
-                if (null == sbDocument.debug) return;
-                sbDocument.debug.Dispose();
+                //if (null == sbDocument.debug) return;
+                //sbDocument.debug.Dispose();
                 sbDocument.debug = null;
             }
             catch
@@ -406,8 +432,8 @@ namespace SB_IDE
                 {
                     message = message.Substring(5).Trim();
                     int pos = message.IndexOf(' ');
-                    string key = message.Substring(0, pos).Trim();
-                    string value = message.Substring(pos).Trim();
+                    string key = pos > 0 ? message.Substring(0, pos).Trim() : message;
+                    string value = pos > 0 ? message.Substring(pos).Trim() : "";
                     for (int i = 0; i < mainWindow.debugData.Count; i++)
                     {
                         DebugData data = mainWindow.debugData[i];
@@ -417,7 +443,6 @@ namespace SB_IDE
                             data.Value = value;
                             //mainWindow.debugData.RemoveAt(i);
                             //mainWindow.debugData.Insert(i, data);
-                            mainWindow.RefreshDebugData();
                             break;
                         }
                     }
@@ -426,8 +451,8 @@ namespace SB_IDE
                 {
                     message = message.Substring(5).Trim();
                     int pos = message.IndexOf(' ');
-                    string key = message.Substring(0, pos).Trim();
-                    string value = message.Substring(pos).Trim();
+                    string key = pos > 0 ? message.Substring(0, pos).Trim() : message;
+                    string value = pos > 0 ? message.Substring(pos).Trim() : "";
                     if (value.Length > maxValueLen) value = value.Substring(0, maxValueLen) + " ...";
                     sbDocument.TextArea.CallTipShow(sbDocument.Lexer.toolTipPosition, value);
                     sbDocument.TextArea.CallTipSetHlt(0, value.Length);

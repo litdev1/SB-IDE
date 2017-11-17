@@ -19,7 +19,7 @@ namespace SB_IDE.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -443,6 +443,16 @@ namespace SB_IDE.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Pantone {
+            get {
+                object obj = ResourceManager.GetObject("Pantone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Paste {
             get {
                 object obj = ResourceManager.GetObject("Paste", resourceCulture);
@@ -559,7 +569,8 @@ namespace SB_IDE.Properties {
         ///    public static class SBDebug
         ///    {
         ///        private static TcpClient tcpClient = null;
-        ///        private static object lockSend = [rest of string was truncated]&quot;;.
+        ///        private static object lockSend = new object();
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SBClient {
             get {
@@ -673,6 +684,16 @@ namespace SB_IDE.Properties {
         internal static System.Drawing.Bitmap WordWrap {
             get {
                 object obj = ResourceManager.GetObject("WordWrap", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Writing_pencil {
+            get {
+                object obj = ResourceManager.GetObject("Writing_pencil", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

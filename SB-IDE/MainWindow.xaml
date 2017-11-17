@@ -17,9 +17,13 @@
             <StatusBarItem x:Name="statusVersion" Content="Version"/>
             <Separator/>
             <StatusBarItem x:Name="statusLines" Content="Lines"/>
+            <Separator/>
+            <StatusBarItem x:Name="statusRun" Content=""/>
             <StatusBarItem HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
                     <StatusBarItem x:Name="statusCaps" Content="Caps"/>
+                    <Separator/>
+                    <StatusBarItem x:Name="statusNumlock" Content="Insert"/>
                     <Separator/>
                     <StatusBarItem x:Name="statusInsert" Content="Insert"/>
                 </StackPanel>
@@ -97,7 +101,7 @@
                     <RibbonApplicationMenuItem x:Name="fileSave" Header="Save" ImageSource="Images/Save.png" KeyTip="SV" Click="fileSave_Click" ToolTipTitle="Save current program"/>
                     <RibbonApplicationMenuItem x:Name="fileSaveAs" Header="Save As" ImageSource="Images/Save as.png" KeyTip="SA" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>
                     <RibbonApplicationMenuItem x:Name="fileSaveAll" Header="Save All" ImageSource="Images/Save all.png" KeyTip="A" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>
-                    <RibbonApplicationMenuItem x:Name="filePrint" Header="Print" ImageSource="Images/Print.png" KeyTip="P" Click="filePrint_Click" ToolTipTitle="Save all programs"/>
+                    <RibbonApplicationMenuItem x:Name="filePrint" Header="Print" ImageSource="Images/Print.png" KeyTip="P" Click="filePrint_Click" ToolTipTitle="Print current program"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <!-- Ribbon Tab #1: Home -->
@@ -182,12 +186,17 @@
                     <RibbonButton Label="Zoom in" SmallImageSource="Images/Zoom In.png" KeyTip="+" Click="viewZoomIn_Click" ToolTipTitle="Zoom in (larger font)"/>
                     <RibbonButton Label="Zoom out" SmallImageSource="Images/Zoom Out.png" KeyTip="-" Click="viewZoomOut_Click" ToolTipTitle="Zoom out (smaller font)"/>
                     <RibbonButton Label="Reset Zoom" SmallImageSource="Images/Zoom.png" KeyTip="0" Click="viewZoomReset_Click" ToolTipTitle="Reset zoom (default font)"/>
-                    <RibbonToggleButton Name="toggleTheme" Label="Dark Theme" SmallImageSource="Images/Contrast.png" KeyTip="T" Click="viewTheme_Click" ToolTipTitle="Use a dark theme (reverse video)"/>
+                    <RibbonToggleButton Name="toggleTheme" Label="Dark Theme" SmallImageSource="Images/Contrast.png" KeyTip="TH" Click="viewTheme_Click" ToolTipTitle="Use a dark theme (reverse video)"/>
                     <RibbonTextBox x:Name="viewLanguage" Label="Language Code" KeyTip="L" TextBoxWidth="30" ToolTipTitle="Change the intellisence locale (e.g. 'de' for German, restart SB-IDE to take effect)" TextChanged="viewLanguage_TextChanged"/>
                 </RibbonGroup>
                 <!-- Advanced/Settings group-->
                 <RibbonGroup x:Name="Settings" Header="Settings">
-                    <RibbonButton Name="settingsColor" Label="Colours" LargeImageSource="Images/Color palette.png" KeyTip="SR" Click="settingsColor_Click" ToolTipTitle="Change the application colours"/>
+                    <RibbonButton Name="settingsColor" Label="IDE Colors" LargeImageSource="Images/Color palette.png" KeyTip="SR" Click="settingsColor_Click" ToolTipTitle="Change the application colors"/>
+                </RibbonGroup>
+                <!-- Advanced/Tools group-->
+                <RibbonGroup x:Name="Tools" Header="Tools">
+                    <RibbonButton Name="ToolsColor" Label="Insert Colors" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="Insert color names into document"/>
+                    <RibbonButton Name="ToolsFont" Label="Insert Fonts" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="Insert font names into document"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

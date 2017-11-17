@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE.Dialogs"
         mc:Ignorable="d"
-        Title="File Searcher" Height="600" Width="800" Deactivated="Window_Deactivated">
+        Title="File Searcher" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False">
     <Grid>
         <Label x:Name="label" Content="Root Folder" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Button x:Name="buttonSearcherBrowse" ToolTip="Select a root folder to recursively search for Small Basic files" Content="Browse" HorizontalAlignment="Right" Margin="0,10,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherBrowse_Click"/>

@@ -20,12 +20,15 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Input;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Shell;
 
 namespace SB_IDE
 {
     public partial class MainWindow
     {
-        public static List<Error> Errors = new List<Error>();
+        public static ObservableCollection<Error> Errors = new ObservableCollection<Error>();
         public static SBObject showObject = null;
         public static SBObject showObjectLast = null;
         public static Member showMember = null;
@@ -45,7 +48,7 @@ namespace SB_IDE
         public static Queue<string> MarkedForOpen = new Queue<string>();
         public static Queue<string> MarkedForWatch = new Queue<string>();
 
-        public List<DebugData> debugData = new List<DebugData>();
+        public ObservableCollection<DebugData> debugData = new ObservableCollection<DebugData>();
         SBInterop sbInterop;
         SBplugin sbPlugin;
         SBDocument activeDocument;
@@ -53,10 +56,11 @@ namespace SB_IDE
         Timer threadTimer;
         bool debugUpdated = false;
         int maxMRU = 10;
+        object lockRun = new object();
 
         private void InitWindow()
         {
-            statusVersion.Content = "SB-IDE Version 1.0." + SBInterop.CurrentVersion;
+            statusVersion.Content = "SB-IDE Version " + Assembly.GetEntryAssembly().GetName().Version + " (Debug Extension " + SBInterop.CurrentVersion + ")";
             Errors.Add(new Error("Welcome to Small Basic IDE"));
 
             sbInterop = new SBInterop();
@@ -201,13 +205,11 @@ namespace SB_IDE
             {
                 debugData.Clear();
             }
-            dataGridDebug.Items.Refresh();
         }
 
         private void GridResultsClick(object sender, RoutedEventArgs e)
         {
             Errors.Clear();
-            dataGridResults.Items.Refresh();
         }
 
         private void LoadSettings()
@@ -330,6 +332,13 @@ namespace SB_IDE
                 if (File.Exists(doc.Filepath)) Properties.Settings.Default.MRU.Insert(0, doc.Filepath);
             }
             for (int i = Properties.Settings.Default.MRU.Count - 1; i >= maxMRU; i--) Properties.Settings.Default.MRU.RemoveAt(i);
+
+            JumpList jumpList = JumpList.GetJumpList(App.Current);
+            foreach (string path in Properties.Settings.Default.MRU)
+            {
+                JumpList.AddToRecentCategory(new JumpPath() { Path = path });
+            }
+            jumpList.Apply();
 
             Properties.Settings.Default.SplitScreen = dualScreen;
             Properties.Settings.Default.WordWrap = wrap;
@@ -592,10 +601,10 @@ namespace SB_IDE
             if (MarkedForWatch.Count > 0)
             {
                 debugData.Add(new DebugData() { Variable = MarkedForWatch.Dequeue() });
-                dataGridDebug.Items.Refresh();
             }
             if (null == activeDocument.debug || !activeDocument.debug.IsPaused())
             {
+                activeDocument.ClearHighlights();
                 debugUpdated = false;
                 return;
             }
@@ -616,9 +625,8 @@ namespace SB_IDE
         {
             if ((int)dataGridResults.Tag != dataGridResults.Items.Count)
             {
-                dataGridResults.Items.Refresh();
                 dataGridResults.Tag = dataGridResults.Items.Count;
-                dataGridResults.ScrollIntoView(dataGridResults.Items[dataGridResults.Items.Count-1]);
+                if (dataGridResults.Items.Count > 0) dataGridResults.ScrollIntoView(dataGridResults.Items[dataGridResults.Items.Count - 1]);
             }
             if (CompileError)
             {
@@ -629,14 +637,21 @@ namespace SB_IDE
 
         private void UpdateRun()
         {
-            if (null != activeDocument.Proc && activeDocument.Proc.HasExited)
+            try
             {
-                activeDocument.ClearHighlights();
-                Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
-                activeDocument.Proc = null;
-                if (null == activeDocument.debug) return;
-                activeDocument.debug.Dispose();
-                activeDocument.debug = null;
+                if (null != activeDocument.Proc && activeDocument.Proc.HasExited)
+                {
+                    activeDocument.ClearHighlights();
+                    Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
+                    activeDocument.Proc = null;
+                    if (null == activeDocument.debug) return;
+                    activeDocument.debug.Dispose();
+                    activeDocument.debug = null;
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -973,7 +988,11 @@ namespace SB_IDE
         {
             statusLines.Content = activeDocument.TextArea.Lines.Count + " lines";
             statusCaps.Content = Keyboard.IsKeyToggled(Key.CapsLock) ? "Caps Lock" : "";
+            statusNumlock.Content = Keyboard.IsKeyToggled(Key.NumLock) ? "Num Lock" : "";
             statusInsert.Content = Keyboard.IsKeyToggled(Key.Insert) ? "Insert" : "";
+            if (null == activeDocument.debug) statusRun.Content = "";
+            else if (activeDocument.debug.IsDebug()) statusRun.Content = "Debugging " + ((TabHeader)activeTab.Header).FileName;
+            else if (!activeDocument.debug.IsDebug()) statusRun.Content = "Running " + ((TabHeader)activeTab.Header).FileName;
         }
 
         private void UpdateZoom()
@@ -998,11 +1017,6 @@ namespace SB_IDE
             activeDocument.debug.SetValue(var, value);
         }
 
-        public void RefreshDebugData()
-        {
-            dataGridDebug.Items.Refresh();
-        }
-
         private void OpenFindDialog()
         {
             if (activeDocument.TextArea.SelectedText != "") tbFind.Text = activeDocument.TextArea.SelectedText;
@@ -1019,17 +1033,25 @@ namespace SB_IDE
 
         private void Debug(bool bContinue)
         {
-            if (null != activeDocument.debug && activeDocument.debug.IsRunning())
+            lock (lockRun)
             {
-                activeDocument.debug.Resume();
+                if (null != activeDocument.debug && !activeDocument.debug.IsDebug())
+                {
+                    Errors.Add(new Error("Run : " + "Cannot mix debug and non-debug runs"));
+                    return;
+                }
+                if (null != activeDocument.debug && activeDocument.debug.IsRunning())
+                {
+                    activeDocument.debug.Resume();
+                }
+                else
+                {
+                    activeDocument.debug = new SBDebug(this, sbInterop, activeDocument, true);
+                    activeDocument.debug.Compile();
+                    activeDocument.Proc = activeDocument.debug.Run(bContinue, true);
+                }
+                debugUpdated = false;
             }
-            else
-            {
-                activeDocument.debug = new SBDebug(this, sbInterop, activeDocument, true);
-                activeDocument.debug.Compile();
-                activeDocument.Proc = activeDocument.debug.Run(bContinue, true);
-            }
-            debugUpdated = false;
         }
 
         private void Pause()
@@ -1125,16 +1147,23 @@ namespace SB_IDE
 
         private void Stop()
         {
-            if (null != activeDocument.Proc && !activeDocument.Proc.HasExited)
+            try
             {
-                activeDocument.ClearHighlights();
-                Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
-                activeDocument.Proc.Kill();
+                if (null != activeDocument.Proc && !activeDocument.Proc.HasExited)
+                {
+                    activeDocument.ClearHighlights();
+                    Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
+                    activeDocument.Proc.Kill();
+                }
+                activeDocument.Proc = null;
+                if (null == activeDocument.debug) return;
+                activeDocument.debug.Dispose();
+                activeDocument.debug = null;
             }
-            activeDocument.Proc = null;
-            if (null == activeDocument.debug) return;
-            activeDocument.debug.Dispose();
-            activeDocument.debug = null;
+            catch
+            {
+
+            }
         }
 
         private void Ignore()
@@ -1146,23 +1175,38 @@ namespace SB_IDE
 
         private void Run()
         {
-            activeDocument.debug = new SBDebug(this, sbInterop, activeDocument, false);
-            activeDocument.debug.Compile();
-            activeDocument.Proc = activeDocument.debug.Run(true, false);
+            lock (lockRun)
+            {
+                if (null != activeDocument.debug)
+                {
+                    Errors.Add(new Error("Run : " + "Cannot compile a program that is already running"));
+                    return;
+                }
+                activeDocument.debug = new SBDebug(this, sbInterop, activeDocument, false);
+                activeDocument.debug.Compile();
+                activeDocument.Proc = activeDocument.debug.Run(true, false);
+            }
         }
 
         private void Kill()
         {
-            if (null != activeDocument.Proc && !activeDocument.Proc.HasExited)
+            try
             {
-                activeDocument.ClearHighlights();
-                Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
-                activeDocument.Proc.Kill();
+                if (null != activeDocument.Proc && !activeDocument.Proc.HasExited)
+                {
+                    activeDocument.ClearHighlights();
+                    Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
+                    activeDocument.Proc.Kill();
+                }
+                activeDocument.Proc = null;
+                if (null == activeDocument.debug) return;
+                activeDocument.debug.Dispose();
+                activeDocument.debug = null;
             }
-            activeDocument.Proc = null;
-            if (null == activeDocument.debug) return;
-            activeDocument.debug.Dispose();
-            activeDocument.debug = null;
+            catch
+            {
+
+            }
         }
 
         private void Format()
@@ -1473,14 +1517,92 @@ namespace SB_IDE
         }
     }
 
-    public class DebugData
+    public class DebugData : INotifyPropertyChanged
     {
-        public string Variable { get; set; }
-        public string Value { get; set; }
-        public string LessThan { get; set; }
-        public string GreaterThan { get; set; }
-        public string Equal { get; set; }
-        public bool Changes { get; set; }
+        public string _Variable { get; set; }
+        public string _Value { get; set; }
+        public string _LessThan { get; set; }
+        public string _GreaterThan { get; set; }
+        public string _Equal { get; set; }
+        public bool _Changes { get; set; }
+
+        public string Variable
+        {
+            get { return _Variable; }
+            set
+            {
+                if (value != _Variable)
+                {
+                    _Variable = value;
+                    NotifyPropertyChanged("Variable");
+                }
+            }
+        }
+
+        public string Value
+        {
+            get { return _Value; }
+            set
+            {
+                if (value != _Value)
+                {
+                    _Value = value;
+                    NotifyPropertyChanged("Value");
+                }
+            }
+        }
+
+        public string LessThan
+        {
+            get { return _LessThan; }
+            set
+            {
+                if (value != _LessThan)
+                {
+                    _LessThan = value;
+                    NotifyPropertyChanged("LessThan");
+                }
+            }
+        }
+
+        public string GreaterThan
+        {
+            get { return _GreaterThan; }
+            set
+            {
+                if (value != _GreaterThan)
+                {
+                    _GreaterThan = value;
+                    NotifyPropertyChanged("GreaterThan");
+                }
+            }
+        }
+
+        public string Equal
+        {
+            get { return _Equal; }
+            set
+            {
+                if (value != _Equal)
+                {
+                    _Equal = value;
+                    NotifyPropertyChanged("Equal");
+                }
+            }
+        }
+
+        public bool Changes
+        {
+            get { return _Changes; }
+            set
+            {
+                if (value != _Changes)
+                {
+                    _Changes = value;
+                    NotifyPropertyChanged("Changes");
+                }
+            }
+        }
 
         public DebugData()
         {
@@ -1507,6 +1629,16 @@ namespace SB_IDE
                 if (i < bits.Length) GreaterThan = bits[i++];
                 if (i < bits.Length) Equal = bits[i++];
                 if (i < bits.Length) Changes = bits[i++] == true.ToString();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String info = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
             }
         }
 

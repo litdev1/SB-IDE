@@ -4,10 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE.Dialogs"
-        mc:Ignorable="d"
-        Height="300" Width="300" WindowStyle="ToolWindow" SizeToContent="WidthAndHeight">
+        mc:Ignorable="d" SizeToContent="WidthAndHeight" Deactivated="Window_Deactivated" Topmost="True" ResizeMode="CanMinimize" Icon="/SB-IDE;component/AppIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing" ShowInTaskbar="False">
     <Grid>
-        <ListView x:Name="listViewPopup" Margin="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="listViewPopup_SelectionChanged">
+        <ListView x:Name="listViewPopup" Height="600" Margin="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="listViewPopup_SelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid x:Name="uniformGridPopup" Columns="4">

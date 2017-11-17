@@ -6,4 +6,7 @@
     <Application.Resources>
          
     </Application.Resources>
+    <JumpList.JumpList>
+        <JumpList x:Name="appJumpList" ShowRecentCategory="True"/>
+    </JumpList.JumpList>
 </Application>

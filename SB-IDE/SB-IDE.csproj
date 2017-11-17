@@ -67,11 +67,12 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ExtensionManagerLibrary">
-      <HintPath>..\..\ExtensionManager\ExtensionManagerLibrary\bin\Release\ExtensionManagerLibrary.dll</HintPath>
+    <Reference Include="ExtensionManagerLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExtensionManagerLibrary.dll</HintPath>
     </Reference>
     <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
@@ -411,6 +412,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Contrast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Writing pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Pantone.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

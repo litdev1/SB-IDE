@@ -523,7 +523,6 @@ namespace SB_IDE
                 Button button = (Button)sender;
                 DebugData data = (DebugData)button.Tag;
                 debugData.Remove(data);
-                dataGridDebug.Items.Refresh();
             }
             catch (Exception ex)
             {
@@ -598,6 +597,18 @@ namespace SB_IDE
             Dialogs.Colours fs = new Dialogs.Colours(this);
             fs.ShowDialog();
             SetWindowColors();
+        }
+
+        private void ToolsColor_Click(object sender, RoutedEventArgs e)
+        {
+            Dialogs.PopupList popup = new Dialogs.PopupList(this, 0);
+            popup.Show();
+        }
+
+        private void ToolsFont_Click(object sender, RoutedEventArgs e)
+        {
+            Dialogs.PopupList popup = new Dialogs.PopupList(this, 1);
+            popup.Show();
         }
     }
 }
