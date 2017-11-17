@@ -610,5 +610,11 @@ namespace SB_IDE
             Dialogs.PopupList popup = new Dialogs.PopupList(this, 1);
             popup.Show();
         }
+
+        private void ToolsExtensionSearcher_Click(object sender, RoutedEventArgs e)
+        {
+            Dialogs.ExtensionSearcher fs = new Dialogs.ExtensionSearcher();
+            fs.Show();
+        }
     }
 }

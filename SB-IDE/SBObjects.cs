@@ -172,12 +172,19 @@ namespace SB_IDE
         }
     }
 
-    public class SBObject
+    public class SBObject : IComparable
     {
         public string extension;
         public string name;
         public string summary;
         public List<Member> members = new List<Member>();
+
+        public int CompareTo(object obj)
+        {
+            SBObject _obj = (SBObject)obj;
+            if (extension == _obj.extension) return name.CompareTo(_obj.name);
+            else return extension.CompareTo(_obj.extension);
+        }
     }
 
     public class Member : IComparable

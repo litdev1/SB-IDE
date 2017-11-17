@@ -140,6 +140,8 @@ namespace SB_IDE
 
                 foreach (string extension in extensions)
                 {
+                    if (extension.Contains("SBDebugger")) continue;
+
                     XmlDocument doc = new XmlDocument();
                     SBObject obj = null;
                     if (File.Exists(MainWindow.InstallDir + extension + "." + Language + ".xml"))
@@ -260,11 +262,9 @@ namespace SB_IDE
             }
             catch (Exception ex)
             {
-                if (!ex.Message.Contains("SBDebugger"))
-                {
-                    MainWindow.Errors.Add(new Error("Load Extensions : " + ex.Message));
-                }
+                MainWindow.Errors.Add(new Error("Load Extensions : " + ex.Message));
             }
+            SBObjects.objects.Sort();
         }
 
         public string Publish(string program)

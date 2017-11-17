@@ -152,6 +152,11 @@ namespace SB_IDE
             return activeDocument;
         }
 
+        public TabItem GetActiveTab()
+        {
+            return activeTab;
+        }
+
         private void SetWindowColors()
         {
             Resources["GridBrushBackground"] = new SolidColorBrush(IntToColor(BACKGROUND_COLOR));

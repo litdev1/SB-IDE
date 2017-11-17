@@ -142,7 +142,7 @@
                     <RibbonButton Label="Find Previous" SmallImageSource="Images/Up.png" KeyTip="FP" Click="searchPrevious_Click" ToolTipTitle="Quick find previous"/>
                     <RibbonButton Label="Find and Replace" SmallImageSource="Images/Find.png" KeyTip="H" Click="searchReplace_Click" ToolTipTitle="Find and replace dialog"/>
                     <RibbonTextBox x:Name="tbFind" Label="Find" KeyTip="FD" TextBoxWidth="160" KeyDown="tbFind_KeyDown"/>
-                    <RibbonButton Label="File Searcher" LargeImageSource="Images/Search computer.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
+                    <RibbonButton Label="File Searcher" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Debug" KeyTip="D" >
@@ -197,6 +197,7 @@
                 <RibbonGroup x:Name="Tools" Header="Tools">
                     <RibbonButton Name="ToolsColor" Label="Insert Colors" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="Insert color names into document"/>
                     <RibbonButton Name="ToolsFont" Label="Insert Fonts" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="Insert font names into document"/>
+                    <!--<RibbonButton Name="ToolsExtensionSearcher" Label="Search Extensions" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="Serch extension objects"/>-->
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
