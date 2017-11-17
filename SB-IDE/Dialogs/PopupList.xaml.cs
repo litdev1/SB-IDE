@@ -47,8 +47,8 @@ namespace SB_IDE.Dialogs
             }
 
             listViewPopup.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            Left = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width - listViewPopup.DesiredSize.Width - 20;
-            Top = (System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height - listViewPopup.DesiredSize.Height) * (1 + mode) / 3;
+            Left = SystemParameters.PrimaryScreenWidth - listViewPopup.DesiredSize.Width - 20;
+            Top = (SystemParameters.PrimaryScreenHeight - listViewPopup.DesiredSize.Height) * (1 + mode) / 3;
         }
 
         private void listViewPopup_SelectionChanged(object sender, SelectionChangedEventArgs e)
