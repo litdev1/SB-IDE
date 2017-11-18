@@ -25,6 +25,8 @@ namespace SB_IDE.Dialogs
         TreeViewItem itemText;
         public static double GridWidth;
         public static List<ImageSource> Images = new List<ImageSource>();
+        List<TreeViewItem> searchResults = new List<TreeViewItem>();
+        int currentSearch = 0;
 
         public ExtensionSearcher()
         {
@@ -32,6 +34,9 @@ namespace SB_IDE.Dialogs
 
             FontSize = 12 + MainWindow.zoom;
             Topmost = true;
+
+            buttonNext.IsEnabled = false;
+            buttonPrevious.IsEnabled = false;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -167,6 +172,7 @@ namespace SB_IDE.Dialogs
                 {
                     header.HighLight(textBoxSearchText.Text);
                     TreeViewItem parent = item;
+                    searchResults.Add(item);
                     while (null != parent)
                     {
                         parent.IsExpanded = true;
@@ -192,9 +198,23 @@ namespace SB_IDE.Dialogs
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
+            searchResults.Clear();
             foreach (TreeViewItem item in treeViewSearch.Items)
             {
                 Search(item);
+            }
+            if (searchResults.Count > 0)
+            {
+                buttonNext.IsEnabled = true;
+                buttonPrevious.IsEnabled = true;
+                currentSearch = 0;
+                searchResults[currentSearch].IsSelected = true;
+                searchResults[currentSearch].BringIntoView();
+            }
+            else
+            {
+                buttonNext.IsEnabled = false;
+                buttonPrevious.IsEnabled = false;
             }
         }
 
@@ -215,6 +235,22 @@ namespace SB_IDE.Dialogs
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             GridWidth = gridMain.ActualWidth;
+        }
+
+        private void buttonNext_Click(object sender, RoutedEventArgs e)
+        {
+            currentSearch++;
+            if (currentSearch >= searchResults.Count) currentSearch = 0;
+            searchResults[currentSearch].IsSelected = true;
+            searchResults[currentSearch].BringIntoView();
+        }
+
+        private void buttonPrevious_Click(object sender, RoutedEventArgs e)
+        {
+            currentSearch--;
+            if (currentSearch < 0) currentSearch = searchResults.Count - 1;
+            searchResults[currentSearch].IsSelected = true;
+            searchResults[currentSearch].BringIntoView();
         }
     }
 
@@ -295,7 +331,7 @@ namespace SB_IDE.Dialogs
                         while (pos >= 0)
                         {
                             tb.Inlines.Add(txt.Substring(0, pos));
-                            tb.Inlines.Add(new Run(txt.Substring(pos, len)) { Background = Brushes.Orange });
+                            tb.Inlines.Add(new Run(txt.Substring(pos, len)) { Background = Brushes.LightPink, FontStyle = FontStyles.Italic, FontWeight = FontWeights.Bold });
                             txt = txt.Substring(pos + len);
                             pos = txt.ToUpper().IndexOf(search.ToUpper());
                         }
