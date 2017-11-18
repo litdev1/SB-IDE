@@ -127,6 +127,9 @@
     <Compile Include="Dialogs\Publish.xaml.cs">
       <DependentUpon>Publish.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\StackVariables.xaml.cs">
+      <DependentUpon>StackVariables.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HotKeyManager.cs" />
     <Compile Include="MainWindow.cs" />
     <Compile Include="SBContext.cs" />
@@ -168,6 +171,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\Publish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\StackVariables.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -428,6 +435,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Search folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\List.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

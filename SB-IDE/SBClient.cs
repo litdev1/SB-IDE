@@ -428,9 +428,9 @@ namespace SBDebugger
             }
         }
 
-        private static List<string> GetVariables()
+        private static SortedDictionary<string, Primitive> GetVariables()
         {
-            List<string> result = new List<string>();
+            SortedDictionary<string, Primitive> result = new SortedDictionary<string, Primitive>();
 
             MethodBase method = GetMethodBase();
             if (null == method) return result;
@@ -439,9 +439,8 @@ namespace SBDebugger
             FieldInfo[] fields = type.GetFields(BindingFlags.Static | BindingFlags.NonPublic);
             for (int i = 0; i < fields.Length; i++)
             {
-                result.Add(fields[i].Name);
+                result[fields[i].Name] = (Primitive)fields[i].GetValue(null);
             }
-            result.Sort();
             return result;
         }
 

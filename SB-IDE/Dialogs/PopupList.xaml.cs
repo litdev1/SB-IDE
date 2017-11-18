@@ -53,18 +53,21 @@ namespace SB_IDE.Dialogs
 
             listViewPopup.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             Left = SystemParameters.PrimaryScreenWidth - listViewPopup.DesiredSize.Width - 20;
-            Top = (SystemParameters.PrimaryScreenHeight - listViewPopup.DesiredSize.Height) * (1 + mode) / 3;
+            Top = (SystemParameters.PrimaryScreenHeight - listViewPopup.DesiredSize.Height) * (1 + mode) / 4;
         }
 
         private void listViewPopup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListView listView = (ListView)sender;
-            Grid grid = (Grid)listView.SelectedItem;
-            TextBlock tb = (TextBlock)grid.Children[0];
-            Scintilla textArea = mainWindow.GetActiveDocument().TextArea;
-            textArea.ReplaceSelection("\"" + tb.Text + "\"");
-            textArea.SelectionStart = textArea.CurrentPosition;
-            textArea.SelectionEnd = textArea.CurrentPosition;
+            if (mode == 0 || mode == 1)
+            {
+                ListView listView = (ListView)sender;
+                Grid grid = (Grid)listView.SelectedItem;
+                TextBlock tb = (TextBlock)grid.Children[0];
+                Scintilla textArea = mainWindow.GetActiveDocument().TextArea;
+                textArea.ReplaceSelection("\"" + tb.Text + "\"");
+                textArea.SelectionStart = textArea.CurrentPosition;
+                textArea.SelectionEnd = textArea.CurrentPosition;
+            }
         }
 
         private void SetColors()

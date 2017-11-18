@@ -54,6 +54,7 @@ namespace SB_IDE
         public static int LITERAL_COLOR = 0xDD6633;
 
         public Dictionary<string, int> DefaultColors { get; }
+        public Dialogs.StackVariables stackVariables = null;
 
         public MainWindow()
         {
@@ -470,7 +471,7 @@ namespace SB_IDE
             }
             catch
             {
-
+                debugUpdated = false;
             }
         }
 
@@ -615,6 +616,13 @@ namespace SB_IDE
         {
             Dialogs.ExtensionSearcher fs = new Dialogs.ExtensionSearcher();
             fs.Show();
+        }
+
+        private void toolsStack_Click(object sender, RoutedEventArgs e)
+        {
+            if (Dialogs.StackVariables.Active) return;
+            stackVariables = new Dialogs.StackVariables(this);
+            stackVariables.Show();
         }
     }
 }

@@ -168,6 +168,10 @@
                     <RibbonButton Label="Next Bookmark" SmallImageSource="Images/BookmarkNext.png" KeyTip="KN" Click="bookmarkNext_Click" ToolTipTitle="Move to next bookmark down"/>
                     <RibbonButton Label="Previous Bookmark" SmallImageSource="Images/BookmarkPrevious.png" KeyTip="KP" Click="bookmarkPrevious_Click" ToolTipTitle="Move to previous bookmark up"/>
                 </RibbonGroup>
+                <!-- Debug/Tools group-->
+                <RibbonGroup x:Name="DebugTools" Header="Tools">
+                    <RibbonButton Label="Variables &amp; Call Stack" LargeImageSource="Images/List.png" KeyTip="SV" Click="toolsStack_Click" ToolTipTitle="View all variables and call stack"/>
+                </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Advanced" KeyTip="A" >
                 <!-- Advanced/Extend group-->

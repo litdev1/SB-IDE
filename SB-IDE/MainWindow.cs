@@ -47,6 +47,7 @@ namespace SB_IDE
         public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
         public static Queue<string> MarkedForOpen = new Queue<string>();
         public static Queue<string> MarkedForWatch = new Queue<string>();
+        public static bool GetStackVariables = false;
 
         public ObservableCollection<DebugData> debugData = new ObservableCollection<DebugData>();
         SBInterop sbInterop;
@@ -621,6 +622,11 @@ namespace SB_IDE
                 {
                     activeDocument.debug.GetValue(data.Variable);
                     activeDocument.debug.SetCondition(data);
+                }
+                if (GetStackVariables)
+                {
+                    activeDocument.debug.GetStack();
+                    activeDocument.debug.GetVariables();
                 }
                 debugUpdated = true;
             }

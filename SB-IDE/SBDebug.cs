@@ -51,6 +51,9 @@ namespace SB_IDE
         bool paused = false;
         int maxValueLen = 500;
 
+        public List<string> CallStack = new List<string>();
+        public Dictionary<string, string> Variables = new Dictionary<string, string>();
+
         public bool IsDebug()
         {
             return debug;
@@ -286,6 +289,16 @@ namespace SB_IDE
             Send("SETWATCH " + data.Variable + "?" + data.LessThan + "?" + data.GreaterThan + "?" + data.Equal + "?" + data.Changes);
         }
 
+        public void GetStack()
+        {
+            Send("GETSTACK");
+        }
+
+        public void GetVariables()
+        {
+            Send("GETVARIABLES");
+        }
+
         private void ThreadTimerCallback(object state)
         {
             try
@@ -464,12 +477,20 @@ namespace SB_IDE
                 else if (message.ToUpper().StartsWith("STACK"))
                 {
                     message = message.Substring(6).Trim();
-                    string[] data = message.Split(new char[] { '?' }, StringSplitOptions.RemoveEmptyEntries);
+                    CallStack = message.Split(new char[] { '?' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    if (null != mainWindow.stackVariables) mainWindow.stackVariables.Update();
                 }
                 else if (message.ToUpper().StartsWith("VARIABLES"))
                 {
                     message = message.Substring(10).Trim();
                     string[] data = message.Split(new char[] { '?' }, StringSplitOptions.RemoveEmptyEntries);
+                    Variables.Clear();
+                    foreach (string pair in data)
+                    {
+                        int pos = pair.IndexOf(',');
+                        Variables[pair.Substring(0, pos).Trim(new char[] { '[', ']', ' ' })] = pair.Substring(pos + 1).Trim(new char[] { '[', ']', ' ' });
+                    }
+                    if (null != mainWindow.stackVariables) mainWindow.stackVariables.Update();
                 }
                 else if (message.ToUpper().StartsWith("DEBUG"))
                 {
