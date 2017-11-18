@@ -197,7 +197,7 @@
                 <RibbonGroup x:Name="Tools" Header="Tools">
                     <RibbonButton Name="ToolsColor" Label="Insert Colors" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="Insert color names into document"/>
                     <RibbonButton Name="ToolsFont" Label="Insert Fonts" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="Insert font names into document"/>
-                    <!--<RibbonButton Name="ToolsExtensionSearcher" Label="Search Extensions" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="Serch extension objects"/>-->
+                    <RibbonButton Name="ToolsExtensionSearcher" Label="Search Extensions" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="Serch extension objects"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

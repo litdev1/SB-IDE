@@ -23,14 +23,25 @@ namespace SB_IDE.Dialogs
         TreeViewItem itemObject;
         TreeViewItem itemMember;
         TreeViewItem itemText;
+        public static double GridWidth;
+        public static List<ImageSource> Images = new List<ImageSource>();
 
         public ExtensionSearcher()
         {
             InitializeComponent();
 
             FontSize = 12 + MainWindow.zoom;
-
             Topmost = true;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            GridWidth = gridMain.ActualWidth;
+            Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.AppIcon));
+            Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseObject));
+            Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseMethod));
+            Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseProperty));
+            Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseEvent));
 
             Load();
         }
@@ -48,18 +59,18 @@ namespace SB_IDE.Dialogs
                 if (null == itemExtension || ((Header)itemExtension.Header).Text != obj.extension)
                 {
                     itemExtension = new TreeViewItem();
-                    itemExtension.Header = new Header(itemExtension, 0, obj.extension);
+                    itemExtension.Header = new Header(0, obj.extension);
                     treeViewSearch.Items.Add(itemExtension);
                 }
 
                 itemObject = new TreeViewItem();
-                itemObject.Header = new Header(itemObject, 1, obj.name);
+                itemObject.Header = new Header(1, obj.name);
                 itemExtension.Items.Add(itemObject);
 
                 if (null != obj.summary)
                 {
                     itemText = new TreeViewItem();
-                    itemText.Header = new Header(itemText, - 1, obj.summary);
+                    itemText.Header = new Header(-1, obj.summary);
                     itemObject.Items.Add(itemText);
                 }
 
@@ -69,13 +80,13 @@ namespace SB_IDE.Dialogs
                     switch (member.type)
                     {
                         case System.Reflection.MemberTypes.Method:
-                            itemMember.Header = new Header(itemMember, 2, member.name);
+                            itemMember.Header = new Header(2, member.name);
                             break;
                         case System.Reflection.MemberTypes.Property:
-                            itemMember.Header = new Header(itemMember, 3, member.name);
+                            itemMember.Header = new Header(3, member.name);
                             break;
                         case System.Reflection.MemberTypes.Event:
-                            itemMember.Header = new Header(itemMember, 4, member.name);
+                            itemMember.Header = new Header(4, member.name);
                             break;
                     }
                     itemObject.Items.Add(itemMember);
@@ -83,28 +94,28 @@ namespace SB_IDE.Dialogs
                     if (null != member.summary)
                     {
                         itemText = new TreeViewItem();
-                        itemText.Header = new Header(itemText, -1, member.summary);
+                        itemText.Header = new Header(-1, member.summary);
                         itemMember.Items.Add(itemText);
                     }
 
                     foreach (KeyValuePair<string, string> pair in member.arguments)
                     {
                         itemText = new TreeViewItem();
-                        itemText.Header = new Header(itemText, -1, "Parameter " + pair.Key + "\n" + pair.Value, true);
+                        itemText.Header = new Header(-1, "Parameter " + pair.Key + "\n" + pair.Value, true);
                         itemMember.Items.Add(itemText);
                     }
 
                     if (null != member.returns)
                     {
                         itemText = new TreeViewItem();
-                        itemText.Header = new Header(itemText, -1, "Returns \n" + member.returns, true);
+                        itemText.Header = new Header(-1, "Returns \n" + member.returns, true);
                         itemMember.Items.Add(itemText);
                     }
 
                     foreach (KeyValuePair<string, string> pair in member.other)
                     {
                         itemText = new TreeViewItem();
-                        itemText.Header = new Header(itemText, -1, pair.Key + "\n" + pair.Value, true);
+                        itemText.Header = new Header(-1, pair.Key + "\n" + pair.Value, true);
                         itemMember.Items.Add(itemText);
                     }
                 }
@@ -144,23 +155,30 @@ namespace SB_IDE.Dialogs
             Cursor cursor = Mouse.OverrideCursor;
             Mouse.OverrideCursor = Cursors.Wait;
 
+            Header header = ((Header)item.Header);
             if (textBoxSearchText.Text == "" || textBoxSearchText.Text == "Search Text")
             {
                 item.IsExpanded = false;
+                header.HighLight("");
             }
             else
             {
-                if (((Header)item.Header).Text.ToUpper().Contains(textBoxSearchText.Text.ToUpper()))
+                if (header.Text.ToUpper().Contains(textBoxSearchText.Text.ToUpper()))
                 {
+                    header.HighLight(textBoxSearchText.Text);
                     TreeViewItem parent = item;
                     while (null != parent)
                     {
                         parent.IsExpanded = true;
-                        Header header = (Header)parent.Header;
 
                         if (null != parent.Parent && parent.Parent.GetType() == typeof(TreeViewItem)) parent = (TreeViewItem)parent.Parent;
                         else parent = null;
                     }
+                }
+                else
+                {
+                    item.IsExpanded = false;
+                    header.HighLight("");
                 }
             }
             if (null == item.Items) return;
@@ -193,53 +211,41 @@ namespace SB_IDE.Dialogs
             if (null == treeViewSearch.SelectedItem) return;
             Expand((TreeViewItem)treeViewSearch.SelectedItem);
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            GridWidth = gridMain.ActualWidth;
+        }
     }
 
     class Header : Grid
     {
         public string Text;
 
-        public Header(TreeViewItem item, int level, string text, bool titled = false)
+        public Header(int level, string text, bool titled = false)
         {
             Text = text;
             while (Text.Contains("\n ")) Text = Text.Replace("\n ", "\n");
             RowDefinitions.Add(new RowDefinition() { });
             RowDefinitions.Add(new RowDefinition() { });
-            ColumnDefinitions.Add(new ColumnDefinition() { });
-            ColumnDefinitions.Add(new ColumnDefinition() { });
+            ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(25) });
+            ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(ExtensionSearcher.GridWidth - 130) });
 
-            ImageSource imgSource = null;
-            switch (level)
+            if (level >= 0)
             {
-                case 0:
-                    imgSource = MainWindow.ImageSourceFromBitmap(Properties.Resources.AppIcon);
-                    break;
-                case 1:
-                    imgSource = MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseObject);
-                    break;
-                case 2:
-                    imgSource = MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseMethod);
-                    break;
-                case 3:
-                    imgSource = MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseProperty);
-                    break;
-                case 4:
-                    imgSource = MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseEvent);
-                    break;
-                default:
-                    break;
-            }
-            Image img = new Image()
-            {
-                Width = 20,
-                Height = 20,
-                Source = imgSource
-            };
-            if (null != img.Source)
-            {
-                Children.Add(img);
-                SetRow(img, 0);
-                SetColumn(img, 0);
+                Image img = new Image()
+                {
+                    Width = 20,
+                    Height = 20,
+                    Source = ExtensionSearcher.Images[level]
+                };
+                if (null != img.Source)
+                {
+                    Children.Add(img);
+                    SetRow(img, 0);
+                    SetColumn(img, 0);
+                }
+
             }
             if (titled)
             {
@@ -248,10 +254,12 @@ namespace SB_IDE.Dialogs
                 string details = Text.Substring(pos + 1);
 
                 TextBlock tb1 = new TextBlock() { Text = title, FontWeight = FontWeights.Bold, TextWrapping = TextWrapping.Wrap };
+                tb1.Tag = title;
                 Children.Add(tb1);
                 SetRow(tb1, 0);
                 SetColumn(tb1, 1);
                 TextBlock tb2 = new TextBlock() { Text = details, TextWrapping = TextWrapping.Wrap };
+                tb2.Tag = details;
                 Children.Add(tb2);
                 SetRow(tb2, 1);
                 SetColumn(tb2, 1);
@@ -259,9 +267,41 @@ namespace SB_IDE.Dialogs
             else
             {
                 TextBlock tb = new TextBlock() { Text = Text, TextWrapping = TextWrapping.Wrap };
+                tb.Tag = Text;
                 Children.Add(tb);
                 SetRow(tb, 0);
                 SetColumn(tb, 1);
+            }
+        }
+
+        public void HighLight(string highlight)
+        {
+            foreach (UIElement elt in Children)
+            {
+                if (elt.GetType() == typeof(TextBlock))
+                {
+                    TextBlock tb = (TextBlock)elt;
+                    tb.Inlines.Clear();
+                    if (highlight == "")
+                    {
+                        tb.Text = (string)tb.Tag;
+                    }
+                    else
+                    {
+                        string txt = (string)tb.Tag;
+                        string search = highlight;
+                        int pos = txt.ToUpper().IndexOf(search.ToUpper());
+                        int len = highlight.Length;
+                        while (pos >= 0)
+                        {
+                            tb.Inlines.Add(txt.Substring(0, pos));
+                            tb.Inlines.Add(new Run(txt.Substring(pos, len)) { Background = Brushes.Orange });
+                            txt = txt.Substring(pos + len);
+                            pos = txt.ToUpper().IndexOf(search.ToUpper());
+                        }
+                        if (txt.Length > 0) tb.Inlines.Add(txt);
+                    }
+                }
             }
         }
     }

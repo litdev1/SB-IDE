@@ -5,12 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE.Dialogs"
         mc:Ignorable="d"
-        Title="Extension Searcher" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False">
-    <Grid>
-        <TreeView x:Name="treeViewSearch" Margin="0,38,-0.4,0.4"/>
+        Title="Extension Searcher" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+    <Grid x:Name="gridMain">
         <TextBox x:Name="textBoxSearchText" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Search Text" VerticalAlignment="Top" Width="200"/>
         <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Margin="215,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonSearch_Click"/>
         <Button x:Name="buttonCollapse" Content="Collapse All" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.943,0.646" Click="buttonCollapse_Click"/>
         <Button x:Name="buttonExpand" Content="Expand Selection" HorizontalAlignment="Left" Margin="425,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonExpand_Click"/>
+        <Grid Margin="0,38,0,0">
+            <TreeView x:Name="treeViewSearch" Margin="0">
+                <!--<TreeView.ItemTemplate>
+                    <DataTemplate>
+                        <TreeViewItem ItemsSource="{Binding ExtensionItems}">
+                            <TreeViewItem.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="24"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Width="20" Height="20" Grid.Column="0" Source="{Binding Img}"/>
+                                    <TextBlock TextWrapping="Wrap" Grid.Column="1" Text="{Binding Text1}" Tag="{Binding Tag1}"/>
+                                </Grid>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.ItemTemplate>
+                                <DataTemplate>
+                                    <TreeViewItem ItemsSource="{Binding ExtensionItems}">
+                                        <TreeViewItem.Header>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="24"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Width="20" Height="20" Grid.Column="0" Source="{Binding Img}"/>
+                                                <TextBlock TextWrapping="Wrap" Grid.Column="1" Text="{Binding Text1}" Tag="{Binding Tag1}"/>
+                                            </Grid>
+                                        </TreeViewItem.Header>
+                                        <TreeViewItem.ItemTemplate>
+                                            <DataTemplate>
+                                                <TreeViewItem ItemsSource="{Binding ExtensionItems}">
+                                                    <TreeViewItem.Header>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="24"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Image Width="20" Height="20" Grid.Column="0" Source="{Binding Img}"/>
+                                                            <TextBlock TextWrapping="Wrap" Grid.Column="1" Text="{Binding Text1}" Tag="{Binding Tag1}"/>
+                                                        </Grid>
+                                                    </TreeViewItem.Header>
+                                                    <TreeViewItem.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                    <RowDefinition Height="Auto"/>
+                                                                </Grid.RowDefinitions>
+                                                                <TextBlock FontWeight="Bold" TextWrapping="Wrap" Grid.Row="0" Text="{Binding Text1}" Tag="{Binding Tag1}"/>
+                                                                <TextBlock TextWrapping="Wrap" Grid.Row="1" Text="{Binding Text2}" Tag="{Binding Tag2}"/>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </TreeViewItem.ItemTemplate>
+                                                </TreeViewItem>
+                                            </DataTemplate>
+                                        </TreeViewItem.ItemTemplate>
+                                    </TreeViewItem>
+                                </DataTemplate>
+                            </TreeViewItem.ItemTemplate>
+                        </TreeViewItem>
+                    </DataTemplate>
+                </TreeView.ItemTemplate>-->
+            </TreeView>
+        </Grid>
     </Grid>
 </Window>
