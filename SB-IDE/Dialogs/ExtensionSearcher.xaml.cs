@@ -37,6 +37,9 @@ namespace SB_IDE.Dialogs
 
             buttonNext.IsEnabled = false;
             buttonPrevious.IsEnabled = false;
+
+            Left = SystemParameters.PrimaryScreenWidth - Width - 20;
+            Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -157,9 +160,6 @@ namespace SB_IDE.Dialogs
 
         private void Search(TreeViewItem item)
         {
-            Cursor cursor = Mouse.OverrideCursor;
-            Mouse.OverrideCursor = Cursors.Wait;
-
             Header header = ((Header)item.Header);
             if (textBoxSearchText.Text == "" || textBoxSearchText.Text == "Search Text")
             {
@@ -192,12 +192,13 @@ namespace SB_IDE.Dialogs
             {
                 Search(subItem);
             }
-
-            Mouse.OverrideCursor = cursor;
         }
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
+            Cursor cursor = Mouse.OverrideCursor;
+            Mouse.OverrideCursor = Cursors.Wait;
+
             searchResults.Clear();
             foreach (TreeViewItem item in treeViewSearch.Items)
             {
@@ -216,20 +217,32 @@ namespace SB_IDE.Dialogs
                 buttonNext.IsEnabled = false;
                 buttonPrevious.IsEnabled = false;
             }
+
+            Mouse.OverrideCursor = cursor;
         }
 
         private void buttonCollapse_Click(object sender, RoutedEventArgs e)
         {
+            Cursor cursor = Mouse.OverrideCursor;
+            Mouse.OverrideCursor = Cursors.Wait;
+
             foreach (TreeViewItem item in treeViewSearch.Items)
             {
                 Collapse(item);
             }
+
+            Mouse.OverrideCursor = cursor;
         }
 
         private void buttonExpand_Click(object sender, RoutedEventArgs e)
         {
+            Cursor cursor = Mouse.OverrideCursor;
+            Mouse.OverrideCursor = Cursors.Wait;
+
             if (null == treeViewSearch.SelectedItem) return;
             Expand((TreeViewItem)treeViewSearch.SelectedItem);
+
+            Mouse.OverrideCursor = cursor;
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

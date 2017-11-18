@@ -37,6 +37,9 @@ namespace SB_IDE.Dialogs
             textBoxSearcherRoot.Text = RootPath;
             checkBoxSearcherWord.IsChecked = true;
             GetFiles();
+
+            Left = SystemParameters.PrimaryScreenWidth - Width - 20;
+            Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
         }
 
         private void buttonSearcherBrowse_Click(object sender, RoutedEventArgs e)

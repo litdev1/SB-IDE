@@ -37,6 +37,9 @@ namespace SB_IDE.Dialogs
 
             dataGridVariables.ItemsSource = variables;
             dataGridStack.ItemsSource = stacks;
+
+            Left = SystemParameters.PrimaryScreenWidth - Width - 20;
+            Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
         }
 
         private void Window_Deactivated(object sender, EventArgs e)

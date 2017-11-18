@@ -32,6 +32,9 @@ namespace SB_IDE.Dialogs
             if (sbDocument.TextArea.SelectedText != "") textBoxFind.Text = sbDocument.TextArea.SelectedText;
             textBoxFind.Focus();
             textBoxFind.SelectAll();
+
+            Left = SystemParameters.PrimaryScreenWidth - Width - 20;
+            Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
         }
 
         private void buttonFind_Click(object sender, RoutedEventArgs e)

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Publish" Height="174.8" Width="400" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False">
+        Title="Publish" Height="174.8" Width="400" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
     <Grid>
         <TextBox x:Name="textBoxPublish" Height="23" Margin="10,78,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="label" Content="Your program was published to the web" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>

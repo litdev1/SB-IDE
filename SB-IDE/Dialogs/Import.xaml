@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE.Dialogs"
         mc:Ignorable="d"
-        Title="Import" Height="177.616" Width="300" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False">
+        Title="Import" Height="177.616" Width="300" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
     <Grid>
         <TextBox x:Name="textBoxImport" Height="23" Margin="10,78,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top" SpellCheck.IsEnabled="True"/>
         <Label x:Name="label" Content="Import a program from the web" Margin="10,10,9.6,0" VerticalAlignment="Top" RenderTransformOrigin="-0.908,-2.063" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>

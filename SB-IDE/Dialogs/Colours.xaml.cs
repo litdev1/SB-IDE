@@ -42,6 +42,9 @@ namespace SB_IDE.Dialogs
                 else if (data[0] == "L") region = "Document Lexer";
                 colours.Add(new ColourData() { Region = region, Label = data[1], R = (byte)(kvp.Value >> 16), G = (byte)(kvp.Value >> 8), B = (byte)(kvp.Value) });
             }
+
+            Left = SystemParameters.PrimaryScreenWidth - Width - 20;
+            Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
         }
 
         private void dataGridColours_SelectionChanged(object sender, SelectionChangedEventArgs e)
