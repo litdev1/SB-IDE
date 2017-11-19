@@ -273,6 +273,9 @@ namespace SB_IDE
             if (Properties.Settings.Default.MRU.Count > i) MRU8.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU9.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU10.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+
+            //JumpList jumpList = JumpList.GetJumpList(App.Current);
+            //MessageBox.Show(jumpList.JumpItems.Count.ToString());
         }
 
         private void ResetSettings()
@@ -293,7 +296,7 @@ namespace SB_IDE
         {
             TextBlock tb = new TextBlock() { Text = txt, FontSize = 14 + zoom, FontWeight = FontWeights.DemiBold };
             tb.ToolTip = txt;
-            tb.Text = Path.GetFileName(txt);
+            tb.Text = Path.GetFileNameWithoutExtension(txt);
 
             ImageSource imgSource = ImageSourceFromBitmap(Properties.Resources.AppIcon);
             Image img = new Image()
@@ -349,12 +352,22 @@ namespace SB_IDE
             }
             for (int i = Properties.Settings.Default.MRU.Count - 1; i >= maxMRU; i--) Properties.Settings.Default.MRU.RemoveAt(i);
 
-            JumpList jumpList = JumpList.GetJumpList(App.Current);
-            foreach (string path in Properties.Settings.Default.MRU)
-            {
-                JumpList.AddToRecentCategory(new JumpPath() { Path = path });
-            }
-            jumpList.Apply();
+            //JumpList jumpList = JumpList.GetJumpList(App.Current);
+            //for (int i = Properties.Settings.Default.MRU.Count - 1; i >= maxMRU; i--)
+            //{
+            //    string path = Properties.Settings.Default.MRU[i];
+            //    var jt = new JumpTask
+            //    {
+            //        ApplicationPath = Assembly.GetCallingAssembly().Location,
+            //        Arguments = path,
+            //        Description = Path.GetFileName(path),
+            //        IconResourcePath = Assembly.GetCallingAssembly().Location,
+            //        Title = Path.GetFileName(path)
+            //    };
+            //    JumpList.AddToRecentCategory(jt);
+            //    //JumpList.AddToRecentCategory(new JumpTask() { Title = Path.GetFileNameWithoutExtension(path), Arguments = path });
+            //}
+            //jumpList.Apply();
 
             Properties.Settings.Default.SplitScreen = dualScreen;
             Properties.Settings.Default.WordWrap = wrap;

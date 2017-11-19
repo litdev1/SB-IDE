@@ -20,5 +20,15 @@ namespace SB_IDE
         {
             Arguments = e.Args;
         }
+
+        //private void OnJumpItemsRejected(object sender, JumpItemsRejectedEventArgs e)
+        //{
+
+        //}
+
+        //private void OnJumpItemsRemoved(object sender, JumpItemsRemovedEventArgs e)
+        //{
+
+        //}
     }
 }
