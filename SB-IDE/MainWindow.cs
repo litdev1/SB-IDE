@@ -278,7 +278,14 @@ namespace SB_IDE
         private void ResetSettings()
         {
             Properties.Settings.Default.Reset();
-            Properties.Settings.Default.Save();
+            var ideColors = IDEColors;
+            ideColors.Clear();
+            for (int i = 0; i < DefaultColors.Count; i++)
+            {
+                ideColors[DefaultColors.ElementAt(i).Key] = DefaultColors.ElementAt(i).Value;
+            }
+            IDEColors = ideColors;
+            debugData.Clear();
             LoadSettings();
         }
 
@@ -417,7 +424,6 @@ namespace SB_IDE
                     ConfigurationManager.RefreshSection("userSettings");
 
                     appSettings.Reload();
-                    appSettings.Save();
                     LoadSettings();
                 }
                 catch (Exception ex) // Should make this more specific

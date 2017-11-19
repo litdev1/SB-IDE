@@ -634,5 +634,10 @@ namespace SB_IDE
         {
             ImportSettings();
         }
+
+        private void settingsReset_Click(object sender, RoutedEventArgs e)
+        {
+            ResetSettings();
+        }
     }
 }

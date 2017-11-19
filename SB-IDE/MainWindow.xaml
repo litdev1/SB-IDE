@@ -195,9 +195,10 @@
                 </RibbonGroup>
                 <!-- Advanced/Settings group-->
                 <RibbonGroup x:Name="Settings" Header="Settings">
-                    <RibbonButton Name="settingsColor" Label="IDE Colors" LargeImageSource="Images/Color palette.png" KeyTip="SR" Click="settingsColor_Click" ToolTipTitle="Change the application colors"/>
+                    <RibbonButton Name="settingsColor" Label="IDE Colors" LargeImageSource="Images/Color palette.png" KeyTip="SC" Click="settingsColor_Click" ToolTipTitle="Change the application colors"/>
                     <RibbonButton Name="settingsExport" Label="Export Settings" SmallImageSource="Images/SettingsSave.png" KeyTip="SE" Click="settingsExport_Click" ToolTipTitle="Export settings to a file"/>
-                    <RibbonButton Name="settingsImport" Label="Import Settings" SmallImageSource="Images/SettingsLoad.png" KeyTip="SI" Click="settingsImport_Click" ToolTipTitle="Import settings from a file, restart SB-IDE to take effect"/>
+                    <RibbonButton Name="settingsImport" Label="Import Settings" SmallImageSource="Images/SettingsLoad.png" KeyTip="SI" Click="settingsImport_Click" ToolTipTitle="Import settings from a file, restart SB-IDE to take full effect"/>
+                    <RibbonButton Name="settingsReset" Label="Reset Settings" SmallImageSource="Images/Settings.png" KeyTip="SR" Click="settingsReset_Click" ToolTipTitle="Reset settings to default, restart SB-IDE to take full effect"/>
                 </RibbonGroup>
                 <!-- Advanced/Tools group-->
                 <RibbonGroup x:Name="Tools" Header="Tools">
