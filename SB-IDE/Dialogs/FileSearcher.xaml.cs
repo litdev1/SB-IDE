@@ -144,7 +144,7 @@ namespace SB_IDE.Dialogs
 
             doc.TextArea.ReadOnly = true;
             doc.TextArea.SearchFlags = SearchFlags.None;
-            doc.TextArea.Indicators[0].ForeColor = System.Drawing.Color.Red;
+            doc.TextArea.Indicators[0].ForeColor = SBDocument.IntToColor(MainWindow.FIND_HIGHLIGHT_COLOR);
             doc.TextArea.Indicators[0].Style = IndicatorStyle.RoundBox;
             if (textBoxSearcherText.Text != "")
             {

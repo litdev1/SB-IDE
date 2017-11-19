@@ -43,6 +43,7 @@ namespace SB_IDE
         public static bool wrap = false;
         public static bool indent = true;
         public static bool whitespace = false;
+        public static bool highlightAll = false;
         public static int zoom = 0;
         public static int theme = 0;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
@@ -80,6 +81,7 @@ namespace SB_IDE
             toggleWrap.IsChecked = wrap;
             toggleIndent.IsChecked = indent;
             toggleWhiteSpace.IsChecked = whitespace;
+            toggleHighlight.IsChecked = highlightAll;
             toggleTheme.IsChecked = theme > 0;
             viewLanguage.Text = SBInterop.Language;
 
@@ -238,6 +240,7 @@ namespace SB_IDE
             wrap = Properties.Settings.Default.WordWrap;
             indent = Properties.Settings.Default.IndentGuides;
             whitespace = Properties.Settings.Default.WhiteSpace;
+            highlightAll = Properties.Settings.Default.HighlightAll;
             zoom = Properties.Settings.Default.Zoom;
             theme = Properties.Settings.Default.Theme;
             SBInterop.Language = Properties.Settings.Default.Language;
@@ -287,6 +290,12 @@ namespace SB_IDE
             IDEColors = ideColors;
             debugData.Clear();
             LoadSettings();
+        }
+
+        private void HighLightAll()
+        {
+            highlightAll = !highlightAll;
+            activeDocument.searchManager.HighLight(highlightAll ? tbFind.Text : "");
         }
 
         private Grid Ellipsis(string txt)
@@ -353,6 +362,7 @@ namespace SB_IDE
             Properties.Settings.Default.WordWrap = wrap;
             Properties.Settings.Default.IndentGuides = indent;
             Properties.Settings.Default.WhiteSpace = whitespace;
+            Properties.Settings.Default.HighlightAll = highlightAll;
             Properties.Settings.Default.Zoom = zoom;
             Properties.Settings.Default.Theme = theme;
             Properties.Settings.Default.Language = SBInterop.Language;

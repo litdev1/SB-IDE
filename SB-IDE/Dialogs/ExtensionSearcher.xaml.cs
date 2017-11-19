@@ -344,7 +344,10 @@ namespace SB_IDE.Dialogs
                         while (pos >= 0)
                         {
                             tb.Inlines.Add(txt.Substring(0, pos));
-                            tb.Inlines.Add(new Run(txt.Substring(pos, len)) { Background = Brushes.LightPink, FontStyle = FontStyles.Italic, FontWeight = FontWeights.Bold });
+                            System.Drawing.Color color = SBDocument.IntToColor(MainWindow.FIND_HIGHLIGHT_COLOR);
+                            color = System.Windows.Forms.ControlPaint.Light(color, 33);
+                            Color col = Color.FromRgb(color.R, color.G, color.B);
+                            tb.Inlines.Add(new Run(txt.Substring(pos, len)) { Background = new SolidColorBrush(col), FontStyle = FontStyles.Italic, FontWeight = FontWeights.Bold });
                             txt = txt.Substring(pos + len);
                             pos = txt.ToUpper().IndexOf(search.ToUpper());
                         }

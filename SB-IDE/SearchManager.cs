@@ -1,4 +1,5 @@
 ﻿using ScintillaNET;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
 namespace SB_IDE
@@ -6,11 +7,12 @@ namespace SB_IDE
     public class SearchManager
     {
 		public Scintilla TextArea;
-		public static TextBox SearchBox;
 
         public void Find(bool next, string search)
         {
-			if (search.Length > 0)
+            HighLight(MainWindow.highlightAll ? search : "");
+
+            if (search.Length > 0)
             {
 				if (next)
                 {
@@ -67,8 +69,28 @@ namespace SB_IDE
 				TextArea.SetSelection(TextArea.TargetEnd, TextArea.TargetStart);
 				TextArea.ScrollCaret();
 			}
-
-			//SearchBox.Focus();
 		}
-	}
+
+        public void HighLight(string search)
+        {
+            if (search.Length > 0)
+            {
+                TextArea.Indicators[0].ForeColor = SBDocument.IntToColor(MainWindow.FIND_HIGHLIGHT_COLOR);
+                TextArea.Indicators[0].Style = IndicatorStyle.RoundBox;
+                TextArea.TargetStart = 0;
+                TextArea.TargetEnd = TextArea.TextLength;
+
+                RegexOptions caseSensitive = RegexOptions.IgnoreCase;
+                MatchCollection matches = Regex.Matches(TextArea.Text, search, caseSensitive);
+                foreach (Match match in matches)
+                {
+                    TextArea.IndicatorFillRange(match.Index, match.Length);
+                }
+            }
+            else
+            {
+                TextArea.IndicatorClearRange(0, TextArea.TextLength);
+            }
+        }
+    }
 }

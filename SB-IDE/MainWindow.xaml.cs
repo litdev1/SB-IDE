@@ -41,7 +41,8 @@ namespace SB_IDE
         public static int BACK_BREAKPOINT_COLOR = 0xFF003B;
         public static int FORE_BREAKPOINT_COLOR = 0xFF003B;
         public static int SELECT_COLOR = 0xCCDDFF;
-        public static int HIGHLIGHT_COLOR = 0xFFFF50;
+        public static int DEBUG_HIGHLIGHT_COLOR = 0xFFFF50;
+        public static int FIND_HIGHLIGHT_COLOR = 0xFF0000;
         // Lexer Colors
         public static int FORE_COLOR = 0x000000;
         public static int BACK_COLOR = 0xFFFFFF;
@@ -82,7 +83,8 @@ namespace SB_IDE
                 colors["D:Breakpoint Background"] = BACK_BREAKPOINT_COLOR;
                 colors["D:Breakpoint Foreground"] = FORE_BREAKPOINT_COLOR;
                 colors["D:Select"] = SELECT_COLOR;
-                colors["D:Highlight"] = HIGHLIGHT_COLOR;
+                colors["D:Highlight Debug"] = DEBUG_HIGHLIGHT_COLOR;
+                colors["D:Highlight Find"] = FIND_HIGHLIGHT_COLOR;
 
                 colors["L:Foreground"] = FORE_COLOR;
                 colors["L:Background"] = BACK_COLOR;
@@ -113,7 +115,8 @@ namespace SB_IDE
                 BACK_BREAKPOINT_COLOR = colors["D:Breakpoint Background"];
                 FORE_BREAKPOINT_COLOR = colors["D:Breakpoint Foreground"];
                 SELECT_COLOR = colors["D:Select"];
-                HIGHLIGHT_COLOR = colors["D:Highlight"];
+                DEBUG_HIGHLIGHT_COLOR = colors["D:Highlight Debug"];
+                FIND_HIGHLIGHT_COLOR = colors["D:Highlight Find"];
 
                 FORE_COLOR = colors["L:Foreground"];
                 BACK_COLOR = colors["L:Background"];
@@ -638,6 +641,11 @@ namespace SB_IDE
         private void settingsReset_Click(object sender, RoutedEventArgs e)
         {
             ResetSettings();
+        }
+
+        private void fileHightlight_Click(object sender, RoutedEventArgs e)
+        {
+            HighLightAll();
         }
     }
 }

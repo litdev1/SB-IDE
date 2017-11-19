@@ -142,6 +142,7 @@
                     <RibbonButton Label="Find Previous" SmallImageSource="Images/Up.png" KeyTip="FP" Click="searchPrevious_Click" ToolTipTitle="Quick find previous"/>
                     <RibbonButton Label="Find and Replace" SmallImageSource="Images/Find.png" KeyTip="H" Click="searchReplace_Click" ToolTipTitle="Find and replace dialog"/>
                     <RibbonTextBox x:Name="tbFind" Label="Find" KeyTip="FD" TextBoxWidth="160" KeyDown="tbFind_KeyDown"/>
+                    <RibbonToggleButton Name="toggleHighlight" Label="Highlight All" SmallImageSource="Images/Highlight.png" KeyTip="FH" Click="fileHightlight_Click" ToolTipTitle="Highlight all instances found"/>
                     <RibbonButton Label="File Searcher" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
                 </RibbonGroup>
             </RibbonTab>

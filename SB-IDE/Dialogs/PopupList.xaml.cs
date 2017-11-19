@@ -83,13 +83,18 @@ namespace SB_IDE.Dialogs
                 Grid grid = new Grid();
                 grid.RowDefinitions.Add(new RowDefinition() { });
                 grid.RowDefinitions.Add(new RowDefinition() { });
+                grid.RowDefinitions.Add(new RowDefinition() { });
 
-                TextBlock tb = new TextBlock() { Text = colorName, HorizontalAlignment = HorizontalAlignment.Center };
-                Rectangle color = new Rectangle() { Height = 20, Width = 100, Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorName)) };
-                grid.Children.Add(tb);
+                Color col = (Color)ColorConverter.ConvertFromString(colorName);
+                TextBlock tb1 = new TextBlock() { Text = colorName, HorizontalAlignment = HorizontalAlignment.Center };
+                TextBlock tb2 = new TextBlock() { Text = col.ToString(), HorizontalAlignment = HorizontalAlignment.Center };
+                Rectangle color = new Rectangle() { Height = 20, Width = 100, Fill = new SolidColorBrush(col) };
+                grid.Children.Add(tb1);
+                grid.Children.Add(tb2);
                 grid.Children.Add(color);
-                Grid.SetRow(tb, 0);
-                Grid.SetRow(color, 1);
+                Grid.SetRow(tb1, 0);
+                Grid.SetRow(tb2, 1);
+                Grid.SetRow(color, 2);
                 grid.Tag = System.Drawing.Color.FromName(colorName).GetHue();
 
                 listViewPopup.Items.Add(grid);

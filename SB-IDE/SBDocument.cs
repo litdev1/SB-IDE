@@ -161,7 +161,7 @@ namespace SB_IDE
         {
             Marker marker = textArea.Markers[SBDocument.HIGHLIGHT_MARKER];
             marker.Symbol = MarkerSymbol.Background;
-            marker.SetBackColor(IntToColor(MainWindow.HIGHLIGHT_COLOR));
+            marker.SetBackColor(IntToColor(MainWindow.DEBUG_HIGHLIGHT_COLOR));
             line.MarkerAdd(HIGHLIGHT_MARKER);
         }
 
