@@ -273,9 +273,6 @@ namespace SB_IDE
             if (Properties.Settings.Default.MRU.Count > i) MRU8.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU9.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU10.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-
-            //JumpList jumpList = JumpList.GetJumpList(App.Current);
-            //MessageBox.Show(jumpList.JumpItems.Count.ToString());
         }
 
         private void ResetSettings()
@@ -351,23 +348,6 @@ namespace SB_IDE
                 if (File.Exists(doc.Filepath)) Properties.Settings.Default.MRU.Insert(0, doc.Filepath);
             }
             for (int i = Properties.Settings.Default.MRU.Count - 1; i >= maxMRU; i--) Properties.Settings.Default.MRU.RemoveAt(i);
-
-            //JumpList jumpList = JumpList.GetJumpList(App.Current);
-            //for (int i = Properties.Settings.Default.MRU.Count - 1; i >= maxMRU; i--)
-            //{
-            //    string path = Properties.Settings.Default.MRU[i];
-            //    var jt = new JumpTask
-            //    {
-            //        ApplicationPath = Assembly.GetCallingAssembly().Location,
-            //        Arguments = path,
-            //        Description = Path.GetFileName(path),
-            //        IconResourcePath = Assembly.GetCallingAssembly().Location,
-            //        Title = Path.GetFileName(path)
-            //    };
-            //    JumpList.AddToRecentCategory(jt);
-            //    //JumpList.AddToRecentCategory(new JumpTask() { Title = Path.GetFileNameWithoutExtension(path), Arguments = path });
-            //}
-            //jumpList.Apply();
 
             Properties.Settings.Default.SplitScreen = dualScreen;
             Properties.Settings.Default.WordWrap = wrap;

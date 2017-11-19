@@ -6,12 +6,4 @@
     <Application.Resources>
          
     </Application.Resources>
-    <!--<JumpList.JumpList>
-        <JumpList
-            ShowFrequentCategory="False" 
-            ShowRecentCategory="False"
-            JumpItemsRejected="OnJumpItemsRejected" 
-            JumpItemsRemovedByUser="OnJumpItemsRemoved">
-        </JumpList>
-    </JumpList.JumpList>-->
 </Application>
