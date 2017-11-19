@@ -78,6 +78,7 @@
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Controls.Ribbon">
@@ -438,6 +439,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\List.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\SettingsLoad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\SettingsSave.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -624,5 +624,15 @@ namespace SB_IDE
             stackVariables = new Dialogs.StackVariables(this);
             stackVariables.Show();
         }
+
+        private void settingsExport_Click(object sender, RoutedEventArgs e)
+        {
+            ExportSettings();
+        }
+
+        private void settingsImport_Click(object sender, RoutedEventArgs e)
+        {
+            ImportSettings();
+        }
     }
 }

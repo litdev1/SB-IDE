@@ -23,6 +23,9 @@ using System.Windows.Input;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Shell;
+using System.Configuration;
+using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace SB_IDE
 {
@@ -368,6 +371,62 @@ namespace SB_IDE
             }
 
             Properties.Settings.Default.Save();
+        }
+
+        private void ExportSettings()
+        {
+            System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            saveFileDialog.FileName = "SB-IDE";
+            saveFileDialog.Filter = "Settings files (*.config)|*.config|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                SaveSettings();
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+                config.SaveAs(saveFileDialog.FileName);
+            }
+        }
+
+        private void ImportSettings()
+        {
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Filter = "Settings files (*.config)|*.config|All files (*.*)|*.*";
+            openFileDialog.FilterIndex = 1;
+            openFileDialog.RestoreDirectory = true;
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                var appSettings = Properties.Settings.Default;
+                try
+                {
+                    var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+
+                    string appSettingsXmlName = Properties.Settings.Default.Context["GroupName"].ToString();
+                    // returns "MyApplication.Properties.Settings";
+
+                    // Open settings file as XML
+                    var import = XDocument.Load(openFileDialog.FileName);
+                    // Get the whole XML inside the settings node
+                    var settings = import.XPathSelectElements("//" + appSettingsXmlName);
+
+                    config.GetSectionGroup("userSettings")
+                        .Sections[appSettingsXmlName]
+                        .SectionInformation
+                        .SetRawXml(settings.Single().ToString());
+                    config.Save(ConfigurationSaveMode.Modified);
+                    ConfigurationManager.RefreshSection("userSettings");
+
+                    appSettings.Reload();
+                    appSettings.Save();
+                    LoadSettings();
+                }
+                catch (Exception ex) // Should make this more specific
+                {
+                    // Could not import settings.
+                    Errors.Add(new Error("Import Settings : " + ex.Message));
+                    appSettings.Reload(); // from last set saved, not defaults
+                }
+            }
         }
 
         private bool CloseTab(TabControl tabControl) // true is cancel
