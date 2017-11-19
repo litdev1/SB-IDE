@@ -66,5 +66,10 @@ namespace SB_IDE.Dialogs
                 Close();
             }
         }
+
+        private void textBoxGraduate_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            buttonGraduateContinue.IsEnabled = Directory.Exists(textBoxGraduate.Text);
+        }
     }
 }

@@ -25,6 +25,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using System.Runtime.Versioning;
 
 namespace SB_IDE
 {
@@ -476,10 +477,18 @@ namespace SB_IDE
                 string result = (string)ExportToVisualBasicProject.Invoke(VisualBasicExporter, new object[] { projectName, projectPath });
 
                 // vbproj bugs
-                //string sblPath = MainWindow.InstallDir + "\\SmallBasicLibrary.dll";
-                //Assembly sblAssembly = Assembly.LoadFile(sblPath);
-                //string runtime = sblAssembly.ImageRuntimeVersion.Substring(0, 4);
-                string runtime = "v4.5";
+                string runtime;
+                try
+                {
+                    string sblPath = MainWindow.InstallDir + "\\SmallBasicLibrary.dll";
+                    Assembly sblAssembly = Assembly.LoadFile(sblPath);
+                    TargetFrameworkAttribute attrib = (TargetFrameworkAttribute)sblAssembly.GetCustomAttribute(typeof(TargetFrameworkAttribute));
+                    runtime = attrib.FrameworkName.Substring(attrib.FrameworkName.Length - 4);
+                }
+                catch
+                {
+                    runtime = "v4.5";
+                }
 
                 string vbproj = File.ReadAllText(result);
                 vbproj = vbproj.Replace("<HintPath>$(programfiles)\\ (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>", "<HintPath>$(programfiles)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>");
