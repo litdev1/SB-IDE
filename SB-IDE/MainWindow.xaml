@@ -170,7 +170,7 @@
                 </RibbonGroup>
                 <!-- Debug/Tools group-->
                 <RibbonGroup x:Name="DebugTools" Header="Tools">
-                    <RibbonButton Label="Variables &amp; Call Stack" LargeImageSource="Images/List.png" KeyTip="SV" Click="toolsStack_Click" ToolTipTitle="View all variables and call stack"/>
+                    <RibbonButton Label="Variables &amp; Call Stack" LargeImageSource="Images/Frames.png" KeyTip="SV" Click="toolsStack_Click" ToolTipTitle="View all variables and call stack"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Advanced" KeyTip="A" >
