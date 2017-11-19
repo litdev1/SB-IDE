@@ -476,11 +476,11 @@ namespace SB_IDE
                 string result = (string)ExportToVisualBasicProject.Invoke(VisualBasicExporter, new object[] { projectName, projectPath });
 
                 // vbproj bugs
-                string vcproj = File.ReadAllText(result);
-                vcproj = vcproj.Replace("<HintPath>$(programfiles)\\ (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>", "<HintPath>$(programfiles)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>");
-                vcproj = vcproj.Replace("<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>", "<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>");
+                string vbproj = File.ReadAllText(result);
+                vbproj = vbproj.Replace("<HintPath>$(programfiles)\\ (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>", "<HintPath>$(programfiles)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>");
+                vbproj = vbproj.Replace("<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>", "<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>");
                 //vcproj = vcproj.Replace("<Project ToolsVersion=\"3.5\" DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">", "<Project ToolsVersion=\"15.0\" DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">");
-                File.WriteAllText(result, vcproj);
+                File.WriteAllText(result, vbproj);
 
                 return result;
             }
