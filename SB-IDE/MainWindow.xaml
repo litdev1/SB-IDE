@@ -102,6 +102,7 @@
                     <RibbonApplicationMenuItem x:Name="fileSaveAs" Header="Save As" ImageSource="Images/Save as.png" KeyTip="SA" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>
                     <RibbonApplicationMenuItem x:Name="fileSaveAll" Header="Save All" ImageSource="Images/Save all.png" KeyTip="A" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>
                     <RibbonApplicationMenuItem x:Name="filePrint" Header="Print" ImageSource="Images/Print.png" KeyTip="P" Click="filePrint_Click" ToolTipTitle="Print current program"/>
+                    <RibbonApplicationMenuItem x:Name="fileExit" Header="Exit" ImageSource="Images/Close.png" KeyTip="X" Click="fileExit_Click" ToolTipTitle="Exit SB-IDE"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <!-- Ribbon Tab #1: Home -->

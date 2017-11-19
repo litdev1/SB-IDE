@@ -647,5 +647,10 @@ namespace SB_IDE
         {
             HighLightAll();
         }
+
+        private void fileExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
