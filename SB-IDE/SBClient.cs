@@ -399,9 +399,9 @@ namespace SBDebugger
 
         private static List<string> GetStack()
         {
+            List<string> result = new List<string>();
             try
             {
-                List<string> result = new List<string>();
                 StackTrace stackTrace;
                 if (null != currentThread)
                 {
@@ -424,7 +424,7 @@ namespace SBDebugger
             }
             catch
             {
-                return null;
+                return result;
             }
         }
 
@@ -432,39 +432,53 @@ namespace SBDebugger
         {
             SortedDictionary<string, Primitive> result = new SortedDictionary<string, Primitive>();
 
-            MethodBase method = GetMethodBase();
-            if (null == method) return result;
-
-            Type type = method.DeclaringType;
-            FieldInfo[] fields = type.GetFields(BindingFlags.Static | BindingFlags.NonPublic);
-            for (int i = 0; i < fields.Length; i++)
+            try
             {
-                result[fields[i].Name] = (Primitive)fields[i].GetValue(null);
+                MethodBase method = GetMethodBase();
+                if (null == method) return result;
+
+                Type type = method.DeclaringType;
+                FieldInfo[] fields = type.GetFields(BindingFlags.Static | BindingFlags.NonPublic);
+                for (int i = 0; i < fields.Length; i++)
+                {
+                    result[fields[i].Name] = (Primitive)fields[i].GetValue(null);
+                }
+                return result;
             }
-            return result;
+            catch
+            {
+                return result;
+            }
         }
 
         private static MethodBase GetMethodBase()
         {
             StackTrace stackTrace = new StackTrace(applicationThread, false);
             MethodBase method = null;
-            for (int i = 0; i < stackTrace.FrameCount; i++)
+            try
             {
-                StackFrame frame = stackTrace.GetFrame(i);
-                method = frame.GetMethod();
-                if (method.DeclaringType.Name == "_SmallBasicProgram") break;
-            }
-            if (null != currentThread)
-            {
-                stackTrace = new StackTrace(currentThread, false);
                 for (int i = 0; i < stackTrace.FrameCount; i++)
                 {
                     StackFrame frame = stackTrace.GetFrame(i);
                     method = frame.GetMethod();
                     if (method.DeclaringType.Name == "_SmallBasicProgram") break;
                 }
+                if (null != currentThread)
+                {
+                    stackTrace = new StackTrace(currentThread, false);
+                    for (int i = 0; i < stackTrace.FrameCount; i++)
+                    {
+                        StackFrame frame = stackTrace.GetFrame(i);
+                        method = frame.GetMethod();
+                        if (method.DeclaringType.Name == "_SmallBasicProgram") break;
+                    }
+                }
+                return method;
             }
-            return method;
+            catch
+            {
+                return method;
+            }
         }
     }
 
