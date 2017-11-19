@@ -17,7 +17,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Margin="0" Grid.Row="0" >
-                <DataGrid x:Name="dataGridSearcher" IsReadOnly="True" ItemsSource="{Binding}" SelectionChanged="dataGridSearcher_SelectionChanged" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray">
+                <DataGrid x:Name="dataGridSearcher" HeadersVisibility="Column" IsReadOnly="True" ItemsSource="{Binding}" SelectionChanged="dataGridSearcher_SelectionChanged" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray">
                     <DataGrid.Resources>
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />

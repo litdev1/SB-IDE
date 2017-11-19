@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="IDE Colors" Height="550" Width="500" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True">
     <Grid>
-        <DataGrid x:Name="dataGridColours" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" SelectionChanged="dataGridColours_SelectionChanged" AutoGenerateColumns="False" Margin="10,10,9.8,34.4" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" KeyDown="dataGridColours_KeyDown">
+        <DataGrid x:Name="dataGridColours" HeadersVisibility="Column" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" SelectionChanged="dataGridColours_SelectionChanged" AutoGenerateColumns="False" Margin="10,10,9.8,34.4" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" KeyDown="dataGridColours_KeyDown">
             <DataGrid.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
