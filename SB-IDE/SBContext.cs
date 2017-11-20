@@ -110,19 +110,21 @@ namespace SB_IDE
         {
             ToolStripMenuItem menuItem = new ToolStripMenuItem("Insert Font");
 
-            foreach (FontFamily font in FontFamily.Families)
+            foreach (System.Windows.Media.FontFamily font in System.Windows.Media.Fonts.SystemFontFamilies) //WPF fonts
             {
                 try
                 {
+                    string fontName = font.FamilyNames.Values.First();
+
                     int size = 24;
                     Bitmap bmp = new Bitmap(4 * size, 5 * size / 4);
                     Graphics g = Graphics.FromImage(bmp);
                     g.SmoothingMode = SmoothingMode.HighQuality;
                     g.InterpolationMode = InterpolationMode.HighQualityBicubic;
                     g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                    g.DrawString("Basic", new Font(font, size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, 1, 1);
+                    g.DrawString("Basic", new Font(new FontFamily(fontName), size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, 1, 1);
 
-                    ToolStripMenuItem item = new ToolStripMenuItem(font.Name, bmp, Insert);
+                    ToolStripMenuItem item = new ToolStripMenuItem(fontName, bmp, Insert);
                     item.ImageScaling = ToolStripItemImageScaling.None;
 
                     menuItem.DropDownItems.Add(item);
@@ -132,7 +134,7 @@ namespace SB_IDE
 
                 }
             }
-
+            
             return menuItem;
         }
     }
