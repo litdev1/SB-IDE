@@ -496,6 +496,7 @@ namespace SB_IDE
             activeDocument = new SBDocument();
             panel.Contains(activeDocument.TextArea);
             host.Child = activeDocument.TextArea;
+            activeDocument.TextArea.PreviewKeyDown += Window_PreviewKeyDown;
             GetTabContol(iTab).Items.Add(new TabItem());
             activeTab = (TabItem)GetTabContol(iTab).Items[GetTabContol(iTab).Items.Count - 1];
             activeTab.Content = host;

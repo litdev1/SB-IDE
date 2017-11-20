@@ -652,49 +652,123 @@ namespace SB_IDE
         {
             Close();
         }
+
+        //WPF
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F5 && e.KeyboardDevice.Modifiers == ModifierKeys.None)
+            {
+                Run();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.F5 && e.KeyboardDevice.Modifiers == ModifierKeys.Shift)
+            {
+                Kill();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.F6 && e.KeyboardDevice.Modifiers == ModifierKeys.None)
+            {
+                Debug(true);
+                e.Handled = true;
+            }
+            else if (e.Key == Key.F6 && e.KeyboardDevice.Modifiers == ModifierKeys.Shift)
+            {
+                Stop();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.F9 && e.KeyboardDevice.Modifiers == ModifierKeys.None)
+            {
+                ToggleBP();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.F10 && e.KeyboardDevice.Modifiers == ModifierKeys.None)
+            {
+                StepOver();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.F11 && e.KeyboardDevice.Modifiers == ModifierKeys.None)
+            {
+                Step();
+                e.Handled = true;
+            }
+        }
+
+        //Forms
+        private void Window_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == System.Windows.Forms.Keys.F5 && e.Modifiers == System.Windows.Forms.Keys.None)
+            {
+                Run();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.F5 && e.Modifiers == System.Windows.Forms.Keys.Shift)
+            {
+                Kill();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.F6 && e.Modifiers == System.Windows.Forms.Keys.None)
+            {
+                Debug(true);
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.F6 && e.Modifiers == System.Windows.Forms.Keys.Shift)
+            {
+                Stop();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.F9 && e.Modifiers == System.Windows.Forms.Keys.None)
+            {
+                ToggleBP();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.F10 && e.Modifiers == System.Windows.Forms.Keys.None)
+            {
+                StepOver();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.F11 && e.Modifiers == System.Windows.Forms.Keys.None)
+            {
+                Step();
+            }
+        }
+
         /*
-        private bool mRestoreForDragMove;
+private bool mRestoreForDragMove;
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ClickCount == 2)
-            {
-                if (ResizeMode != ResizeMode.CanResize &&
-                    ResizeMode != ResizeMode.CanResizeWithGrip)
-                {
-                    return;
-                }
+private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+{
+   if (e.ClickCount == 2)
+   {
+       if (ResizeMode != ResizeMode.CanResize &&
+           ResizeMode != ResizeMode.CanResizeWithGrip)
+       {
+           return;
+       }
 
-                WindowState = WindowState == WindowState.Maximized
-                    ? WindowState.Normal
-                    : WindowState.Maximized;
-            }
-            else
-            {
-                mRestoreForDragMove = WindowState == WindowState.Maximized;
-                DragMove();
-            }
-        }
+       WindowState = WindowState == WindowState.Maximized
+           ? WindowState.Normal
+           : WindowState.Maximized;
+   }
+   else
+   {
+       mRestoreForDragMove = WindowState == WindowState.Maximized;
+       DragMove();
+   }
+}
 
-        private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            if (mRestoreForDragMove)
-            {
-                mRestoreForDragMove = false;
+private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+{
+   if (mRestoreForDragMove)
+   {
+       mRestoreForDragMove = false;
 
-                var point = PointToScreen(e.MouseDevice.GetPosition(this));
+       var point = PointToScreen(e.MouseDevice.GetPosition(this));
 
-                Left = point.X - (RestoreBounds.Width * 0.5);
-                Top = point.Y;
+       Left = point.X - (RestoreBounds.Width * 0.5);
+       Top = point.Y;
 
-                WindowState = WindowState.Normal;
-            }
-        }
+       WindowState = WindowState.Normal;
+   }
+}
 
-        private void Window_MouseMove(object sender, MouseEventArgs e)
-        {
-            mRestoreForDragMove = false;
-        }
-        */
+private void Window_MouseMove(object sender, MouseEventArgs e)
+{
+   mRestoreForDragMove = false;
+}
+*/
     }
 }

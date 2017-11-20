@@ -12,7 +12,7 @@
         <SolidColorBrush x:Key="GridBrushBackground" Color="#FFF0F0F0"/>
         <SolidColorBrush x:Key="GridBrushForeground" Color="#FF000000"/>
     </Window.Resources>
-    <DockPanel Margin="0">
+    <DockPanel Margin="0" PreviewKeyDown="Window_PreviewKeyDown">
         <StatusBar x:Name="statusBar" Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
             <StatusBarItem x:Name="statusVersion" Content="Version"/>
             <Separator/>
