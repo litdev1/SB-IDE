@@ -112,23 +112,25 @@ namespace SB_IDE
 
             foreach (FontFamily font in FontFamily.Families)
             {
-                //if (font.Name == "Cambria Math") continue;
-                //if (font.Name == "Gabriola") continue;
-                //if (font.Name == "Jokerman") continue;
+                try
+                {
+                    int size = 24;
+                    Bitmap bmp = new Bitmap(4 * size, 5 * size / 4);
+                    Graphics g = Graphics.FromImage(bmp);
+                    g.SmoothingMode = SmoothingMode.HighQuality;
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    g.DrawString("Basic", new Font(font, size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, 1, 1);
 
-                int size = 24;
-                Bitmap bmp = new Bitmap(4*size, 5*size/4);
-                Graphics g = Graphics.FromImage(bmp);
-                g.SmoothingMode = SmoothingMode.HighQuality;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                g.DrawString("Basic", new Font(font, size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, 1, 1);
+                    ToolStripMenuItem item = new ToolStripMenuItem(font.Name, bmp, Insert);
+                    item.ImageScaling = ToolStripItemImageScaling.None;
 
-                ToolStripMenuItem item = new ToolStripMenuItem(font.Name, bmp, Insert);
-                item.ImageScaling = ToolStripItemImageScaling.None;
-                //item.Font = new Font(item.Font.FontFamily, 24, FontStyle.Regular, GraphicsUnit.Point);
+                    menuItem.DropDownItems.Add(item);
+                }
+                catch
+                {
 
-                menuItem.DropDownItems.Add(item);
+                }
             }
 
             return menuItem;

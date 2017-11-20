@@ -111,21 +111,28 @@ namespace SB_IDE.Dialogs
 
             foreach (FontFamily font in Fonts.SystemFontFamilies)
             {
-                string fontName = font.FamilyNames.Values.First();
-                double fontSize = FontSize;
+                try
+                {
+                    string fontName = font.FamilyNames.Values.First();
+                    double fontSize = FontSize;
 
-                Grid grid = new Grid();
-                grid.RowDefinitions.Add(new RowDefinition() { });
-                grid.RowDefinitions.Add(new RowDefinition() { });
+                    Grid grid = new Grid();
+                    grid.RowDefinitions.Add(new RowDefinition() { });
+                    grid.RowDefinitions.Add(new RowDefinition() { });
 
-                TextBlock tb = new TextBlock() { Text = fontName, HorizontalAlignment = HorizontalAlignment.Center };
-                TextBlock text = new TextBlock() { Text = "Small Basic", FontFamily = font, FontSize = fontSize + 4, HorizontalAlignment = HorizontalAlignment.Center };
-                grid.Children.Add(tb);
-                grid.Children.Add(text);
-                Grid.SetRow(tb, 0);
-                Grid.SetRow(text, 1);
+                    TextBlock tb = new TextBlock() { Text = fontName, HorizontalAlignment = HorizontalAlignment.Center };
+                    TextBlock text = new TextBlock() { Text = "Small Basic", FontFamily = font, FontSize = fontSize + 4, HorizontalAlignment = HorizontalAlignment.Center };
+                    grid.Children.Add(tb);
+                    grid.Children.Add(text);
+                    Grid.SetRow(tb, 0);
+                    Grid.SetRow(text, 1);
 
-                listViewPopup.Items.Add(grid);
+                    listViewPopup.Items.Add(grid);
+                }
+                catch
+                {
+
+                }
             }
         }
 
