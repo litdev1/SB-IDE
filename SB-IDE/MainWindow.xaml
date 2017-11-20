@@ -118,8 +118,8 @@
                 </RibbonGroup>
                 <!-- Home/Program group-->
                 <RibbonGroup x:Name="Program" Header="Program">
-                    <RibbonButton Label="Stop" LargeImageSource="Images/Stop playing.png" KeyTip="ST" Click="programStop_Click" ToolTipTitle="Stop current program"/>
-                    <RibbonButton Label="Run" LargeImageSource="Images/Play.png" KeyTip="R" Click="programRun_Click" ToolTipTitle="Run current program"/>
+                    <RibbonButton Label="Stop" LargeImageSource="Images/Stop playing.png" KeyTip="ST" Click="programStop_Click" ToolTipTitle="Stop current program (Shift+F5)"/>
+                    <RibbonButton Label="Run" LargeImageSource="Images/Play.png" KeyTip="R" Click="programRun_Click" ToolTipTitle="Run current program (F5)"/>
                 </RibbonGroup>
                 <!-- Home/Edit group-->
                 <RibbonGroup x:Name="EditGroup" Header="Edit">
@@ -150,16 +150,16 @@
             <RibbonTab Header="Debug" KeyTip="D" >
                 <!-- Debug/Debug group-->
                 <RibbonGroup x:Name="DebugGroup" Header="Debug">
-                    <RibbonButton Label="Stop" LargeImageSource="Images/Stop playing.png" KeyTip="ST" Click="debugStop_Click" ToolTipTitle="Stop current program"/>
+                    <RibbonButton Label="Stop" LargeImageSource="Images/Stop playing.png" KeyTip="ST" Click="debugStop_Click" ToolTipTitle="Stop current program (Shift+F6)"/>
                     <RibbonButton Label="Pause" LargeImageSource="Images/Pause.png" KeyTip="P" Click="debugPause_Click" ToolTipTitle="Pause current program"/>
                     <RibbonButton Label="Step Out" LargeImageSource="Images/StepOut.png" KeyTip="SO" Click="debugStepOut_Click" ToolTipTitle="Step out of the current subroutine"/>
-                    <RibbonButton Label="Step Over" LargeImageSource="Images/StepOver.png" KeyTip="SV" Click="debugStepOver_Click" ToolTipTitle="Step over the next statement if it is a subroutine"/>
-                    <RibbonButton Label="Step" LargeImageSource="Images/Step.png" KeyTip="SP" Click="debugStep_Click" ToolTipTitle="Step through current program, or start and pause at first statement"/>
-                    <RibbonButton Label="Start/Resume" LargeImageSource="Images/Play.png" KeyTip="R" Click="debugDebug_Click" ToolTipTitle="Start/Resume current program"/>
+                    <RibbonButton Label="Step Over" LargeImageSource="Images/StepOver.png" KeyTip="SV" Click="debugStepOver_Click" ToolTipTitle="Step over the next statement if it is a subroutine (F10)"/>
+                    <RibbonButton Label="Step" LargeImageSource="Images/Step.png" KeyTip="SP" Click="debugStep_Click" ToolTipTitle="Step through current program, or start and pause at first statement (F11)"/>
+                    <RibbonButton Label="Start/Resume" LargeImageSource="Images/Play.png" KeyTip="R" Click="debugDebug_Click" ToolTipTitle="Start/Resume current program (F6)"/>
                 </RibbonGroup>
                 <!-- Debug/Breakpoint group-->
                 <RibbonGroup x:Name="BreakpointGroup" Header="Breakpoints">
-                    <RibbonButton Label="Toggle Breakpoint" SmallImageSource="Images/Breakpoint.png" KeyTip="BB" Click="breakpointToggle_Click" ToolTipTitle="Toggle breakpoint at current line"/>
+                    <RibbonButton Label="Toggle Breakpoint" SmallImageSource="Images/Breakpoint.png" KeyTip="BB" Click="breakpointToggle_Click" ToolTipTitle="Toggle breakpoint at current line (F9)"/>
                     <RibbonButton Label="Clear Breakpoints" SmallImageSource="Images/BreakpointOff.png" KeyTip="BC" Click="breakpointClear_Click" ToolTipTitle="Clear all breakpoints"/>
                     <RibbonToggleButton Label="Ignore Breakpoints" SmallImageSource="Images/BreakpointIgnore.png" KeyTip="BI" Click="breakpointIgnore_Click" ToolTipTitle="Ignore all breakpoints"/>
                 </RibbonGroup>
