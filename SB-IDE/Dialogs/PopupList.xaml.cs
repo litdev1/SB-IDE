@@ -73,7 +73,7 @@ namespace SB_IDE.Dialogs
         private void SetColors()
         {
             Title = "Insert Color Name";
-            Type colorsType = typeof(System.Windows.Media.Colors);
+            Type colorsType = typeof(Colors);
             PropertyInfo[] colorsTypePropertyInfos = colorsType.GetProperties(BindingFlags.Public | BindingFlags.Static);
 
             foreach (PropertyInfo colorsTypePropertyInfo in colorsTypePropertyInfos)
@@ -126,6 +126,7 @@ namespace SB_IDE.Dialogs
                     grid.Children.Add(text);
                     Grid.SetRow(tb, 0);
                     Grid.SetRow(text, 1);
+                    grid.Tag = fontName;
 
                     listViewPopup.Items.Add(grid);
                 }
@@ -134,6 +135,10 @@ namespace SB_IDE.Dialogs
 
                 }
             }
+
+            listViewPopup.Items.SortDescriptions.Add(
+                new System.ComponentModel.SortDescription("Tag",
+                System.ComponentModel.ListSortDirection.Ascending));
         }
 
         private void Window_Deactivated(object sender, EventArgs e)

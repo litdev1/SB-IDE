@@ -26,6 +26,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using SB_IDE.Dialogs;
 using System.Reflection;
+using System.IO;
 
 namespace SB_IDE
 {
@@ -110,29 +111,52 @@ namespace SB_IDE
         {
             ToolStripMenuItem menuItem = new ToolStripMenuItem("Insert Font");
 
+            List<string> fonts = new List<string>();
             foreach (System.Windows.Media.FontFamily font in System.Windows.Media.Fonts.SystemFontFamilies) //WPF fonts
             {
+                fonts.Add(font.FamilyNames.Values.First());
+            }
+            fonts.Sort();
+
+            foreach (string fontName in fonts)
+            {
+                Bitmap bmp = null;
                 try
                 {
-                    string fontName = font.FamilyNames.Values.First();
+                    int size = 20;
+                    //bmp = new Bitmap(4 * size, 5 * size / 4);
+                    //Graphics g = Graphics.FromImage(bmp);
+                    //g.SmoothingMode = SmoothingMode.HighQuality;
+                    //g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    //g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    //g.DrawString("Basic", new Font(new FontFamily(fontName), size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, 1, 1);
 
-                    int size = 24;
-                    Bitmap bmp = new Bitmap(4 * size, 5 * size / 4);
-                    Graphics g = Graphics.FromImage(bmp);
-                    g.SmoothingMode = SmoothingMode.HighQuality;
-                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                    g.DrawString("Basic", new Font(new FontFamily(fontName), size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, 1, 1);
-
-                    ToolStripMenuItem item = new ToolStripMenuItem(fontName, bmp, Insert);
-                    item.ImageScaling = ToolStripItemImageScaling.None;
-
-                    menuItem.DropDownItems.Add(item);
+                    System.Windows.Media.DrawingVisual dv = new System.Windows.Media.DrawingVisual();
+                    using (System.Windows.Media.DrawingContext dc = dv.RenderOpen())
+                    {
+                        dc.DrawRectangle(System.Windows.Media.Brushes.White, null, new System.Windows.Rect(0, 0, 4 * size, 5 * size / 4));
+                        dc.DrawText(new System.Windows.Media.FormattedText("Basic", System.Globalization.CultureInfo.InvariantCulture,
+                            System.Windows.FlowDirection.LeftToRight, new System.Windows.Media.Typeface(fontName), size,
+                            System.Windows.Media.Brushes.Black), new System.Windows.Point(1, 1));
+                    }
+                    System.Windows.Media.Imaging.RenderTargetBitmap rtb = new System.Windows.Media.Imaging.RenderTargetBitmap(4 * size, 5 * size / 4, 96, 96, System.Windows.Media.PixelFormats.Pbgra32);
+                    rtb.Render(dv);
+                    rtb.Freeze();
+                    MemoryStream stream = new MemoryStream();
+                    System.Windows.Media.Imaging.BitmapEncoder encoder = new System.Windows.Media.Imaging.BmpBitmapEncoder();
+                    encoder.Frames.Add(System.Windows.Media.Imaging.BitmapFrame.Create(rtb));
+                    encoder.Save(stream);
+                    bmp = new Bitmap(stream);
                 }
                 catch
                 {
 
                 }
+
+                ToolStripMenuItem item = new ToolStripMenuItem(fontName, bmp, Insert);
+                item.ImageScaling = ToolStripItemImageScaling.None;
+
+                menuItem.DropDownItems.Add(item);
             }
             
             return menuItem;
