@@ -57,8 +57,13 @@ namespace SB_IDE
         public Dictionary<string, int> DefaultColors { get; }
         public Dialogs.StackVariables stackVariables = null;
 
+        SplashScreen splashScreen;
+
         public MainWindow()
         {
+            splashScreen = new SplashScreen("Images/splash.png");
+            splashScreen.Show(false);
+
             InitializeComponent();
 
             DefaultColors = IDEColors;
@@ -135,11 +140,17 @@ namespace SB_IDE
             return Color.FromArgb(255, (byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb);
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Initialized(object sender, EventArgs e)
         {
             LoadSettings();
 
             InitWindow();
+
+            splashScreen.Close(new TimeSpan(0, 0, 1));
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

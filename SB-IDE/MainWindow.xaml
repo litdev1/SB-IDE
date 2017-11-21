@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE"
         mc:Ignorable="d"
-        Title="SB-IDE" Height="600" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" Icon="AppIcon.ico" WindowStartupLocation="CenterScreen">
+        Title="SB-IDE" Height="600" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" Icon="AppIcon.ico" WindowStartupLocation="CenterScreen" Initialized="Window_Initialized">
     <Window.Resources>
         <CollectionViewSource x:Key="DebugDataSource"  CollectionViewType="ListCollectionView"/>
         <SolidColorBrush x:Key="SplitterBrush" Color="#FFF0F0F0"/>
