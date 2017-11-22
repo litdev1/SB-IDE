@@ -142,14 +142,15 @@ namespace SB_IDE
 
         private void Window_Initialized(object sender, EventArgs e)
         {
+            LoadSettings();
+
+            InitWindow();
+
             splashScreen.Close(new TimeSpan(0, 0, 1));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadSettings();
-
-            InitWindow();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

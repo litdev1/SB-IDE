@@ -88,6 +88,7 @@ namespace SB_IDE
             // DEFAULT FILE
             AddDocument(1);
             AddDocument(2);
+            Activate(tabControlSB1);
             tabControlSB1.Focus();
             App app = (App)Application.Current;
             for (int i = 0; i < app.Arguments.Length; i++)
