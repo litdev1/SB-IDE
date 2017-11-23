@@ -25,6 +25,8 @@ namespace SB_IDE.Dialogs
         TreeViewItem itemText;
         public static double GridWidth;
         public static List<ImageSource> Images = new List<ImageSource>();
+        public static int Index = 0;
+        private bool loaded = false;
         List<TreeViewItem> searchResults = new List<TreeViewItem>();
         int currentSearch = 0;
 
@@ -44,6 +46,12 @@ namespace SB_IDE.Dialogs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Index > 0)
+            {
+                Close();
+                return;
+            }
+
             GridWidth = gridMain.ActualWidth;
             Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.AppIcon));
             Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseObject));
@@ -51,7 +59,9 @@ namespace SB_IDE.Dialogs
             Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseProperty));
             Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseEvent));
 
+            Index = 0;
             Load();
+            loaded = true;
         }
 
         private void Load()
@@ -252,6 +262,20 @@ namespace SB_IDE.Dialogs
 
         private void buttonNext_Click(object sender, RoutedEventArgs e)
         {
+            if (null != treeViewSearch.SelectedItem)
+            {
+                int index = ((Header)((TreeViewItem)treeViewSearch.SelectedItem).Header).Index;
+                for (int i = 0; i < searchResults.Count; i++)
+                {
+                    if (((Header)searchResults[i].Header).Index > index)
+                    {
+                        currentSearch = i;
+                        searchResults[currentSearch].IsSelected = true;
+                        searchResults[currentSearch].BringIntoView();
+                        return;
+                    }
+                }
+            }
             currentSearch++;
             if (currentSearch >= searchResults.Count) currentSearch = 0;
             searchResults[currentSearch].IsSelected = true;
@@ -260,19 +284,40 @@ namespace SB_IDE.Dialogs
 
         private void buttonPrevious_Click(object sender, RoutedEventArgs e)
         {
+            if (null != treeViewSearch.SelectedItem)
+            {
+                int index = ((Header)((TreeViewItem)treeViewSearch.SelectedItem).Header).Index;
+                for (int i = searchResults.Count - 1; i >= 0; i--)
+                {
+                    if (((Header)searchResults[i].Header).Index < index)
+                    {
+                        currentSearch = i;
+                        searchResults[currentSearch].IsSelected = true;
+                        searchResults[currentSearch].BringIntoView();
+                        return;
+                    }
+                }
+            }
             currentSearch--;
             if (currentSearch < 0) currentSearch = searchResults.Count - 1;
             searchResults[currentSearch].IsSelected = true;
             searchResults[currentSearch].BringIntoView();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (loaded) Index = 0;
         }
     }
 
     class Header : Grid
     {
         public string Text;
+        public int Index;
 
         public Header(int level, string text, bool titled = false)
         {
+            Index = ExtensionSearcher.Index++;
             Text = text;
             while (Text.Contains("\n ")) Text = Text.Replace("\n ", "\n");
             RowDefinitions.Add(new RowDefinition() { });
