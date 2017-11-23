@@ -26,7 +26,7 @@ namespace SB_IDE.Dialogs
         public static double GridWidth;
         public static List<ImageSource> Images = new List<ImageSource>();
         public static int Index = 0;
-        private bool loaded = false;
+        public static bool Active = false;
         List<TreeViewItem> searchResults = new List<TreeViewItem>();
         int currentSearch = 0;
 
@@ -46,12 +46,6 @@ namespace SB_IDE.Dialogs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Index > 0)
-            {
-                Close();
-                return;
-            }
-
             GridWidth = gridMain.ActualWidth;
             Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.AppIcon));
             Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseObject));
@@ -61,7 +55,7 @@ namespace SB_IDE.Dialogs
 
             Index = 0;
             Load();
-            loaded = true;
+            Active = true;
         }
 
         private void Load()
@@ -306,7 +300,7 @@ namespace SB_IDE.Dialogs
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (loaded) Index = 0;
+            Active = false;
         }
     }
 

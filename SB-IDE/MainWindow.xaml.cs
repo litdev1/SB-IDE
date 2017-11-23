@@ -580,6 +580,8 @@ namespace SB_IDE
 
         private void fileSearcher_Click(object sender, RoutedEventArgs e)
         {
+            if (Dialogs.FileSearcher.Active) return;
+
             Dialogs.FileSearcher fs = new Dialogs.FileSearcher();
             fs.Show();
         }
@@ -628,6 +630,8 @@ namespace SB_IDE
 
         private void ToolsExtensionSearcher_Click(object sender, RoutedEventArgs e)
         {
+            if (Dialogs.ExtensionSearcher.Active) return;
+
             Dialogs.ExtensionSearcher fs = new Dialogs.ExtensionSearcher();
             fs.Show();
         }

@@ -26,6 +26,7 @@ namespace SB_IDE.Dialogs
     {
         private List<SearchFile> searchFiles = new List<SearchFile>();
         public static string RootPath = "";
+        public static bool Active = false;
 
         public FileSearcher()
         {
@@ -173,6 +174,16 @@ namespace SB_IDE.Dialogs
         {
             Topmost = true;
             Activate();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Active = true;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Active = false;
         }
     }
 

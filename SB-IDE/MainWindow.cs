@@ -1108,6 +1108,8 @@ namespace SB_IDE
 
         private void OpenReplaceDialog()
         {
+            if (FindAndReplace.Active) return;
+
             FindAndReplace far = new FindAndReplace(activeDocument);
             far.Show();
         }

@@ -20,6 +20,7 @@ namespace SB_IDE.Dialogs
     public partial class FindAndReplace : Window
     {
         SBDocument sbDocument;
+        public static bool Active = false;
 
         internal FindAndReplace(SBDocument sbDocument)
         {
@@ -81,6 +82,16 @@ namespace SB_IDE.Dialogs
         {
             Topmost = true;
             Activate();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Active = false;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Active = true;
         }
     }
 }

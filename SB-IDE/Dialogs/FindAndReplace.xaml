@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE.Dialogs"
         mc:Ignorable="d"
-        Title="Find and Replace" Height="204" Width="444.6" ShowInTaskbar="False" Deactivated="Window_Deactivated" Icon="/SB-IDE;component/AppIcon.ico" Topmost="True">
+        Title="Find and Replace" Height="204" Width="444.6" ShowInTaskbar="False" Deactivated="Window_Deactivated" Icon="/SB-IDE;component/AppIcon.ico" Topmost="True" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid Margin="0">
         <TextBox x:Name="textBoxFind" Margin="69,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23"/>
         <Label x:Name="label" Content="Find" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
