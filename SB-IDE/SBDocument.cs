@@ -49,7 +49,7 @@ namespace SB_IDE
             // INITIAL VIEW CONFIG
             textArea.WrapMode = WrapMode.None;
             textArea.IndentationGuides = IndentView.LookBoth;
-            textArea.ScrollWidth = 0;
+            textArea.ScrollWidth = 1;
 
             // STYLING
             InitColors();

@@ -37,7 +37,6 @@ namespace SB_IDE.Dialogs
             Topmost = true;
             textBoxSearcherRoot.Text = RootPath;
             checkBoxSearcherWord.IsChecked = true;
-            GetFiles();
 
             Left = SystemParameters.PrimaryScreenWidth - Width - 20;
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
@@ -179,6 +178,7 @@ namespace SB_IDE.Dialogs
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Active = true;
+            GetFiles();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

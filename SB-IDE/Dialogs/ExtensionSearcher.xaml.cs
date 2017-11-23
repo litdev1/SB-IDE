@@ -46,6 +46,8 @@ namespace SB_IDE.Dialogs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Active = true;
+
             GridWidth = gridMain.ActualWidth;
             Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.AppIcon));
             Images.Add(MainWindow.ImageSourceFromBitmap(Properties.Resources.IntellisenseObject));
@@ -55,7 +57,6 @@ namespace SB_IDE.Dialogs
 
             Index = 0;
             Load();
-            Active = true;
         }
 
         private void Load()
