@@ -253,5 +253,17 @@ namespace SB_IDE.Properties {
                 this["HighlightAll"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InstallDir {
+            get {
+                return ((string)(this["InstallDir"]));
+            }
+            set {
+                this["InstallDir"] = value;
+            }
+        }
     }
 }

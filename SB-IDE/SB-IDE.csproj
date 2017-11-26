@@ -27,8 +27,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>SB-IDE</ProductName>
     <PublisherName>LitDev</PublisherName>
+    <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <ApplicationVersion>1.1.2.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -122,6 +123,9 @@
     <Compile Include="Dialogs\Import.xaml.cs">
       <DependentUpon>Import.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\Options.xaml.cs">
+      <DependentUpon>Options.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\PopupList.xaml.cs">
       <DependentUpon>PopupList.xaml</DependentUpon>
     </Compile>
@@ -164,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\Import.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Options.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -399,7 +407,8 @@
     <Resource Include="images\Color palette.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\AppIcon.ico" />
+    <Content Include="images\AppIcon.ico" />
+    <Resource Include="images\Options.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\StepOut.png" />
@@ -457,6 +466,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <FileAssociation Include=".sb">
+      <Visible>False</Visible>
+      <Description>Small Basic</Description>
+      <Progid>SB-IDE</Progid>
+      <DefaultIcon>images\AppIcon.ico</DefaultIcon>
+    </FileAssociation>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

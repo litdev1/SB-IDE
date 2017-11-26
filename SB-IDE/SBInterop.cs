@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Runtime.Versioning;
+using System.Windows;
 
 namespace SB_IDE
 {
@@ -52,18 +53,21 @@ namespace SB_IDE
         {
             if (MainWindow.InstallDir == "")
             {
-                MainWindow.InstallDir = Settings.GetValue("SBINSTALLATIONPATH");
-                if (null == MainWindow.InstallDir || !Directory.Exists(MainWindow.InstallDir))
+                if (IntPtr.Size == 8)
                 {
-                    if (IntPtr.Size == 8)
-                    {
-                        MainWindow.InstallDir = "C:\\Program Files (x86)\\Microsoft\\Small Basic";
-                    }
-                    else
-                    {
-                        MainWindow.InstallDir = "C:\\Program Files\\Microsoft\\Small Basic";
-                    }
+                    MainWindow.InstallDir = "C:\\Program Files (x86)\\Microsoft\\Small Basic";
                 }
+                else
+                {
+                    MainWindow.InstallDir = "C:\\Program Files\\Microsoft\\Small Basic";
+                }
+            }
+
+            if (!Directory.Exists(MainWindow.InstallDir+"\\lib"))
+            {
+                MessageBox.Show("Permission to create extension lib folder is required\n\n" + MainWindow.InstallDir + "\\lib", "SB-IDE", MessageBoxButton.OK, MessageBoxImage.Information);
+                string command = "mkdir \"" + MainWindow.InstallDir + "\\lib" + "\"";
+                UACcommand(command);
             }
 
             LoadSB();

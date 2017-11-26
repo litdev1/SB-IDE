@@ -54,7 +54,7 @@ namespace SB_IDE
         public static bool GetStackVariables = false;
 
         public ObservableCollection<DebugData> debugData = new ObservableCollection<DebugData>();
-        SBInterop sbInterop;
+        public SBInterop sbInterop;
         SBplugin sbPlugin;
         SBDocument activeDocument;
         TabItem activeTab;
@@ -254,6 +254,7 @@ namespace SB_IDE
                 debugData.Add(data);
             }
             FileSearcher.RootPath = Properties.Settings.Default.RootPath;
+            InstallDir = Properties.Settings.Default.InstallDir;
             mainGrid.RowDefinitions[2].Height = new GridLength(Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 150);
             var ideColors = IDEColors;
             for (i = 0; i < Properties.Settings.Default.Colors.Count; i++)
@@ -374,6 +375,7 @@ namespace SB_IDE
                 Properties.Settings.Default.WatchList.Add(debugData[i].Group);
             }
             Properties.Settings.Default.RootPath = FileSearcher.RootPath;
+            Properties.Settings.Default.InstallDir = InstallDir;
             Properties.Settings.Default.OutputHeight = mainGrid.RowDefinitions[2].ActualHeight;
             Properties.Settings.Default.Colors.Clear();
             foreach (KeyValuePair<string,int> kvp in IDEColors)
