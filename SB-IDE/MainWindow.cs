@@ -1372,7 +1372,7 @@ namespace SB_IDE
 
         private void ExtensionManager()
         {
-            EMWindow windowEM = new EMWindow(Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "settings"));
+            EMWindow windowEM = new EMWindow(Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "settings"), InstallDir);
             windowEM.ShowDialog();
         }
 
