@@ -146,8 +146,6 @@ namespace SB_IDE
             itemCollectionViewSource = (CollectionViewSource)(FindResource("DebugDataSource"));
             itemCollectionViewSource.Source = debugData;
 
-            InitIntellisense();
-
             SetWindowColors();
 
             threadTimer = new Timer(new TimerCallback(ThreadTimerCallback));
