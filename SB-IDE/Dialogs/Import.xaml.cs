@@ -43,13 +43,13 @@ namespace SB_IDE.Dialogs
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.ImportProgram = sbInterop.Import(textBoxImport.Text);
-            if (MainWindow.ImportProgram != "")
+            if (MainWindow.ImportProgram == "error")
             {
-                MainWindow.Errors.Add(new Error("Import : " + "Successfully imported program with ID " + textBoxImport.Text));
+                MainWindow.Errors.Add(new Error("Import : " + "Failed to import program with ID " + textBoxImport.Text));
             }
             else
             {
-                MainWindow.Errors.Add(new Error("Import : " + "Failed to import program with ID " + textBoxImport.Text));
+                MainWindow.Errors.Add(new Error("Import : " + "Successfully imported program with ID " + textBoxImport.Text));
             }
             Close();
         }

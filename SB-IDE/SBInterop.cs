@@ -277,7 +277,7 @@ namespace SB_IDE
             try
             { 
                 string key = (string)SaveProgram.Invoke(Service, new object[] { "", program, "SBProgram" });
-                if (key.ToUpper() != "ERROR")
+                if (key != "error")
                 {
                     string result = (string)PublishProgramDetails.Invoke(Service, new object[] { key, "", "", "Miscellaneous" });
                 }
@@ -286,7 +286,7 @@ namespace SB_IDE
             catch (Exception ex)
             {
                 MainWindow.Errors.Add(new Error("Publish : " + ex.Message));
-                return "";
+                return "error";
             }
         }
 
@@ -295,12 +295,12 @@ namespace SB_IDE
             try
             {
                 string program = (string)LoadProgram.Invoke(Service, new object[] { key.Trim() });
-                return program == "error" ? "" : program;
+                return program;
             }
             catch (Exception ex)
             {
-                MainWindow.Errors.Add(new Error("Publish : " + ex.Message));
-                return "";
+                MainWindow.Errors.Add(new Error("Import : " + ex.Message));
+                return "error";
             }
         }
 
