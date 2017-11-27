@@ -295,7 +295,7 @@ namespace SB_IDE
             try
             {
                 string program = (string)LoadProgram.Invoke(Service, new object[] { key.Trim() });
-                return program;
+                return program == "error" ? "" : program;
             }
             catch (Exception ex)
             {
