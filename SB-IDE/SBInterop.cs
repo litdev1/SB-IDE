@@ -306,12 +306,13 @@ namespace SB_IDE
 
         public void CompileExtension(string cs, string name, bool bOverwrite = false)
         {
-            string tempPath = Path.GetDirectoryName(Path.GetTempFileName()) + "\\SBDebugger.dll";
+            string tempPath = Path.GetTempFileName();
+            File.Delete(tempPath);
+            tempPath = Path.GetDirectoryName(tempPath) + "\\SBDebugger.dll";
             try
             {
                 string extPath = MainWindow.InstallDir + "\\lib\\" + name + ".dll";
                 string sblPath = MainWindow.InstallDir + "\\SmallBasicLibrary.dll";
-                File.Delete(tempPath);
 
                 if (File.Exists(extPath) && !bOverwrite)
                 {
