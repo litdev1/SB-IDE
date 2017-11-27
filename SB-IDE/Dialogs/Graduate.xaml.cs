@@ -42,12 +42,13 @@ namespace SB_IDE.Dialogs
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.ShowNewFolderButton = true;
             fbd.SelectedPath = ProjectPath;
+            if (fbd.SelectedPath == "") fbd.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             DialogResult result = fbd.ShowDialog();
 
             if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
             {
-                buttonGraduateContinue.IsEnabled = true;
                 textBoxGraduate.Text = fbd.SelectedPath;
+                buttonGraduateContinue.IsEnabled = true;
             }
         }
 
@@ -61,6 +62,10 @@ namespace SB_IDE.Dialogs
         {
             if (Directory.Exists(textBoxGraduate.Text))
             {
+                if (Directory.GetFiles(textBoxGraduate.Text).Count() > 0)
+                {
+                    if (System.Windows.MessageBox.Show("This folder already contains files.\n\nDo you want to continue?", "SB-IDE", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+                }
                 OK = true;
                 ProjectPath = textBoxGraduate.Text;
                 Close();
