@@ -127,6 +127,7 @@ namespace SB_IDE
             try
             {
                 extensions.Clear();
+                SBObjects.objects.Clear();
                 extensions.Add("\\SmallBasicLibrary");
                 string path = MainWindow.InstallDir + "\\lib\\";
                 string[] files = Directory.GetFiles(path, "*.dll");
