@@ -60,6 +60,7 @@ namespace SB_IDE
         TabItem activeTab;
         Timer threadTimer;
         bool debugUpdated = false;
+        bool highlightsUpdated = false;
         int maxMRU = 10;
         object lockRun = new object();
 
@@ -680,9 +681,17 @@ namespace SB_IDE
             }
             if (null == activeDocument.debug || !activeDocument.debug.IsPaused())
             {
-                activeDocument.ClearHighlights();
+                if (!highlightsUpdated)
+                {
+                    activeDocument.ClearHighlights();
+                    highlightsUpdated = true;
+                }
                 debugUpdated = false;
                 return;
+            }
+            else
+            {
+                highlightsUpdated = false;
             }
 
             if (!debugUpdated)
