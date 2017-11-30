@@ -538,20 +538,21 @@ namespace SB_IDE
 
         private IPAddress GetIP()
         {
-            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
-            {
-                if (ni.OperationalStatus == OperationalStatus.Up && ni.NetworkInterfaceType != NetworkInterfaceType.Loopback)
-                {
-                    foreach (UnicastIPAddressInformation ua in ni.GetIPProperties().UnicastAddresses)
-                    {
-                        if (ua.Address.AddressFamily == AddressFamily.InterNetwork)
-                        {
-                            return ua.Address;
-                        }
-                    }
-                }
-            }
-            return IPAddress.None;
+            return IPAddress.Loopback;
+            //foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
+            //{
+            //    if (ni.OperationalStatus == OperationalStatus.Up && ni.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+            //    {
+            //        foreach (UnicastIPAddressInformation ua in ni.GetIPProperties().UnicastAddresses)
+            //        {
+            //            if (ua.Address.AddressFamily == AddressFamily.InterNetwork)
+            //            {
+            //                return ua.Address;
+            //            }
+            //        }
+            //    }
+            //}
+            //return IPAddress.None;
         }
 
         public void Dispose()
