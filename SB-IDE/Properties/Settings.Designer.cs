@@ -265,5 +265,17 @@ namespace SB_IDE.Properties {
                 this["InstallDir"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("350")]
+        public double IntellisenseWidth {
+            get {
+                return ((double)(this["IntellisenseWidth"]));
+            }
+            set {
+                this["IntellisenseWidth"] = value;
+            }
+        }
     }
 }

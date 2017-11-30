@@ -65,5 +65,8 @@
     <Setting Name="InstallDir" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="IntellisenseWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">350</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

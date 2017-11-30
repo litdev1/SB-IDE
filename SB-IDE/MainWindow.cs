@@ -182,7 +182,7 @@ namespace SB_IDE
         };
             canvasInfo.Children.Add(tb);
             tb.Measure(size);
-            double canvasWidth = Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
+            double canvasWidth = viewGrid.ColumnDefinitions[2].MaxWidth - 10; // Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
             Canvas.SetLeft(tb, (canvasWidth - tb.DesiredSize.Width) / 2);
             Canvas.SetTop(tb, 25);
 
@@ -255,6 +255,7 @@ namespace SB_IDE
             FileSearcher.RootPath = Properties.Settings.Default.RootPath;
             InstallDir = Properties.Settings.Default.InstallDir;
             mainGrid.RowDefinitions[2].Height = new GridLength(Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 150);
+            viewGrid.ColumnDefinitions[2].Width = new GridLength(Properties.Settings.Default.IntellisenseWidth > 0 ? viewGrid.ColumnDefinitions[2].MaxWidth : 0);
             var ideColors = IDEColors;
             for (i = 0; i < Properties.Settings.Default.Colors.Count; i++)
             {
@@ -376,6 +377,7 @@ namespace SB_IDE
             Properties.Settings.Default.RootPath = FileSearcher.RootPath;
             Properties.Settings.Default.InstallDir = InstallDir;
             Properties.Settings.Default.OutputHeight = mainGrid.RowDefinitions[2].ActualHeight;
+            Properties.Settings.Default.IntellisenseWidth = viewGrid.ColumnDefinitions[2].ActualWidth;
             Properties.Settings.Default.Colors.Clear();
             foreach (KeyValuePair<string,int> kvp in IDEColors)
             {

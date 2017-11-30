@@ -217,7 +217,7 @@
                 <RowDefinition Height="6"/>
                 <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="0,0,0,0">
+            <Grid x:Name="viewGrid" Grid.Row="0" Margin="0,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="6" />
