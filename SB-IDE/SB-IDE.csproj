@@ -408,6 +408,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\AppIcon.ico" />
+    <Resource Include="images\Red book.png" />
     <Resource Include="images\Options.png" />
   </ItemGroup>
   <ItemGroup>

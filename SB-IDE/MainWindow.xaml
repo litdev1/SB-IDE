@@ -223,7 +223,8 @@
                     <ColumnDefinition Width="6" />
                     <ColumnDefinition Width="350" MaxWidth="350" />
                 </Grid.ColumnDefinitions>
-                <Grid x:Name="documentGrid" Grid.Row="0" Margin="0,0,0,0" >
+                <Grid x:Name="wrapperGrid" Grid.Row="0" Margin="0,0,0,0">
+                    <Grid x:Name="documentGrid" Margin="0,0,0,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="6"/>
@@ -246,7 +247,8 @@
                         </TabItem>
                     </TabControl>
                 </Grid>
-                <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
+            </Grid>
+            <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
                 <ScrollViewer Grid.Column="2" Margin="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <Canvas x:Name="canvasInfo" Margin="0" VerticalAlignment="Stretch" MinHeight="2000" >
                         <Canvas.Background>

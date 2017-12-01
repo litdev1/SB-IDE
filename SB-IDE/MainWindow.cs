@@ -173,6 +173,8 @@ namespace SB_IDE
         private void InitIntellisense()
         {
             canvasInfo.Children.Clear();
+            IntellisenseToggle();
+
             TextBlock tb = new TextBlock()
             {
                 Text = "Intellisense",
@@ -200,6 +202,31 @@ namespace SB_IDE
             Canvas.SetTop(tb, 75);
 
             canvasInfo.MinHeight = 100 + tb.DesiredSize.Height;
+        }
+
+        private void IntellisenseToggle()
+        {
+            Image img = new Image()
+            {
+                Width = 20,
+                Height = 20,
+                Source = ImageSourceFromBitmap(Properties.Resources.Red_book)
+            };
+            Button button = new Button() { Content = img, Width = 20, Height = 20, VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(2) };
+            button.Click += new RoutedEventHandler(ClickIntellisenseToggle);
+            wrapperGrid.Children.Add(button);
+        }
+
+        private void ClickIntellisenseToggle(object sender, RoutedEventArgs e)
+        {
+            if (viewGrid.ColumnDefinitions[2].Width.Value > 0)
+            {
+                viewGrid.ColumnDefinitions[2].Width = new GridLength(0);
+            }
+            else
+            {
+                viewGrid.ColumnDefinitions[2].Width = new GridLength(viewGrid.ColumnDefinitions[2].MaxWidth);
+            }
         }
 
         private void GridDebugClick(object sender, RoutedEventArgs e)
