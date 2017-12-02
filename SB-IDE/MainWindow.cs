@@ -212,7 +212,11 @@ namespace SB_IDE
                 Height = 24,
                 Source = ImageSourceFromBitmap(Properties.Resources.Red_book)
             };
-            Button button = new Button() { Content = img, Width = 24, Height = 24, VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 0, 4, 0) };
+            Button button = new Button() { Content = img, Width = 24, Height = 24,
+                VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right,
+                Margin = new Thickness(0, 0, 4, 0),
+                Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent)
+            };
             button.ToolTip = "Toggle intellisense view";
             button.Click += new RoutedEventHandler(ClickIntellisenseToggle);
             wrapperGrid.Children.Add(button);
@@ -223,7 +227,11 @@ namespace SB_IDE
                 Height = 24,
                 Source = ImageSourceFromBitmap(Properties.Resources.Monitors)
             };
-            Button button2 = new Button() { Content = img2, Width = 24, Height = 24, VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 0, 32, 0) };
+            Button button2 = new Button() { Content = img2, Width = 24, Height = 24,
+                VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right,
+                Margin = new Thickness(0, 0, 32, 0),
+                Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent)
+            };
             button2.ToolTip = "Toggle split screen program layout";
             button2.Click += new RoutedEventHandler(viewDual_Click);
             wrapperGrid.Children.Add(button2);
@@ -1160,7 +1168,7 @@ namespace SB_IDE
         {
             if (FindAndReplace.Active) return;
 
-            FindAndReplace far = new FindAndReplace(activeDocument);
+            FindAndReplace far = new FindAndReplace(this);
             far.Show();
         }
 
@@ -1623,7 +1631,8 @@ namespace SB_IDE
                 Height = 14,
                 Source = imgSource
             };
-            Button button = new Button() { Content = img, Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent) };
+            Button button = new Button() { Content = img,
+                Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent) };
 
             FilePath = filePath;
             FileName = Path.GetFileName(filePath);

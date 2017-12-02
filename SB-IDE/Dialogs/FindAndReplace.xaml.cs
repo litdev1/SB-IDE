@@ -19,17 +19,18 @@ namespace SB_IDE.Dialogs
     /// </summary>
     public partial class FindAndReplace : Window
     {
-        SBDocument sbDocument;
+        MainWindow mainWindow;
         public static bool Active = false;
 
-        internal FindAndReplace(SBDocument sbDocument)
+        internal FindAndReplace(MainWindow mainWindow)
         {
-            this.sbDocument = sbDocument;
+            this.mainWindow = mainWindow;
             InitializeComponent();
 
             FontSize = 12 + MainWindow.zoom;
 
             Topmost = true;
+            SBDocument sbDocument = mainWindow.GetActiveDocument();
             if (sbDocument.TextArea.SelectedText != "") textBoxFind.Text = sbDocument.TextArea.SelectedText;
             textBoxFind.Focus();
             textBoxFind.SelectAll();
@@ -40,11 +41,13 @@ namespace SB_IDE.Dialogs
 
         private void buttonFind_Click(object sender, RoutedEventArgs e)
         {
+            SBDocument sbDocument = mainWindow.GetActiveDocument();
             sbDocument.searchManager.Find(true, textBoxFind.Text);
         }
 
         private void buttonReplace_Click(object sender, RoutedEventArgs e)
         {
+            SBDocument sbDocument = mainWindow.GetActiveDocument();
             if (sbDocument.TextArea.SelectedText.ToUpper() != textBoxFind.Text.ToUpper())
             {
                 sbDocument.searchManager.Find(true, textBoxFind.Text);
@@ -55,26 +58,36 @@ namespace SB_IDE.Dialogs
             int iLen = sbDocument.TextArea.SelectedText.Length;
             sbDocument.TextArea.SetTargetRange(iStart, iStart + iLen);
             sbDocument.TextArea.ReplaceTarget(textBoxReplace.Text);
+            sbDocument.TextArea.CurrentPosition = sbDocument.TextArea.SelectionStart + textBoxReplace.Text.Length;
 
             sbDocument.searchManager.Find(true, textBoxFind.Text);
         }
 
         private void buttonReplaceAll_Click(object sender, RoutedEventArgs e)
         {
+            SBDocument sbDocument = mainWindow.GetActiveDocument();
             if (sbDocument.TextArea.SelectedText.ToUpper() != textBoxFind.Text.ToUpper())
             {
                 sbDocument.searchManager.Find(true, textBoxFind.Text);
             }
             if (sbDocument.TextArea.SelectedText.ToUpper() != textBoxFind.Text.ToUpper()) return;
 
+            List<int> markStart = new List<int>();
             while (sbDocument.TextArea.SelectedText.ToUpper() == textBoxFind.Text.ToUpper())
             {
-                int iStart = sbDocument.TextArea.SelectionStart;
-                int iLen = sbDocument.TextArea.SelectedText.Length;
+                if (markStart.Contains(sbDocument.TextArea.SelectionStart)) break;
+                markStart.Add(sbDocument.TextArea.SelectionStart);
+                sbDocument.searchManager.Find(true, textBoxFind.Text);
+            }
+
+            int iLen = sbDocument.TextArea.SelectedText.Length;
+            markStart.Sort();
+            markStart.Reverse();
+            foreach (int iStart in markStart)
+            {
                 sbDocument.TextArea.SetTargetRange(iStart, iStart + iLen);
                 sbDocument.TextArea.ReplaceTarget(textBoxReplace.Text);
-
-                sbDocument.searchManager.Find(true, textBoxFind.Text);
+                sbDocument.TextArea.CurrentPosition = sbDocument.TextArea.SelectionStart + textBoxReplace.Text.Length;
             }
         }
 
