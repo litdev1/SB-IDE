@@ -522,7 +522,7 @@ namespace SB_IDE
                 {
                     int i;
                     int.TryParse(((TabHeader)tabItem.Header).FileName.Substring(8), out i);
-                    if (num == i) num++;
+                    if (num <= i) num = i + 1;
                 }
             }
             foreach (TabItem tabItem in tabControlSB2.Items)
@@ -531,7 +531,7 @@ namespace SB_IDE
                 {
                     int i;
                     int.TryParse(((TabHeader)tabItem.Header).FileName.Substring(8), out i);
-                    if (num == i) num++;
+                    if (num <= i) num = i + 1;
                 }
             }
             WindowsFormsHost host = new WindowsFormsHost();
