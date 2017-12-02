@@ -208,13 +208,25 @@ namespace SB_IDE
         {
             Image img = new Image()
             {
-                Width = 20,
-                Height = 20,
+                Width = 24,
+                Height = 24,
                 Source = ImageSourceFromBitmap(Properties.Resources.Red_book)
             };
-            Button button = new Button() { Content = img, Width = 20, Height = 20, VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(2) };
+            Button button = new Button() { Content = img, Width = 24, Height = 24, VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 0, 4, 0) };
+            button.ToolTip = "Toggle intellisense view";
             button.Click += new RoutedEventHandler(ClickIntellisenseToggle);
             wrapperGrid.Children.Add(button);
+
+            Image img2 = new Image()
+            {
+                Width = 24,
+                Height = 24,
+                Source = ImageSourceFromBitmap(Properties.Resources.Monitors)
+            };
+            Button button2 = new Button() { Content = img2, Width = 24, Height = 24, VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 0, 32, 0) };
+            button2.ToolTip = "Toggle split screen program layout";
+            button2.Click += new RoutedEventHandler(viewDual_Click);
+            wrapperGrid.Children.Add(button2);
         }
 
         private void ClickIntellisenseToggle(object sender, RoutedEventArgs e)
