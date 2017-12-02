@@ -1415,6 +1415,7 @@ namespace SB_IDE
             {
                 AddDocument();
                 activeDocument.LoadDataFromText(ImportProgram);
+                ((TabHeader)activeTab.Header).FileName = import.textBoxImport.Text;
             }
         }
 
