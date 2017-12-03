@@ -23,7 +23,7 @@
                 <StackPanel Orientation="Horizontal">
                     <StatusBarItem x:Name="statusCaps" Content="Caps"/>
                     <Separator/>
-                    <StatusBarItem x:Name="statusNumlock" Content="Insert"/>
+                    <StatusBarItem x:Name="statusNumlock" Content="Numlock"/>
                     <Separator/>
                     <StatusBarItem x:Name="statusInsert" Content="Insert"/>
                 </StackPanel>
