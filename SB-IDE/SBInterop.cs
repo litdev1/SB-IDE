@@ -440,6 +440,12 @@ namespace SB_IDE
                     return "";
                 }
 
+                string pdb = Path.ChangeExtension(output, ".pdb");
+                if (File.Exists(pdb))
+                {
+                    File.Delete(pdb);
+                }
+
                 if (File.Exists(output) && DateTime.Now - File.GetLastWriteTime(output) < TimeSpan.FromMilliseconds(1000))
                 {
                     MainWindow.Errors.Add(new Error("Compile : " + "0 Errors"));

@@ -72,6 +72,13 @@ namespace SB_IDE
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));
+            menu.Items.Add(new ToolStripMenuItem("Copy Selection to clipboard as HTML", null, CopyToHtml));
+        }
+
+        private void CopyToHtml(object sender, EventArgs e)
+        {
+            string html = sbDocument.TextArea.GetTextRangeAsHtml(textArea.SelectionStart, textArea.SelectedText.Length);
+            Clipboard.SetText(html);
         }
 
         private void Insert(object sender, EventArgs e)

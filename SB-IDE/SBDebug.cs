@@ -394,7 +394,7 @@ namespace SB_IDE
                 //    sbDocument.ClearHighlights();
                 //    MainWindow.Errors.Add(new Error("Run : " + "Successfully terminated run with process " + sbDocument.Proc.Id));
                 //}
-                File.Delete(tempExe);
+                if (sbDocument.Filepath == "") File.Delete(tempExe);
                 sbDocument.Proc = null;
                 //if (null == sbDocument.debug) return;
                 //sbDocument.debug.Dispose();
@@ -578,7 +578,7 @@ namespace SB_IDE
                         MainWindow.Errors.Add(new Error("Run : " + "Successfully terminated run with process " + sbDocument.Proc.Id));
                         sbDocument.Proc = null;
                     }
-                    File.Delete(tempExe);
+                    if (sbDocument.Filepath == "") File.Delete(tempExe);
                 }
                 catch
                 {
