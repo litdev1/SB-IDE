@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Forms;
 
@@ -491,6 +492,39 @@ namespace SB_IDE
         public void FoldAll(FoldAction foldAction)
         {
             textArea.FoldAll(foldAction);
+        }
+
+        public void Comment(bool bComment)
+        {
+            int lineA = textArea.LineFromPosition(textArea.SelectionStart);
+            int lineB = textArea.LineFromPosition(textArea.SelectionEnd);
+            if (textArea.SelectionEnd == textArea.Lines[lineB-1].EndPosition) lineB--;
+            int iStart = textArea.Lines[lineA].Position;
+            int iEnd = textArea.Lines[lineB].EndPosition;
+
+            string selected = "";
+            for (int i = lineA; i <= lineB; i++)
+            {
+                Line line = textArea.Lines[i];
+                string text = line.Text;
+                int pos = text.TakeWhile(c => char.IsWhiteSpace(c)).Count();
+                if (pos < text.Length)
+                {
+                    if (bComment && text[pos] != '\'')
+                    {
+                        text = text.Insert(pos, "'");
+                    }
+                    else if (!bComment && text[pos] == '\'')
+                    {
+                        text = text.Remove(pos, 1);
+                    }
+                }
+                selected += text;
+            }
+
+            textArea.SetTargetRange(iStart, iEnd);
+            textArea.ReplaceTarget(selected);
+            lexer.IsDirty = true;
         }
 
         #endregion
