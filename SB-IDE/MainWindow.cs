@@ -515,15 +515,23 @@ namespace SB_IDE
         {
             System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             saveFileDialog.FileName = ((TabHeader)activeTab.Header).FileName;
-            saveFileDialog.Filter = "Small Basic files (*.sb)|*.sb|All files (*.*)|*.*";
+            saveFileDialog.Filter = "Small Basic files (*.sb)|*.sb|Formatted HTML (*.html)|*.html|All files (*.*)|*.*";
             saveFileDialog.FilterIndex = 1;
             saveFileDialog.RestoreDirectory = true;
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                activeDocument.SaveDataToFile(saveFileDialog.FileName);
-                activeTab.Header = new TabHeader(saveFileDialog.FileName);
-                if (Properties.Settings.Default.MRU.Contains(activeDocument.Filepath)) Properties.Settings.Default.MRU.Remove(activeDocument.Filepath);
-                if (File.Exists(activeDocument.Filepath)) Properties.Settings.Default.MRU.Insert(0, activeDocument.Filepath);
+                if (saveFileDialog.FileName.ToLower().EndsWith(".sb"))
+                {
+                    activeDocument.SaveDataToFile(saveFileDialog.FileName);
+                    activeTab.Header = new TabHeader(saveFileDialog.FileName);
+                    if (Properties.Settings.Default.MRU.Contains(activeDocument.Filepath)) Properties.Settings.Default.MRU.Remove(activeDocument.Filepath);
+                    if (File.Exists(activeDocument.Filepath)) Properties.Settings.Default.MRU.Insert(0, activeDocument.Filepath);
+                }
+                else if (saveFileDialog.FileName.ToLower().EndsWith(".html"))
+                {
+                    string html = activeDocument.TextArea.GetTextRangeAsHtml(0, activeDocument.TextArea.TextLength);
+                    File.WriteAllText(saveFileDialog.FileName, html);
+                }
             }
         }
 
