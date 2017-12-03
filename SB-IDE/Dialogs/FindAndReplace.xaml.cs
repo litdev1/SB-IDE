@@ -87,7 +87,6 @@ namespace SB_IDE.Dialogs
             {
                 sbDocument.TextArea.SetTargetRange(iStart, iStart + iLen);
                 sbDocument.TextArea.ReplaceTarget(textBoxReplace.Text);
-                sbDocument.TextArea.CurrentPosition = sbDocument.TextArea.SelectionStart + textBoxReplace.Text.Length;
             }
         }
 

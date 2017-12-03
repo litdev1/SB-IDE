@@ -32,7 +32,7 @@
         <Ribbon x:Name="ribbon" VerticalAlignment="Top"  DockPanel.Dock="Top" Margin="0" SelectedIndex="0" SelectionChanged="ribbon_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}">
             <!-- Help Pane, located at the right-hand side -->
             <Ribbon.HelpPaneContent>
-                <RibbonButton SmallImageSource="Images\Help.png" Click="helpClick"/>
+                <RibbonButton SmallImageSource="Images\Help.png" Click="helpClick" ToolTip="Help"/>
             </Ribbon.HelpPaneContent>
             <!-- Quick Access Toolbar - located at the upper-left corner -->
             <!--<Ribbon.QuickAccessToolBar>

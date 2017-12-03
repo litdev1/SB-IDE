@@ -208,11 +208,14 @@ namespace SB_IDE
         {
             Image img = new Image()
             {
+                Width = 20,
+                Height = 20,
+                Source = ImageSourceFromBitmap(Properties.Resources.Help_book),
+                Stretch = Stretch.Fill
+            };
+            Button button = new Button() { Content = img,
                 Width = 24,
                 Height = 24,
-                Source = ImageSourceFromBitmap(Properties.Resources.Red_book)
-            };
-            Button button = new Button() { Content = img, Width = 24, Height = 24,
                 VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right,
                 Margin = new Thickness(0, 0, 4, 0),
                 Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent)
@@ -223,11 +226,14 @@ namespace SB_IDE
 
             Image img2 = new Image()
             {
+                Width = 20,
+                Height = 20,
+                Source = ImageSourceFromBitmap(Properties.Resources.Monitors),
+                Stretch = Stretch.Fill
+            };
+            Button button2 = new Button() { Content = img2,
                 Width = 24,
                 Height = 24,
-                Source = ImageSourceFromBitmap(Properties.Resources.Monitors)
-            };
-            Button button2 = new Button() { Content = img2, Width = 24, Height = 24,
                 VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Right,
                 Margin = new Thickness(0, 0, 32, 0),
                 Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent)

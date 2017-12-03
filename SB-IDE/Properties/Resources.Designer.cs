@@ -323,6 +323,16 @@ namespace SB_IDE.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Help_book {
+            get {
+                object obj = ResourceManager.GetObject("Help_book", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Highlight {
             get {
                 object obj = ResourceManager.GetObject("Highlight", resourceCulture);
@@ -556,16 +566,6 @@ namespace SB_IDE.Properties {
         internal static System.Drawing.Bitmap Publish {
             get {
                 object obj = ResourceManager.GetObject("Publish", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Red_book {
-            get {
-                object obj = ResourceManager.GetObject("Red_book", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
