@@ -498,7 +498,13 @@ namespace SB_IDE
         {
             int lineA = textArea.LineFromPosition(textArea.SelectionStart);
             int lineB = textArea.LineFromPosition(textArea.SelectionEnd);
-            if (textArea.SelectionEnd == textArea.Lines[lineB-1].EndPosition) lineB--;
+            if (lineB < lineA)
+            {
+                int iTemp = lineA;
+                lineA = lineB;
+                lineB = iTemp;
+            }
+            if (lineB > lineA && textArea.SelectionEnd == textArea.Lines[lineB-1].EndPosition) lineB--;
             int iStart = textArea.Lines[lineA].Position;
             int iEnd = textArea.Lines[lineB].EndPosition;
 

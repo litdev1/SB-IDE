@@ -1,0 +1,35 @@
+
+    Fixes for some 'Find and Replace' issues
+    Added a couple toggle buttons to show/hide intellisense and split view
+    Debugging requirement for network connection removed
+    Reduced cpu usage for large files
+    Settings (including SB installation location) added to Advanced ribbon tab (version 1.1.2)
+    Splash screen on startup
+    Improved wpf defined font insertion
+    Protection for cases where fonts fail to load correctly
+    Function keys for some run commands
+    Fixed Graduate to work with recent versions of Small Basic (version 1.1.1)
+    Various minor debug and interface fixes
+    Stack and all variables display tool during debug
+    Settings import and export
+    Extension searcher tool added
+    Colours and fonts insertion, various debug and plugin improvements (version 1.1)
+    Intellisense hover fix where vaiables are named like keywords
+    Improved maximized window (with auto hide taskbar)
+    Improved zoom for all text
+    Intellisense fixes
+    Cosmetic improvements and color settings
+    Interface improvements
+    Conditional debugging breakpoints
+    Intellisense fixes
+    Further plugin extensibility added
+    Command line file(s) to open (allows TaskBar pinning and openning)
+    Modified how plugins work to make them more extensible
+    Improved lexing of keywords
+    Plugin functionality added
+    Lexer handles unclosed quote strings
+    Ribbon Keytips sorted
+    File searcher added
+    Improvements to debugging event subroutines
+    Step over and step out debug options added
+    Debug pause issue fixed  
