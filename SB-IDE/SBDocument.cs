@@ -86,6 +86,9 @@ namespace SB_IDE
 
         public void LoadDataFromFile(string path)
         {
+            System.Windows.Input.Cursor cursor = System.Windows.Input.Mouse.OverrideCursor;
+            System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+
             try
             {
                 if (File.Exists(path))
@@ -104,10 +107,15 @@ namespace SB_IDE
             {
                 MainWindow.Errors.Add(new Error("Load File : " + ex.Message));
             }
+
+            System.Windows.Input.Mouse.OverrideCursor = cursor;
         }
 
         public void LoadDataFromText(string program)
         {
+            System.Windows.Input.Cursor cursor = System.Windows.Input.Mouse.OverrideCursor;
+            System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+
             try
             {
                 textArea.Text = program;
@@ -120,6 +128,8 @@ namespace SB_IDE
             {
                 MainWindow.Errors.Add(new Error("Load Text : " + ex.Message));
             }
+
+            System.Windows.Input.Mouse.OverrideCursor = cursor;
         }
 
         public void SaveDataToFile(string path = "")
@@ -423,7 +433,12 @@ namespace SB_IDE
 
         public void Paste()
         {
+            System.Windows.Input.Cursor cursor = System.Windows.Input.Mouse.OverrideCursor;
+            System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+
             textArea.Paste();
+
+            System.Windows.Input.Mouse.OverrideCursor = cursor;
         }
 
         public void Delete()

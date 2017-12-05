@@ -110,6 +110,9 @@ namespace SB_IDE
 
         public void Format()
         {
+            System.Windows.Input.Cursor cursor = System.Windows.Input.Mouse.OverrideCursor;
+            System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+
             int foldBase = textArea.Lines[0].FoldLevel;
             int fold = foldBase;
 
@@ -168,6 +171,7 @@ namespace SB_IDE
             }
 
             isDirty = true;
+            System.Windows.Input.Mouse.OverrideCursor = cursor;
         }
 
         private void InitSyntaxColoring()
