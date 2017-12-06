@@ -537,14 +537,14 @@ namespace SB_IDE
 
         private void AddDocument(int iTab = -1)
         {
-            int num = 1;
+            List<int> nums = new List<int>();
             foreach (TabItem tabItem in tabControlSB1.Items)
             {
                 if (((TabHeader)tabItem.Header).FileName.StartsWith("Untitled"))
                 {
                     int i;
                     int.TryParse(((TabHeader)tabItem.Header).FileName.Substring(8), out i);
-                    if (num <= i) num = i + 1;
+                    nums.Add(i);
                 }
             }
             foreach (TabItem tabItem in tabControlSB2.Items)
@@ -553,9 +553,11 @@ namespace SB_IDE
                 {
                     int i;
                     int.TryParse(((TabHeader)tabItem.Header).FileName.Substring(8), out i);
-                    if (num <= i) num = i + 1;
+                    nums.Add(i);
                 }
             }
+            int num = 1;
+            while (nums.Contains(num)) num++;
             WindowsFormsHost host = new WindowsFormsHost();
             System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel();
             activeDocument = new SBDocument();
