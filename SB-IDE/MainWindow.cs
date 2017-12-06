@@ -1462,6 +1462,7 @@ namespace SB_IDE
         private void DualScreen()
         {
             dualScreen = !dualScreen;
+            toggleSplit.IsChecked = dualScreen;
             documentGrid.ColumnDefinitions[1].MaxWidth = dualScreen ? 6 : 0;
             documentGrid.ColumnDefinitions[2].MaxWidth = dualScreen ? double.PositiveInfinity : 0;
         }
