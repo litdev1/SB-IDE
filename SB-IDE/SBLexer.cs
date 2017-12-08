@@ -60,6 +60,7 @@ namespace SB_IDE
         string lastObject = "";
         int AutoCMode = 0;
         string AutoCData = "";
+        string spaces = "";
         Timer AutoCTimer;
         public SBObjects sbObjects = new SBObjects();
         public int toolTipPosition = 0;
@@ -142,7 +143,7 @@ namespace SB_IDE
                 int foldCur = textArea.Lines[lineCur].FoldLevel - foldBase;
 
                 string indents = "";
-                for (int i = 0; i < foldCur; i++) indents += '\t';
+                for (int i = 0; i < foldCur; i++) indents += spaces;
 
                 int iStart = textArea.Lines[lineCur].Position;
                 string lineText = textArea.Lines[lineCur].Text;
@@ -192,6 +193,8 @@ namespace SB_IDE
             textArea.Styles[Style.Default].ForeColor = foreColor;
             textArea.CaretForeColor = foreColor;
             textArea.TabWidth = 2;
+            spaces = "";
+            for (int i = 0; i < textArea.TabWidth; i++) spaces += " ";
             textArea.StyleClearAll();
 
             textArea.Styles[Style.LineNumber].ForeColor = IntToColor(MainWindow.FORE_MARGIN_COLOR);
@@ -274,11 +277,11 @@ namespace SB_IDE
                 int foldPrev = textArea.Lines[lineCur - 1].FoldLevel - foldBase;
 
                 string indents = "";
-                for (int i = 0; i < foldCur; i++) indents += '\t';
+                for (int i = 0; i < foldCur; i++) indents += spaces;
                 textArea.AddText(indents);
 
                 indents = "";
-                for (int i = 0; i < foldPrev; i++) indents += '\t';
+                for (int i = 0; i < foldPrev; i++) indents += spaces;
                 int iStart = textArea.Lines[lineCur - 1].Position;
                 string linePrev = textArea.Lines[lineCur - 1].Text;
                 int iLen = 0;
