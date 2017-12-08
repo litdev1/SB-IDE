@@ -94,9 +94,9 @@ namespace SB_IDE
                 if (File.Exists(path))
                 {
                     textArea.Text = File.ReadAllText(path);
-                    string spaces = "";
-                    for (int i = 0; i < textArea.TabWidth; i++) spaces += " ";
-                    textArea.Text = textArea.Text.Replace(spaces, "\t");
+                    //string spaces = "";
+                    //for (int i = 0; i < textArea.TabWidth; i++) spaces += " ";
+                    //textArea.Text = textArea.Text.Replace(spaces, "\t");
                     lexer.IsDirty = false;
                     filepath = path;
                     if (Properties.Settings.Default.MRU.Contains(filepath)) Properties.Settings.Default.MRU.Remove(filepath);
@@ -119,9 +119,9 @@ namespace SB_IDE
             try
             {
                 textArea.Text = program;
-                string spaces = "";
-                for (int i = 0; i < textArea.TabWidth; i++) spaces += " ";
-                textArea.Text = textArea.Text.Replace(spaces, "\t");
+                //string spaces = "";
+                //for (int i = 0; i < textArea.TabWidth; i++) spaces += " ";
+                //textArea.Text = textArea.Text.Replace(spaces, "\t");
                 lexer.IsDirty = true;
             }
             catch (Exception ex)
