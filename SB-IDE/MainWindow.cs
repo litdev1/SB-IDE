@@ -46,6 +46,7 @@ namespace SB_IDE
         public static bool highlightAll = false;
         public static int zoom = 0;
         public static int theme = 0;
+        public static bool quoteInserts = false;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
         public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
@@ -296,6 +297,7 @@ namespace SB_IDE
             highlightAll = Properties.Settings.Default.HighlightAll;
             zoom = Properties.Settings.Default.Zoom;
             theme = Properties.Settings.Default.Theme;
+            quoteInserts = Properties.Settings.Default.QuoteInserts;
             SBInterop.Language = Properties.Settings.Default.Language;
             SBInterop.Version = Properties.Settings.Default.Version;
             debugData.Clear();
@@ -420,6 +422,7 @@ namespace SB_IDE
             Properties.Settings.Default.HighlightAll = highlightAll;
             Properties.Settings.Default.Zoom = zoom;
             Properties.Settings.Default.Theme = theme;
+            Properties.Settings.Default.QuoteInserts = quoteInserts;
             Properties.Settings.Default.Language = SBInterop.Language;
             Properties.Settings.Default.Version = SBInterop.Version;
             Properties.Settings.Default.WatchList.Clear();

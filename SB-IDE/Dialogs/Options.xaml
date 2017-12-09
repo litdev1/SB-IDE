@@ -16,5 +16,6 @@
         <Button x:Name="buttonInstallation" Content="Browse" HorizontalAlignment="Right" Margin="0,36,4.6,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonInstallation_Click" Height="23"/>
         <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Right" Margin="0,0,9.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonOK_Click"/>
         <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,89.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click"/>
+        <CheckBox x:Name="checkBoxQuoteInserts" Content="Quote &quot;&quot; inserted color and font names" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

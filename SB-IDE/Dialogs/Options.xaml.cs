@@ -33,6 +33,7 @@ namespace SB_IDE.Dialogs
             FontSize = 12 + MainWindow.zoom;
 
             textBoxInstallation.Text = MainWindow.InstallDir;
+            checkBoxQuoteInserts.IsChecked = MainWindow.quoteInserts;
         }
 
         private void buttonUpdates_Click(object sender, RoutedEventArgs e)
@@ -66,6 +67,7 @@ namespace SB_IDE.Dialogs
                 MainWindow.InstallDir = textBoxInstallation.Text;
                 mainWindow.sbInterop = new SBInterop();
             }
+            MainWindow.quoteInserts = (bool)checkBoxQuoteInserts.IsChecked;
             Close();
         }
     }

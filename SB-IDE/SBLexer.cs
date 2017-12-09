@@ -302,14 +302,11 @@ namespace SB_IDE
             {
                 textArea.AutoCSetFillUps("(");
                 textArea.AutoCStops(" ");
-                if (lastObject == "")
+                currentPos = wordStartPos - 2;
+                wordStartPos = textArea.WordStartPosition(currentPos, true);
+                if (currentPos > wordStartPos)
                 {
-                    currentPos -= 2;
-                    wordStartPos = textArea.WordStartPosition(currentPos, true);
-                    if (currentPos > wordStartPos)
-                    {
-                        lastObject = textArea.GetWordFromPosition(wordStartPos);
-                    }
+                    lastObject = textArea.GetWordFromPosition(wordStartPos);
                 }
                 AutoCData = sbObjects.GetMembers(lastObject, currentWord).Trim();
                 textArea.AutoCShow(lenEntered, AutoCData);

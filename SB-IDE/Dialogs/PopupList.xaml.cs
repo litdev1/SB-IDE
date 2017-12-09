@@ -64,7 +64,10 @@ namespace SB_IDE.Dialogs
                 Grid grid = (Grid)listView.SelectedItem;
                 TextBlock tb = (TextBlock)grid.Children[0];
                 Scintilla textArea = mainWindow.GetActiveDocument().TextArea;
-                textArea.ReplaceSelection("\"" + tb.Text + "\"");
+                if (MainWindow.quoteInserts)
+                    textArea.ReplaceSelection("\"" + tb.Text + "\"");
+                else
+                    textArea.ReplaceSelection(tb.Text);
                 textArea.SelectionStart = textArea.CurrentPosition;
                 textArea.SelectionEnd = textArea.CurrentPosition;
             }

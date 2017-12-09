@@ -84,7 +84,10 @@ namespace SB_IDE
         private void Insert(object sender, EventArgs e)
         {
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
-            textArea.ReplaceSelection("\"" + menuItem.Text + "\"");
+            if (MainWindow.quoteInserts)
+                textArea.ReplaceSelection("\"" + menuItem.Text + "\"");
+            else
+                textArea.ReplaceSelection(menuItem.Text);
             textArea.SelectionStart = textArea.CurrentPosition;
             textArea.SelectionEnd = textArea.CurrentPosition;
         }
