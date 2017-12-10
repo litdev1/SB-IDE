@@ -496,10 +496,25 @@ namespace SB_IDE
             {
                 showMethodData(lastWord, currentWord);
             }
+            else if (currentWord != "" && sbObjects.GetKeywords(currentWord) != "")
+            {
+                showObjectData(currentWord);
+            }
         }
 
         private void showObjectData(string currentWord)
         {
+            foreach (Member member in SBObjects.keywords)
+            {
+                if (member.name.ToUpper() == currentWord.ToUpper())
+                {
+                    MainWindow.showObject = null;
+                    MainWindow.showMember = member;
+                    //sbDocument.TextArea.CallTipShow(e.Position, member.summary);
+                    //sbDocument.TextArea.CallTipSetHlt(0, member.summary.Length);
+                    break;
+                }
+            }
             foreach (SBObject obj in SBObjects.objects)
             {
                 if (obj.name.ToUpper() == currentWord.ToUpper())

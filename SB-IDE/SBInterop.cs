@@ -159,6 +159,48 @@ namespace SB_IDE
                         doc.Load(MainWindow.InstallDir + extension + ".xml");
                     }
 
+                    if (extension.Contains("SmallBasicLibrary"))
+                    {
+                        foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
+                        {
+                            if (xmlNode.Attributes["name"].InnerText.StartsWith("M:Microsoft.SmallBasic.Library.Keywords."))
+                            {
+                                Member member = new Member();
+                                SBObjects.keywords.Add(member);
+                                member.name = xmlNode.Attributes["name"].InnerText.Substring(40);
+                                member.type = MemberTypes.Custom;
+                                member.summary = "";
+
+                                foreach (XmlNode node in xmlNode.ChildNodes)
+                                {
+                                    switch (node.Name)
+                                    {
+                                        case "summary":
+                                            member.summary = node.InnerText.Trim();
+                                            break;
+                                        case "param":
+                                            member.arguments[node.Attributes["name"].Value] = node.InnerText.Trim();
+                                            break;
+                                        case "returns":
+                                            member.returns = node.InnerText.Trim();
+                                            break;
+                                        case "example":
+                                            member.other[node.Name] = node.InnerText.Trim();
+                                            break;
+                                        case "remarks":
+                                            member.arguments[node.Name] = node.InnerText.Trim();
+                                            break;
+                                        case "value":
+                                            member.arguments[node.Name] = node.InnerText.Trim();
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     try
                     {
                         assembly = Assembly.LoadFrom(MainWindow.InstallDir + extension + ".dll");

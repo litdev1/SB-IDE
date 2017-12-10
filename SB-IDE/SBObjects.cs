@@ -27,7 +27,7 @@ namespace SB_IDE
     public class SBObjects
     {
         public static List<SBObject> objects = new List<SBObject>();
-        public static List<string> keywords = new List<string>() { "Sub", "EndSub", "For", "To", "Step", "EndFor", "If", "Then", "Else", "ElseIf", "EndIf", "While", "EndWhile", "Goto" };
+        public static List<Member> keywords = new List<Member>(); // { "Sub", "EndSub", "For", "To", "Step", "EndFor", "If", "Then", "Else", "ElseIf", "EndIf", "While", "EndWhile", "Goto" };
         public List<string> variables = new List<string>();
         public List<string> subroutines = new List<string>();
         public List<string> labels = new List<string>();
@@ -36,11 +36,11 @@ namespace SB_IDE
         {
             string result = "";
             List<string> data = new List<string>();
-            foreach (string label in keywords)
+            foreach (Member member in keywords)
             {
-                if (label.ToUpper().StartsWith(input.ToUpper()))
+                if (member.name.ToUpper().StartsWith(input.ToUpper()))
                 {
-                    data.Add(label + "?0");
+                    data.Add(member.name + "?0");
                 }
             }
             data = data.Distinct().ToList();

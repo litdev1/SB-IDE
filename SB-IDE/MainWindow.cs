@@ -939,6 +939,10 @@ namespace SB_IDE
                     string name = "";
                     switch (member.type)
                     {
+                        case MemberTypes.Custom:
+                            imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseKeyword);
+                            name = member.name;
+                            break;
                         case MemberTypes.Method:
                             imgSource = ImageSourceFromBitmap(Properties.Resources.IntellisenseMethod);
                             name = member.name;
@@ -1450,6 +1454,7 @@ namespace SB_IDE
         {
             EMWindow windowEM = new EMWindow(Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "settings"), InstallDir);
             windowEM.ShowDialog();
+            sbInterop = new SBInterop();
         }
 
         private void FindNext()
