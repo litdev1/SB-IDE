@@ -322,6 +322,10 @@ namespace SB_IDE
             }
             IDEColors = ideColors;
 
+            for (i = Properties.Settings.Default.MRU.Count-1; i >= 0; i--)
+            {
+                if (!File.Exists(Properties.Settings.Default.MRU[i])) Properties.Settings.Default.MRU.RemoveAt(i);
+            }
             i = 0;
             if (Properties.Settings.Default.MRU.Count > i) MRU1.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU2.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
@@ -401,6 +405,10 @@ namespace SB_IDE
                 Properties.Settings.Default.Maximized = false;
             }
 
+            for (int i = Properties.Settings.Default.MRU.Count - 1; i >= 0; i--)
+            {
+                if (!File.Exists(Properties.Settings.Default.MRU[i])) Properties.Settings.Default.MRU.RemoveAt(i);
+            }
             foreach (TabItem tab in tabControlSB2.Items)
             {
                 SBDocument doc = (SBDocument)tab.Tag;
