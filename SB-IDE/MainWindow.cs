@@ -322,7 +322,7 @@ namespace SB_IDE
             }
             IDEColors = ideColors;
 
-            for (i = Properties.Settings.Default.MRU.Count-1; i >= 0; i--)
+            for (i = Properties.Settings.Default.MRU.Count - 1; i >= 0; i--)
             {
                 if (!File.Exists(Properties.Settings.Default.MRU[i])) Properties.Settings.Default.MRU.RemoveAt(i);
             }
