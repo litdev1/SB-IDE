@@ -304,10 +304,7 @@ namespace SB_IDE
                 textArea.AutoCStops(" ");
                 currentPos = wordStartPos - 2;
                 wordStartPos = textArea.WordStartPosition(currentPos, true);
-                if (currentPos > wordStartPos)
-                {
-                    lastObject = textArea.GetWordFromPosition(wordStartPos);
-                }
+                lastObject = textArea.GetWordFromPosition(wordStartPos);
                 AutoCData = sbObjects.GetMembers(lastObject, currentWord).Trim();
                 textArea.AutoCShow(lenEntered, AutoCData);
                 AutoCMode = 2;
@@ -509,7 +506,7 @@ namespace SB_IDE
                 {
                     MainWindow.showObject = obj;
                     MainWindow.showMember = null;
-                    //sbDocument.TextArea.CallTipShow(e.Position, obj.summary);
+                    //sbDocument.TextArea.CallTipShow(sbDocument.TextArea.CurrentPosition, obj.summary);
                     //sbDocument.TextArea.CallTipSetHlt(0, obj.summary.Length);
                     break;
                 }
