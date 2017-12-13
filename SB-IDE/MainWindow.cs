@@ -26,11 +26,13 @@ using System.Windows.Shell;
 using System.Configuration;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using System.Windows.Controls.Ribbon;
 
 namespace SB_IDE
 {
     public partial class MainWindow
     {
+        public static MainWindow THIS;
         public static ObservableCollection<Error> Errors = new ObservableCollection<Error>();
         public static SBObject showObject = null;
         public static SBObject showObjectLast = null;
@@ -67,6 +69,8 @@ namespace SB_IDE
 
         private void InitWindow()
         {
+            THIS = this;
+
             statusVersion.Content = "SB-IDE Version " + Assembly.GetEntryAssembly().GetName().Version + " (Debug Extension " + SBInterop.CurrentVersion + ")";
             Errors.Add(new Error("Welcome to Small Basic IDE"));
 
@@ -1465,7 +1469,7 @@ namespace SB_IDE
             sbInterop = new SBInterop();
         }
 
-        private void FindNext()
+        public void FindNext()
         {
             activeDocument.searchManager.Find(true, tbFind.Text);
         }
