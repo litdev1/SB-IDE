@@ -395,9 +395,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\AppIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\Erase.png" />
   </ItemGroup>
   <ItemGroup>
@@ -407,7 +404,6 @@
     <Resource Include="images\Color palette.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\AppIcon.ico" />
     <Resource Include="images\Help book.png" />
     <Resource Include="images\Options.png" />
   </ItemGroup>
@@ -473,7 +469,7 @@
       <Visible>False</Visible>
       <Description>Small Basic</Description>
       <Progid>SB-IDE</Progid>
-      <DefaultIcon>images\AppIcon.ico</DefaultIcon>
+      <DefaultIcon>AppIcon.ico</DefaultIcon>
     </FileAssociation>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
