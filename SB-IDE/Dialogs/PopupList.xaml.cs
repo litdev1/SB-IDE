@@ -63,11 +63,12 @@ namespace SB_IDE.Dialogs
                 ListView listView = (ListView)sender;
                 Grid grid = (Grid)listView.SelectedItem;
                 TextBlock tb = (TextBlock)grid.Children[0];
+                string value = MainWindow.hexColors && null != tb.Tag ? tb.Tag.ToString() : tb.Text;
                 Scintilla textArea = mainWindow.GetActiveDocument().TextArea;
                 if (MainWindow.quoteInserts)
-                    textArea.ReplaceSelection("\"" + tb.Text + "\"");
+                    textArea.ReplaceSelection("\"" + value + "\"");
                 else
-                    textArea.ReplaceSelection(tb.Text);
+                    textArea.ReplaceSelection(value);
                 textArea.SelectionStart = textArea.CurrentPosition;
                 textArea.SelectionEnd = textArea.CurrentPosition;
             }
@@ -90,6 +91,7 @@ namespace SB_IDE.Dialogs
 
                 Color col = (Color)ColorConverter.ConvertFromString(colorName);
                 TextBlock tb1 = new TextBlock() { Text = colorName, HorizontalAlignment = HorizontalAlignment.Center };
+                tb1.Tag = col.ToString();
                 TextBlock tb2 = new TextBlock() { Text = col.ToString(), HorizontalAlignment = HorizontalAlignment.Center };
                 Rectangle color = new Rectangle() { Height = 20, Width = 100, Fill = new SolidColorBrush(col) };
                 grid.Children.Add(tb1);

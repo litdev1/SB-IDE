@@ -289,5 +289,17 @@ namespace SB_IDE.Properties {
                 this["QuoteInserts"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HEXColors {
+            get {
+                return ((bool)(this["HEXColors"]));
+            }
+            set {
+                this["HEXColors"] = value;
+            }
+        }
     }
 }

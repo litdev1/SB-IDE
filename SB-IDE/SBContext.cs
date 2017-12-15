@@ -103,10 +103,11 @@ namespace SB_IDE
         private void Insert(object sender, EventArgs e)
         {
             ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+            string value = MainWindow.hexColors && null != menuItem.Tag ? menuItem.Tag.ToString() : menuItem.Text;
             if (MainWindow.quoteInserts)
-                textArea.ReplaceSelection("\"" + menuItem.Text + "\"");
+                textArea.ReplaceSelection("\"" + value + "\"");
             else
-                textArea.ReplaceSelection(menuItem.Text);
+                textArea.ReplaceSelection(value);
             textArea.SelectionStart = textArea.CurrentPosition;
             textArea.SelectionEnd = textArea.CurrentPosition;
         }
@@ -131,6 +132,7 @@ namespace SB_IDE
                 Graphics g = Graphics.FromImage(bmp);
                 g.Clear(Color.FromName(color.Key));
                 ToolStripMenuItem item = new ToolStripMenuItem(color.Key, bmp, Insert);
+                item.Tag = System.Windows.Media.ColorConverter.ConvertFromString(color.Key).ToString();
                 item.ImageScaling = ToolStripItemImageScaling.None;
 
                 menuItem.DropDownItems.Add(item);

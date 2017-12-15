@@ -34,6 +34,7 @@ namespace SB_IDE.Dialogs
 
             textBoxInstallation.Text = MainWindow.InstallDir;
             checkBoxQuoteInserts.IsChecked = MainWindow.quoteInserts;
+            checkBoxHEXColors.IsChecked = MainWindow.hexColors;
         }
 
         private void buttonUpdates_Click(object sender, RoutedEventArgs e)
@@ -68,6 +69,7 @@ namespace SB_IDE.Dialogs
                 mainWindow.sbInterop = new SBInterop();
             }
             MainWindow.quoteInserts = (bool)checkBoxQuoteInserts.IsChecked;
+            MainWindow.hexColors = (bool)checkBoxHEXColors.IsChecked;
             Close();
         }
 
