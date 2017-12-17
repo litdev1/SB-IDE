@@ -1839,12 +1839,14 @@ namespace SB_IDE
         public string Message { get; set; }
         public int Row { get; set; }
         public int Col { get; set; }
+        public int Level { get; set; }
 
         public Error(string Message)
         {
             this.Message = Message;
             Row = -1;
             Col = -1;
+            Level = 0;
         }
     }
 }

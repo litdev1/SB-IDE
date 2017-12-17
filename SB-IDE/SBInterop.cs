@@ -471,7 +471,7 @@ namespace SB_IDE
                             if (debug) row = (row - 1) / 2;
                             string message = "Compile : (row=" + row + ",col=" + col + ") ";
                             for (int i = 2; i < bits.Length; i++) message += bits[i];
-                            MainWindow.Errors.Add(new Error(message) { Row = row, Col = col });
+                            MainWindow.Errors.Add(new Error(message) { Row = row, Col = col, Level = 1});
                         }
                         else
                         {

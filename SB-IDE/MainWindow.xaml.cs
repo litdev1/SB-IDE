@@ -748,6 +748,16 @@ namespace SB_IDE
             opt.ShowDialog();
         }
 
+        private void dataGridResults_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            Error error = (Error)e.Row.DataContext;
+
+            if (error.Level > 0)
+            {
+                e.Row.Background = new SolidColorBrush(IntToColor(FIND_HIGHLIGHT_COLOR)) { Opacity = 0.25 };
+            }
+        }
+
         /*
 private bool mRestoreForDragMove;
 

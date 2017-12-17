@@ -123,6 +123,10 @@ namespace SB_IDE
                 if (tempExe == "")
                 {
                     MainWindow.Errors.Add(new Error("Run : " + "Cannot run case since exe has not been successfully compiled"));
+                    sbDocument.Proc = null;
+                    if (null == sbDocument.debug) return null;
+                    sbDocument.debug.Dispose();
+                    sbDocument.debug = null;
                     return null;
                 }
                 process = sbInterop.Run(tempExe);
