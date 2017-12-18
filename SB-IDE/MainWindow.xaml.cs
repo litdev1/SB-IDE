@@ -756,6 +756,10 @@ namespace SB_IDE
             {
                 e.Row.Background = new SolidColorBrush(IntToColor(FIND_HIGHLIGHT_COLOR)) { Opacity = 0.25 };
             }
+            else
+            {
+                e.Row.Background = new SolidColorBrush(IntToColor(0xF0F0F0)) { Opacity = 1.0 };
+            }
         }
 
         /*
