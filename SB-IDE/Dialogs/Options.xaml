@@ -19,5 +19,6 @@
         <CheckBox x:Name="checkBoxQuoteInserts" Content="Quote &quot;&quot; inserted color and font names" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top"/>
         <Button x:Name="buttonHowToDebug" Content="Debugging Guide" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="125" Click="buttonHowToDebug_Click"/>
         <CheckBox x:Name="checkBoxHEXColors" Content="Insert colors as Hex values" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBoxHighlightSelection" Content="Highlight all selections" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

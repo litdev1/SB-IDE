@@ -91,11 +91,21 @@ namespace SB_IDE
             textArea.DwellEnd += OnDwellEnd;
             textArea.AutoCSelection += OnAutoCSelection;
             textArea.AutoCCompleted += OnAutoCCompleted;
+            textArea.UpdateUI += OnUpdateUI;
 
             AutoCTimer = new Timer();
             AutoCTimer.Enabled = false;
             AutoCTimer.Interval = 100;
             AutoCTimer.Tick += new EventHandler(AutoCTimerCallback);
+        }
+
+        private void OnUpdateUI(object sender, UpdateUIEventArgs e)
+        {
+            if (MainWindow.highlightSelection && (e.Change & UpdateChange.Selection) > 0)
+            {
+                sbDocument.searchManager.HighLight("");
+                sbDocument.searchManager.HighLight(textArea.SelectedText);
+            }
         }
 
         public bool IsDirty

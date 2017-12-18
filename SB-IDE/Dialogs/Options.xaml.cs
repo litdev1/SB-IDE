@@ -35,6 +35,7 @@ namespace SB_IDE.Dialogs
             textBoxInstallation.Text = MainWindow.InstallDir;
             checkBoxQuoteInserts.IsChecked = MainWindow.quoteInserts;
             checkBoxHEXColors.IsChecked = MainWindow.hexColors;
+            checkBoxHighlightSelection.IsChecked = MainWindow.highlightSelection;
         }
 
         private void buttonUpdates_Click(object sender, RoutedEventArgs e)
@@ -70,6 +71,8 @@ namespace SB_IDE.Dialogs
             }
             MainWindow.quoteInserts = (bool)checkBoxQuoteInserts.IsChecked;
             MainWindow.hexColors = (bool)checkBoxHEXColors.IsChecked;
+            MainWindow.highlightSelection = (bool)checkBoxHighlightSelection.IsChecked;
+
             Close();
         }
 

@@ -301,5 +301,17 @@ namespace SB_IDE.Properties {
                 this["HEXColors"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HighlightSelection {
+            get {
+                return ((bool)(this["HighlightSelection"]));
+            }
+            set {
+                this["HighlightSelection"] = value;
+            }
+        }
     }
 }

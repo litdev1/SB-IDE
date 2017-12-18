@@ -80,12 +80,25 @@ namespace SB_IDE
                 TextArea.TargetStart = 0;
                 TextArea.TargetEnd = TextArea.TextLength;
 
-                RegexOptions caseSensitive = RegexOptions.IgnoreCase;
-                MatchCollection matches = Regex.Matches(TextArea.Text, search, caseSensitive);
-                foreach (Match match in matches)
+                TextArea.TargetStart = 0;
+                TextArea.TargetEnd = TextArea.TextLength;
+                TextArea.SearchFlags = SearchFlags.None;
+                while (TextArea.SearchInTarget(search) != -1)
                 {
-                    TextArea.IndicatorFillRange(match.Index, match.Length);
+                    // Mark the search results with the current indicator
+                    TextArea.IndicatorFillRange(TextArea.TargetStart, TextArea.TargetEnd - TextArea.TargetStart);
+
+                    // Search the remainder of the document
+                    TextArea.TargetStart = TextArea.TargetEnd;
+                    TextArea.TargetEnd = TextArea.TextLength;
                 }
+
+                //RegexOptions caseSensitive = RegexOptions.IgnoreCase;
+                //MatchCollection matches = Regex.Matches(TextArea.Text, search, caseSensitive);
+                //foreach (Match match in matches)
+                //{
+                //    TextArea.IndicatorFillRange(match.Index, match.Length);
+                //}
             }
             else
             {
