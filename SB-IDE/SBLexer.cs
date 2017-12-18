@@ -101,10 +101,10 @@ namespace SB_IDE
 
         private void OnUpdateUI(object sender, UpdateUIEventArgs e)
         {
-            if (MainWindow.highlightSelection && (e.Change & UpdateChange.Selection) > 0)
+            if ((e.Change & UpdateChange.Selection) > 0)
             {
                 sbDocument.searchManager.HighLight("");
-                sbDocument.searchManager.HighLight(textArea.SelectedText);
+                if (MainWindow.highlightSelection) sbDocument.searchManager.HighLight(textArea.SelectedText);
             }
         }
 
