@@ -304,18 +304,6 @@ namespace SB_IDE.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool HighlightSelection {
-            get {
-                return ((bool)(this["HighlightSelection"]));
-            }
-            set {
-                this["HighlightSelection"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int SearchFlags {
             get {

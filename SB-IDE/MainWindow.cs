@@ -50,7 +50,6 @@ namespace SB_IDE
         public static int theme = 0;
         public static bool quoteInserts = false;
         public static bool hexColors = false;
-        public static bool highlightSelection = false;
         public static SearchFlags searchFlags = SearchFlags.None;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
@@ -307,7 +306,6 @@ namespace SB_IDE
             theme = Properties.Settings.Default.Theme;
             quoteInserts = Properties.Settings.Default.QuoteInserts;
             hexColors = Properties.Settings.Default.HEXColors;
-            highlightSelection = Properties.Settings.Default.HighlightSelection;
             searchFlags = (SearchFlags)Properties.Settings.Default.SearchFlags;
             SBInterop.Language = Properties.Settings.Default.Language;
             SBInterop.Version = Properties.Settings.Default.Version;
@@ -443,7 +441,6 @@ namespace SB_IDE
             Properties.Settings.Default.Theme = theme;
             Properties.Settings.Default.QuoteInserts = quoteInserts;
             Properties.Settings.Default.HEXColors = hexColors;
-            Properties.Settings.Default.HighlightSelection = highlightSelection;
             Properties.Settings.Default.SearchFlags = (int)searchFlags;
             Properties.Settings.Default.Language = SBInterop.Language;
             Properties.Settings.Default.Version = SBInterop.Version;

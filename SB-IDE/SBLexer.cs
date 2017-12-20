@@ -103,7 +103,7 @@ namespace SB_IDE
         {
             if ((e.Change & UpdateChange.Selection) > 0)
             {
-                if (MainWindow.highlightSelection) sbDocument.searchManager.HighLight(textArea.SelectedText);
+                if (MainWindow.highlightAll) sbDocument.searchManager.HighLight(textArea.SelectedText);
             }
         }
 
