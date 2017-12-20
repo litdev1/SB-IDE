@@ -143,7 +143,8 @@
                     <RibbonButton Label="Find Previous" SmallImageSource="Images/Up.png" KeyTip="FP" Click="searchPrevious_Click" ToolTipTitle="Quick find previous"/>
                     <RibbonButton Label="Find and Replace" SmallImageSource="Images/Find.png" KeyTip="H" Click="searchReplace_Click" ToolTipTitle="Find and replace dialog"/>
                     <RibbonToggleButton Name="toggleHighlight" Label="Highlight All" SmallImageSource="Images/Highlight.png" KeyTip="FH" Click="fileHightlight_Click" ToolTipTitle="Highlight all instances found"/>
-                    <RibbonToggleButton Name="toggleSearchFlags" Label="Whole Word" SmallImageSource="Images/Text.png" KeyTip="FW" Click="fileSearchFlags_Click" ToolTipTitle="Search and highlight only whole word matches"/>
+                    <RibbonToggleButton Name="toggleWholeWord" Label="Whole Word" SmallImageSource="Images/Text.png" KeyTip="FW" Click="fileWholeWord_Click" ToolTipTitle="Search and highlight only whole word matches"/>
+                    <RibbonToggleButton Name="toggleCaseSensitive" Label="Case Sensitive" SmallImageSource="Images/Text_uppercase.png" KeyTip="FC" Click="fileCaseSensitive_Click" ToolTipTitle="Search and highlight only case sensitive matches"/>
                     <RibbonTextBox x:Name="tbFind" Label="Find" KeyTip="FD" TextBoxWidth="160" KeyDown="tbFind_KeyDown"/>
                     <RibbonButton Label="File Searcher" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
                 </RibbonGroup>

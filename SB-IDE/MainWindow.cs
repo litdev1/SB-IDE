@@ -90,7 +90,8 @@ namespace SB_IDE
             toggleIndent.IsChecked = indent;
             toggleWhiteSpace.IsChecked = whitespace;
             toggleHighlight.IsChecked = highlightAll;
-            toggleSearchFlags.IsChecked = searchFlags.HasFlag(SearchFlags.WholeWord);
+            toggleWholeWord.IsChecked = searchFlags.HasFlag(SearchFlags.WholeWord);
+            toggleCaseSensitive.IsChecked = searchFlags.HasFlag(SearchFlags.MatchCase);
             toggleTheme.IsChecked = theme > 0;
             viewLanguage.Text = SBInterop.Language;
 

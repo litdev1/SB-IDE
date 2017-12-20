@@ -767,9 +767,15 @@ namespace SB_IDE
             Process.Start("http://litdev.co.uk/forum/HowToDebug.pdf");
         }
 
-        private void fileSearchFlags_Click(object sender, RoutedEventArgs e)
+        private void fileWholeWord_Click(object sender, RoutedEventArgs e)
         {
             searchFlags ^= SearchFlags.WholeWord;
+            activeDocument.searchManager.HighLight(highlightAll ? activeDocument.searchManager.LastHighLight : "");
+        }
+
+        private void fileCaseSensitive_Click(object sender, RoutedEventArgs e)
+        {
+            searchFlags ^= SearchFlags.MatchCase;
             activeDocument.searchManager.HighLight(highlightAll ? activeDocument.searchManager.LastHighLight : "");
         }
 
