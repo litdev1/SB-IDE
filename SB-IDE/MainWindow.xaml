@@ -35,16 +35,16 @@
                 <RibbonButton SmallImageSource="Images\Help.png" Click="helpClick" ToolTip="Help"/>
             </Ribbon.HelpPaneContent>
             <!-- Quick Access Toolbar - located at the upper-left corner -->
-            <!--<Ribbon.QuickAccessToolBar>
+            <Ribbon.QuickAccessToolBar>
                 <RibbonQuickAccessToolBar>
-                    <RibbonButton Label="New" SmallImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="Start a new program"/>
+                    <!--<RibbonButton Label="New" SmallImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="Start a new program"/>
                     <RibbonButton Label="Open" SmallImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="Open an existing program"/>
-                    --><!--<RibbonButton Label="Close" SmallImageSource="Images/Close file.png" KeyTip="C" Click="fileClose_Click" ToolTipTitle="Close current program"/>--><!--
+                    <RibbonButton Label="Close" SmallImageSource="Images/Close file.png" KeyTip="C" Click="fileClose_Click" ToolTipTitle="Close current program"/>
                     <RibbonButton Label="Save" SmallImageSource="Images/Save.png" KeyTip="C" Click="fileSave_Click" ToolTipTitle="Save current program"/>
-                    --><!--<RibbonButton Label="Save As" SmallImageSource="Images/Save as.png" KeyTip="C" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>-->
-                    <!--<RibbonButton Label="Save All" SmallImageSource="Images/Save all.png" KeyTip="C" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>--><!--
+                    <RibbonButton Label="Save As" SmallImageSource="Images/Save as.png" KeyTip="C" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>
+                    <RibbonButton Label="Save All" SmallImageSource="Images/Save all.png" KeyTip="C" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>-->
                </RibbonQuickAccessToolBar>
-            </Ribbon.QuickAccessToolBar>-->
+            </Ribbon.QuickAccessToolBar>
             <!-- Application Menu, located at the left-hand side (down arrow) -->
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu KeyTip="F" Label="File">

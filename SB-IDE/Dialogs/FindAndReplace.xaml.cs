@@ -21,6 +21,8 @@ namespace SB_IDE.Dialogs
     {
         MainWindow mainWindow;
         public static bool Active = false;
+        public static string lastFind = "";
+        public static string lastReplace = "";
 
         internal FindAndReplace(MainWindow mainWindow)
         {
@@ -31,6 +33,8 @@ namespace SB_IDE.Dialogs
 
             Topmost = true;
             SBDocument sbDocument = mainWindow.GetActiveDocument();
+            textBoxFind.Text = lastFind;
+            textBoxReplace.Text = lastReplace;
             if (sbDocument.TextArea.SelectedText != "") textBoxFind.Text = sbDocument.TextArea.SelectedText;
             textBoxFind.Focus();
             textBoxFind.SelectAll();
@@ -98,6 +102,8 @@ namespace SB_IDE.Dialogs
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            lastFind = textBoxFind.Text;
+            lastReplace = textBoxReplace.Text;
             Active = false;
         }
 
