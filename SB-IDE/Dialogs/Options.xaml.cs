@@ -75,10 +75,5 @@ namespace SB_IDE.Dialogs
 
             Close();
         }
-
-        private void buttonHowToDebug_Click(object sender, RoutedEventArgs e)
-        {
-            Process.Start("http://litdev.co.uk/forum/HowToDebug.pdf");
-        }
     }
 }

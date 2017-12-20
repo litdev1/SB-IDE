@@ -51,6 +51,7 @@ namespace SB_IDE
         public static bool quoteInserts = false;
         public static bool hexColors = false;
         public static bool highlightSelection = false;
+        public static SearchFlags searchFlags = SearchFlags.None;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
         public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
@@ -90,6 +91,7 @@ namespace SB_IDE
             toggleIndent.IsChecked = indent;
             toggleWhiteSpace.IsChecked = whitespace;
             toggleHighlight.IsChecked = highlightAll;
+            toggleSearchFlags.IsChecked = searchFlags.HasFlag(SearchFlags.WholeWord);
             toggleTheme.IsChecked = theme > 0;
             viewLanguage.Text = SBInterop.Language;
 
@@ -306,6 +308,7 @@ namespace SB_IDE
             quoteInserts = Properties.Settings.Default.QuoteInserts;
             hexColors = Properties.Settings.Default.HEXColors;
             highlightSelection = Properties.Settings.Default.HighlightSelection;
+            searchFlags = (SearchFlags)Properties.Settings.Default.SearchFlags;
             SBInterop.Language = Properties.Settings.Default.Language;
             SBInterop.Version = Properties.Settings.Default.Version;
             debugData.Clear();
@@ -364,7 +367,7 @@ namespace SB_IDE
         private void HighLightAll()
         {
             highlightAll = !highlightAll;
-            activeDocument.searchManager.HighLight(highlightAll ? tbFind.Text : "");
+            activeDocument.searchManager.HighLight(highlightAll ? activeDocument.searchManager.LastHighLight : "");
         }
 
         private Grid Ellipsis(string txt)
@@ -441,6 +444,7 @@ namespace SB_IDE
             Properties.Settings.Default.QuoteInserts = quoteInserts;
             Properties.Settings.Default.HEXColors = hexColors;
             Properties.Settings.Default.HighlightSelection = highlightSelection;
+            Properties.Settings.Default.SearchFlags = (int)searchFlags;
             Properties.Settings.Default.Language = SBInterop.Language;
             Properties.Settings.Default.Version = SBInterop.Version;
             Properties.Settings.Default.WatchList.Clear();

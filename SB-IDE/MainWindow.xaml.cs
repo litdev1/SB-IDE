@@ -762,6 +762,17 @@ namespace SB_IDE
             }
         }
 
+        private void toolsDebugGuide_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("http://litdev.co.uk/forum/HowToDebug.pdf");
+        }
+
+        private void fileSearchFlags_Click(object sender, RoutedEventArgs e)
+        {
+            searchFlags ^= SearchFlags.WholeWord;
+            activeDocument.searchManager.HighLight(highlightAll ? activeDocument.searchManager.LastHighLight : "");
+        }
+
         /*
 private bool mRestoreForDragMove;
 

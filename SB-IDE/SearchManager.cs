@@ -7,6 +7,7 @@ namespace SB_IDE
     public class SearchManager
     {
 		public Scintilla TextArea;
+        public string LastHighLight = "";
 
         public void Find(bool next, string search)
         {
@@ -21,7 +22,7 @@ namespace SB_IDE
                     // Search the document from the caret onwards
                     TextArea.TargetStart = TextArea.CurrentPosition;
                     TextArea.TargetEnd = TextArea.TextLength;
-                    TextArea.SearchFlags = SearchFlags.None;
+                    TextArea.SearchFlags = MainWindow.searchFlags;
 
                     // Search, and if not found..
                     if (TextArea.SearchInTarget(search) == -1)
@@ -46,7 +47,7 @@ namespace SB_IDE
                     // Search the document from the caret backwards
                     TextArea.TargetStart = TextArea.CurrentPosition - 1;
                     TextArea.TargetEnd = 0;
-                    TextArea.SearchFlags = SearchFlags.None;
+                    TextArea.SearchFlags = MainWindow.searchFlags;
 
                     // Search, and if not found..
                     if (TextArea.SearchInTarget(search) == -1)
@@ -73,6 +74,10 @@ namespace SB_IDE
 
         public void HighLight(string search)
         {
+            LastHighLight = search;
+
+            TextArea.IndicatorClearRange(0, TextArea.TextLength);
+
             if (search.Length > 0)
             {
                 TextArea.Indicators[0].ForeColor = SBDocument.IntToColor(MainWindow.FIND_HIGHLIGHT_COLOR);
@@ -82,11 +87,14 @@ namespace SB_IDE
 
                 TextArea.TargetStart = 0;
                 TextArea.TargetEnd = TextArea.TextLength;
-                TextArea.SearchFlags = SearchFlags.None;
+                TextArea.SearchFlags = MainWindow.searchFlags;
                 while (TextArea.SearchInTarget(search) != -1)
                 {
                     // Mark the search results with the current indicator
-                    TextArea.IndicatorFillRange(TextArea.TargetStart, TextArea.TargetEnd - TextArea.TargetStart);
+                    if (TextArea.TargetStart != TextArea.SelectionStart)
+                    {
+                        TextArea.IndicatorFillRange(TextArea.TargetStart, TextArea.TargetEnd - TextArea.TargetStart);
+                    }
 
                     // Search the remainder of the document
                     TextArea.TargetStart = TextArea.TargetEnd;
@@ -99,10 +107,6 @@ namespace SB_IDE
                 //{
                 //    TextArea.IndicatorFillRange(match.Index, match.Length);
                 //}
-            }
-            else
-            {
-                TextArea.IndicatorClearRange(0, TextArea.TextLength);
             }
         }
     }

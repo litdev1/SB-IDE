@@ -472,5 +472,11 @@
       <DefaultIcon>AppIcon.ico</DefaultIcon>
     </FileAssociation>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bug_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Text.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
