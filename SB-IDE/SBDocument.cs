@@ -51,6 +51,7 @@ namespace SB_IDE
             textArea.WrapMode = WrapMode.None;
             textArea.IndentationGuides = IndentView.LookBoth;
             textArea.ScrollWidth = 1;
+            textArea.WhitespaceSize = 2;
 
             // STYLING
             InitColors();

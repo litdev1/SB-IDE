@@ -64,9 +64,9 @@ namespace SB_IDE
             splashScreen = new SplashScreen("Images/splash.png");
             splashScreen.Show(false);
 
-            InitializeComponent();
-
             DefaultColors = IDEColors;
+
+            InitializeComponent();
         }
 
         public Dictionary<string, int> IDEColors
@@ -758,7 +758,7 @@ namespace SB_IDE
             }
             else
             {
-                e.Row.Background = new SolidColorBrush(IntToColor(0xF0F0F0)) { Opacity = 1.0 };
+                e.Row.Background = new SolidColorBrush(IntToColor(BACKGROUND_COLOR)) { Opacity = 1.0 };
             }
         }
 
