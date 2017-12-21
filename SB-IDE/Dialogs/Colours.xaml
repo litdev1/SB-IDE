@@ -8,6 +8,13 @@
         Title="IDE Colors" Height="550" Width="500" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" WindowStartupLocation="CenterOwner">
     <Grid>
         <DataGrid x:Name="dataGridColours" HeadersVisibility="Column" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" SelectionChanged="dataGridColours_SelectionChanged" AutoGenerateColumns="False" Margin="10,10,9.8,34.4" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" KeyDown="dataGridColours_KeyDown">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="Padding" Value="8,4,8,4" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />

@@ -177,6 +177,8 @@ namespace SB_IDE
             Resources["GridBrushBackground"] = new SolidColorBrush(IntToColor(BACKGROUND_COLOR));
             Resources["GridBrushForeground"] = new SolidColorBrush(IntToColor(FOREGROUND_COLOR));
             Resources["SplitterBrush"] = new SolidColorBrush(IntToColor(SPLITTER_COLOR));
+            dataGridResults.Items.Refresh();
+            dataGridDebug.Items.Refresh();
         }
 
         private void InitIntellisense()

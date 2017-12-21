@@ -265,12 +265,15 @@
                 <TabItem x:Name="tabOutput" Header="Output">
                     <Grid Background="#FFE5E5E5">
                         <DataGrid x:Name="dataGridResults" HeadersVisibility="Column" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" SelectionChanged="dataGridResults_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}" LoadingRow="dataGridResults_LoadingRow" CanUserSortColumns="False">
-                            <!--<DataGrid.ColumnHeaderStyle>
+                            <DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>
                                     <Setter Property="Foreground" Value="{DynamicResource GridBrushForeground}"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="8,4,8,4" />
+                                    <Setter Property="FontWeight" Value="Bold" />
                                 </Style>
-                            </DataGrid.ColumnHeaderStyle>-->
+                            </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Resources>
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
@@ -283,13 +286,16 @@
                 </TabItem>
                 <TabItem x:Name="tabDebug" Header="Debug">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGridDebug" HeadersVisibility="Column" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}">
-                            <!--<DataGrid.ColumnHeaderStyle>
+                        <DataGrid x:Name="dataGridDebug" HeadersVisibility="Column" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}">
+                            <DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>
                                     <Setter Property="Foreground" Value="{DynamicResource GridBrushForeground}"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="8,4,8,4" />
+                                    <Setter Property="FontWeight" Value="Bold" />
                                 </Style>
-                            </DataGrid.ColumnHeaderStyle>-->
+                            </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Resources>
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
@@ -300,36 +306,29 @@
                                 <DataGridTemplateColumn Header="Change Value">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Set" Click="debugDataSet" ToolTip="Change the value of watch variable" Tag="{Binding}"/>
+                                            <Button Content="Set" Click="debugDataSet" ToolTip="Change the value of watch variable" Tag="{Binding}" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn Header="Refresh Data">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Refresh" Click="debugDataRefresh" ToolTip="Refresh the value of watch variable" Tag="{Binding}"/>
+                                            <Button Content="Refresh" Click="debugDataRefresh" ToolTip="Refresh the value of watch variable" Tag="{Binding}" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn Header="Remove Watch">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Delete" Click="debugDataDelete" ToolTip="Delete watch variable" Tag="{Binding}"/>
+                                            <Button Content="Delete" Click="debugDataDelete" ToolTip="Delete watch variable" Tag="{Binding}" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn Header="Break if &lt;" Binding="{Binding LessThan}"/>
                                 <DataGridTextColumn Header="Break if &gt;" Binding="{Binding GreaterThan}"/>
                                 <DataGridTextColumn Header="Break if =" Binding="{Binding Equal}"/>
-                                <DataGridCheckBoxColumn Header="Break if changes" Binding="{Binding Changes}" />
+                                <DataGridCheckBoxColumn Header="Break if Changes" Binding="{Binding Changes}" />
                             </DataGrid.Columns>
-                            <!--<DataGrid.ColumnHeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="FontWeight"  Value="Bold" />
-                                    <Setter Property="HorizontalAlignment" Value="Center" />
-                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
-                                </Style>
-                            </DataGrid.ColumnHeaderStyle>-->
                         </DataGrid>
                     </Grid>
                 </TabItem>
