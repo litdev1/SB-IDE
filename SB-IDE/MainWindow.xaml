@@ -264,7 +264,7 @@
             <TabControl x:Name="tabControlResults" Margin="0" Grid.Row="2" HorizontalContentAlignment="Stretch" TabStripPlacement="Bottom" VerticalContentAlignment="Stretch">
                 <TabItem x:Name="tabOutput" Header="Output">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGridResults" HeadersVisibility="Column" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" SelectionChanged="dataGridResults_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}" LoadingRow="dataGridResults_LoadingRow" CanUserSortColumns="False">
+                        <DataGrid x:Name="dataGridResults" HeadersVisibility="Column" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" SelectionChanged="dataGridResults_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}" LoadingRow="dataGridResults_LoadingRow" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
                             <DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>
@@ -286,7 +286,7 @@
                 </TabItem>
                 <TabItem x:Name="tabDebug" Header="Debug">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGridDebug" HeadersVisibility="Column" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}">
+                        <DataGrid x:Name="dataGridDebug" HeadersVisibility="Column" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}">
                             <DataGrid.ColumnHeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>

@@ -1468,7 +1468,7 @@ namespace SB_IDE
             {
                 AddDocument();
                 activeDocument.LoadDataFromText(ImportProgram);
-                ((TabHeader)activeTab.Header).FileName = import.textBoxImport.Text;
+                ((TabHeader)activeTab.Header).FilePath = import.textBoxImport.Text;
             }
         }
 
@@ -1665,11 +1665,27 @@ namespace SB_IDE
 
     public class TabHeader : Grid
     {
-        public string FilePath;
-        public string FileName;
-        public TextBlock textBlock = new TextBlock() { FontWeight = FontWeights.Bold, FontSize = 12 + MainWindow.zoom };
+        private string filePath;
+        private string fileName;
+        private TextBlock textBlock = new TextBlock() { FontWeight = FontWeights.Bold, FontSize = 12 + MainWindow.zoom };
 
-        public TabHeader(string filePath)
+        public string FileName
+        {
+            get { return fileName; }
+        }
+
+        public string FilePath
+        {
+            get { return filePath; }
+            set
+            {
+                filePath = value;
+                fileName = Path.GetFileName(filePath);
+                ToolTip = new TextBlock() { Text = filePath };
+            }
+        }
+
+        public TabHeader(string _filePath)
         {
             ImageSource imgSource = MainWindow.ImageSourceFromBitmap(Properties.Resources.Erase);
             Image img = new Image()
@@ -1681,8 +1697,8 @@ namespace SB_IDE
             Button button = new Button() { Content = img,
                 Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent) };
 
-            FilePath = filePath;
-            FileName = Path.GetFileName(filePath);
+            filePath = _filePath;
+            fileName = Path.GetFileName(filePath);
             Children.Add(textBlock);
             Children.Add(button);
             VerticalAlignment = VerticalAlignment.Center;
@@ -1690,15 +1706,15 @@ namespace SB_IDE
             ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength() });
             SetColumn(textBlock, 0);
             SetColumn(button, 1);
-            textBlock.Text = FileName + " ";
+            textBlock.Text = fileName + " ";
             button.Click += new RoutedEventHandler(OnClick);
             ToolTip = new TextBlock() { Text = filePath };
         }
 
         public void SetDirty(bool isDirty)
         {
-            if (isDirty) textBlock.Text = FileName + " * ";
-            else textBlock.Text = FileName + " ";
+            if (isDirty) textBlock.Text = fileName + " * ";
+            else textBlock.Text = fileName + " ";
         }
 
         private void OnClick(Object sender, RoutedEventArgs e)
