@@ -127,7 +127,8 @@ namespace SB_IDE.Dialogs
                 {
                     string data = (string)Clipboard.GetData(DataFormats.Text);
                     string[] rows = data.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (rows.Length == colours.Count)
+                    int columns = data.Count(f => f == '\t') / colours.Count;
+                    if (rows.Length == colours.Count && columns >= 2)
                     {
                         for (int i = 0; i < rows.Length; i++)
                         {
@@ -141,6 +142,34 @@ namespace SB_IDE.Dialogs
                                     colours[i].R = R;
                                     colours[i].G = G;
                                     colours[i].B = B;
+                                }
+                            }
+                        }
+                    }
+                    else if (dataGridColours.SelectedCells.Count == 1)
+                    {
+                        int iCol = 0;
+                        if (dataGridColours.SelectedCells[0].Column.Header.ToString() == "Green") iCol = 1;
+                        else if (dataGridColours.SelectedCells[0].Column.Header.ToString() == "Blue") iCol = 2;
+
+                        int iRow = 0;
+                        for (iRow = 0; iRow < colours.Count; iRow++)
+                        {
+                            if (dataGridColours.Items[iRow] == dataGridColours.SelectedCells[0].Item) break;
+                        }
+
+                        for (int i = 0; i < rows.Length; i++)
+                        {
+                            if (iRow + i >= colours.Count) break;
+                            string[] cols = rows[i].Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                            for (int j = 0; j < cols.Length; j++)
+                            {
+                                byte C = 0;
+                                if (byte.TryParse(cols[j], out C))
+                                {
+                                    if (iCol + j == 0) colours[iRow + i].R = C;
+                                    else if (iCol + j == 1) colours[iRow + i].G = C;
+                                    else if (iCol + j == 2) colours[iRow + i].B = C;
                                 }
                             }
                         }
