@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,11 @@ namespace SB_IDE.Dialogs
     /// </summary>
     public partial class Publish : Window
     {
+        private string key;
+
         public Publish(string key)
         {
+            this.key = key;
             InitializeComponent();
 
             FontSize = 12 + MainWindow.zoom;
@@ -32,6 +36,7 @@ namespace SB_IDE.Dialogs
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
+            Process.Start("C:\\Program Files\\internet explorer\\iexplore.exe", "http://smallbasic.com/program/?" + key);
             Close();
         }
     }
