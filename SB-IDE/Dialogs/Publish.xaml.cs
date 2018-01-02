@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,8 +37,15 @@ namespace SB_IDE.Dialogs
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("C:\\Program Files\\internet explorer\\iexplore.exe", "http://smallbasic.com/program/?" + key);
             Close();
+        }
+
+        private void buttonOpen_Click(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists("C:\\Program Files\\internet explorer\\iexplore.exe"))
+            {
+                Process.Start("C:\\Program Files\\internet explorer\\iexplore.exe", "http://smallbasic.com/program/?" + key);
+            }
         }
     }
 }
