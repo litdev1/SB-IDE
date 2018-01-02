@@ -753,15 +753,7 @@ namespace SB_IDE
                     TabItem curTab = activeTab;
                     activeTab = MarkedForDelete.Dequeue();
                     activeDocument = GetDocument();
-                    for (int i = 0; i < GetTabContol().Items.Count; i++)
-                    {
-                        if (GetTabContol().Items[i] == activeTab)
-                        {
-                            GetTabContol().SelectedIndex = i;
-                            Activate(GetTabContol());
-                            break;
-                        }
-                    }
+                    GetTabContol().SelectedIndex = GetTabContol().Items.IndexOf(activeTab);
                     DeleteDocument();
                     if (null != curTab && null != curTab.Parent)
                     {
