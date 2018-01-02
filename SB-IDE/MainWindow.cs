@@ -750,16 +750,14 @@ namespace SB_IDE
                 tabHeader.SetDirty(activeDocument.IsDirty);
                 if (MarkedForDelete.Count > 0)
                 {
-                    TabItem curTab = activeTab;
                     activeTab = MarkedForDelete.Dequeue();
                     activeDocument = GetDocument();
-                    GetTabContol().SelectedIndex = GetTabContol().Items.IndexOf(activeTab);
+                    int selectedIndex = GetTabContol().SelectedIndex;
+                    int deletedIndex = GetTabContol().Items.IndexOf(activeTab);
+                    GetTabContol().SelectedIndex = deletedIndex;
                     DeleteDocument();
-                    if (null != curTab && null != curTab.Parent)
-                    {
-                        activeTab = curTab;
-                        activeDocument = GetDocument();
-                    }
+                    GetTabContol().SelectedIndex = deletedIndex <= selectedIndex ? selectedIndex - 1 : selectedIndex;
+                    Activate(GetTabContol());
                 }
             }
         }
