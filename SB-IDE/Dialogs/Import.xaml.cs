@@ -42,6 +42,19 @@ namespace SB_IDE.Dialogs
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
+            OK();
+        }
+
+        private void textBoxImport_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                OK();
+            }
+        }
+
+        private void OK()
+        {
             MainWindow.ImportProgram = sbInterop.Import(textBoxImport.Text);
             if (MainWindow.ImportProgram == "error")
             {

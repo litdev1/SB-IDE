@@ -1466,7 +1466,7 @@ namespace SB_IDE
         {
             Import import = new Import(sbInterop);
             import.ShowDialog();
-            if (ImportProgram != "error")
+            if (ImportProgram != "error" && ImportProgram != "")
             {
                 AddDocument();
                 activeDocument.LoadDataFromText(ImportProgram);
