@@ -74,7 +74,8 @@ namespace SB_IDE
             menu.Items.Add(menuFonts);
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as HTML", null, CopyToHtml) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as HTML text", null, CopyToHtml) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as HTML", null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Html)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as RTF", null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Rtf)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));
         }
