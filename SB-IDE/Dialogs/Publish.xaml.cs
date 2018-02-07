@@ -21,10 +21,12 @@ namespace SB_IDE.Dialogs
     /// </summary>
     public partial class Publish : Window
     {
+        private SBInterop sbInterop;
         private string key;
 
-        public Publish(string key)
+        public Publish(SBInterop sbInterop, string key)
         {
+            this.sbInterop = sbInterop;
             this.key = key;
             InitializeComponent();
 
@@ -33,10 +35,15 @@ namespace SB_IDE.Dialogs
 
             textBoxPublish.Focus();
             textBoxPublish.Text = key;
+            textBoxTitle.Text = "";
+            textBoxDescription.Text = "";
+            comboBoxCategory.SelectedIndex = 0;
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
+            ComboBoxItem item = (ComboBoxItem)comboBoxCategory.SelectedItem;
+            sbInterop.SetDetails(key, textBoxTitle.Text, textBoxDescription.Text, item.Content.ToString());
             Close();
         }
 

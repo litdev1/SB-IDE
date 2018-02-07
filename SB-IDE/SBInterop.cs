@@ -37,6 +37,8 @@ namespace SB_IDE
         object Service = null;
         MethodInfo SaveProgram = null;
         MethodInfo PublishProgramDetails = null;
+        MethodInfo GetProgramDetails = null;
+        MethodInfo SubmitRating = null;
         MethodInfo LoadProgram = null;
         MethodInfo CompileProgram = null;
         MethodInfo CompileVB = null;
@@ -81,12 +83,14 @@ namespace SB_IDE
             try
             {
                 Assembly assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\SB.exe");
-                Type SBType = assembly.GetType("Microsoft.SmallBasic.com.smallbasic.Service");
-                ConstructorInfo ctor = SBType.GetConstructor(Type.EmptyTypes);
+                Type ServiceType = assembly.GetType("Microsoft.SmallBasic.com.smallbasic.Service");
+                ConstructorInfo ctor = ServiceType.GetConstructor(Type.EmptyTypes);
                 Service = ctor.Invoke(null);
-                SaveProgram = SBType.GetMethod("SaveProgram");
-                PublishProgramDetails = SBType.GetMethod("PublishProgramDetails");
-                LoadProgram = SBType.GetMethod("LoadProgram");
+                SaveProgram = ServiceType.GetMethod("SaveProgram");
+                PublishProgramDetails = ServiceType.GetMethod("PublishProgramDetails");
+                GetProgramDetails = ServiceType.GetMethod("GetProgramDetails");
+                SubmitRating = ServiceType.GetMethod("SubmitRating");
+                LoadProgram = ServiceType.GetMethod("LoadProgram");
             }
             catch (Exception ex)
             {
@@ -320,16 +324,27 @@ namespace SB_IDE
             try
             { 
                 string key = (string)SaveProgram.Invoke(Service, new object[] { "", program, "SBProgram" });
-                if (key != "error")
-                {
-                    string result = (string)PublishProgramDetails.Invoke(Service, new object[] { key, "", "", "Miscellaneous" });
-                }
                 return key;
             }
             catch (Exception ex)
             {
                 MainWindow.Errors.Add(new Error("Publish : " + ex.Message));
                 return "error";
+            }
+        }
+
+        public void SetDetails(string key, string title, string description, string category)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(title) || !string.IsNullOrEmpty(description) || !string.IsNullOrEmpty(category))
+                {
+                    PublishProgramDetails.Invoke(Service, new object[] { key, title, description, category });
+                }
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("SetDetails : " + ex.Message));
             }
         }
 
@@ -344,6 +359,32 @@ namespace SB_IDE
             {
                 MainWindow.Errors.Add(new Error("Import : " + ex.Message));
                 return "error";
+            }
+        }
+
+        public object GetDetails(string key)
+        {
+            try
+            {
+                return GetProgramDetails.Invoke(Service, new object[] { key });
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("GetDetails : " + ex.Message));
+                return null;
+            }
+        }
+
+        public object SetRating(string key, double rating)
+        {
+            try
+            {
+                return SubmitRating.Invoke(Service, new object[] { key, rating });
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("SetRating : " + ex.Message));
+                return null;
             }
         }
 

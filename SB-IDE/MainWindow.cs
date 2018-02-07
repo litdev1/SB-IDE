@@ -252,6 +252,34 @@ namespace SB_IDE
             button2.ToolTip = "Toggle split screen program layout";
             button2.Click += new RoutedEventHandler(viewDual_Click);
             wrapperGrid.Children.Add(button2);
+
+            Image img3 = new Image()
+            {
+                Width = 20,
+                Height = 20,
+                Source = ImageSourceFromBitmap(Properties.Resources.Details),
+                Stretch = Stretch.Fill
+            };
+            Button button3 = new Button()
+            {
+                Content = img3,
+                Width = 24,
+                Height = 24,
+                VerticalAlignment = VerticalAlignment.Top,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                Margin = new Thickness(0, 0, 60, 0),
+                Background = new SolidColorBrush(Colors.Transparent),
+                BorderBrush = new SolidColorBrush(Colors.Transparent)
+            };
+            button3.ToolTip = "Imported program details";
+            button3.Click += new RoutedEventHandler(details_Click);
+            wrapperGrid.Children.Add(button3);
+        }
+
+        private void details_Click(object sender, RoutedEventArgs e)
+        {
+            Details details = new Details(((TabHeader)activeTab.Header).FileName, sbInterop);
+            details.ShowDialog();
         }
 
         private void ClickIntellisenseToggle(object sender, RoutedEventArgs e)
@@ -1457,7 +1485,7 @@ namespace SB_IDE
             else
             {
                 Errors.Add(new Error("Publish : " + "Successfully published program with ID " + key));
-                Publish publish = new Publish(key);
+                Publish publish = new Publish(sbInterop, key);
                 publish.ShowDialog();
             }
         }

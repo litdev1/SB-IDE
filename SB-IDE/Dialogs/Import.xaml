@@ -12,6 +12,5 @@
         <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Right" Margin="0,0,93.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonOK_Click"/>
         <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,9.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click"/>
         <Label x:Name="label_Copy" Content="Enter the program ID" Margin="10,47,9.6,0" VerticalAlignment="Top" RenderTransformOrigin="-0.908,-2.063" HorizontalContentAlignment="Center"/>
-
     </Grid>
 </Window>

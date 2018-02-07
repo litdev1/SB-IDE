@@ -1,0 +1,29 @@
+﻿<Window x:Class="SB_IDE.Dialogs.Details"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_IDE.Dialogs"
+        mc:Ignorable="d"
+        Title="Details" Height="323.2" Width="600" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True">
+    <Grid>
+        <Label x:Name="label" Content="Program ID" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="110"/>
+        <TextBox x:Name="textBoxID" Height="23" Margin="125,10,9.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe2" Content="Title" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxTitle" Height="23" Margin="125,38,9.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe3" Content="Description" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxDescription" Height="69" Margin="125,66,9.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe4" Content="Category" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxCategory" Height="23" Margin="125,140,9.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe5" Content="Popularity" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxPopularity" Height="23" Margin="125,168,9.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe6" Content="Number of Ratings" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxNumberofRatings" Height="23" Margin="125,196,10.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe7" Content="Overall Rating" HorizontalAlignment="Left" Margin="11,221,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="109"/>
+        <TextBox x:Name="textBoxRating" Height="23" Margin="125,224,10.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe8" Content="My Rating (1-5)" HorizontalAlignment="Left" Margin="11,249,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="109"/>
+        <TextBox x:Name="textBoxMyRating" Height="23" Margin="125,252,90.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <Button x:Name="buttonSetRating" Content="Set Rating" Margin="0,252,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="buttonSetRating_Click" Height="23"/>
+
+    </Grid>
+</Window>

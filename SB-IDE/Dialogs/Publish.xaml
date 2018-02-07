@@ -4,12 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Publish" Height="174.8" Width="400" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True">
+        Title="Publish" Height="395.4" Width="400" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True">
     <Grid>
         <TextBox x:Name="textBoxPublish" Height="23" Margin="10,78,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="label" Content="Your program was published to the web" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>
-        <Button x:Name="buttonClose" Content="Close" HorizontalAlignment="Right" Margin="0,0,9.6,9.8" VerticalAlignment="Bottom" Width="75" Click="buttonClose_Click"/>
+        <Button x:Name="buttonClose" Content="Update and Close" HorizontalAlignment="Right" Margin="0,0,9.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonClose_Click"/>
         <Label x:Name="label_Copy" Content="Below is the ID for your program that you can share" Margin="10,47,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-        <Button x:Name="buttonOpen" Content="Open in Browser" HorizontalAlignment="Right" Margin="0,0,89.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonOpen_Click"/>
+        <Button x:Name="buttonOpen" Content="Open in Browser" HorizontalAlignment="Right" Margin="0,0,139.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonOpen_Click"/>
+        <TextBox x:Name="textBoxTitle" Height="23" Margin="10,136,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy1" Content="Optional Title (255 max)" Margin="10,106,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Copy3" Content="Optional Description (1024 max)" Margin="10,164,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="textBoxDescription" Height="69" Margin="9,195,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto"/>
+        <Label x:Name="label_Copy2" Content="Category" Margin="9,269,10.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <ComboBox x:Name="comboBoxCategory" Margin="9,300,10.6,0" VerticalAlignment="Top">
+            <ComboBoxItem Content="Miscellaneous"/>
+            <ComboBoxItem Content="Game"/>
+            <ComboBoxItem Content="Sample"/>
+            <ComboBoxItem Content="Exercise"/>
+            <ComboBoxItem Content="Example"/>
+            <ComboBoxItem Content="Math"/>
+            <ComboBoxItem Content="Fun"/>
+        </ComboBox>
     </Grid>
 </Window>
