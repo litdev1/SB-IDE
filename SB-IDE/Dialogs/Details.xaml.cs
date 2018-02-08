@@ -48,6 +48,8 @@ namespace SB_IDE.Dialogs
             int popularity = programDetails.Popularity;
             int numberOfRatings = programDetails.NumberOfRatings;
 
+            myRating = myRating > 0 ? myRating : 3;
+
             textBoxID.Text = id;
             textBoxTitle.Text = title;
             textBoxDescription.Text = description;
@@ -55,7 +57,10 @@ namespace SB_IDE.Dialogs
             textBoxPopularity.Text = popularity.ToString();
             textBoxNumberofRatings.Text = numberOfRatings.ToString();
             textBoxRating.Text = rating.ToString();
-            textBoxMyRating.Text = myRating > 0 ? myRating.ToString() : "";
+            textBoxMyRating.Text = myRating.ToString();
+
+            starRating.Width = 24 * rating;
+            starMyRating.Width = 24 * myRating;
         }
 
         private void buttonSetRating_Click(object sender, RoutedEventArgs e)
@@ -73,6 +78,13 @@ namespace SB_IDE.Dialogs
         {
             programDetails = sbInterop.GetDetails(textBoxID.Text);
             ShowDetails();
+        }
+
+        private void Rectangle_MouseMove(object sender, MouseEventArgs e)
+        {
+            int myRating = 1 + (int)e.MouseDevice.GetPosition((Rectangle)sender).X / 24;
+            textBoxMyRating.Text = myRating.ToString();
+            starMyRating.Width = 24 * myRating;
         }
     }
 }
