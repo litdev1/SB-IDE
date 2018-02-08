@@ -339,7 +339,7 @@ namespace SB_IDE
             {
                 if (!string.IsNullOrEmpty(title) || !string.IsNullOrEmpty(description) || !string.IsNullOrEmpty(category))
                 {
-                    PublishProgramDetails.Invoke(Service, new object[] { key, title, description, category });
+                    PublishProgramDetails.Invoke(Service, new object[] { key.Trim(), title, description, category });
                 }
             }
             catch (Exception ex)
@@ -366,7 +366,7 @@ namespace SB_IDE
         {
             try
             {
-                return GetProgramDetails.Invoke(Service, new object[] { key });
+                return GetProgramDetails.Invoke(Service, new object[] { key.Trim() });
             }
             catch (Exception ex)
             {
@@ -379,7 +379,7 @@ namespace SB_IDE
         {
             try
             {
-                return SubmitRating.Invoke(Service, new object[] { key, rating });
+                return SubmitRating.Invoke(Service, new object[] { key.Trim(), rating });
             }
             catch (Exception ex)
             {

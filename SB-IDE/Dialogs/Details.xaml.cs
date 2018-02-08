@@ -19,20 +19,19 @@ namespace SB_IDE.Dialogs
     /// </summary>
     public partial class Details : Window
     {
-        string key;
         SBInterop sbInterop;
         dynamic programDetails;
 
         public Details(string key, SBInterop sbInterop)
         {
-            this.key = key;
             this.sbInterop = sbInterop;
 
             InitializeComponent();
 
             FontSize = 12 + MainWindow.zoom;
 
-            programDetails = sbInterop.GetDetails(key);
+            textBoxID.Text = key;
+            programDetails = sbInterop.GetDetails(textBoxID.Text);
             ShowDetails();
         }
 
@@ -56,7 +55,7 @@ namespace SB_IDE.Dialogs
             textBoxPopularity.Text = popularity.ToString();
             textBoxNumberofRatings.Text = numberOfRatings.ToString();
             textBoxRating.Text = rating.ToString();
-            textBoxMyRating.Text = myRating > 0 ? myRating.ToString() : "3";
+            textBoxMyRating.Text = myRating > 0 ? myRating.ToString() : "";
         }
 
         private void buttonSetRating_Click(object sender, RoutedEventArgs e)
@@ -65,9 +64,15 @@ namespace SB_IDE.Dialogs
             if (double.TryParse(textBoxMyRating.Text, out rating))
             {
                 rating = Math.Min(5, Math.Max(1, rating));
-                programDetails = sbInterop.SetRating(key, rating);
+                programDetails = sbInterop.SetRating(textBoxID.Text, rating);
                 ShowDetails();
             }
+        }
+
+        private void buttonReload_Click(object sender, RoutedEventArgs e)
+        {
+            programDetails = sbInterop.GetDetails(textBoxID.Text);
+            ShowDetails();
         }
     }
 }
