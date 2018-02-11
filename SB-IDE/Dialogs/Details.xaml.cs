@@ -48,6 +48,7 @@ namespace SB_IDE.Dialogs
             int popularity = programDetails.Popularity;
             int numberOfRatings = programDetails.NumberOfRatings;
 
+            buttonSetRating.IsEnabled = programDetails.MyRating < 0;
             myRating = myRating > 0 ? myRating : 3;
 
             textBoxID.Text = id;
@@ -82,6 +83,7 @@ namespace SB_IDE.Dialogs
 
         private void Rectangle_MouseMove(object sender, MouseEventArgs e)
         {
+            if (programDetails.MyRating > 0) return;
             int myRating = 1 + (int)e.MouseDevice.GetPosition((Rectangle)sender).X / 24;
             textBoxMyRating.Text = myRating.ToString();
             starMyRating.Width = 24 * myRating;
