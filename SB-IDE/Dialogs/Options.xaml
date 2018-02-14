@@ -10,10 +10,10 @@
         <Grid.Background>
             <ImageBrush ImageSource="/SB-IDE;component/images/appworkspace.png"/>
         </Grid.Background>
-        <Button x:Name="buttonUpdates" Content="Check for Updates" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="125" Click="buttonUpdates_Click"/>
+        <Button x:Name="buttonUpdates" Content="Check for Updates" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="125" Click="buttonUpdates_Click" ToolTip="Navigate to download website"/>
         <Label x:Name="label" Content="Small Basic Installation Path" HorizontalAlignment="Left" Margin="13,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.013,0.039"/>
         <TextBox x:Name="textBoxInstallation" Height="23" Margin="170,36,81.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <Button x:Name="buttonInstallation" Content="Browse" HorizontalAlignment="Right" Margin="0,36,6.6,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonInstallation_Click" Height="23"/>
+        <Button x:Name="buttonInstallation" Content="Browse" HorizontalAlignment="Right" Margin="0,36,6.6,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonInstallation_Click" Height="23" ToolTip="Browse to Small Basic installation folder"/>
         <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Right" Margin="0,0,9.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonOK_Click"/>
         <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,89.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click"/>
         <CheckBox x:Name="checkBoxQuoteInserts" Content="Quote &quot;&quot; inserted color and font names" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>

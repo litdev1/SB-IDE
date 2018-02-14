@@ -8,14 +8,14 @@
         Title="Extension Searcher" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged" Topmost="True" Closing="Window_Closing">
     <Grid x:Name="gridMain">
         <TextBox x:Name="textBoxSearchText" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Search Text" VerticalAlignment="Top" Width="200"/>
-        <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Margin="215,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonSearch_Click"/>
-        <Button x:Name="buttonCollapse" Content="Collapse All" HorizontalAlignment="Left" Margin="530,10,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.943,0.646" Click="buttonCollapse_Click"/>
-        <Button x:Name="buttonExpand" Content="Expand Selection" HorizontalAlignment="Left" Margin="635,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonExpand_Click"/>
+        <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Margin="215,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonSearch_Click" ToolTip="Search for the text in extension APIs"/>
+        <Button x:Name="buttonCollapse" Content="Collapse All" HorizontalAlignment="Left" Margin="530,10,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.943,0.646" Click="buttonCollapse_Click" ToolTip="Collapse all items in the tree"/>
+        <Button x:Name="buttonExpand" Content="Expand Selection" HorizontalAlignment="Left" Margin="635,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonExpand_Click" ToolTip="Expand all child items at the selected item"/>
         <Grid Margin="0,38,0,0">
             <TreeView x:Name="treeViewSearch" Margin="0">
             </TreeView>
         </Grid>
-        <Button x:Name="buttonNext" Content="Next" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonNext_Click"/>
-        <Button x:Name="buttonPrevious" Content="Previous" HorizontalAlignment="Left" Margin="425,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonPrevious_Click"/>
+        <Button x:Name="buttonNext" Content="Next" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonNext_Click" ToolTip="Move to the next occurrence"/>
+        <Button x:Name="buttonPrevious" Content="Previous" HorizontalAlignment="Left" Margin="425,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonPrevious_Click" ToolTip="Move to the previous occurrence"/>
     </Grid>
 </Window>

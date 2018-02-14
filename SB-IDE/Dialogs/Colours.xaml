@@ -35,7 +35,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="buttonDefaults" Content="Defaults" HorizontalAlignment="Right" Margin="0,0,169.8,4.4" VerticalAlignment="Bottom" Width="75" ToolTip="Reset to defaults" Click="buttonDefaults_Click" RenderTransformOrigin="-1.179,0.469"/>
-        <Button x:Name="Done" Content="Done" HorizontalAlignment="Right" Margin="0,0,9.8,4.4" VerticalAlignment="Bottom" Width="75" Click="Done_Click"/>
-        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,89.8,4.4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click"/>
+        <Button x:Name="Done" Content="Done" HorizontalAlignment="Right" Margin="0,0,9.8,4.4" VerticalAlignment="Bottom" Width="75" Click="Done_Click" ToolTip="Close and apply changes"/>
+        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,89.8,4.4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click" ToolTip="Close without applying changes"/>
     </Grid>
 </Window>

@@ -8,9 +8,9 @@
     <Grid>
         <TextBox x:Name="textBoxPublish" Height="23" Margin="10,78,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="label" Content="Your program was published to the web" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>
-        <Button x:Name="buttonClose" Content="Update and Close" HorizontalAlignment="Right" Margin="0,0,9.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonClose_Click"/>
+        <Button x:Name="buttonClose" Content="Update and Close" HorizontalAlignment="Right" Margin="0,0,9.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonClose_Click" ToolTip="Set the additional details and close"/>
         <Label x:Name="label_Copy" Content="Below is the ID for your program that you can share" Margin="10,47,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-        <Button x:Name="buttonOpen" Content="Open in Browser" HorizontalAlignment="Right" Margin="0,0,139.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonOpen_Click"/>
+        <Button x:Name="buttonOpen" Content="Open in Browser" HorizontalAlignment="Right" Margin="0,0,139.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonOpen_Click" ToolTip="Open published program in Internet Explorer (SilverLight required)"/>
         <TextBox x:Name="textBoxTitle" Height="23" Margin="10,136,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy1" Content="Optional Title (255 max)" Margin="10,106,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <Label x:Name="label_Copy3" Content="Optional Description (1024 max)" Margin="10,164,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>

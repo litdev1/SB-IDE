@@ -23,8 +23,8 @@
         <TextBox x:Name="textBoxRating" Height="23" Margin="250,224,115.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
         <Label x:Name="labe8" Content="My Rating" HorizontalAlignment="Left" Margin="11,249,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="109"/>
         <TextBox x:Name="textBoxMyRating" Height="23" Margin="250,252,115.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Background="#FFC8C8FF" IsReadOnly="True"/>
-        <Button x:Name="buttonSetRating" Content="Submit Rating" Margin="0,252,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="buttonSetRating_Click" Height="23"/>
-        <Button x:Name="buttonReload" Content="Reload ID" Margin="0,10,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="buttonReload_Click" Height="23"/>
+        <Button x:Name="buttonSetRating" Content="Submit Rating" Margin="0,252,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="buttonSetRating_Click" Height="23" ToolTip="Submit your rating for program, this can only be done once per ID"/>
+        <Button x:Name="buttonReload" Content="Reload ID" Margin="0,10,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="buttonReload_Click" Height="23" ToolTip="Get details for a program ID"/>
         <Rectangle x:Name="starRating" Fill="Yellow" Height="24" Margin="125,224,0,0" VerticalAlignment="Top" StrokeThickness="0" HorizontalAlignment="Left" Width="120"/>
         <Rectangle Height="24" Margin="125,224,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">
             <Rectangle.Fill>
