@@ -27,6 +27,7 @@ using System.Drawing.Drawing2D;
 using SB_IDE.Dialogs;
 using System.Reflection;
 using System.IO;
+using System.Diagnostics;
 
 namespace SB_IDE
 {
@@ -73,11 +74,26 @@ namespace SB_IDE
             menu.Items.Add(menuColors);
             menu.Items.Add(menuFonts);
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as HTML text", null, CopyToHtml) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as HTML", null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Html)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as RTF", null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Rtf)) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripSeparator());
+            menu.Items.Add(new ToolStripMenuItem("Open Containing Folder", null, OpenContainingFolder) { Enabled = File.Exists(((TabHeader)sbDocument.Tab.Header).FilePath) });
+            menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));
+        }
+
+        private void OpenContainingFolder(object sender, EventArgs e)
+        {
+            try
+            {
+                string path = Path.GetDirectoryName(((TabHeader)sbDocument.Tab.Header).FilePath);
+                Process.Start("explorer.exe", "\"" + path + "\"");
+            }
+            catch
+            {
+
+            }
         }
 
         private void OpenFindDialog(object sender, EventArgs e)
