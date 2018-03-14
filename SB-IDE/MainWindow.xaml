@@ -131,6 +131,7 @@
                     <RibbonButton Label="Format" SmallImageSource="Images/Form.png" KeyTip="FM" Click="editFormat_Click" ToolTipTitle="Format current program"/>
                     <RibbonButton Label="Undo" SmallImageSource="Images/Undo.png" KeyTip="Z" Click="editUndo_Click" ToolTipTitle="Undo last action"/>
                     <RibbonButton Label="Redo" SmallImageSource="Images/Redo.png" KeyTip="Y" Click="editRedo_Click" ToolTipTitle="Redo last action"/>
+                    <RibbonButton Label="FlowChart" SmallImageSource="Images/FlowChart.png" KeyTip="FC" Click="editFlowChart_Click" ToolTipTitle="Display a flow chart"/>
                 </RibbonGroup>
                 <!-- Home/Web group-->
                 <RibbonGroup x:Name="Web" Header="Web">

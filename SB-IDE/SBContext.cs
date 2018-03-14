@@ -81,6 +81,22 @@ namespace SB_IDE
             menu.Items.Add(new ToolStripMenuItem("Open Containing Folder", null, OpenContainingFolder) { Enabled = File.Exists(((TabHeader)sbDocument.Tab.Header).FilePath) });
             menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));
+            menu.Items.Add(new ToolStripMenuItem("Open Flow Chart", null, OpenFlowChart));
+        }
+
+        private void OpenFlowChart(object sender, EventArgs e)
+        {
+            try
+            {
+                if (FlowChart.Active) return;
+
+                FlowChart fc = new FlowChart(MainWindow.THIS);
+                fc.Show();
+            }
+            catch
+            {
+
+            }
         }
 
         private void OpenContainingFolder(object sender, EventArgs e)

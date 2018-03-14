@@ -120,6 +120,9 @@
     <Compile Include="Dialogs\FindAndReplace.xaml.cs">
       <DependentUpon>FindAndReplace.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FlowChart.xaml.cs">
+      <DependentUpon>FlowChart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Graduate.xaml.cs">
       <DependentUpon>Graduate.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\FindAndReplace.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\FlowChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -493,6 +500,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Stars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Flowchart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using ScintillaNET;
+﻿using SB_IDE.Dialogs;
+using ScintillaNET;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -777,6 +778,14 @@ namespace SB_IDE
         {
             searchFlags ^= SearchFlags.MatchCase;
             activeDocument.searchManager.HighLight(highlightAll ? activeDocument.searchManager.LastHighLight : "");
+        }
+
+        private void editFlowChart_Click(object sender, RoutedEventArgs e)
+        {
+            if (FlowChart.Active) return;
+
+            FlowChart fc = new FlowChart(MainWindow.THIS);
+            fc.Show();
         }
 
         /*
