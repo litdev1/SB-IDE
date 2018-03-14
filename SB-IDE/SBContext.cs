@@ -80,15 +80,22 @@ namespace SB_IDE
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem("Open Containing Folder", null, OpenContainingFolder) { Enabled = File.Exists(((TabHeader)sbDocument.Tab.Header).FilePath) });
             menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem("Display Flow Chart", null, OpenFlowChart));
             menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));
-            menu.Items.Add(new ToolStripMenuItem("Open Flow Chart", null, OpenFlowChart));
         }
 
         private void OpenFlowChart(object sender, EventArgs e)
         {
             try
             {
-                if (FlowChart.Active) return;
+                if (FlowChart.Active)
+                {
+                    FlowChart.THIS.Display();
+                    FlowChart.THIS.Activate();
+                    if (FlowChart.THIS.WindowState == System.Windows.WindowState.Minimized)
+                        FlowChart.THIS.WindowState = System.Windows.WindowState.Normal;
+                    return;
+                }
 
                 FlowChart fc = new FlowChart(MainWindow.THIS);
                 fc.Show();

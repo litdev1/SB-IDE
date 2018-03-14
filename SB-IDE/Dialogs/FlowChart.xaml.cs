@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +23,7 @@ namespace SB_IDE.Dialogs
     public partial class FlowChart : Window
     {
         public static bool Active = false;
+        public static FlowChart THIS;
         private MainWindow mainWindow;
         private SBDocument sbDocument;
         private List<CodeLine> codeLines = new List<CodeLine>();
@@ -37,10 +39,13 @@ namespace SB_IDE.Dialogs
         private Duration animationDuration = new Duration(new TimeSpan(5000000));
         private ScaleTransform scaleTransform = new ScaleTransform();
         private double scaleView = 1;
+        private Timer timer;
+        private double scrollStep;
 
         public FlowChart(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
+            THIS = this;
 
             InitializeComponent();
 
@@ -86,8 +91,11 @@ namespace SB_IDE.Dialogs
             canvas.BeginAnimation(Canvas.HeightProperty, canvasHeightAnimaton);
         }
 
-        private void Display()
+        public void Display()
         {
+            Cursor cursor = Mouse.OverrideCursor;
+            Mouse.OverrideCursor = Cursors.Wait;
+
             canvas.Children.Clear();
             codeLines.Clear();
             subs.Clear();
@@ -286,6 +294,7 @@ namespace SB_IDE.Dialogs
 
             canvas.Width = -widthSpace + 2 * borderSpace + (width + widthSpace) * (maxcol + 1);
             canvas.Height = borderSpace + heightSpace * maxrow;
+            Mouse.OverrideCursor = cursor;
         }
 
         private void codeClick(object sender, MouseButtonEventArgs e)
@@ -294,15 +303,32 @@ namespace SB_IDE.Dialogs
             CodeLine codeLine = (CodeLine)border.Tag;
             if (null != codeLine.rootLine)
             {
-                if (null != codeLine.rootLine.border)
-                {
-                    Border borderRoot = (Border)codeLine.rootLine.border;
-                    Point p = borderRoot.TranslatePoint(new Point(0, 0), canvas);
-
-                    scrollViewer.ScrollToHorizontalOffset((p.X - widthSpace) * scaleView);
-                    scrollViewer.ScrollToVerticalOffset((p.Y - heightSpace) * scaleView);
-                }
+                codeLine = codeLine.rootLine;
             }
+            if (null != codeLine.border)
+            {
+                Border borderRoot = codeLine.border;
+                Point start = new Point(scrollViewer.HorizontalOffset, scrollViewer.VerticalOffset);
+                Point end = borderRoot.TranslatePoint(new Point(0, 0), canvas);
+
+                scrollStep = 0;
+                timer = new Timer(_timer, new Point[] { start, end }, 0, 10);
+            }
+        }
+
+        private void _timer(object state)
+        {
+            Point[] data = (Point[])state;
+            Dispatcher.Invoke(() =>
+            {
+                double x = (1 - scrollStep) * data[0].X + scrollStep * (data[1].X - widthSpace) * scaleView;
+                double y = (1 - scrollStep) * data[0].Y + scrollStep * (data[1].Y - heightSpace) * scaleView;
+                scrollStep += 0.1;
+                scrollStep = Math.Min(1, scrollStep);
+                scrollViewer.ScrollToHorizontalOffset(x);
+                scrollViewer.ScrollToVerticalOffset(y);
+                if (scrollStep >= 1) timer.Dispose();
+            });
         }
 
         // Connect right and up from row1,col1 to row2,col2
@@ -399,7 +425,23 @@ namespace SB_IDE.Dialogs
             Line connect;
             ImageSource arrow = MainWindow.ImageSourceFromBitmap(Properties.Resources.Arrow);
             Image img;
-            int space = 30;
+            int space = 26;
+
+            List<CodeLine> working = new List<CodeLine>();
+            for (int row = row2; row <= row1; row++)
+            {
+                CodeLine codeLine = HasSymbol(row, col);
+                if (null != codeLine)
+                {
+                    working.Add(codeLine);
+                    space = Math.Max(space, codeLine.linkDist + 4);
+                }
+            }
+            space = Math.Min(space, (int)widthSpace - 4);
+            foreach (CodeLine codeLine in working)
+            {
+                codeLine.linkDist = space;
+            }
 
             connect = new Line()
             {
@@ -786,6 +828,7 @@ namespace SB_IDE.Dialogs
         public int nextCol;
         public bool hasElse = false;
         public Border border = null;
+        public int linkDist = 0;
 
         public CodeLine(string code, eBlock block, CodeLine rootLine = null)
         {

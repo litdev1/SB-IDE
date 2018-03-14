@@ -131,7 +131,7 @@
                     <RibbonButton Label="Format" SmallImageSource="Images/Form.png" KeyTip="FM" Click="editFormat_Click" ToolTipTitle="Format current program"/>
                     <RibbonButton Label="Undo" SmallImageSource="Images/Undo.png" KeyTip="Z" Click="editUndo_Click" ToolTipTitle="Undo last action"/>
                     <RibbonButton Label="Redo" SmallImageSource="Images/Redo.png" KeyTip="Y" Click="editRedo_Click" ToolTipTitle="Redo last action"/>
-                    <RibbonButton Label="FlowChart" SmallImageSource="Images/FlowChart.png" KeyTip="FC" Click="editFlowChart_Click" ToolTipTitle="Display a flow chart"/>
+                    <RibbonButton Label="Flow Chart" SmallImageSource="Images/FlowChart.png" KeyTip="FC" Click="editFlowChart_Click" ToolTipTitle="Display a flow chart"/>
                 </RibbonGroup>
                 <!-- Home/Web group-->
                 <RibbonGroup x:Name="Web" Header="Web">
@@ -145,7 +145,7 @@
                     <RibbonButton Label="Find and Replace" SmallImageSource="Images/Find.png" KeyTip="H" Click="searchReplace_Click" ToolTipTitle="Find and replace dialog"/>
                     <RibbonToggleButton Name="toggleHighlight" Label="Highlight All" SmallImageSource="Images/Highlight.png" KeyTip="FH" Click="fileHightlight_Click" ToolTipTitle="Highlight all instances found"/>
                     <RibbonToggleButton Name="toggleWholeWord" Label="Whole Word" SmallImageSource="Images/Text.png" KeyTip="FW" Click="fileWholeWord_Click" ToolTipTitle="Search and highlight only whole word matches"/>
-                    <RibbonToggleButton Name="toggleCaseSensitive" Label="Case Sensitive" SmallImageSource="Images/Text_uppercase.png" KeyTip="FC" Click="fileCaseSensitive_Click" ToolTipTitle="Search and highlight only case sensitive matches"/>
+                    <RibbonToggleButton Name="toggleCaseSensitive" Label="Case Sensitive" SmallImageSource="Images/Text_uppercase.png" KeyTip="CS" Click="fileCaseSensitive_Click" ToolTipTitle="Search and highlight only case sensitive matches"/>
                     <RibbonTextBox x:Name="tbFind" Label="Find" KeyTip="FD" TextBoxWidth="160" KeyDown="tbFind_KeyDown"/>
                     <RibbonButton Label="File Searcher" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
                 </RibbonGroup>

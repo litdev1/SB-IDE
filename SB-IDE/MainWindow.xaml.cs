@@ -782,7 +782,14 @@ namespace SB_IDE
 
         private void editFlowChart_Click(object sender, RoutedEventArgs e)
         {
-            if (FlowChart.Active) return;
+            if (FlowChart.Active)
+            {
+                FlowChart.THIS.Display();
+                FlowChart.THIS.Activate();
+                if (FlowChart.THIS.WindowState == WindowState.Minimized)
+                    FlowChart.THIS.WindowState = WindowState.Normal;
+                return;
+            }
 
             FlowChart fc = new FlowChart(MainWindow.THIS);
             fc.Show();
