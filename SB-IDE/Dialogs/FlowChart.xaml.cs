@@ -96,204 +96,211 @@ namespace SB_IDE.Dialogs
             Cursor cursor = Mouse.OverrideCursor;
             Mouse.OverrideCursor = Cursors.Wait;
 
-            canvas.Children.Clear();
-            codeLines.Clear();
-            subs.Clear();
-            sbDocument = mainWindow.GetActiveDocument();
-            scaleView = 1;
-            scaleTransform.ScaleX = 1.0;
-            scaleTransform.ScaleY = 1.0;
-
-            Parse();
-
-            PathFigure pathFigure = new PathFigure();
-            pathFigure.StartPoint = new Point(0, height/2);
-            pathFigure.Segments.Add(new LineSegment() { Point = new Point(width / 2, 0) });
-            pathFigure.Segments.Add(new LineSegment() { Point = new Point(width, height / 2) });
-            pathFigure.Segments.Add(new LineSegment() { Point = new Point(width / 2, height) });
-            PathGeometry pathGeometry = new PathGeometry();
-            pathGeometry.Figures = new PathFigureCollection();
-            pathGeometry.Figures.Add(pathFigure);
-
-            maxrow = 0;
-            maxcol = 0;
-            foreach (CodeLine codeLine in codeLines)
+            try
             {
-                Brush background;
-                switch (codeLine.block)
-                {
-                    case eBlock.IF:
-                    case eBlock.ELSE:
-                    case eBlock.ELSEIF:
-                        background = new SolidColorBrush(Colors.Red);
-                        break;
-                    case eBlock.START:
-                    case eBlock.SUB:
-                        background = new SolidColorBrush(Colors.Green);
-                        break;
-                    case eBlock.GOTO:
-                    case eBlock.LABEL:
-                    case eBlock.CALL:
-                        background = new SolidColorBrush(Colors.Orange);
-                        break;
-                    case eBlock.FOR:
-                    case eBlock.ENDFOR:
-                        background = new SolidColorBrush(Colors.DarkCyan);
-                        break;
-                    case eBlock.WHILE:
-                    case eBlock.ENDWHILE:
-                        background = new SolidColorBrush(Colors.DeepPink);
-                        break;
-                    default:
-                        background = new SolidColorBrush(Colors.Blue);
-                        break;
-                }
+                canvas.Children.Clear();
+                codeLines.Clear();
+                subs.Clear();
+                sbDocument = mainWindow.GetActiveDocument();
+                scaleView = 1;
+                scaleTransform.ScaleX = 1.0;
+                scaleTransform.ScaleY = 1.0;
 
-                Geometry geometry;
-                switch (codeLine.block)
-                {
-                    case eBlock.IF:
-                    case eBlock.ELSE:
-                    case eBlock.ELSEIF:
-                        geometry = pathGeometry;
-                        break;
-                    case eBlock.START:
-                    case eBlock.SUB:
-                    case eBlock.LABEL:
-                        geometry = new EllipseGeometry(new Point(width / 2, height / 2), width / 2, height / 2);
-                        break;
-                    default:
-                        geometry = new RectangleGeometry(new Rect(0, 0, width, height));
-                        break;
-                }
+                Parse();
 
-                int row = codeLine.row;
-                int col = codeLine.col;
+                PathFigure pathFigure = new PathFigure();
+                pathFigure.StartPoint = new Point(0, height / 2);
+                pathFigure.Segments.Add(new LineSegment() { Point = new Point(width / 2, 0) });
+                pathFigure.Segments.Add(new LineSegment() { Point = new Point(width, height / 2) });
+                pathFigure.Segments.Add(new LineSegment() { Point = new Point(width / 2, height) });
+                PathGeometry pathGeometry = new PathGeometry();
+                pathGeometry.Figures = new PathFigureCollection();
+                pathGeometry.Figures.Add(pathFigure);
 
-                if (codeLine.block != eBlock.START && codeLine.block != eBlock.SUB && codeLine.block != eBlock.ELSE && codeLine.block != eBlock.ELSEIF)
+                maxrow = 0;
+                maxcol = 0;
+                foreach (CodeLine codeLine in codeLines)
                 {
-                    ConnectEndIf(row, col, 0, col);
-                }
-
-                if (codeLine.block == eBlock.ELSE || codeLine.block == eBlock.ELSEIF)
-                {
-                    Line connect = new Line()
+                    Brush background;
+                    switch (codeLine.block)
                     {
-                        X1 = borderSpace + (width + widthSpace) * col + 2,
-                        X2 = borderSpace + (width + widthSpace) * col - widthSpace - 2,
-                        Y1 = borderSpace + heightSpace * row + height / 2,
-                        Y2 = borderSpace + heightSpace * row + height / 2,
-                        Stroke = new SolidColorBrush(Colors.Black),
-                        StrokeThickness = 2,
-                    };
-                    canvas.Children.Add(connect);
+                        case eBlock.IF:
+                        case eBlock.ELSE:
+                        case eBlock.ELSEIF:
+                            background = new SolidColorBrush(Colors.Red);
+                            break;
+                        case eBlock.START:
+                        case eBlock.SUB:
+                            background = new SolidColorBrush(Colors.Green);
+                            break;
+                        case eBlock.GOTO:
+                        case eBlock.LABEL:
+                        case eBlock.CALL:
+                            background = new SolidColorBrush(Colors.Orange);
+                            break;
+                        case eBlock.FOR:
+                        case eBlock.ENDFOR:
+                            background = new SolidColorBrush(Colors.DarkCyan);
+                            break;
+                        case eBlock.WHILE:
+                        case eBlock.ENDWHILE:
+                            background = new SolidColorBrush(Colors.DeepPink);
+                            break;
+                        default:
+                            background = new SolidColorBrush(Colors.Blue);
+                            break;
+                    }
 
-                    int testCol = col - 1;
-                    while (null == HasSymbol(row, testCol) && testCol > 0)
+                    Geometry geometry;
+                    switch (codeLine.block)
                     {
-                        Line connect2 = new Line()
+                        case eBlock.IF:
+                        case eBlock.ELSE:
+                        case eBlock.ELSEIF:
+                            geometry = pathGeometry;
+                            break;
+                        case eBlock.START:
+                        case eBlock.SUB:
+                        case eBlock.LABEL:
+                            geometry = new EllipseGeometry(new Point(width / 2, height / 2), width / 2, height / 2);
+                            break;
+                        default:
+                            geometry = new RectangleGeometry(new Rect(0, 0, width, height));
+                            break;
+                    }
+
+                    int row = codeLine.row;
+                    int col = codeLine.col;
+
+                    if (codeLine.block != eBlock.START && codeLine.block != eBlock.SUB && codeLine.block != eBlock.ELSE && codeLine.block != eBlock.ELSEIF)
+                    {
+                        ConnectEndIf(row, col, 0, col);
+                    }
+
+                    if (codeLine.block == eBlock.ELSE || codeLine.block == eBlock.ELSEIF)
+                    {
+                        Line connect = new Line()
                         {
-                            X1 = borderSpace + (width + widthSpace) * (testCol + 1) + 2,
-                            X2 = borderSpace + (width + widthSpace) * testCol - widthSpace - 2,
+                            X1 = borderSpace + (width + widthSpace) * col + 2,
+                            X2 = borderSpace + (width + widthSpace) * col - widthSpace - 2,
                             Y1 = borderSpace + heightSpace * row + height / 2,
                             Y2 = borderSpace + heightSpace * row + height / 2,
                             Stroke = new SolidColorBrush(Colors.Black),
                             StrokeThickness = 2,
                         };
-                        canvas.Children.Add(connect2);
-                        testCol--;
+                        canvas.Children.Add(connect);
+
+                        int testCol = col - 1;
+                        while (null == HasSymbol(row, testCol) && testCol > 0)
+                        {
+                            Line connect2 = new Line()
+                            {
+                                X1 = borderSpace + (width + widthSpace) * (testCol + 1) + 2,
+                                X2 = borderSpace + (width + widthSpace) * testCol - widthSpace - 2,
+                                Y1 = borderSpace + heightSpace * row + height / 2,
+                                Y2 = borderSpace + heightSpace * row + height / 2,
+                                Stroke = new SolidColorBrush(Colors.Black),
+                                StrokeThickness = 2,
+                            };
+                            canvas.Children.Add(connect2);
+                            testCol--;
+                        }
+
+                        TextBlock condition = new TextBlock()
+                        {
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            Text = "False",
+                        };
+                        canvas.Children.Add(condition);
+                        Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col - widthSpace);
+                        Canvas.SetTop(condition, borderSpace + heightSpace * row + height / 2 + 5);
+
+                        ImageSource arrow = MainWindow.ImageSourceFromBitmap(Properties.Resources.Arrow);
+                        Image img = new Image()
+                        {
+                            Width = 24,
+                            Height = 24,
+                            Source = arrow,
+                        };
+                        RotateTransform rotateTransform = new RotateTransform();
+                        rotateTransform.CenterX = 12;
+                        rotateTransform.CenterY = 12;
+                        rotateTransform.Angle = 180;
+                        img.RenderTransform = new TransformGroup();
+                        ((TransformGroup)img.RenderTransform).Children.Add(rotateTransform);
+                        canvas.Children.Add(img);
+                        Canvas.SetLeft(img, borderSpace + (width + widthSpace) * col - 22);
+                        Canvas.SetTop(img, borderSpace + heightSpace * row + height / 2 - 11);
+                        Canvas.SetZIndex(img, 1);
                     }
 
-                    TextBlock condition = new TextBlock()
+                    if (codeLine.block == eBlock.IF || codeLine.block == eBlock.ELSEIF)
                     {
-                        Foreground = new SolidColorBrush(Colors.Black),
-                        Text = "False",
-                    };
-                    canvas.Children.Add(condition);
-                    Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col - widthSpace);
-                    Canvas.SetTop(condition, borderSpace + heightSpace * row + height / 2 + 5);
-
-                    ImageSource arrow = MainWindow.ImageSourceFromBitmap(Properties.Resources.Arrow);
-                    Image img = new Image()
-                    {
-                        Width = 24,
-                        Height = 24,
-                        Source = arrow,
-                    };
-                    RotateTransform rotateTransform = new RotateTransform();
-                    rotateTransform.CenterX = 12;
-                    rotateTransform.CenterY = 12;
-                    rotateTransform.Angle = 180;
-                    img.RenderTransform = new TransformGroup();
-                    ((TransformGroup)img.RenderTransform).Children.Add(rotateTransform);
-                    canvas.Children.Add(img);
-                    Canvas.SetLeft(img, borderSpace + (width + widthSpace) * col - 22);
-                    Canvas.SetTop(img, borderSpace + heightSpace * row + height / 2 - 11);
-                    Canvas.SetZIndex(img, 1);
-                }
-
-                if (codeLine.block == eBlock.IF || codeLine.block == eBlock.ELSEIF)
-                {
-                    TextBlock condition = new TextBlock()
-                    {
-                        Foreground = new SolidColorBrush(Colors.Black),
-                        Text = "True",
-                    };
-                    canvas.Children.Add(condition);
-                    Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col + width / 2 + 5);
-                    Canvas.SetTop(condition, borderSpace + heightSpace * row + height / 2 + 30);
-                }
-
-                if (codeLine.block == eBlock.ENDIF)
-                {
-                    int rowIf = codeLine.rootLine.row;
-                    for (int colIf = 0; colIf <= maxcol; colIf++)
-                    {
-                        CodeLine cl = HasSymbol(rowIf, colIf);
-                        if (null != cl && cl.rootLine == codeLine.rootLine)
+                        TextBlock condition = new TextBlock()
                         {
-                            ConnectEndIf(codeLine.row, codeLine.col, rowIf, colIf);
+                            Foreground = new SolidColorBrush(Colors.Black),
+                            Text = "True",
+                        };
+                        canvas.Children.Add(condition);
+                        Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col + width / 2 + 5);
+                        Canvas.SetTop(condition, borderSpace + heightSpace * row + height / 2 + 30);
+                    }
+
+                    if (codeLine.block == eBlock.ENDIF)
+                    {
+                        int rowIf = codeLine.rootLine.row;
+                        for (int colIf = 0; colIf <= maxcol; colIf++)
+                        {
+                            CodeLine cl = HasSymbol(rowIf, colIf);
+                            if (null != cl && cl.rootLine == codeLine.rootLine)
+                            {
+                                ConnectEndIf(codeLine.row, codeLine.col, rowIf, colIf);
+                            }
                         }
                     }
+
+                    if (codeLine.block == eBlock.ENDFOR || codeLine.block == eBlock.ENDWHILE || codeLine.block == eBlock.GOTO)
+                    {
+                        ConnectLoop(codeLine.row, codeLine.rootLine.row, codeLine.col);
+                    }
+
+                    TextBlock tb = new TextBlock()
+                    {
+                        Foreground = new SolidColorBrush(Colors.White),
+                        Text = codeLine.code,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                    };
+                    Border border = new Border()
+                    {
+                        Background = background,
+                        Child = tb,
+                        Width = width,
+                        Height = height,
+                        Clip = geometry,
+                        ToolTip = codeLine.code,
+                        Tag = codeLine,
+                        //BorderBrush = new SolidColorBrush(Colors.Black),
+                        //BorderThickness = new Thickness(2),
+                        CornerRadius = new CornerRadius(5),
+                    };
+                    codeLine.border = border;
+                    border.MouseDown += new MouseButtonEventHandler(codeClick);
+
+                    canvas.Children.Add(border);
+                    Canvas.SetLeft(border, borderSpace + (width + widthSpace) * col);
+                    Canvas.SetTop(border, borderSpace + heightSpace * row++);
+                    maxcol = Math.Max(maxcol, col);
+                    maxrow = Math.Max(maxrow, row);
                 }
 
-                if (codeLine.block == eBlock.ENDFOR || codeLine.block == eBlock.ENDWHILE || codeLine.block == eBlock.GOTO)
-                {
-                    ConnectLoop(codeLine.row, codeLine.rootLine.row, codeLine.col);
-                }
-
-                TextBlock tb = new TextBlock()
-                {
-                    Foreground = new SolidColorBrush(Colors.White),
-                    Text = codeLine.code,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                };
-                Border border = new Border()
-                {
-                    Background = background,
-                    Child = tb,
-                    Width = width,
-                    Height = height,
-                    Clip = geometry,
-                    ToolTip = codeLine.code,
-                    Tag = codeLine,
-                    //BorderBrush = new SolidColorBrush(Colors.Black),
-                    //BorderThickness = new Thickness(2),
-                    CornerRadius = new CornerRadius(5),
-                };
-                codeLine.border = border;
-                border.MouseDown += new MouseButtonEventHandler(codeClick);
-
-                canvas.Children.Add(border);
-                Canvas.SetLeft(border, borderSpace + (width + widthSpace) * col);
-                Canvas.SetTop(border, borderSpace + heightSpace * row++);
-                maxcol = Math.Max(maxcol, col);
-                maxrow = Math.Max(maxrow, row);
+                canvas.Width = -widthSpace + 2 * borderSpace + (width + widthSpace) * (maxcol + 1);
+                canvas.Height = borderSpace + heightSpace * maxrow;
             }
-
-            canvas.Width = -widthSpace + 2 * borderSpace + (width + widthSpace) * (maxcol + 1);
-            canvas.Height = borderSpace + heightSpace * maxrow;
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("Flow Chart : " + ex.Message));
+            }
             Mouse.OverrideCursor = cursor;
         }
 
