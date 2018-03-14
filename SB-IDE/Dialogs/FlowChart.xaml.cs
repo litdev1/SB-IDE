@@ -68,27 +68,34 @@ namespace SB_IDE.Dialogs
 
         private void Zoom(double scale)
         {
-            scaleView = Math.Min(1.0, scaleTransform.ScaleX * scale);
-            scale = scaleView / scaleTransform.ScaleX;
+            try
+            {
+                scaleView = Math.Min(1.0, scaleTransform.ScaleX * scale);
+                scale = scaleView / scaleTransform.ScaleX;
 
-            DoubleAnimation scaleAnimaton = new DoubleAnimation();
-            scaleAnimaton.Duration = animationDuration;
-            scaleAnimaton.From = scaleTransform.ScaleX;
-            scaleAnimaton.To = scaleTransform.ScaleX * scale;
-            scaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimaton);
-            scaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimaton);
+                DoubleAnimation scaleAnimaton = new DoubleAnimation();
+                scaleAnimaton.Duration = animationDuration;
+                scaleAnimaton.From = scaleTransform.ScaleX;
+                scaleAnimaton.To = scaleTransform.ScaleX * scale;
+                scaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimaton);
+                scaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimaton);
 
-            DoubleAnimation canvasWidthAnimaton = new DoubleAnimation();
-            canvasWidthAnimaton.Duration = animationDuration;
-            canvasWidthAnimaton.From = canvas.Width;
-            canvasWidthAnimaton.To = canvas.Width * scale;
-            canvas.BeginAnimation(Canvas.WidthProperty, canvasWidthAnimaton);
+                DoubleAnimation canvasWidthAnimaton = new DoubleAnimation();
+                canvasWidthAnimaton.Duration = animationDuration;
+                canvasWidthAnimaton.From = canvas.Width;
+                canvasWidthAnimaton.To = canvas.Width * scale;
+                canvas.BeginAnimation(Canvas.WidthProperty, canvasWidthAnimaton);
 
-            DoubleAnimation canvasHeightAnimaton = new DoubleAnimation();
-            canvasHeightAnimaton.Duration = animationDuration;
-            canvasHeightAnimaton.From = canvas.Height;
-            canvasHeightAnimaton.To = canvas.Height * scale;
-            canvas.BeginAnimation(Canvas.HeightProperty, canvasHeightAnimaton);
+                DoubleAnimation canvasHeightAnimaton = new DoubleAnimation();
+                canvasHeightAnimaton.Duration = animationDuration;
+                canvasHeightAnimaton.From = canvas.Height;
+                canvasHeightAnimaton.To = canvas.Height * scale;
+                canvas.BeginAnimation(Canvas.HeightProperty, canvasHeightAnimaton);
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("Flow Chart : " + ex.Message));
+            }
         }
 
         public void Display()
