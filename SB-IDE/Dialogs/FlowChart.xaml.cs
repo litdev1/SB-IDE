@@ -41,6 +41,10 @@ namespace SB_IDE.Dialogs
         private double scaleView = 1;
         private Timer timer;
         private double scrollStep;
+        private double zoomWidth;
+        private double zoomHeight;
+        private double scrollHorizontal;
+        private double scrollVertical;
 
         public FlowChart(MainWindow mainWindow)
         {
@@ -294,7 +298,8 @@ namespace SB_IDE.Dialogs
                 Border borderRoot = codeLine.border;
                 Point start = new Point(scrollViewer.HorizontalOffset, scrollViewer.VerticalOffset);
                 Point end = borderRoot.TranslatePoint(new Point(0, 0), canvas);
-
+                end.X = (end.X - widthSpace) * scaleView;
+                end.Y = (end.Y - heightSpace) * scaleView;
                 scrollStep = 0;
                 timer = new Timer(_timer, new Point[] { start, end }, 0, 10);
             }
@@ -305,8 +310,8 @@ namespace SB_IDE.Dialogs
             Point[] data = (Point[])state;
             Dispatcher.Invoke(() =>
             {
-                double x = (1 - scrollStep) * data[0].X + scrollStep * (data[1].X - widthSpace) * scaleView;
-                double y = (1 - scrollStep) * data[0].Y + scrollStep * (data[1].Y - heightSpace) * scaleView;
+                double x = (1 - scrollStep) * data[0].X + scrollStep * data[1].X;
+                double y = (1 - scrollStep) * data[0].Y + scrollStep * data[1].Y;
                 scrollStep += 0.1;
                 scrollStep = Math.Min(1, scrollStep);
                 scrollViewer.ScrollToHorizontalOffset(x);
@@ -799,6 +804,10 @@ namespace SB_IDE.Dialogs
             {
                 scaleView = Math.Min(1.0, scaleTransform.ScaleX * scale);
                 scale = scaleView / scaleTransform.ScaleX;
+                zoomWidth = canvas.Width * scale;
+                zoomHeight = canvas.Height * scale;
+                scrollHorizontal = scrollViewer.HorizontalOffset * scale;
+                scrollVertical = scrollViewer.VerticalOffset * scale;
 
                 DoubleAnimation scaleAnimaton = new DoubleAnimation();
                 scaleAnimaton.Duration = animationDuration;
@@ -806,27 +815,32 @@ namespace SB_IDE.Dialogs
                 scaleAnimaton.To = scaleTransform.ScaleX * scale;
                 scaleAnimaton.RepeatBehavior = new RepeatBehavior(1);
                 scaleAnimaton.FillBehavior = FillBehavior.Stop;
-                scaleAnimaton.Completed += new EventHandler(AnimationCmpletedEvent);
+                scaleAnimaton.Completed += new EventHandler(AnimationCompletedEvent);
                 scaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimaton);
                 scaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimaton);
 
                 DoubleAnimation canvasWidthAnimaton = new DoubleAnimation();
                 canvasWidthAnimaton.Duration = animationDuration;
                 canvasWidthAnimaton.From = canvas.Width;
-                canvasWidthAnimaton.To = canvas.Width * scale;
+                canvasWidthAnimaton.To = zoomWidth;
                 canvasWidthAnimaton.RepeatBehavior = new RepeatBehavior(1);
                 canvasWidthAnimaton.FillBehavior = FillBehavior.Stop;
-                canvasWidthAnimaton.Completed += new EventHandler(AnimationCmpletedEvent);
+                canvasWidthAnimaton.Completed += new EventHandler(AnimationCompletedEvent);
                 canvas.BeginAnimation(WidthProperty, canvasWidthAnimaton);
 
                 DoubleAnimation canvasHeightAnimaton = new DoubleAnimation();
                 canvasHeightAnimaton.Duration = animationDuration;
                 canvasHeightAnimaton.From = canvas.Height;
-                canvasHeightAnimaton.To = canvas.Height * scale;
+                canvasHeightAnimaton.To = zoomHeight;
                 canvasHeightAnimaton.RepeatBehavior = new RepeatBehavior(1);
                 canvasHeightAnimaton.FillBehavior = FillBehavior.Stop;
-                canvasWidthAnimaton.Completed += new EventHandler(AnimationCmpletedEvent);
+                canvasHeightAnimaton.Completed += new EventHandler(AnimationCompletedEvent);
                 canvas.BeginAnimation(HeightProperty, canvasHeightAnimaton);
+
+                //Point start = new Point(scrollViewer.HorizontalOffset, scrollViewer.VerticalOffset);
+                //Point end = new Point(scrollHorizontal, scrollVertical);
+                //scrollStep = 0;
+                //timer = new Timer(_timer, new Point[] { start, end }, 0, 50);
             }
             catch (Exception ex)
             {
@@ -835,13 +849,14 @@ namespace SB_IDE.Dialogs
             }
         }
 
-        private void AnimationCmpletedEvent(object sender, EventArgs e)
+        private void AnimationCompletedEvent(object sender, EventArgs e)
         {
-            double scale = scaleView / scaleTransform.ScaleX;
             scaleTransform.ScaleX = scaleView;
             scaleTransform.ScaleY = scaleView;
-            canvas.Width = canvas.Width * scale;
-            canvas.Height = canvas.Height * scale;
+            canvas.Width = zoomWidth;
+            canvas.Height = zoomHeight;
+            scrollViewer.ScrollToHorizontalOffset(scrollHorizontal);
+            scrollViewer.ScrollToVerticalOffset(scrollVertical);
         }
 
         private void OnError()
