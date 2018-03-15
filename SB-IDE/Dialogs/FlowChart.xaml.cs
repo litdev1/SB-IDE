@@ -66,38 +66,6 @@ namespace SB_IDE.Dialogs
             Display();
         }
 
-        private void Zoom(double scale)
-        {
-            try
-            {
-                scaleView = Math.Min(1.0, scaleTransform.ScaleX * scale);
-                scale = scaleView / scaleTransform.ScaleX;
-
-                DoubleAnimation scaleAnimaton = new DoubleAnimation();
-                scaleAnimaton.Duration = animationDuration;
-                scaleAnimaton.From = scaleTransform.ScaleX;
-                scaleAnimaton.To = scaleTransform.ScaleX * scale;
-                scaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimaton);
-                scaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimaton);
-
-                DoubleAnimation canvasWidthAnimaton = new DoubleAnimation();
-                canvasWidthAnimaton.Duration = animationDuration;
-                canvasWidthAnimaton.From = canvas.Width;
-                canvasWidthAnimaton.To = canvas.Width * scale;
-                canvas.BeginAnimation(Canvas.WidthProperty, canvasWidthAnimaton);
-
-                DoubleAnimation canvasHeightAnimaton = new DoubleAnimation();
-                canvasHeightAnimaton.Duration = animationDuration;
-                canvasHeightAnimaton.From = canvas.Height;
-                canvasHeightAnimaton.To = canvas.Height * scale;
-                canvas.BeginAnimation(Canvas.HeightProperty, canvasHeightAnimaton);
-            }
-            catch (Exception ex)
-            {
-                MainWindow.Errors.Add(new Error("Flow Chart : " + ex.Message));
-            }
-        }
-
         public void Display()
         {
             Cursor cursor = Mouse.OverrideCursor;
@@ -307,12 +275,14 @@ namespace SB_IDE.Dialogs
             catch (Exception ex)
             {
                 MainWindow.Errors.Add(new Error("Flow Chart : " + ex.Message));
+                OnError();
             }
             Mouse.OverrideCursor = cursor;
         }
 
         private void codeClick(object sender, MouseButtonEventArgs e)
         {
+            if (null == sender) return;
             Border border = (Border)sender;
             CodeLine codeLine = (CodeLine)border.Tag;
             if (null != codeLine.rootLine)
@@ -823,9 +793,75 @@ namespace SB_IDE.Dialogs
             Zoom(1.25);
         }
 
+        private void Zoom(double scale)
+        {
+            try
+            {
+                scaleView = Math.Min(1.0, scaleTransform.ScaleX * scale);
+                scale = scaleView / scaleTransform.ScaleX;
+
+                DoubleAnimation scaleAnimaton = new DoubleAnimation();
+                scaleAnimaton.Duration = animationDuration;
+                scaleAnimaton.From = scaleTransform.ScaleX;
+                scaleAnimaton.To = scaleTransform.ScaleX * scale;
+                scaleAnimaton.RepeatBehavior = new RepeatBehavior(1);
+                scaleAnimaton.FillBehavior = FillBehavior.Stop;
+                scaleAnimaton.Completed += new EventHandler(AnimationCmpletedEvent);
+                scaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimaton);
+                scaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimaton);
+
+                DoubleAnimation canvasWidthAnimaton = new DoubleAnimation();
+                canvasWidthAnimaton.Duration = animationDuration;
+                canvasWidthAnimaton.From = canvas.Width;
+                canvasWidthAnimaton.To = canvas.Width * scale;
+                canvasWidthAnimaton.RepeatBehavior = new RepeatBehavior(1);
+                canvasWidthAnimaton.FillBehavior = FillBehavior.Stop;
+                canvasWidthAnimaton.Completed += new EventHandler(AnimationCmpletedEvent);
+                canvas.BeginAnimation(WidthProperty, canvasWidthAnimaton);
+
+                DoubleAnimation canvasHeightAnimaton = new DoubleAnimation();
+                canvasHeightAnimaton.Duration = animationDuration;
+                canvasHeightAnimaton.From = canvas.Height;
+                canvasHeightAnimaton.To = canvas.Height * scale;
+                canvasHeightAnimaton.RepeatBehavior = new RepeatBehavior(1);
+                canvasHeightAnimaton.FillBehavior = FillBehavior.Stop;
+                canvasWidthAnimaton.Completed += new EventHandler(AnimationCmpletedEvent);
+                canvas.BeginAnimation(HeightProperty, canvasHeightAnimaton);
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("Flow Chart : " + ex.Message));
+                OnError();
+            }
+        }
+
+        private void AnimationCmpletedEvent(object sender, EventArgs e)
+        {
+            double scale = scaleView / scaleTransform.ScaleX;
+            scaleTransform.ScaleX = scaleView;
+            scaleTransform.ScaleY = scaleView;
+            canvas.Width = canvas.Width * scale;
+            canvas.Height = canvas.Height * scale;
+        }
+
+        private void OnError()
+        {
+            MessageBox.Show("Flow Chart failed, probably because of code error - check program compiles.", "SB-IDE", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
             Display();
+        }
+
+        private void buttonTop_Click(object sender, RoutedEventArgs e)
+        {
+            if (codeLines.Count > 0) codeClick(codeLines[0].border, null);
+        }
+
+        private void buttonBottom_Click(object sender, RoutedEventArgs e)
+        {
+            if (codeLines.Count > 0) codeClick(codeLines[codeLines.Count-1].border, null);
         }
     }
 
