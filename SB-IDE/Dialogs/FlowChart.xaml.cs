@@ -854,12 +854,12 @@ namespace SB_IDE.Dialogs
             Display();
         }
 
-        private void buttonTop_Click(object sender, RoutedEventArgs e)
+        private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
             if (codeLines.Count > 0) codeClick(codeLines[0].border, null);
         }
 
-        private void buttonBottom_Click(object sender, RoutedEventArgs e)
+        private void buttonEnd_Click(object sender, RoutedEventArgs e)
         {
             if (codeLines.Count > 0) codeClick(codeLines[codeLines.Count-1].border, null);
         }
