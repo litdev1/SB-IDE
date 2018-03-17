@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,11 @@ namespace SB_IDE.Dialogs
                 if (data[0] == "W") region = "Main Window";
                 else if (data[0] == "D") region = "Document Layout";
                 else if (data[0] == "L") region = "Document Lexer";
-                colours.Add(new ColourData() { Region = region, Label = data[1], R = (byte)(kvp.Value >> 16), G = (byte)(kvp.Value >> 8), B = (byte)(kvp.Value) });
+                else if (data[0] == "C") region = "Flow Chart";
+                byte R = (byte)(kvp.Value >> 16);
+                byte G = (byte)(kvp.Value >> 8);
+                byte B = (byte)(kvp.Value);
+                colours.Add(new ColourData() { Region = region, Label = data[1], R = R, G = G, B = B, Color = new SolidColorBrush(Color.FromRgb(R, G, B)) });
             }
         }
 
@@ -67,24 +72,10 @@ namespace SB_IDE.Dialogs
                         data.R = cd.Color.R;
                         data.G = cd.Color.G;
                         data.B = cd.Color.B;
-                        button.Background = new SolidColorBrush(Color.FromRgb(data.R, data.G, data.B));
+                        data.Color = new SolidColorBrush(Color.FromRgb(data.R, data.G, data.B));
                         dataGridColours.Items.Refresh();
                     }
                 }
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void Button_Loaded(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            try
-            {
-                ColourData data = (ColourData)button.Tag;
-                if (null != data) button.Background = new SolidColorBrush(Color.FromRgb(data.R, data.G, data.B));
             }
             catch
             {
@@ -99,6 +90,7 @@ namespace SB_IDE.Dialogs
                 colours[i].R = (byte)(mainWindow.DefaultColors.ElementAt(i).Value >> 16);
                 colours[i].G = (byte)(mainWindow.DefaultColors.ElementAt(i).Value >> 8);
                 colours[i].B = (byte)(mainWindow.DefaultColors.ElementAt(i).Value);
+                colours[i].Color = new SolidColorBrush(Color.FromRgb(colours[i].R, colours[i].G, colours[i].B));
             }
             dataGridColours.Items.Refresh();
         }
@@ -142,6 +134,7 @@ namespace SB_IDE.Dialogs
                                     colours[i].R = R;
                                     colours[i].G = G;
                                     colours[i].B = B;
+                                    colours[i].Color = new SolidColorBrush(Color.FromRgb(colours[i].R, colours[i].G, colours[i].B));
                                 }
                             }
                         }
@@ -172,6 +165,7 @@ namespace SB_IDE.Dialogs
                                     else if (iCol + j == 2) colours[iRow + i].B = C;
                                 }
                             }
+                            colours[iRow + i].Color = new SolidColorBrush(Color.FromRgb(colours[iRow + i].R, colours[iRow + i].G, colours[iRow + i].B));
                         }
                     }
                     dataGridColours.Items.Refresh();
@@ -180,6 +174,36 @@ namespace SB_IDE.Dialogs
                 {
 
                 }
+            }
+        }
+
+        private void dataGridColours_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            int iRow = 0;
+            for (iRow = 0; iRow < colours.Count; iRow++)
+            {
+                if (dataGridColours.Items[iRow] == e.Row.Item) break;
+            }
+
+            byte value = 0;
+            TextBox tb = (TextBox)e.EditingElement;
+            if (!byte.TryParse(tb.Text, out value))
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            if (e.Column.Header.ToString() == "Red")
+            {
+                colours[iRow].Color = new SolidColorBrush(Color.FromRgb(value, colours[iRow].G, colours[iRow].B));
+            }
+            else if (e.Column.Header.ToString() == "Green")
+            {
+                colours[iRow].Color = new SolidColorBrush(Color.FromRgb(colours[iRow].R, value, colours[iRow].B));
+            }
+            else if (e.Column.Header.ToString() == "Blue")
+            {
+                colours[iRow].Color = new SolidColorBrush(Color.FromRgb(colours[iRow].R, colours[iRow].G, value));
             }
         }
     }
@@ -191,5 +215,6 @@ namespace SB_IDE.Dialogs
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }
+        public Brush Color { get; set; }
     }
 }

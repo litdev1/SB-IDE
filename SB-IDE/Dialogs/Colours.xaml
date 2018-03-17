@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="IDE Colors" Height="550" Width="500" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" WindowStartupLocation="CenterOwner">
     <Grid>
-        <DataGrid x:Name="dataGridColours" HeadersVisibility="Column" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" SelectionChanged="dataGridColours_SelectionChanged" AutoGenerateColumns="False" Margin="10,10,9.8,34.4" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" KeyDown="dataGridColours_KeyDown">
+        <DataGrid x:Name="dataGridColours" HeadersVisibility="Column" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" SelectionChanged="dataGridColours_SelectionChanged" AutoGenerateColumns="False" Margin="10,10,9.8,34.4" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" KeyDown="dataGridColours_KeyDown" CellEditEnding="dataGridColours_CellEditEnding">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -22,12 +22,17 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Region" IsReadOnly="True" Binding="{Binding Region}"/>
                 <DataGridTextColumn Header="Label" IsReadOnly="True" Binding="{Binding Label}"/>
-                <DataGridTemplateColumn Header="Color" IsReadOnly="True" Width="*" >
+                <DataGridTemplateColumn Header="Color" IsReadOnly="True" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="dataGridColoursSet" ToolTip="Click to set color" Tag="{Binding}" Loaded="Button_Loaded"/>
+                            <Button Click="dataGridColoursSet" ToolTip="Click to set color" Tag="{Binding}" Background="Transparent"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Background" Value="{Binding Color}" />
+                        </Style>
+                    </DataGridTemplateColumn.CellStyle>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Red" Width="50" Binding="{Binding R}"/>
                 <DataGridTextColumn Header="Green" Width="50" Binding="{Binding G}"/>

@@ -15,6 +15,7 @@
 //You should have received a copy of the GNU General Public License 
 //along with SB-IDE for Small Basic.  If not, see <http://www.gnu.org/licenses/>. 
 
+using SB_IDE.Dialogs;
 using ScintillaNET;
 using System;
 using System.Collections.Generic;
@@ -429,6 +430,10 @@ namespace SB_IDE
 
                         sbDocument.ClearHighlights();
                         sbDocument.HighlightLine(line);
+                        if (FlowChart.Active)
+                        {
+                            FlowChart.THIS.HighlightLine(iLine);
+                        }
                     }
                     if (data.Length > 1)
                     {

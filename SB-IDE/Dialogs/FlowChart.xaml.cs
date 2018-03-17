@@ -41,10 +41,10 @@ namespace SB_IDE.Dialogs
         private double scaleView = 1;
         private Timer timer;
         private double scrollStep;
-        private double zoomWidth;
-        private double zoomHeight;
-        private double scrollHorizontal;
-        private double scrollVertical;
+        private Rectangle highlight;
+        private CodeLine lastHighlight = null;
+        private Brush background;
+        private Brush foreground;
 
         public FlowChart(MainWindow mainWindow)
         {
@@ -60,12 +60,33 @@ namespace SB_IDE.Dialogs
             Left = SystemParameters.PrimaryScreenWidth - Width - 20;
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
 
+            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_BACK_COLOR));
+            foreground = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
+            if (MainWindow.theme == 1)
+            {
+                background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
+                foreground = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_BACK_COLOR));
+            }
+
             canvas.RenderTransform = new TransformGroup();
             scaleTransform.CenterX = 0;
             scaleTransform.CenterY = 0;
             canvas.RenderTransform = new TransformGroup();
             canvas.RenderTransform = new TransformGroup();
             ((TransformGroup)canvas.RenderTransform).Children.Add(scaleTransform);
+            grid.Background = background;
+
+            highlight = new Rectangle()
+            {
+                Width = 12 + width,
+                Height = 12 + height,
+                Fill = new SolidColorBrush(Colors.Transparent),
+                Stroke = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_HIGHLIGHT_COLOR)),
+                StrokeThickness = 4,
+                RadiusX = 5,
+                RadiusY = 5,
+            };
+            highlight.Visibility = Visibility.Hidden;
 
             Display();
         }
@@ -81,9 +102,14 @@ namespace SB_IDE.Dialogs
                 codeLines.Clear();
                 subs.Clear();
                 sbDocument = mainWindow.GetActiveDocument();
-                scaleView = 1;
-                scaleTransform.ScaleX = 1.0;
-                scaleTransform.ScaleY = 1.0;
+                //scaleView = 1;
+                //scaleTransform.ScaleX = 1.0;
+                //scaleTransform.ScaleY = 1.0;
+                lastHighlight = null;
+                highlight.Visibility = Visibility.Hidden;
+
+                canvas.Children.Add(highlight);
+                Canvas.SetZIndex(highlight, -1);
 
                 Parse();
 
@@ -106,27 +132,27 @@ namespace SB_IDE.Dialogs
                         case eBlock.IF:
                         case eBlock.ELSE:
                         case eBlock.ELSEIF:
-                            background = new SolidColorBrush(Colors.Red);
+                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_CONDITION_COLOR));
                             break;
                         case eBlock.START:
                         case eBlock.SUB:
-                            background = new SolidColorBrush(Colors.Green);
+                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_START_COLOR));
                             break;
                         case eBlock.GOTO:
                         case eBlock.LABEL:
                         case eBlock.CALL:
-                            background = new SolidColorBrush(Colors.Orange);
+                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_CALL_COLOR));
                             break;
                         case eBlock.FOR:
                         case eBlock.ENDFOR:
-                            background = new SolidColorBrush(Colors.DarkCyan);
+                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FOR_COLOR));
                             break;
                         case eBlock.WHILE:
                         case eBlock.ENDWHILE:
-                            background = new SolidColorBrush(Colors.DeepPink);
+                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_WHILE_COLOR));
                             break;
                         default:
-                            background = new SolidColorBrush(Colors.Blue);
+                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_STATEMENT_COLOR));
                             break;
                     }
 
@@ -164,7 +190,7 @@ namespace SB_IDE.Dialogs
                             X2 = borderSpace + (width + widthSpace) * col - widthSpace - 2,
                             Y1 = borderSpace + heightSpace * row + height / 2,
                             Y2 = borderSpace + heightSpace * row + height / 2,
-                            Stroke = new SolidColorBrush(Colors.Black),
+                            Stroke = foreground,
                             StrokeThickness = 2,
                         };
                         canvas.Children.Add(connect);
@@ -178,7 +204,7 @@ namespace SB_IDE.Dialogs
                                 X2 = borderSpace + (width + widthSpace) * testCol - widthSpace - 2,
                                 Y1 = borderSpace + heightSpace * row + height / 2,
                                 Y2 = borderSpace + heightSpace * row + height / 2,
-                                Stroke = new SolidColorBrush(Colors.Black),
+                                Stroke = foreground,
                                 StrokeThickness = 2,
                             };
                             canvas.Children.Add(connect2);
@@ -187,7 +213,7 @@ namespace SB_IDE.Dialogs
 
                         TextBlock condition = new TextBlock()
                         {
-                            Foreground = new SolidColorBrush(Colors.Black),
+                            Foreground = foreground,
                             Text = "False",
                         };
                         canvas.Children.Add(condition);
@@ -217,7 +243,7 @@ namespace SB_IDE.Dialogs
                     {
                         TextBlock condition = new TextBlock()
                         {
-                            Foreground = new SolidColorBrush(Colors.Black),
+                            Foreground = foreground,
                             Text = "True",
                         };
                         canvas.Children.Add(condition);
@@ -245,10 +271,11 @@ namespace SB_IDE.Dialogs
 
                     TextBlock tb = new TextBlock()
                     {
-                        Foreground = new SolidColorBrush(Colors.White),
+                        Foreground = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_CODE_COLOR)),
                         Text = codeLine.code,
                         VerticalAlignment = VerticalAlignment.Center,
                         HorizontalAlignment = HorizontalAlignment.Center,
+                        TextAlignment = TextAlignment.Center,
                     };
                     Border border = new Border()
                     {
@@ -259,8 +286,6 @@ namespace SB_IDE.Dialogs
                         Clip = geometry,
                         ToolTip = codeLine.code,
                         Tag = codeLine,
-                        //BorderBrush = new SolidColorBrush(Colors.Black),
-                        //BorderThickness = new Thickness(2),
                         CornerRadius = new CornerRadius(5),
                     };
                     codeLine.border = border;
@@ -284,25 +309,45 @@ namespace SB_IDE.Dialogs
             Mouse.OverrideCursor = cursor;
         }
 
+        public void HighlightLine(int line)
+        {
+            if (sbDocument != mainWindow.GetActiveDocument()) return;
+            foreach (CodeLine codeLine in codeLines)
+            {
+                if (codeLine.lines.Contains(line))
+                {
+                    Highlight(codeLine);
+                    break;
+                }
+            }
+        }
+
+        private void Highlight(CodeLine codeLine)
+        {
+            lastHighlight = codeLine;
+            highlight.Visibility = Visibility.Visible;
+            Canvas.SetLeft(highlight, borderSpace + (width + widthSpace) * codeLine.col + -6);
+            Canvas.SetTop(highlight, borderSpace + heightSpace * codeLine.row - 6);
+
+            Border borderRoot = codeLine.border;
+            Point start = new Point(scrollViewer.HorizontalOffset, scrollViewer.VerticalOffset);
+            Point end = borderRoot.TranslatePoint(new Point(0, 0), canvas);
+            end.X = (end.X - widthSpace) * scaleView;
+            end.Y = (end.Y - heightSpace) * scaleView;
+            scrollStep = 0;
+            timer = new Timer(_timer, new Point[] { start, end }, 0, 10);
+        }
+
         private void codeClick(object sender, MouseButtonEventArgs e)
         {
             if (null == sender) return;
             Border border = (Border)sender;
             CodeLine codeLine = (CodeLine)border.Tag;
-            if (null != codeLine.rootLine)
+            if (null != codeLine.rootLine && e.RightButton == MouseButtonState.Pressed)
             {
                 codeLine = codeLine.rootLine;
             }
-            if (null != codeLine.border)
-            {
-                Border borderRoot = codeLine.border;
-                Point start = new Point(scrollViewer.HorizontalOffset, scrollViewer.VerticalOffset);
-                Point end = borderRoot.TranslatePoint(new Point(0, 0), canvas);
-                end.X = (end.X - widthSpace) * scaleView;
-                end.Y = (end.Y - heightSpace) * scaleView;
-                scrollStep = 0;
-                timer = new Timer(_timer, new Point[] { start, end }, 0, 10);
-            }
+            Highlight(codeLine);
         }
 
         private void _timer(object state)
@@ -310,12 +355,10 @@ namespace SB_IDE.Dialogs
             Point[] data = (Point[])state;
             Dispatcher.Invoke(() =>
             {
-                double x = (1 - scrollStep) * data[0].X + scrollStep * data[1].X;
-                double y = (1 - scrollStep) * data[0].Y + scrollStep * data[1].Y;
                 scrollStep += 0.1;
                 scrollStep = Math.Min(1, scrollStep);
-                scrollViewer.ScrollToHorizontalOffset(x);
-                scrollViewer.ScrollToVerticalOffset(y);
+                scrollViewer.ScrollToHorizontalOffset((1 - scrollStep) * data[0].X + scrollStep * data[1].X);
+                scrollViewer.ScrollToVerticalOffset((1 - scrollStep) * data[0].Y + scrollStep * data[1].Y);
                 if (scrollStep >= 1) timer.Dispose();
             });
         }
@@ -335,7 +378,7 @@ namespace SB_IDE.Dialogs
                     X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
                     Y1 = borderSpace + heightSpace * row1 + height / 2,
                     Y2 = borderSpace + heightSpace * row1 + height / 2,
-                    Stroke = new SolidColorBrush(Colors.Black),
+                    Stroke = foreground,
                     StrokeThickness = 2,
                 };
                 canvas.Children.Add(connect);
@@ -346,7 +389,7 @@ namespace SB_IDE.Dialogs
                     X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
                     Y1 = borderSpace + heightSpace * row1 + height / 2,
                     Y2 = borderSpace + heightSpace * row1,
-                    Stroke = new SolidColorBrush(Colors.Black),
+                    Stroke = foreground,
                     StrokeThickness = 2,
                 };
                 canvas.Children.Add(connect);
@@ -372,7 +415,7 @@ namespace SB_IDE.Dialogs
                     X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
                     Y1 = borderSpace + heightSpace * (rowUp + 1) + height / 2,
                     Y2 = borderSpace + heightSpace * rowUp,
-                    Stroke = new SolidColorBrush(Colors.Black),
+                    Stroke = foreground,
                     StrokeThickness = 2,
                 };
                 canvas.Children.Add(connect);
@@ -385,7 +428,7 @@ namespace SB_IDE.Dialogs
                 X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
                 Y1 = borderSpace + heightSpace * (rowUp + 1),
                 Y2 = borderSpace + heightSpace * rowUp + height,
-                Stroke = new SolidColorBrush(Colors.Black),
+                Stroke = foreground,
                 StrokeThickness = 2,
             };
             canvas.Children.Add(connect);
@@ -438,7 +481,7 @@ namespace SB_IDE.Dialogs
                 X2 = borderSpace + (width + widthSpace) * col - space,
                 Y1 = borderSpace + heightSpace * row1 + height / 2,
                 Y2 = borderSpace + heightSpace * row1 + height / 2,
-                Stroke = new SolidColorBrush(Colors.Black),
+                Stroke = foreground,
                 StrokeThickness = 2,
             };
             canvas.Children.Add(connect);
@@ -449,7 +492,7 @@ namespace SB_IDE.Dialogs
                 X2 = borderSpace + (width + widthSpace) * col - space,
                 Y1 = borderSpace + heightSpace * row1 + height / 2,
                 Y2 = borderSpace + heightSpace * row2 + height / 2,
-                Stroke = new SolidColorBrush(Colors.Black),
+                Stroke = foreground,
                 StrokeThickness = 2,
             };
             canvas.Children.Add(connect);
@@ -460,7 +503,7 @@ namespace SB_IDE.Dialogs
                 X2 = borderSpace + (width + widthSpace) * col,
                 Y1 = borderSpace + heightSpace * row2 + height / 2,
                 Y2 = borderSpace + heightSpace * row2 + height / 2,
-                Stroke = new SolidColorBrush(Colors.Black),
+                Stroke = foreground,
                 StrokeThickness = 2,
             };
             canvas.Children.Add(connect);
@@ -485,96 +528,96 @@ namespace SB_IDE.Dialogs
 
         private void Parse()
         {
-            string[] lines = sbDocument.TextArea.Text.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
             Stack<CodeLine> sSub = new Stack<CodeLine>();
             Stack<CodeLine> sIf = new Stack<CodeLine>();
             Stack<CodeLine> sFor = new Stack<CodeLine>();
             Stack<CodeLine> sWhile = new Stack<CodeLine>();
             Dictionary<string, CodeLine> labels = new Dictionary<string, CodeLine>();
 
-            codeLines.Add(new CodeLine("START", eBlock.START));
-            for (int i = 0; i < lines.Length; i++)
+            codeLines.Add(new CodeLine(-1, "START", eBlock.START));
+            for (int i = 0; i < sbDocument.TextArea.Lines.Count; i++)
             {
-                string line = Clean(lines[i]);
+                string line = Clean(sbDocument.TextArea.Lines[i].Text);
                 if (line.Length == 0) continue;
                 string lineLower = line.ToLower();
 
                 if (Regex.Match(lineLower, "^(sub)[\\W]").Success)
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.SUB));
+                    codeLines.Add(new CodeLine(i, line, eBlock.SUB));
                     sSub.Push(codeLines.Last());
                 }
                 else if (lineLower == "endsub")
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.ENDSUB, sSub.Pop()));
+                    codeLines.Add(new CodeLine(i, line, eBlock.ENDSUB, sSub.Pop()));
                 }
                 else if (Regex.Match(lineLower, "^(if)[\\W]").Success)
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.IF));
+                    codeLines.Add(new CodeLine(i, line, eBlock.IF));
                     sIf.Push(codeLines.Last());
                 }
                 else if (lineLower == "else")
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.ELSE, sIf.Peek()));
+                    codeLines.Add(new CodeLine(i, line, eBlock.ELSE, sIf.Peek()));
                     sIf.Peek().hasElse = true;
                 }
                 else if (Regex.Match(lineLower, "^(elseif)[\\W]").Success)
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.ELSEIF, sIf.Peek()));
+                    codeLines.Add(new CodeLine(i, line, eBlock.ELSEIF, sIf.Peek()));
                     sIf.Peek().hasElse = true;
                 }
                 else if (lineLower == "endif")
                 {
                     if (!sIf.Peek().hasElse)
                     {
-                        codeLines.Add(new CodeLine("Else", eBlock.ELSE, sIf.Peek()));
+                        codeLines.Add(new CodeLine(-1, "Else", eBlock.ELSE, sIf.Peek()));
                     }
-                    codeLines.Add(new CodeLine(line, eBlock.ENDIF, sIf.Pop()));
+                    codeLines.Add(new CodeLine(i, line, eBlock.ENDIF, sIf.Pop()));
                 }
                 else if (Regex.Match(lineLower, "^(for)[\\W]").Success)
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.FOR));
+                    codeLines.Add(new CodeLine(i, line, eBlock.FOR));
                     sFor.Push(codeLines.Last());
                 }
                 else if (lineLower == "endfor")
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.ENDFOR, sFor.Pop()));
+                    codeLines.Add(new CodeLine(i, line, eBlock.ENDFOR, sFor.Pop()));
                 }
                 else if (Regex.Match(lineLower, "^(while)[\\W]").Success)
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.WHILE));
+                    codeLines.Add(new CodeLine(i, line, eBlock.WHILE));
                     sWhile.Push(codeLines.Last());
                 }
                 else if (lineLower == "endwhile")
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.ENDWHILE, sWhile.Pop()));
+                    codeLines.Add(new CodeLine(i, line, eBlock.ENDWHILE, sWhile.Pop()));
                 }
                 else if (Regex.Match(lineLower, "^(goto)[\\W]").Success)
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.GOTO));
+                    codeLines.Add(new CodeLine(i, line, eBlock.GOTO));
                 }
                 else if (Regex.Match(lineLower, "^[a-z_][\\w]*[ ]*[:]").Success)
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.LABEL));
+                    codeLines.Add(new CodeLine(i, line, eBlock.LABEL));
                     labels[lineLower.Substring(0, lineLower.Length - 1).Trim()] = codeLines.Last();
                 }
                 else if (Regex.Match(lineLower, "^[a-z_][\\w]*[ ]*[()]").Success)
                 {
-                    codeLines.Add(new CodeLine(line, eBlock.CALL));
+                    codeLines.Add(new CodeLine(i, line, eBlock.CALL));
                 }
                 else
                 {
                     if (groupStatements && codeLines.Last().block == eBlock.STATEMENT)
                     {
                         codeLines.Last().code += "\n" + line;
+                        codeLines.Last().lines.Add(i);
                     }
                     else
                     {
-                        codeLines.Add(new CodeLine(line, eBlock.STATEMENT));
+                        codeLines.Add(new CodeLine(i, line, eBlock.STATEMENT));
                     }
                 }
             }
-            codeLines.Add(new CodeLine("END", eBlock.END));
+            codeLines.Add(new CodeLine(-1, "END", eBlock.END));
 
             // Set parents for GOTO
             foreach (KeyValuePair<string, CodeLine> kvp in labels)
@@ -790,6 +833,7 @@ namespace SB_IDE.Dialogs
 
         private void buttonZoomIn_Click(object sender, RoutedEventArgs e)
         {
+            if (scrollViewer.ComputedHorizontalScrollBarVisibility == Visibility.Collapsed && scrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Collapsed) return;
             Zoom(0.8);
         }
 
@@ -804,43 +848,15 @@ namespace SB_IDE.Dialogs
             {
                 scaleView = Math.Min(1.0, scaleTransform.ScaleX * scale);
                 scale = scaleView / scaleTransform.ScaleX;
-                zoomWidth = canvas.Width * scale;
-                zoomHeight = canvas.Height * scale;
-                scrollHorizontal = scrollViewer.HorizontalOffset * scale;
-                scrollVertical = scrollViewer.VerticalOffset * scale;
 
-                DoubleAnimation scaleAnimaton = new DoubleAnimation();
-                scaleAnimaton.Duration = animationDuration;
-                scaleAnimaton.From = scaleTransform.ScaleX;
-                scaleAnimaton.To = scaleTransform.ScaleX * scale;
-                scaleAnimaton.RepeatBehavior = new RepeatBehavior(1);
-                scaleAnimaton.FillBehavior = FillBehavior.Stop;
-                scaleAnimaton.Completed += new EventHandler(AnimationCompletedEvent);
-                scaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimaton);
-                scaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimaton);
-
-                DoubleAnimation canvasWidthAnimaton = new DoubleAnimation();
-                canvasWidthAnimaton.Duration = animationDuration;
-                canvasWidthAnimaton.From = canvas.Width;
-                canvasWidthAnimaton.To = zoomWidth;
-                canvasWidthAnimaton.RepeatBehavior = new RepeatBehavior(1);
-                canvasWidthAnimaton.FillBehavior = FillBehavior.Stop;
-                canvasWidthAnimaton.Completed += new EventHandler(AnimationCompletedEvent);
-                canvas.BeginAnimation(WidthProperty, canvasWidthAnimaton);
-
-                DoubleAnimation canvasHeightAnimaton = new DoubleAnimation();
-                canvasHeightAnimaton.Duration = animationDuration;
-                canvasHeightAnimaton.From = canvas.Height;
-                canvasHeightAnimaton.To = zoomHeight;
-                canvasHeightAnimaton.RepeatBehavior = new RepeatBehavior(1);
-                canvasHeightAnimaton.FillBehavior = FillBehavior.Stop;
-                canvasHeightAnimaton.Completed += new EventHandler(AnimationCompletedEvent);
-                canvas.BeginAnimation(HeightProperty, canvasHeightAnimaton);
-
-                //Point start = new Point(scrollViewer.HorizontalOffset, scrollViewer.VerticalOffset);
-                //Point end = new Point(scrollHorizontal, scrollVertical);
-                //scrollStep = 0;
-                //timer = new Timer(_timer, new Point[] { start, end }, 0, 50);
+                Point start = new Point(scrollViewer.HorizontalOffset, scrollViewer.VerticalOffset);
+                Point end = new Point(scrollViewer.HorizontalOffset * scale, scrollViewer.VerticalOffset * scale);
+                Point scaleX = new Point(scaleTransform.ScaleX, scaleTransform.ScaleX * scale);
+                Point scaleY = new Point(scaleTransform.ScaleY, scaleTransform.ScaleY * scale);
+                Point scaleW = new Point(canvas.Width, canvas.Width * scale);
+                Point scaleH = new Point(canvas.Height, canvas.Height * scale);
+                scrollStep = 0;
+                timer = new Timer(_timer2, new Point[] { start, end, scaleX, scaleY, scaleW, scaleH }, 0, 10);
             }
             catch (Exception ex)
             {
@@ -849,14 +865,21 @@ namespace SB_IDE.Dialogs
             }
         }
 
-        private void AnimationCompletedEvent(object sender, EventArgs e)
+        private void _timer2(object state)
         {
-            scaleTransform.ScaleX = scaleView;
-            scaleTransform.ScaleY = scaleView;
-            canvas.Width = zoomWidth;
-            canvas.Height = zoomHeight;
-            scrollViewer.ScrollToHorizontalOffset(scrollHorizontal);
-            scrollViewer.ScrollToVerticalOffset(scrollVertical);
+            Point[] data = (Point[])state;
+            Dispatcher.Invoke(() =>
+            {
+                scrollStep += 0.1;
+                scrollStep = Math.Min(1, scrollStep);
+                scrollViewer.ScrollToHorizontalOffset((1 - scrollStep) * data[0].X + scrollStep * data[1].X);
+                scrollViewer.ScrollToVerticalOffset((1 - scrollStep) * data[0].Y + scrollStep * data[1].Y);
+                scaleTransform.ScaleX = (1 - scrollStep) * data[2].X + scrollStep * data[2].Y;
+                scaleTransform.ScaleY = (1 - scrollStep) * data[3].X + scrollStep * data[3].Y;
+                canvas.Width = (1 - scrollStep) * data[4].X + scrollStep * data[4].Y;
+                canvas.Height = (1 - scrollStep) * data[5].X + scrollStep * data[5].Y;
+                if (scrollStep >= 1) timer.Dispose();
+            });
         }
 
         private void OnError()
@@ -871,12 +894,65 @@ namespace SB_IDE.Dialogs
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
-            if (codeLines.Count > 0) codeClick(codeLines[0].border, null);
+            if (codeLines.Count > 0) Highlight(codeLines[0]);
         }
 
         private void buttonEnd_Click(object sender, RoutedEventArgs e)
         {
-            if (codeLines.Count > 0) codeClick(codeLines[codeLines.Count-1].border, null);
+            if (codeLines.Count > 0) Highlight(codeLines[codeLines.Count-1]);
+        }
+
+        private void buttonSyncFrom_Click(object sender, RoutedEventArgs e)
+        {
+            if (sbDocument != mainWindow.GetActiveDocument()) return;
+            int iLIne;
+            if (sbDocument.TextArea.CurrentLine >= sbDocument.TextArea.FirstVisibleLine && sbDocument.TextArea.CurrentLine < sbDocument.TextArea.FirstVisibleLine + sbDocument.TextArea.LinesOnScreen)
+            {
+                iLIne = sbDocument.TextArea.CurrentLine;
+                foreach (CodeLine codeLine in codeLines)
+                {
+                    if (codeLine.lines.Contains(iLIne))
+                    {
+                        Highlight(codeLine);
+                        return;
+                    }
+                }
+            }
+            iLIne = sbDocument.TextArea.FirstVisibleLine;
+            foreach (CodeLine codeLine in codeLines)
+            {
+                if (codeLine.lines[0] >= iLIne)
+                {
+                    Highlight(codeLine);
+                    return;
+                }
+            }
+        }
+
+        private void buttonSyncTo_Click(object sender, RoutedEventArgs e)
+        {
+            if (sbDocument != mainWindow.GetActiveDocument()) return;
+            int iLine = -1;
+            if (null != lastHighlight && lastHighlight.lines.Count > 0) iLine  = lastHighlight.lines[0];
+            if (iLine < 0 && null != lastHighlight && null != lastHighlight.rootLine && lastHighlight.rootLine.lines.Count > 0) iLine = lastHighlight.rootLine.lines[0];
+            if (iLine >= 0 && iLine < sbDocument.TextArea.Lines.Count)
+            {
+                ScintillaNET.Line line = sbDocument.TextArea.Lines[iLine];
+                sbDocument.TextArea.ClearSelections();
+                sbDocument.TextArea.SelectionStart = line.Position;
+                sbDocument.TextArea.SelectionEnd = line.EndPosition;
+                sbDocument.TextArea.FirstVisibleLine = iLine;
+            }
+        }
+
+        private void buttonInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Left click an item to select it\n\n" +
+                "Right click an item to select its parent (EndFor, EndWhile, EndIf, Else or ElseIf) or select its link (Goto or Sub)\n\n" +
+                "A selected item will be moved near the top of the view\n\n" +
+                "During a debug session, the current paused line will be selected\n\n" +
+                "Colors can be set in IDE Colors, and the Dark Theme is applied if selected",
+                "SB-IDE", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 
@@ -894,9 +970,11 @@ namespace SB_IDE.Dialogs
         public bool hasElse = false;
         public Border border = null;
         public int linkDist = 0;
+        public List<int> lines = new List<int>();
 
-        public CodeLine(string code, eBlock block, CodeLine rootLine = null)
+        public CodeLine(int line, string code, eBlock block, CodeLine rootLine = null)
         {
+            lines.Add(line);
             this.code = code;
             this.block = block;
             this.rootLine = rootLine;

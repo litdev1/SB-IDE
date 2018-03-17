@@ -54,6 +54,17 @@ namespace SB_IDE
         public static int OBJECT_COLOR = 0x006060;
         public static int METHOD_COLOR = 0x802020;
         public static int LITERAL_COLOR = 0xDD6633;
+        // FlowChart Colors
+        public static int CHART_FORE_COLOR = 0x000000;
+        public static int CHART_BACK_COLOR = 0xFFFFFF;
+        public static int CHART_HIGHLIGHT_COLOR = 0xFFD700;
+        public static int CHART_CONDITION_COLOR = 0xFF0000;
+        public static int CHART_START_COLOR = 0x008000;
+        public static int CHART_CALL_COLOR = 0xFF8C00;
+        public static int CHART_FOR_COLOR = 0x008B8B;
+        public static int CHART_WHILE_COLOR = 0xFF1493;
+        public static int CHART_STATEMENT_COLOR = 0x0000FF;
+        public static int CHART_CODE_COLOR = 0xFFFFFF;
 
         public Dictionary<string, int> DefaultColors { get; }
         public Dialogs.StackVariables stackVariables = null;
@@ -102,6 +113,17 @@ namespace SB_IDE
                 colors["L:Method"] = METHOD_COLOR;
                 colors["L:Literal"] = LITERAL_COLOR;
 
+                colors["C:Foreground"] = CHART_FORE_COLOR;
+                colors["C:Background"] = CHART_BACK_COLOR;
+                colors["C:Highlight"] = CHART_HIGHLIGHT_COLOR;
+                colors["C:Condition"] = CHART_CONDITION_COLOR;
+                colors["C:Start"] = CHART_START_COLOR;
+                colors["C:Call"] = CHART_CALL_COLOR;
+                colors["C:For"] = CHART_FOR_COLOR;
+                colors["C:While"] = CHART_WHILE_COLOR;
+                colors["C:Statement"] = CHART_STATEMENT_COLOR;
+                colors["C:Code"] = CHART_CODE_COLOR;
+
                 return colors;
             }
             set
@@ -133,6 +155,17 @@ namespace SB_IDE
                 OBJECT_COLOR = colors["L:Object"];
                 METHOD_COLOR = colors["L:Method"];
                 LITERAL_COLOR = colors["L:Literal"];
+
+                CHART_FORE_COLOR = colors["C:Foreground"];
+                CHART_BACK_COLOR = colors["C:Background"];
+                CHART_HIGHLIGHT_COLOR = colors["C:Highlight"];
+                CHART_CONDITION_COLOR = colors["C:Condition"];
+                CHART_START_COLOR = colors["C:Start"];
+                CHART_CALL_COLOR = colors["C:Call"];
+                CHART_FOR_COLOR = colors["C:For"];
+                CHART_WHILE_COLOR = colors["C:While"];
+                CHART_STATEMENT_COLOR = colors["C:Statement"];
+                CHART_CODE_COLOR = colors["C:Code"];
             }
         }
 
