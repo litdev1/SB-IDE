@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace SB_IDE.Dialogs
@@ -617,7 +611,8 @@ namespace SB_IDE.Dialogs
                     }
                 }
             }
-            codeLines.Add(new CodeLine(-1, "END", eBlock.END));
+            codeLines.Add(new CodeLine(-1, "END", eBlock.END, codeLines[0]));
+            codeLines[0].rootLine = codeLines.Last();
 
             // Set parents for GOTO
             foreach (KeyValuePair<string, CodeLine> kvp in labels)
@@ -899,7 +894,7 @@ namespace SB_IDE.Dialogs
 
         private void buttonEnd_Click(object sender, RoutedEventArgs e)
         {
-            if (codeLines.Count > 0) Highlight(codeLines[codeLines.Count-1]);
+            if (codeLines.Count > 0) Highlight(codeLines[codeLines.Count - 1]);
         }
 
         private void buttonSyncFrom_Click(object sender, RoutedEventArgs e)
@@ -933,7 +928,7 @@ namespace SB_IDE.Dialogs
         {
             if (sbDocument != mainWindow.GetActiveDocument()) return;
             int iLine = -1;
-            if (null != lastHighlight && lastHighlight.lines.Count > 0) iLine  = lastHighlight.lines[0];
+            if (null != lastHighlight && lastHighlight.lines.Count > 0) iLine = lastHighlight.lines[0];
             if (iLine < 0 && null != lastHighlight && null != lastHighlight.rootLine && lastHighlight.rootLine.lines.Count > 0) iLine = lastHighlight.rootLine.lines[0];
             if (iLine >= 0 && iLine < sbDocument.TextArea.Lines.Count)
             {
