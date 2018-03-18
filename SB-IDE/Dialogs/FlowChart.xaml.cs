@@ -239,14 +239,15 @@ namespace SB_IDE.Dialogs
                             color = MainWindow.IntToColor(MainWindow.CHART_STATEMENT_COLOR);
                             break;
                     }
-                    Brush fill = new SolidColorBrush(color);
-                    //fill = new LinearGradientBrush(
-                    //    new GradientStopCollection() {
-                    //                new GradientStop(background, 0),
-                    //                new GradientStop(color, 0.1),
-                    //                new GradientStop(color, 0.9),
-                    //                new GradientStop(foreground, 1),
-                    //    }, 90);
+                    //Brush fill = new SolidColorBrush(color);
+                    double shade = 0.4;
+                    Color light = new Color() { A = 255, R = (byte)((1 - shade) * color.R + shade * 255), G = (byte)((1 - shade) * color.G + shade * 255), B = (byte)((1 - shade) * color.B + shade * 255) };
+                    Color dark = new Color() { A = 255, R = (byte)((1 - shade) * color.R), G = (byte)((1 - shade) * color.G), B = (byte)((1 - shade) * color.B) };
+                    Brush fill = new LinearGradientBrush(
+                        new GradientStopCollection() {
+                                    new GradientStop(light, 0),
+                                    new GradientStop(dark, 1),
+                        }, 90);
 
                     CodeShape border = new CodeShape()
                     {
