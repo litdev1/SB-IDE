@@ -189,15 +189,6 @@ namespace SB_IDE.Dialogs
                             testCol--;
                         }
 
-                        TextBlock condition = new TextBlock()
-                        {
-                            Foreground = foreground,
-                            Text = "False",
-                        };
-                        canvas.Children.Add(condition);
-                        Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col - widthSpace);
-                        Canvas.SetTop(condition, borderSpace + heightSpace * row + height / 2 + 5);
-
                         ImageSource arrow = MainWindow.ImageSourceFromBitmap(Properties.Resources.Arrow);
                         Image img = new Image()
                         {
@@ -224,9 +215,20 @@ namespace SB_IDE.Dialogs
                             Foreground = foreground,
                             Text = "True",
                         };
+                        condition.Measure(new Size(double.MaxValue, double.MaxValue));
                         canvas.Children.Add(condition);
-                        Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col + width / 2 + 5);
-                        Canvas.SetTop(condition, borderSpace + heightSpace * row + height / 2 + 30);
+                        Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col + width / 2 + 2);
+                        Canvas.SetTop(condition, borderSpace + heightSpace * row + height + 2);
+
+                        condition = new TextBlock()
+                        {
+                            Foreground = foreground,
+                            Text = "False",
+                        };
+                        condition.Measure(new Size(double.MaxValue, double.MaxValue));
+                        canvas.Children.Add(condition);
+                        Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col + width + 2);
+                        Canvas.SetTop(condition, borderSpace + heightSpace * row + height / 2 - condition.DesiredSize.Height - 2);
                     }
 
                     if (codeLine.block == eBlock.ENDIF)
