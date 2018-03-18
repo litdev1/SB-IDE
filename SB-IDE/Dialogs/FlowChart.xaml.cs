@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Shapes;
 
 namespace SB_IDE.Dialogs
@@ -39,6 +40,7 @@ namespace SB_IDE.Dialogs
         private CodeLine lastHighlight = null;
         private Brush background;
         private Brush foreground;
+        private int highLightSize = 16;
 
         public FlowChart(MainWindow mainWindow)
         {
@@ -72,8 +74,8 @@ namespace SB_IDE.Dialogs
 
             highlight = new Rectangle()
             {
-                Width = 12 + width,
-                Height = 12 + height,
+                Width = highLightSize + width,
+                Height = highLightSize + height,
                 Fill = new SolidColorBrush(Colors.Transparent),
                 Stroke = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_HIGHLIGHT_COLOR)),
                 StrokeThickness = 4,
@@ -107,17 +109,9 @@ namespace SB_IDE.Dialogs
 
                 Parse();
 
-                PathFigure pathFigure = new PathFigure();
-                pathFigure.StartPoint = new Point(0, height / 2);
-                pathFigure.Segments.Add(new LineSegment() { Point = new Point(width / 2, 0) });
-                pathFigure.Segments.Add(new LineSegment() { Point = new Point(width, height / 2) });
-                pathFigure.Segments.Add(new LineSegment() { Point = new Point(width / 2, height) });
-                PathGeometry pathGeometry = new PathGeometry();
-                pathGeometry.Figures = new PathFigureCollection();
-                pathGeometry.Figures.Add(pathFigure);
-
                 maxrow = 0;
                 maxcol = 0;
+                Color color;
                 foreach (CodeLine codeLine in codeLines)
                 {
                     Brush background;
@@ -126,47 +120,37 @@ namespace SB_IDE.Dialogs
                         case eBlock.IF:
                         case eBlock.ELSE:
                         case eBlock.ELSEIF:
-                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_CONDITION_COLOR));
+                            color = MainWindow.IntToColor(MainWindow.CHART_CONDITION_COLOR);
                             break;
                         case eBlock.START:
                         case eBlock.SUB:
-                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_START_COLOR));
+                            color = MainWindow.IntToColor(MainWindow.CHART_START_COLOR);
                             break;
                         case eBlock.GOTO:
                         case eBlock.LABEL:
                         case eBlock.CALL:
-                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_CALL_COLOR));
+                            color = MainWindow.IntToColor(MainWindow.CHART_CALL_COLOR);
                             break;
                         case eBlock.FOR:
                         case eBlock.ENDFOR:
-                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FOR_COLOR));
+                            color = MainWindow.IntToColor(MainWindow.CHART_FOR_COLOR);
                             break;
                         case eBlock.WHILE:
                         case eBlock.ENDWHILE:
-                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_WHILE_COLOR));
+                            color = MainWindow.IntToColor(MainWindow.CHART_WHILE_COLOR);
                             break;
                         default:
-                            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_STATEMENT_COLOR));
+                            color = MainWindow.IntToColor(MainWindow.CHART_STATEMENT_COLOR);
                             break;
                     }
-
-                    Geometry geometry;
-                    switch (codeLine.block)
-                    {
-                        case eBlock.IF:
-                        case eBlock.ELSE:
-                        case eBlock.ELSEIF:
-                            geometry = pathGeometry;
-                            break;
-                        case eBlock.START:
-                        case eBlock.SUB:
-                        case eBlock.LABEL:
-                            geometry = new EllipseGeometry(new Point(width / 2, height / 2), width / 2, height / 2);
-                            break;
-                        default:
-                            geometry = new RectangleGeometry(new Rect(0, 0, width, height));
-                            break;
-                    }
+                    background = new SolidColorBrush(color);
+                    //background = new LinearGradientBrush(
+                    //    new GradientStopCollection() {
+                    //                new GradientStop(MainWindow.IntToColor(MainWindow.CHART_BACK_COLOR), 0),
+                    //                new GradientStop(color, 0.1),
+                    //                new GradientStop(color, 0.9),
+                    //                new GradientStop(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR), 1),
+                    //    }, 90);
 
                     int row = codeLine.row;
                     int col = codeLine.col;
@@ -263,25 +247,12 @@ namespace SB_IDE.Dialogs
                         ConnectLoop(codeLine.row, codeLine.rootLine.row, codeLine.col);
                     }
 
-                    TextBlock tb = new TextBlock()
+                    CodeShape border = new CodeShape()
                     {
-                        Foreground = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_CODE_COLOR)),
-                        Text = codeLine.code,
-                        VerticalAlignment = VerticalAlignment.Center,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        TextAlignment = TextAlignment.Center,
-                    };
-                    Border border = new Border()
-                    {
-                        Background = background,
-                        Child = tb,
                         Width = width,
                         Height = height,
-                        Clip = geometry,
-                        ToolTip = codeLine.code,
-                        Tag = codeLine,
-                        CornerRadius = new CornerRadius(5),
                     };
+                    border.Init(codeLine, background);
                     codeLine.border = border;
                     border.MouseDown += new MouseButtonEventHandler(codeClick);
 
@@ -320,10 +291,10 @@ namespace SB_IDE.Dialogs
         {
             lastHighlight = codeLine;
             highlight.Visibility = Visibility.Visible;
-            Canvas.SetLeft(highlight, borderSpace + (width + widthSpace) * codeLine.col + -6);
-            Canvas.SetTop(highlight, borderSpace + heightSpace * codeLine.row - 6);
+            Canvas.SetLeft(highlight, borderSpace + (width + widthSpace) * codeLine.col + - highLightSize / 2);
+            Canvas.SetTop(highlight, borderSpace + heightSpace * codeLine.row - highLightSize / 2);
 
-            Border borderRoot = codeLine.border;
+            CodeShape borderRoot = codeLine.border;
             Point start = new Point(scrollViewer.HorizontalOffset, scrollViewer.VerticalOffset);
             Point end = borderRoot.TranslatePoint(new Point(0, 0), canvas);
             end.X = (end.X - widthSpace) * scaleView;
@@ -335,7 +306,7 @@ namespace SB_IDE.Dialogs
         private void codeClick(object sender, MouseButtonEventArgs e)
         {
             if (null == sender) return;
-            Border border = (Border)sender;
+            CodeShape border = (CodeShape)sender;
             CodeLine codeLine = (CodeLine)border.Tag;
             if (null != codeLine.rootLine && e.RightButton == MouseButtonState.Pressed)
             {
@@ -963,7 +934,7 @@ namespace SB_IDE.Dialogs
         public int col = -1;
         public int nextCol;
         public bool hasElse = false;
-        public Border border = null;
+        public CodeShape border = null;
         public int linkDist = 0;
         public List<int> lines = new List<int>();
 
@@ -973,6 +944,74 @@ namespace SB_IDE.Dialogs
             this.code = code;
             this.block = block;
             this.rootLine = rootLine;
+        }
+    }
+
+    class CodeShape : Grid
+    {
+        public void Init(CodeLine codeLine, Brush fill)
+        {
+            Tag = codeLine;
+            ToolTip = codeLine.code;
+
+            switch (codeLine.block)
+            {
+                case eBlock.IF:
+                case eBlock.ELSE:
+                case eBlock.ELSEIF:
+                    Polygon polygon = new Polygon();
+                    polygon.Points.Add(new Point(0, Height / 2));
+                    polygon.Points.Add(new Point(Width / 2, 0));
+                    polygon.Points.Add(new Point(Width, Height / 2));
+                    polygon.Points.Add(new Point(Width / 2, Height));
+                    polygon.Fill = fill;
+                    polygon.Stroke = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
+                    polygon.StrokeThickness = 1;
+                    Children.Add(polygon);
+                    break;
+                case eBlock.START:
+                case eBlock.SUB:
+                case eBlock.LABEL:
+                    Ellipse ellipse = new Ellipse();
+                    ellipse.Width = Width;
+                    ellipse.Height = Height;
+                    ellipse.Fill = fill;
+                    ellipse.Stroke = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
+                    ellipse.StrokeThickness = 1;
+                    Children.Add(ellipse);
+                    break;
+                default:
+                    Rectangle rectangle = new Rectangle();
+                    rectangle.Width = Width;
+                    rectangle.Height = Height;
+                    rectangle.Fill = fill;
+                    rectangle.RadiusX = 5;
+                    rectangle.RadiusY = 5;
+                    rectangle.Stroke = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
+                    rectangle.StrokeThickness = 1;
+                    Children.Add(rectangle);
+                    break;
+            }
+            Effect = new DropShadowEffect
+            {
+                Color = MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR),
+                Direction = -45,
+                ShadowDepth = 4,
+                BlurRadius = 5,
+                Opacity = 0.5,
+            };
+
+            TextBlock textBlock = new TextBlock()
+            {
+                Foreground = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_CODE_COLOR)),
+                Text = codeLine.code,
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                TextAlignment = TextAlignment.Center,
+                //FontFamily = new FontFamily("Consolas"),
+                Margin = new Thickness(2),
+            };
+            Children.Add(textBlock);
         }
     }
 }
