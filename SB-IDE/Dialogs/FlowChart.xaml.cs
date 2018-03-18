@@ -960,6 +960,7 @@ namespace SB_IDE.Dialogs
             Tag = codeLine;
             ToolTip = codeLine.code;
 
+            Color stroke = MainWindow.IntToColor(MainWindow.theme == 0 ? MainWindow.CHART_FORE_COLOR : MainWindow.CHART_BACK_COLOR);
             switch (codeLine.block)
             {
                 case eBlock.IF:
@@ -971,7 +972,7 @@ namespace SB_IDE.Dialogs
                     polygon.Points.Add(new Point(Width, Height / 2));
                     polygon.Points.Add(new Point(Width / 2, Height));
                     polygon.Fill = fill;
-                    polygon.Stroke = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
+                    polygon.Stroke = new SolidColorBrush(stroke);
                     polygon.StrokeThickness = 1;
                     Children.Add(polygon);
                     break;
@@ -982,7 +983,7 @@ namespace SB_IDE.Dialogs
                     ellipse.Width = Width;
                     ellipse.Height = Height;
                     ellipse.Fill = fill;
-                    ellipse.Stroke = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
+                    ellipse.Stroke = new SolidColorBrush(stroke);
                     ellipse.StrokeThickness = 1;
                     Children.Add(ellipse);
                     break;
@@ -993,14 +994,14 @@ namespace SB_IDE.Dialogs
                     rectangle.Fill = fill;
                     rectangle.RadiusX = 5;
                     rectangle.RadiusY = 5;
-                    rectangle.Stroke = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
+                    rectangle.Stroke = new SolidColorBrush(stroke);
                     rectangle.StrokeThickness = 1;
                     Children.Add(rectangle);
                     break;
             }
             Effect = new DropShadowEffect
             {
-                Color = MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR),
+                Color = stroke,
                 Direction = -45,
                 ShadowDepth = 4,
                 BlurRadius = 5,
