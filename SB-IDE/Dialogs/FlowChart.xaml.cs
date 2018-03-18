@@ -516,6 +516,7 @@ namespace SB_IDE.Dialogs
                 else if (lineLower == "endsub")
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.ENDSUB, sSub.Pop()));
+                    codeLines.Last().rootLine.rootLine = codeLines.Last();
                 }
                 else if (Regex.Match(lineLower, "^(if)[\\W]").Success)
                 {
@@ -539,6 +540,7 @@ namespace SB_IDE.Dialogs
                         codeLines.Add(new CodeLine(-1, "Else", eBlock.ELSE, sIf.Peek()));
                     }
                     codeLines.Add(new CodeLine(i, line, eBlock.ENDIF, sIf.Pop()));
+                    codeLines.Last().rootLine.rootLine = codeLines.Last();
                 }
                 else if (Regex.Match(lineLower, "^(for)[\\W]").Success)
                 {
@@ -548,6 +550,7 @@ namespace SB_IDE.Dialogs
                 else if (lineLower == "endfor")
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.ENDFOR, sFor.Pop()));
+                    codeLines.Last().rootLine.rootLine = codeLines.Last();
                 }
                 else if (Regex.Match(lineLower, "^(while)[\\W]").Success)
                 {
@@ -557,6 +560,7 @@ namespace SB_IDE.Dialogs
                 else if (lineLower == "endwhile")
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.ENDWHILE, sWhile.Pop()));
+                    codeLines.Last().rootLine.rootLine = codeLines.Last();
                 }
                 else if (Regex.Match(lineLower, "^(goto)[\\W]").Success)
                 {
