@@ -38,8 +38,8 @@ namespace SB_IDE.Dialogs
         private double scrollStep;
         private Rectangle highlight;
         private CodeLine lastHighlight = null;
-        private Brush background;
-        private Brush foreground;
+        private Color background;
+        private Color foreground;
         private int highLightSize = 16;
 
         public FlowChart(MainWindow mainWindow)
@@ -56,12 +56,12 @@ namespace SB_IDE.Dialogs
             Left = SystemParameters.PrimaryScreenWidth - Width - 20;
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
 
-            background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_BACK_COLOR));
-            foreground = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
+            background = MainWindow.IntToColor(MainWindow.CHART_BACK_COLOR);
+            foreground = MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR);
             if (MainWindow.theme == 1)
             {
-                background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR));
-                foreground = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_BACK_COLOR));
+                background = MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR);
+                foreground = MainWindow.IntToColor(MainWindow.CHART_BACK_COLOR);
             }
 
             canvas.RenderTransform = new TransformGroup();
@@ -70,7 +70,7 @@ namespace SB_IDE.Dialogs
             canvas.RenderTransform = new TransformGroup();
             canvas.RenderTransform = new TransformGroup();
             ((TransformGroup)canvas.RenderTransform).Children.Add(scaleTransform);
-            grid.Background = background;
+            grid.Background = new SolidColorBrush(background);
 
             highlight = new Rectangle()
             {
@@ -111,47 +111,8 @@ namespace SB_IDE.Dialogs
 
                 maxrow = 0;
                 maxcol = 0;
-                Color color;
                 foreach (CodeLine codeLine in codeLines)
                 {
-                    Brush background;
-                    switch (codeLine.block)
-                    {
-                        case eBlock.IF:
-                        case eBlock.ELSE:
-                        case eBlock.ELSEIF:
-                            color = MainWindow.IntToColor(MainWindow.CHART_CONDITION_COLOR);
-                            break;
-                        case eBlock.START:
-                        case eBlock.SUB:
-                            color = MainWindow.IntToColor(MainWindow.CHART_START_COLOR);
-                            break;
-                        case eBlock.GOTO:
-                        case eBlock.LABEL:
-                        case eBlock.CALL:
-                            color = MainWindow.IntToColor(MainWindow.CHART_CALL_COLOR);
-                            break;
-                        case eBlock.FOR:
-                        case eBlock.ENDFOR:
-                            color = MainWindow.IntToColor(MainWindow.CHART_FOR_COLOR);
-                            break;
-                        case eBlock.WHILE:
-                        case eBlock.ENDWHILE:
-                            color = MainWindow.IntToColor(MainWindow.CHART_WHILE_COLOR);
-                            break;
-                        default:
-                            color = MainWindow.IntToColor(MainWindow.CHART_STATEMENT_COLOR);
-                            break;
-                    }
-                    background = new SolidColorBrush(color);
-                    //background = new LinearGradientBrush(
-                    //    new GradientStopCollection() {
-                    //                new GradientStop(MainWindow.IntToColor(MainWindow.CHART_BACK_COLOR), 0),
-                    //                new GradientStop(color, 0.1),
-                    //                new GradientStop(color, 0.9),
-                    //                new GradientStop(MainWindow.IntToColor(MainWindow.CHART_FORE_COLOR), 1),
-                    //    }, 90);
-
                     int row = codeLine.row;
                     int col = codeLine.col;
 
@@ -168,7 +129,7 @@ namespace SB_IDE.Dialogs
                             X2 = borderSpace + (width + widthSpace) * col - widthSpace - 2,
                             Y1 = borderSpace + heightSpace * row + height / 2,
                             Y2 = borderSpace + heightSpace * row + height / 2,
-                            Stroke = foreground,
+                            Stroke = new SolidColorBrush(foreground),
                             StrokeThickness = 2,
                         };
                         canvas.Children.Add(connect);
@@ -182,7 +143,7 @@ namespace SB_IDE.Dialogs
                                 X2 = borderSpace + (width + widthSpace) * testCol - widthSpace - 2,
                                 Y1 = borderSpace + heightSpace * row + height / 2,
                                 Y2 = borderSpace + heightSpace * row + height / 2,
-                                Stroke = foreground,
+                                Stroke = new SolidColorBrush(foreground),
                                 StrokeThickness = 2,
                             };
                             canvas.Children.Add(connect2);
@@ -212,7 +173,7 @@ namespace SB_IDE.Dialogs
                     {
                         TextBlock condition = new TextBlock()
                         {
-                            Foreground = foreground,
+                            Foreground = new SolidColorBrush(foreground),
                             Text = "True",
                         };
                         condition.Measure(new Size(double.MaxValue, double.MaxValue));
@@ -222,7 +183,7 @@ namespace SB_IDE.Dialogs
 
                         condition = new TextBlock()
                         {
-                            Foreground = foreground,
+                            Foreground = new SolidColorBrush(foreground),
                             Text = "False",
                         };
                         condition.Measure(new Size(double.MaxValue, double.MaxValue));
@@ -249,12 +210,50 @@ namespace SB_IDE.Dialogs
                         ConnectLoop(codeLine.row, codeLine.rootLine.row, codeLine.col);
                     }
 
+                    Color color;
+                    switch (codeLine.block)
+                    {
+                        case eBlock.IF:
+                        case eBlock.ELSE:
+                        case eBlock.ELSEIF:
+                            color = MainWindow.IntToColor(MainWindow.CHART_CONDITION_COLOR);
+                            break;
+                        case eBlock.START:
+                        case eBlock.SUB:
+                            color = MainWindow.IntToColor(MainWindow.CHART_START_COLOR);
+                            break;
+                        case eBlock.GOTO:
+                        case eBlock.LABEL:
+                        case eBlock.CALL:
+                            color = MainWindow.IntToColor(MainWindow.CHART_CALL_COLOR);
+                            break;
+                        case eBlock.FOR:
+                        case eBlock.ENDFOR:
+                            color = MainWindow.IntToColor(MainWindow.CHART_FOR_COLOR);
+                            break;
+                        case eBlock.WHILE:
+                        case eBlock.ENDWHILE:
+                            color = MainWindow.IntToColor(MainWindow.CHART_WHILE_COLOR);
+                            break;
+                        default:
+                            color = MainWindow.IntToColor(MainWindow.CHART_STATEMENT_COLOR);
+                            break;
+                    }
+                    Brush fill = new SolidColorBrush(color);
+                    //fill = new LinearGradientBrush(
+                    //    new GradientStopCollection() {
+                    //                new GradientStop(background, 0),
+                    //                new GradientStop(color, 0.1),
+                    //                new GradientStop(color, 0.9),
+                    //                new GradientStop(foreground, 1),
+                    //    }, 90);
+
                     CodeShape border = new CodeShape()
                     {
                         Width = width,
                         Height = height,
                     };
-                    border.Init(codeLine, background);
+                    border.Init(codeLine, fill);
                     codeLine.border = border;
                     border.MouseDown += new MouseButtonEventHandler(codeClick);
 
@@ -345,7 +344,7 @@ namespace SB_IDE.Dialogs
                     X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
                     Y1 = borderSpace + heightSpace * row1 + height / 2,
                     Y2 = borderSpace + heightSpace * row1 + height / 2,
-                    Stroke = foreground,
+                    Stroke = new SolidColorBrush(foreground),
                     StrokeThickness = 2,
                 };
                 canvas.Children.Add(connect);
@@ -356,7 +355,7 @@ namespace SB_IDE.Dialogs
                     X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
                     Y1 = borderSpace + heightSpace * row1 + height / 2,
                     Y2 = borderSpace + heightSpace * row1,
-                    Stroke = foreground,
+                    Stroke = new SolidColorBrush(foreground),
                     StrokeThickness = 2,
                 };
                 canvas.Children.Add(connect);
@@ -382,7 +381,7 @@ namespace SB_IDE.Dialogs
                     X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
                     Y1 = borderSpace + heightSpace * (rowUp + 1) + height / 2,
                     Y2 = borderSpace + heightSpace * rowUp,
-                    Stroke = foreground,
+                    Stroke = new SolidColorBrush(foreground),
                     StrokeThickness = 2,
                 };
                 canvas.Children.Add(connect);
@@ -395,7 +394,7 @@ namespace SB_IDE.Dialogs
                 X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
                 Y1 = borderSpace + heightSpace * (rowUp + 1),
                 Y2 = borderSpace + heightSpace * rowUp + height,
-                Stroke = foreground,
+                Stroke = new SolidColorBrush(foreground),
                 StrokeThickness = 2,
             };
             canvas.Children.Add(connect);
@@ -448,7 +447,7 @@ namespace SB_IDE.Dialogs
                 X2 = borderSpace + (width + widthSpace) * col - space,
                 Y1 = borderSpace + heightSpace * row1 + height / 2,
                 Y2 = borderSpace + heightSpace * row1 + height / 2,
-                Stroke = foreground,
+                Stroke = new SolidColorBrush(foreground),
                 StrokeThickness = 2,
             };
             canvas.Children.Add(connect);
@@ -459,7 +458,7 @@ namespace SB_IDE.Dialogs
                 X2 = borderSpace + (width + widthSpace) * col - space,
                 Y1 = borderSpace + heightSpace * row1 + height / 2,
                 Y2 = borderSpace + heightSpace * row2 + height / 2,
-                Stroke = foreground,
+                Stroke = new SolidColorBrush(foreground),
                 StrokeThickness = 2,
             };
             canvas.Children.Add(connect);
@@ -470,7 +469,7 @@ namespace SB_IDE.Dialogs
                 X2 = borderSpace + (width + widthSpace) * col,
                 Y1 = borderSpace + heightSpace * row2 + height / 2,
                 Y2 = borderSpace + heightSpace * row2 + height / 2,
-                Stroke = foreground,
+                Stroke = new SolidColorBrush(foreground),
                 StrokeThickness = 2,
             };
             canvas.Children.Add(connect);
