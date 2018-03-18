@@ -48,6 +48,7 @@ namespace SB_IDE.Dialogs
             THIS = this;
 
             InitializeComponent();
+            //ToolTipService.ShowDurationProperty.OverrideMetadata(typeof(DependencyObject), new FrameworkPropertyMetadata(Int32.MaxValue));
 
             FontSize = 12 + MainWindow.zoom;
             Topmost = true;
@@ -780,9 +781,12 @@ namespace SB_IDE.Dialogs
             bool inString = false;
             for (int i = 0; i < line.Length; i++)
             {
-                if (line[i] == '"') inString = !inString;
-                else if (!inString && line[i] == '\'') break;
-                result += line[i];
+                char c = line[i];
+                if (c == '"') inString = !inString;
+                else if (!inString && c == '\'') break;
+                if (!inString && c == '\t') c = ' ';
+                if (!inString && c == ' ' && result.Length > 0 && result.Last() == ' ') continue;
+                result += c;
             }
             return result.Trim();
         }
@@ -959,6 +963,8 @@ namespace SB_IDE.Dialogs
         {
             Tag = codeLine;
             ToolTip = codeLine.code;
+            ToolTipService.SetInitialShowDelay(this, 400);
+            ToolTipService.SetShowDuration(this, 40 * (100 + codeLine.code.Length));
 
             Color stroke = MainWindow.IntToColor(MainWindow.theme == 0 ? MainWindow.CHART_FORE_COLOR : MainWindow.CHART_BACK_COLOR);
             switch (codeLine.block)
