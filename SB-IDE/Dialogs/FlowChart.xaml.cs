@@ -208,7 +208,7 @@ namespace SB_IDE.Dialogs
 
                     if (codeLine.block == eBlock.ENDFOR || codeLine.block == eBlock.ENDWHILE || codeLine.block == eBlock.GOTO)
                     {
-                        ConnectLoop(codeLine.row, codeLine.rootLine.row, codeLine.col);
+                        ConnectLoop(codeLine.row, codeLine.col, codeLine.rootLine.row, codeLine.rootLine.col);
                     }
 
                     Color color;
@@ -329,169 +329,6 @@ namespace SB_IDE.Dialogs
                 scrollViewer.ScrollToVerticalOffset((1 - scrollStep) * data[0].Y + scrollStep * data[1].Y);
                 if (scrollStep >= 1) timer.Dispose();
             });
-        }
-
-        // Connect right and up from row1,col1 to row2,col2
-        private void ConnectEndIf(int row1, int col1, int row2, int col2)
-        {
-            Line connect;
-            ImageSource arrow = MainWindow.ImageSourceFromBitmap(Properties.Resources.Arrow);
-            Image img;
-
-            if (col2 > col1)
-            {
-                connect = new Line()
-                {
-                    X1 = borderSpace + (width + widthSpace) * col1 + width,
-                    X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
-                    Y1 = borderSpace + heightSpace * row1 + height / 2,
-                    Y2 = borderSpace + heightSpace * row1 + height / 2,
-                    Stroke = new SolidColorBrush(foreground),
-                    StrokeThickness = 2,
-                };
-                canvas.Children.Add(connect);
-
-                connect = new Line()
-                {
-                    X1 = borderSpace + (width + widthSpace) * col2 + width / 2,
-                    X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
-                    Y1 = borderSpace + heightSpace * row1 + height / 2,
-                    Y2 = borderSpace + heightSpace * row1,
-                    Stroke = new SolidColorBrush(foreground),
-                    StrokeThickness = 2,
-                };
-                canvas.Children.Add(connect);
-
-                img = new Image()
-                {
-                    Width = 24,
-                    Height = 24,
-                    Source = arrow
-                };
-                canvas.Children.Add(img);
-                Canvas.SetLeft(img, borderSpace + (width + widthSpace) * col1 + width - 3);
-                Canvas.SetTop(img, borderSpace + heightSpace * row1 + height / 2 - 13);
-                Canvas.SetZIndex(img, 1);
-            }
-
-            int rowUp = row1 - 1;
-            while (rowUp >= 0 && null == HasSymbol(rowUp, col2))
-            {
-                connect = new Line()
-                {
-                    X1 = borderSpace + (width + widthSpace) * col2 + width / 2,
-                    X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
-                    Y1 = borderSpace + heightSpace * (rowUp + 1) + height / 2,
-                    Y2 = borderSpace + heightSpace * rowUp,
-                    Stroke = new SolidColorBrush(foreground),
-                    StrokeThickness = 2,
-                };
-                canvas.Children.Add(connect);
-                rowUp--;
-            }
-
-            connect = new Line()
-            {
-                X1 = borderSpace + (width + widthSpace) * col2 + width / 2,
-                X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
-                Y1 = borderSpace + heightSpace * (rowUp + 1),
-                Y2 = borderSpace + heightSpace * rowUp + height,
-                Stroke = new SolidColorBrush(foreground),
-                StrokeThickness = 2,
-            };
-            canvas.Children.Add(connect);
-
-            img = new Image()
-            {
-                Width = 24,
-                Height = 24,
-                Source = arrow,
-            };
-            RotateTransform rotateTransform = new RotateTransform();
-            rotateTransform.CenterX = 12;
-            rotateTransform.CenterY = 12;
-            rotateTransform.Angle = -90;
-            img.RenderTransform = new TransformGroup();
-            ((TransformGroup)img.RenderTransform).Children.Add(rotateTransform);
-            canvas.Children.Add(img);
-            Canvas.SetLeft(img, borderSpace + (width + widthSpace) * col1 + width / 2 - 13);
-            Canvas.SetTop(img, borderSpace + heightSpace * row1 - 24);
-            Canvas.SetZIndex(img, 1);
-        }
-
-        // Connect left and up from row1 to row2 on col
-        private void ConnectLoop(int row1, int row2, int col)
-        {
-            Line connect;
-            ImageSource arrow = MainWindow.ImageSourceFromBitmap(Properties.Resources.Arrow);
-            Image img;
-            int space = 26;
-
-            List<CodeLine> working = new List<CodeLine>();
-            for (int row = row2; row <= row1; row++)
-            {
-                CodeLine codeLine = HasSymbol(row, col);
-                if (null != codeLine)
-                {
-                    working.Add(codeLine);
-                    space = Math.Max(space, codeLine.linkDist + 4);
-                }
-            }
-            space = Math.Min(space, (int)widthSpace - 4);
-            foreach (CodeLine codeLine in working)
-            {
-                codeLine.linkDist = space;
-            }
-
-            connect = new Line()
-            {
-                X1 = borderSpace + (width + widthSpace) * col,
-                X2 = borderSpace + (width + widthSpace) * col - space,
-                Y1 = borderSpace + heightSpace * row1 + height / 2,
-                Y2 = borderSpace + heightSpace * row1 + height / 2,
-                Stroke = new SolidColorBrush(foreground),
-                StrokeThickness = 2,
-            };
-            canvas.Children.Add(connect);
-
-            connect = new Line()
-            {
-                X1 = borderSpace + (width + widthSpace) * col - space,
-                X2 = borderSpace + (width + widthSpace) * col - space,
-                Y1 = borderSpace + heightSpace * row1 + height / 2,
-                Y2 = borderSpace + heightSpace * row2 + height / 2,
-                Stroke = new SolidColorBrush(foreground),
-                StrokeThickness = 2,
-            };
-            canvas.Children.Add(connect);
-
-            connect = new Line()
-            {
-                X1 = borderSpace + (width + widthSpace) * col - space,
-                X2 = borderSpace + (width + widthSpace) * col,
-                Y1 = borderSpace + heightSpace * row2 + height / 2,
-                Y2 = borderSpace + heightSpace * row2 + height / 2,
-                Stroke = new SolidColorBrush(foreground),
-                StrokeThickness = 2,
-            };
-            canvas.Children.Add(connect);
-
-            img = new Image()
-            {
-                Width = 24,
-                Height = 24,
-                Source = arrow,
-            };
-            RotateTransform rotateTransform = new RotateTransform();
-            rotateTransform.CenterX = 12;
-            rotateTransform.CenterY = 12;
-            rotateTransform.Angle = 180;
-            img.RenderTransform = new TransformGroup();
-            ((TransformGroup)img.RenderTransform).Children.Add(rotateTransform);
-            canvas.Children.Add(img);
-            Canvas.SetLeft(img, borderSpace + (width + widthSpace) * col - 24);
-            Canvas.SetTop(img, borderSpace + heightSpace * row2 + height / 2 - 11);
-            Canvas.SetZIndex(img, 1);
         }
 
         private void Parse()
@@ -647,7 +484,7 @@ namespace SB_IDE.Dialogs
                         }
                         codeLine.nextCol = col;
                         row = maxrow;
-                        row = GetRow(row, col);
+                        row = GetRow(row, col, maxcol, false, false);
                         ifLevel++;
                     }
                     else if (codeLine.block == eBlock.ELSE || codeLine.block == eBlock.ELSEIF)
@@ -661,13 +498,19 @@ namespace SB_IDE.Dialogs
                     {
                         col = codeLine.rootLine.col;
                         row = maxrow;
-                        row = GetRow(row, col, maxcol);
+                        row = GetRow(row, col, maxcol, false, true);
                         ifLevel--;
+                    }
+                    else if (codeLine.block == eBlock.GOTO)
+                    {
+                        row = maxrow;
+                        row = GetRow(row, col, maxcol, true, true);
+                        //Don't know what column label will be in, assume it could be either - Goto on a row by itsself
                     }
                     else
                     {
                         row = maxrow;
-                        row = GetRow(row, col);
+                        row = GetRow(row, col, maxcol, false, false);
                     }
                     codeLine.row = row;
                     codeLine.col = col;
@@ -747,20 +590,206 @@ namespace SB_IDE.Dialogs
             }
         }
 
-        private int GetRow(int row, int col, int maxCol = -1)
+        // Get the next row to move to, currently at row,col - optionally searching left or right to maxcol
+        private int GetRow(int row, int col, int maxCol, bool checkLeft, bool checkRight)
         {
             int newRow = row;
+            List<int> gotoRows = new List<int>();
             bool found = false;
             while (!found && newRow > 0)
             {
-                found = found || null != HasSymbol(newRow - 1, col);
-                for (int _col = col; _col <= maxCol; _col++)
+                found = found || null != HasSymbol(newRow - 1, col); //Potential to move up
+                if (found) continue;
+                for (int _col = 0; _col <= maxCol; _col++)
                 {
-                    found = found || null != HasSymbol(newRow - 1, _col);
+                    if (_col == col) continue;
+                    CodeLine codeLine = HasSymbol(newRow - 1, _col);
+                    if (null != codeLine)
+                    {
+                        if (checkLeft && _col < col) //Check nothing to the left to prevent this
+                        {
+                            found = true;
+                            break;
+                        }
+                        else if (checkRight && _col > col) //Check nothing to the right to prevent this
+                        {
+                            found = true;
+                            break;
+                        }
+                        else if (codeLine.block == eBlock.GOTO) //Goto on a row by itself
+                        {
+                            gotoRows.Add(newRow - 1);
+                        }
+                    }
                 }
                 if (!found) newRow--;
             }
+            // Check not a goto row
+            while (gotoRows.Contains(newRow)) newRow++;
             return newRow;
+        }
+
+        // Connect right and up from row1,col1 to row2,col2
+        private void ConnectEndIf(int row1, int col1, int row2, int col2)
+        {
+            Line connect;
+            ImageSource arrow = MainWindow.ImageSourceFromBitmap(Properties.Resources.Arrow);
+            Image img;
+
+            if (col2 > col1)
+            {
+                connect = new Line()
+                {
+                    X1 = borderSpace + (width + widthSpace) * col1 + width,
+                    X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
+                    Y1 = borderSpace + heightSpace * row1 + height / 2,
+                    Y2 = borderSpace + heightSpace * row1 + height / 2,
+                    Stroke = new SolidColorBrush(foreground),
+                    StrokeThickness = 2,
+                };
+                canvas.Children.Add(connect);
+
+                connect = new Line()
+                {
+                    X1 = borderSpace + (width + widthSpace) * col2 + width / 2,
+                    X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
+                    Y1 = borderSpace + heightSpace * row1 + height / 2,
+                    Y2 = borderSpace + heightSpace * row1,
+                    Stroke = new SolidColorBrush(foreground),
+                    StrokeThickness = 2,
+                };
+                canvas.Children.Add(connect);
+
+                img = new Image()
+                {
+                    Width = 24,
+                    Height = 24,
+                    Source = arrow
+                };
+                canvas.Children.Add(img);
+                Canvas.SetLeft(img, borderSpace + (width + widthSpace) * col1 + width - 3);
+                Canvas.SetTop(img, borderSpace + heightSpace * row1 + height / 2 - 13);
+                Canvas.SetZIndex(img, 1);
+            }
+
+            int rowUp = row1 - 1;
+            while (rowUp >= 0 && null == HasSymbol(rowUp, col2))
+            {
+                connect = new Line()
+                {
+                    X1 = borderSpace + (width + widthSpace) * col2 + width / 2,
+                    X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
+                    Y1 = borderSpace + heightSpace * (rowUp + 1) + height / 2,
+                    Y2 = borderSpace + heightSpace * rowUp,
+                    Stroke = new SolidColorBrush(foreground),
+                    StrokeThickness = 2,
+                };
+                canvas.Children.Add(connect);
+                rowUp--;
+            }
+
+            connect = new Line()
+            {
+                X1 = borderSpace + (width + widthSpace) * col2 + width / 2,
+                X2 = borderSpace + (width + widthSpace) * col2 + width / 2,
+                Y1 = borderSpace + heightSpace * (rowUp + 1),
+                Y2 = borderSpace + heightSpace * rowUp + height,
+                Stroke = new SolidColorBrush(foreground),
+                StrokeThickness = 2,
+            };
+            canvas.Children.Add(connect);
+
+            img = new Image()
+            {
+                Width = 24,
+                Height = 24,
+                Source = arrow,
+            };
+            RotateTransform rotateTransform = new RotateTransform();
+            rotateTransform.CenterX = 12;
+            rotateTransform.CenterY = 12;
+            rotateTransform.Angle = -90;
+            img.RenderTransform = new TransformGroup();
+            ((TransformGroup)img.RenderTransform).Children.Add(rotateTransform);
+            canvas.Children.Add(img);
+            Canvas.SetLeft(img, borderSpace + (width + widthSpace) * col1 + width / 2 - 13);
+            Canvas.SetTop(img, borderSpace + heightSpace * row1 - 24);
+            Canvas.SetZIndex(img, 1);
+        }
+
+        // Connect left and up/down from row1,col1 to row2,col2
+        private void ConnectLoop(int row1, int col1, int row2, int col2)
+        {
+            Line connect;
+            ImageSource arrow = MainWindow.ImageSourceFromBitmap(Properties.Resources.Arrow);
+            Image img;
+            int space = 26;
+
+            List<CodeLine> working = new List<CodeLine>();
+            for (int row = Math.Min(row1,row2); row <= Math.Max(row1, row2); row++)
+            {
+                CodeLine codeLine = HasSymbol(row, col2);
+                if (null != codeLine)
+                {
+                    working.Add(codeLine);
+                    space = Math.Max(space, codeLine.linkDist + 4);
+                }
+            }
+            space = Math.Min(space, (int)widthSpace - 4);
+            foreach (CodeLine codeLine in working)
+            {
+                codeLine.linkDist = space;
+            }
+
+            connect = new Line()
+            {
+                X1 = borderSpace + (width + widthSpace) * col1,
+                X2 = borderSpace + (width + widthSpace) * col2 - space,
+                Y1 = borderSpace + heightSpace * row1 + height / 2,
+                Y2 = borderSpace + heightSpace * row1 + height / 2,
+                Stroke = new SolidColorBrush(foreground),
+                StrokeThickness = 2,
+            };
+            canvas.Children.Add(connect);
+
+            connect = new Line()
+            {
+                X1 = borderSpace + (width + widthSpace) * col2 - space,
+                X2 = borderSpace + (width + widthSpace) * col2 - space,
+                Y1 = borderSpace + heightSpace * row1 + height / 2,
+                Y2 = borderSpace + heightSpace * row2 + height / 2,
+                Stroke = new SolidColorBrush(foreground),
+                StrokeThickness = 2,
+            };
+            canvas.Children.Add(connect);
+
+            connect = new Line()
+            {
+                X1 = borderSpace + (width + widthSpace) * col2 - space,
+                X2 = borderSpace + (width + widthSpace) * col2,
+                Y1 = borderSpace + heightSpace * row2 + height / 2,
+                Y2 = borderSpace + heightSpace * row2 + height / 2,
+                Stroke = new SolidColorBrush(foreground),
+                StrokeThickness = 2,
+            };
+            canvas.Children.Add(connect);
+
+            img = new Image()
+            {
+                Width = 24,
+                Height = 24,
+                Source = arrow,
+            };
+            RotateTransform rotateTransform = new RotateTransform();
+            rotateTransform.CenterX = 12;
+            rotateTransform.CenterY = 12;
+            rotateTransform.Angle = 180;
+            img.RenderTransform = new TransformGroup();
+            ((TransformGroup)img.RenderTransform).Children.Add(rotateTransform);
+            canvas.Children.Add(img);
+            Canvas.SetLeft(img, borderSpace + (width + widthSpace) * col2 - 24);
+            Canvas.SetTop(img, borderSpace + heightSpace * row2 + height / 2 - 11);
+            Canvas.SetZIndex(img, 1);
         }
 
         private CodeLine HasSymbol(int row, int col)
