@@ -12,6 +12,9 @@ using System.Windows.Shapes;
 
 namespace SB_IDE.Dialogs
 {
+    public enum eBlock { START, END, CALL, SUB, ENDSUB, IF, ELSE, ELSEIF, ENDIF, FOR, ENDFOR, WHILE, ENDWHILE, GOTO, LABEL, STATEMENT };
+    public enum eShape { ELLIPSE, RECTANGLE, DIAMOND };
+
     /// <summary>
     /// Interaction logic for FlowChart.xaml
     /// </summary>
@@ -23,24 +26,26 @@ namespace SB_IDE.Dialogs
         private SBDocument sbDocument;
         private List<CodeLine> codeLines = new List<CodeLine>();
         List<string> subs = new List<string>();
-        private bool groupStatements = true;
-        private double width = 150;
-        private double height = 50;
-        private double widthSpace = 50;
-        private double heightSpace = 100;
-        private double borderSpace = 50;
+
+        //Potential options
+        public static bool groupStatements = true;
+        public static double width = 150;
+        public static double height = 50;
+        public static double widthSpace = 50;
+        public static double heightSpace = 100;
+        public static double borderSpace = 50;
+        public static int highLightSize = 16;
+        public static bool TFshape = true;
+
         private int maxrow;
         private int maxcol;
-        private Duration animationDuration = new Duration(new TimeSpan(5000000));
         private ScaleTransform scaleTransform = new ScaleTransform();
         private double scaleView = 1;
         private Timer timer;
         private double scrollStep;
-        private Rectangle highlight;
         private CodeLine lastHighlight = null;
         private Color background;
         private Color foreground;
-        private int highLightSize = 16;
 
         public FlowChart(MainWindow mainWindow)
         {
@@ -73,18 +78,6 @@ namespace SB_IDE.Dialogs
             ((TransformGroup)canvas.RenderTransform).Children.Add(scaleTransform);
             grid.Background = new SolidColorBrush(background);
 
-            highlight = new Rectangle()
-            {
-                Width = highLightSize + width,
-                Height = highLightSize + height,
-                Fill = new SolidColorBrush(Colors.Transparent),
-                Stroke = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_HIGHLIGHT_COLOR)),
-                StrokeThickness = 4,
-                RadiusX = 5,
-                RadiusY = 5,
-            };
-            highlight.Visibility = Visibility.Hidden;
-
             Display();
         }
 
@@ -103,10 +96,6 @@ namespace SB_IDE.Dialogs
                 //scaleTransform.ScaleX = 1.0;
                 //scaleTransform.ScaleY = 1.0;
                 lastHighlight = null;
-                highlight.Visibility = Visibility.Hidden;
-
-                canvas.Children.Add(highlight);
-                Canvas.SetZIndex(highlight, -1);
 
                 Parse();
 
@@ -172,28 +161,45 @@ namespace SB_IDE.Dialogs
 
                     if (codeLine.block == eBlock.IF || codeLine.block == eBlock.ELSEIF)
                     {
-                        TextBlock condition = new TextBlock()
+                        if (TFshape)
                         {
-                            Foreground = new SolidColorBrush(foreground),
-                            Text = "True",
-                        };
-                        condition.Measure(new Size(double.MaxValue, double.MaxValue));
-                        canvas.Children.Add(condition);
-                        Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col + width / 2 + 2);
-                        Canvas.SetTop(condition, borderSpace + heightSpace * row + height + 2);
+                            Grid imgTrue = CodeShape.GetBlock(Colors.Green, "T", 24, 24, eShape.ELLIPSE);
+                            canvas.Children.Add(imgTrue);
+                            Canvas.SetLeft(imgTrue, borderSpace + (width + widthSpace) * col + width / 2 - imgTrue.Width / 2);
+                            Canvas.SetTop(imgTrue, borderSpace + heightSpace * row + height + 2);
+                            Canvas.SetZIndex(imgTrue, 1);
 
-                        condition = new TextBlock()
+                            Grid imgFalse = CodeShape.GetBlock(Colors.Red, "F", 24, 24, eShape.ELLIPSE);
+                            canvas.Children.Add(imgFalse);
+                            Canvas.SetLeft(imgFalse, borderSpace + (width + widthSpace) * col + width + 2);
+                            Canvas.SetTop(imgFalse, borderSpace + heightSpace * row + height / 2 - imgTrue.Height / 2);
+                            Canvas.SetZIndex(imgFalse, 1);
+                        }
+                        else
                         {
-                            Foreground = new SolidColorBrush(foreground),
-                            Text = "False",
-                        };
-                        condition.Measure(new Size(double.MaxValue, double.MaxValue));
-                        canvas.Children.Add(condition);
-                        Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col + width + 2);
-                        Canvas.SetTop(condition, borderSpace + heightSpace * row + height / 2 - condition.DesiredSize.Height - 2);
+                            TextBlock condition = new TextBlock()
+                            {
+                                Foreground = new SolidColorBrush(foreground),
+                                Text = "True",
+                            };
+                            condition.Measure(new Size(double.MaxValue, double.MaxValue));
+                            canvas.Children.Add(condition);
+                            Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col + width / 2 + 2);
+                            Canvas.SetTop(condition, borderSpace + heightSpace * row + height + 2);
+
+                            condition = new TextBlock()
+                            {
+                                Foreground = new SolidColorBrush(foreground),
+                                Text = "False",
+                            };
+                            condition.Measure(new Size(double.MaxValue, double.MaxValue));
+                            canvas.Children.Add(condition);
+                            Canvas.SetLeft(condition, borderSpace + (width + widthSpace) * col + width + 2);
+                            Canvas.SetTop(condition, borderSpace + heightSpace * row + height / 2 - condition.DesiredSize.Height - 2);
+                        }
                     }
 
-                    if (codeLine.block == eBlock.ENDIF)
+                        if (codeLine.block == eBlock.ENDIF)
                     {
                         int rowIf = codeLine.rootLine.row;
                         for (int colIf = 0; colIf <= maxcol; colIf++)
@@ -240,28 +246,14 @@ namespace SB_IDE.Dialogs
                             color = MainWindow.IntToColor(MainWindow.CHART_STATEMENT_COLOR);
                             break;
                     }
-                    //Brush fill = new SolidColorBrush(color);
-                    double shade = 0.4;
-                    Color light = new Color() { A = 255, R = (byte)((1 - shade) * color.R + shade * 255), G = (byte)((1 - shade) * color.G + shade * 255), B = (byte)((1 - shade) * color.B + shade * 255) };
-                    Color dark = new Color() { A = 255, R = (byte)((1 - shade) * color.R), G = (byte)((1 - shade) * color.G), B = (byte)((1 - shade) * color.B) };
-                    Brush fill = new LinearGradientBrush(
-                        new GradientStopCollection() {
-                                    new GradientStop(light, 0),
-                                    new GradientStop(dark, 1),
-                        }, 90);
 
-                    CodeShape border = new CodeShape()
-                    {
-                        Width = width,
-                        Height = height,
-                    };
-                    border.Init(codeLine, fill);
+                    CodeShape border = new CodeShape(codeLine, width, height, color);
                     codeLine.border = border;
-                    border.MouseDown += new MouseButtonEventHandler(codeClick);
+                    border.grid.MouseDown += new MouseButtonEventHandler(codeClick);
 
-                    canvas.Children.Add(border);
-                    Canvas.SetLeft(border, borderSpace + (width + widthSpace) * col);
-                    Canvas.SetTop(border, borderSpace + heightSpace * row++);
+                    canvas.Children.Add(border.grid);
+                    Canvas.SetLeft(border.grid, borderSpace + (width + widthSpace) * col);
+                    Canvas.SetTop(border.grid, borderSpace + heightSpace * row++);
                     maxcol = Math.Max(maxcol, col);
                     maxrow = Math.Max(maxrow, row);
                 }
@@ -292,14 +284,13 @@ namespace SB_IDE.Dialogs
 
         private void Highlight(CodeLine codeLine)
         {
+            if (null != lastHighlight) lastHighlight.border.Highlight(false);
             lastHighlight = codeLine;
-            highlight.Visibility = Visibility.Visible;
-            Canvas.SetLeft(highlight, borderSpace + (width + widthSpace) * codeLine.col + - highLightSize / 2);
-            Canvas.SetTop(highlight, borderSpace + heightSpace * codeLine.row - highLightSize / 2);
+            lastHighlight.border.Highlight(true);
 
             CodeShape borderRoot = codeLine.border;
             Point start = new Point(scrollViewer.HorizontalOffset, scrollViewer.VerticalOffset);
-            Point end = borderRoot.TranslatePoint(new Point(0, 0), canvas);
+            Point end = borderRoot.grid.TranslatePoint(new Point(0, 0), canvas);
             end.X = (end.X - widthSpace) * scaleView;
             end.Y = (end.Y - heightSpace) * scaleView;
             scrollStep = 0;
@@ -309,8 +300,8 @@ namespace SB_IDE.Dialogs
         private void codeClick(object sender, MouseButtonEventArgs e)
         {
             if (null == sender) return;
-            CodeShape border = (CodeShape)sender;
-            CodeLine codeLine = (CodeLine)border.Tag;
+            Grid grid = (Grid)sender;
+            CodeLine codeLine = (CodeLine)grid.Tag;
             if (null != codeLine.rootLine && e.RightButton == MouseButtonState.Pressed)
             {
                 codeLine = codeLine.rootLine;
@@ -961,8 +952,6 @@ namespace SB_IDE.Dialogs
         }
     }
 
-    enum eBlock { START, END, CALL, SUB, ENDSUB, IF, ELSE, ELSEIF, ENDIF, FOR, ENDFOR, WHILE, ENDWHILE, GOTO, LABEL, STATEMENT };
-
     class CodeLine
     {
         public string code;
@@ -986,74 +975,133 @@ namespace SB_IDE.Dialogs
         }
     }
 
-    class CodeShape : Grid
+    class CodeShape
     {
-        public void Init(CodeLine codeLine, Brush fill)
-        {
-            Tag = codeLine;
-            ToolTip = codeLine.code;
-            ToolTipService.SetInitialShowDelay(this, 400);
-            ToolTipService.SetShowDuration(this, 40 * (100 + codeLine.code.Length));
+        public Grid grid;
 
-            Color stroke = MainWindow.IntToColor(MainWindow.theme == 0 ? MainWindow.CHART_FORE_COLOR : MainWindow.CHART_BACK_COLOR);
+        public CodeShape(CodeLine codeLine, double width, double height, Color color)
+        {
             switch (codeLine.block)
             {
                 case eBlock.IF:
                 case eBlock.ELSE:
                 case eBlock.ELSEIF:
-                    Polygon polygon = new Polygon();
-                    polygon.Points.Add(new Point(0, Height / 2));
-                    polygon.Points.Add(new Point(Width / 2, 0));
-                    polygon.Points.Add(new Point(Width, Height / 2));
-                    polygon.Points.Add(new Point(Width / 2, Height));
-                    polygon.Fill = fill;
-                    polygon.Stroke = new SolidColorBrush(stroke);
-                    polygon.StrokeThickness = 1;
-                    Children.Add(polygon);
+                    grid = GetBlock(color, codeLine.code, width, height, eShape.DIAMOND);
                     break;
                 case eBlock.START:
                 case eBlock.SUB:
                 case eBlock.LABEL:
-                    Ellipse ellipse = new Ellipse();
-                    ellipse.Width = Width;
-                    ellipse.Height = Height;
-                    ellipse.Fill = fill;
-                    ellipse.Stroke = new SolidColorBrush(stroke);
-                    ellipse.StrokeThickness = 1;
-                    Children.Add(ellipse);
+                    grid = GetBlock(color, codeLine.code, width, height, eShape.ELLIPSE);
                     break;
                 default:
-                    Rectangle rectangle = new Rectangle();
-                    rectangle.Width = Width;
-                    rectangle.Height = Height;
-                    rectangle.Fill = fill;
-                    rectangle.RadiusX = 5;
-                    rectangle.RadiusY = 5;
-                    rectangle.Stroke = new SolidColorBrush(stroke);
-                    rectangle.StrokeThickness = 1;
-                    Children.Add(rectangle);
+                    grid = GetBlock(color, codeLine.code, width, height, eShape.RECTANGLE);
                     break;
             }
-            Effect = new DropShadowEffect
+
+            grid.Tag = codeLine;
+            grid.ToolTip = codeLine.code;
+            Highlight(false);
+            ToolTipService.SetInitialShowDelay(grid, 400);
+            ToolTipService.SetShowDuration(grid, 40 * (100 + codeLine.code.Length));
+        }
+
+        public void Highlight(bool bSet)
+        {
+            Color stroke = MainWindow.IntToColor(MainWindow.theme == 0 ? MainWindow.CHART_FORE_COLOR : MainWindow.CHART_BACK_COLOR);
+            int strokeWidth = 1;
+            if (bSet)
+            {
+                stroke = MainWindow.IntToColor(MainWindow.CHART_HIGHLIGHT_COLOR);
+                strokeWidth = 3;
+            }
+            grid.Effect = new DropShadowEffect
             {
                 Color = stroke,
                 Direction = -45,
-                ShadowDepth = 4,
-                BlurRadius = 5,
+                ShadowDepth = 10,
+                BlurRadius = 15,
                 Opacity = 0.5,
             };
+            if (grid.Children[0].GetType() == typeof(Polygon))
+            {
+                ((Polygon)grid.Children[0]).Stroke = new SolidColorBrush(stroke);
+                ((Polygon)grid.Children[0]).StrokeThickness = strokeWidth;
+            }
+            else if (grid.Children[0].GetType() == typeof(Ellipse))
+            {
+                ((Ellipse)grid.Children[0]).Stroke = new SolidColorBrush(stroke);
+                ((Ellipse)grid.Children[0]).StrokeThickness = strokeWidth;
+            }
+            else if (grid.Children[0].GetType() == typeof(Rectangle))
+            {
+                ((Rectangle)grid.Children[0]).Stroke = new SolidColorBrush(stroke);
+                ((Rectangle)grid.Children[0]).StrokeThickness = strokeWidth;
+            }
+        }
 
+        public static Grid GetBlock(Color color, String text, double width, double height, eShape shape)
+        {
+            double shade = 0.4;
+            Color light = new Color() { A = 255, R = (byte)((1 - shade) * color.R + shade * 255), G = (byte)((1 - shade) * color.G + shade * 255), B = (byte)((1 - shade) * color.B + shade * 255) };
+            Color dark = new Color() { A = 255, R = (byte)((1 - shade) * color.R), G = (byte)((1 - shade) * color.G), B = (byte)((1 - shade) * color.B) };
+            GradientBrush fill = new LinearGradientBrush(new GradientStopCollection() { new GradientStop(light, 0), new GradientStop(dark, 1), }, 90);
+            Color stroke = MainWindow.IntToColor(MainWindow.theme == 0 ? MainWindow.CHART_FORE_COLOR : MainWindow.CHART_BACK_COLOR);
+            Grid block = new Grid()
+            {
+                Width = width,
+                Height = height,
+            };
+            switch (shape)
+            {
+                case eShape.DIAMOND:
+                    Polygon polygon = new Polygon();
+                    polygon.Points.Add(new Point(0, height / 2));
+                    polygon.Points.Add(new Point(width / 2, 0));
+                    polygon.Points.Add(new Point(width, height / 2));
+                    polygon.Points.Add(new Point(width / 2, height));
+                    polygon.Fill = fill;
+                    polygon.Stroke = new SolidColorBrush(stroke);
+                    polygon.StrokeThickness = 1;
+                    block.Children.Add(polygon);
+                    break;
+                case eShape.ELLIPSE:
+                    Ellipse ellipse = new Ellipse()
+                    {
+                        Width = width,
+                        Height = height,
+                        Fill = fill,
+                        Stroke = new SolidColorBrush(stroke),
+                        StrokeThickness = 1,
+                    };
+                    block.Children.Add(ellipse);
+                    break;
+                case eShape.RECTANGLE:
+                    Rectangle rectangle = new Rectangle()
+                    {
+                        Width = width,
+                        Height = height,
+                        Fill = fill,
+                        Stroke = new SolidColorBrush(stroke),
+                        StrokeThickness = 1,
+                        RadiusX = 5,
+                        RadiusY = 5,
+                    };
+                    block.Children.Add(rectangle);
+                    break;
+            }
             TextBlock textBlock = new TextBlock()
             {
                 Foreground = new SolidColorBrush(MainWindow.IntToColor(MainWindow.CHART_CODE_COLOR)),
-                Text = codeLine.code,
+                Text = text,
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 TextAlignment = TextAlignment.Center,
                 //FontFamily = new FontFamily("Consolas"),
                 Margin = new Thickness(2),
             };
-            Children.Add(textBlock);
+            block.Children.Add(textBlock);
+
+            return block;
         }
     }
 }
