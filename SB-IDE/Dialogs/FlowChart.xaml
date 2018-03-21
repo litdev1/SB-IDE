@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE.Dialogs"
         mc:Ignorable="d"
-        Title="FlowChart" Height="500" Width="500" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated">
+        Title="Flow Chart" Height="500" Width="500" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated">
     <Grid x:Name="grid">
         <Button x:Name="buttonZoomIn" Content="Zoom In" VerticalAlignment="Top" Click="buttonZoomIn_Click" Margin="10,10,0,0" Panel.ZIndex="2" ToolTip="Zoom in to view more" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
         <Button x:Name="buttonZoomOut" Content="Zoom Out" VerticalAlignment="Top" Click="buttonZoomOut_Click" Margin="10,34,0,0" Panel.ZIndex="2" ToolTip="Zoom in to view less" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>

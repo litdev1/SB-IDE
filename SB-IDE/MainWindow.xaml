@@ -131,7 +131,6 @@
                     <RibbonButton Label="Format" SmallImageSource="Images/Form.png" KeyTip="FM" Click="editFormat_Click" ToolTipTitle="Format current program"/>
                     <RibbonButton Label="Undo" SmallImageSource="Images/Undo.png" KeyTip="Z" Click="editUndo_Click" ToolTipTitle="Undo last action"/>
                     <RibbonButton Label="Redo" SmallImageSource="Images/Redo.png" KeyTip="Y" Click="editRedo_Click" ToolTipTitle="Redo last action"/>
-                    <RibbonButton Label="Flow Chart" SmallImageSource="Images/FlowChart.png" KeyTip="FC" Click="editFlowChart_Click" ToolTipTitle="Display a flow chart"/>
                 </RibbonGroup>
                 <!-- Home/Web group-->
                 <RibbonGroup x:Name="Web" Header="Web">
@@ -209,6 +208,7 @@
                 </RibbonGroup>
                 <!-- Advanced/Tools group-->
                 <RibbonGroup x:Name="Tools" Header="Tools">
+                    <RibbonButton Label="Flow Chart" LargeImageSource="Images/FlowChart.png" KeyTip="FC" Click="editFlowChart_Click" ToolTipTitle="Display a flow chart"/>
                     <RibbonButton Name="ToolsColor" Label="Insert Colors" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="Insert color names into document"/>
                     <RibbonButton Name="ToolsFont" Label="Insert Fonts" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="Insert font names into document"/>
                     <RibbonButton Name="ToolsExtensionSearcher" Label="Search Extensions" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="Serch extension objects"/>
