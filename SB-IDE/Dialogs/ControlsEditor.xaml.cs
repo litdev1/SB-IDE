@@ -810,7 +810,6 @@ namespace SB_IDE.Dialogs
                 foreach (ScintillaNET.Line line in sbDocument.TextArea.Lines)
                 {
                     string code = line.Text.ToLower().Trim();
-                    code = code.Replace(" ", "");
                     if (code.Contains("shapes.addrectangle"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
@@ -928,9 +927,9 @@ namespace SB_IDE.Dialogs
                         ImageSource bm;
                         try
                         {
-                            bm = new BitmapImage(new Uri(parts[1]));
+                            bm = new BitmapImage(new Uri(parts[1].Replace("\"", "")));
                         }
-                        catch
+                        catch (Exception ex)
                         {
                             bm = MainWindow.ImageSourceFromBitmap(Properties.Resources.No_image);
                         }
@@ -1020,12 +1019,12 @@ namespace SB_IDE.Dialogs
                     else if (code.Contains("graphicswindow.brushcolor"))
                     {
                         string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                        _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(parts[1]));
+                        _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(parts[1].Replace("\"", "")));
                     }
                     else if (code.Contains("graphicswindow.pencolor"))
                     {
                         string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                        _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(parts[1]));
+                        _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(parts[1].Replace("\"", "")));
                     }
                     else if (code.Contains("graphicswindow.penwidth"))
                     {
@@ -1036,17 +1035,17 @@ namespace SB_IDE.Dialogs
                     else if (code.Contains("graphicswindow.fontname"))
                     {
                         string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                        _fontFamily = new FontFamily(parts[1]);
+                        _fontFamily = new FontFamily(parts[1].Replace("\"", ""));
                     }
                     else if (code.Contains("graphicswindow.fontitalic"))
                     {
                         string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                        _fontStyle = parts[1] == "true" ? FontStyles.Italic : FontStyles.Normal;
+                        _fontStyle = parts[1].Replace("\"", "") == "true" ? FontStyles.Italic : FontStyles.Normal;
                     }
                     else if (code.Contains("graphicswindow.fontbold"))
                     {
                         string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
-                        _fontWeight = parts[1] == "true" ? FontWeights.Bold : FontWeights.Normal;
+                        _fontWeight = parts[1].Replace("\"", "") == "true" ? FontWeights.Bold : FontWeights.Normal;
                     }
                     else if (code.Contains("graphicswindow.fontsize"))
                     {
@@ -1090,6 +1089,12 @@ namespace SB_IDE.Dialogs
                     }
                     if (null != shape)
                     {
+                        if (shape.elt.GetType() == typeof(TextBlock) || shape.elt.GetType() == typeof(Image) || shape.elt.GetType() == typeof(Button) || shape.elt.GetType() == typeof(TextBox))
+                        {
+                            shape.elt.Measure(new Size(double.MaxValue, double.MaxValue));
+                            shape.modifiers["Width"] = shape.elt.DesiredSize.Width.ToString();
+                            shape.modifiers["Height"] = shape.elt.DesiredSize.Height.ToString();
+                        }
                         if (!shape.modifiers.ContainsKey("Left")) shape.modifiers["Left"] = "0";
                         if (!shape.modifiers.ContainsKey("Top")) shape.modifiers["Top"] = "0";
                         if (!shape.modifiers.ContainsKey("Angle")) shape.modifiers["Angle"] = "0";
