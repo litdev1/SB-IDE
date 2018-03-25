@@ -65,8 +65,8 @@ namespace SB_IDE.Dialogs
             Resources["GridBrushForeground"] = new SolidColorBrush(MainWindow.IntToColor(MainWindow.FOREGROUND_COLOR));
             Resources["SplitterBrush"] = new SolidColorBrush(MainWindow.IntToColor(MainWindow.SPLITTER_COLOR));
 
-            canvas.Width = 1000;
-            canvas.Height = 1000;
+            canvas.Width = double.Parse(textBoxWidth.Text);
+            canvas.Height = double.Parse(textBoxHeight.Text);
             canvas.MouseMove += new MouseEventHandler(canvasMouseMove);
             canvas.MouseUp += new MouseButtonEventHandler(canvasMouseUp);
             names = new List<string>();
@@ -480,8 +480,6 @@ namespace SB_IDE.Dialogs
                     else if (currentElt.GetType() == typeof(Image))
                     {
                         Image shape = (Image)currentElt;
-                        properties.Add(new PropertyData() { Property = "Width", Value = shape.Width.ToString() });
-                        properties.Add(new PropertyData() { Property = "Height", Value = shape.Height.ToString() });
                         properties.Add(new PropertyData() { Property = "Source", Value = shape.Source.ToString() });
                     }
                     else if (currentElt.GetType() == typeof(Button))
@@ -577,12 +575,12 @@ namespace SB_IDE.Dialogs
                                 }
                                 if (obj.Stroke.ToString() != _pen.Brush.ToString())
                                 {
-                                    _pen = new Pen(new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString())), _pen.Thickness);
+                                    _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
                                     sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
                                 }
                                 if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
                                 {
-                                    _pen = new Pen(_pen.Brush, obj.StrokeThickness);
+                                    _pen.Thickness = obj.StrokeThickness;
                                     sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
                                 }
                                 sbDocument.TextArea.Text += obj.Name + " = Shapes.AddRectangle(" + obj.Width.ToString() + "," + obj.Height.ToString() + ")\n";
@@ -601,12 +599,12 @@ namespace SB_IDE.Dialogs
                                 }
                                 if (obj.Stroke.ToString() != _pen.Brush.ToString())
                                 {
-                                    _pen = new Pen(new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString())), _pen.Thickness);
+                                    _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
                                     sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
                                 }
                                 if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
                                 {
-                                    _pen = new Pen(_pen.Brush, obj.StrokeThickness);
+                                    _pen.Thickness = obj.StrokeThickness;
                                     sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
                                 }
                                 sbDocument.TextArea.Text += obj.Name + " = Shapes.AddEllipse(" + obj.Width.ToString() + "," + obj.Height.ToString() + ")\n";
@@ -625,12 +623,12 @@ namespace SB_IDE.Dialogs
                                 }
                                 if (obj.Stroke.ToString() != _pen.Brush.ToString())
                                 {
-                                    _pen = new Pen(new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString())), _pen.Thickness);
+                                    _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
                                     sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
                                 }
                                 if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
                                 {
-                                    _pen = new Pen(_pen.Brush, obj.StrokeThickness);
+                                    _pen.Thickness = obj.StrokeThickness;
                                     sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
                                 }
                                 if (obj.Points.Count == 3)
@@ -647,12 +645,12 @@ namespace SB_IDE.Dialogs
                                 Line obj = (Line)elt;
                                 if (obj.Stroke.ToString() != _pen.Brush.ToString())
                                 {
-                                    _pen = new Pen(new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString())), _pen.Thickness);
+                                    _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
                                     sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
                                 }
                                 if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
                                 {
-                                    _pen = new Pen(_pen.Brush, obj.StrokeThickness);
+                                    _pen.Thickness = obj.StrokeThickness;
                                     sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
                                 }
                                 sbDocument.TextArea.Text += obj.Name + " = Shapes.AddLine(" + obj.X1.ToString() + "," + obj.Y1.ToString() + "," + obj.X2.ToString() + "," + obj.Y2.ToString() + ")\n";
@@ -866,9 +864,9 @@ namespace SB_IDE.Dialogs
                         {
                             Name = name,
                             Points = new PointCollection() { new Point(value[0], value[1]), new Point(value[2], value[3]), new Point(value[4], value[5]) },
-                            Fill = brush,
-                            Stroke = pen.Brush,
-                            StrokeThickness = pen.Thickness,
+                            Fill = _brush,
+                            Stroke = _pen.Brush,
+                            StrokeThickness = _pen.Thickness,
                         };
                         elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
                         shape = new Shape(elt);
@@ -950,6 +948,8 @@ namespace SB_IDE.Dialogs
                     else if (code.Contains("controls.addbutton"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[2], out value[0]);
+                        double.TryParse(parts[3], out value[1]);
                         name = GetName("Button");
                         elt = new Button()
                         {
@@ -965,18 +965,20 @@ namespace SB_IDE.Dialogs
                         elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
-                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
-                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                        Canvas.SetLeft(shape.shape, value[0] - Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, value[1] - Shape.HandleShort);
                     }
                     else if (code.Contains("controls.addtextbox"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
                         name = GetName("TextBox");
                         elt = new TextBox()
                         {
                             Name = name,
                             Width = 160,
-                            Text = parts[1].Replace("\"", ""),
+                            Text = name,
                             Foreground = _brush,
                             FontFamily = _fontFamily,
                             FontStyle = _fontStyle,
@@ -987,19 +989,21 @@ namespace SB_IDE.Dialogs
                         elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
-                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
-                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                        Canvas.SetLeft(shape.shape, value[0] - Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, value[1] - Shape.HandleShort);
                     }
                     else if (code.Contains("controls.addmultilinetextbox"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
                         name = GetName("MultiLineTextBox");
                         elt = new TextBox()
                         {
                             Name = name,
                             Width = 200,
                             Height = 80,
-                            Text = parts[1].Replace("\"", ""),
+                            Text = name,
                             Foreground = _brush,
                             FontFamily = _fontFamily,
                             FontStyle = _fontStyle,
@@ -1013,8 +1017,8 @@ namespace SB_IDE.Dialogs
                         elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
-                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
-                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                        Canvas.SetLeft(shape.shape, value[0] - Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, value[1] - Shape.HandleShort);
                     }
                     else if (code.Contains("graphicswindow.brushcolor"))
                     {
@@ -1092,8 +1096,8 @@ namespace SB_IDE.Dialogs
                         if (shape.elt.GetType() == typeof(TextBlock) || shape.elt.GetType() == typeof(Image) || shape.elt.GetType() == typeof(Button) || shape.elt.GetType() == typeof(TextBox))
                         {
                             shape.elt.Measure(new Size(double.MaxValue, double.MaxValue));
-                            shape.modifiers["Width"] = shape.elt.DesiredSize.Width.ToString();
-                            shape.modifiers["Height"] = shape.elt.DesiredSize.Height.ToString();
+                            if (!shape.modifiers.ContainsKey("Width")) shape.modifiers["Width"] = shape.elt.DesiredSize.Width.ToString();
+                            if (!shape.modifiers.ContainsKey("Height")) shape.modifiers["Height"] = shape.elt.DesiredSize.Height.ToString();
                         }
                         if (!shape.modifiers.ContainsKey("Left")) shape.modifiers["Left"] = "0";
                         if (!shape.modifiers.ContainsKey("Top")) shape.modifiers["Top"] = "0";
@@ -1529,13 +1533,13 @@ namespace SB_IDE.Dialogs
                             shape.FontFamily = new FontFamily(tb.Text);
                             break;
                         case "FontStyle":
-                            shape.FontStyle = tb.Text == "Italic" ? FontStyles.Italic : FontStyles.Normal;
+                            shape.FontStyle = tb.Text.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
                             break;
                         case "FontSize":
                             shape.FontSize = double.Parse(tb.Text);
                             break;
                         case "FontWeight":
-                            shape.FontWeight = tb.Text == "Bold" ? FontWeights.Bold : FontWeights.Normal;
+                            shape.FontWeight = tb.Text.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
                             break;
                     }
                 }
@@ -1576,13 +1580,13 @@ namespace SB_IDE.Dialogs
                             shape.FontFamily = new FontFamily(tb.Text);
                             break;
                         case "FontStyle":
-                            shape.FontStyle = tb.Text == "Italic" ? FontStyles.Italic : FontStyles.Normal;
+                            shape.FontStyle = tb.Text.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
                             break;
                         case "FontSize":
                             shape.FontSize = double.Parse(tb.Text);
                             break;
                         case "FontWeight":
-                            shape.FontWeight = tb.Text == "Bold" ? FontWeights.Bold : FontWeights.Normal;
+                            shape.FontWeight = tb.Text.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
                             break;
                     }
                 }
@@ -1604,13 +1608,13 @@ namespace SB_IDE.Dialogs
                             shape.FontFamily = new FontFamily(tb.Text);
                             break;
                         case "FontStyle":
-                            shape.FontStyle = tb.Text == "Italic" ? FontStyles.Italic : FontStyles.Normal;
+                            shape.FontStyle = tb.Text.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
                             break;
                         case "FontSize":
                             shape.FontSize = double.Parse(tb.Text);
                             break;
                         case "FontWeight":
-                            shape.FontWeight = tb.Text == "Bold" ? FontWeights.Bold : FontWeights.Normal;
+                            shape.FontWeight = tb.Text.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
                             break;
                     }
                 }
@@ -1697,6 +1701,36 @@ namespace SB_IDE.Dialogs
         private void buttonDeleteAll_Click(object sender, RoutedEventArgs e)
         {
             DeleteAll();
+        }
+
+        private void textBoxWidth_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                double width = canvas.Width;
+                double.TryParse(textBoxWidth.Text, out width);
+                canvas.Width = width;
+                SetSnap();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void textBoxHeight_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                double height = canvas.Height;
+                double.TryParse(textBoxHeight.Text, out height);
+                canvas.Height = height;
+                SetSnap();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

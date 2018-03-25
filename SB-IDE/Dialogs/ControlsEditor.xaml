@@ -36,10 +36,14 @@
                 <ListBoxItem Content="MultiLineTextBox" PreviewMouseDown="AddShape_MouseDown"/>
             </ListBox>
             <Button x:Name="buttonDelete" Content="Delete Selected Shape" Margin="10,0,10.4,58.4" Height="19" VerticalAlignment="Bottom" Click="buttonDelete_Click"/>
-            <Label x:Name="label" Content="Snap Size" HorizontalAlignment="Left" Margin="10,0,0,83.4" Height="26" VerticalAlignment="Bottom" Width="80" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
-            <TextBox x:Name="textBoxSnap" Margin="95,0,9.4,82.4" TextWrapping="Wrap" Text="10" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxSnap_TextChanged"/>
+            <Label x:Name="label" Content="Snap Size" HorizontalAlignment="Left" Margin="10,0,0,83.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
+            <TextBox x:Name="textBoxSnap" Margin="105,0,9.4,82.4" TextWrapping="Wrap" Text="10" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxSnap_TextChanged"/>
             <Button x:Name="buttonImport" Content="Import From Code" Margin="10,0,10.4,10.4" Height="19" VerticalAlignment="Bottom" Click="buttonImport_Click"/>
             <Button x:Name="buttonDeleteAll" Content="Delete All Shapes" Margin="10,0,10.4,34.4" Height="19" VerticalAlignment="Bottom" Click="buttonDeleteAll_Click"/>
+            <Label x:Name="label_Copy" Content="Canvas Height" HorizontalAlignment="Left" Margin="10,0,0,111.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
+            <TextBox x:Name="textBoxHeight" Margin="105,0,9.4,110.4" TextWrapping="Wrap" Text="1000" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxHeight_TextChanged"/>
+            <Label x:Name="label_Copy1" Content="Canvas Width" HorizontalAlignment="Left" Margin="9,0,0,139.4" Height="26" VerticalAlignment="Bottom" Width="91" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
+            <TextBox x:Name="textBoxWidth" Margin="105,0,9.4,138.4" TextWrapping="Wrap" Text="1000" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxWidth_TextChanged"/>
         </Grid>
         <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
         <Grid x:Name="viewGrid" Grid.Column="2" Margin="0">
