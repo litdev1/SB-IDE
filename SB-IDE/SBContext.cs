@@ -78,7 +78,7 @@ namespace SB_IDE
             menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as HTML", null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Html)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as RTF", null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Rtf)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Open Containing Folder", null, OpenContainingFolder) { Enabled = File.Exists(((TabHeader)sbDocument.Tab.Header).FilePath) });
+            menu.Items.Add(new ToolStripMenuItem("Open Containing Folder", null, OpenContainingFolder) { Enabled = null != sbDocument.Tab && File.Exists(((TabHeader)sbDocument.Tab.Header).FilePath) });
             menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Display Flow Chart", null, OpenFlowChart));
             menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));

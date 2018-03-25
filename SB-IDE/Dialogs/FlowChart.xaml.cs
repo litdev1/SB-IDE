@@ -34,7 +34,6 @@ namespace SB_IDE.Dialogs
         public static double widthSpace = 50;
         public static double heightSpace = 100;
         public static double borderSpace = 50;
-        public static int highLightSize = 16;
         public static bool TFshape = true;
 
         private int maxrow;

@@ -367,4 +367,10 @@
   <data name="Flowchart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Flowchart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Dialog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Dialog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="No_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\No_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -813,7 +813,7 @@ namespace SB_IDE
             activeDocument.searchManager.HighLight(highlightAll ? activeDocument.searchManager.LastHighLight : "");
         }
 
-        private void editFlowChart_Click(object sender, RoutedEventArgs e)
+        private void ToolsFlowChart_Click(object sender, RoutedEventArgs e)
         {
             if (FlowChart.Active)
             {
@@ -826,6 +826,21 @@ namespace SB_IDE
 
             FlowChart fc = new FlowChart(MainWindow.THIS);
             fc.Show();
+        }
+
+        private void ToolsControlsEditor_Click(object sender, RoutedEventArgs e)
+        {
+            if (ControlsEditor.Active)
+            {
+                ControlsEditor.THIS.Display();
+                ControlsEditor.THIS.Activate();
+                if (ControlsEditor.THIS.WindowState == WindowState.Minimized)
+                    ControlsEditor.THIS.WindowState = WindowState.Normal;
+                return;
+            }
+
+            ControlsEditor ce = new ControlsEditor(MainWindow.THIS);
+            ce.Show();
         }
 
         /*

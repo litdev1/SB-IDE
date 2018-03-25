@@ -283,6 +283,16 @@ namespace SB_IDE.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Dialog {
+            get {
+                object obj = ResourceManager.GetObject("Dialog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Down {
             get {
                 object obj = ResourceManager.GetObject("Down", resourceCulture);
@@ -516,6 +526,16 @@ namespace SB_IDE.Properties {
         internal static System.Drawing.Bitmap New_file {
             get {
                 object obj = ResourceManager.GetObject("New_file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap No_image {
+            get {
+                object obj = ResourceManager.GetObject("No_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
