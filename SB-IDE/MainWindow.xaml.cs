@@ -828,18 +828,18 @@ namespace SB_IDE
             fc.Show();
         }
 
-        private void ToolsControlsEditor_Click(object sender, RoutedEventArgs e)
+        private void ToolsShapesEditor_Click(object sender, RoutedEventArgs e)
         {
-            if (ControlsEditor.Active)
+            if (ShapesEditor.Active)
             {
-                ControlsEditor.THIS.Display();
-                ControlsEditor.THIS.Activate();
-                if (ControlsEditor.THIS.WindowState == WindowState.Minimized)
-                    ControlsEditor.THIS.WindowState = WindowState.Normal;
+                ShapesEditor.THIS.Display();
+                ShapesEditor.THIS.Activate();
+                if (ShapesEditor.THIS.WindowState == WindowState.Minimized)
+                    ShapesEditor.THIS.WindowState = WindowState.Normal;
                 return;
             }
 
-            ControlsEditor ce = new ControlsEditor(MainWindow.THIS);
+            ShapesEditor ce = new ShapesEditor(MainWindow.THIS);
             ce.Show();
         }
 

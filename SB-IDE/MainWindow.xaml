@@ -208,7 +208,7 @@
                 </RibbonGroup>
                 <!-- Advanced/Tools group-->
                 <RibbonGroup x:Name="Tools" Header="Tools">
-                    <RibbonButton Name="ToolsControlsEditor" Label="Controls Editor" LargeImageSource="Images/Dialog.png" KeyTip="FC" Click="ToolsControlsEditor_Click" ToolTipTitle="A shapes and controls editor"/>
+                    <RibbonButton Name="ToolsShapesEditor" Label="Shapes Editor" LargeImageSource="Images/Dialog.png" KeyTip="FC" Click="ToolsShapesEditor_Click" ToolTipTitle="A shapes and controls editor"/>
                     <RibbonButton Name="ToolsFlowChart" Label="Flow Chart" LargeImageSource="Images/FlowChart.png" KeyTip="FC" Click="ToolsFlowChart_Click" ToolTipTitle="Display a flow chart"/>
                     <RibbonButton Name="ToolsColor" Label="Insert Colors" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="Insert color names into document"/>
                     <RibbonButton Name="ToolsFont" Label="Insert Fonts" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="Insert font names into document"/>

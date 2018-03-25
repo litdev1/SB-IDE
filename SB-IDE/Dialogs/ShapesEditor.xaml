@@ -1,11 +1,11 @@
-﻿<Window x:Class="SB_IDE.Dialogs.ControlsEditor"
+﻿<Window x:Class="SB_IDE.Dialogs.ShapesEditor"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE.Dialogs"
         mc:Ignorable="d"
-        Title="Controls Editor" Height="500" Width="1000" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated">
+        Title="Shapes Editor" Height="500" Width="1000" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated">
     <Window.Resources>
         <SolidColorBrush x:Key="SplitterBrush" Color="#FFF0F0F0"/>
         <SolidColorBrush x:Key="GridBrushBackground" Color="#FFF0F0F0"/>

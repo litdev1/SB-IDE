@@ -13,12 +13,12 @@ using System.Windows.Shapes;
 namespace SB_IDE.Dialogs
 {
     /// <summary>
-    /// Interaction logic for ControlsEditor.xaml
+    /// Interaction logic for ShapesEditor.xaml
     /// </summary>
-    public partial class ControlsEditor : Window
+    public partial class ShapesEditor : Window
     {
         public static bool Active = false;
-        public static ControlsEditor THIS;
+        public static ShapesEditor THIS;
         private MainWindow mainWindow;
         private SBDocument sbDocument;
         private VisualContainer visualContainer;
@@ -48,7 +48,7 @@ namespace SB_IDE.Dialogs
         private int snap = 10;
         private string mode = "SEL";
 
-        public ControlsEditor(MainWindow mainWindow)
+        public ShapesEditor(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
             THIS = this;
