@@ -69,7 +69,7 @@ namespace SB_IDE.Dialogs
             canvas.Width = double.Parse(textBoxWidth.Text);
             canvas.Height = double.Parse(textBoxHeight.Text);
             canvas.MouseMove += new MouseEventHandler(canvasMouseMove);
-            canvas.MouseUp += new MouseButtonEventHandler(canvasMouseUp);
+            canvas.PreviewMouseUp += new MouseButtonEventHandler(canvasPreviewMouseUp);
             names = new List<string>();
             background = canvas.Background;
             brush = Brushes.SlateBlue;
@@ -184,17 +184,19 @@ namespace SB_IDE.Dialogs
                 mode = mode == "SEL" ? currentElt.Name : "SEL";
                 Cursor = Cursors.Hand;
                 SetStart(e.GetPosition(canvas));
+                e.Handled = true;
             }
 
             UpdateView();
         }
 
-        private void canvasMouseUp(object sender, MouseButtonEventArgs e)
+        private void canvasPreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             if (null == currentShape) return;
 
             mode = "SEL";
             Cursor = Cursors.Arrow;
+            e.Handled = true;
 
             UpdateView();
         }
@@ -336,6 +338,7 @@ namespace SB_IDE.Dialogs
                     Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
                     break;
             }
+            canvas.UpdateLayout();
         }
 
         private void UpdatePolygon(double changeX, double changeY)
