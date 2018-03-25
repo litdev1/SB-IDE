@@ -13,11 +13,11 @@
     </Window.Resources>
     <Grid x:Name="mainGrid" Background="{DynamicResource GridBrushBackground}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="6"/>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="6"/>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="250" />
         </Grid.ColumnDefinitions>
         <Grid x:Name="controlGrid" Grid.Column="0" Margin="0">
             <ListBox x:Name="listBoxShapes" Height="124" Margin="10,41,10,0" VerticalAlignment="Top">
@@ -28,16 +28,18 @@
                 <ListBoxItem Content="Text" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
                 <ListBoxItem Content="Image" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
             </ListBox>
-            <Label Content="Add Shapes" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-            <Label Content="Add Controls" Margin="10,170,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+            <Label Content="Shapes" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+            <Label Content="Controls" Margin="10,170,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
             <ListBox x:Name="listBoxControls" Height="64" Margin="10,200,10,0" VerticalAlignment="Top">
                 <ListBoxItem Content="Button" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="TextBox" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="MultiLineTextBox" PreviewMouseDown="AddShape_MouseDown"/>
             </ListBox>
-            <Button x:Name="buttonDelete" Content="Delete Selected Shape" Margin="10,0,10,10.4" Height="19" VerticalAlignment="Bottom" Click="buttonDelete_Click"/>
-            <Label x:Name="label" Content="Snap Size" HorizontalAlignment="Left" Margin="10,0,0,37.4" Height="26" VerticalAlignment="Bottom" Width="80" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
-            <TextBox x:Name="textBoxSnap" Margin="95,0,10,36.4" TextWrapping="Wrap" Text="10" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxSnap_TextChanged"/>
+            <Button x:Name="buttonDelete" Content="Delete Selected Shape" Margin="10,0,10.4,58.4" Height="19" VerticalAlignment="Bottom" Click="buttonDelete_Click"/>
+            <Label x:Name="label" Content="Snap Size" HorizontalAlignment="Left" Margin="10,0,0,83.4" Height="26" VerticalAlignment="Bottom" Width="80" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
+            <TextBox x:Name="textBoxSnap" Margin="95,0,9.4,82.4" TextWrapping="Wrap" Text="10" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxSnap_TextChanged"/>
+            <Button x:Name="buttonImport" Content="Import From Code" Margin="10,0,10.4,10.4" Height="19" VerticalAlignment="Bottom" Click="buttonImport_Click"/>
+            <Button x:Name="buttonDeleteAll" Content="Delete All Shapes" Margin="10,0,10.4,34.4" Height="19" VerticalAlignment="Bottom" Click="buttonDeleteAll_Click"/>
         </Grid>
         <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
         <Grid x:Name="viewGrid" Grid.Column="2" Margin="0">

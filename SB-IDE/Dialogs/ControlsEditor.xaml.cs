@@ -115,6 +115,8 @@ namespace SB_IDE.Dialogs
             currentElt.Measure(new Size(double.MaxValue, double.MaxValue));
             startWidth = currentElt.DesiredSize.Width;
             startHeight = currentElt.DesiredSize.Height;
+            currentElt.Width = startWidth;
+            currentElt.Height = startHeight;
         }
 
         private void UpdateView()
@@ -129,7 +131,7 @@ namespace SB_IDE.Dialogs
                     rotateTransform.Angle = double.Parse(currentShape.modifiers["Angle"]);
                     currentElt.RenderTransform = new TransformGroup();
                     ((TransformGroup)currentElt.RenderTransform).Children.Add(rotateTransform);
-                    currentElt.Opacity = double.Parse(currentShape.modifiers["Opacity"]);
+                    currentElt.Opacity = double.Parse(currentShape.modifiers["Opacity"]) / 100.0;
                 }
                 catch
                 {
@@ -148,6 +150,18 @@ namespace SB_IDE.Dialogs
             if (null == currentShape) return;
 
             canvas.Children.Remove(currentShape.grid);
+
+            currentElt = null;
+            currentShape = null;
+            lastShape = null;
+            mode = "SEL";
+            UpdateView();
+        }
+
+        private void DeleteAll()
+        {
+            canvas.Children.Clear();
+            names.Clear();
 
             currentElt = null;
             currentShape = null;
@@ -197,6 +211,14 @@ namespace SB_IDE.Dialogs
                 case "TL":
                     if (startWidth - change.X > 0 && startHeight - change.Y > 0)
                     {
+                        if (currentElt.GetType() == typeof(Polygon))
+                        {
+                            UpdatePolygon(-change.X, -change.Y);
+                        }
+                        else if (currentElt.GetType() == typeof(Line))
+                        {
+                            UpdateLine(-change.X, -change.Y);
+                        }
                         currentElt.Width = startWidth - change.X;
                         currentElt.Height = startHeight - change.Y;
                         Canvas.SetLeft(currentShape.shape, startLocal.X + change.X);
@@ -206,6 +228,14 @@ namespace SB_IDE.Dialogs
                 case "TR":
                     if (startWidth + change.X > 0 && startHeight - change.Y > 0)
                     {
+                        if (currentElt.GetType() == typeof(Polygon))
+                        {
+                            UpdatePolygon(change.X, -change.Y);
+                        }
+                        else if (currentElt.GetType() == typeof(Line))
+                        {
+                            UpdateLine(change.X, -change.Y);
+                        }
                         currentElt.Width = startWidth + change.X;
                         currentElt.Height = startHeight - change.Y;
                         Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y);
@@ -214,6 +244,14 @@ namespace SB_IDE.Dialogs
                 case "BL":
                     if (startWidth - change.X > 0 && startHeight + change.Y > 0)
                     {
+                        if (currentElt.GetType() == typeof(Polygon))
+                        {
+                            UpdatePolygon(-change.X, change.Y);
+                        }
+                        else if (currentElt.GetType() == typeof(Line))
+                        {
+                            UpdateLine(-change.X, change.Y);
+                        }
                         currentElt.Width = startWidth - change.X;
                         currentElt.Height = startHeight + change.Y;
                         Canvas.SetLeft(currentShape.shape, startLocal.X + change.X);
@@ -222,6 +260,14 @@ namespace SB_IDE.Dialogs
                 case "BR":
                     if (startWidth + change.X > 0 && startHeight + change.Y > 0)
                     {
+                        if (currentElt.GetType() == typeof(Polygon))
+                        {
+                            UpdatePolygon(change.X, change.Y);
+                        }
+                        else if (currentElt.GetType() == typeof(Line))
+                        {
+                            UpdateLine(change.X, change.Y);
+                        }
                         currentElt.Width = startWidth + change.X;
                         currentElt.Height = startHeight + change.Y;
                     }
@@ -229,6 +275,14 @@ namespace SB_IDE.Dialogs
                 case "L":
                     if (startWidth - change.X > 0)
                     {
+                        if (currentElt.GetType() == typeof(Polygon))
+                        {
+                            UpdatePolygon(-change.X, 0);
+                        }
+                        else if (currentElt.GetType() == typeof(Line))
+                        {
+                            UpdateLine(-change.X, 0);
+                        }
                         currentElt.Width = Math.Max(0, startWidth - change.X);
                         Canvas.SetLeft(currentShape.shape, startLocal.X + change.X);
                     }
@@ -236,12 +290,28 @@ namespace SB_IDE.Dialogs
                 case "R":
                     if (startWidth + change.X > 0)
                     {
+                        if (currentElt.GetType() == typeof(Polygon))
+                        {
+                            UpdatePolygon(change.X, 0);
+                        }
+                        else if (currentElt.GetType() == typeof(Line))
+                        {
+                            UpdateLine(change.X, 0);
+                        }
                         currentElt.Width = Math.Max(0, startWidth + change.X);
                     }
                     break;
                 case "T":
                     if (startHeight - change.Y > 0)
                     {
+                        if (currentElt.GetType() == typeof(Polygon))
+                        {
+                            UpdatePolygon(0, -change.Y);
+                        }
+                        else if (currentElt.GetType() == typeof(Line))
+                        {
+                            UpdateLine(0, -change.Y);
+                        }
                         currentElt.Height = Math.Max(0, startHeight - change.Y);
                         Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y);
                     }
@@ -249,6 +319,14 @@ namespace SB_IDE.Dialogs
                 case "B":
                     if (startHeight + change.Y > 0)
                     {
+                        if (currentElt.GetType() == typeof(Polygon))
+                        {
+                            UpdatePolygon(0, change.Y);
+                        }
+                        else if (currentElt.GetType() == typeof(Line))
+                        {
+                            UpdateLine(0, change.Y);
+                        }
                         currentElt.Height = Math.Max(0, startHeight + change.Y);
                     }
                     break;
@@ -257,6 +335,28 @@ namespace SB_IDE.Dialogs
                     Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y);
                     break;
             }
+        }
+
+        private void UpdatePolygon(double changeX, double changeY)
+        {
+            Polygon polygon = (Polygon)currentElt;
+            double scaleX = (startWidth + changeX) / currentElt.Width;
+            double scaleY = (startHeight + changeY) / currentElt.Height;
+            for (int i = 0; i < polygon.Points.Count; i++)
+            {
+                polygon.Points[i] = new Point(polygon.Points[i].X * scaleX, polygon.Points[i].Y * scaleY);
+            }
+        }
+
+        private void UpdateLine(double changeX, double changeY)
+        {
+            Line line = (Line)currentElt;
+            double scaleX = (startWidth + changeX) / currentElt.Width;
+            double scaleY = (startHeight + changeY) / currentElt.Height;
+            line.X1 *= scaleX;
+            line.Y1 *= scaleY;
+            line.X2 *= scaleX;
+            line.Y2 *= scaleY;
         }
 
         private Point Snap(Point point)
@@ -430,7 +530,7 @@ namespace SB_IDE.Dialogs
                     currentShape.modifiers["Left"] = (point.X + Shape.HandleShort).ToString();
                     currentShape.modifiers["Top"] = (point.Y + Shape.HandleShort).ToString();
                     if (!currentShape.modifiers.ContainsKey("Angle")) currentShape.modifiers["Angle"] = "0";
-                    if (!currentShape.modifiers.ContainsKey("Opacity")) currentShape.modifiers["Opacity"] = "1";
+                    if (!currentShape.modifiers.ContainsKey("Opacity")) currentShape.modifiers["Opacity"] = "100";
 
                     foreach (KeyValuePair<string, string> kvp in currentShape.modifiers)
                     {
@@ -487,7 +587,7 @@ namespace SB_IDE.Dialogs
                                 }
                                 sbDocument.TextArea.Text += obj.Name + " = Shapes.AddRectangle(" + obj.Width.ToString() + "," + obj.Height.ToString() + ")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + shape.modifiers["Left"] + "," + shape.modifiers["Top"] + ")\n";
-                                if (shape.modifiers["Opacity"] != "1") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + shape.modifiers["Angle"] + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
@@ -511,7 +611,7 @@ namespace SB_IDE.Dialogs
                                 }
                                 sbDocument.TextArea.Text += obj.Name + " = Shapes.AddEllipse(" + obj.Width.ToString() + "," + obj.Height.ToString() + ")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + shape.modifiers["Left"] + "," + shape.modifiers["Top"] + ")\n";
-                                if (shape.modifiers["Opacity"] != "1") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + shape.modifiers["Angle"] + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
@@ -538,7 +638,7 @@ namespace SB_IDE.Dialogs
                                     sbDocument.TextArea.Text += obj.Name + " = Shapes.AddTriangle(" + obj.Points[0].X.ToString() + "," + obj.Points[0].Y.ToString() + "," + obj.Points[1].X.ToString() + "," + obj.Points[1].Y.ToString() + "," + obj.Points[2].X.ToString() + "," + obj.Points[2].Y.ToString() + ")\n";
                                 }
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + shape.modifiers["Left"] + "," + shape.modifiers["Top"] + ")\n";
-                                if (shape.modifiers["Opacity"] != "1") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + shape.modifiers["Angle"] + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
@@ -557,7 +657,7 @@ namespace SB_IDE.Dialogs
                                 }
                                 sbDocument.TextArea.Text += obj.Name + " = Shapes.AddLine(" + obj.X1.ToString() + "," + obj.Y1.ToString() + "," + obj.X2.ToString() + "," + obj.Y2.ToString() + ")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + shape.modifiers["Left"] + "," + shape.modifiers["Top"] + ")\n";
-                                if (shape.modifiers["Opacity"] != "1") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + shape.modifiers["Angle"] + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
@@ -592,7 +692,7 @@ namespace SB_IDE.Dialogs
                                 sbDocument.TextArea.Text += obj.Name + " = Shapes.AddText(\"" + obj.Text + "\")\n";
                                 sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + shape.modifiers["Width"] + "," + shape.modifiers["Height"] + ")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + shape.modifiers["Left"] + "," + shape.modifiers["Top"] + ")\n";
-                                if (shape.modifiers["Opacity"] != "1") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + shape.modifiers["Angle"] + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
@@ -602,7 +702,7 @@ namespace SB_IDE.Dialogs
                                 sbDocument.TextArea.Text += obj.Name + " = Shapes.AddImage(\"" + obj.Source.ToString() + "\")\n";
                                 sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + shape.modifiers["Width"] + "," + shape.modifiers["Height"] + ")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + shape.modifiers["Left"] + "," + shape.modifiers["Top"] + ")\n";
-                                if (shape.modifiers["Opacity"] != "1") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + shape.modifiers["Angle"] + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
@@ -636,7 +736,7 @@ namespace SB_IDE.Dialogs
                                 }
                                 sbDocument.TextArea.Text += obj.Name + " = Controls.AddButton(\"" + obj.Content + "\"," + shape.modifiers["Left"] + "," + shape.modifiers["Top"] + ")\n";
                                 sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + shape.modifiers["Width"] + "," + shape.modifiers["Height"] + ")\n";
-                                if (shape.modifiers["Opacity"] != "1") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + shape.modifiers["Angle"] + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
@@ -678,7 +778,7 @@ namespace SB_IDE.Dialogs
                                 }
                                 sbDocument.TextArea.Text += "Controls.SetTextBoxText(" + obj.Name + ",\"" + obj.Text + "\")\n";
                                 sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + shape.modifiers["Width"] + "," + shape.modifiers["Height"] + ")\n";
-                                if (shape.modifiers["Opacity"] != "1") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + shape.modifiers["Opacity"] + ")\n";
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + shape.modifiers["Angle"] + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
@@ -691,6 +791,319 @@ namespace SB_IDE.Dialogs
             sbDocument.Lexer.Format();
         }
 
+        private void ReadCode()
+        {
+            try
+            {
+                Brush _brush = brush;
+                Pen _pen = pen;
+                FontFamily _fontFamily = fontFamily;
+                FontStyle _fontStyle = fontStyle;
+                double _fontSize = fontSize;
+                FontWeight _fontWeight = fontWeight;
+
+                FrameworkElement elt = null;
+                Shape shape = null;
+                string name;
+                double[] value = new double[10];
+
+                foreach (ScintillaNET.Line line in sbDocument.TextArea.Lines)
+                {
+                    string code = line.Text.ToLower().Trim();
+                    code = code.Replace(" ", "");
+                    if (code.Contains("shapes.addrectangle"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("Rectangle");
+                        elt = new Rectangle()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                            Fill = _brush,
+                            Stroke = _pen.Brush,
+                            StrokeThickness = _pen.Thickness,
+                        };
+                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                    }
+                    else if (code.Contains("shapes.addellipse"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("Ellipse");
+                        elt = new Ellipse()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                            Fill = _brush,
+                            Stroke = _pen.Brush,
+                            StrokeThickness = _pen.Thickness,
+                        };
+                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                    }
+                    else if (code.Contains("shapes.addtriangle"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        double.TryParse(parts[3], out value[2]);
+                        double.TryParse(parts[4], out value[3]);
+                        double.TryParse(parts[5], out value[4]);
+                        double.TryParse(parts[6], out value[5]);
+                        name = GetName("Triangle");
+                        elt = new Polygon()
+                        {
+                            Name = name,
+                            Points = new PointCollection() { new Point(value[0], value[1]), new Point(value[2], value[3]), new Point(value[4], value[5]) },
+                            Fill = brush,
+                            Stroke = pen.Brush,
+                            StrokeThickness = pen.Thickness,
+                        };
+                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                    }
+                    else if (code.Contains("shapes.addline"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        double.TryParse(parts[3], out value[2]);
+                        double.TryParse(parts[4], out value[3]);
+                        name = GetName("Line");
+                        elt = new Line()
+                        {
+                            Name = name,
+                            X1 = value[0],
+                            Y1 = value[1],
+                            X2 = value[2],
+                            Y2 = value[3],
+                            Stroke = _pen.Brush,
+                            StrokeThickness = _pen.Thickness,
+                        };
+                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                    }
+                    else if (code.Contains("shapes.addtext"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        name = GetName("Text");
+                        elt = new TextBlock()
+                        {
+                            Name = name,
+                            Text = parts[1].Replace("\"", ""),
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
+                        };
+                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                    }
+                    else if (code.Contains("shapes.addimage"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        name = GetName("Image");
+                        ImageSource bm;
+                        try
+                        {
+                            bm = new BitmapImage(new Uri(parts[1]));
+                        }
+                        catch
+                        {
+                            bm = MainWindow.ImageSourceFromBitmap(Properties.Resources.No_image);
+                        }
+                        elt = new Image()
+                        {
+                            Name = name,
+                            Width = bm.Width,
+                            Height = bm.Height,
+                            Source = bm,
+                            Stretch = Stretch.Fill,
+                        };
+                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                    }
+                    else if (code.Contains("controls.addbutton"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        name = GetName("Button");
+                        elt = new Button()
+                        {
+                            Name = name,
+                            Content = parts[1].Replace("\"", ""),
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
+                            Padding = new Thickness(4.0),
+                        };
+                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                    }
+                    else if (code.Contains("controls.addtextbox"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        name = GetName("TextBox");
+                        elt = new TextBox()
+                        {
+                            Name = name,
+                            Width = 160,
+                            Text = parts[1].Replace("\"", ""),
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
+                            Padding = new Thickness(2.0),
+                        };
+                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                    }
+                    else if (code.Contains("controls.addmultilinetextbox"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        name = GetName("MultiLineTextBox");
+                        elt = new TextBox()
+                        {
+                            Name = name,
+                            Width = 200,
+                            Height = 80,
+                            Text = parts[1].Replace("\"", ""),
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
+                            Padding = new Thickness(2.0),
+                            AcceptsReturn = true,
+                            HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
+                            VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                        };
+                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                        Canvas.SetLeft(shape.shape, -Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, -Shape.HandleShort);
+                    }
+                    else if (code.Contains("graphicswindow.brushcolor"))
+                    {
+                        string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                        _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(parts[1]));
+                    }
+                    else if (code.Contains("graphicswindow.pencolor"))
+                    {
+                        string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                        _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(parts[1]));
+                    }
+                    else if (code.Contains("graphicswindow.penwidth"))
+                    {
+                        string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        _pen.Thickness = value[0];
+                    }
+                    else if (code.Contains("graphicswindow.fontname"))
+                    {
+                        string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                        _fontFamily = new FontFamily(parts[1]);
+                    }
+                    else if (code.Contains("graphicswindow.fontitalic"))
+                    {
+                        string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                        _fontStyle = parts[1] == "true" ? FontStyles.Italic : FontStyles.Normal;
+                    }
+                    else if (code.Contains("graphicswindow.fontbold"))
+                    {
+                        string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                        _fontWeight = parts[1] == "true" ? FontWeights.Bold : FontWeights.Normal;
+                    }
+                    else if (code.Contains("graphicswindow.fontsize"))
+                    {
+                        string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        _fontSize = value[0];
+                    }
+                    else if (code.Contains("shapes.move"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        shape.modifiers["Left"] = parts[2];
+                        shape.modifiers["Top"] = parts[3];
+                        Canvas.SetLeft(shape.shape, double.Parse(parts[2]) - Shape.HandleShort);
+                        Canvas.SetTop(shape.shape, double.Parse(parts[3]) - Shape.HandleShort);
+                    }
+                    else if (code.Contains("controls.setsize"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        shape.modifiers["Width"] = parts[2];
+                        shape.modifiers["Height"] = parts[3];
+                        shape.elt.Width = double.Parse(parts[2]);
+                        shape.elt.Height = double.Parse(parts[3]);
+                    }
+                    else if (code.Contains("shapes.setopacity"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        shape.modifiers["Opacity"] = parts[2];
+                        shape.elt.Opacity = double.Parse(parts[2]) / 100.0;
+                    }
+                    else if (code.Contains("shapes.rotate"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        shape.modifiers["Angle"] = parts[2];
+                        RotateTransform rotateTransform = new RotateTransform();
+                        shape.elt.Measure(new Size(double.MaxValue, double.MaxValue));
+                        rotateTransform.CenterX = shape.elt.DesiredSize.Width / 2.0;
+                        rotateTransform.CenterY = shape.elt.DesiredSize.Height / 2.0;
+                        rotateTransform.Angle = double.Parse(parts[2]);
+                        shape.elt.RenderTransform = new TransformGroup();
+                        ((TransformGroup)shape.elt.RenderTransform).Children.Add(rotateTransform);
+                    }
+                    if (null != shape)
+                    {
+                        if (!shape.modifiers.ContainsKey("Left")) shape.modifiers["Left"] = "0";
+                        if (!shape.modifiers.ContainsKey("Top")) shape.modifiers["Top"] = "0";
+                        if (!shape.modifiers.ContainsKey("Angle")) shape.modifiers["Angle"] = "0";
+                        if (!shape.modifiers.ContainsKey("Opacity")) shape.modifiers["Opacity"] = "100";
+                    }
+                }
+                canvas.UpdateLayout();
+            }
+            catch
+            {
+
+            }
+        }
+
         private class Shape
         {
             public static int HandleShort = 5;
@@ -701,14 +1114,14 @@ namespace SB_IDE.Dialogs
             public Dictionary<string, string> modifiers = new Dictionary<string, string>();
 
             private int handleLong = 2 * HandleShort;
-            private Rectangle handleTL;
-            private Rectangle handleTR;
-            private Rectangle handleBL;
-            private Rectangle handleBR;
-            private Rectangle handleL;
-            private Rectangle handleR;
-            private Rectangle handleT;
-            private Rectangle handleB;
+            private Rectangle handleTL = null;
+            private Rectangle handleTR = null;
+            private Rectangle handleBL = null;
+            private Rectangle handleBR = null;
+            private Rectangle handleL = null;
+            private Rectangle handleR = null;
+            private Rectangle handleT = null;
+            private Rectangle handleB = null;
 
             public Shape(FrameworkElement elt)
             {
@@ -775,14 +1188,14 @@ namespace SB_IDE.Dialogs
 
             public void ShowHandles(bool bSet)
             {
-                handleTL.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
-                handleTR.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
-                handleBL.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
-                handleBR.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
-                handleL.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
-                handleR.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
-                handleT.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
-                handleB.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+                if (null != handleTL) handleTL.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+                if (null != handleTR) handleTR.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+                if (null != handleBL) handleBL.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+                if (null != handleBR) handleBR.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+                if (null != handleL) handleL.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+                if (null != handleR) handleR.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+                if (null != handleT) handleT.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+                if (null != handleB) handleB.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
             }
 
             private Rectangle GetHandle(int width, int height, string name)
@@ -899,7 +1312,7 @@ namespace SB_IDE.Dialogs
                         X1 = 0,
                         Y1 = 0,
                         X2 = 100,
-                        Y2 = 0,
+                        Y2 = 100,
                         Stroke = pen.Brush,
                         StrokeThickness = pen.Thickness,
                     };
@@ -908,7 +1321,7 @@ namespace SB_IDE.Dialogs
                     elt = new TextBlock()
                     {
                         Name = name,
-                        Text = "Text",
+                        Text = label,
                         Foreground = brush,
                         FontFamily = fontFamily,
                         FontStyle = fontStyle,
@@ -931,7 +1344,7 @@ namespace SB_IDE.Dialogs
                     elt = new Button()
                     {
                         Name = name,
-                        Content = "Button",
+                        Content = label,
                         Foreground = brush,
                         FontFamily = fontFamily,
                         FontStyle = fontStyle,
@@ -945,7 +1358,7 @@ namespace SB_IDE.Dialogs
                     {
                         Name = name,
                         Width = 160,
-                        Text = "Text",
+                        Text = label,
                         Foreground = brush,
                         FontFamily = fontFamily,
                         FontStyle = fontStyle,
@@ -960,7 +1373,7 @@ namespace SB_IDE.Dialogs
                         Name = name,
                         Width = 200,
                         Height = 80,
-                        Text = "Text",
+                        Text = label,
                         Foreground = brush,
                         FontFamily = fontFamily,
                         FontStyle = fontStyle,
@@ -1241,7 +1654,7 @@ namespace SB_IDE.Dialogs
                         break;
                     case "Opacity":
                         currentShape.modifiers["Opacity"] = tb.Text;
-                        currentElt.Opacity = double.Parse(tb.Text);
+                        currentElt.Opacity = double.Parse(tb.Text) / 100.0;
                         break;
                 }
                 canvas.UpdateLayout();
@@ -1269,6 +1682,16 @@ namespace SB_IDE.Dialogs
             {
 
             }
+        }
+
+        private void buttonImport_Click(object sender, RoutedEventArgs e)
+        {
+            ReadCode();
+        }
+
+        private void buttonDeleteAll_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteAll();
         }
     }
 }
