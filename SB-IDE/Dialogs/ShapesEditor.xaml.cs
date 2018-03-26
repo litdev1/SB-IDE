@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms.Integration;
@@ -25,6 +27,7 @@ namespace SB_IDE.Dialogs
         private DrawingGroup drawingGroup;
         private List<PropertyData> properties;
         private List<PropertyData> modifiers;
+        private ContextMenu contextMenu;
 
         private Shape currentShape = null;
         private Shape lastShape = null;
@@ -69,7 +72,8 @@ namespace SB_IDE.Dialogs
             canvas.Width = double.Parse(textBoxWidth.Text);
             canvas.Height = double.Parse(textBoxHeight.Text);
             canvas.MouseMove += new MouseEventHandler(canvasMouseMove);
-            canvas.PreviewMouseUp += new MouseButtonEventHandler(canvasPreviewMouseUp);
+            canvas.PreviewMouseLeftButtonUp += new MouseButtonEventHandler(canvasPreviewLeftMouseLeftButtonUp);
+            canvas.PreviewMouseRightButtonDown += new MouseButtonEventHandler(canvasPreviewMouseRightButtonDown);
             names = new List<string>();
             background = canvas.Background;
             brush = Brushes.SlateBlue;
@@ -101,6 +105,9 @@ namespace SB_IDE.Dialogs
             panel.Contains(sbDocument.TextArea);
             host.Child = sbDocument.TextArea;
             codeGrid.Children.Add(host);
+
+            contextMenu = new ContextMenu();
+            canvas.ContextMenu = contextMenu;
 
             Display();
         }
@@ -171,7 +178,7 @@ namespace SB_IDE.Dialogs
             UpdateView();
         }
 
-        private void eltPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void eltPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (null != lastShape) lastShape.ShowHandles(false);
             currentElt = (FrameworkElement)sender;
@@ -190,7 +197,7 @@ namespace SB_IDE.Dialogs
             UpdateView();
         }
 
-        private void canvasPreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void canvasPreviewLeftMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (null == currentShape) return;
 
@@ -201,10 +208,47 @@ namespace SB_IDE.Dialogs
             UpdateView();
         }
 
+        private void canvasPreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            contextMenu.Items.Clear();
+            MenuItem itemShape = new MenuItem();
+            contextMenu.Items.Add(itemShape);
+            itemShape.Header = "Select Shape";
+            MenuItem item;
+            foreach (FrameworkElement elt in canvas.Children)
+            {
+                if (elt.GetType() == typeof(Grid))
+                {
+                    Grid shape = (Grid)elt;
+                    item = new MenuItem();
+                    itemShape.Items.Add(item);
+                    item.Header = ((FrameworkElement)shape.Children[0]).Name;
+                    item.Click += new RoutedEventHandler(SelectShapeClick);
+                    item.Tag = shape.Children[0];
+                }
+            }
+        }
+
+        private void SelectShapeClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MenuItem item = (MenuItem)sender;
+                FrameworkElement elt = (FrameworkElement)item.Tag;
+                mode = "SEL";
+                eltPreviewMouseLeftButtonDown(elt, null);
+            }
+            catch
+            {
+
+            }
+        }
+
         private void canvasMouseMove(object sender, MouseEventArgs e)
         {
             if (null == currentShape) return;
             if (mode == "SEL") return;
+            if (e.LeftButton == MouseButtonState.Released) return;
 
             Point position = e.GetPosition(canvas);
             Vector change = Snap(position - startGlobal);
@@ -836,7 +880,7 @@ namespace SB_IDE.Dialogs
                             Stroke = _pen.Brush,
                             StrokeThickness = _pen.Thickness,
                         };
-                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
                     }
@@ -855,7 +899,7 @@ namespace SB_IDE.Dialogs
                             Stroke = _pen.Brush,
                             StrokeThickness = _pen.Thickness,
                         };
-                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
                     }
@@ -877,7 +921,7 @@ namespace SB_IDE.Dialogs
                             Stroke = _pen.Brush,
                             StrokeThickness = _pen.Thickness,
                         };
-                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
                     }
@@ -899,7 +943,7 @@ namespace SB_IDE.Dialogs
                             Stroke = _pen.Brush,
                             StrokeThickness = _pen.Thickness,
                         };
-                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
                     }
@@ -917,7 +961,7 @@ namespace SB_IDE.Dialogs
                             FontSize = _fontSize,
                             FontWeight = _fontWeight,
                         };
-                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
                     }
@@ -942,7 +986,7 @@ namespace SB_IDE.Dialogs
                             Source = bm,
                             Stretch = Stretch.Fill,
                         };
-                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
                     }
@@ -961,7 +1005,7 @@ namespace SB_IDE.Dialogs
                             FontWeight = _fontWeight,
                             Padding = new Thickness(4.0),
                         };
-                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
                         shape.modifiers["Left"] = parts[2];
@@ -983,7 +1027,7 @@ namespace SB_IDE.Dialogs
                             FontWeight = _fontWeight,
                             Padding = new Thickness(2.0),
                         };
-                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
                         shape.modifiers["Left"] = parts[1];
@@ -1009,7 +1053,7 @@ namespace SB_IDE.Dialogs
                             HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
                             VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                         };
-                        elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
                         shape.modifiers["Left"] = parts[1];
@@ -1099,9 +1143,9 @@ namespace SB_IDE.Dialogs
                 }
                 canvas.UpdateLayout();
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Shapes Editor failed to import some shapes.", "SB-IDE", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -1387,13 +1431,13 @@ namespace SB_IDE.Dialogs
                     break;
             }
 
-            elt.PreviewMouseDown += new MouseButtonEventHandler(eltPreviewMouseDown);
+            elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
             Shape shape = new Shape(elt);
             canvas.Children.Add(shape.shape);
             Canvas.SetLeft(shape.shape, 100 - Shape.HandleShort);
             Canvas.SetTop(shape.shape, 100 - Shape.HandleShort);
 
-            eltPreviewMouseDown(elt, null);
+            eltPreviewMouseLeftButtonDown(elt, null);
         }
 
         private void dataGridProperties_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -1703,6 +1747,28 @@ namespace SB_IDE.Dialogs
             catch
             {
 
+            }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                for (int i = 0; i < canvas.Children.Count; i++)
+                {
+                    FrameworkElement child = (FrameworkElement)canvas.Children[i];
+                    if (child.GetType() == typeof(Grid))
+                    {
+                        Grid grid = (Grid)child;
+                        if (grid.Children.Count > 0 && grid.Children[0].IsMouseDirectlyOver)
+                        {
+                            FrameworkElement elt = (FrameworkElement)grid.Children[0];
+                            eltPreviewMouseLeftButtonDown(elt, null);
+                            Delete();
+                            break;
+                        }
+                    }
+                }
             }
         }
     }
