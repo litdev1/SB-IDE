@@ -150,7 +150,7 @@ namespace SB_IDE.Dialogs
         {
             if (null == currentShape) return;
 
-            canvas.Children.Remove(currentShape.grid);
+            canvas.Children.Remove(currentShape.shape);
 
             currentElt = null;
             currentShape = null;
@@ -340,8 +340,8 @@ namespace SB_IDE.Dialogs
             }
             currentShape.modifiers["Width"] = (currentElt.Width).ToString();
             currentShape.modifiers["Height"] = (currentElt.Height).ToString();
-            currentShape.modifiers["Left"] = (Canvas.GetLeft(currentShape.shape) - Shape.HandleShort).ToString();
-            currentShape.modifiers["Top"] = (Canvas.GetTop(currentShape.shape) - Shape.HandleShort).ToString();
+            currentShape.modifiers["Left"] = (Canvas.GetLeft(currentShape.shape) + Shape.HandleShort).ToString();
+            currentShape.modifiers["Top"] = (Canvas.GetTop(currentShape.shape) + Shape.HandleShort).ToString();
             canvas.UpdateLayout();
         }
 
@@ -1109,7 +1109,6 @@ namespace SB_IDE.Dialogs
         {
             public static int HandleShort = 5;
 
-            public Grid grid;
             public FrameworkElement shape;
             public FrameworkElement elt;
             public Dictionary<string, string> modifiers = new Dictionary<string, string>();
@@ -1131,7 +1130,7 @@ namespace SB_IDE.Dialogs
                 elt.MouseDown += new MouseButtonEventHandler(OnMouseDown);
                 this.elt = elt;
 
-                grid = new Grid();
+                Grid grid = new Grid();
                 grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(HandleShort) });
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                 grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(HandleShort) });
