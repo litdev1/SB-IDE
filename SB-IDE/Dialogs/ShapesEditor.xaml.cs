@@ -211,21 +211,63 @@ namespace SB_IDE.Dialogs
         private void canvasPreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             contextMenu.Items.Clear();
+
             MenuItem itemShape = new MenuItem();
-            contextMenu.Items.Add(itemShape);
             itemShape.Header = "Select Shape";
+            contextMenu.Items.Add(itemShape);
+
+            MenuItem itemImage = new MenuItem();
+            itemImage.Header = "Set Images";
+            bool imageSet = false;
+
             MenuItem item;
-            foreach (FrameworkElement elt in canvas.Children)
+            foreach (FrameworkElement child in canvas.Children)
             {
-                if (elt.GetType() == typeof(Grid))
+                if (child.GetType() == typeof(Grid))
                 {
-                    Grid shape = (Grid)elt;
+                    Grid shape = (Grid)child;
                     item = new MenuItem();
                     itemShape.Items.Add(item);
-                    item.Header = ((FrameworkElement)shape.Children[0]).Name;
+                    FrameworkElement elt = (FrameworkElement)shape.Children[0];
+                    item.Header = elt.Name;
                     item.Click += new RoutedEventHandler(SelectShapeClick);
-                    item.Tag = shape.Children[0];
+                    item.Tag = elt;
+
+                    if (elt.GetType() == typeof(Image))
+                    {
+                        if (!imageSet)
+                        {
+                            contextMenu.Items.Add(itemImage);
+                            imageSet = true;
+                        }
+                        item = new MenuItem();
+                        itemImage.Items.Add(item);
+                        item.Header = elt.Name;
+                        item.Click += new RoutedEventHandler(SetImageClick);
+                        item.Tag = elt;
+                    }
                 }
+            }
+        }
+
+        private void SetImageClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MenuItem item = (MenuItem)sender;
+                Image image = (Image)item.Tag;
+                System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+                openFileDialog.Filter = "Image files (*.png)|*.png|(*.jpg)|*.jpg|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+                if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    image.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -984,7 +1026,7 @@ namespace SB_IDE.Dialogs
                             Width = bm.Width,
                             Height = bm.Height,
                             Source = bm,
-                            Stretch = Stretch.Fill,
+                            //Stretch = Stretch.Fill,
                         };
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
@@ -1381,7 +1423,7 @@ namespace SB_IDE.Dialogs
                         Width = bm.Width,
                         Height = bm.Height,
                         Source = bm,
-                        Stretch = Stretch.Fill,
+                        //Stretch = Stretch.Fill,
                     };
                     break;
                 case "Button":
