@@ -28,6 +28,7 @@ namespace SB_IDE.Dialogs
         private List<PropertyData> properties;
         private List<PropertyData> modifiers;
         private ContextMenu contextMenu;
+        private ScaleTransform scaleTransform;
 
         private Shape currentShape = null;
         private Shape lastShape = null;
@@ -49,6 +50,7 @@ namespace SB_IDE.Dialogs
 
         private double fixDec = 0.01;
         private int snap = 10;
+        private double scale = 1;
         private string mode = "SEL";
 
         public ShapesEditor(MainWindow mainWindow)
@@ -74,6 +76,13 @@ namespace SB_IDE.Dialogs
             canvas.MouseMove += new MouseEventHandler(canvasMouseMove);
             canvas.PreviewMouseLeftButtonUp += new MouseButtonEventHandler(canvasPreviewLeftMouseLeftButtonUp);
             canvas.PreviewMouseRightButtonDown += new MouseButtonEventHandler(canvasPreviewMouseRightButtonDown);
+
+            scaleTransform = new ScaleTransform();
+            scaleTransform.CenterX = 0;
+            scaleTransform.CenterY = 0;
+            canvas.RenderTransform = new TransformGroup();
+            ((TransformGroup)canvas.RenderTransform).Children.Add(scaleTransform);
+
             names = new List<string>();
             background = canvas.Background;
             brush = Brushes.SlateBlue;
@@ -480,11 +489,14 @@ namespace SB_IDE.Dialogs
                 {
                     for (int j = snap; j < canvas.Height; j += snap)
                     {
-                        dc.DrawRectangle(null, new Pen(new SolidColorBrush(color), 0.5), new Rect(i, j, 0.5, 0.5));
+                        dc.DrawRectangle(null, new Pen(new SolidColorBrush(color), 0.5), new Rect(i * scale, j * scale, 0.5, 0.5));
                     }
                 }
             }
             dc.Close();
+
+            scaleTransform.ScaleX = scale;
+            scaleTransform.ScaleY = scale;
         }
 
         private string GetName(string label)

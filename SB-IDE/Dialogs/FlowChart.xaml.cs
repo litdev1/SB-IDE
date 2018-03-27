@@ -69,10 +69,8 @@ namespace SB_IDE.Dialogs
                 foreground = MainWindow.IntToColor(MainWindow.CHART_BACK_COLOR);
             }
 
-            canvas.RenderTransform = new TransformGroup();
             scaleTransform.CenterX = 0;
             scaleTransform.CenterY = 0;
-            canvas.RenderTransform = new TransformGroup();
             canvas.RenderTransform = new TransformGroup();
             ((TransformGroup)canvas.RenderTransform).Children.Add(scaleTransform);
             grid.Background = new SolidColorBrush(background);
