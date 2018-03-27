@@ -1827,11 +1827,13 @@ namespace SB_IDE.Dialogs
         {
             try
             {
-                scale = System.Math.Pow(4.0, sliderScale.Value / 10.0);
+                scale = Math.Pow(4.0, sliderScale.Value / 10.0);
                 scaleTransform.ScaleX = scale;
                 scaleTransform.ScaleY = scale;
                 visualGrid.Width = canvas.Width * scale;
                 visualGrid.Height = canvas.Height * scale;
+                scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset * scale);
+                scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset * scale);
             }
             catch
             {
