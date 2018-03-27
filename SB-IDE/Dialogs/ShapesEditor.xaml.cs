@@ -503,77 +503,77 @@ namespace SB_IDE.Dialogs
                 properties.Clear();
                 if (null != currentShape)
                 {
-                    properties.Add(new PropertyData() { Property = "Name", Value = currentElt.Name });
+                    properties.Add(new PropertyData() { Property = "Name", Value = currentElt.Name, Visible = Visibility.Hidden });
                     if (currentElt.GetType() == typeof(Rectangle))
                     {
                         Rectangle shape = (Rectangle)currentElt;
-                        properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill) });
-                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke) });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString() });
+                        properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(Ellipse))
                     {
                         Ellipse shape = (Ellipse)currentElt;
-                        properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill) });
-                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke) });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString() });
+                        properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(Polygon))
                     {
                         Polygon shape = (Polygon)currentElt;
                         for (int i = 0; i < shape.Points.Count; i++)
                         {
-                            properties.Add(new PropertyData() { Property = "X" + (i + 1).ToString(), Value = shape.Points[i].X.ToString() });
-                            properties.Add(new PropertyData() { Property = "Y" + (i + 1).ToString(), Value = shape.Points[i].Y.ToString() });
+                            properties.Add(new PropertyData() { Property = "X" + (i + 1).ToString(), Value = shape.Points[i].X.ToString(), Visible = Visibility.Hidden });
+                            properties.Add(new PropertyData() { Property = "Y" + (i + 1).ToString(), Value = shape.Points[i].Y.ToString(), Visible = Visibility.Hidden });
                         }
-                        properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill) });
-                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke) });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString() });
+                        properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(Line))
                     {
                         Line shape = (Line)currentElt;
-                        properties.Add(new PropertyData() { Property = "X1", Value = shape.X1.ToString() });
-                        properties.Add(new PropertyData() { Property = "Y1", Value = shape.Y1.ToString() });
-                        properties.Add(new PropertyData() { Property = "X2", Value = shape.X2.ToString() });
-                        properties.Add(new PropertyData() { Property = "Y2", Value = shape.Y2.ToString() });
-                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke) });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString() });
+                        properties.Add(new PropertyData() { Property = "X1", Value = shape.X1.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Y1", Value = shape.Y1.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "X2", Value = shape.X2.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Y2", Value = shape.Y2.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(TextBlock))
                     {
                         TextBlock shape = (TextBlock)currentElt;
-                        properties.Add(new PropertyData() { Property = "Text", Value = shape.Text });
-                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground) });
-                        properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString() });
-                        properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString() });
-                        properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString() });
-                        properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString() });
+                        properties.Add(new PropertyData() { Property = "Text", Value = shape.Text, Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
                     }
                     else if (currentElt.GetType() == typeof(Image))
                     {
                         Image shape = (Image)currentElt;
-                        properties.Add(new PropertyData() { Property = "Source", Value = shape.Source.ToString() });
+                        properties.Add(new PropertyData() { Property = "Source", Value = shape.Source.ToString(), Visible = Visibility.Visible });
                     }
                     else if (currentElt.GetType() == typeof(Button))
                     {
                         Button shape = (Button)currentElt;
-                        properties.Add(new PropertyData() { Property = "Content", Value = shape.Content.ToString() });
-                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground) });
-                        properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString() });
-                        properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString() });
-                        properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString() });
-                        properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString() });
+                        properties.Add(new PropertyData() { Property = "Content", Value = shape.Content.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
                     }
                     else if (currentElt.GetType() == typeof(TextBox))
                     {
                         TextBox shape = (TextBox)currentElt;
-                        properties.Add(new PropertyData() { Property = "Text", Value = shape.Text.ToString() });
-                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground) });
-                        properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString() });
-                        properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString() });
-                        properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString() });
-                        properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString() });
+                        properties.Add(new PropertyData() { Property = "Text", Value = shape.Text.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
                     }
                 }
                 dataGridProperties.Items.Refresh();
@@ -1315,6 +1315,7 @@ namespace SB_IDE.Dialogs
         {
             public string Property { get; set; }
             public string Value { get; set; }
+            public Visibility Visible { get; set; }
         }
 
         private void Window_Deactivated(object sender, EventArgs e)
@@ -1848,7 +1849,8 @@ namespace SB_IDE.Dialogs
                     if (property.Property == "Fill" || property.Property == "Stroke" || property.Property == "Foreground")
                     {
                         System.Windows.Forms.ColorDialog cd = new System.Windows.Forms.ColorDialog();
-                        cd.Color = System.Drawing.Color.FromName(property.Value);
+                        Color color = (Color)ColorConverter.ConvertFromString(property.Value);
+                        cd.Color = System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
                         cd.AnyColor = true;
                         cd.SolidColorOnly = true;
                         cd.FullOpen = true;
@@ -1859,7 +1861,7 @@ namespace SB_IDE.Dialogs
                             dataGridProperties.Items.Refresh();
                         }
                     }
-                    else if (property.Property == "FontFamily" || property.Property == "FontStyle" || property.Property == "FontWeight")
+                    else if (property.Property == "FontFamily" || property.Property == "FontStyle" || property.Property == "FontWeight" || property.Property == "FontSize")
                     {
                         string _fontFamily = fontFamily.FamilyNames.Values.First();
                         string _fontStyle = fontStyle.ToString();

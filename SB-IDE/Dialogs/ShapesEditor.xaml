@@ -86,9 +86,14 @@
                     <DataGridTemplateColumn Header="Set Value" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="dataGridPropertySet" Tag="{Binding}"/>
+                                <Button Content="Set" Click="dataGridPropertySet" Tag="{Binding}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Visibility" Value="{Binding Visible}" />
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
