@@ -1877,7 +1877,7 @@ namespace SB_IDE.Dialogs
                         System.Windows.Forms.FontDialog fd = new System.Windows.Forms.FontDialog();
                         System.Drawing.FontStyle style = System.Drawing.FontStyle.Regular;
                         if (_fontWeight.ToLower() == "bold") style |= System.Drawing.FontStyle.Bold;
-                        if (_fontStyle.ToLower() == "Italic") style |= System.Drawing.FontStyle.Italic;
+                        if (_fontStyle.ToLower() == "italic") style |= System.Drawing.FontStyle.Italic;
                         fd.Font = new System.Drawing.Font(_fontFamily, float.Parse(_fontSize), style);
                         fd.ShowColor = false;
                         fd.ShowEffects = false;
