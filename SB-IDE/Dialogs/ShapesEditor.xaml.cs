@@ -225,10 +225,6 @@ namespace SB_IDE.Dialogs
             itemShape.Header = "Select Shape";
             contextMenu.Items.Add(itemShape);
 
-            MenuItem itemImage = new MenuItem();
-            itemImage.Header = "Set Images";
-            bool imageSet = false;
-
             MenuItem item;
             foreach (FrameworkElement child in canvas.Children)
             {
@@ -241,42 +237,7 @@ namespace SB_IDE.Dialogs
                     item.Header = elt.Name;
                     item.Click += new RoutedEventHandler(SelectShapeClick);
                     item.Tag = elt;
-
-                    if (elt.GetType() == typeof(Image))
-                    {
-                        if (!imageSet)
-                        {
-                            contextMenu.Items.Add(itemImage);
-                            imageSet = true;
-                        }
-                        item = new MenuItem();
-                        itemImage.Items.Add(item);
-                        item.Header = elt.Name;
-                        item.Click += new RoutedEventHandler(SetImageClick);
-                        item.Tag = elt;
-                    }
                 }
-            }
-        }
-
-        private void SetImageClick(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                MenuItem item = (MenuItem)sender;
-                Image image = (Image)item.Tag;
-                System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
-                openFileDialog.Filter = "Image files (*.png)|*.png|(*.jpg)|*.jpg|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 1;
-                openFileDialog.RestoreDirectory = true;
-                if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    image.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                }
-            }
-            catch
-            {
-
             }
         }
 
@@ -504,6 +465,19 @@ namespace SB_IDE.Dialogs
             return names.Last();
         }
 
+        private string GetName(string label, string assign)
+        {
+            int pos = assign.IndexOf("=");
+            if (pos > 0)
+            {
+                assign = assign.Substring(0, pos).Trim();
+                if (names.Contains(assign)) return GetName(assign);
+                names.Add(assign);
+                return assign;
+            }
+            return GetName(label);
+        }
+
         private string ColorName(Brush brush)
         {
             return ColorName(((SolidColorBrush)brush).Color);
@@ -570,7 +544,7 @@ namespace SB_IDE.Dialogs
                     {
                         TextBlock shape = (TextBlock)currentElt;
                         properties.Add(new PropertyData() { Property = "Text", Value = shape.Text });
-                        properties.Add(new PropertyData() { Property = "Foreground", Value = shape.Foreground.ToString() });
+                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground) });
                         properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString() });
                         properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString() });
                         properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString() });
@@ -921,7 +895,7 @@ namespace SB_IDE.Dialogs
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
                         double.TryParse(parts[1], out value[0]);
                         double.TryParse(parts[2], out value[1]);
-                        name = GetName("Rectangle");
+                        name = GetName("Rectangle", parts[0]);
                         elt = new Rectangle()
                         {
                             Name = name,
@@ -940,7 +914,7 @@ namespace SB_IDE.Dialogs
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
                         double.TryParse(parts[1], out value[0]);
                         double.TryParse(parts[2], out value[1]);
-                        name = GetName("Ellipse");
+                        name = GetName("Ellipse", parts[0]);
                         elt = new Ellipse()
                         {
                             Name = name,
@@ -963,7 +937,7 @@ namespace SB_IDE.Dialogs
                         double.TryParse(parts[4], out value[3]);
                         double.TryParse(parts[5], out value[4]);
                         double.TryParse(parts[6], out value[5]);
-                        name = GetName("Triangle");
+                        name = GetName("Triangle", parts[0]);
                         elt = new Polygon()
                         {
                             Name = name,
@@ -983,7 +957,7 @@ namespace SB_IDE.Dialogs
                         double.TryParse(parts[2], out value[1]);
                         double.TryParse(parts[3], out value[2]);
                         double.TryParse(parts[4], out value[3]);
-                        name = GetName("Line");
+                        name = GetName("Line", parts[0]);
                         elt = new Line()
                         {
                             Name = name,
@@ -1001,7 +975,7 @@ namespace SB_IDE.Dialogs
                     else if (codeLower.Contains("shapes.addtext"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        name = GetName("Text");
+                        name = GetName("Text", parts[0]);
                         elt = new TextBlock()
                         {
                             Name = name,
@@ -1019,7 +993,7 @@ namespace SB_IDE.Dialogs
                     else if (codeLower.Contains("shapes.addimage"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        name = GetName("Image");
+                        name = GetName("Image", parts[0]);
                         ImageSource bm;
                         try
                         {
@@ -1044,7 +1018,7 @@ namespace SB_IDE.Dialogs
                     else if (codeLower.Contains("controls.addbutton"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        name = GetName("Button");
+                        name = GetName("Button", parts[0]);
                         elt = new Button()
                         {
                             Name = name,
@@ -1065,7 +1039,7 @@ namespace SB_IDE.Dialogs
                     else if (codeLower.Contains("controls.addtextbox"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        name = GetName("TextBox");
+                        name = GetName("TextBox", parts[0]);
                         elt = new TextBox()
                         {
                             Name = name,
@@ -1087,7 +1061,7 @@ namespace SB_IDE.Dialogs
                     else if (codeLower.Contains("controls.addmultilinetextbox"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        name = GetName("MultiLineTextBox");
+                        name = GetName("MultiLineTextBox", parts[0]);
                         elt = new TextBox()
                         {
                             Name = name,
@@ -1497,23 +1471,34 @@ namespace SB_IDE.Dialogs
             {
                 PropertyData property = (PropertyData)e.Row.Item;
                 TextBox tb = (TextBox)e.EditingElement;
+                UpdateProperty(property, tb.Text);
+            }
+            catch
+            {
 
+            }
+        }
+
+        private void UpdateProperty(PropertyData property, string value)
+        {
+            try
+            {
                 if (currentElt.GetType() == typeof(Rectangle))
                 {
                     Rectangle shape = (Rectangle)currentElt;
                     switch (property.Property)
                     {
                         case "Name":
-                            shape.Name = tb.Text;
+                            shape.Name = value;
                             break;
                         case "Fill":
-                            shape.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "Stroke":
-                            shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "StrokeThickness":
-                            shape.StrokeThickness = double.Parse(tb.Text);
+                            shape.StrokeThickness = double.Parse(value);
                             break;
                     }
                 }
@@ -1523,16 +1508,16 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "Name":
-                            shape.Name = tb.Text;
+                            shape.Name = value;
                             break;
                         case "Fill":
-                            shape.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "Stroke":
-                            shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "StrokeThickness":
-                            shape.StrokeThickness = double.Parse(tb.Text);
+                            shape.StrokeThickness = double.Parse(value);
                             break;
                     }
                 }
@@ -1542,21 +1527,21 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "Name":
-                            shape.Name = tb.Text;
+                            shape.Name = value;
                             break;
                         case "Fill":
-                            shape.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "Stroke":
-                            shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "StrokeThickness":
-                            shape.StrokeThickness = double.Parse(tb.Text);
+                            shape.StrokeThickness = double.Parse(value);
                             break;
                         default:
                             int i = int.Parse(property.Property.Substring(1)) - 1;
-                            if (property.Property.StartsWith("X")) shape.Points[i] = new Point(double.Parse(tb.Text), shape.Points[i].Y);
-                            else if (property.Property.StartsWith("Y")) shape.Points[i] = new Point(shape.Points[i].X, double.Parse(tb.Text));
+                            if (property.Property.StartsWith("X")) shape.Points[i] = new Point(double.Parse(value), shape.Points[i].Y);
+                            else if (property.Property.StartsWith("Y")) shape.Points[i] = new Point(shape.Points[i].X, double.Parse(value));
                             break;
 
                     }
@@ -1567,25 +1552,25 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "Name":
-                            shape.Name = tb.Text;
+                            shape.Name = value;
                             break;
                         case "X1":
-                            shape.X1 = double.Parse(tb.Text);
+                            shape.X1 = double.Parse(value);
                             break;
                         case "Y1":
-                            shape.Y1 = double.Parse(tb.Text);
+                            shape.Y1 = double.Parse(value);
                             break;
                         case "X2":
-                            shape.X2 = double.Parse(tb.Text);
+                            shape.X2 = double.Parse(value);
                             break;
                         case "Y2":
-                            shape.Y2 = double.Parse(tb.Text);
+                            shape.Y2 = double.Parse(value);
                             break;
                         case "Stroke":
-                            shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "StrokeThickness":
-                            shape.StrokeThickness = double.Parse(tb.Text);
+                            shape.StrokeThickness = double.Parse(value);
                             break;
                     }
                 }
@@ -1595,25 +1580,25 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "Name":
-                            shape.Name = tb.Text;
+                            shape.Name = value;
                             break;
                         case "Text":
-                            shape.Text = tb.Text;
+                            shape.Text = value;
                             break;
                         case "Foreground":
-                            shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "FontFamily":
-                            shape.FontFamily = new FontFamily(tb.Text);
+                            shape.FontFamily = new FontFamily(value);
                             break;
                         case "FontStyle":
-                            shape.FontStyle = tb.Text.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
+                            shape.FontStyle = value.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
                             break;
                         case "FontSize":
-                            shape.FontSize = double.Parse(tb.Text);
+                            shape.FontSize = double.Parse(value);
                             break;
                         case "FontWeight":
-                            shape.FontWeight = tb.Text.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
+                            shape.FontWeight = value.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
                             break;
                     }
                 }
@@ -1623,10 +1608,10 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "Name":
-                            shape.Name = tb.Text;
+                            shape.Name = value;
                             break;
                         case "Source":
-                            shape.Source = new BitmapImage(new Uri(tb.Text));
+                            shape.Source = new BitmapImage(new Uri(value));
                             break;
                     }
                 }
@@ -1636,25 +1621,25 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "Name":
-                            shape.Name = tb.Text;
+                            shape.Name = value;
                             break;
                         case "Content":
-                            shape.Content = tb.Text;
+                            shape.Content = value;
                             break;
                         case "Foreground":
-                            shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "FontFamily":
-                            shape.FontFamily = new FontFamily(tb.Text);
+                            shape.FontFamily = new FontFamily(value);
                             break;
                         case "FontStyle":
-                            shape.FontStyle = tb.Text.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
+                            shape.FontStyle = value.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
                             break;
                         case "FontSize":
-                            shape.FontSize = double.Parse(tb.Text);
+                            shape.FontSize = double.Parse(value);
                             break;
                         case "FontWeight":
-                            shape.FontWeight = tb.Text.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
+                            shape.FontWeight = value.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
                             break;
                     }
                 }
@@ -1664,25 +1649,25 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "Name":
-                            shape.Name = tb.Text;
+                            shape.Name = value;
                             break;
                         case "Text":
-                            shape.Text = tb.Text;
+                            shape.Text = value;
                             break;
                         case "Foreground":
-                            shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(tb.Text));
+                            shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "FontFamily":
-                            shape.FontFamily = new FontFamily(tb.Text);
+                            shape.FontFamily = new FontFamily(value);
                             break;
                         case "FontStyle":
-                            shape.FontStyle = tb.Text.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
+                            shape.FontStyle = value.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
                             break;
                         case "FontSize":
-                            shape.FontSize = double.Parse(tb.Text);
+                            shape.FontSize = double.Parse(value);
                             break;
                         case "FontWeight":
-                            shape.FontWeight = tb.Text.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
+                            shape.FontWeight = value.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
                             break;
                     }
                 }
@@ -1701,37 +1686,48 @@ namespace SB_IDE.Dialogs
             {
                 PropertyData property = (PropertyData)e.Row.Item;
                 TextBox tb = (TextBox)e.EditingElement;
+                UpdateModifier(property, tb.Text);
+            }
+            catch
+            {
 
+            }
+        }
+
+        private void UpdateModifier(PropertyData property, string value)
+        {
+            try
+            {
                 switch (property.Property)
                 {
                     case "Width":
-                        currentShape.modifiers["Width"] = tb.Text;
-                        currentElt.Width = double.Parse(tb.Text);
+                        currentShape.modifiers["Width"] = value;
+                        currentElt.Width = double.Parse(value);
                         break;
                     case "Height":
-                        currentShape.modifiers["Height"] = tb.Text;
-                        currentElt.Height = double.Parse(tb.Text);
+                        currentShape.modifiers["Height"] = value;
+                        currentElt.Height = double.Parse(value);
                         break;
                     case "Left":
-                        currentShape.modifiers["Left"] = tb.Text;
-                        Canvas.SetLeft(currentShape.shape, double.Parse(tb.Text) - Shape.HandleShort);
+                        currentShape.modifiers["Left"] = value;
+                        Canvas.SetLeft(currentShape.shape, double.Parse(value) - Shape.HandleShort);
                         break;
                     case "Top":
-                        currentShape.modifiers["Top"] = tb.Text;
-                        Canvas.SetTop(currentShape.shape, double.Parse(tb.Text) - Shape.HandleShort);
+                        currentShape.modifiers["Top"] = value;
+                        Canvas.SetTop(currentShape.shape, double.Parse(value) - Shape.HandleShort);
                         break;
                     case "Angle":
-                        currentShape.modifiers["Angle"] = tb.Text;
+                        currentShape.modifiers["Angle"] = value;
                         RotateTransform rotateTransform = new RotateTransform();
                         rotateTransform.CenterX = currentElt.ActualWidth / 2.0;
                         rotateTransform.CenterY = currentElt.ActualHeight / 2.0;
-                        rotateTransform.Angle = double.Parse(tb.Text);
+                        rotateTransform.Angle = double.Parse(value);
                         currentElt.RenderTransform = new TransformGroup();
                         ((TransformGroup)currentElt.RenderTransform).Children.Add(rotateTransform);
                         break;
                     case "Opacity":
-                        currentShape.modifiers["Opacity"] = tb.Text;
-                        currentElt.Opacity = double.Parse(tb.Text) / 100.0;
+                        currentShape.modifiers["Opacity"] = value;
+                        currentElt.Opacity = double.Parse(value) / 100.0;
                         break;
                 }
                 canvas.UpdateLayout();
@@ -1834,6 +1830,82 @@ namespace SB_IDE.Dialogs
                 visualGrid.Height = canvas.Height * scale;
                 scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset * scale);
                 scrollViewer.ScrollToVerticalOffset(scrollViewer.VerticalOffset * scale);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void dataGridPropertySet(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            try
+            {
+                PropertyData property = (PropertyData)button.Tag;
+                if (null != property)
+                {
+                    if (property.Property == "Fill" || property.Property == "Stroke" || property.Property == "Foreground")
+                    {
+                        System.Windows.Forms.ColorDialog cd = new System.Windows.Forms.ColorDialog();
+                        cd.Color = System.Drawing.Color.FromName(property.Value);
+                        cd.AnyColor = true;
+                        cd.SolidColorOnly = true;
+                        cd.FullOpen = true;
+                        if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            property.Value = ColorName(Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B));
+                            UpdateProperty(property, property.Value);
+                            dataGridProperties.Items.Refresh();
+                        }
+                    }
+                    else if (property.Property == "FontFamily" || property.Property == "FontStyle" || property.Property == "FontWeight")
+                    {
+                        string _fontFamily = fontFamily.FamilyNames.Values.First();
+                        string _fontStyle = fontStyle.ToString();
+                        string _fontWeight = fontWeight.ToString();
+                        string _fontSize = fontSize.ToString();
+                        foreach (PropertyData data in properties)
+                        {
+                            if (data.Property == "FontFamily") _fontFamily = data.Value;
+                            else if (data.Property == "FontStyle") _fontStyle = data.Value;
+                            else if (data.Property == "FontWeight") _fontWeight = data.Value;
+                            else if (data.Property == "FontSize") _fontSize = data.Value;
+                        }
+                        System.Windows.Forms.FontDialog fd = new System.Windows.Forms.FontDialog();
+                        System.Drawing.FontStyle style = System.Drawing.FontStyle.Regular;
+                        if (_fontWeight.ToLower() == "bold") style |= System.Drawing.FontStyle.Bold;
+                        if (_fontStyle.ToLower() == "Italic") style |= System.Drawing.FontStyle.Italic;
+                        fd.Font = new System.Drawing.Font(_fontFamily, float.Parse(_fontSize), style);
+                        fd.ShowColor = false;
+                        fd.ShowEffects = false;
+                        if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            foreach (PropertyData data in properties)
+                            {
+                                if (data.Property == "FontFamily") data.Value = fd.Font.Name;
+                                else if (data.Property == "FontStyle") data.Value = fd.Font.Italic ? "Italic" : "Normal";
+                                else if (data.Property == "FontWeight") data.Value = fd.Font.Bold ? "Bold" : "Normal";
+                                else if (data.Property == "FontSize") data.Value = fd.Font.Size.ToString();
+                                UpdateProperty(data, data.Value);
+                            }
+                            dataGridProperties.Items.Refresh();
+                        }
+                    }
+                    else if (property.Property == "Source")
+                    {
+                        System.Windows.Forms.OpenFileDialog fd = new System.Windows.Forms.OpenFileDialog();
+                        fd.Filter = "Png (*.png)|*.png|Jpj (*.jpg)|*.jpg|All files (*.*)|*.*";
+                        fd.FilterIndex = 1;
+                        fd.RestoreDirectory = true;
+                        if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            property.Value = fd.FileName;
+                            UpdateProperty(property, property.Value);
+                            dataGridProperties.Items.Refresh();
+                        }
+                    }
+                }
             }
             catch
             {

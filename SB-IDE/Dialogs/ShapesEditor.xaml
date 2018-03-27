@@ -82,7 +82,14 @@
                 </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Property" IsReadOnly="True" Binding="{Binding Property}"/>
-                    <DataGridTextColumn Header="Value" IsReadOnly="False" Binding="{Binding Value}"/>
+                    <DataGridTextColumn Header="Value" IsReadOnly="False" Width="*" Binding="{Binding Value}"/>
+                    <DataGridTemplateColumn Header="Set Value" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="dataGridPropertySet" Tag="{Binding}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
             <Label Content="Modifiers" Margin="10,318,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.506,1.734"/>
@@ -100,7 +107,7 @@
                 </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Property" IsReadOnly="True" Binding="{Binding Property}"/>
-                    <DataGridTextColumn Header="Value" IsReadOnly="False" Binding="{Binding Value}"/>
+                    <DataGridTextColumn Header="Value" IsReadOnly="False" Width="*" Binding="{Binding Value}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
