@@ -874,8 +874,8 @@ namespace SB_IDE.Dialogs
         {
             try
             {
-                Brush _brush = brush;
-                Pen _pen = pen;
+                Brush _brush = new SolidColorBrush(((SolidColorBrush)brush).Color);
+                Pen _pen = new Pen(new SolidColorBrush(((SolidColorBrush)pen.Brush).Color), pen.Thickness);
                 FontFamily _fontFamily = fontFamily;
                 FontStyle _fontStyle = fontStyle;
                 double _fontSize = fontSize;
