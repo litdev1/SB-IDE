@@ -644,8 +644,8 @@ namespace SB_IDE.Dialogs
             sbDocument.TextArea.Text = "";
             sbDocument.TextArea.Text += "Init()\n\nSub Init\n\n";
 
-            Brush _brush = brush;
-            Pen _pen = pen;
+            Brush _brush = new SolidColorBrush(((SolidColorBrush)brush).Color);
+            Pen _pen = new Pen(new SolidColorBrush(((SolidColorBrush)pen.Brush).Color), pen.Thickness);
             FontFamily _fontFamily = fontFamily;
             FontStyle _fontStyle = fontStyle;
             double _fontSize = fontSize;
