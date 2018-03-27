@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_IDE.Dialogs"
         mc:Ignorable="d"
-        Title="Shapes Editor" Height="500" Width="1000" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated" KeyDown="Window_KeyDown">
+        Title="Shapes Editor" Height="800" Width="1000" Icon="/SB-IDE;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated" KeyDown="Window_KeyDown">
     <Window.Resources>
         <SolidColorBrush x:Key="SplitterBrush" Color="#FFF0F0F0"/>
         <SolidColorBrush x:Key="GridBrushBackground" Color="#FFF0F0F0"/>
@@ -40,10 +40,12 @@
             <TextBox x:Name="textBoxSnap" Margin="105,0,9.4,82.4" TextWrapping="Wrap" Text="10" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxSnap_TextChanged"/>
             <Button x:Name="buttonImport" Content="Import From Code" Margin="10,0,10.4,10.4" Height="19" VerticalAlignment="Bottom" Click="buttonImport_Click"/>
             <Button x:Name="buttonDeleteAll" Content="Delete All Shapes" Margin="10,0,10.4,34.4" Height="19" VerticalAlignment="Bottom" Click="buttonDeleteAll_Click"/>
-            <Label x:Name="label_Copy" Content="Canvas Height" HorizontalAlignment="Left" Margin="10,0,0,111.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
+            <Label x:Name="label_Copy" Content="View Height" HorizontalAlignment="Left" Margin="10,0,0,111.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
             <TextBox x:Name="textBoxHeight" Margin="105,0,9.4,110.4" TextWrapping="Wrap" Text="1000" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxHeight_TextChanged"/>
-            <Label x:Name="label_Copy1" Content="Canvas Width" HorizontalAlignment="Left" Margin="9,0,0,139.4" Height="26" VerticalAlignment="Bottom" Width="91" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
+            <Label x:Name="label_Copy1" Content="View Width" HorizontalAlignment="Left" Margin="9,0,0,139.4" Height="26" VerticalAlignment="Bottom" Width="91" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
             <TextBox x:Name="textBoxWidth" Margin="105,0,9.4,138.4" TextWrapping="Wrap" Text="1000" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxWidth_TextChanged"/>
+            <Slider x:Name="sliderScale" Margin="10,0,10,170" RenderTransformOrigin="0.75,0.611" Height="18" VerticalAlignment="Bottom" Minimum="-10" ValueChanged="sliderScale_ValueChanged" SmallChange="1" LargeChange="2"/>
+            <Label x:Name="label_Copy2" Content="Scale View" Margin="10,0,9,193" Height="26" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" RenderTransformOrigin="0.503,0.146"/>
         </Grid>
         <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
         <Grid x:Name="viewGrid" Grid.Column="2" Margin="0">

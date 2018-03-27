@@ -80,8 +80,8 @@ namespace SB_IDE.Dialogs
             scaleTransform = new ScaleTransform();
             scaleTransform.CenterX = 0;
             scaleTransform.CenterY = 0;
-            canvas.RenderTransform = new TransformGroup();
-            ((TransformGroup)canvas.RenderTransform).Children.Add(scaleTransform);
+            visualGrid.RenderTransform = new TransformGroup();
+            ((TransformGroup)visualGrid.RenderTransform).Children.Add(scaleTransform);
 
             names = new List<string>();
             background = canvas.Background;
@@ -489,14 +489,11 @@ namespace SB_IDE.Dialogs
                 {
                     for (int j = snap; j < canvas.Height; j += snap)
                     {
-                        dc.DrawRectangle(null, new Pen(new SolidColorBrush(color), 0.5), new Rect(i * scale, j * scale, 0.5, 0.5));
+                        dc.DrawRectangle(null, new Pen(new SolidColorBrush(color), 0.5), new Rect(i, j, 0.5, 0.5));
                     }
                 }
             }
             dc.Close();
-
-            scaleTransform.ScaleX = scale;
-            scaleTransform.ScaleY = scale;
         }
 
         private string GetName(string label)
@@ -1823,6 +1820,22 @@ namespace SB_IDE.Dialogs
                         }
                     }
                 }
+            }
+        }
+
+        private void sliderScale_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            try
+            {
+                scale = System.Math.Pow(4.0, sliderScale.Value / 10.0);
+                scaleTransform.ScaleX = scale;
+                scaleTransform.ScaleY = scale;
+                visualGrid.Width = canvas.Width * scale;
+                visualGrid.Height = canvas.Height * scale;
+            }
+            catch
+            {
+
             }
         }
     }
