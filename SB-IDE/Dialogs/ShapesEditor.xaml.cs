@@ -10,6 +10,7 @@ using System.Windows.Forms.Integration;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SB_IDE.Dialogs
@@ -575,12 +576,151 @@ namespace SB_IDE.Dialogs
                         properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString(), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
                     }
+                    else if (currentElt.GetType() == typeof(WebBrowser))
+                    {
+                        WebBrowser shape = (WebBrowser)currentElt;
+                        properties.Add(new PropertyData() { Property = "Url", Value = shape.Source.ToString(), Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(CheckBox))
+                    {
+                        CheckBox shape = (CheckBox)currentElt;
+                        properties.Add(new PropertyData() { Property = "Content", Value = shape.Content.ToString(), Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(ComboBox))
+                    {
+                        ComboBox shape = (ComboBox)currentElt;
+                        string list = "";
+                        int i = 1;
+                        foreach (ComboBoxItem item in shape.Items)
+                        {
+                            list += (i++).ToString() + "=" + item.Content.ToString() + ";";
+                        }
+                        properties.Add(new PropertyData() { Property = "List", Value = list, Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(WindowsFormsHost))
+                    {
+                        WindowsFormsHost shape = (WindowsFormsHost)currentElt;
+                        System.Windows.Forms.DataGridView dataView = (System.Windows.Forms.DataGridView)shape.Child;
+                        string headings = "";
+                        int i = 1;
+                        foreach (System.Windows.Forms.DataGridViewColumn col in dataView.Columns)
+                        {
+                            headings += (i++).ToString() + "=" + col.HeaderText + ";";
+                        }
+                        properties.Add(new PropertyData() { Property = "Headings", Value = headings, Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(DocumentViewer))
+                    {
+                        DocumentViewer shape = (DocumentViewer)currentElt;
+                    }
+                    else if (currentElt.GetType() == typeof(ListView))
+                    {
+                        ListView shape = (ListView)currentElt;
+                        GridView gridView = (GridView)shape.View;
+                        string headings = "";
+                        int i = 1;
+                        foreach (GridViewColumn col in gridView.Columns)
+                        {
+                            headings += (i++).ToString() + "=" + ((GridViewColumnHeader)col.Header).Content.ToString() + ";";
+                        }
+                        properties.Add(new PropertyData() { Property = "Headings", Value = headings, Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(MediaElement))
+                    {
+                        MediaElement shape = (MediaElement)currentElt;
+                    }
+                    else if (currentElt.GetType() == typeof(Menu))
+                    {
+                        Menu shape = (Menu)currentElt;
+                        string menuList = "";
+                        string iconList = "";
+                        string checkList = "";
+                        string separator = "-";
+                        foreach (MenuItem menuItem in shape.Items)
+                        {
+                            GetMenuLists(menuItem, ref menuList, ref iconList, ref checkList, ref separator);
+                        }
+                        properties.Add(new PropertyData() { Property = "MenuList", Value = menuList, Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "IconList", Value = iconList, Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "CheckList", Value = checkList, Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(PasswordBox))
+                    {
+                        PasswordBox shape = (PasswordBox)currentElt;
+                        properties.Add(new PropertyData() { Property = "MaxLength", Value = shape.MaxLength.ToString(), Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(ProgressBar))
+                    {
+                        ProgressBar shape = (ProgressBar)currentElt;
+                        properties.Add(new PropertyData() { Property = "Orientation", Value = shape.Orientation.ToString(), Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(RadioButton))
+                    {
+                        RadioButton shape = (RadioButton)currentElt;
+                        properties.Add(new PropertyData() { Property = "Content", Value = shape.Content.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "GroupName", Value = shape.GroupName, Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(RichTextBox))
+                    {
+                        RichTextBox shape = (RichTextBox)currentElt;
+                    }
+                    else if (currentElt.GetType() == typeof(Slider))
+                    {
+                        Slider shape = (Slider)currentElt;
+                        properties.Add(new PropertyData() { Property = "Orientation", Value = shape.Orientation.ToString(), Visible = Visibility.Hidden });
+                    }
+                    else if (currentElt.GetType() == typeof(TreeView))
+                    {
+                        TreeView shape = (TreeView)currentElt;
+                        string tree = "";
+                        int i = 1;
+                        foreach (TreeViewItem item in shape.Items)
+                        {
+                            GetTreeList(item, ref i, 0, ref tree);
+                        }
+                        properties.Add(new PropertyData() { Property = "Tree", Value = tree, Visible = Visibility.Hidden });
+                    }
                 }
                 dataGridProperties.Items.Refresh();
             }
-            catch
+            catch (Exception ex)
             {
 
+            }
+        }
+
+        private void GetMenuLists(object obj, ref string menuList, ref string iconList, ref string checkList, ref string separator)
+        {
+            if (obj.GetType() == typeof(Separator))
+            {
+                Separator data = (Separator)obj;
+                menuList += separator + "=" + data.Name + ";";
+                separator += "-";
+            }
+            else
+            {
+                MenuItem menuItem = (MenuItem)obj;
+                menuList += menuItem.Header + "=" + menuItem.Name + ";";
+                if (null != menuItem.Icon) iconList += menuItem.Name + "=" + ((Image)menuItem.Icon).Source.ToString() + ";";
+                if (menuItem.IsCheckable) checkList += menuItem.Name + "=" + menuItem.IsChecked + ";";
+                foreach (object item in menuItem.Items)
+                {
+                    GetMenuLists(item, ref menuList, ref iconList, ref checkList, ref separator);
+                }
+            }
+        }
+
+        private void GetTreeList(TreeViewItem item, ref int i, int parent, ref string tree)
+        {
+            int j = i;
+            string array = parent + "\\=" + item.Header.ToString() + "\\;";
+            tree += (i++).ToString() + "=" + array + ";";
+            if (item.Items.Count > 0)
+            {
+                foreach (TreeViewItem _item in item.Items)
+                {
+                    GetTreeList(_item, ref i, j, ref tree);
+                }
             }
         }
 
@@ -851,6 +991,7 @@ namespace SB_IDE.Dialogs
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
+                            //TODO
                         }
                     }
                 }
@@ -1084,6 +1225,7 @@ namespace SB_IDE.Dialogs
                         shape.modifiers["Left"] = parts[1];
                         shape.modifiers["Top"] = parts[2];
                     }
+                    //TODO
                     else if (codeLower.Contains("graphicswindow.brushcolor"))
                     {
                         string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
@@ -1455,6 +1597,155 @@ namespace SB_IDE.Dialogs
                         VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                     };
                     break;
+                case "Browser":
+                    WebBrowser webBrowser = new WebBrowser()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Height = 100,
+                    };
+                    //TODO
+                    webBrowser.Navigate(new Uri("http://www.smallbasic.com"));
+                    webBrowser.PreviewKeyDown += new KeyEventHandler(BrowserPreviewKeyDown);
+                    webBrowser.LoadCompleted += new LoadCompletedEventHandler(BrowserLoadCompleted);
+                    elt = webBrowser;
+                    break;
+                case "CheckBox":
+                    elt = new CheckBox()
+                    {
+                        Name = name,
+                        Content = label,
+                    };
+                    break;
+                case "ComboBox":
+                    ComboBox comboBox = new ComboBox()
+                    {
+                        Name = name,
+                        Width = 100,
+                        MaxDropDownHeight = 100,
+                    };
+                    ComboBoxItem comboBoxItem = new ComboBoxItem();
+                    comboBoxItem.Content = "Item1";
+                    comboBox.Items.Add(comboBoxItem);
+                    elt = comboBox;
+                    break;
+                case "DataView":
+                    WindowsFormsHost windowsFormsHost = new WindowsFormsHost()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Height = 100,
+                    };
+                    System.Windows.Forms.DataGridView dataView = new System.Windows.Forms.DataGridView();
+                    dataView.AutoResizeColumns(System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells);
+                    dataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+                    dataView.Columns.Add("1", "Heading1");
+                    windowsFormsHost.Child = dataView;
+                    elt = windowsFormsHost;
+                    //TODO
+                    break;
+                case "DocumentViewer":
+                    elt = new DocumentViewer()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Height = 100,
+                    };
+                    break;
+                case "ListView":
+                    ListView listView = new ListView()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Height = 100,
+                    };
+                    GridView gridView = new GridView();
+                    listView.View = gridView;
+                    Style style = new Style(typeof(ListViewItem));
+                    style.Setters.Add(new Setter(ListViewItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
+                    listView.ItemContainerStyle = style;
+                    GridViewColumn col = new GridViewColumn();
+                    GridViewColumnHeader header = new GridViewColumnHeader();
+                    header.Content = "Heading1";
+                    col.Header = header;
+                    col.Width = Double.NaN;
+                    gridView.Columns.Add(col);
+                    elt = listView;
+                    break;
+                case "MediaPlayer":
+                    elt = new MediaElement()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Height = 100,
+                    };
+                    //TODO
+                    break;
+                case "Menu":
+                    Menu menu = new Menu()
+                    {
+                        Name = name,
+                    };
+                    MenuItem menuItem = new MenuItem();
+                    menuItem.Header = "Header1";
+                    menuItem.Name = "Main";
+                    menu.Items.Add(menuItem);
+                    elt = menu;
+                    break;
+                case "PasswordBox":
+                    elt = new PasswordBox()
+                    {
+                        Name = name,
+                        MaxLength = 100,
+                        Width = 100,
+                    };
+                    break;
+                case "ProgressBar":
+                    elt = new ProgressBar()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Orientation = Orientation.Horizontal,
+                    };
+                    break;
+                case "RadioButton":
+                    elt = new RadioButton()
+                    {
+                        Name = name,
+                        Content = label,
+                        GroupName = "Group1",
+                    };
+                    break;
+                case "RichTextBox":
+                    elt = new RichTextBox()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Height = 100,
+                        VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                        HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
+                    };
+                    break;
+                case "Slider":
+                    elt = new Slider()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Orientation = Orientation.Horizontal,
+                    };
+                    break;
+                case "TreeView":
+                    TreeView treeView = new TreeView()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Height = 100,
+                    };
+                    TreeViewItem treeViewItem = new TreeViewItem();
+                    treeViewItem.Header = "Item1";
+                    treeView.Items.Add(treeViewItem);
+                    elt = treeView;
+                    break;
             }
 
             elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
@@ -1464,6 +1755,22 @@ namespace SB_IDE.Dialogs
             Canvas.SetTop(shape.shape, 100 - Shape.HandleShort);
 
             eltPreviewMouseLeftButtonDown(elt, null);
+        }
+
+        private void BrowserLoadCompleted(object sender, NavigationEventArgs e)
+        {
+            WebBrowser browser = (WebBrowser)sender;
+            var doc = (System.Windows.Forms.HtmlDocument)browser.Document;
+            doc.Click += new System.Windows.Forms.HtmlElementEventHandler(BrowserClick);
+        }
+
+        private void BrowserClick(object sender, System.Windows.Forms.HtmlElementEventArgs e)
+        {
+        }
+
+        private void BrowserPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
         }
 
         private void dataGridProperties_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -1672,6 +1979,197 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
+                else if (currentElt.GetType() == typeof(WebBrowser))
+                {
+                    WebBrowser shape = (WebBrowser)currentElt;
+                    switch (property.Property)
+                    {
+                        case "Url":
+                            shape.Navigate(new Uri(value));
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(CheckBox))
+                {
+                    CheckBox shape = (CheckBox)currentElt;
+                    switch (property.Property)
+                    {
+                        case "Content":
+                            shape.Content = value;
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(ComboBox))
+                {
+                    ComboBox shape = (ComboBox)currentElt;
+                    switch (property.Property)
+                    {
+                        case "List":
+                            string[] list = value.Split(new char[] { '=', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                            shape.Items.Clear();
+                            for (int i = 1; i < list.Length; i += 2)
+                            {
+                                ComboBoxItem comboBoxItem = new ComboBoxItem();
+                                comboBoxItem.Content = list[i];
+                                shape.Items.Add(comboBoxItem);
+                            }
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(WindowsFormsHost))
+                {
+                    WindowsFormsHost shape = (WindowsFormsHost)currentElt;
+                    System.Windows.Forms.DataGridView dataView = (System.Windows.Forms.DataGridView)shape.Child;
+                    switch (property.Property)
+                    {
+                        case "Headings":
+                            string[] headings = value.Split(new char[] { '=', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                            dataView.Columns.Clear();
+                            for (int i = 1; i < headings.Length; i += 2)
+                            {
+                                dataView.Columns.Add(i.ToString(), headings[i]);
+                            }
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(DocumentViewer))
+                {
+                    DocumentViewer shape = (DocumentViewer)currentElt;
+                }
+                else if (currentElt.GetType() == typeof(ListView))
+                {
+                    ListView shape = (ListView)currentElt;
+                    GridView gridView = (GridView)shape.View;
+                    switch (property.Property)
+                    {
+                        case "Headings":
+                            string[] headings = value.Split(new char[] { '=', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                            gridView.Columns.Clear();
+                            for (int i = 1; i < headings.Length; i += 2)
+                            {
+                                GridViewColumn col = new GridViewColumn();
+                                GridViewColumnHeader header = new GridViewColumnHeader();
+                                header.Content = headings[i];
+                                col.Header = header;
+                                col.Width = Double.NaN;
+                                gridView.Columns.Add(col);
+                            }
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(MediaElement))
+                {
+                    MediaElement shape = (MediaElement)currentElt;
+                }
+                else if (currentElt.GetType() == typeof(Menu))
+                {
+                    Menu shape = (Menu)currentElt;
+                    switch (property.Property)
+                    {
+                        case "MenuList":
+                            string[] listMenu = value.Split(new char[] { '=', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                            shape.Items.Clear();
+                            for (int i = 0; i < listMenu.Length; i += 2)
+                            {
+                                string header = listMenu[i];
+                                string parent = listMenu[i + 1];
+                                MenuItem menuItem = new MenuItem();
+                                menuItem.Header = header;
+                                menuItem.Name = parent;
+                                if (parent.ToLower() == "main")
+                                {
+                                    shape.Items.Add(menuItem);
+                                }
+                                else
+                                {
+                                    if (header.StartsWith("-"))
+                                    {
+                                        findMenuItem(shape.Items, parent).Items.Add(new Separator() { Name = parent });
+                                    }
+                                    else
+                                    {
+                                        findMenuItem(shape.Items, parent).Items.Add(menuItem);
+                                    }
+                                }
+                            }
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(PasswordBox))
+                {
+                    PasswordBox shape = (PasswordBox)currentElt;
+                    switch (property.Property)
+                    {
+                        case "MaxLength":
+                            shape.MaxLength = int.Parse(value);
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(ProgressBar))
+                {
+                    ProgressBar shape = (ProgressBar)currentElt;
+                    switch (property.Property)
+                    {
+                        case "Orientation":
+                            shape.Orientation = value.ToLower() == "vertical" ? Orientation.Vertical : Orientation.Horizontal;
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(RadioButton))
+                {
+                    RadioButton shape = (RadioButton)currentElt;
+                    switch (property.Property)
+                    {
+                        case "Title":
+                            shape.Content = value;
+                            break;
+                        case "Group":
+                            shape.GroupName = value;
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(RichTextBox))
+                {
+                    RichTextBox shape = (RichTextBox)currentElt;
+                }
+                else if (currentElt.GetType() == typeof(Slider))
+                {
+                    Slider shape = (Slider)currentElt;
+                    switch (property.Property)
+                    {
+                        case "Orientation":
+                            shape.Orientation = value.ToLower() == "vertical" ? Orientation.Vertical : Orientation.Horizontal;
+                            break;
+                    }
+                }
+                else if (currentElt.GetType() == typeof(TreeView))
+                {
+                    TreeView shape = (TreeView)currentElt;
+                    switch (property.Property)
+                    {
+                        case "Tree":
+                            string[] items = value.Split(new char[] { '=', ';', '\\' }, StringSplitOptions.RemoveEmptyEntries);
+                            shape.Items.Clear();
+                            for (int i = 0; i < items.Length; i += 3)
+                            {
+                                if (items[i + 1] == "0")
+                                {
+                                    TreeViewItem treeViewItem = new TreeViewItem();
+                                    treeViewItem.Header = items[i + 2];
+                                    treeViewItem.Name = "Index" + items[i];
+                                    shape.Items.Add(treeViewItem);
+                                }
+                                else
+                                {
+                                    TreeViewItem treeViewItem = new TreeViewItem();
+                                    treeViewItem.Header = items[i + 2];
+                                    treeViewItem.Name = "Index" + items[i];
+                                    findTreeItem(shape.Items, "Index" + items[i + 1]).Items.Add(treeViewItem);
+                                }
+                            }
+                            break;
+                    }
+                }
                 canvas.UpdateLayout();
                 ShowCode();
             }
@@ -1679,6 +2177,33 @@ namespace SB_IDE.Dialogs
             {
 
             }
+        }
+
+        private static TreeViewItem findTreeItem(ItemCollection items, string name)
+        {
+            foreach (TreeViewItem i in items)
+            {
+                TreeViewItem children = findTreeItem(i.Items, name);
+                if (null != children) return children;
+                if (i.Name == name) return i;
+            }
+            return null;
+        }
+
+        private static MenuItem findMenuItem(ItemCollection items, string parent)
+        {
+            parent = parent.ToLower();
+            foreach (Object i in items)
+            {
+                if (i.GetType() == typeof(MenuItem))
+                {
+                    MenuItem item = (MenuItem)i;
+                    MenuItem children = findMenuItem(item.Items, parent);
+                    if (null != children) return children;
+                    if (((string)item.Header).ToLower() == parent) return item;
+                }
+            }
+            return null;
         }
 
         private void dataGridModifiers_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)

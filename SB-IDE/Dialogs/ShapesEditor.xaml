@@ -20,6 +20,7 @@
             <ColumnDefinition Width="250" />
         </Grid.ColumnDefinitions>
         <Grid x:Name="controlGrid" Grid.Column="0" Margin="0">
+            <Label Content="Shapes" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
             <ListBox x:Name="listBoxShapes" Height="124" Margin="10,41,10,0" VerticalAlignment="Top">
                 <ListBoxItem Content="Rectangle" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
                 <ListBoxItem Content="Ellipse" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
@@ -28,12 +29,28 @@
                 <ListBoxItem Content="Text" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
                 <ListBoxItem Content="Image" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
             </ListBox>
-            <Label Content="Shapes" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
             <Label Content="Controls" Margin="10,170,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
             <ListBox x:Name="listBoxControls" Height="64" Margin="10,200,10,0" VerticalAlignment="Top">
                 <ListBoxItem Content="Button" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="TextBox" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="MultiLineTextBox" PreviewMouseDown="AddShape_MouseDown"/>
+            </ListBox>
+            <Label Content="LDControls" Margin="10,269,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+            <ListBox x:Name="listBoxLDControls" Margin="10,300,10.4,224.4">
+                <ListBoxItem Content="Browser" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="CheckBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="ComboBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="DataView" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="DocumentViewer" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="ListView" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="MediaPlayer" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="Menu" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="PasswordBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="ProgressBar" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="RadioButton" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="RichTextBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="Slider" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="TreeView" PreviewMouseDown="AddShape_MouseDown"/>
             </ListBox>
             <Button x:Name="buttonDelete" Content="Delete Selected Shape" Margin="10,0,10.4,58.4" Height="19" VerticalAlignment="Bottom" Click="buttonDelete_Click"/>
             <Label x:Name="label" Content="Snap Size" HorizontalAlignment="Left" Margin="10,0,0,83.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
