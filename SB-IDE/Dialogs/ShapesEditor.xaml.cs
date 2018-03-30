@@ -596,6 +596,7 @@ namespace SB_IDE.Dialogs
                             list += (i++).ToString() + "=" + item.Content.ToString() + ";";
                         }
                         properties.Add(new PropertyData() { Property = "List", Value = list, Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "DropDownHeight", Value = shape.MaxDropDownHeight.ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(WindowsFormsHost))
                     {
@@ -987,6 +988,172 @@ namespace SB_IDE.Dialogs
                                 }
                                 sbDocument.TextArea.Text += "Controls.SetTextBoxText(" + obj.Name + ",\"" + obj.Text + "\")\n";
                                 sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(WebBrowser))
+                            {
+                                WebBrowser obj = (WebBrowser)elt;
+                                string url = "";
+                                if (null != obj.Source) url = obj.Source.ToString();
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddBrowser(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + url + "\")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(CheckBox))
+                            {
+                                CheckBox obj = (CheckBox)elt;
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddCheckBox(\"" + obj.Content.ToString() + "\")\n";
+                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(ComboBox))
+                            {
+                                ComboBox obj = (ComboBox)elt;
+                                string list = "";
+                                int i = 1;
+                                foreach (ComboBoxItem item in obj.Items)
+                                {
+                                    list += (i++).ToString() + "=" + item.Content.ToString() + ";";
+                                }
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddComboBox(\"" + list + "\"," + Fix(shape.modifiers["Width"]) + "," + obj.MaxDropDownHeight.ToString() + ")\n";
+                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(WindowsFormsHost))
+                            {
+                                WindowsFormsHost obj = (WindowsFormsHost)elt;
+                                System.Windows.Forms.DataGridView dataView = (System.Windows.Forms.DataGridView)obj.Child;
+                                string headings = "";
+                                int i = 1;
+                                foreach (System.Windows.Forms.DataGridViewColumn col in dataView.Columns)
+                                {
+                                    headings += (i++).ToString() + "=" + col.HeaderText + ";";
+                                }
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddDataView(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + headings + "\")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(DocumentViewer))
+                            {
+                                DocumentViewer obj = (DocumentViewer)elt;
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddDocumentViewer(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(ListView))
+                            {
+                                ListView obj = (ListView)elt;
+                                GridView gridView = (GridView)obj.View;
+                                string headings = "";
+                                int i = 1;
+                                foreach (GridViewColumn col in gridView.Columns)
+                                {
+                                    headings += (i++).ToString() + "=" + ((GridViewColumnHeader)col.Header).Content.ToString() + ";";
+                                }
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddListView(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + headings + "\")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(MediaPlayer))
+                            {
+                                MediaElement obj = (MediaElement)elt;
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddMediaPlayer(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(Menu))
+                            {
+                                Menu obj = (Menu)elt;
+                                string menuList = "";
+                                string iconList = "";
+                                string checkList = "";
+                                string separator = "-";
+                                foreach (MenuItem menuItem in obj.Items)
+                                {
+                                    GetMenuLists(menuItem, ref menuList, ref iconList, ref checkList, ref separator);
+                                }
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddMenu(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + menuList + "\",\"" + iconList + "\",\"" + checkList + "\")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(PasswordBox))
+                            {
+                                PasswordBox obj = (PasswordBox)elt;
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddPasswordBox(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + "," + obj.MaxLength.ToString() + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(ProgressBar))
+                            {
+                                ProgressBar obj = (ProgressBar)elt;
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddProgressBar(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString() + "\")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(RadioButton))
+                            {
+                                RadioButton obj = (RadioButton)elt;
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddRadioButton(\"" + obj.Content.ToString() + "\",\"" + obj.GroupName.ToString() + "\")\n";
+                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(RichTextBox))
+                            {
+                                RichTextBox obj = (RichTextBox)elt;
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddRichTextBox(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(Slider))
+                            {
+                                Slider obj = (Slider)elt;
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddSlider(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString() + "\")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
+                            else if (elt.GetType() == typeof(TreeView))
+                            {
+                                TreeView obj = (TreeView)elt;
+                                string tree = "";
+                                int i = 1;
+                                foreach (TreeViewItem item in obj.Items)
+                                {
+                                    GetTreeList(item, ref i, 0, ref tree);
+                                }
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddTreeView(\"" + tree + "\"," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                 if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
                                 sbDocument.TextArea.Text += "\n";
@@ -1225,7 +1392,265 @@ namespace SB_IDE.Dialogs
                         shape.modifiers["Left"] = parts[1];
                         shape.modifiers["Top"] = parts[2];
                     }
-                    //TODO
+                    else if (codeLower.Contains("ldcontrols.addbrowser"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        name = GetName("Browser", parts[0]);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        WebBrowser webBrowser = new WebBrowser()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        try
+                        {
+                            webBrowser.Navigate(new Uri(parts[3].Replace("\"", "")));
+                        }
+                        catch
+                        {
+
+                        }
+                        elt = webBrowser;
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addcheckbox"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        name = GetName("CheckBox", parts[0]);
+                        elt = new CheckBox()
+                        {
+                            Name = name,
+                            Content = parts[1].Replace("\"", ""),
+                        };
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addcombobox"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[2], out value[0]);
+                        double.TryParse(parts[3], out value[1]);
+                        name = GetName("ComboBox", parts[0]);
+                        elt = new ComboBox()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            MaxDropDownHeight = value[1],
+                        };
+                        currentElt = elt;
+                        UpdateProperty(new PropertyData() { Property = "List" }, parts[1].Replace("\"", ""));
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.adddataview"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("DataView", parts[0]);
+                        WindowsFormsHost windowsFormsHost = new WindowsFormsHost()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        System.Windows.Forms.DataGridView dataView = new System.Windows.Forms.DataGridView();
+                        dataView.AutoResizeColumns(System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells);
+                        dataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+                        windowsFormsHost.Child = dataView;
+                        elt = windowsFormsHost;
+                        currentElt = elt;
+                        UpdateProperty(new PropertyData() { Property = "Headings" }, parts[3].Replace("\"", ""));
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.adddocumentviewer"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("DocumentViewer", parts[0]);
+                        elt = new DocumentViewer()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addlistview"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("ListView", parts[0]);
+                        ListView listView = new ListView()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        GridView gridView = new GridView();
+                        listView.View = gridView;
+                        Style style = new Style(typeof(ListViewItem));
+                        style.Setters.Add(new Setter(ListViewItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
+                        listView.ItemContainerStyle = style;
+                        elt = listView;
+                        currentElt = elt;
+                        UpdateProperty(new PropertyData() { Property = "Headings" }, parts[3].Replace("\"", ""));
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addmediaplayer"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("MediaPlayer", parts[0]);
+                        elt = new MediaElement()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addmenu"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("Menu", parts[0]);
+                        elt = new Menu()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        currentElt = elt;
+                        UpdateProperty(new PropertyData() { Property = "MenuList" }, parts[3].Replace("\"", ""));
+                        UpdateProperty(new PropertyData() { Property = "IconList" }, parts[4].Replace("\"", ""));
+                        UpdateProperty(new PropertyData() { Property = "CheckList" }, parts[5].Replace("\"", ""));
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addpasswordbox"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("PasswordBox", parts[0]);
+                        elt = new PasswordBox()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        currentElt = elt;
+                        UpdateProperty(new PropertyData() { Property = "MaxLength" }, parts[3].Replace("\"", ""));
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addprogressbar"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("ProgressBar", parts[0]);
+                        elt = new ProgressBar()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        currentElt = elt;
+                        UpdateProperty(new PropertyData() { Property = "Orientation" }, parts[3].Replace("\"", ""));
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addradiobutton"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        name = GetName("RadioButton", parts[0]);
+                        elt = new RadioButton()
+                        {
+                            Name = name,
+                            Content = parts[1].Replace("\"", ""),
+                            GroupName = parts[2].Replace("\"", ""),
+                        };
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addrichtextbox"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("RichTextBox", parts[0]);
+                        elt = new RichTextBox()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                            VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                            HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
+                        };
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addslider"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[1], out value[0]);
+                        double.TryParse(parts[2], out value[1]);
+                        name = GetName("Slider", parts[0]);
+                        elt = new Slider()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        currentElt = elt;
+                        UpdateProperty(new PropertyData() { Property = "Orientation" }, parts[3].Replace("\"", ""));
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addtreeview"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[2], out value[0]);
+                        double.TryParse(parts[3], out value[1]);
+                        name = GetName("TreeView", parts[0]);
+                        elt = new TreeView()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                        };
+                        currentElt = elt;
+                        UpdateProperty(new PropertyData() { Property = "Tree" }, parts[1].Replace("\"", ""));
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
                     else if (codeLower.Contains("graphicswindow.brushcolor"))
                     {
                         string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
@@ -1606,8 +2031,6 @@ namespace SB_IDE.Dialogs
                     };
                     //TODO
                     webBrowser.Navigate(new Uri("http://www.smallbasic.com"));
-                    webBrowser.PreviewKeyDown += new KeyEventHandler(BrowserPreviewKeyDown);
-                    webBrowser.LoadCompleted += new LoadCompletedEventHandler(BrowserLoadCompleted);
                     elt = webBrowser;
                     break;
                 case "CheckBox":
@@ -1757,22 +2180,6 @@ namespace SB_IDE.Dialogs
             eltPreviewMouseLeftButtonDown(elt, null);
         }
 
-        private void BrowserLoadCompleted(object sender, NavigationEventArgs e)
-        {
-            WebBrowser browser = (WebBrowser)sender;
-            var doc = (System.Windows.Forms.HtmlDocument)browser.Document;
-            doc.Click += new System.Windows.Forms.HtmlElementEventHandler(BrowserClick);
-        }
-
-        private void BrowserClick(object sender, System.Windows.Forms.HtmlElementEventArgs e)
-        {
-        }
-
-        private void BrowserPreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            e.Handled = true;
-        }
-
         private void dataGridProperties_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             try
@@ -1780,6 +2187,7 @@ namespace SB_IDE.Dialogs
                 PropertyData property = (PropertyData)e.Row.Item;
                 TextBox tb = (TextBox)e.EditingElement;
                 UpdateProperty(property, tb.Text);
+                ShowCode();
             }
             catch
             {
@@ -2014,6 +2422,9 @@ namespace SB_IDE.Dialogs
                                 shape.Items.Add(comboBoxItem);
                             }
                             break;
+                        case "DropDownHeight":
+                            shape.MaxDropDownHeight = double.Parse(value);
+                            break;
                     }
                 }
                 else if (currentElt.GetType() == typeof(WindowsFormsHost))
@@ -2171,7 +2582,6 @@ namespace SB_IDE.Dialogs
                     }
                 }
                 canvas.UpdateLayout();
-                ShowCode();
             }
             catch
             {
@@ -2213,6 +2623,7 @@ namespace SB_IDE.Dialogs
                 PropertyData property = (PropertyData)e.Row.Item;
                 TextBox tb = (TextBox)e.EditingElement;
                 UpdateModifier(property, tb.Text);
+                ShowCode();
             }
             catch
             {
@@ -2257,7 +2668,6 @@ namespace SB_IDE.Dialogs
                         break;
                 }
                 canvas.UpdateLayout();
-                ShowCode();
             }
             catch
             {
