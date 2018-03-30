@@ -42,6 +42,7 @@
                 <ListBoxItem Content="ComboBox" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="DataView" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="DocumentViewer" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="ListBox" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="ListView" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="MediaPlayer" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="Menu" PreviewMouseDown="AddShape_MouseDown"/>

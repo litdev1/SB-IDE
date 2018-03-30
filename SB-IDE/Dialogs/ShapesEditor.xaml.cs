@@ -560,21 +560,13 @@ namespace SB_IDE.Dialogs
                     {
                         Button shape = (Button)currentElt;
                         properties.Add(new PropertyData() { Property = "Content", Value = shape.Content.ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString(), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
+                        GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(TextBox))
                     {
                         TextBox shape = (TextBox)currentElt;
                         properties.Add(new PropertyData() { Property = "Text", Value = shape.Text.ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString(), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
+                        GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(WebBrowser))
                     {
@@ -585,6 +577,7 @@ namespace SB_IDE.Dialogs
                     {
                         CheckBox shape = (CheckBox)currentElt;
                         properties.Add(new PropertyData() { Property = "Content", Value = shape.Content.ToString(), Visible = Visibility.Hidden });
+                        GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(ComboBox))
                     {
@@ -597,6 +590,7 @@ namespace SB_IDE.Dialogs
                         }
                         properties.Add(new PropertyData() { Property = "List", Value = list, Visible = Visibility.Hidden });
                         properties.Add(new PropertyData() { Property = "DropDownHeight", Value = shape.MaxDropDownHeight.ToString(), Visible = Visibility.Hidden });
+                        GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(WindowsFormsHost))
                     {
@@ -613,6 +607,18 @@ namespace SB_IDE.Dialogs
                     else if (currentElt.GetType() == typeof(DocumentViewer))
                     {
                         DocumentViewer shape = (DocumentViewer)currentElt;
+                    }
+                    else if (currentElt.GetType() == typeof(ListBox))
+                    {
+                        ListBox shape = (ListBox)currentElt;
+                        string list = "";
+                        int i = 1;
+                        foreach (ListBoxItem item in shape.Items)
+                        {
+                            list += (i++).ToString() + "=" + item.Content.ToString() + ";";
+                        }
+                        properties.Add(new PropertyData() { Property = "List", Value = list, Visible = Visibility.Hidden });
+                        GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(ListView))
                     {
@@ -644,11 +650,13 @@ namespace SB_IDE.Dialogs
                         properties.Add(new PropertyData() { Property = "MenuList", Value = menuList, Visible = Visibility.Hidden });
                         properties.Add(new PropertyData() { Property = "IconList", Value = iconList, Visible = Visibility.Hidden });
                         properties.Add(new PropertyData() { Property = "CheckList", Value = checkList, Visible = Visibility.Hidden });
+                        GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(PasswordBox))
                     {
                         PasswordBox shape = (PasswordBox)currentElt;
                         properties.Add(new PropertyData() { Property = "MaxLength", Value = shape.MaxLength.ToString(), Visible = Visibility.Hidden });
+                        GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(ProgressBar))
                     {
@@ -660,10 +668,12 @@ namespace SB_IDE.Dialogs
                         RadioButton shape = (RadioButton)currentElt;
                         properties.Add(new PropertyData() { Property = "Content", Value = shape.Content.ToString(), Visible = Visibility.Hidden });
                         properties.Add(new PropertyData() { Property = "GroupName", Value = shape.GroupName, Visible = Visibility.Hidden });
+                        GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(RichTextBox))
                     {
                         RichTextBox shape = (RichTextBox)currentElt;
+                        GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(Slider))
                     {
@@ -688,6 +698,15 @@ namespace SB_IDE.Dialogs
             {
 
             }
+        }
+
+        private void GetControlProperties(Control shape)
+        {
+            properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
+            properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
+            properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
+            properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString(), Visible = Visibility.Visible });
+            properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
         }
 
         private void GetMenuLists(object obj, ref string menuList, ref string iconList, ref string checkList, ref string separator)
@@ -773,7 +792,7 @@ namespace SB_IDE.Dialogs
                     Grid grid = (Grid)child;
                     foreach (FrameworkElement elt in grid.Children)
                     {
-                        if (null != elt.Tag)
+                        if (null != elt.Tag && elt.Name != "M")
                         {
                             Shape shape = (Shape)elt.Tag;
 
@@ -919,31 +938,7 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(Button))
                             {
                                 Button obj = (Button)elt;
-                                if (obj.Foreground.ToString() != _brush.ToString())
-                                {
-                                    _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Foreground.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
-                                }
-                                if (obj.FontFamily.ToString() != _fontFamily.ToString())
-                                {
-                                    _fontFamily = new FontFamily(obj.FontFamily.ToString());
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontName = \"" + _fontFamily.ToString() + "\"\n";
-                                }
-                                if (obj.FontStyle.ToString() != _fontStyle.ToString())
-                                {
-                                    _fontStyle = obj.FontStyle;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontItalic = \"" + (_fontStyle == FontStyles.Italic ? "True" : "False") + "\"\n";
-                                }
-                                if (obj.FontSize.ToString() != _fontSize.ToString())
-                                {
-                                    _fontSize = obj.FontSize;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
-                                }
-                                if (obj.FontWeight.ToString() != _fontWeight.ToString())
-                                {
-                                    _fontWeight = obj.FontWeight;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontBold = \"" + (_fontWeight == FontWeights.Bold ? "True" : "False") + "\"\n";
-                                }
+                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                 sbDocument.TextArea.Text += obj.Name + " = Controls.AddButton(\"" + obj.Content + "\"," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                 sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
                                 if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
@@ -953,31 +948,7 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(TextBox))
                             {
                                 TextBox obj = (TextBox)elt;
-                                if (obj.Foreground.ToString() != _brush.ToString())
-                                {
-                                    _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Foreground.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
-                                }
-                                if (obj.FontFamily.ToString() != _fontFamily.ToString())
-                                {
-                                    _fontFamily = new FontFamily(obj.FontFamily.ToString());
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontName = \"" + _fontFamily.ToString() + "\"\n";
-                                }
-                                if (obj.FontStyle.ToString() != _fontStyle.ToString())
-                                {
-                                    _fontStyle = obj.FontStyle;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontItalic = \"" + (_fontStyle == FontStyles.Italic ? "True" : "False") + "\"\n";
-                                }
-                                if (obj.FontSize.ToString() != _fontSize.ToString())
-                                {
-                                    _fontSize = obj.FontSize;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
-                                }
-                                if (obj.FontWeight.ToString() != _fontWeight.ToString())
-                                {
-                                    _fontWeight = obj.FontWeight;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontBold = \"" + (_fontWeight == FontWeights.Bold ? "True" : "False") + "\"\n";
-                                }
+                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                 if (obj.AcceptsReturn)
                                 {
                                     sbDocument.TextArea.Text += obj.Name + " = Controls.AddMultiLineTextBox(" + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
@@ -1007,6 +978,7 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(CheckBox))
                             {
                                 CheckBox obj = (CheckBox)elt;
+                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                 sbDocument.TextArea.Text += obj.Name + " = LDControls.AddCheckBox(\"" + obj.Content.ToString() + "\")\n";
                                 sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
@@ -1017,6 +989,7 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(ComboBox))
                             {
                                 ComboBox obj = (ComboBox)elt;
+                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                 string list = "";
                                 int i = 1;
                                 foreach (ComboBoxItem item in obj.Items)
@@ -1055,6 +1028,22 @@ namespace SB_IDE.Dialogs
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
+                            else if (elt.GetType() == typeof(ListBox))
+                            {
+                                ListBox obj = (ListBox)elt;
+                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                string list = "";
+                                int i = 1;
+                                foreach (ListBoxItem item in obj.Items)
+                                {
+                                    list += (i++).ToString() + "=" + item.Content.ToString() + ";";
+                                }
+                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddListBox(\"" + list + "\"," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                sbDocument.TextArea.Text += "\n";
+                            }
                             else if (elt.GetType() == typeof(ListView))
                             {
                                 ListView obj = (ListView)elt;
@@ -1083,6 +1072,7 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(Menu))
                             {
                                 Menu obj = (Menu)elt;
+                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                 string menuList = "";
                                 string iconList = "";
                                 string checkList = "";
@@ -1100,6 +1090,7 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(PasswordBox))
                             {
                                 PasswordBox obj = (PasswordBox)elt;
+                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                 sbDocument.TextArea.Text += obj.Name + " = LDControls.AddPasswordBox(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + "," + obj.MaxLength.ToString() + ")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                 if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
@@ -1118,6 +1109,7 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(RadioButton))
                             {
                                 RadioButton obj = (RadioButton)elt;
+                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                 sbDocument.TextArea.Text += obj.Name + " = LDControls.AddRadioButton(\"" + obj.Content.ToString() + "\",\"" + obj.GroupName.ToString() + "\")\n";
                                 sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
@@ -1128,6 +1120,7 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(RichTextBox))
                             {
                                 RichTextBox obj = (RichTextBox)elt;
+                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                 sbDocument.TextArea.Text += obj.Name + " = LDControls.AddRichTextBox(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                 if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
@@ -1158,7 +1151,6 @@ namespace SB_IDE.Dialogs
                                 if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
                                 sbDocument.TextArea.Text += "\n";
                             }
-                            //TODO
                         }
                     }
                 }
@@ -1166,6 +1158,35 @@ namespace SB_IDE.Dialogs
 
             sbDocument.TextArea.Text += "EndSub\n";
             sbDocument.Lexer.Format();
+        }
+
+        private void SetControlPropertyCode(Control obj, ref Brush _brush, ref FontFamily _fontFamily, ref FontStyle _fontStyle, ref double _fontSize, ref FontWeight _fontWeight)
+        {
+            if (obj.Foreground.ToString() != _brush.ToString())
+            {
+                _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Foreground.ToString()));
+                sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+            }
+            if (obj.FontFamily.ToString() != _fontFamily.ToString())
+            {
+                _fontFamily = new FontFamily(obj.FontFamily.ToString());
+                sbDocument.TextArea.Text += "GraphicsWindow.FontName = \"" + _fontFamily.ToString() + "\"\n";
+            }
+            if (obj.FontStyle.ToString() != _fontStyle.ToString())
+            {
+                _fontStyle = obj.FontStyle;
+                sbDocument.TextArea.Text += "GraphicsWindow.FontItalic = \"" + (_fontStyle == FontStyles.Italic ? "True" : "False") + "\"\n";
+            }
+            if (obj.FontSize.ToString() != _fontSize.ToString())
+            {
+                _fontSize = obj.FontSize;
+                sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
+            }
+            if (obj.FontWeight.ToString() != _fontWeight.ToString())
+            {
+                _fontWeight = obj.FontWeight;
+                sbDocument.TextArea.Text += "GraphicsWindow.FontBold = \"" + (_fontWeight == FontWeights.Bold ? "True" : "False") + "\"\n";
+            }
         }
 
         private string Fix(string value)
@@ -1425,6 +1446,11 @@ namespace SB_IDE.Dialogs
                         {
                             Name = name,
                             Content = parts[1].Replace("\"", ""),
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
                         };
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
@@ -1441,6 +1467,11 @@ namespace SB_IDE.Dialogs
                             Name = name,
                             Width = value[0],
                             MaxDropDownHeight = value[1],
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
                         };
                         currentElt = elt;
                         UpdateProperty(new PropertyData() { Property = "List" }, parts[1].Replace("\"", ""));
@@ -1483,6 +1514,29 @@ namespace SB_IDE.Dialogs
                             Width = value[0],
                             Height = value[1],
                         };
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
+                    }
+                    else if (codeLower.Contains("ldcontrols.addlistbox"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        double.TryParse(parts[2], out value[0]);
+                        double.TryParse(parts[3], out value[1]);
+                        name = GetName("ListBox", parts[0]);
+                        elt = new ListBox()
+                        {
+                            Name = name,
+                            Width = value[0],
+                            Height = value[1],
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
+                        };
+                        currentElt = elt;
+                        UpdateProperty(new PropertyData() { Property = "List" }, parts[1].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1538,6 +1592,11 @@ namespace SB_IDE.Dialogs
                             Name = name,
                             Width = value[0],
                             Height = value[1],
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
                         };
                         currentElt = elt;
                         UpdateProperty(new PropertyData() { Property = "MenuList" }, parts[3].Replace("\"", ""));
@@ -1558,6 +1617,11 @@ namespace SB_IDE.Dialogs
                             Name = name,
                             Width = value[0],
                             Height = value[1],
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
                         };
                         currentElt = elt;
                         UpdateProperty(new PropertyData() { Property = "MaxLength" }, parts[3].Replace("\"", ""));
@@ -1592,6 +1656,11 @@ namespace SB_IDE.Dialogs
                             Name = name,
                             Content = parts[1].Replace("\"", ""),
                             GroupName = parts[2].Replace("\"", ""),
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
                         };
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
@@ -1608,6 +1677,11 @@ namespace SB_IDE.Dialogs
                             Name = name,
                             Width = value[0],
                             Height = value[1],
+                            Foreground = _brush,
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
                             VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                             HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
                         };
@@ -1758,6 +1832,7 @@ namespace SB_IDE.Dialogs
             private Rectangle handleR = null;
             private Rectangle handleT = null;
             private Rectangle handleB = null;
+            private Image handleM = null;
 
             public Shape(FrameworkElement elt)
             {
@@ -1767,12 +1842,14 @@ namespace SB_IDE.Dialogs
                 this.elt = elt;
 
                 Grid grid = new Grid();
-                grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(HandleShort) });
-                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-                grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(HandleShort) });
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(HandleShort) });
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
-                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(HandleShort) });
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
 
                 grid.Children.Add(elt);
                 Grid.SetRow(elt, 1);
@@ -1818,6 +1895,24 @@ namespace SB_IDE.Dialogs
                 Grid.SetRow(handleB, 2);
                 Grid.SetColumn(handleB, 1);
 
+                Color color = ((SolidColorBrush)THIS.background).Color;
+                color = Color.FromArgb(255, (byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+                Image handleM = new Image()
+                {
+                    Name = "M",
+                    Width = 2 * handleLong,
+                    Height = 2 * handleLong,
+                    Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Transform_move),
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Cursor = Cursors.Cross,
+                };
+                handleM.MouseDown += new MouseButtonEventHandler(OnMouseDown);
+                handleM.Tag = this;
+                grid.Children.Add(handleM);
+                Grid.SetRow(handleM, 3);
+                Grid.SetColumn(handleM, 3);
+
                 ShowHandles(false);
                 shape = grid;
             }
@@ -1858,7 +1953,8 @@ namespace SB_IDE.Dialogs
             {
                 FrameworkElement elt = (FrameworkElement)sender;
                 THIS.mode = elt.Name;
-                THIS.Cursor = Cursors.Cross;
+                THIS.Cursor = elt.Name == "M" ? Cursors.Hand : Cursors.Cross;
+                if (elt.Name == "M") THIS.eltPreviewMouseLeftButtonDown(((Shape)elt.Tag).elt, null);
                 THIS.SetStart(e.GetPosition(THIS.canvas));
             }
         }
@@ -2029,7 +2125,6 @@ namespace SB_IDE.Dialogs
                         Width = 100,
                         Height = 100,
                     };
-                    //TODO
                     webBrowser.Navigate(new Uri("http://www.smallbasic.com"));
                     elt = webBrowser;
                     break;
@@ -2038,6 +2133,11 @@ namespace SB_IDE.Dialogs
                     {
                         Name = name,
                         Content = label,
+                        Foreground = brush,
+                        FontFamily = fontFamily,
+                        FontStyle = fontStyle,
+                        FontSize = fontSize,
+                        FontWeight = fontWeight,
                     };
                     break;
                 case "ComboBox":
@@ -2046,6 +2146,11 @@ namespace SB_IDE.Dialogs
                         Name = name,
                         Width = 100,
                         MaxDropDownHeight = 100,
+                        Foreground = brush,
+                        FontFamily = fontFamily,
+                        FontStyle = fontStyle,
+                        FontSize = fontSize,
+                        FontWeight = fontWeight,
                     };
                     ComboBoxItem comboBoxItem = new ComboBoxItem();
                     comboBoxItem.Content = "Item1";
@@ -2065,7 +2170,6 @@ namespace SB_IDE.Dialogs
                     dataView.Columns.Add("1", "Heading1");
                     windowsFormsHost.Child = dataView;
                     elt = windowsFormsHost;
-                    //TODO
                     break;
                 case "DocumentViewer":
                     elt = new DocumentViewer()
@@ -2074,6 +2178,23 @@ namespace SB_IDE.Dialogs
                         Width = 100,
                         Height = 100,
                     };
+                    break;
+                case "ListBox":
+                    ListBox listBox = new ListBox()
+                    {
+                        Name = name,
+                        Width = 100,
+                        Height = 100,
+                        Foreground = brush,
+                        FontFamily = fontFamily,
+                        FontStyle = fontStyle,
+                        FontSize = fontSize,
+                        FontWeight = fontWeight,
+                    };
+                    ListBoxItem listBoxItem = new ListBoxItem();
+                    listBoxItem.Content = "Item1";
+                    listBox.Items.Add(listBoxItem);
+                    elt = listBox;
                     break;
                 case "ListView":
                     ListView listView = new ListView()
@@ -2102,12 +2223,16 @@ namespace SB_IDE.Dialogs
                         Width = 100,
                         Height = 100,
                     };
-                    //TODO
                     break;
                 case "Menu":
                     Menu menu = new Menu()
                     {
                         Name = name,
+                        Foreground = brush,
+                        FontFamily = fontFamily,
+                        FontStyle = fontStyle,
+                        FontSize = fontSize,
+                        FontWeight = fontWeight,
                     };
                     MenuItem menuItem = new MenuItem();
                     menuItem.Header = "Header1";
@@ -2121,6 +2246,11 @@ namespace SB_IDE.Dialogs
                         Name = name,
                         MaxLength = 100,
                         Width = 100,
+                        Foreground = brush,
+                        FontFamily = fontFamily,
+                        FontStyle = fontStyle,
+                        FontSize = fontSize,
+                        FontWeight = fontWeight,
                     };
                     break;
                 case "ProgressBar":
@@ -2137,6 +2267,11 @@ namespace SB_IDE.Dialogs
                         Name = name,
                         Content = label,
                         GroupName = "Group1",
+                        Foreground = brush,
+                        FontFamily = fontFamily,
+                        FontStyle = fontStyle,
+                        FontSize = fontSize,
+                        FontWeight = fontWeight,
                     };
                     break;
                 case "RichTextBox":
@@ -2145,6 +2280,11 @@ namespace SB_IDE.Dialogs
                         Name = name,
                         Width = 100,
                         Height = 100,
+                        Foreground = brush,
+                        FontFamily = fontFamily,
+                        FontStyle = fontStyle,
+                        FontSize = fontSize,
+                        FontWeight = fontWeight,
                         VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                         HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
                     };
@@ -2342,20 +2482,8 @@ namespace SB_IDE.Dialogs
                         case "Content":
                             shape.Content = value;
                             break;
-                        case "Foreground":
-                            shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
-                            break;
-                        case "FontFamily":
-                            shape.FontFamily = new FontFamily(value);
-                            break;
-                        case "FontStyle":
-                            shape.FontStyle = value.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
-                            break;
-                        case "FontSize":
-                            shape.FontSize = double.Parse(value);
-                            break;
-                        case "FontWeight":
-                            shape.FontWeight = value.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
+                        default:
+                            SetControlProperties(shape, property);
                             break;
                     }
                 }
@@ -2370,20 +2498,8 @@ namespace SB_IDE.Dialogs
                         case "Text":
                             shape.Text = value;
                             break;
-                        case "Foreground":
-                            shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
-                            break;
-                        case "FontFamily":
-                            shape.FontFamily = new FontFamily(value);
-                            break;
-                        case "FontStyle":
-                            shape.FontStyle = value.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
-                            break;
-                        case "FontSize":
-                            shape.FontSize = double.Parse(value);
-                            break;
-                        case "FontWeight":
-                            shape.FontWeight = value.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
+                        default:
+                            SetControlProperties(shape, property);
                             break;
                     }
                 }
@@ -2405,6 +2521,9 @@ namespace SB_IDE.Dialogs
                         case "Content":
                             shape.Content = value;
                             break;
+                        default:
+                            SetControlProperties(shape, property);
+                            break;
                     }
                 }
                 else if (currentElt.GetType() == typeof(ComboBox))
@@ -2424,6 +2543,9 @@ namespace SB_IDE.Dialogs
                             break;
                         case "DropDownHeight":
                             shape.MaxDropDownHeight = double.Parse(value);
+                            break;
+                        default:
+                            SetControlProperties(shape, property);
                             break;
                     }
                 }
@@ -2446,6 +2568,26 @@ namespace SB_IDE.Dialogs
                 else if (currentElt.GetType() == typeof(DocumentViewer))
                 {
                     DocumentViewer shape = (DocumentViewer)currentElt;
+                }
+                else if (currentElt.GetType() == typeof(ListBox))
+                {
+                    ListBox shape = (ListBox)currentElt;
+                    switch (property.Property)
+                    {
+                        case "List":
+                            string[] list = value.Split(new char[] { '=', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                            shape.Items.Clear();
+                            for (int i = 1; i < list.Length; i += 2)
+                            {
+                                ListBoxItem listBoxItem = new ListBoxItem();
+                                listBoxItem.Content = list[i];
+                                shape.Items.Add(listBoxItem);
+                            }
+                            break;
+                        default:
+                            SetControlProperties(shape, property);
+                            break;
+                    }
                 }
                 else if (currentElt.GetType() == typeof(ListView))
                 {
@@ -2504,6 +2646,9 @@ namespace SB_IDE.Dialogs
                                 }
                             }
                             break;
+                        default:
+                            SetControlProperties(shape, property);
+                            break;
                     }
                 }
                 else if (currentElt.GetType() == typeof(PasswordBox))
@@ -2513,6 +2658,9 @@ namespace SB_IDE.Dialogs
                     {
                         case "MaxLength":
                             shape.MaxLength = int.Parse(value);
+                            break;
+                        default:
+                            SetControlProperties(shape, property);
                             break;
                     }
                 }
@@ -2537,11 +2685,15 @@ namespace SB_IDE.Dialogs
                         case "Group":
                             shape.GroupName = value;
                             break;
+                        default:
+                            SetControlProperties(shape, property);
+                            break;
                     }
                 }
                 else if (currentElt.GetType() == typeof(RichTextBox))
                 {
                     RichTextBox shape = (RichTextBox)currentElt;
+                    SetControlProperties(shape, property);
                 }
                 else if (currentElt.GetType() == typeof(Slider))
                 {
@@ -2586,6 +2738,28 @@ namespace SB_IDE.Dialogs
             catch
             {
 
+            }
+        }
+
+        private void SetControlProperties(Control shape, PropertyData property)
+        {
+            switch (property.Property)
+            {
+                case "Foreground":
+                    shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(property.Value));
+                    break;
+                case "FontFamily":
+                    shape.FontFamily = new FontFamily(property.Value);
+                    break;
+                case "FontStyle":
+                    shape.FontStyle = property.Value.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
+                    break;
+                case "FontSize":
+                    shape.FontSize = double.Parse(property.Value);
+                    break;
+                case "FontWeight":
+                    shape.FontWeight = property.Value.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
+                    break;
             }
         }
 

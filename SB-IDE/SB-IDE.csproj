@@ -520,5 +520,8 @@
   <ItemGroup>
     <Resource Include="images\No_image.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Transform_move.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

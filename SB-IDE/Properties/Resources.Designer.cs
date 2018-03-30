@@ -93,16 +93,6 @@ namespace SB_IDE.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Arrow1 {
-            get {
-                object obj = ResourceManager.GetObject("Arrow1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Bookmark {
             get {
                 object obj = ResourceManager.GetObject("Bookmark", resourceCulture);
@@ -843,6 +833,16 @@ namespace SB_IDE.Properties {
         internal static System.Drawing.Bitmap Text_uppercase {
             get {
                 object obj = ResourceManager.GetObject("Text_uppercase", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Transform_move {
+            get {
+                object obj = ResourceManager.GetObject("Transform_move", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
