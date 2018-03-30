@@ -700,7 +700,7 @@ namespace SB_IDE.Dialogs
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("Shapes Editor failed to set a property input.", "SB-IDE", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -779,414 +779,431 @@ namespace SB_IDE.Dialogs
 
         private void ShowCode()
         {
-            sbDocument.TextArea.Text = "";
-            sbDocument.TextArea.Text += "Init()\n\nSub Init\n\n";
-
-            Brush _brush = new SolidColorBrush(((SolidColorBrush)brush).Color);
-            Pen _pen = new Pen(new SolidColorBrush(((SolidColorBrush)pen.Brush).Color), pen.Thickness);
-            FontFamily _fontFamily = fontFamily;
-            FontStyle _fontStyle = fontStyle;
-            double _fontSize = fontSize;
-            FontWeight _fontWeight = fontWeight;
-
-            foreach (FrameworkElement child in canvas.Children)
+            try
             {
-                if (child.GetType() == typeof(Grid))
-                {
-                    Grid grid = (Grid)child;
-                    foreach (FrameworkElement elt in grid.Children)
-                    {
-                        if (null != elt.Tag && elt.Name != "M")
-                        {
-                            Shape shape = (Shape)elt.Tag;
+                sbDocument.TextArea.Text = "";
+                sbDocument.TextArea.Text += "Init()\n\nSub Init\n\n";
 
-                            if (elt.GetType() == typeof(Rectangle))
+                Brush _brush = new SolidColorBrush(((SolidColorBrush)brush).Color);
+                Pen _pen = new Pen(new SolidColorBrush(((SolidColorBrush)pen.Brush).Color), pen.Thickness);
+                FontFamily _fontFamily = fontFamily;
+                FontStyle _fontStyle = fontStyle;
+                double _fontSize = fontSize;
+                FontWeight _fontWeight = fontWeight;
+
+                foreach (FrameworkElement child in canvas.Children)
+                {
+                    if (child.GetType() == typeof(Grid))
+                    {
+                        Grid grid = (Grid)child;
+                        foreach (FrameworkElement elt in grid.Children)
+                        {
+                            if (null != elt.Tag && elt.Name != "M")
                             {
-                                Rectangle obj = (Rectangle)elt;
-                                if (obj.Fill.ToString() != _brush.ToString())
+                                Shape shape = (Shape)elt.Tag;
+
+                                if (elt.GetType() == typeof(Rectangle))
                                 {
-                                    _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Fill.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                    Rectangle obj = (Rectangle)elt;
+                                    if (obj.Fill.ToString() != _brush.ToString())
+                                    {
+                                        _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Fill.ToString()));
+                                        sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                    }
+                                    if (obj.Stroke.ToString() != _pen.Brush.ToString())
+                                    {
+                                        _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
+                                    }
+                                    if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
+                                    {
+                                        _pen.Thickness = obj.StrokeThickness;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = Shapes.AddRectangle(" + Fix(obj.Width) + "," + Fix(obj.Height) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.Stroke.ToString() != _pen.Brush.ToString())
+                                else if (elt.GetType() == typeof(Ellipse))
                                 {
-                                    _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
+                                    Ellipse obj = (Ellipse)elt;
+                                    if (obj.Fill.ToString() != _brush.ToString())
+                                    {
+                                        _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Fill.ToString()));
+                                        sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                    }
+                                    if (obj.Stroke.ToString() != _pen.Brush.ToString())
+                                    {
+                                        _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
+                                    }
+                                    if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
+                                    {
+                                        _pen.Thickness = obj.StrokeThickness;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = Shapes.AddEllipse(" + Fix(obj.Width) + "," + Fix(obj.Height) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + (shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
+                                else if (elt.GetType() == typeof(Polygon))
                                 {
-                                    _pen.Thickness = obj.StrokeThickness;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                    Polygon obj = (Polygon)elt;
+                                    if (obj.Fill.ToString() != _brush.ToString())
+                                    {
+                                        _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Fill.ToString()));
+                                        sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                    }
+                                    if (obj.Stroke.ToString() != _pen.Brush.ToString())
+                                    {
+                                        _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
+                                    }
+                                    if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
+                                    {
+                                        _pen.Thickness = obj.StrokeThickness;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                    }
+                                    if (obj.Points.Count == 3)
+                                    {
+                                        sbDocument.TextArea.Text += obj.Name + " = Shapes.AddTriangle(" + Fix(obj.Points[0].X) + "," + Fix(obj.Points[0].Y) + "," + Fix(obj.Points[1].X) + "," + Fix(obj.Points[1].Y) + "," + Fix(obj.Points[2].X) + "," + Fix(obj.Points[2].Y) + ")\n";
+                                    }
+                                    else if (obj.Points.Count > 3)
+                                    {
+                                        string points = "";
+                                        for (int i = 0; i < obj.Points.Count; i++)
+                                        {
+                                            string point = "1\\=" + Fix(obj.Points[i].X) + "\\;2\\=" + Fix(obj.Points[i].Y) + "\\;";
+                                            points += (i + 1).ToString() + "=" + point + ";";
+                                        }
+                                        sbDocument.TextArea.Text += obj.Name + " = LDShapes.AddPolygon(\"" + points + "\")\n";
+                                    }
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += obj.Name + " = Shapes.AddRectangle(" + Fix(obj.Width) + "," + Fix(obj.Height) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(Ellipse))
-                            {
-                                Ellipse obj = (Ellipse)elt;
-                                if (obj.Fill.ToString() != _brush.ToString())
+                                else if (elt.GetType() == typeof(Line))
                                 {
-                                    _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Fill.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                    Line obj = (Line)elt;
+                                    if (obj.Stroke.ToString() != _pen.Brush.ToString())
+                                    {
+                                        _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
+                                    }
+                                    if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
+                                    {
+                                        _pen.Thickness = obj.StrokeThickness;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = Shapes.AddLine(" + Fix(obj.X1) + "," + Fix(obj.Y1) + "," + Fix(obj.X2) + "," + Fix(obj.Y2) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.Stroke.ToString() != _pen.Brush.ToString())
+                                else if (elt.GetType() == typeof(TextBlock))
                                 {
-                                    _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
+                                    TextBlock obj = (TextBlock)elt;
+                                    if (obj.Foreground.ToString() != _brush.ToString())
+                                    {
+                                        _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Foreground.ToString()));
+                                        sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                    }
+                                    if (obj.FontFamily.ToString() != _fontFamily.ToString())
+                                    {
+                                        _fontFamily = new FontFamily(obj.FontFamily.ToString());
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontName = \"" + _fontFamily.ToString() + "\"\n";
+                                    }
+                                    if (obj.FontStyle.ToString() != _fontStyle.ToString())
+                                    {
+                                        _fontStyle = obj.FontStyle;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontItalic = \"" + (_fontStyle == FontStyles.Italic ? "True" : "False") + "\"\n";
+                                    }
+                                    if (obj.FontSize.ToString() != _fontSize.ToString())
+                                    {
+                                        _fontSize = obj.FontSize;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
+                                    }
+                                    if (obj.FontWeight.ToString() != _fontWeight.ToString())
+                                    {
+                                        _fontWeight = obj.FontWeight;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontBold = \"" + (_fontWeight == FontWeights.Bold ? "True" : "False") + "\"\n";
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = Shapes.AddText(\"" + obj.Text + "\")\n";
+                                    sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
+                                else if (elt.GetType() == typeof(Image))
                                 {
-                                    _pen.Thickness = obj.StrokeThickness;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                    Image obj = (Image)elt;
+                                    sbDocument.TextArea.Text += obj.Name + " = Shapes.AddImage(\"" + obj.Source.ToString() + "\")\n";
+                                    sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += obj.Name + " = Shapes.AddEllipse(" + Fix(obj.Width) + "," + Fix(obj.Height) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + (shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(Polygon))
-                            {
-                                Polygon obj = (Polygon)elt;
-                                if (obj.Fill.ToString() != _brush.ToString())
+                                else if (elt.GetType() == typeof(Button))
                                 {
-                                    _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Fill.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                    Button obj = (Button)elt;
+                                    SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    sbDocument.TextArea.Text += obj.Name + " = Controls.AddButton(\"" + obj.Content + "\"," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.Stroke.ToString() != _pen.Brush.ToString())
+                                else if (elt.GetType() == typeof(TextBox))
                                 {
-                                    _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
+                                    TextBox obj = (TextBox)elt;
+                                    SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    if (obj.AcceptsReturn)
+                                    {
+                                        sbDocument.TextArea.Text += obj.Name + " = Controls.AddMultiLineTextBox(" + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    }
+                                    else
+                                    {
+                                        sbDocument.TextArea.Text += obj.Name + " = Controls.AddTextBox(" + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    }
+                                    sbDocument.TextArea.Text += "Controls.SetTextBoxText(" + obj.Name + ",\"" + obj.Text + "\")\n";
+                                    sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
+                                else if (elt.GetType() == typeof(WebBrowser))
                                 {
-                                    _pen.Thickness = obj.StrokeThickness;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                    WebBrowser obj = (WebBrowser)elt;
+                                    string url = "";
+                                    if (null != obj.Source) url = obj.Source.ToString();
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddBrowser(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + url + "\")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.Points.Count == 3)
+                                else if (elt.GetType() == typeof(CheckBox))
                                 {
-                                    sbDocument.TextArea.Text += obj.Name + " = Shapes.AddTriangle(" + Fix(obj.Points[0].X) + "," + Fix(obj.Points[0].Y) + "," + Fix(obj.Points[1].X) + "," + Fix(obj.Points[1].Y) + "," + Fix(obj.Points[2].X) + "," + Fix(obj.Points[2].Y) + ")\n";
+                                    CheckBox obj = (CheckBox)elt;
+                                    SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddCheckBox(\"" + obj.Content.ToString() + "\")\n";
+                                    sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(Line))
-                            {
-                                Line obj = (Line)elt;
-                                if (obj.Stroke.ToString() != _pen.Brush.ToString())
+                                else if (elt.GetType() == typeof(ComboBox))
                                 {
-                                    _pen.Brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Stroke.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.PenColor = \"" + ColorName(_pen.Brush) + "\"\n";
+                                    ComboBox obj = (ComboBox)elt;
+                                    SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    string list = "";
+                                    int i = 1;
+                                    foreach (ComboBoxItem item in obj.Items)
+                                    {
+                                        list += (i++).ToString() + "=" + item.Content.ToString() + ";";
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddComboBox(\"" + list + "\"," + Fix(shape.modifiers["Width"]) + "," + obj.MaxDropDownHeight.ToString() + ")\n";
+                                    sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
+                                else if (elt.GetType() == typeof(WindowsFormsHost))
                                 {
-                                    _pen.Thickness = obj.StrokeThickness;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                    WindowsFormsHost obj = (WindowsFormsHost)elt;
+                                    System.Windows.Forms.DataGridView dataView = (System.Windows.Forms.DataGridView)obj.Child;
+                                    string headings = "";
+                                    int i = 1;
+                                    foreach (System.Windows.Forms.DataGridViewColumn col in dataView.Columns)
+                                    {
+                                        headings += (i++).ToString() + "=" + col.HeaderText + ";";
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddDataView(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + headings + "\")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += obj.Name + " = Shapes.AddLine(" + Fix(obj.X1) + "," + Fix(obj.Y1) + "," + Fix(obj.X2) + "," + Fix(obj.Y2) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(TextBlock))
-                            {
-                                TextBlock obj = (TextBlock)elt;
-                                if (obj.Foreground.ToString() != _brush.ToString())
+                                else if (elt.GetType() == typeof(DocumentViewer))
                                 {
-                                    _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Foreground.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                    DocumentViewer obj = (DocumentViewer)elt;
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddDocumentViewer(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.FontFamily.ToString() != _fontFamily.ToString())
+                                else if (elt.GetType() == typeof(ListBox))
                                 {
-                                    _fontFamily = new FontFamily(obj.FontFamily.ToString());
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontName = \"" + _fontFamily.ToString() + "\"\n";
+                                    ListBox obj = (ListBox)elt;
+                                    SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    string list = "";
+                                    int i = 1;
+                                    foreach (ListBoxItem item in obj.Items)
+                                    {
+                                        list += (i++).ToString() + "=" + item.Content.ToString() + ";";
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddListBox(\"" + list + "\"," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.FontStyle.ToString() != _fontStyle.ToString())
+                                else if (elt.GetType() == typeof(ListView))
                                 {
-                                    _fontStyle = obj.FontStyle;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontItalic = \"" + (_fontStyle == FontStyles.Italic ? "True" : "False") + "\"\n";
+                                    ListView obj = (ListView)elt;
+                                    GridView gridView = (GridView)obj.View;
+                                    string headings = "";
+                                    int i = 1;
+                                    foreach (GridViewColumn col in gridView.Columns)
+                                    {
+                                        headings += (i++).ToString() + "=" + ((GridViewColumnHeader)col.Header).Content.ToString() + ";";
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddListView(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + headings + "\")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.FontSize.ToString() != _fontSize.ToString())
+                                else if (elt.GetType() == typeof(MediaPlayer))
                                 {
-                                    _fontSize = obj.FontSize;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
+                                    MediaElement obj = (MediaElement)elt;
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddMediaPlayer(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                if (obj.FontWeight.ToString() != _fontWeight.ToString())
+                                else if (elt.GetType() == typeof(Menu))
                                 {
-                                    _fontWeight = obj.FontWeight;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontBold = \"" + (_fontWeight == FontWeights.Bold ? "True" : "False") + "\"\n";
+                                    Menu obj = (Menu)elt;
+                                    SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    string menuList = "";
+                                    string iconList = "";
+                                    string checkList = "";
+                                    string separator = "-";
+                                    foreach (MenuItem menuItem in obj.Items)
+                                    {
+                                        GetMenuLists(menuItem, ref menuList, ref iconList, ref checkList, ref separator);
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddMenu(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + menuList + "\",\"" + iconList + "\",\"" + checkList + "\")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += obj.Name + " = Shapes.AddText(\"" + obj.Text + "\")\n";
-                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(Image))
-                            {
-                                Image obj = (Image)elt;
-                                sbDocument.TextArea.Text += obj.Name + " = Shapes.AddImage(\"" + obj.Source.ToString() + "\")\n";
-                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(Button))
-                            {
-                                Button obj = (Button)elt;
-                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
-                                sbDocument.TextArea.Text += obj.Name + " = Controls.AddButton(\"" + obj.Content + "\"," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(TextBox))
-                            {
-                                TextBox obj = (TextBox)elt;
-                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
-                                if (obj.AcceptsReturn)
+                                else if (elt.GetType() == typeof(PasswordBox))
                                 {
-                                    sbDocument.TextArea.Text += obj.Name + " = Controls.AddMultiLineTextBox(" + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    PasswordBox obj = (PasswordBox)elt;
+                                    SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddPasswordBox(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + "," + obj.MaxLength.ToString() + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                else
+                                else if (elt.GetType() == typeof(ProgressBar))
                                 {
-                                    sbDocument.TextArea.Text += obj.Name + " = Controls.AddTextBox(" + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    ProgressBar obj = (ProgressBar)elt;
+                                    if (obj.Foreground.ToString() != _brush.ToString())
+                                    {
+                                        _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Foreground.ToString()));
+                                        sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddProgressBar(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString() + "\")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += "Controls.SetTextBoxText(" + obj.Name + ",\"" + obj.Text + "\")\n";
-                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(WebBrowser))
-                            {
-                                WebBrowser obj = (WebBrowser)elt;
-                                string url = "";
-                                if (null != obj.Source) url = obj.Source.ToString();
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddBrowser(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + url + "\")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(CheckBox))
-                            {
-                                CheckBox obj = (CheckBox)elt;
-                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddCheckBox(\"" + obj.Content.ToString() + "\")\n";
-                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(ComboBox))
-                            {
-                                ComboBox obj = (ComboBox)elt;
-                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
-                                string list = "";
-                                int i = 1;
-                                foreach (ComboBoxItem item in obj.Items)
+                                else if (elt.GetType() == typeof(RadioButton))
                                 {
-                                    list += (i++).ToString() + "=" + item.Content.ToString() + ";";
+                                    RadioButton obj = (RadioButton)elt;
+                                    SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddRadioButton(\"" + obj.Content.ToString() + "\",\"" + obj.GroupName.ToString() + "\")\n";
+                                    sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddComboBox(\"" + list + "\"," + Fix(shape.modifiers["Width"]) + "," + obj.MaxDropDownHeight.ToString() + ")\n";
-                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(WindowsFormsHost))
-                            {
-                                WindowsFormsHost obj = (WindowsFormsHost)elt;
-                                System.Windows.Forms.DataGridView dataView = (System.Windows.Forms.DataGridView)obj.Child;
-                                string headings = "";
-                                int i = 1;
-                                foreach (System.Windows.Forms.DataGridViewColumn col in dataView.Columns)
+                                else if (elt.GetType() == typeof(RichTextBox))
                                 {
-                                    headings += (i++).ToString() + "=" + col.HeaderText + ";";
+                                    RichTextBox obj = (RichTextBox)elt;
+                                    SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddRichTextBox(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddDataView(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + headings + "\")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(DocumentViewer))
-                            {
-                                DocumentViewer obj = (DocumentViewer)elt;
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddDocumentViewer(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(ListBox))
-                            {
-                                ListBox obj = (ListBox)elt;
-                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
-                                string list = "";
-                                int i = 1;
-                                foreach (ListBoxItem item in obj.Items)
+                                else if (elt.GetType() == typeof(Slider))
                                 {
-                                    list += (i++).ToString() + "=" + item.Content.ToString() + ";";
+                                    Slider obj = (Slider)elt;
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddSlider(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString() + "\")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddListBox(\"" + list + "\"," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(ListView))
-                            {
-                                ListView obj = (ListView)elt;
-                                GridView gridView = (GridView)obj.View;
-                                string headings = "";
-                                int i = 1;
-                                foreach (GridViewColumn col in gridView.Columns)
+                                else if (elt.GetType() == typeof(TreeView))
                                 {
-                                    headings += (i++).ToString() + "=" + ((GridViewColumnHeader)col.Header).Content.ToString() + ";";
+                                    TreeView obj = (TreeView)elt;
+                                    if (obj.FontFamily.ToString() != _fontFamily.ToString())
+                                    {
+                                        _fontFamily = new FontFamily(obj.FontFamily.ToString());
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontName = \"" + _fontFamily.ToString() + "\"\n";
+                                    }
+                                    if (obj.FontStyle.ToString() != _fontStyle.ToString())
+                                    {
+                                        _fontStyle = obj.FontStyle;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontItalic = \"" + (_fontStyle == FontStyles.Italic ? "True" : "False") + "\"\n";
+                                    }
+                                    if (obj.FontSize.ToString() != _fontSize.ToString())
+                                    {
+                                        _fontSize = obj.FontSize;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
+                                    }
+                                    if (obj.FontWeight.ToString() != _fontWeight.ToString())
+                                    {
+                                        _fontWeight = obj.FontWeight;
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontBold = \"" + (_fontWeight == FontWeights.Bold ? "True" : "False") + "\"\n";
+                                    }
+                                    string tree = "";
+                                    int i = 1;
+                                    foreach (TreeViewItem item in obj.Items)
+                                    {
+                                        GetTreeList(item, ref i, 0, ref tree);
+                                    }
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddTreeView(\"" + tree + "\"," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
+                                    sbDocument.TextArea.Text += "\n";
                                 }
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddListView(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + headings + "\")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(MediaPlayer))
-                            {
-                                MediaElement obj = (MediaElement)elt;
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddMediaPlayer(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(Menu))
-                            {
-                                Menu obj = (Menu)elt;
-                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
-                                string menuList = "";
-                                string iconList = "";
-                                string checkList = "";
-                                string separator = "-";
-                                foreach (MenuItem menuItem in obj.Items)
-                                {
-                                    GetMenuLists(menuItem, ref menuList, ref iconList, ref checkList, ref separator);
-                                }
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddMenu(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + menuList + "\",\"" + iconList + "\",\"" + checkList + "\")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(PasswordBox))
-                            {
-                                PasswordBox obj = (PasswordBox)elt;
-                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddPasswordBox(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + "," + obj.MaxLength.ToString() + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(ProgressBar))
-                            {
-                                ProgressBar obj = (ProgressBar)elt;
-                                if (obj.Foreground.ToString() != _brush.ToString())
-                                {
-                                    _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Foreground.ToString()));
-                                    sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
-                                }
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddProgressBar(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString() + "\")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(RadioButton))
-                            {
-                                RadioButton obj = (RadioButton)elt;
-                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddRadioButton(\"" + obj.Content.ToString() + "\",\"" + obj.GroupName.ToString() + "\")\n";
-                                sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(RichTextBox))
-                            {
-                                RichTextBox obj = (RichTextBox)elt;
-                                SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddRichTextBox(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(Slider))
-                            {
-                                Slider obj = (Slider)elt;
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddSlider(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString() + "\")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
-                            }
-                            else if (elt.GetType() == typeof(TreeView))
-                            {
-                                TreeView obj = (TreeView)elt;
-                                if (obj.FontFamily.ToString() != _fontFamily.ToString())
-                                {
-                                    _fontFamily = new FontFamily(obj.FontFamily.ToString());
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontName = \"" + _fontFamily.ToString() + "\"\n";
-                                }
-                                if (obj.FontStyle.ToString() != _fontStyle.ToString())
-                                {
-                                    _fontStyle = obj.FontStyle;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontItalic = \"" + (_fontStyle == FontStyles.Italic ? "True" : "False") + "\"\n";
-                                }
-                                if (obj.FontSize.ToString() != _fontSize.ToString())
-                                {
-                                    _fontSize = obj.FontSize;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
-                                }
-                                if (obj.FontWeight.ToString() != _fontWeight.ToString())
-                                {
-                                    _fontWeight = obj.FontWeight;
-                                    sbDocument.TextArea.Text += "GraphicsWindow.FontBold = \"" + (_fontWeight == FontWeights.Bold ? "True" : "False") + "\"\n";
-                                }
-                                string tree = "";
-                                int i = 1;
-                                foreach (TreeViewItem item in obj.Items)
-                                {
-                                    GetTreeList(item, ref i, 0, ref tree);
-                                }
-                                sbDocument.TextArea.Text += obj.Name + " = LDControls.AddTreeView(\"" + tree + "\"," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
-                                sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
-                                if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
-                                if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
-                                sbDocument.TextArea.Text += "\n";
                             }
                         }
                     }
                 }
-            }
 
-            sbDocument.TextArea.Text += "EndSub\n";
-            sbDocument.Lexer.Format();
+                sbDocument.TextArea.Text += "EndSub\n";
+                sbDocument.Lexer.Format();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Shapes Editor failed to export some shapes to code.", "SB-IDE", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void SetControlPropertyCode(Control obj, ref Brush _brush, ref FontFamily _fontFamily, ref FontStyle _fontStyle, ref double _fontSize, ref FontWeight _fontWeight)
@@ -1441,6 +1458,32 @@ namespace SB_IDE.Dialogs
                         canvas.Children.Add(shape.shape);
                         shape.modifiers["Left"] = parts[1];
                         shape.modifiers["Top"] = parts[2];
+                    }
+                    else if (codeLower.Contains("ldshapes.addpolygon"))
+                    {
+                        string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] values = parts[1].Replace("\"", "").Split(new char[] { '=', ';', '\\' }, StringSplitOptions.RemoveEmptyEntries);
+                        PointCollection points = new PointCollection();
+                        double x = 0;
+                        double y = 0;
+                        for (int i = 0; i < values.Length; i = i+5)
+                        {
+                            double.TryParse(values[i + 2], out x);
+                            double.TryParse(values[i + 4], out y);
+                            points.Add(new Point(x, y));
+                        }
+                        name = GetName("Polygon", parts[0]);
+                        elt = new Polygon()
+                        {
+                            Name = name,
+                            Points = points,
+                            Fill = _brush,
+                            Stroke = _pen.Brush,
+                            StrokeThickness = _pen.Thickness,
+                        };
+                        elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
+                        shape = new Shape(elt);
+                        canvas.Children.Add(shape.shape);
                     }
                     else if (codeLower.Contains("ldcontrols.addbrowser"))
                     {
@@ -1850,7 +1893,7 @@ namespace SB_IDE.Dialogs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Shapes Editor failed to import some shapes.", "SB-IDE", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Shapes Editor failed to import some shapes from code.", "SB-IDE", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -2157,6 +2200,16 @@ namespace SB_IDE.Dialogs
                         VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                     };
                     break;
+                case "Polygon":
+                    elt = new Polygon()
+                    {
+                        Name = name,
+                        Points = new PointCollection() { new Point(0, 100), new Point(100, 100), new Point(20, 0), new Point(80, 0) },
+                        Fill = brush,
+                        Stroke = pen.Brush,
+                        StrokeThickness = pen.Thickness,
+                    };
+                    break;
                 case "Browser":
                     WebBrowser webBrowser = new WebBrowser()
                     {
@@ -2450,7 +2503,11 @@ namespace SB_IDE.Dialogs
                             if (property.Property.StartsWith("X")) shape.Points[i] = new Point(double.Parse(value), shape.Points[i].Y);
                             else if (property.Property.StartsWith("Y")) shape.Points[i] = new Point(shape.Points[i].X, double.Parse(value));
                             break;
-
+                    }
+                    foreach (Point point in shape.Points)
+                    {
+                        shape.Width = Math.Max(shape.Width, point.X);
+                        shape.Height = Math.Max(shape.Height, point.Y);
                     }
                 }
                 else if (currentElt.GetType() == typeof(Line))
