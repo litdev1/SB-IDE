@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Forms.Integration;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -661,6 +662,7 @@ namespace SB_IDE.Dialogs
                     else if (currentElt.GetType() == typeof(ProgressBar))
                     {
                         ProgressBar shape = (ProgressBar)currentElt;
+                        properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "Orientation", Value = shape.Orientation.ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(RadioButton))
@@ -690,6 +692,8 @@ namespace SB_IDE.Dialogs
                             GetTreeList(item, ref i, 0, ref tree);
                         }
                         properties.Add(new PropertyData() { Property = "Tree", Value = tree, Visible = Visibility.Hidden });
+                        GetControlProperties(shape);
+                        properties.RemoveAt(2);
                     }
                 }
                 dataGridProperties.Items.Refresh();
@@ -1100,6 +1104,11 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(ProgressBar))
                             {
                                 ProgressBar obj = (ProgressBar)elt;
+                                if (obj.Foreground.ToString() != _brush.ToString())
+                                {
+                                    _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Foreground.ToString()));
+                                    sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
+                                }
                                 sbDocument.TextArea.Text += obj.Name + " = LDControls.AddProgressBar(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString() + "\")\n";
                                 sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                 if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
@@ -1139,6 +1148,26 @@ namespace SB_IDE.Dialogs
                             else if (elt.GetType() == typeof(TreeView))
                             {
                                 TreeView obj = (TreeView)elt;
+                                if (obj.FontFamily.ToString() != _fontFamily.ToString())
+                                {
+                                    _fontFamily = new FontFamily(obj.FontFamily.ToString());
+                                    sbDocument.TextArea.Text += "GraphicsWindow.FontName = \"" + _fontFamily.ToString() + "\"\n";
+                                }
+                                if (obj.FontStyle.ToString() != _fontStyle.ToString())
+                                {
+                                    _fontStyle = obj.FontStyle;
+                                    sbDocument.TextArea.Text += "GraphicsWindow.FontItalic = \"" + (_fontStyle == FontStyles.Italic ? "True" : "False") + "\"\n";
+                                }
+                                if (obj.FontSize.ToString() != _fontSize.ToString())
+                                {
+                                    _fontSize = obj.FontSize;
+                                    sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
+                                }
+                                if (obj.FontWeight.ToString() != _fontWeight.ToString())
+                                {
+                                    _fontWeight = obj.FontWeight;
+                                    sbDocument.TextArea.Text += "GraphicsWindow.FontBold = \"" + (_fontWeight == FontWeights.Bold ? "True" : "False") + "\"\n";
+                                }
                                 string tree = "";
                                 int i = 1;
                                 foreach (TreeViewItem item in obj.Items)
@@ -1640,6 +1669,8 @@ namespace SB_IDE.Dialogs
                             Name = name,
                             Width = value[0],
                             Height = value[1],
+                            Foreground = _brush,
+                            Value = 75,
                         };
                         currentElt = elt;
                         UpdateProperty(new PropertyData() { Property = "Orientation" }, parts[3].Replace("\"", ""));
@@ -1685,6 +1716,8 @@ namespace SB_IDE.Dialogs
                             VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                             HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
                         };
+                        ((RichTextBox)elt).Document.Blocks.Clear();
+                        ((RichTextBox)elt).Document.Blocks.Add(new Paragraph(new Run("RichTextBox")));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1700,6 +1733,8 @@ namespace SB_IDE.Dialogs
                             Name = name,
                             Width = value[0],
                             Height = value[1],
+                            Maximum = 100,
+                            Value = 75,
                         };
                         currentElt = elt;
                         UpdateProperty(new PropertyData() { Property = "Orientation" }, parts[3].Replace("\"", ""));
@@ -1718,6 +1753,10 @@ namespace SB_IDE.Dialogs
                             Name = name,
                             Width = value[0],
                             Height = value[1],
+                            FontFamily = _fontFamily,
+                            FontStyle = _fontStyle,
+                            FontSize = _fontSize,
+                            FontWeight = _fontWeight,
                         };
                         currentElt = elt;
                         UpdateProperty(new PropertyData() { Property = "Tree" }, parts[1].Replace("\"", ""));
@@ -2258,7 +2297,10 @@ namespace SB_IDE.Dialogs
                     {
                         Name = name,
                         Width = 100,
+                        Height = 20,
+                        Foreground = brush,
                         Orientation = Orientation.Horizontal,
+                        Value = 75,
                     };
                     break;
                 case "RadioButton":
@@ -2288,13 +2330,18 @@ namespace SB_IDE.Dialogs
                         VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
                         HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
                     };
+                    ((RichTextBox)elt).Document.Blocks.Clear();
+                    ((RichTextBox)elt).Document.Blocks.Add(new Paragraph(new Run("RichTextBox")));
                     break;
                 case "Slider":
                     elt = new Slider()
                     {
                         Name = name,
                         Width = 100,
+                        Height = 20,
                         Orientation = Orientation.Horizontal,
+                        Maximum = 100,
+                        Value = 75,
                     };
                     break;
                 case "TreeView":
@@ -2303,6 +2350,10 @@ namespace SB_IDE.Dialogs
                         Name = name,
                         Width = 100,
                         Height = 100,
+                        FontFamily = fontFamily,
+                        FontStyle = fontStyle,
+                        FontSize = fontSize,
+                        FontWeight = fontWeight,
                     };
                     TreeViewItem treeViewItem = new TreeViewItem();
                     treeViewItem.Header = "Item1";
@@ -2669,8 +2720,11 @@ namespace SB_IDE.Dialogs
                     ProgressBar shape = (ProgressBar)currentElt;
                     switch (property.Property)
                     {
+                        case "Foreground":
+                            shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
+                            break;
                         case "Orientation":
-                            shape.Orientation = value.ToLower() == "vertical" ? Orientation.Vertical : Orientation.Horizontal;
+                            shape.Orientation = value.ToLower() == "horizontal" ? Orientation.Horizontal : Orientation.Vertical;
                             break;
                     }
                 }
@@ -2701,7 +2755,7 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "Orientation":
-                            shape.Orientation = value.ToLower() == "vertical" ? Orientation.Vertical : Orientation.Horizontal;
+                            shape.Orientation = value.ToLower() == "horizontal" ? Orientation.Horizontal : Orientation.Vertical;
                             break;
                     }
                 }
@@ -2730,6 +2784,9 @@ namespace SB_IDE.Dialogs
                                     findTreeItem(shape.Items, "Index" + items[i + 1]).Items.Add(treeViewItem);
                                 }
                             }
+                            break;
+                        default:
+                            SetControlProperties(shape, property);
                             break;
                     }
                 }
@@ -3016,6 +3073,7 @@ namespace SB_IDE.Dialogs
                             dataGridProperties.Items.Refresh();
                         }
                     }
+                    ShowCode();
                 }
             }
             catch
