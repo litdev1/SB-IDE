@@ -145,12 +145,9 @@ namespace SB_IDE.Dialogs
             {
                 try
                 {
-                    RotateTransform rotateTransform = new RotateTransform();
-                    rotateTransform.CenterX = currentElt.ActualWidth / 2.0;
-                    rotateTransform.CenterY = currentElt.ActualHeight / 2.0;
-                    rotateTransform.Angle = double.Parse(currentShape.modifiers["Angle"]);
-                    currentElt.RenderTransform = new TransformGroup();
-                    ((TransformGroup)currentElt.RenderTransform).Children.Add(rotateTransform);
+                    RotateShape(currentShape);
+                    UpdatePolygonHandles();
+                    currentShape.ShowHandles(true); //polygon handles on rotation
                     currentElt.Opacity = double.Parse(currentShape.modifiers["Opacity"]) / 100.0;
                 }
                 catch
@@ -1898,13 +1895,7 @@ namespace SB_IDE.Dialogs
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
                         shape.modifiers["Angle"] = parts[2];
-                        RotateTransform rotateTransform = new RotateTransform();
-                        shape.elt.Measure(new Size(double.MaxValue, double.MaxValue));
-                        rotateTransform.CenterX = shape.elt.DesiredSize.Width / 2.0;
-                        rotateTransform.CenterY = shape.elt.DesiredSize.Height / 2.0;
-                        rotateTransform.Angle = double.Parse(parts[2]);
-                        shape.elt.RenderTransform = new TransformGroup();
-                        ((TransformGroup)shape.elt.RenderTransform).Children.Add(rotateTransform);
+                        RotateShape(shape);
                     }
                     if (null != shape)
                     {
@@ -1955,6 +1946,7 @@ namespace SB_IDE.Dialogs
                 this.elt = elt;
 
                 Grid grid = new Grid();
+                //grid.Clip = new RectangleGeometry(new Rect(0, 0, 1000, 1000));
                 grid.ClipToBounds = false;
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto } );
@@ -3064,12 +3056,8 @@ namespace SB_IDE.Dialogs
                         break;
                     case "Angle":
                         currentShape.modifiers["Angle"] = value;
-                        RotateTransform rotateTransform = new RotateTransform();
-                        rotateTransform.CenterX = currentElt.ActualWidth / 2.0;
-                        rotateTransform.CenterY = currentElt.ActualHeight / 2.0;
-                        rotateTransform.Angle = double.Parse(value);
-                        currentElt.RenderTransform = new TransformGroup();
-                        ((TransformGroup)currentElt.RenderTransform).Children.Add(rotateTransform);
+                        RotateShape(currentShape);
+                        UpdatePolygonHandles();
                         currentShape.ShowHandles(true); //polygon handles on rotation
                         break;
                     case "Opacity":
@@ -3077,11 +3065,39 @@ namespace SB_IDE.Dialogs
                         currentElt.Opacity = double.Parse(value) / 100.0;
                         break;
                 }
-                canvas.UpdateLayout();
+                UpdateView();
             }
             catch
             {
 
+            }
+        }
+
+        private void RotateShape(Shape shape)
+        {
+            RotateTransform rotateTransform = new RotateTransform();
+            shape.elt.Measure(new Size(double.MaxValue, double.MaxValue));
+            rotateTransform.CenterX = shape.elt.DesiredSize.Width / 2.0;
+            rotateTransform.CenterY = shape.elt.DesiredSize.Height / 2.0;
+            rotateTransform.Angle = double.Parse(shape.modifiers["Angle"]);
+
+            if (shape.elt.GetType() == typeof(Polygon))
+            {
+                Polygon polygon = (Polygon)shape.elt;
+                for (int i = 0; i < polygon.Points.Count; i++)
+                {
+                    Point point = new Point(polygon.Points[i].X, polygon.Points[i].Y);
+                    point = rotateTransform.Transform(point);
+                    polygon.Points[i] = point;
+                    point = shape.elt.TranslatePoint(point, THIS.canvas);
+                }
+                shape.modifiers["Angle"] = "0";
+                UpdatePolygonSize(shape.elt);
+            }
+            else
+            {
+                shape.elt.RenderTransform = new TransformGroup();
+                ((TransformGroup)shape.elt.RenderTransform).Children.Add(rotateTransform);
             }
         }
 
