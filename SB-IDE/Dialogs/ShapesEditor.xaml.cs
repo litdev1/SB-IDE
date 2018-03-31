@@ -54,6 +54,7 @@ namespace SB_IDE.Dialogs
         private int snap = 10;
         private double scale = 1;
         private string mode = "SEL";
+        private int _PT = -1;
 
         public ShapesEditor(MainWindow mainWindow)
         {
@@ -168,6 +169,7 @@ namespace SB_IDE.Dialogs
         {
             if (null == currentShape) return;
 
+            currentShape.ShowHandles(false);
             canvas.Children.Remove(currentShape.shape);
 
             currentElt = null;
@@ -185,6 +187,7 @@ namespace SB_IDE.Dialogs
             currentElt = null;
             currentShape = null;
             lastShape = null;
+            Shape.HandlePT = null;
             mode = "SEL";
             UpdateView();
         }
@@ -194,6 +197,7 @@ namespace SB_IDE.Dialogs
             if (null != lastShape) lastShape.ShowHandles(false);
             currentElt = (FrameworkElement)sender;
             currentShape = (Shape)currentElt.Tag;
+            UpdatePolygonHandles();
             currentShape.ShowHandles(true);
             lastShape = currentShape;
 
@@ -211,6 +215,7 @@ namespace SB_IDE.Dialogs
         private void canvasPreviewLeftMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (null == currentShape) return;
+            UpdatePolygonSize(currentElt);
 
             mode = "SEL";
             Cursor = Cursors.Arrow;
@@ -269,7 +274,7 @@ namespace SB_IDE.Dialogs
 
             switch (mode)
             {
-                case "TL":
+                case "_TL":
                     if (startWidth - change.X > 0 && startHeight - change.Y > 0)
                     {
                         if (currentElt.GetType() == typeof(Polygon))
@@ -286,7 +291,7 @@ namespace SB_IDE.Dialogs
                         Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
                     }
                     break;
-                case "TR":
+                case "_TR":
                     if (startWidth + change.X > 0 && startHeight - change.Y > 0)
                     {
                         if (currentElt.GetType() == typeof(Polygon))
@@ -302,7 +307,7 @@ namespace SB_IDE.Dialogs
                         Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
                     }
                     break;
-                case "BL":
+                case "_BL":
                     if (startWidth - change.X > 0 && startHeight + change.Y > 0)
                     {
                         if (currentElt.GetType() == typeof(Polygon))
@@ -318,7 +323,7 @@ namespace SB_IDE.Dialogs
                         Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
                     }
                     break;
-                case "BR":
+                case "_BR":
                     if (startWidth + change.X > 0 && startHeight + change.Y > 0)
                     {
                         if (currentElt.GetType() == typeof(Polygon))
@@ -333,7 +338,7 @@ namespace SB_IDE.Dialogs
                         currentElt.Height = startHeight + change.Y;
                     }
                     break;
-                case "L":
+                case "_L":
                     if (startWidth - change.X > 0)
                     {
                         if (currentElt.GetType() == typeof(Polygon))
@@ -348,7 +353,7 @@ namespace SB_IDE.Dialogs
                         Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
                     }
                     break;
-                case "R":
+                case "_R":
                     if (startWidth + change.X > 0)
                     {
                         if (currentElt.GetType() == typeof(Polygon))
@@ -362,7 +367,7 @@ namespace SB_IDE.Dialogs
                         currentElt.Width = Math.Max(0, startWidth + change.X);
                     }
                     break;
-                case "T":
+                case "_T":
                     if (startHeight - change.Y > 0)
                     {
                         if (currentElt.GetType() == typeof(Polygon))
@@ -377,7 +382,7 @@ namespace SB_IDE.Dialogs
                         Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
                     }
                     break;
-                case "B":
+                case "_B":
                     if (startHeight + change.Y > 0)
                     {
                         if (currentElt.GetType() == typeof(Polygon))
@@ -391,6 +396,13 @@ namespace SB_IDE.Dialogs
                         currentElt.Height = Math.Max(0, startHeight + change.Y);
                     }
                     break;
+                case "_PT":
+                    if (currentElt.GetType() == typeof(Polygon) && _PT >= 0 && _PT < ((Polygon)currentElt).Points.Count)
+                    {
+                        Polygon polygon = (Polygon)currentElt;
+                        polygon.Points[_PT] = new Point(position.X - startLocal.X - Shape.HandleShort / 2.0, position.Y - startLocal.Y - Shape.HandleShort / 2.0);
+                    }
+                    break;
                 default:
                     Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
                     Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
@@ -400,7 +412,25 @@ namespace SB_IDE.Dialogs
             currentShape.modifiers["Height"] = (currentElt.Height).ToString();
             currentShape.modifiers["Left"] = (Canvas.GetLeft(currentShape.shape) + Shape.HandleShort).ToString();
             currentShape.modifiers["Top"] = (Canvas.GetTop(currentShape.shape) + Shape.HandleShort).ToString();
+            UpdatePolygonHandles();
+
             canvas.UpdateLayout();
+        }
+
+        private void UpdatePolygonHandles()
+        {
+            if (null != currentElt && currentElt.GetType() == typeof(Polygon))
+            {
+                Polygon polygon = (Polygon)currentElt;
+                if (Shape.HandlePT.Count >= polygon.Points.Count)
+                {
+                    for (int i = 0; i < polygon.Points.Count; i++)
+                    {
+                        Canvas.SetLeft(Shape.HandlePT[i], Canvas.GetLeft(currentShape.shape) + Shape.HandleShort + polygon.Points[i].X - Shape.HandleShort / 2.0);
+                        Canvas.SetTop(Shape.HandlePT[i], Canvas.GetTop(currentShape.shape) + Shape.HandleShort + polygon.Points[i].Y - Shape.HandleShort / 2.0);
+                    }
+                }
+            }
         }
 
         private void UpdatePolygon(double changeX, double changeY)
@@ -798,7 +828,7 @@ namespace SB_IDE.Dialogs
                         Grid grid = (Grid)child;
                         foreach (FrameworkElement elt in grid.Children)
                         {
-                            if (null != elt.Tag && elt.Name != "M")
+                            if (null != elt.Tag && elt.Name != "_M")
                             {
                                 Shape shape = (Shape)elt.Tag;
 
@@ -1915,6 +1945,7 @@ namespace SB_IDE.Dialogs
             private Rectangle handleT = null;
             private Rectangle handleB = null;
             private Image handleM = null;
+            public static List<Ellipse> HandlePT = null;
 
             public Shape(FrameworkElement elt)
             {
@@ -1924,64 +1955,65 @@ namespace SB_IDE.Dialogs
                 this.elt = elt;
 
                 Grid grid = new Grid();
-                grid.RowDefinitions.Add(new RowDefinition());
-                grid.RowDefinitions.Add(new RowDefinition());
-                grid.RowDefinitions.Add(new RowDefinition());
-                grid.RowDefinitions.Add(new RowDefinition());
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ClipToBounds = false;
+                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto } );
+                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
                 grid.Children.Add(elt);
                 Grid.SetRow(elt, 1);
                 Grid.SetColumn(elt, 1);
 
-                handleTL = GetHandle(HandleShort, HandleShort, "TL");
+                handleTL = GetHandle(HandleShort, HandleShort, "_TL");
                 grid.Children.Add(handleTL);
                 Grid.SetRow(handleTL, 0);
                 Grid.SetColumn(handleTL, 0);
 
-                handleTR = GetHandle(HandleShort, HandleShort, "TR");
+                handleTR = GetHandle(HandleShort, HandleShort, "_TR");
                 grid.Children.Add(handleTR);
                 Grid.SetRow(handleTR, 0);
                 Grid.SetColumn(handleTR, 2);
 
-                handleBL = GetHandle(HandleShort, HandleShort, "BL");
+                handleBL = GetHandle(HandleShort, HandleShort, "_BL");
                 grid.Children.Add(handleBL);
                 Grid.SetRow(handleBL, 2);
                 Grid.SetColumn(handleBL, 0);
 
-                handleBR = GetHandle(HandleShort, HandleShort, "BR");
+                handleBR = GetHandle(HandleShort, HandleShort, "_BR");
                 grid.Children.Add(handleBR);
                 Grid.SetRow(handleBR, 2);
                 Grid.SetColumn(handleBR, 2);
 
-                handleL = GetHandle(HandleShort, handleLong, "L");
+                handleL = GetHandle(HandleShort, handleLong, "_L");
                 grid.Children.Add(handleL);
                 Grid.SetRow(handleL, 1);
                 Grid.SetColumn(handleL, 0);
 
-                handleR = GetHandle(HandleShort, handleLong, "R");
+                handleR = GetHandle(HandleShort, handleLong, "_R");
                 grid.Children.Add(handleR);
                 Grid.SetRow(handleR, 1);
                 Grid.SetColumn(handleR, 2);
 
-                handleT = GetHandle(handleLong, HandleShort, "T");
+                handleT = GetHandle(handleLong, HandleShort, "_T");
                 grid.Children.Add(handleT);
                 Grid.SetRow(handleT, 0);
                 Grid.SetColumn(handleT, 1);
 
-                handleB = GetHandle(handleLong, HandleShort, "B");
+                handleB = GetHandle(handleLong, HandleShort, "_B");
                 grid.Children.Add(handleB);
                 Grid.SetRow(handleB, 2);
                 Grid.SetColumn(handleB, 1);
 
                 Color color = ((SolidColorBrush)THIS.background).Color;
                 color = Color.FromArgb(255, (byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
-                Image handleM = new Image()
+                handleM = new Image()
                 {
-                    Name = "M",
+                    Name = "_M",
                     Width = 2 * handleLong,
                     Height = 2 * handleLong,
                     Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Transform_move),
@@ -1994,6 +2026,27 @@ namespace SB_IDE.Dialogs
                 grid.Children.Add(handleM);
                 Grid.SetRow(handleM, 3);
                 Grid.SetColumn(handleM, 3);
+
+                if (null == HandlePT)
+                {
+                    HandlePT = new List<Ellipse>();
+                    for (int i = 0; i < 100; i++)
+                    {
+                        Ellipse pt = new Ellipse()
+                        {
+                            Name = "_PT",
+                            Tag = i,
+                            Width = HandleShort,
+                            Height = HandleShort,
+                            Fill = Brushes.Red,
+                            Cursor = Cursors.Cross,
+                        };
+                        pt.MouseDown += new MouseButtonEventHandler(OnMouseDown);
+                        HandlePT.Add(pt);
+                        THIS.canvas.Children.Add(pt);
+                        Canvas.SetZIndex(pt, 1);
+                    }
+                }
 
                 ShowHandles(false);
                 shape = grid;
@@ -2009,6 +2062,33 @@ namespace SB_IDE.Dialogs
                 if (null != handleR) handleR.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
                 if (null != handleT) handleT.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
                 if (null != handleB) handleB.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+
+                foreach (FrameworkElement pt in HandlePT)
+                {
+                    pt.Visibility = Visibility.Hidden;
+                }
+
+                if (bSet)
+                {
+                    if (elt.GetType() == typeof(Polygon))
+                    {
+                        Polygon polygon = (Polygon)elt;
+                        if (modifiers.ContainsKey("Angle") && modifiers["Angle"] != "0")
+                        {
+                            for (int i = 0; i < polygon.Points.Count; i++)
+                            {
+                                HandlePT[i].Visibility = Visibility.Hidden;
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < polygon.Points.Count; i++)
+                            {
+                                HandlePT[i].Visibility = Visibility.Visible;
+                            }
+                        }
+                    }
+                }
             }
 
             private Rectangle GetHandle(int width, int height, string name)
@@ -2035,8 +2115,9 @@ namespace SB_IDE.Dialogs
             {
                 FrameworkElement elt = (FrameworkElement)sender;
                 THIS.mode = elt.Name;
-                THIS.Cursor = elt.Name == "M" ? Cursors.Hand : Cursors.Cross;
-                if (elt.Name == "M") THIS.eltPreviewMouseLeftButtonDown(((Shape)elt.Tag).elt, null);
+                THIS.Cursor = elt.Name == "_M" ? Cursors.Hand : Cursors.Cross;
+                if (elt.Name == "_PT") THIS._PT = (int)elt.Tag;
+                if (elt.Name == "_M") THIS.eltPreviewMouseLeftButtonDown(((Shape)elt.Tag).elt, null);
                 THIS.SetStart(e.GetPosition(THIS.canvas));
             }
         }
@@ -2201,10 +2282,21 @@ namespace SB_IDE.Dialogs
                     };
                     break;
                 case "Polygon":
+                    // Get number of points
+                    PolygonSides dlg = new PolygonSides();
+                    dlg.ShowDialog();
+
+                    int nPoint = PolygonSides.NumSides;
+                    PointCollection points = new PointCollection();
+                    for (int i = 0; i < nPoint; i++)
+                    {
+                        double angle = 2.0 * Math.PI * i / nPoint;
+                        points.Add(new Point(50 - 50 * Math.Cos(angle), 50 + 50 * Math.Sin(angle)));
+                    }
                     elt = new Polygon()
                     {
                         Name = name,
-                        Points = new PointCollection() { new Point(0, 100), new Point(100, 100), new Point(20, 0), new Point(80, 0) },
+                        Points = points,
                         Fill = brush,
                         Stroke = pen.Brush,
                         StrokeThickness = pen.Thickness,
@@ -2504,11 +2596,7 @@ namespace SB_IDE.Dialogs
                             else if (property.Property.StartsWith("Y")) shape.Points[i] = new Point(shape.Points[i].X, double.Parse(value));
                             break;
                     }
-                    foreach (Point point in shape.Points)
-                    {
-                        shape.Width = Math.Max(shape.Width, point.X);
-                        shape.Height = Math.Max(shape.Height, point.Y);
-                    }
+                    UpdatePolygonSize(shape);
                 }
                 else if (currentElt.GetType() == typeof(Line))
                 {
@@ -2855,6 +2943,39 @@ namespace SB_IDE.Dialogs
             }
         }
 
+        private void UpdatePolygonSize(FrameworkElement shape)
+        {
+            if (shape.GetType() == typeof(Polygon))
+            {
+                double minX = double.MaxValue;
+                double minY = double.MaxValue;
+                double maxX = -double.MaxValue;
+                double maxY = -double.MaxValue;
+                foreach (Point point in ((Polygon)shape).Points)
+                {
+                    minX = Math.Min(minX, point.X);
+                    minY = Math.Min(minY, point.Y);
+                    maxX = Math.Max(maxX, point.X);
+                    maxY = Math.Max(maxY, point.Y);
+                }
+                for (int i = 0; i < ((Polygon)shape).Points.Count; i++)
+                {
+                    Point point = ((Polygon)shape).Points[i];
+                    ((Polygon)shape).Points[i] = new Point(point.X - minX, point.Y - minY);
+                }
+                shape.Width = maxX - minX;
+                shape.Height = maxY - minY;
+                Shape parent = (Shape)shape.Tag;
+                Canvas.SetLeft(parent.shape, Canvas.GetLeft(parent.shape) + minX);
+                Canvas.SetTop(parent.shape, Canvas.GetTop(parent.shape) + minY);
+
+                currentShape.modifiers["Width"] = (shape.Width).ToString();
+                currentShape.modifiers["Height"] = (shape.Height).ToString();
+                currentShape.modifiers["Left"] = (Canvas.GetLeft(parent.shape) + Shape.HandleShort).ToString();
+                currentShape.modifiers["Top"] = (Canvas.GetTop(parent.shape) + Shape.HandleShort).ToString();
+            }
+        }
+
         private void SetControlProperties(Control shape, PropertyData property)
         {
             switch (property.Property)
@@ -2949,6 +3070,7 @@ namespace SB_IDE.Dialogs
                         rotateTransform.Angle = double.Parse(value);
                         currentElt.RenderTransform = new TransformGroup();
                         ((TransformGroup)currentElt.RenderTransform).Children.Add(rotateTransform);
+                        currentShape.ShowHandles(true); //polygon handles on rotation
                         break;
                     case "Opacity":
                         currentShape.modifiers["Opacity"] = value;

@@ -108,6 +108,9 @@
     <Compile Include="Dialogs\Colours.xaml.cs">
       <DependentUpon>Colours.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\PolygonSides.xaml.cs">
+      <DependentUpon>PolygonSides.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\ShapesEditor.xaml.cs">
       <DependentUpon>ShapesEditor.xaml</DependentUpon>
     </Compile>
@@ -157,6 +160,10 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Settings1.cs" />
     <Page Include="Dialogs\Colours.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\PolygonSides.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
