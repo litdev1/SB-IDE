@@ -228,6 +228,7 @@ namespace SB_IDE.Dialogs
 
             MenuItem itemShape = new MenuItem();
             itemShape.Header = "Select Shape";
+            itemShape.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Objects)};
             contextMenu.Items.Add(itemShape);
 
             MenuItem item;
@@ -242,6 +243,43 @@ namespace SB_IDE.Dialogs
                     item.Header = elt.Name;
                     item.Click += new RoutedEventHandler(SelectShapeClick);
                     item.Tag = elt;
+                }
+            }
+
+            MenuItem itemBackground = new MenuItem();
+            itemBackground.Header = "Background Color";
+            itemBackground.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Color_palette) };
+            itemBackground.Click += new RoutedEventHandler(SelectBackground);
+            contextMenu.Items.Add(itemBackground);
+        }
+
+        private void SelectBackground(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.ColorDialog cd = new System.Windows.Forms.ColorDialog();
+            Color color = ((SolidColorBrush)background).Color;
+            cd.Color = System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
+            cd.AnyColor = true;
+            cd.SolidColorOnly = true;
+            cd.FullOpen = true;
+            if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                background = new SolidColorBrush(Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B));
+                SetBackgound();
+                ShowCode();
+            }
+        }
+
+        private void SetBackgound()
+        {
+            canvas.Background = background;
+            SetSnap();
+            foreach (FrameworkElement child in canvas.Children)
+            {
+                if (child.GetType() == typeof(Grid))
+                {
+                    Grid grid = (Grid)child;
+                    Shape shape = (Shape)grid.Tag;
+                    shape.UpdateHandleColor();
                 }
             }
         }
@@ -846,6 +884,11 @@ namespace SB_IDE.Dialogs
                 double _fontSize = fontSize;
                 FontWeight _fontWeight = fontWeight;
 
+                if (background.ToString() != Brushes.White.ToString())
+                {
+                    sbDocument.TextArea.Text += "GraphicsWindow.BackgroundColor = \"" + ColorName(background) + "\"\n\n";
+                }
+
                 foreach (FrameworkElement child in canvas.Children)
                 {
                     if (child.GetType() == typeof(Grid))
@@ -1320,7 +1363,13 @@ namespace SB_IDE.Dialogs
                 {
                     string code = line.Text.Trim();
                     string codeLower = code.ToLower();
-                    if (codeLower.Contains("shapes.addrectangle"))
+                    if (codeLower.Contains("graphicswindow.backgroundcolor"))
+                    {
+                        string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+                        background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(parts[1].Replace("\"", "")));
+                        SetBackgound();
+                    }
+                    else if (codeLower.Contains("shapes.addrectangle"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
                         double.TryParse(parts[1], out value[0]);
@@ -1975,8 +2024,9 @@ namespace SB_IDE.Dialogs
                 this.elt = elt;
 
                 Grid grid = new Grid();
+                grid.Tag = this;
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto } );
+                grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
@@ -2052,7 +2102,7 @@ namespace SB_IDE.Dialogs
                 if (null == HandlePT)
                 {
                     HandlePT = new List<Ellipse>();
-                    for (int i = 0; i < 100; i++)
+                    for (int i = 0; i < PolygonSides.MaxSides; i++)
                     {
                         Ellipse pt = new Ellipse()
                         {
@@ -2128,6 +2178,21 @@ namespace SB_IDE.Dialogs
                         }
                     }
                 }
+            }
+
+            public void UpdateHandleColor()
+            {
+                Color color = ((SolidColorBrush)THIS.background).Color;
+                color = Color.FromArgb(255, (byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+
+                if (null != handleTL) handleTL.Stroke = new SolidColorBrush(color);
+                if (null != handleTR) handleTR.Stroke = new SolidColorBrush(color);
+                if (null != handleBL) handleBL.Stroke = new SolidColorBrush(color);
+                if (null != handleBR) handleBR.Stroke = new SolidColorBrush(color);
+                if (null != handleL) handleL.Stroke = new SolidColorBrush(color);
+                if (null != handleR) handleR.Stroke = new SolidColorBrush(color);
+                if (null != handleT) handleT.Stroke = new SolidColorBrush(color);
+                if (null != handleB) handleB.Stroke = new SolidColorBrush(color);
             }
 
             private Rectangle GetHandle(int width, int height, string name)

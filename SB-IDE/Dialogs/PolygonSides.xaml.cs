@@ -19,6 +19,7 @@ namespace SB_IDE.Dialogs
     /// </summary>
     public partial class PolygonSides : Window
     {
+        public static int MaxSides = 100;
         public static int NumSides = 5;
 
         public PolygonSides()
@@ -33,7 +34,16 @@ namespace SB_IDE.Dialogs
         private void buttonDone_Click(object sender, RoutedEventArgs e)
         {
             int.TryParse(textBoxNumSides.Text, out NumSides);
+            NumSides = Math.Min(MaxSides, Math.Max(4, NumSides));
             Close();
+        }
+
+        private void textBoxNumSides_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                buttonDone_Click(textBoxNumSides, null);
+            }
         }
     }
 }
