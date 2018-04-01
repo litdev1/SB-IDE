@@ -578,24 +578,24 @@ namespace SB_IDE.Dialogs
                     else if (currentElt.GetType() == typeof(Polygon))
                     {
                         Polygon shape = (Polygon)currentElt;
+                        properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
                         for (int i = 0; i < shape.Points.Count; i++)
                         {
                             properties.Add(new PropertyData() { Property = "X" + (i + 1).ToString(), Value = Fix(shape.Points[i].X).ToString(), Visible = Visibility.Hidden });
                             properties.Add(new PropertyData() { Property = "Y" + (i + 1).ToString(), Value = Fix(shape.Points[i].Y).ToString(), Visible = Visibility.Hidden });
                         }
-                        properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(Line))
                     {
                         Line shape = (Line)currentElt;
+                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
                         properties.Add(new PropertyData() { Property = "X1", Value = Fix(shape.X1).ToString(), Visible = Visibility.Hidden });
                         properties.Add(new PropertyData() { Property = "Y1", Value = Fix(shape.Y1).ToString(), Visible = Visibility.Hidden });
                         properties.Add(new PropertyData() { Property = "X2", Value = Fix(shape.X2).ToString(), Visible = Visibility.Hidden });
                         properties.Add(new PropertyData() { Property = "Y2", Value = Fix(shape.Y2).ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(TextBlock))
                     {
@@ -2064,6 +2064,7 @@ namespace SB_IDE.Dialogs
                             Cursor = Cursors.Cross,
                             Stroke = Brushes.Black,
                             StrokeThickness = 1,
+                            ToolTip = "P"+(i+1).ToString(),
                         };
                         pt.MouseDown += new MouseButtonEventHandler(OnMouseDown);
                         HandlePT.Add(pt);
@@ -2574,7 +2575,6 @@ namespace SB_IDE.Dialogs
         {
             try
             {
-                value = Fix(value);
                 if (currentElt.GetType() == typeof(Rectangle))
                 {
                     Rectangle shape = (Rectangle)currentElt;
@@ -2590,7 +2590,7 @@ namespace SB_IDE.Dialogs
                             shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "StrokeThickness":
-                            shape.StrokeThickness = double.Parse(value);
+                            shape.StrokeThickness = double.Parse(Fix(value));
                             break;
                     }
                 }
@@ -2609,7 +2609,7 @@ namespace SB_IDE.Dialogs
                             shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "StrokeThickness":
-                            shape.StrokeThickness = double.Parse(value);
+                            shape.StrokeThickness = double.Parse(Fix(value));
                             break;
                     }
                 }
@@ -2628,12 +2628,12 @@ namespace SB_IDE.Dialogs
                             shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "StrokeThickness":
-                            shape.StrokeThickness = double.Parse(value);
+                            shape.StrokeThickness = double.Parse(Fix(value));
                             break;
                         default:
                             int i = int.Parse(property.Property.Substring(1)) - 1;
-                            if (property.Property.StartsWith("X")) shape.Points[i] = new Point(double.Parse(value), shape.Points[i].Y);
-                            else if (property.Property.StartsWith("Y")) shape.Points[i] = new Point(shape.Points[i].X, double.Parse(value));
+                            if (property.Property.StartsWith("X")) shape.Points[i] = new Point(double.Parse(Fix(value)), shape.Points[i].Y);
+                            else if (property.Property.StartsWith("Y")) shape.Points[i] = new Point(shape.Points[i].X, double.Parse(Fix(value)));
                             break;
                     }
                     UpdatePolygonSize(shape);
@@ -2647,22 +2647,22 @@ namespace SB_IDE.Dialogs
                             shape.Name = value;
                             break;
                         case "X1":
-                            shape.X1 = double.Parse(value);
+                            shape.X1 = double.Parse(Fix(value));
                             break;
                         case "Y1":
-                            shape.Y1 = double.Parse(value);
+                            shape.Y1 = double.Parse(Fix(value));
                             break;
                         case "X2":
-                            shape.X2 = double.Parse(value);
+                            shape.X2 = double.Parse(Fix(value));
                             break;
                         case "Y2":
-                            shape.Y2 = double.Parse(value);
+                            shape.Y2 = double.Parse(Fix(value));
                             break;
                         case "Stroke":
                             shape.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "StrokeThickness":
-                            shape.StrokeThickness = double.Parse(value);
+                            shape.StrokeThickness = double.Parse(Fix(value));
                             break;
                     }
                 }
@@ -2687,7 +2687,7 @@ namespace SB_IDE.Dialogs
                             shape.FontStyle = value.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
                             break;
                         case "FontSize":
-                            shape.FontSize = double.Parse(value);
+                            shape.FontSize = double.Parse(Fix(value));
                             break;
                         case "FontWeight":
                             shape.FontWeight = value.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
@@ -2778,7 +2778,7 @@ namespace SB_IDE.Dialogs
                             }
                             break;
                         case "DropDownHeight":
-                            shape.MaxDropDownHeight = double.Parse(value);
+                            shape.MaxDropDownHeight = double.Parse(Fix(value));
                             break;
                         default:
                             SetControlProperties(shape, property);
@@ -2893,7 +2893,7 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "MaxLength":
-                            shape.MaxLength = int.Parse(value);
+                            shape.MaxLength = int.Parse(Fix(value));
                             break;
                         default:
                             SetControlProperties(shape, property);
