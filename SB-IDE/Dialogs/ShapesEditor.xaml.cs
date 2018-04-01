@@ -54,7 +54,7 @@ namespace SB_IDE.Dialogs
         private double fixDec = 0.1;
         private int snap = 10;
         private double scale = 1;
-        private string mode = "SEL";
+        private string mode = "_SEL";
         private int _PT = -1;
 
         public ShapesEditor(MainWindow mainWindow)
@@ -115,6 +115,7 @@ namespace SB_IDE.Dialogs
             };
             System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel();
             sbDocument = new SBDocument();
+            sbDocument.Lexer.Theme = MainWindow.theme;
             panel.Contains(sbDocument.TextArea);
             host.Child = sbDocument.TextArea;
             codeGrid.Children.Add(host);
@@ -173,7 +174,7 @@ namespace SB_IDE.Dialogs
             currentElt = null;
             currentShape = null;
             lastShape = null;
-            mode = "SEL";
+            mode = "_SEL";
             UpdateView();
         }
 
@@ -186,7 +187,7 @@ namespace SB_IDE.Dialogs
             currentShape = null;
             lastShape = null;
             Shape.HandlePT = null;
-            mode = "SEL";
+            mode = "_SEL";
             UpdateView();
         }
 
@@ -201,7 +202,7 @@ namespace SB_IDE.Dialogs
 
             if (null != e)
             {
-                mode = mode == "SEL" ? currentElt.Name : "SEL";
+                mode = mode == "_SEL" ? currentElt.Name : "_SEL";
                 Cursor = Cursors.Hand;
                 SetStart(e.GetPosition(canvas));
                 e.Handled = true;
@@ -215,7 +216,7 @@ namespace SB_IDE.Dialogs
             if (null == currentShape) return;
             UpdatePolygonSize(currentElt);
 
-            mode = "SEL";
+            mode = "_SEL";
             Cursor = Cursors.Arrow;
             e.Handled = true;
 
@@ -290,7 +291,7 @@ namespace SB_IDE.Dialogs
             {
                 MenuItem item = (MenuItem)sender;
                 FrameworkElement elt = (FrameworkElement)item.Tag;
-                mode = "SEL";
+                mode = "_SEL";
                 eltPreviewMouseLeftButtonDown(elt, null);
             }
             catch
@@ -305,7 +306,7 @@ namespace SB_IDE.Dialogs
             labelPosition.Content = "(" + Fix(currentPosition.X) + "," + Fix(currentPosition.Y) + ")";
 
             if (null == currentShape) return;
-            if (mode == "SEL") return;
+            if (mode == "_SEL") return;
             if (e.LeftButton == MouseButtonState.Released) return;
 
             Vector change = Snap(currentPosition - startGlobal);
