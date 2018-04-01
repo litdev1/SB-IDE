@@ -100,6 +100,7 @@ namespace SB_IDE.Dialogs
             visualContainer = new VisualContainer(drawingGroup);
             visualGrid.Children.Add(visualContainer);
 
+            Shape.HandlePT = null;
             textBoxSnap.Text = snap.ToString();
             SetSnap();
 
