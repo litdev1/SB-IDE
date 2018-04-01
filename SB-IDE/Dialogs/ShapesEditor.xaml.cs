@@ -538,8 +538,7 @@ namespace SB_IDE.Dialogs
         private void SetSnap()
         {
             DrawingContext dc = drawingGroup.Open();
-            Color color = ((SolidColorBrush)background).Color;
-            color = Color.FromArgb(255, (byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+            Color color = HighContrast(((SolidColorBrush)background).Color);
             if (snap >= 5)
             {
                 for (int i = snap; i < canvas.Width; i += snap)
@@ -551,6 +550,13 @@ namespace SB_IDE.Dialogs
                 }
             }
             dc.Close();
+        }
+
+        private Color HighContrast(Color color)
+        {
+            //return Color.FromArgb(255, (byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+            //return Color.FromArgb(255, (byte)(color.R > 127 ? 0 : 255), (byte)(color.G > 127 ? 0 : 255), (byte)(color.B > 127 ? 0 : 255));
+            return (0.2126 * color.ScR + 0.7152 * color.ScG + 0.0722 * color.ScB) < 0.5 ? Colors.White : Colors.Black;
         }
 
         private string GetName(string label)
@@ -2081,8 +2087,7 @@ namespace SB_IDE.Dialogs
                 Grid.SetRow(handleB, 2);
                 Grid.SetColumn(handleB, 1);
 
-                Color color = ((SolidColorBrush)THIS.background).Color;
-                color = Color.FromArgb(255, (byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+                Color color = THIS.HighContrast(((SolidColorBrush)THIS.background).Color);
                 handleM = new Image()
                 {
                     Name = "_M",
@@ -2183,8 +2188,7 @@ namespace SB_IDE.Dialogs
 
             public void UpdateHandleColor()
             {
-                Color color = ((SolidColorBrush)THIS.background).Color;
-                color = Color.FromArgb(255, (byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+                Color color = THIS.HighContrast(((SolidColorBrush)THIS.background).Color);
 
                 if (null != handleTL) handleTL.Stroke = new SolidColorBrush(color);
                 if (null != handleTR) handleTR.Stroke = new SolidColorBrush(color);
@@ -2198,8 +2202,7 @@ namespace SB_IDE.Dialogs
 
             private Rectangle GetHandle(int width, int height, string name)
             {
-                Color color = ((SolidColorBrush)THIS.background).Color;
-                color = Color.FromArgb(255, (byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+                Color color = THIS.HighContrast(((SolidColorBrush)THIS.background).Color);
                 Rectangle handle = new Rectangle()
                 {
                     Name = name,
