@@ -25,6 +25,8 @@ namespace SB_IDE.Dialogs
         {
             InitializeComponent();
 
+            FontSize = 12 + MainWindow.zoom;
+
             textBoxNumSides.Text = NumSides.ToString();
         }
 

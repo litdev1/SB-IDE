@@ -38,6 +38,7 @@ namespace SB_IDE.Dialogs
 
         private Point startGlobal;
         private Point startLocal;
+        private Point currentPosition;
         private double startWidth;
         private double startHeight;
 
@@ -50,7 +51,7 @@ namespace SB_IDE.Dialogs
         private double fontSize;
         private FontWeight fontWeight;
 
-        private double fixDec = 0.01;
+        private double fixDec = 0.1;
         private int snap = 10;
         private double scale = 1;
         private string mode = "SEL";
@@ -262,12 +263,14 @@ namespace SB_IDE.Dialogs
 
         private void canvasMouseMove(object sender, MouseEventArgs e)
         {
+            currentPosition = e.GetPosition(canvas);
+            labelPosition.Content = "(" + Fix(currentPosition.X) + "," + Fix(currentPosition.Y) + ")";
+
             if (null == currentShape) return;
             if (mode == "SEL") return;
             if (e.LeftButton == MouseButtonState.Released) return;
 
-            Point position = e.GetPosition(canvas);
-            Vector change = Snap(position - startGlobal);
+            Vector change = Snap(currentPosition - startGlobal);
 
             switch (mode)
             {
@@ -397,7 +400,21 @@ namespace SB_IDE.Dialogs
                     if (currentElt.GetType() == typeof(Polygon) && _PT >= 0 && _PT < ((Polygon)currentElt).Points.Count)
                     {
                         Polygon polygon = (Polygon)currentElt;
-                        polygon.Points[_PT] = new Point(position.X - startLocal.X - Shape.HandleShort / 2.0, position.Y - startLocal.Y - Shape.HandleShort / 2.0);
+                        polygon.Points[_PT] = new Point(currentPosition.X - startLocal.X - Shape.HandleShort / 2.0, currentPosition.Y - startLocal.Y - Shape.HandleShort / 2.0);
+                    }
+                    else if (currentElt.GetType() == typeof(Line) && _PT >= 0 && _PT < 2)
+                    {
+                        Line line = (Line)currentElt;
+                        if (_PT == 0)
+                        {
+                            line.X1 = currentPosition.X - startLocal.X - Shape.HandleShort / 2.0;
+                            line.Y1 = currentPosition.Y - startLocal.Y - Shape.HandleShort / 2.0;
+                        }
+                        else
+                        {
+                            line.X2 = currentPosition.X - startLocal.X - Shape.HandleShort / 2.0;
+                            line.Y2 = currentPosition.Y - startLocal.Y - Shape.HandleShort / 2.0;
+                        }
                     }
                     break;
                 default:
@@ -416,16 +433,27 @@ namespace SB_IDE.Dialogs
 
         private void UpdatePolygonHandles()
         {
-            if (null != currentElt && currentElt.GetType() == typeof(Polygon))
+            if (null != currentElt)
             {
-                Polygon polygon = (Polygon)currentElt;
-                if (Shape.HandlePT.Count >= polygon.Points.Count)
+                if (currentElt.GetType() == typeof(Polygon))
                 {
-                    for (int i = 0; i < polygon.Points.Count; i++)
+                    Polygon polygon = (Polygon)currentElt;
+                    if (Shape.HandlePT.Count >= polygon.Points.Count)
                     {
-                        Canvas.SetLeft(Shape.HandlePT[i], Canvas.GetLeft(currentShape.shape) + Shape.HandleShort + polygon.Points[i].X - Shape.HandleShort / 2.0);
-                        Canvas.SetTop(Shape.HandlePT[i], Canvas.GetTop(currentShape.shape) + Shape.HandleShort + polygon.Points[i].Y - Shape.HandleShort / 2.0);
+                        for (int i = 0; i < polygon.Points.Count; i++)
+                        {
+                            Canvas.SetLeft(Shape.HandlePT[i], Canvas.GetLeft(currentShape.shape) + Shape.HandleShort + polygon.Points[i].X - Shape.HandleShort / 2.0);
+                            Canvas.SetTop(Shape.HandlePT[i], Canvas.GetTop(currentShape.shape) + Shape.HandleShort + polygon.Points[i].Y - Shape.HandleShort / 2.0);
+                        }
                     }
+                }
+                else if (currentElt.GetType() == typeof(Line))
+                {
+                    Line line = (Line)currentElt;
+                    Canvas.SetLeft(Shape.HandlePT[0], Canvas.GetLeft(currentShape.shape) + Shape.HandleShort + line.X1 - Shape.HandleShort / 2.0);
+                    Canvas.SetTop(Shape.HandlePT[0], Canvas.GetTop(currentShape.shape) + Shape.HandleShort + line.Y1 - Shape.HandleShort / 2.0);
+                    Canvas.SetLeft(Shape.HandlePT[1], Canvas.GetLeft(currentShape.shape) + Shape.HandleShort + line.X2 - Shape.HandleShort / 2.0);
+                    Canvas.SetTop(Shape.HandlePT[1], Canvas.GetTop(currentShape.shape) + Shape.HandleShort + line.Y2 - Shape.HandleShort / 2.0);
                 }
             }
         }
@@ -538,36 +566,36 @@ namespace SB_IDE.Dialogs
                         Rectangle shape = (Rectangle)currentElt;
                         properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(Ellipse))
                     {
                         Ellipse shape = (Ellipse)currentElt;
                         properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(Polygon))
                     {
                         Polygon shape = (Polygon)currentElt;
                         for (int i = 0; i < shape.Points.Count; i++)
                         {
-                            properties.Add(new PropertyData() { Property = "X" + (i + 1).ToString(), Value = shape.Points[i].X.ToString(), Visible = Visibility.Hidden });
-                            properties.Add(new PropertyData() { Property = "Y" + (i + 1).ToString(), Value = shape.Points[i].Y.ToString(), Visible = Visibility.Hidden });
+                            properties.Add(new PropertyData() { Property = "X" + (i + 1).ToString(), Value = Fix(shape.Points[i].X).ToString(), Visible = Visibility.Hidden });
+                            properties.Add(new PropertyData() { Property = "Y" + (i + 1).ToString(), Value = Fix(shape.Points[i].Y).ToString(), Visible = Visibility.Hidden });
                         }
                         properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(Line))
                     {
                         Line shape = (Line)currentElt;
-                        properties.Add(new PropertyData() { Property = "X1", Value = shape.X1.ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "Y1", Value = shape.Y1.ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "X2", Value = shape.X2.ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "Y2", Value = shape.Y2.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "X1", Value = Fix(shape.X1).ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Y1", Value = Fix(shape.Y1).ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "X2", Value = Fix(shape.X2).ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Y2", Value = Fix(shape.Y2).ToString(), Visible = Visibility.Hidden });
                         properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = shape.StrokeThickness.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(TextBlock))
                     {
@@ -576,7 +604,7 @@ namespace SB_IDE.Dialogs
                         properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontSize", Value = Fix(shape.FontSize).ToString(), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
                     }
                     else if (currentElt.GetType() == typeof(Image))
@@ -599,7 +627,7 @@ namespace SB_IDE.Dialogs
                     else if (currentElt.GetType() == typeof(WebBrowser))
                     {
                         WebBrowser shape = (WebBrowser)currentElt;
-                        properties.Add(new PropertyData() { Property = "Url", Value = shape.Source.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Url", Value = null == shape.Source ? "" : shape.Source.ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(CheckBox))
                     {
@@ -617,7 +645,7 @@ namespace SB_IDE.Dialogs
                             list += (i++).ToString() + "=" + item.Content.ToString() + ";";
                         }
                         properties.Add(new PropertyData() { Property = "List", Value = list, Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "DropDownHeight", Value = shape.MaxDropDownHeight.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "DropDownHeight", Value = Fix(shape.MaxDropDownHeight).ToString(), Visible = Visibility.Hidden });
                         GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(WindowsFormsHost))
@@ -683,7 +711,7 @@ namespace SB_IDE.Dialogs
                     else if (currentElt.GetType() == typeof(PasswordBox))
                     {
                         PasswordBox shape = (PasswordBox)currentElt;
-                        properties.Add(new PropertyData() { Property = "MaxLength", Value = shape.MaxLength.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "MaxLength", Value = Fix(shape.MaxLength).ToString(), Visible = Visibility.Hidden });
                         GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(ProgressBar))
@@ -736,7 +764,7 @@ namespace SB_IDE.Dialogs
             properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
             properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
             properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
-            properties.Add(new PropertyData() { Property = "FontSize", Value = shape.FontSize.ToString(), Visible = Visibility.Visible });
+            properties.Add(new PropertyData() { Property = "FontSize", Value = Fix(shape.FontSize).ToString(), Visible = Visibility.Visible });
             properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
         }
 
@@ -783,11 +811,11 @@ namespace SB_IDE.Dialogs
                 if (null != currentShape)
                 {
                     currentElt.Measure(new Size(double.MaxValue, double.MaxValue));
-                    if (!currentShape.modifiers.ContainsKey("Width")) currentShape.modifiers["Width"] = currentElt.DesiredSize.Width.ToString();
-                    if (!currentShape.modifiers.ContainsKey("Height")) currentShape.modifiers["Height"] = currentElt.DesiredSize.Height.ToString();
+                    if (!currentShape.modifiers.ContainsKey("Width")) currentShape.modifiers["Width"] = Fix(currentElt.DesiredSize.Width).ToString();
+                    if (!currentShape.modifiers.ContainsKey("Height")) currentShape.modifiers["Height"] = Fix(currentElt.DesiredSize.Height).ToString();
                     Point point = currentShape.shape.TranslatePoint(new Point(0, 0), canvas);
-                    if (!currentShape.modifiers.ContainsKey("Left")) currentShape.modifiers["Left"] = (point.X + Shape.HandleShort).ToString();
-                    if (!currentShape.modifiers.ContainsKey("Top")) currentShape.modifiers["Top"] = (point.Y + Shape.HandleShort).ToString();
+                    if (!currentShape.modifiers.ContainsKey("Left")) currentShape.modifiers["Left"] = Fix(point.X + Shape.HandleShort).ToString();
+                    if (!currentShape.modifiers.ContainsKey("Top")) currentShape.modifiers["Top"] = Fix(point.Y + Shape.HandleShort).ToString();
                     if (!currentShape.modifiers.ContainsKey("Angle")) currentShape.modifiers["Angle"] = "0";
                     if (!currentShape.modifiers.ContainsKey("Opacity")) currentShape.modifiers["Opacity"] = "100";
 
@@ -1435,8 +1463,8 @@ namespace SB_IDE.Dialogs
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
-                        shape.modifiers["Left"] = parts[2];
-                        shape.modifiers["Top"] = parts[3];
+                        shape.modifiers["Left"] = Fix(parts[2]);
+                        shape.modifiers["Top"] = Fix(parts[3]);
                     }
                     else if (codeLower.Contains("controls.addtextbox"))
                     {
@@ -1457,8 +1485,8 @@ namespace SB_IDE.Dialogs
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
-                        shape.modifiers["Left"] = parts[1];
-                        shape.modifiers["Top"] = parts[2];
+                        shape.modifiers["Left"] = Fix(parts[1]);
+                        shape.modifiers["Top"] = Fix(parts[2]);
                     }
                     else if (codeLower.Contains("controls.addmultilinetextbox"))
                     {
@@ -1483,8 +1511,8 @@ namespace SB_IDE.Dialogs
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
-                        shape.modifiers["Left"] = parts[1];
-                        shape.modifiers["Top"] = parts[2];
+                        shape.modifiers["Left"] = Fix(parts[1]);
+                        shape.modifiers["Top"] = Fix(parts[2]);
                     }
                     else if (codeLower.Contains("ldshapes.addpolygon"))
                     {
@@ -1874,34 +1902,34 @@ namespace SB_IDE.Dialogs
                     else if (codeLower.Contains("shapes.move"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        shape.modifiers["Left"] = parts[2];
-                        shape.modifiers["Top"] = parts[3];
+                        shape.modifiers["Left"] = Fix(parts[2]);
+                        shape.modifiers["Top"] = Fix(parts[3]);
                     }
                     else if (codeLower.Contains("controls.setsize"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        shape.modifiers["Width"] = parts[2];
-                        shape.modifiers["Height"] = parts[3];
+                        shape.modifiers["Width"] = Fix(parts[2]);
+                        shape.modifiers["Height"] = Fix(parts[3]);
                         shape.elt.Width = double.Parse(parts[2]);
                         shape.elt.Height = double.Parse(parts[3]);
                     }
                     else if (codeLower.Contains("shapes.setopacity"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        shape.modifiers["Opacity"] = parts[2];
+                        shape.modifiers["Opacity"] = Fix(parts[2]);
                         shape.elt.Opacity = double.Parse(parts[2]) / 100.0;
                     }
                     else if (codeLower.Contains("shapes.rotate"))
                     {
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        shape.modifiers["Angle"] = parts[2];
+                        shape.modifiers["Angle"] = Fix(parts[2]);
                         RotateShape(shape);
                     }
                     if (null != shape)
                     {
                         shape.elt.Measure(new Size(double.MaxValue, double.MaxValue));
-                        if (!shape.modifiers.ContainsKey("Width")) shape.modifiers["Width"] = shape.elt.DesiredSize.Width.ToString();
-                        if (!shape.modifiers.ContainsKey("Height")) shape.modifiers["Height"] = shape.elt.DesiredSize.Height.ToString();
+                        if (!shape.modifiers.ContainsKey("Width")) shape.modifiers["Width"] = Fix(shape.elt.DesiredSize.Width).ToString();
+                        if (!shape.modifiers.ContainsKey("Height")) shape.modifiers["Height"] = Fix(shape.elt.DesiredSize.Height).ToString();
                         if (!shape.modifiers.ContainsKey("Left")) shape.modifiers["Left"] = "0";
                         if (!shape.modifiers.ContainsKey("Top")) shape.modifiers["Top"] = "0";
                         if (!shape.modifiers.ContainsKey("Angle")) shape.modifiers["Angle"] = "0";
@@ -1920,7 +1948,7 @@ namespace SB_IDE.Dialogs
 
         private class Shape
         {
-            public static int HandleShort = 5;
+            public static int HandleShort = 6;
 
             public FrameworkElement shape;
             public FrameworkElement elt;
@@ -1943,11 +1971,10 @@ namespace SB_IDE.Dialogs
                 elt.Tag = this;
                 elt.Cursor = Cursors.Hand;
                 elt.MouseDown += new MouseButtonEventHandler(OnMouseDown);
+                elt.ClipToBounds = false;
                 this.elt = elt;
 
                 Grid grid = new Grid();
-                //grid.Clip = new RectangleGeometry(new Rect(0, 0, 1000, 1000));
-                grid.ClipToBounds = false;
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto } );
                 grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
@@ -1957,6 +1984,8 @@ namespace SB_IDE.Dialogs
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
+                //Canvas canvas = new Canvas();
+                //canvas.Children.Add(elt);
                 grid.Children.Add(elt);
                 Grid.SetRow(elt, 1);
                 Grid.SetColumn(elt, 1);
@@ -2016,6 +2045,7 @@ namespace SB_IDE.Dialogs
                 handleM.MouseDown += new MouseButtonEventHandler(OnMouseDown);
                 handleM.Tag = this;
                 grid.Children.Add(handleM);
+                Canvas.SetZIndex(handleM, 1);
                 Grid.SetRow(handleM, 3);
                 Grid.SetColumn(handleM, 3);
 
@@ -2032,11 +2062,13 @@ namespace SB_IDE.Dialogs
                             Height = HandleShort,
                             Fill = Brushes.Red,
                             Cursor = Cursors.Cross,
+                            Stroke = Brushes.Black,
+                            StrokeThickness = 1,
                         };
                         pt.MouseDown += new MouseButtonEventHandler(OnMouseDown);
                         HandlePT.Add(pt);
                         THIS.canvas.Children.Add(pt);
-                        Canvas.SetZIndex(pt, 1);
+                        Canvas.SetZIndex(pt, 2);
                     }
                 }
 
@@ -2080,6 +2112,20 @@ namespace SB_IDE.Dialogs
                             }
                         }
                     }
+                    else if (elt.GetType() == typeof(Line))
+                    {
+                        Line line = (Line)elt;
+                        if (modifiers.ContainsKey("Angle") && modifiers["Angle"] != "0")
+                        {
+                            HandlePT[0].Visibility = Visibility.Hidden;
+                            HandlePT[1].Visibility = Visibility.Hidden;
+                        }
+                        else
+                        {
+                            HandlePT[0].Visibility = Visibility.Visible;
+                            HandlePT[1].Visibility = Visibility.Visible;
+                        }
+                    }
                 }
             }
 
@@ -2099,6 +2145,7 @@ namespace SB_IDE.Dialogs
                     VerticalAlignment = VerticalAlignment.Center,
                     Cursor = Cursors.Cross,
                 };
+                Canvas.SetZIndex(handle, 1);
                 handle.MouseDown += new MouseButtonEventHandler(OnMouseDown);
                 return handle;
             }
@@ -2527,6 +2574,7 @@ namespace SB_IDE.Dialogs
         {
             try
             {
+                value = Fix(value);
                 if (currentElt.GetType() == typeof(Rectangle))
                 {
                     Rectangle shape = (Rectangle)currentElt;
@@ -2937,23 +2985,38 @@ namespace SB_IDE.Dialogs
 
         private void UpdatePolygonSize(FrameworkElement shape)
         {
-            if (shape.GetType() == typeof(Polygon))
+            if (shape.GetType() == typeof(Polygon) || shape.GetType() == typeof(Line))
             {
                 double minX = double.MaxValue;
                 double minY = double.MaxValue;
                 double maxX = -double.MaxValue;
                 double maxY = -double.MaxValue;
-                foreach (Point point in ((Polygon)shape).Points)
+                if (shape.GetType() == typeof(Polygon))
                 {
-                    minX = Math.Min(minX, point.X);
-                    minY = Math.Min(minY, point.Y);
-                    maxX = Math.Max(maxX, point.X);
-                    maxY = Math.Max(maxY, point.Y);
+                    foreach (Point point in ((Polygon)shape).Points)
+                    {
+                        minX = Math.Min(minX, point.X);
+                        minY = Math.Min(minY, point.Y);
+                        maxX = Math.Max(maxX, point.X);
+                        maxY = Math.Max(maxY, point.Y);
+                    }
+                    for (int i = 0; i < ((Polygon)shape).Points.Count; i++)
+                    {
+                        Point point = ((Polygon)shape).Points[i];
+                        ((Polygon)shape).Points[i] = new Point(point.X - minX, point.Y - minY);
+                    }
                 }
-                for (int i = 0; i < ((Polygon)shape).Points.Count; i++)
+                else if (shape.GetType() == typeof(Line))
                 {
-                    Point point = ((Polygon)shape).Points[i];
-                    ((Polygon)shape).Points[i] = new Point(point.X - minX, point.Y - minY);
+                    Line line = (Line)shape;
+                    minX = Math.Min(line.X1, line.X2);
+                    minY = Math.Min(line.Y1, line.Y2);
+                    maxX = Math.Max(line.X1, line.X2);
+                    maxY = Math.Max(line.Y1, line.Y2);
+                    line.X1 -= minX;
+                    line.Y1 -= minY;
+                    line.X2 -= minX;
+                    line.Y2 -= minY;
                 }
                 shape.Width = maxX - minX;
                 shape.Height = maxY - minY;
@@ -2961,10 +3024,10 @@ namespace SB_IDE.Dialogs
                 Canvas.SetLeft(parent.shape, Canvas.GetLeft(parent.shape) + minX);
                 Canvas.SetTop(parent.shape, Canvas.GetTop(parent.shape) + minY);
 
-                currentShape.modifiers["Width"] = (shape.Width).ToString();
-                currentShape.modifiers["Height"] = (shape.Height).ToString();
-                currentShape.modifiers["Left"] = (Canvas.GetLeft(parent.shape) + Shape.HandleShort).ToString();
-                currentShape.modifiers["Top"] = (Canvas.GetTop(parent.shape) + Shape.HandleShort).ToString();
+                currentShape.modifiers["Width"] = Fix(shape.Width).ToString();
+                currentShape.modifiers["Height"] = Fix(shape.Height).ToString();
+                currentShape.modifiers["Left"] = Fix(Canvas.GetLeft(parent.shape) + Shape.HandleShort).ToString();
+                currentShape.modifiers["Top"] = Fix(Canvas.GetTop(parent.shape) + Shape.HandleShort).ToString();
             }
         }
 
@@ -3036,6 +3099,7 @@ namespace SB_IDE.Dialogs
         {
             try
             {
+                value = Fix(value);
                 switch (property.Property)
                 {
                     case "Width":
@@ -3089,8 +3153,22 @@ namespace SB_IDE.Dialogs
                     Point point = new Point(polygon.Points[i].X, polygon.Points[i].Y);
                     point = rotateTransform.Transform(point);
                     polygon.Points[i] = point;
-                    point = shape.elt.TranslatePoint(point, THIS.canvas);
+                    //point = shape.elt.TranslatePoint(point, THIS.canvas);
                 }
+                shape.modifiers["Angle"] = "0";
+                UpdatePolygonSize(shape.elt);
+            }
+            if (shape.elt.GetType() == typeof(Line))
+            {
+                Line line = (Line)shape.elt;
+                Point point = new Point(line.X1, line.Y1);
+                point = rotateTransform.Transform(point);
+                line.X1 = point.X;
+                line.Y1 = point.Y;
+                point = new Point(line.X2, line.Y2);
+                point = rotateTransform.Transform(point);
+                line.X2 = point.X;
+                line.Y2 = point.Y;
                 shape.modifiers["Angle"] = "0";
                 UpdatePolygonSize(shape.elt);
             }

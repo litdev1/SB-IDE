@@ -117,7 +117,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Label Content="Modifiers" Margin="10,318,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.506,1.734"/>
-            <DataGrid x:Name="dataGridModifiers" Margin="10,349,10,10.4" HeadersVisibility="Column" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" CellEditEnding="dataGridModifiers_CellEditEnding">
+            <DataGrid x:Name="dataGridModifiers" Margin="10,349,9.6,37.4" HeadersVisibility="Column" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" CellEditEnding="dataGridModifiers_CellEditEnding">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -134,6 +134,7 @@
                     <DataGridTextColumn Header="Value" IsReadOnly="False" Width="*" Binding="{Binding Value}"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Label x:Name="labelPosition" Content="" Margin="10,0,9.6,6.4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" UseLayoutRounding="True" Height="26" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
 </Window>
