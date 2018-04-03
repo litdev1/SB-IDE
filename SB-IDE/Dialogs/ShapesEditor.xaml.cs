@@ -79,6 +79,7 @@ namespace SB_IDE.Dialogs
             canvas.Height = double.Parse(textBoxHeight.Text);
             canvas.MouseMove += new MouseEventHandler(canvasMouseMove);
             canvas.PreviewMouseLeftButtonUp += new MouseButtonEventHandler(canvasPreviewLeftMouseLeftButtonUp);
+            canvas.MouseDown += new MouseButtonEventHandler(canvasMouseDown);
             canvas.PreviewMouseRightButtonDown += new MouseButtonEventHandler(canvasPreviewMouseRightButtonDown);
 
             scaleTransform = new ScaleTransform();
@@ -215,6 +216,8 @@ namespace SB_IDE.Dialogs
         private void canvasPreviewLeftMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (null == currentShape) return;
+            currentElt.MinWidth = 0;
+            currentElt.MinHeight = 0;
             UpdatePolygonSize(currentElt);
 
             mode = "_SEL";
@@ -253,6 +256,16 @@ namespace SB_IDE.Dialogs
             itemBackground.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Color_palette) };
             itemBackground.Click += new RoutedEventHandler(SelectBackground);
             contextMenu.Items.Add(itemBackground);
+        }
+
+        private void canvasMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            currentElt = null;
+            if (null != currentShape) currentShape.ShowHandles(false);
+            currentShape = null;
+            lastShape = null;
+            mode = "_SEL";
+            UpdateView();
         }
 
         private void SelectBackground(object sender, RoutedEventArgs e)
@@ -1370,6 +1383,7 @@ namespace SB_IDE.Dialogs
                 foreach (ScintillaNET.Line line in sbDocument.TextArea.Lines)
                 {
                     string code = line.Text.Trim();
+                    if (code.StartsWith("\'")) continue;
                     string codeLower = code.ToLower();
                     if (codeLower.Contains("graphicswindow.backgroundcolor"))
                     {
@@ -2028,7 +2042,6 @@ namespace SB_IDE.Dialogs
                 elt.Tag = this;
                 elt.Cursor = Cursors.Hand;
                 elt.MouseDown += new MouseButtonEventHandler(OnMouseDown);
-                elt.ClipToBounds = false;
                 this.elt = elt;
 
                 Grid grid = new Grid();
@@ -2092,6 +2105,7 @@ namespace SB_IDE.Dialogs
                 handleM = new Image()
                 {
                     Name = "_M",
+                    Tag = this,
                     Width = 2 * handleLong,
                     Height = 2 * handleLong,
                     Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Transform_move),
@@ -2100,7 +2114,6 @@ namespace SB_IDE.Dialogs
                     Cursor = Cursors.Cross,
                 };
                 handleM.MouseDown += new MouseButtonEventHandler(OnMouseDown);
-                handleM.Tag = this;
                 grid.Children.Add(handleM);
                 Canvas.SetZIndex(handleM, 1);
                 Grid.SetRow(handleM, 3);
@@ -2134,7 +2147,7 @@ namespace SB_IDE.Dialogs
                 shape = grid;
             }
 
-            public void ShowHandles(bool bSet)
+            public void ShowHandles(bool bSet, bool bPT = true)
             {
                 if (null != handleTL) handleTL.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
                 if (null != handleTR) handleTR.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
@@ -2144,6 +2157,18 @@ namespace SB_IDE.Dialogs
                 if (null != handleR) handleR.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
                 if (null != handleT) handleT.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
                 if (null != handleB) handleB.Visibility = bSet ? Visibility.Visible : Visibility.Hidden;
+
+                if (bSet)
+                {
+                    elt.MinWidth = 0;
+                    elt.MinHeight = 0;
+                }
+                else if (elt.GetType() == typeof(Polygon) || elt.GetType() == typeof(Line))
+                {
+                    elt.MinWidth = THIS.canvas.Width;
+                    elt.MinHeight = THIS.canvas.Height;
+                }
+                if (!bPT) return;
 
                 foreach (FrameworkElement pt in HandlePT)
                 {
@@ -2226,9 +2251,19 @@ namespace SB_IDE.Dialogs
                 FrameworkElement elt = (FrameworkElement)sender;
                 THIS.mode = elt.Name;
                 THIS.Cursor = elt.Name == "_M" ? Cursors.Hand : Cursors.Cross;
-                if (elt.Name == "_PT") THIS._PT = (int)elt.Tag;
+                if (elt.Name == "_PT")
+                {
+                    THIS._PT = (int)elt.Tag;
+                    if (null != THIS.currentShape)
+                    {
+                        THIS.currentElt.MinWidth = THIS.canvas.Width;
+                        THIS.currentElt.MinHeight = THIS.canvas.Height;
+                        THIS.currentShape.ShowHandles(false, false);
+                    }
+                }
                 if (elt.Name == "_M") THIS.eltPreviewMouseLeftButtonDown(((Shape)elt.Tag).elt, null);
                 THIS.SetStart(e.GetPosition(THIS.canvas));
+                e.Handled = true;
             }
         }
 
