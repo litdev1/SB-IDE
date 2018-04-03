@@ -125,6 +125,8 @@ namespace SB_IDE.Dialogs
             contextMenu = new ContextMenu();
             canvas.ContextMenu = contextMenu;
 
+            ToolTipService.SetShowDuration(buttonImport, 10000);
+
             Display();
         }
 
@@ -256,6 +258,29 @@ namespace SB_IDE.Dialogs
             itemBackground.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Color_palette) };
             itemBackground.Click += new RoutedEventHandler(SelectBackground);
             contextMenu.Items.Add(itemBackground);
+
+            MenuItem itemSetCode = new MenuItem();
+            itemSetCode.Header = "Copy Code to Current Dodument";
+            itemSetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Copy) };
+            itemSetCode.Click += new RoutedEventHandler(SetNewCode);
+            contextMenu.Items.Add(itemSetCode);
+
+            MenuItem itemGetCode = new MenuItem();
+            itemGetCode.Header = "Copy Code from Current Dodument";
+            itemGetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Paste) };
+            itemGetCode.Click += new RoutedEventHandler(GetNewCode);
+            contextMenu.Items.Add(itemGetCode);
+        }
+
+        private void SetNewCode(object sender, RoutedEventArgs e)
+        {
+            ShowCode();
+            mainWindow.GetActiveDocument().LoadDataFromText(sbDocument.TextArea.Text);
+        }
+
+        private void GetNewCode(object sender, RoutedEventArgs e)
+        {
+            sbDocument.TextArea.Text = mainWindow.GetActiveDocument().TextArea.Text;
         }
 
         private void canvasMouseDown(object sender, MouseButtonEventArgs e)
