@@ -260,13 +260,13 @@ namespace SB_IDE.Dialogs
             contextMenu.Items.Add(itemBackground);
 
             MenuItem itemSetCode = new MenuItem();
-            itemSetCode.Header = "Copy Code to Current Dodument";
+            itemSetCode.Header = "Copy Code to Current Document";
             itemSetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Copy) };
             itemSetCode.Click += new RoutedEventHandler(SetNewCode);
             contextMenu.Items.Add(itemSetCode);
 
             MenuItem itemGetCode = new MenuItem();
-            itemGetCode.Header = "Copy Code from Current Dodument";
+            itemGetCode.Header = "Copy Code from Current Document";
             itemGetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Paste) };
             itemGetCode.Click += new RoutedEventHandler(GetNewCode);
             contextMenu.Items.Add(itemGetCode);
