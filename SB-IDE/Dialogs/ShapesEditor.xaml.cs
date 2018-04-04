@@ -32,8 +32,8 @@ namespace SB_IDE.Dialogs
         private ContextMenu contextMenu;
         private ScaleTransform scaleTransform;
 
+        private List<Shape> selectedShapes = new List<Shape>();
         private Shape currentShape = null;
-        private Shape lastShape = null;
         private FrameworkElement currentElt = null;
 
         private Point startGlobal;
@@ -172,12 +172,12 @@ namespace SB_IDE.Dialogs
         {
             if (null == currentShape) return;
 
-            currentShape.ShowHandles(false);
+            foreach (Shape shape in selectedShapes) shape.ShowHandles(false);
             canvas.Children.Remove(currentShape.shape);
 
+            selectedShapes.Clear();
             currentElt = null;
             currentShape = null;
-            lastShape = null;
             mode = "_SEL";
             UpdateView();
         }
@@ -189,7 +189,7 @@ namespace SB_IDE.Dialogs
 
             currentElt = null;
             currentShape = null;
-            lastShape = null;
+            selectedShapes.Clear();
             Shape.HandlePT = null;
             mode = "_SEL";
             UpdateView();
@@ -197,12 +197,16 @@ namespace SB_IDE.Dialogs
 
         private void eltPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (null != lastShape) lastShape.ShowHandles(false);
+            if (!Keyboard.IsKeyDown(Key.LeftShift) && !Keyboard.IsKeyDown(Key.RightShift))
+            {
+                foreach (Shape shape in selectedShapes) shape.ShowHandles(false);
+                selectedShapes.Clear();
+            }
             currentElt = (FrameworkElement)sender;
             currentShape = (Shape)currentElt.Tag;
             UpdatePolygonHandles();
             currentShape.ShowHandles(true);
-            lastShape = currentShape;
+            if (!selectedShapes.Contains(currentShape)) selectedShapes.Add(currentShape);
 
             if (null != e)
             {
@@ -286,9 +290,9 @@ namespace SB_IDE.Dialogs
         private void canvasMouseDown(object sender, MouseButtonEventArgs e)
         {
             currentElt = null;
-            if (null != currentShape) currentShape.ShowHandles(false);
+            foreach (Shape shape in selectedShapes) shape.ShowHandles(false);
+            selectedShapes.Clear();
             currentShape = null;
-            lastShape = null;
             mode = "_SEL";
             UpdateView();
         }
@@ -496,14 +500,22 @@ namespace SB_IDE.Dialogs
                     }
                     break;
                 default:
-                    Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
-                    Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
+                    double dX = startLocal.X + change.X - Shape.HandleShort - Canvas.GetLeft(currentShape.shape);
+                    double dY = startLocal.Y + change.Y - Shape.HandleShort - Canvas.GetTop(currentShape.shape);
+                    foreach (Shape selectedShape in selectedShapes)
+                    {
+                        Canvas.SetLeft(selectedShape.shape, Canvas.GetLeft(selectedShape.shape) + dX);
+                        Canvas.SetTop(selectedShape.shape, Canvas.GetTop(selectedShape.shape) + dY);
+                    }
                     break;
             }
             currentShape.modifiers["Width"] = (currentElt.Width).ToString();
             currentShape.modifiers["Height"] = (currentElt.Height).ToString();
-            currentShape.modifiers["Left"] = (Canvas.GetLeft(currentShape.shape) + Shape.HandleShort).ToString();
-            currentShape.modifiers["Top"] = (Canvas.GetTop(currentShape.shape) + Shape.HandleShort).ToString();
+            foreach (Shape selectedShape in selectedShapes)
+            {
+                selectedShape.modifiers["Left"] = (Canvas.GetLeft(selectedShape.shape) + Shape.HandleShort).ToString();
+                selectedShape.modifiers["Top"] = (Canvas.GetTop(selectedShape.shape) + Shape.HandleShort).ToString();
+            }
             UpdatePolygonHandles();
 
             canvas.UpdateLayout();
@@ -895,11 +907,11 @@ namespace SB_IDE.Dialogs
                 if (null != currentShape)
                 {
                     currentElt.Measure(new Size(double.MaxValue, double.MaxValue));
-                    if (!currentShape.modifiers.ContainsKey("Width")) currentShape.modifiers["Width"] = Fix(currentElt.DesiredSize.Width).ToString();
-                    if (!currentShape.modifiers.ContainsKey("Height")) currentShape.modifiers["Height"] = Fix(currentElt.DesiredSize.Height).ToString();
+                    /*if (!currentShape.modifiers.ContainsKey("Width"))*/ currentShape.modifiers["Width"] = Fix(currentElt.DesiredSize.Width).ToString();
+                    /*if (!currentShape.modifiers.ContainsKey("Height"))*/ currentShape.modifiers["Height"] = Fix(currentElt.DesiredSize.Height).ToString();
                     Point point = currentShape.shape.TranslatePoint(new Point(0, 0), canvas);
-                    if (!currentShape.modifiers.ContainsKey("Left")) currentShape.modifiers["Left"] = Fix(point.X + Shape.HandleShort).ToString();
-                    if (!currentShape.modifiers.ContainsKey("Top")) currentShape.modifiers["Top"] = Fix(point.Y + Shape.HandleShort).ToString();
+                    /*if (!currentShape.modifiers.ContainsKey("Left"))*/ currentShape.modifiers["Left"] = Fix(point.X + Shape.HandleShort).ToString();
+                    /*if (!currentShape.modifiers.ContainsKey("Top"))*/ currentShape.modifiers["Top"] = Fix(point.Y + Shape.HandleShort).ToString();
                     if (!currentShape.modifiers.ContainsKey("Angle")) currentShape.modifiers["Angle"] = "0";
                     if (!currentShape.modifiers.ContainsKey("Opacity")) currentShape.modifiers["Opacity"] = "100";
 
@@ -942,7 +954,7 @@ namespace SB_IDE.Dialogs
                         Grid grid = (Grid)child;
                         foreach (FrameworkElement elt in grid.Children)
                         {
-                            if (null != elt.Tag && elt.Name != "_M")
+                            if (null != elt.Tag && !elt.Name.StartsWith("_"))
                             {
                                 Shape shape = (Shape)elt.Tag;
 
@@ -1696,8 +1708,7 @@ namespace SB_IDE.Dialogs
                             FontSize = _fontSize,
                             FontWeight = _fontWeight,
                         };
-                        currentElt = elt;
-                        UpdateProperty(new PropertyData() { Property = "List" }, parts[1].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "List" }, parts[1].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1719,8 +1730,7 @@ namespace SB_IDE.Dialogs
                         dataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
                         windowsFormsHost.Child = dataView;
                         elt = windowsFormsHost;
-                        currentElt = elt;
-                        UpdateProperty(new PropertyData() { Property = "Headings" }, parts[3].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "Headings" }, parts[3].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1758,8 +1768,7 @@ namespace SB_IDE.Dialogs
                             FontSize = _fontSize,
                             FontWeight = _fontWeight,
                         };
-                        currentElt = elt;
-                        UpdateProperty(new PropertyData() { Property = "List" }, parts[1].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "List" }, parts[1].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1782,8 +1791,7 @@ namespace SB_IDE.Dialogs
                         style.Setters.Add(new Setter(ListViewItem.HorizontalContentAlignmentProperty, HorizontalAlignment.Stretch));
                         listView.ItemContainerStyle = style;
                         elt = listView;
-                        currentElt = elt;
-                        UpdateProperty(new PropertyData() { Property = "Headings" }, parts[3].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "Headings" }, parts[3].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1821,10 +1829,9 @@ namespace SB_IDE.Dialogs
                             FontSize = _fontSize,
                             FontWeight = _fontWeight,
                         };
-                        currentElt = elt;
-                        UpdateProperty(new PropertyData() { Property = "MenuList" }, parts[3].Replace("\"", ""));
-                        UpdateProperty(new PropertyData() { Property = "IconList" }, parts[4].Replace("\"", ""));
-                        UpdateProperty(new PropertyData() { Property = "CheckList" }, parts[5].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "MenuList" }, parts[3].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "IconList" }, parts[4].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "CheckList" }, parts[5].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1846,8 +1853,7 @@ namespace SB_IDE.Dialogs
                             FontSize = _fontSize,
                             FontWeight = _fontWeight,
                         };
-                        currentElt = elt;
-                        UpdateProperty(new PropertyData() { Property = "MaxLength" }, parts[3].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "MaxLength" }, parts[3].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1866,8 +1872,7 @@ namespace SB_IDE.Dialogs
                             Foreground = _brush,
                             Value = 75,
                         };
-                        currentElt = elt;
-                        UpdateProperty(new PropertyData() { Property = "Orientation" }, parts[3].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "Orientation" }, parts[3].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1930,8 +1935,7 @@ namespace SB_IDE.Dialogs
                             Maximum = 100,
                             Value = 75,
                         };
-                        currentElt = elt;
-                        UpdateProperty(new PropertyData() { Property = "Orientation" }, parts[3].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "Orientation" }, parts[3].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -1952,8 +1956,7 @@ namespace SB_IDE.Dialogs
                             FontSize = _fontSize,
                             FontWeight = _fontWeight,
                         };
-                        currentElt = elt;
-                        UpdateProperty(new PropertyData() { Property = "Tree" }, parts[1].Replace("\"", ""));
+                        UpdateProperty(elt, new PropertyData() { Property = "Tree" }, parts[1].Replace("\"", ""));
                         elt.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(eltPreviewMouseLeftButtonDown);
                         shape = new Shape(elt);
                         canvas.Children.Add(shape.shape);
@@ -2257,6 +2260,7 @@ namespace SB_IDE.Dialogs
                 Rectangle handle = new Rectangle()
                 {
                     Name = name,
+                    Tag = this,
                     Width = width,
                     Height = height,
                     Fill = Brushes.Transparent,
@@ -2286,7 +2290,10 @@ namespace SB_IDE.Dialogs
                         THIS.currentShape.ShowHandles(false, false);
                     }
                 }
-                if (elt.Name == "_M") THIS.eltPreviewMouseLeftButtonDown(((Shape)elt.Tag).elt, null);
+                else if (elt.Name.StartsWith("_"))
+                {
+                    THIS.eltPreviewMouseLeftButtonDown(((Shape)elt.Tag).elt, null);
+                }
                 THIS.SetStart(e.GetPosition(THIS.canvas));
                 e.Handled = true;
             }
@@ -2705,9 +2712,25 @@ namespace SB_IDE.Dialogs
         {
             try
             {
-                if (currentElt.GetType() == typeof(Rectangle))
+                foreach (Shape selectedShape in selectedShapes)
                 {
-                    Rectangle shape = (Rectangle)currentElt;
+                    FrameworkElement selectedElt = selectedShape.elt;
+                    UpdateProperty(selectedElt, property, value);
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void UpdateProperty(FrameworkElement selectedElt, PropertyData property, string value)
+        {
+            try
+            {
+                if (selectedElt.GetType() == typeof(Rectangle))
+                {
+                    Rectangle shape = (Rectangle)selectedElt;
                     switch (property.Property)
                     {
                         case "Name":
@@ -2724,9 +2747,9 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(Ellipse))
+                else if (selectedElt.GetType() == typeof(Ellipse))
                 {
-                    Ellipse shape = (Ellipse)currentElt;
+                    Ellipse shape = (Ellipse)selectedElt;
                     switch (property.Property)
                     {
                         case "Name":
@@ -2743,9 +2766,9 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(Polygon))
+                else if (selectedElt.GetType() == typeof(Polygon))
                 {
-                    Polygon shape = (Polygon)currentElt;
+                    Polygon shape = (Polygon)selectedElt;
                     switch (property.Property)
                     {
                         case "Name":
@@ -2768,9 +2791,9 @@ namespace SB_IDE.Dialogs
                     }
                     UpdatePolygonSize(shape);
                 }
-                else if (currentElt.GetType() == typeof(Line))
+                else if (selectedElt.GetType() == typeof(Line))
                 {
-                    Line shape = (Line)currentElt;
+                    Line shape = (Line)selectedElt;
                     switch (property.Property)
                     {
                         case "Name":
@@ -2796,9 +2819,9 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(TextBlock))
+                else if (selectedElt.GetType() == typeof(TextBlock))
                 {
-                    TextBlock shape = (TextBlock)currentElt;
+                    TextBlock shape = (TextBlock)selectedElt;
                     switch (property.Property)
                     {
                         case "Name":
@@ -2824,9 +2847,9 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(Image))
+                else if (selectedElt.GetType() == typeof(Image))
                 {
-                    Image shape = (Image)currentElt;
+                    Image shape = (Image)selectedElt;
                     switch (property.Property)
                     {
                         case "Name":
@@ -2837,9 +2860,9 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(Button))
+                else if (selectedElt.GetType() == typeof(Button))
                 {
-                    Button shape = (Button)currentElt;
+                    Button shape = (Button)selectedElt;
                     switch (property.Property)
                     {
                         case "Name":
@@ -2849,13 +2872,13 @@ namespace SB_IDE.Dialogs
                             shape.Content = value;
                             break;
                         default:
-                            SetControlProperties(shape, property);
+                            SetControlProperties(shape, property, value);
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(TextBox))
+                else if (selectedElt.GetType() == typeof(TextBox))
                 {
-                    TextBox shape = (TextBox)currentElt;
+                    TextBox shape = (TextBox)selectedElt;
                     switch (property.Property)
                     {
                         case "Name":
@@ -2865,13 +2888,13 @@ namespace SB_IDE.Dialogs
                             shape.Text = value;
                             break;
                         default:
-                            SetControlProperties(shape, property);
+                            SetControlProperties(shape, property, value);
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(WebBrowser))
+                else if (selectedElt.GetType() == typeof(WebBrowser))
                 {
-                    WebBrowser shape = (WebBrowser)currentElt;
+                    WebBrowser shape = (WebBrowser)selectedElt;
                     switch (property.Property)
                     {
                         case "Url":
@@ -2879,22 +2902,22 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(CheckBox))
+                else if (selectedElt.GetType() == typeof(CheckBox))
                 {
-                    CheckBox shape = (CheckBox)currentElt;
+                    CheckBox shape = (CheckBox)selectedElt;
                     switch (property.Property)
                     {
                         case "Content":
                             shape.Content = value;
                             break;
                         default:
-                            SetControlProperties(shape, property);
+                            SetControlProperties(shape, property, value);
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(ComboBox))
+                else if (selectedElt.GetType() == typeof(ComboBox))
                 {
-                    ComboBox shape = (ComboBox)currentElt;
+                    ComboBox shape = (ComboBox)selectedElt;
                     switch (property.Property)
                     {
                         case "List":
@@ -2911,13 +2934,13 @@ namespace SB_IDE.Dialogs
                             shape.MaxDropDownHeight = double.Parse(Fix(value));
                             break;
                         default:
-                            SetControlProperties(shape, property);
+                            SetControlProperties(shape, property, value);
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(WindowsFormsHost))
+                else if (selectedElt.GetType() == typeof(WindowsFormsHost))
                 {
-                    WindowsFormsHost shape = (WindowsFormsHost)currentElt;
+                    WindowsFormsHost shape = (WindowsFormsHost)selectedElt;
                     System.Windows.Forms.DataGridView dataView = (System.Windows.Forms.DataGridView)shape.Child;
                     switch (property.Property)
                     {
@@ -2931,13 +2954,13 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(DocumentViewer))
+                else if (selectedElt.GetType() == typeof(DocumentViewer))
                 {
-                    DocumentViewer shape = (DocumentViewer)currentElt;
+                    DocumentViewer shape = (DocumentViewer)selectedElt;
                 }
-                else if (currentElt.GetType() == typeof(ListBox))
+                else if (selectedElt.GetType() == typeof(ListBox))
                 {
-                    ListBox shape = (ListBox)currentElt;
+                    ListBox shape = (ListBox)selectedElt;
                     switch (property.Property)
                     {
                         case "List":
@@ -2951,13 +2974,13 @@ namespace SB_IDE.Dialogs
                             }
                             break;
                         default:
-                            SetControlProperties(shape, property);
+                            SetControlProperties(shape, property, value);
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(ListView))
+                else if (selectedElt.GetType() == typeof(ListView))
                 {
-                    ListView shape = (ListView)currentElt;
+                    ListView shape = (ListView)selectedElt;
                     GridView gridView = (GridView)shape.View;
                     switch (property.Property)
                     {
@@ -2976,13 +2999,13 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(MediaElement))
+                else if (selectedElt.GetType() == typeof(MediaElement))
                 {
-                    MediaElement shape = (MediaElement)currentElt;
+                    MediaElement shape = (MediaElement)selectedElt;
                 }
-                else if (currentElt.GetType() == typeof(Menu))
+                else if (selectedElt.GetType() == typeof(Menu))
                 {
-                    Menu shape = (Menu)currentElt;
+                    Menu shape = (Menu)selectedElt;
                     switch (property.Property)
                     {
                         case "MenuList":
@@ -3013,26 +3036,26 @@ namespace SB_IDE.Dialogs
                             }
                             break;
                         default:
-                            SetControlProperties(shape, property);
+                            SetControlProperties(shape, property, value);
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(PasswordBox))
+                else if (selectedElt.GetType() == typeof(PasswordBox))
                 {
-                    PasswordBox shape = (PasswordBox)currentElt;
+                    PasswordBox shape = (PasswordBox)selectedElt;
                     switch (property.Property)
                     {
                         case "MaxLength":
                             shape.MaxLength = int.Parse(Fix(value));
                             break;
                         default:
-                            SetControlProperties(shape, property);
+                            SetControlProperties(shape, property, value);
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(ProgressBar))
+                else if (selectedElt.GetType() == typeof(ProgressBar))
                 {
-                    ProgressBar shape = (ProgressBar)currentElt;
+                    ProgressBar shape = (ProgressBar)selectedElt;
                     switch (property.Property)
                     {
                         case "Foreground":
@@ -3043,9 +3066,9 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(RadioButton))
+                else if (selectedElt.GetType() == typeof(RadioButton))
                 {
-                    RadioButton shape = (RadioButton)currentElt;
+                    RadioButton shape = (RadioButton)selectedElt;
                     switch (property.Property)
                     {
                         case "Title":
@@ -3055,18 +3078,18 @@ namespace SB_IDE.Dialogs
                             shape.GroupName = value;
                             break;
                         default:
-                            SetControlProperties(shape, property);
+                            SetControlProperties(shape, property, value);
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(RichTextBox))
+                else if (selectedElt.GetType() == typeof(RichTextBox))
                 {
-                    RichTextBox shape = (RichTextBox)currentElt;
-                    SetControlProperties(shape, property);
+                    RichTextBox shape = (RichTextBox)selectedElt;
+                    SetControlProperties(shape, property, value);
                 }
-                else if (currentElt.GetType() == typeof(Slider))
+                else if (selectedElt.GetType() == typeof(Slider))
                 {
-                    Slider shape = (Slider)currentElt;
+                    Slider shape = (Slider)selectedElt;
                     switch (property.Property)
                     {
                         case "Orientation":
@@ -3074,9 +3097,9 @@ namespace SB_IDE.Dialogs
                             break;
                     }
                 }
-                else if (currentElt.GetType() == typeof(TreeView))
+                else if (selectedElt.GetType() == typeof(TreeView))
                 {
-                    TreeView shape = (TreeView)currentElt;
+                    TreeView shape = (TreeView)selectedElt;
                     switch (property.Property)
                     {
                         case "Tree":
@@ -3101,7 +3124,7 @@ namespace SB_IDE.Dialogs
                             }
                             break;
                         default:
-                            SetControlProperties(shape, property);
+                            SetControlProperties(shape, property, value);
                             break;
                     }
                 }
@@ -3161,7 +3184,7 @@ namespace SB_IDE.Dialogs
             }
         }
 
-        private void SetControlProperties(Control shape, PropertyData property)
+        private void SetControlProperties(Control shape, PropertyData property, string value)
         {
             switch (property.Property)
             {
@@ -3169,16 +3192,16 @@ namespace SB_IDE.Dialogs
                     shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(property.Value));
                     break;
                 case "FontFamily":
-                    shape.FontFamily = new FontFamily(property.Value);
+                    shape.FontFamily = new FontFamily(value);
                     break;
                 case "FontStyle":
-                    shape.FontStyle = property.Value.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
+                    shape.FontStyle = value.ToLower() == "italic" ? FontStyles.Italic : FontStyles.Normal;
                     break;
                 case "FontSize":
-                    shape.FontSize = double.Parse(property.Value);
+                    shape.FontSize = double.Parse(Fix(value));
                     break;
                 case "FontWeight":
-                    shape.FontWeight = property.Value.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
+                    shape.FontWeight = value.ToLower() == "bold" ? FontWeights.Bold : FontWeights.Normal;
                     break;
             }
         }
@@ -3230,34 +3253,38 @@ namespace SB_IDE.Dialogs
             try
             {
                 value = Fix(value);
-                switch (property.Property)
+                foreach (Shape selectedShape in selectedShapes)
                 {
-                    case "Width":
-                        currentShape.modifiers["Width"] = value;
-                        currentElt.Width = double.Parse(value);
-                        break;
-                    case "Height":
-                        currentShape.modifiers["Height"] = value;
-                        currentElt.Height = double.Parse(value);
-                        break;
-                    case "Left":
-                        currentShape.modifiers["Left"] = value;
-                        Canvas.SetLeft(currentShape.shape, double.Parse(value) - Shape.HandleShort);
-                        break;
-                    case "Top":
-                        currentShape.modifiers["Top"] = value;
-                        Canvas.SetTop(currentShape.shape, double.Parse(value) - Shape.HandleShort);
-                        break;
-                    case "Angle":
-                        currentShape.modifiers["Angle"] = value;
-                        RotateShape(currentShape);
-                        UpdatePolygonHandles();
-                        currentShape.ShowHandles(true); //polygon handles on rotation
-                        break;
-                    case "Opacity":
-                        currentShape.modifiers["Opacity"] = value;
-                        currentElt.Opacity = double.Parse(value) / 100.0;
-                        break;
+                    FrameworkElement selectedElt = selectedShape.elt;
+                    switch (property.Property)
+                    {
+                        case "Width":
+                            selectedShape.modifiers["Width"] = value;
+                            selectedElt.Width = double.Parse(value);
+                            break;
+                        case "Height":
+                            selectedShape.modifiers["Height"] = value;
+                            selectedElt.Height = double.Parse(value);
+                            break;
+                        case "Left":
+                            selectedShape.modifiers["Left"] = value;
+                            Canvas.SetLeft(selectedShape.shape, double.Parse(value) - Shape.HandleShort);
+                            break;
+                        case "Top":
+                            selectedShape.modifiers["Top"] = value;
+                            Canvas.SetTop(selectedShape.shape, double.Parse(value) - Shape.HandleShort);
+                            break;
+                        case "Angle":
+                            selectedShape.modifiers["Angle"] = value;
+                            RotateShape(selectedShape);
+                            UpdatePolygonHandles();
+                            selectedShape.ShowHandles(true); //polygon handles on rotation
+                            break;
+                        case "Opacity":
+                            selectedShape.modifiers["Opacity"] = value;
+                            selectedElt.Opacity = double.Parse(value) / 100.0;
+                            break;
+                    }
                 }
                 UpdateView();
             }
