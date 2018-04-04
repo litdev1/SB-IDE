@@ -138,11 +138,14 @@ namespace SB_IDE.Dialogs
         {
             startGlobal = start;
             startLocal = Snap(currentShape.shape.TranslatePoint(new Point(Shape.HandleShort, Shape.HandleShort), canvas));
-            currentElt.Measure(new Size(double.MaxValue, double.MaxValue));
-            startWidth = currentElt.DesiredSize.Width;
-            startHeight = currentElt.DesiredSize.Height;
-            currentElt.Width = startWidth;
-            currentElt.Height = startHeight;
+            if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+            {
+                currentElt.Measure(new Size(double.MaxValue, double.MaxValue));
+                startWidth = currentElt.DesiredSize.Width;
+                startHeight = currentElt.DesiredSize.Height;
+                currentElt.Width = startWidth;
+                currentElt.Height = startHeight;
+            }
         }
 
         private void UpdateView()
@@ -367,10 +370,13 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(-change.X, -change.Y);
                         }
-                        currentElt.Width = startWidth - change.X;
-                        currentElt.Height = startHeight - change.Y;
-                        Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
-                        Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
+                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        {
+                            currentElt.Width = startWidth - change.X;
+                            currentElt.Height = startHeight - change.Y;
+                            Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
+                            Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
+                        }
                     }
                     break;
                 case "_TR":
@@ -384,9 +390,12 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(change.X, -change.Y);
                         }
-                        currentElt.Width = startWidth + change.X;
-                        currentElt.Height = startHeight - change.Y;
-                        Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
+                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        {
+                            currentElt.Width = startWidth + change.X;
+                            currentElt.Height = startHeight - change.Y;
+                            Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
+                        }
                     }
                     break;
                 case "_BL":
@@ -400,9 +409,12 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(-change.X, change.Y);
                         }
-                        currentElt.Width = startWidth - change.X;
-                        currentElt.Height = startHeight + change.Y;
-                        Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
+                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        {
+                            currentElt.Width = startWidth - change.X;
+                            currentElt.Height = startHeight + change.Y;
+                            Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
+                        }
                     }
                     break;
                 case "_BR":
@@ -416,8 +428,11 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(change.X, change.Y);
                         }
-                        currentElt.Width = startWidth + change.X;
-                        currentElt.Height = startHeight + change.Y;
+                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        {
+                            currentElt.Width = startWidth + change.X;
+                            currentElt.Height = startHeight + change.Y;
+                        }
                     }
                     break;
                 case "_L":
@@ -431,8 +446,11 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(-change.X, 0);
                         }
-                        currentElt.Width = Math.Max(0, startWidth - change.X);
-                        Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
+                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        {
+                            currentElt.Width = Math.Max(0, startWidth - change.X);
+                            Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
+                        }
                     }
                     break;
                 case "_R":
@@ -446,7 +464,10 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(change.X, 0);
                         }
-                        currentElt.Width = Math.Max(0, startWidth + change.X);
+                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        {
+                            currentElt.Width = Math.Max(0, startWidth + change.X);
+                        }
                     }
                     break;
                 case "_T":
@@ -460,8 +481,11 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(0, -change.Y);
                         }
-                        currentElt.Height = Math.Max(0, startHeight - change.Y);
-                        Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
+                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        {
+                            currentElt.Height = Math.Max(0, startHeight - change.Y);
+                            Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
+                        }
                     }
                     break;
                 case "_B":
@@ -475,7 +499,10 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(0, change.Y);
                         }
-                        currentElt.Height = Math.Max(0, startHeight + change.Y);
+                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        {
+                            currentElt.Height = Math.Max(0, startHeight + change.Y);
+                        }
                     }
                     break;
                 case "_PT":
@@ -509,8 +536,11 @@ namespace SB_IDE.Dialogs
                     }
                     break;
             }
-            currentShape.modifiers["Width"] = (currentElt.Width).ToString();
-            currentShape.modifiers["Height"] = (currentElt.Height).ToString();
+            if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+            {
+                currentShape.modifiers["Width"] = (currentElt.Width).ToString();
+                currentShape.modifiers["Height"] = (currentElt.Height).ToString();
+            }
             foreach (Shape selectedShape in selectedShapes)
             {
                 selectedShape.modifiers["Left"] = (Canvas.GetLeft(selectedShape.shape) + Shape.HandleShort).ToString();
@@ -906,12 +936,15 @@ namespace SB_IDE.Dialogs
                 modifiers.Clear();
                 if (null != currentShape)
                 {
-                    currentElt.Measure(new Size(double.MaxValue, double.MaxValue));
-                    /*if (!currentShape.modifiers.ContainsKey("Width"))*/ currentShape.modifiers["Width"] = Fix(currentElt.DesiredSize.Width).ToString();
-                    /*if (!currentShape.modifiers.ContainsKey("Height"))*/ currentShape.modifiers["Height"] = Fix(currentElt.DesiredSize.Height).ToString();
+                    if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                    {
+                        currentElt.Measure(new Size(double.MaxValue, double.MaxValue));
+                        currentShape.modifiers["Width"] = Fix(currentElt.DesiredSize.Width).ToString();
+                        currentShape.modifiers["Height"] = Fix(currentElt.DesiredSize.Height).ToString();
+                    }
                     Point point = currentShape.shape.TranslatePoint(new Point(0, 0), canvas);
-                    /*if (!currentShape.modifiers.ContainsKey("Left"))*/ currentShape.modifiers["Left"] = Fix(point.X + Shape.HandleShort).ToString();
-                    /*if (!currentShape.modifiers.ContainsKey("Top"))*/ currentShape.modifiers["Top"] = Fix(point.Y + Shape.HandleShort).ToString();
+                    currentShape.modifiers["Left"] = Fix(point.X + Shape.HandleShort).ToString();
+                    currentShape.modifiers["Top"] = Fix(point.Y + Shape.HandleShort).ToString();
                     if (!currentShape.modifiers.ContainsKey("Angle")) currentShape.modifiers["Angle"] = "0";
                     if (!currentShape.modifiers.ContainsKey("Opacity")) currentShape.modifiers["Opacity"] = "100";
 
@@ -1152,7 +1185,6 @@ namespace SB_IDE.Dialogs
                                     CheckBox obj = (CheckBox)elt;
                                     SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                     sbDocument.TextArea.Text += obj.Name + " = LDControls.AddCheckBox(\"" + obj.Content.ToString() + "\")\n";
-                                    sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
                                     sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                     if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
                                     if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
@@ -1288,7 +1320,6 @@ namespace SB_IDE.Dialogs
                                     RadioButton obj = (RadioButton)elt;
                                     SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
                                     sbDocument.TextArea.Text += obj.Name + " = LDControls.AddRadioButton(\"" + obj.Content.ToString() + "\",\"" + obj.GroupName.ToString() + "\")\n";
-                                    sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
                                     sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                     if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
                                     if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
@@ -2026,9 +2057,12 @@ namespace SB_IDE.Dialogs
                     }
                     if (null != shape)
                     {
-                        shape.elt.Measure(new Size(double.MaxValue, double.MaxValue));
-                        if (!shape.modifiers.ContainsKey("Width")) shape.modifiers["Width"] = Fix(shape.elt.DesiredSize.Width).ToString();
-                        if (!shape.modifiers.ContainsKey("Height")) shape.modifiers["Height"] = Fix(shape.elt.DesiredSize.Height).ToString();
+                        if (shape.elt.GetType() != typeof(CheckBox) && shape.elt.GetType() != typeof(RadioButton))
+                        {
+                            shape.elt.Measure(new Size(double.MaxValue, double.MaxValue));
+                            if (!shape.modifiers.ContainsKey("Width")) shape.modifiers["Width"] = Fix(shape.elt.DesiredSize.Width).ToString();
+                            if (!shape.modifiers.ContainsKey("Height")) shape.modifiers["Height"] = Fix(shape.elt.DesiredSize.Height).ToString();
+                        }
                         if (!shape.modifiers.ContainsKey("Left")) shape.modifiers["Left"] = "0";
                         if (!shape.modifiers.ContainsKey("Top")) shape.modifiers["Top"] = "0";
                         if (!shape.modifiers.ContainsKey("Angle")) shape.modifiers["Angle"] = "0";
@@ -2083,8 +2117,6 @@ namespace SB_IDE.Dialogs
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
                 grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
 
-                //Canvas canvas = new Canvas();
-                //canvas.Children.Add(elt);
                 grid.Children.Add(elt);
                 Grid.SetRow(elt, 1);
                 Grid.SetColumn(elt, 1);
