@@ -370,7 +370,7 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(-change.X, -change.Y);
                         }
-                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
                         {
                             currentElt.Width = startWidth - change.X;
                             currentElt.Height = startHeight - change.Y;
@@ -390,7 +390,7 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(change.X, -change.Y);
                         }
-                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
                         {
                             currentElt.Width = startWidth + change.X;
                             currentElt.Height = startHeight - change.Y;
@@ -409,7 +409,7 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(-change.X, change.Y);
                         }
-                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
                         {
                             currentElt.Width = startWidth - change.X;
                             currentElt.Height = startHeight + change.Y;
@@ -428,7 +428,7 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(change.X, change.Y);
                         }
-                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
                         {
                             currentElt.Width = startWidth + change.X;
                             currentElt.Height = startHeight + change.Y;
@@ -446,7 +446,7 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(-change.X, 0);
                         }
-                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
                         {
                             currentElt.Width = Math.Max(0, startWidth - change.X);
                             Canvas.SetLeft(currentShape.shape, startLocal.X + change.X - Shape.HandleShort);
@@ -464,7 +464,7 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(change.X, 0);
                         }
-                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
                         {
                             currentElt.Width = Math.Max(0, startWidth + change.X);
                         }
@@ -481,7 +481,7 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(0, -change.Y);
                         }
-                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
                         {
                             currentElt.Height = Math.Max(0, startHeight - change.Y);
                             Canvas.SetTop(currentShape.shape, startLocal.Y + change.Y - Shape.HandleShort);
@@ -499,7 +499,7 @@ namespace SB_IDE.Dialogs
                         {
                             UpdateLine(0, change.Y);
                         }
-                        else if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
+                        if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
                         {
                             currentElt.Height = Math.Max(0, startHeight + change.Y);
                         }
