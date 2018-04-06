@@ -267,14 +267,14 @@ namespace SB_IDE.Dialogs
             contextMenu.Items.Add(itemBackground);
 
             MenuItem itemSetCode = new MenuItem();
-            itemSetCode.Header = "Copy Code to Current Document";
-            itemSetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Copy) };
+            itemSetCode.Header = "Paste Code to Current Document";
+            itemSetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Paste) };
             itemSetCode.Click += new RoutedEventHandler(SetNewCode);
             contextMenu.Items.Add(itemSetCode);
 
             MenuItem itemGetCode = new MenuItem();
             itemGetCode.Header = "Copy Code from Current Document";
-            itemGetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Paste) };
+            itemGetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Copy) };
             itemGetCode.Click += new RoutedEventHandler(GetNewCode);
             contextMenu.Items.Add(itemGetCode);
         }
