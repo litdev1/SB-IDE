@@ -2160,7 +2160,6 @@ namespace SB_IDE.Dialogs
                 Grid.SetRow(handleB, 2);
                 Grid.SetColumn(handleB, 1);
 
-                Color color = THIS.HighContrast(((SolidColorBrush)THIS.background).Color);
                 handleM = new Image()
                 {
                     Name = "_M",
@@ -2168,6 +2167,7 @@ namespace SB_IDE.Dialogs
                     Width = 2 * handleLong,
                     Height = 2 * handleLong,
                     Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Transform_move),
+                    ToolTip = "Use Shift to select multiple shapes, to move or modify together",
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
                     Cursor = Cursors.Cross,
@@ -2222,7 +2222,7 @@ namespace SB_IDE.Dialogs
                     elt.MinWidth = 0;
                     elt.MinHeight = 0;
                 }
-                else if (elt.GetType() == typeof(Polygon) || elt.GetType() == typeof(Line))
+                else if (elt.GetType() == typeof(Polygon) || elt.GetType() == typeof(Line)) //We loose grab handleM
                 {
                     elt.MinWidth = THIS.canvas.Width;
                     elt.MinHeight = THIS.canvas.Height;
