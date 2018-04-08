@@ -378,12 +378,12 @@ namespace SB_IDE
             PreviousBM();
         }
 
-        private void viewCollapse_Click(object sender, RoutedEventArgs e)
+        private void editCollapse_Click(object sender, RoutedEventArgs e)
         {
             Collapse();
         }
 
-        private void viewExpand_Click(object sender, RoutedEventArgs e)
+        private void editExpand_Click(object sender, RoutedEventArgs e)
         {
             Expand();
         }

@@ -127,10 +127,12 @@
                     <RibbonButton Label="Paste" SmallImageSource="Images/Paste.png" KeyTip="V" Click="editPaste_Click" ToolTipTitle="Past clipboard at current selection"/>
                     <RibbonButton Label="Cut" SmallImageSource="Images/Cut.png" KeyTip="X" Click="editCut_Click" ToolTipTitle="Delete current selection to clipboard"/>
                     <RibbonButton Label="Delete" SmallImageSource="Images/Delete.png" KeyTip="D" Click="editDelete_Click" ToolTipTitle="Delete current selection"/>
-                    <RibbonButton Label="Select All" SmallImageSource="Images/Selection.png" KeyTip="SE" Click="editSelectAll_Click" ToolTipTitle="Select complete program"/>
-                    <RibbonButton Label="Format" SmallImageSource="Images/Form.png" KeyTip="FM" Click="editFormat_Click" ToolTipTitle="Format current program"/>
-                    <RibbonButton Label="Undo" SmallImageSource="Images/Undo.png" KeyTip="Z" Click="editUndo_Click" ToolTipTitle="Undo last action"/>
                     <RibbonButton Label="Redo" SmallImageSource="Images/Redo.png" KeyTip="Y" Click="editRedo_Click" ToolTipTitle="Redo last action"/>
+                    <RibbonButton Label="Undo" SmallImageSource="Images/Undo.png" KeyTip="Z" Click="editUndo_Click" ToolTipTitle="Undo last action"/>
+                    <RibbonButton Label="Select All" SmallImageSource="Images/Selection.png" KeyTip="SE" Click="editSelectAll_Click" ToolTipTitle="Select complete program"/>
+                    <RibbonButton Label="Collapse All" SmallImageSource="Images/Collapse.png" KeyTip="CA" Click="editCollapse_Click" ToolTipTitle="Collapse all folding"/>
+                    <RibbonButton Label="Expand All" SmallImageSource="Images/Expand.png" KeyTip="EA" Click="editExpand_Click" ToolTipTitle="Expand all folding"/>
+                    <RibbonButton Label="Format" SmallImageSource="Images/Form.png" KeyTip="FM" Click="editFormat_Click" ToolTipTitle="Format current program"/>
                 </RibbonGroup>
                 <!-- Home/Web group-->
                 <RibbonGroup x:Name="Web" Header="Web">
@@ -146,7 +148,6 @@
                     <RibbonToggleButton Name="toggleWholeWord" Label="Whole Word" SmallImageSource="Images/Text.png" KeyTip="FW" Click="fileWholeWord_Click" ToolTipTitle="Search and highlight only whole word matches"/>
                     <RibbonToggleButton Name="toggleCaseSensitive" Label="Case Sensitive" SmallImageSource="Images/Text_uppercase.png" KeyTip="CS" Click="fileCaseSensitive_Click" ToolTipTitle="Search and highlight only case sensitive matches"/>
                     <RibbonTextBox x:Name="tbFind" Label="Find" KeyTip="FD" TextBoxWidth="160" KeyDown="tbFind_KeyDown"/>
-                    <RibbonButton Label="File Searcher" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Debug" KeyTip="D" >
@@ -178,6 +179,17 @@
                     <RibbonButton Label="Debug Guide" LargeImageSource="Images/bug_link.png" KeyTip="DG" Click="toolsDebugGuide_Click" ToolTipTitle="View a guide to debugging"/>
                 </RibbonGroup>
             </RibbonTab>
+            <RibbonTab Header="Tools" KeyTip="T" >
+                <!-- Tools/Tools group-->
+                <RibbonGroup x:Name="Tools" Header="Tools">
+                    <RibbonButton Name="ToolsShapesEditor" Label="Shapes Editor" LargeImageSource="Images/Dialog.png" KeyTip="FC" Click="ToolsShapesEditor_Click" ToolTipTitle="A shapes and controls editor"/>
+                    <RibbonButton Name="ToolsFlowChart" Label="Flow Chart" LargeImageSource="Images/FlowChart.png" KeyTip="FC" Click="ToolsFlowChart_Click" ToolTipTitle="Display a flow chart"/>
+                    <RibbonButton Name="ToolsColor" Label="Insert Colors" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="Insert color names into document"/>
+                    <RibbonButton Name="ToolsFont" Label="Insert Fonts" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="Insert font names into document"/>
+                    <RibbonButton Name="ToolsExtensionSearcher" Label="Search Extensions" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="Serch extension objects"/>
+                    <RibbonButton Label="File Searcher" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
+                </RibbonGroup>
+            </RibbonTab>
             <RibbonTab Header="Advanced" KeyTip="A" >
                 <!-- Advanced/Extend group-->
                 <RibbonGroup x:Name="Extend" Header="Extend">
@@ -186,16 +198,14 @@
                 </RibbonGroup>
                 <!-- Advanced/View group-->
                 <RibbonGroup x:Name="View" Header="View">
-                    <RibbonButton Label="Collapse All" SmallImageSource="Images/Collapse.png" KeyTip="C" Click="viewCollapse_Click" ToolTipTitle="Collapse all folding"/>
-                    <RibbonButton Label="Expand All" SmallImageSource="Images/Expand.png" KeyTip="EA" Click="viewExpand_Click" ToolTipTitle="Expand all folding"/>
                     <RibbonToggleButton Name="toggleSplit" Label="Split Screen" SmallImageSource="Images/Monitors.png" KeyTip="SS" Click="viewDual_Click" ToolTipTitle="Toggle split screen program layout"/>
                     <RibbonToggleButton Name="toggleWrap" Label="Word Wrap" SmallImageSource="Images/WordWrap.png" KeyTip="WW" Click="viewWrap_Click" ToolTipTitle="Toggle text wrap mode"/>
                     <RibbonToggleButton Name="toggleIndent" Label="Indent Guides" SmallImageSource="Images/Indent.png" KeyTip="I" Click="viewIndent_Click" ToolTipTitle="Toggle indent guides" IsChecked="True"/>
-                    <RibbonToggleButton Name="toggleWhiteSpace" Label="View Whitespace" SmallImageSource="Images/WhiteSpace.png" KeyTip="WS" Click="viewWhitespace_Click" ToolTipTitle="Toggle show whitespace"/>
                     <RibbonButton Label="Zoom in" SmallImageSource="Images/Zoom In.png" KeyTip="+" Click="viewZoomIn_Click" ToolTipTitle="Zoom in (larger font)"/>
                     <RibbonButton Label="Zoom out" SmallImageSource="Images/Zoom Out.png" KeyTip="-" Click="viewZoomOut_Click" ToolTipTitle="Zoom out (smaller font)"/>
                     <RibbonButton Label="Reset Zoom" SmallImageSource="Images/Zoom.png" KeyTip="0" Click="viewZoomReset_Click" ToolTipTitle="Reset zoom (default font)"/>
                     <RibbonToggleButton Name="toggleTheme" Label="Dark Theme" SmallImageSource="Images/Contrast.png" KeyTip="TH" Click="viewTheme_Click" ToolTipTitle="Use a dark theme (reverse video)"/>
+                    <RibbonToggleButton Name="toggleWhiteSpace" Label="View Whitespace" SmallImageSource="Images/WhiteSpace.png" KeyTip="WS" Click="viewWhitespace_Click" ToolTipTitle="Toggle show whitespace"/>
                     <RibbonTextBox x:Name="viewLanguage" Label="Language Code" KeyTip="L" TextBoxWidth="30" ToolTipTitle="Change the intellisence locale (e.g. 'de' for German, restart SB-IDE to take effect)" TextChanged="viewLanguage_TextChanged"/>
                 </RibbonGroup>
                 <!-- Advanced/Settings group-->
@@ -205,14 +215,6 @@
                     <RibbonButton Name="settingsImport" Label="Import Settings" SmallImageSource="Images/SettingsLoad.png" KeyTip="SI" Click="settingsImport_Click" ToolTipTitle="Import settings from a file, restart SB-IDE to take full effect"/>
                     <RibbonButton Name="settingsReset" Label="Reset Settings" SmallImageSource="Images/Settings.png" KeyTip="SR" Click="settingsReset_Click" ToolTipTitle="Reset settings to default, restart SB-IDE to take full effect"/>
                     <RibbonButton Name="settingsOptionsr" Label="Options" LargeImageSource="Images/Options.png" KeyTip="SO" Click="settingsOptions_Click" ToolTipTitle="Additional options and settings"/>
-                </RibbonGroup>
-                <!-- Advanced/Tools group-->
-                <RibbonGroup x:Name="Tools" Header="Tools">
-                    <RibbonButton Name="ToolsShapesEditor" Label="Shapes Editor" LargeImageSource="Images/Dialog.png" KeyTip="FC" Click="ToolsShapesEditor_Click" ToolTipTitle="A shapes and controls editor"/>
-                    <RibbonButton Name="ToolsFlowChart" Label="Flow Chart" LargeImageSource="Images/FlowChart.png" KeyTip="FC" Click="ToolsFlowChart_Click" ToolTipTitle="Display a flow chart"/>
-                    <RibbonButton Name="ToolsColor" Label="Insert Colors" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="Insert color names into document"/>
-                    <RibbonButton Name="ToolsFont" Label="Insert Fonts" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="Insert font names into document"/>
-                    <RibbonButton Name="ToolsExtensionSearcher" Label="Search Extensions" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="Serch extension objects"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
