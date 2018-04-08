@@ -2222,10 +2222,19 @@ namespace SB_IDE.Dialogs
                     elt.MinWidth = 0;
                     elt.MinHeight = 0;
                 }
-                else if (elt.GetType() == typeof(Polygon) || elt.GetType() == typeof(Line)) //We loose grab handleM
+                else if (elt.GetType() == typeof(Polygon) || elt.GetType() == typeof(Line)) //We loose grab handleM, but don't clip stroke
                 {
-                    elt.MinWidth = THIS.canvas.Width;
-                    elt.MinHeight = THIS.canvas.Height;
+                    Rect visualContentBounds = (Rect)GetPrivatePropertyValue(elt, "VisualContentBounds");
+                    if (null != visualContentBounds && !visualContentBounds.IsEmpty)
+                    {
+                        elt.MinWidth = visualContentBounds.Width;
+                        elt.MinHeight = visualContentBounds.Height;
+                    }
+                    else
+                    {
+                        elt.MinWidth = THIS.canvas.Width;
+                        elt.MinHeight = THIS.canvas.Height;
+                    }
                 }
                 if (!bPT) return;
 
@@ -2268,6 +2277,20 @@ namespace SB_IDE.Dialogs
                             HandlePT[1].Visibility = Visibility.Visible;
                         }
                     }
+                }
+            }
+
+            private object GetPrivatePropertyValue(object obj, string propName)
+            {
+                try
+                {
+                    Type t = obj.GetType();
+                    PropertyInfo pi = t.GetProperty(propName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    return pi.GetValue(obj, null);
+                }
+                catch
+                {
+                    return null;
                 }
             }
 
