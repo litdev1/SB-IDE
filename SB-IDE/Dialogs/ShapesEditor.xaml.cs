@@ -2225,7 +2225,7 @@ namespace SB_IDE.Dialogs
                 else if (elt.GetType() == typeof(Polygon) || elt.GetType() == typeof(Line)) //We loose grab handleM, but don't clip stroke
                 {
                     Rect visualContentBounds = (Rect)GetPrivatePropertyValue(elt, "VisualContentBounds");
-                    if (null != visualContentBounds && !visualContentBounds.IsEmpty)
+                    if (bPT && null != visualContentBounds && !visualContentBounds.IsEmpty)
                     {
                         elt.MinWidth = visualContentBounds.Width;
                         elt.MinHeight = visualContentBounds.Height;
@@ -3314,11 +3314,49 @@ namespace SB_IDE.Dialogs
                     {
                         case "Width":
                             selectedShape.modifiers["Width"] = value;
-                            selectedElt.Width = double.Parse(value);
+                            if (selectedElt.GetType() == typeof(Polygon))
+                            {
+                                Polygon polygon = (Polygon)selectedShape.elt;
+                                double scale = double.Parse(value) / selectedShape.elt.ActualWidth;
+                                for (int i = 0; i < polygon.Points.Count; i++)
+                                {
+                                    polygon.Points[i] = new Point(polygon.Points[i].X * scale, polygon.Points[i].Y);
+                                }
+                            }
+                            else if (selectedElt.GetType() == typeof(Line))
+                            {
+                                Line line = (Line)currentElt;
+                                double scale = double.Parse(value) / selectedShape.elt.ActualWidth;
+                                line.X1 *= scale;
+                                line.X2 *= scale;
+                            }
+                            else
+                            {
+                                selectedElt.Width = double.Parse(value);
+                            }
                             break;
                         case "Height":
                             selectedShape.modifiers["Height"] = value;
-                            selectedElt.Height = double.Parse(value);
+                            if (selectedElt.GetType() == typeof(Polygon))
+                            {
+                                Polygon polygon = (Polygon)selectedShape.elt;
+                                double scale = double.Parse(value) / selectedShape.elt.ActualHeight;
+                                for (int i = 0; i < polygon.Points.Count; i++)
+                                {
+                                    polygon.Points[i] = new Point(polygon.Points[i].X, polygon.Points[i].Y * scale);
+                                }
+                            }
+                            else if (selectedElt.GetType() == typeof(Line))
+                            {
+                                Line line = (Line)currentElt;
+                                double scale = double.Parse(value) / selectedShape.elt.ActualHeight;
+                                line.Y1 *= scale;
+                                line.Y2 *= scale;
+                            }
+                            else
+                            {
+                                selectedElt.Height = double.Parse(value);
+                            }
                             break;
                         case "Left":
                             selectedShape.modifiers["Left"] = value;
