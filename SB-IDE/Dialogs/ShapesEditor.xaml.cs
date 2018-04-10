@@ -844,7 +844,7 @@ namespace SB_IDE.Dialogs
                     {
                         ProgressBar shape = (ProgressBar)currentElt;
                         properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "Orientation", Value = shape.Orientation.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Orientation", Value = shape.Orientation.ToString()[0].ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(RadioButton))
                     {
@@ -861,7 +861,7 @@ namespace SB_IDE.Dialogs
                     else if (currentElt.GetType() == typeof(Slider))
                     {
                         Slider shape = (Slider)currentElt;
-                        properties.Add(new PropertyData() { Property = "Orientation", Value = shape.Orientation.ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Orientation", Value = shape.Orientation.ToString()[0].ToString(), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(TreeView))
                     {
@@ -1199,7 +1199,7 @@ namespace SB_IDE.Dialogs
                                     {
                                         list += (i++).ToString() + "=" + item.Content.ToString() + ";";
                                     }
-                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddComboBox(\"" + list + "\"," + Fix(shape.modifiers["Width"]) + "," + obj.MaxDropDownHeight.ToString() + ")\n";
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddComboBox(\"" + list + "\"," + Fix(shape.modifiers["Width"]) + "," + Fix(obj.MaxDropDownHeight) + ")\n";
                                     sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
                                     sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                     if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
@@ -1263,7 +1263,7 @@ namespace SB_IDE.Dialogs
                                     if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
                                     sbDocument.TextArea.Text += "\n";
                                 }
-                                else if (elt.GetType() == typeof(MediaPlayer))
+                                else if (elt.GetType() == typeof(MediaElement))
                                 {
                                     MediaElement obj = (MediaElement)elt;
                                     sbDocument.TextArea.Text += obj.Name + " = LDControls.AddMediaPlayer(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
@@ -1308,7 +1308,7 @@ namespace SB_IDE.Dialogs
                                         _brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString(obj.Foreground.ToString()));
                                         sbDocument.TextArea.Text += "GraphicsWindow.BrushColor = \"" + ColorName(_brush) + "\"\n";
                                     }
-                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddProgressBar(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString() + "\")\n";
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddProgressBar(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString()[0] + "\")\n";
                                     sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                     if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
                                     if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
@@ -1337,7 +1337,7 @@ namespace SB_IDE.Dialogs
                                 else if (elt.GetType() == typeof(Slider))
                                 {
                                     Slider obj = (Slider)elt;
-                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddSlider(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString() + "\")\n";
+                                    sbDocument.TextArea.Text += obj.Name + " = LDControls.AddSlider(" + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ",\"" + obj.Orientation.ToString()[0] + "\")\n";
                                     sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
                                     if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
                                     if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
@@ -3116,7 +3116,7 @@ namespace SB_IDE.Dialogs
                             shape.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(value));
                             break;
                         case "Orientation":
-                            shape.Orientation = value.ToLower() == "horizontal" ? Orientation.Horizontal : Orientation.Vertical;
+                            shape.Orientation = value.ToLower()[0] == 'h' ? Orientation.Horizontal : Orientation.Vertical;
                             break;
                     }
                 }
@@ -3147,7 +3147,7 @@ namespace SB_IDE.Dialogs
                     switch (property.Property)
                     {
                         case "Orientation":
-                            shape.Orientation = value.ToLower() == "horizontal" ? Orientation.Horizontal : Orientation.Vertical;
+                            shape.Orientation = value.ToLower()[0] == 'h' ? Orientation.Horizontal : Orientation.Vertical;
                             break;
                     }
                 }
