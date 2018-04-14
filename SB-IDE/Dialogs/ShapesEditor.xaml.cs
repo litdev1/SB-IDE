@@ -44,6 +44,7 @@ namespace SB_IDE.Dialogs
 
         private List<string> names;
         private Brush background;
+        private Brush foreground;
         private Brush brush;
         private Pen pen;
         private FontFamily fontFamily;
@@ -90,6 +91,8 @@ namespace SB_IDE.Dialogs
 
             names = new List<string>();
             background = canvas.Background;
+            foreground = new SolidColorBrush();
+            HighContrast();
             brush = Brushes.SlateBlue;
             pen = new Pen(Brushes.Black, 2);
             fontFamily = new FontFamily("Tahoma");
@@ -311,6 +314,7 @@ namespace SB_IDE.Dialogs
             if (cd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 background = new SolidColorBrush(Color.FromArgb(cd.Color.A, cd.Color.R, cd.Color.G, cd.Color.B));
+                HighContrast();
                 SetBackgound();
                 ShowCode();
             }
@@ -619,25 +623,26 @@ namespace SB_IDE.Dialogs
         private void SetSnap()
         {
             DrawingContext dc = drawingGroup.Open();
-            Color color = HighContrast(((SolidColorBrush)background).Color);
+            Pen _Pen = new Pen(foreground, 0.5);
             if (snap >= 5)
             {
                 for (int i = snap; i < canvas.Width; i += snap)
                 {
                     for (int j = snap; j < canvas.Height; j += snap)
                     {
-                        dc.DrawRectangle(null, new Pen(new SolidColorBrush(color), 0.5), new Rect(i, j, 0.5, 0.5));
+                        dc.DrawRectangle(null, _Pen, new Rect(i, j, 0.5, 0.5));
                     }
                 }
             }
             dc.Close();
         }
 
-        private Color HighContrast(Color color)
+        private void HighContrast()
         {
             //return Color.FromArgb(255, (byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
             //return Color.FromArgb(255, (byte)(color.R > 127 ? 0 : 255), (byte)(color.G > 127 ? 0 : 255), (byte)(color.B > 127 ? 0 : 255));
-            return (0.2126 * color.ScR + 0.7152 * color.ScG + 0.0722 * color.ScB) < 0.5 ? Colors.White : Colors.Black;
+            Color color = ((SolidColorBrush)background).Color;
+            ((SolidColorBrush)foreground).Color = (0.2126 * color.ScR + 0.7152 * color.ScG + 0.0722 * color.ScB) < 0.5 ? Colors.White : Colors.Black;
         }
 
         private string GetName(string label)
@@ -1456,6 +1461,7 @@ namespace SB_IDE.Dialogs
                     {
                         string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
                         background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(parts[1].Replace("\"", "")));
+                        HighContrast();
                         SetBackgound();
                     }
                     else if (codeLower.Contains("shapes.addrectangle"))
@@ -2191,7 +2197,7 @@ namespace SB_IDE.Dialogs
                             Height = HandleShort,
                             Fill = Brushes.Red,
                             Cursor = Cursors.Cross,
-                            Stroke = Brushes.Black,
+                            Stroke = THIS.foreground,
                             StrokeThickness = 1,
                             ToolTip = "P"+(i+1).ToString(),
                         };
@@ -2296,21 +2302,18 @@ namespace SB_IDE.Dialogs
 
             public void UpdateHandleColor()
             {
-                Color color = THIS.HighContrast(((SolidColorBrush)THIS.background).Color);
-
-                if (null != handleTL) handleTL.Stroke = new SolidColorBrush(color);
-                if (null != handleTR) handleTR.Stroke = new SolidColorBrush(color);
-                if (null != handleBL) handleBL.Stroke = new SolidColorBrush(color);
-                if (null != handleBR) handleBR.Stroke = new SolidColorBrush(color);
-                if (null != handleL) handleL.Stroke = new SolidColorBrush(color);
-                if (null != handleR) handleR.Stroke = new SolidColorBrush(color);
-                if (null != handleT) handleT.Stroke = new SolidColorBrush(color);
-                if (null != handleB) handleB.Stroke = new SolidColorBrush(color);
+                if (null != handleTL) handleTL.Stroke = THIS.foreground;
+                if (null != handleTR) handleTR.Stroke = THIS.foreground;
+                if (null != handleBL) handleBL.Stroke = THIS.foreground;
+                if (null != handleBR) handleBR.Stroke = THIS.foreground;
+                if (null != handleL) handleL.Stroke = THIS.foreground;
+                if (null != handleR) handleR.Stroke = THIS.foreground;
+                if (null != handleT) handleT.Stroke = THIS.foreground;
+                if (null != handleB) handleB.Stroke = THIS.foreground;
             }
 
             private Rectangle GetHandle(int width, int height, string name)
             {
-                Color color = THIS.HighContrast(((SolidColorBrush)THIS.background).Color);
                 Rectangle handle = new Rectangle()
                 {
                     Name = name,
@@ -2318,7 +2321,7 @@ namespace SB_IDE.Dialogs
                     Width = width,
                     Height = height,
                     Fill = Brushes.Transparent,
-                    Stroke = new SolidColorBrush(color),
+                    Stroke = THIS.foreground,
                     StrokeThickness = 1,
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
