@@ -368,10 +368,13 @@ namespace SB_IDE.Dialogs
 
         private void canvasMouseDown(object sender, MouseButtonEventArgs e)
         {
-            currentElt = null;
-            foreach (Shape shape in selectedShapes) shape.ShowHandles(false);
-            selectedShapes.Clear();
-            currentShape = null;
+            if (!Keyboard.IsKeyDown(Key.LeftShift) && !Keyboard.IsKeyDown(Key.RightShift))
+            {
+                currentElt = null;
+                foreach (Shape shape in selectedShapes) shape.ShowHandles(false);
+                selectedShapes.Clear();
+                currentShape = null;
+            }
             mode = "_SEL";
             SetStart(e.GetPosition(canvas));
             UpdateView();
@@ -465,7 +468,7 @@ namespace SB_IDE.Dialogs
                 rubberZoom.Height = Math.Abs(currentPosition.Y - startGlobal.Y);
                 Canvas.SetLeft(rubberZoom, Math.Min(currentPosition.X, startGlobal.X));
                 Canvas.SetTop(rubberZoom, Math.Min(currentPosition.Y, startGlobal.Y));
-                canvas.UpdateLayout();
+                //canvas.UpdateLayout();
                 return;
             }
             else if (null == currentShape) return;
@@ -3600,8 +3603,9 @@ namespace SB_IDE.Dialogs
             }
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            int nudge = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift) ? snap : 1;
             if (e.Key == Key.Delete)
             {
                 for (int i = 0; i < canvas.Children.Count; i++)
@@ -3618,13 +3622,15 @@ namespace SB_IDE.Dialogs
                         }
                     }
                 }
+                e.Handled = true;
+                UpdateView();
             }
             else if (e.Key == Key.Left)
             {
                 Shape _currentShape = currentShape;
                 foreach (Shape selectedShape in selectedShapes)
                 {
-                    Canvas.SetLeft(selectedShape.shape, Canvas.GetLeft(selectedShape.shape) - 1);
+                    Canvas.SetLeft(selectedShape.shape, Canvas.GetLeft(selectedShape.shape) - nudge);
                     selectedShape.modifiers["Left"] = (Canvas.GetLeft(selectedShape.shape) + Shape.HandleShort).ToString();
                     currentShape = selectedShape;
                     currentElt = currentShape.elt;
@@ -3635,13 +3641,15 @@ namespace SB_IDE.Dialogs
                     currentShape = _currentShape;
                     currentElt = currentShape.elt;
                 }
+                e.Handled = true;
+                UpdateView();
             }
             else if (e.Key == Key.Right)
             {
                 Shape _currentShape = currentShape;
                 foreach (Shape selectedShape in selectedShapes)
                 {
-                    Canvas.SetLeft(selectedShape.shape, Canvas.GetLeft(selectedShape.shape) + 1);
+                    Canvas.SetLeft(selectedShape.shape, Canvas.GetLeft(selectedShape.shape) + nudge);
                     selectedShape.modifiers["Left"] = (Canvas.GetLeft(selectedShape.shape) + Shape.HandleShort).ToString();
                     currentShape = selectedShape;
                     currentElt = currentShape.elt;
@@ -3652,13 +3660,15 @@ namespace SB_IDE.Dialogs
                     currentShape = _currentShape;
                     currentElt = currentShape.elt;
                 }
+                e.Handled = true;
+                UpdateView();
             }
             else if (e.Key == Key.Up)
             {
                 Shape _currentShape = currentShape;
                 foreach (Shape selectedShape in selectedShapes)
                 {
-                    Canvas.SetTop(selectedShape.shape, Canvas.GetTop(selectedShape.shape) - 1);
+                    Canvas.SetTop(selectedShape.shape, Canvas.GetTop(selectedShape.shape) - nudge);
                     selectedShape.modifiers["Top"] = (Canvas.GetTop(selectedShape.shape) + Shape.HandleShort).ToString();
                     currentShape = selectedShape;
                     currentElt = currentShape.elt;
@@ -3669,13 +3679,15 @@ namespace SB_IDE.Dialogs
                     currentShape = _currentShape;
                     currentElt = currentShape.elt;
                 }
+                e.Handled = true;
+                UpdateView();
             }
             else if (e.Key == Key.Down)
             {
                 Shape _currentShape = currentShape;
                 foreach (Shape selectedShape in selectedShapes)
                 {
-                    Canvas.SetTop(selectedShape.shape, Canvas.GetTop(selectedShape.shape) + 1);
+                    Canvas.SetTop(selectedShape.shape, Canvas.GetTop(selectedShape.shape) + nudge);
                     selectedShape.modifiers["Top"] = (Canvas.GetTop(selectedShape.shape) + Shape.HandleShort).ToString();
                     currentShape = selectedShape;
                     currentElt = currentShape.elt;
@@ -3686,8 +3698,9 @@ namespace SB_IDE.Dialogs
                     currentShape = _currentShape;
                     currentElt = currentShape.elt;
                 }
+                e.Handled = true;
+                UpdateView();
             }
-            UpdateView();
         }
 
         private void sliderScale_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

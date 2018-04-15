@@ -10,6 +10,5 @@
         <Label x:Name="label" Content="Enter the number of sides for the polygon (> 3)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="textBoxNumSides" HorizontalAlignment="Left" Height="23" Margin="276,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="53" KeyDown="textBoxNumSides_KeyDown"/>
         <Button x:Name="buttonDone" Content="Done" Margin="334,14,10.4,0" VerticalAlignment="Top" Click="buttonDone_Click" Height="22"/>
-
     </Grid>
 </Window>

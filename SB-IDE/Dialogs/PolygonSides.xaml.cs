@@ -29,6 +29,8 @@ namespace SB_IDE.Dialogs
             FontSize = 12 + MainWindow.zoom;
 
             textBoxNumSides.Text = NumSides.ToString();
+            textBoxNumSides.Select(textBoxNumSides.Text.Length, 0);
+            textBoxNumSides.Focus();
         }
 
         private void buttonDone_Click(object sender, RoutedEventArgs e)
