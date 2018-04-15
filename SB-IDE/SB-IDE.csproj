@@ -530,5 +530,8 @@
   <ItemGroup>
     <Resource Include="images\Transform_move.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\UnObjects.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

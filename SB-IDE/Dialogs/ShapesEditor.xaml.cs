@@ -57,6 +57,7 @@ namespace SB_IDE.Dialogs
         private double scale = 1;
         private string mode = "_SEL";
         private int _PT = -1;
+        private Rectangle rubberZoom;
 
         public ShapesEditor(MainWindow mainWindow)
         {
@@ -64,6 +65,9 @@ namespace SB_IDE.Dialogs
             THIS = this;
 
             InitializeComponent();
+
+            Cursor cursor = Mouse.OverrideCursor;
+            Mouse.OverrideCursor = Cursors.Wait;
 
             FontSize = 12 + MainWindow.zoom;
             Topmost = true;
@@ -130,6 +134,19 @@ namespace SB_IDE.Dialogs
 
             ToolTipService.SetShowDuration(buttonImport, 10000);
 
+            rubberZoom = new Rectangle()
+            {
+                Width = 0,
+                Height = 0,
+                Fill = Brushes.Transparent,
+                Stroke = foreground,
+                StrokeThickness = 1,
+                StrokeDashArray = new DoubleCollection() { 5, 5 },
+                Visibility = Visibility.Hidden,
+            };
+            canvas.Children.Add(rubberZoom);
+
+            Mouse.OverrideCursor = cursor;
             Display();
         }
 
@@ -140,6 +157,7 @@ namespace SB_IDE.Dialogs
         public void SetStart(Point start)
         {
             startGlobal = start;
+            if (null == currentShape) return;
             startLocal = Snap(currentShape.shape.TranslatePoint(new Point(Shape.HandleShort, Shape.HandleShort), canvas));
             if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
             {
@@ -174,16 +192,23 @@ namespace SB_IDE.Dialogs
             ShowCode();
         }
 
-        private void Delete()
+        private void Delete(Shape shape)
         {
-            if (null == currentShape) return;
+            if (null == shape) return;
 
-            foreach (Shape shape in selectedShapes) shape.ShowHandles(false);
-            canvas.Children.Remove(currentShape.shape);
-
-            selectedShapes.Clear();
-            currentElt = null;
-            currentShape = null;
+            shape.ShowHandles(false);
+            canvas.Children.Remove(shape.shape);
+            selectedShapes.Remove(shape);
+            if (selectedShapes.Count == 0)
+            {
+                currentElt = null;
+                currentShape = null;
+            }
+            else
+            {
+                currentShape = selectedShapes.Last();
+                currentElt = currentShape.elt;
+            }
             mode = "_SEL";
             UpdateView();
         }
@@ -227,6 +252,12 @@ namespace SB_IDE.Dialogs
 
         private void canvasPreviewLeftMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (rubberZoom.Visibility == Visibility.Visible)
+            {
+                SelectRubberZoom();
+                rubberZoom.Visibility = Visibility.Hidden;
+                return;
+            }
             if (null == currentShape) return;
             currentElt.MinWidth = 0;
             currentElt.MinHeight = 0;
@@ -239,6 +270,32 @@ namespace SB_IDE.Dialogs
             UpdateView();
         }
 
+        private void SelectRubberZoom()
+        {
+            if (!Keyboard.IsKeyDown(Key.LeftShift) && !Keyboard.IsKeyDown(Key.RightShift)) selectedShapes.Clear();
+            Rect rubberBounds = new Rect(Canvas.GetLeft(rubberZoom), Canvas.GetTop(rubberZoom), rubberZoom.Width, rubberZoom.Height);
+
+            foreach (FrameworkElement child in canvas.Children)
+            {
+                if (child.GetType() == typeof(Grid))
+                {
+                    Grid grid = (Grid)child;
+                    Shape shape = (Shape)grid.Tag;
+                    Point point1 = shape.elt.TranslatePoint(new Point(0, 0), canvas);
+                    Point point2 = shape.elt.TranslatePoint(new Point(shape.elt.ActualWidth, shape.elt.ActualHeight), canvas);
+                    Rect eltBounds = new Rect(point1, point2);
+                    if (rubberBounds.Contains(eltBounds))
+                    {
+                        currentElt = shape.elt;
+                        currentShape = shape;
+                        currentShape.ShowHandles(true);
+                        if (!selectedShapes.Contains(currentShape)) selectedShapes.Add(currentShape);
+                    }
+                }
+            }
+            UpdateView();
+        }
+
         private void canvasPreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
             contextMenu.Items.Clear();
@@ -247,6 +304,11 @@ namespace SB_IDE.Dialogs
             itemShape.Header = "Select Shape";
             itemShape.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Objects)};
             contextMenu.Items.Add(itemShape);
+
+            MenuItem itemUnShape = new MenuItem();
+            itemUnShape.Header = "Unselect Shape";
+            itemUnShape.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.UnObjects) };
+            contextMenu.Items.Add(itemUnShape);
 
             MenuItem item;
             foreach (FrameworkElement child in canvas.Children)
@@ -260,6 +322,15 @@ namespace SB_IDE.Dialogs
                     item.Header = elt.Name;
                     item.Click += new RoutedEventHandler(SelectShapeClick);
                     item.Tag = elt;
+
+                    if (selectedShapes.Contains((Shape)shape.Tag))
+                    {
+                        item = new MenuItem();
+                        itemUnShape.Items.Add(item);
+                        item.Header = elt.Name;
+                        item.Click += new RoutedEventHandler(UnSelectShapeClick);
+                        item.Tag = elt;
+                    }
                 }
             }
 
@@ -280,6 +351,8 @@ namespace SB_IDE.Dialogs
             itemGetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Copy) };
             itemGetCode.Click += new RoutedEventHandler(GetNewCode);
             contextMenu.Items.Add(itemGetCode);
+
+            e.Handled = true;
         }
 
         private void SetNewCode(object sender, RoutedEventArgs e)
@@ -300,6 +373,7 @@ namespace SB_IDE.Dialogs
             selectedShapes.Clear();
             currentShape = null;
             mode = "_SEL";
+            SetStart(e.GetPosition(canvas));
             UpdateView();
         }
 
@@ -350,14 +424,51 @@ namespace SB_IDE.Dialogs
             }
         }
 
+        private void UnSelectShapeClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MenuItem item = (MenuItem)sender;
+                FrameworkElement elt = (FrameworkElement)item.Tag;
+                Shape shape = (Shape)elt.Tag;
+                mode = "_SEL";
+                selectedShapes.Remove(shape);
+                shape.ShowHandles(false);
+                if (selectedShapes.Count == 0)
+                {
+                    currentElt = null;
+                    currentShape = null;
+                }
+                else
+                {
+                    currentShape = selectedShapes.Last();
+                    currentElt = currentShape.elt;
+                }
+                UpdateView();
+            }
+            catch
+            {
+
+            }
+        }
+
         private void canvasMouseMove(object sender, MouseEventArgs e)
         {
             currentPosition = e.GetPosition(canvas);
             labelPosition.Content = "(" + Fix(currentPosition.X) + "," + Fix(currentPosition.Y) + ")";
 
-            if (null == currentShape) return;
-            if (mode == "_SEL") return;
             if (e.LeftButton == MouseButtonState.Released) return;
+            else if (mode == "_SEL")
+            {
+                rubberZoom.Visibility = Visibility.Visible;
+                rubberZoom.Width = Math.Abs(currentPosition.X - startGlobal.X);
+                rubberZoom.Height = Math.Abs(currentPosition.Y - startGlobal.Y);
+                Canvas.SetLeft(rubberZoom, Math.Min(currentPosition.X, startGlobal.X));
+                Canvas.SetTop(rubberZoom, Math.Min(currentPosition.Y, startGlobal.Y));
+                canvas.UpdateLayout();
+                return;
+            }
+            else if (null == currentShape) return;
 
             Vector change = Snap(currentPosition - startGlobal);
 
@@ -3433,7 +3544,7 @@ namespace SB_IDE.Dialogs
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Delete();
+            Delete(currentShape);
         }
 
         private void textBoxSnap_TextChanged(object sender, TextChangedEventArgs e)
@@ -3502,13 +3613,81 @@ namespace SB_IDE.Dialogs
                         if (grid.Children.Count > 0 && grid.Children[0].IsMouseDirectlyOver)
                         {
                             FrameworkElement elt = (FrameworkElement)grid.Children[0];
-                            eltPreviewMouseLeftButtonDown(elt, null);
-                            Delete();
+                            Delete((Shape)elt.Tag);
                             break;
                         }
                     }
                 }
             }
+            else if (e.Key == Key.Left)
+            {
+                Shape _currentShape = currentShape;
+                foreach (Shape selectedShape in selectedShapes)
+                {
+                    Canvas.SetLeft(selectedShape.shape, Canvas.GetLeft(selectedShape.shape) - 1);
+                    selectedShape.modifiers["Left"] = (Canvas.GetLeft(selectedShape.shape) + Shape.HandleShort).ToString();
+                    currentShape = selectedShape;
+                    currentElt = currentShape.elt;
+                    UpdatePolygonHandles();
+                }
+                if (null != _currentShape)
+                {
+                    currentShape = _currentShape;
+                    currentElt = currentShape.elt;
+                }
+            }
+            else if (e.Key == Key.Right)
+            {
+                Shape _currentShape = currentShape;
+                foreach (Shape selectedShape in selectedShapes)
+                {
+                    Canvas.SetLeft(selectedShape.shape, Canvas.GetLeft(selectedShape.shape) + 1);
+                    selectedShape.modifiers["Left"] = (Canvas.GetLeft(selectedShape.shape) + Shape.HandleShort).ToString();
+                    currentShape = selectedShape;
+                    currentElt = currentShape.elt;
+                    UpdatePolygonHandles();
+                }
+                if (null != _currentShape)
+                {
+                    currentShape = _currentShape;
+                    currentElt = currentShape.elt;
+                }
+            }
+            else if (e.Key == Key.Up)
+            {
+                Shape _currentShape = currentShape;
+                foreach (Shape selectedShape in selectedShapes)
+                {
+                    Canvas.SetTop(selectedShape.shape, Canvas.GetTop(selectedShape.shape) - 1);
+                    selectedShape.modifiers["Top"] = (Canvas.GetTop(selectedShape.shape) + Shape.HandleShort).ToString();
+                    currentShape = selectedShape;
+                    currentElt = currentShape.elt;
+                    UpdatePolygonHandles();
+                }
+                if (null != _currentShape)
+                {
+                    currentShape = _currentShape;
+                    currentElt = currentShape.elt;
+                }
+            }
+            else if (e.Key == Key.Down)
+            {
+                Shape _currentShape = currentShape;
+                foreach (Shape selectedShape in selectedShapes)
+                {
+                    Canvas.SetTop(selectedShape.shape, Canvas.GetTop(selectedShape.shape) + 1);
+                    selectedShape.modifiers["Top"] = (Canvas.GetTop(selectedShape.shape) + Shape.HandleShort).ToString();
+                    currentShape = selectedShape;
+                    currentElt = currentShape.elt;
+                    UpdatePolygonHandles();
+                }
+                if (null != _currentShape)
+                {
+                    currentShape = _currentShape;
+                    currentElt = currentShape.elt;
+                }
+            }
+            canvas.UpdateLayout();
         }
 
         private void sliderScale_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
