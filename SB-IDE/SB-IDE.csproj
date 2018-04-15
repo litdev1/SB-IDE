@@ -533,5 +533,8 @@
   <ItemGroup>
     <Resource Include="images\UnObjects.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CopyShapes.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

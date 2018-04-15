@@ -54,7 +54,7 @@
                 <ListBoxItem Content="Slider" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="TreeView" PreviewMouseDown="AddShape_MouseDown"/>
             </ListBox>
-            <Button x:Name="buttonDelete" Content="Delete Selected Shape" Margin="10,0,10.4,58.4" Height="19" VerticalAlignment="Bottom" Click="buttonDelete_Click"/>
+            <Button x:Name="buttonDelete" Content="Delete Selected Shapes" Margin="10,0,10.4,58.4" Height="19" VerticalAlignment="Bottom" Click="buttonDelete_Click"/>
             <Label x:Name="label" Content="Snap Size" HorizontalAlignment="Left" Margin="10,0,0,83.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
             <TextBox x:Name="textBoxSnap" Margin="105,0,9.4,82.4" TextWrapping="Wrap" Text="10" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxSnap_TextChanged"/>
             <Button x:Name="buttonImport" Content="Import From Code" Margin="10,0,10.4,10.4" Height="19" VerticalAlignment="Bottom" Click="buttonImport_Click">

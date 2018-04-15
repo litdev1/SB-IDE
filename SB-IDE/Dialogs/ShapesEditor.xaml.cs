@@ -17,8 +17,8 @@ using System.Windows.Shapes;
 namespace SB_IDE.Dialogs
 {
     /// <summary>
-    /// Interaction logic for ShapesEditor.xaml
-    /// </summary>
+         /// Interaction logic for ShapesEditor.xaml
+         /// </summary>
     public partial class ShapesEditor : Window
     {
         public static bool Active = false;
@@ -334,6 +334,12 @@ namespace SB_IDE.Dialogs
                 }
             }
 
+            MenuItem itemCopyShapes = new MenuItem();
+            itemCopyShapes.Header = "Copy Selected Shapes";
+            itemCopyShapes.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.CopyShapes) };
+            itemCopyShapes.Click += new RoutedEventHandler(CopyShapes);
+            contextMenu.Items.Add(itemCopyShapes);
+
             MenuItem itemBackground = new MenuItem();
             itemBackground.Header = "Background Color";
             itemBackground.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Color_palette) };
@@ -353,6 +359,26 @@ namespace SB_IDE.Dialogs
             contextMenu.Items.Add(itemGetCode);
 
             e.Handled = true;
+        }
+
+        private void CopyShapes(object sender, RoutedEventArgs e)
+        {
+            ShowCode(true);
+            foreach (Shape shape in selectedShapes) shape.ShowHandles(false);
+            selectedShapes.Clear();
+            ReadCode(true);
+            ShowCode();
+            if (selectedShapes.Count == 0)
+            {
+                currentShape = null;
+                currentElt = null;
+            }
+            else
+            {
+                currentShape = selectedShapes.Last();
+                currentElt = currentShape.elt;
+            }
+            UpdateView();
         }
 
         private void SetNewCode(object sender, RoutedEventArgs e)
@@ -1080,7 +1106,7 @@ namespace SB_IDE.Dialogs
             }
         }
 
-        private void ShowCode()
+        private void ShowCode(bool bSelected = false)
         {
             try
             {
@@ -1104,6 +1130,8 @@ namespace SB_IDE.Dialogs
                     if (child.GetType() == typeof(Grid))
                     {
                         Grid grid = (Grid)child;
+                        if (bSelected && !selectedShapes.Contains((Shape)grid.Tag)) continue;
+
                         foreach (FrameworkElement elt in grid.Children)
                         {
                             if (null != elt.Tag && !elt.Name.StartsWith("_"))
@@ -1550,7 +1578,7 @@ namespace SB_IDE.Dialogs
             return (fixDec * Math.Round(value / fixDec)).ToString();
         }
 
-        private void ReadCode()
+        private void ReadCode(bool bSelect = false)
         {
             try
             {
@@ -2188,6 +2216,11 @@ namespace SB_IDE.Dialogs
                         if (!shape.modifiers.ContainsKey("Opacity")) shape.modifiers["Opacity"] = "100";
                         Canvas.SetLeft(shape.shape, double.Parse(shape.modifiers["Left"]) - Shape.HandleShort);
                         Canvas.SetTop(shape.shape, double.Parse(shape.modifiers["Top"]) - Shape.HandleShort);
+                        if (bSelect && !selectedShapes.Contains(shape))
+                        {
+                            selectedShapes.Add(shape);
+                            shape.ShowHandles(true, false);
+                        }
                     }
                 }
                 canvas.UpdateLayout();
@@ -3547,7 +3580,10 @@ namespace SB_IDE.Dialogs
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Delete(currentShape);
+            for (int i = selectedShapes.Count-1; i >= 0; i--)
+            {
+                Delete(selectedShapes[i]);
+            }
         }
 
         private void textBoxSnap_TextChanged(object sender, TextChangedEventArgs e)
