@@ -3687,7 +3687,7 @@ namespace SB_IDE.Dialogs
                     currentElt = currentShape.elt;
                 }
             }
-            canvas.UpdateLayout();
+            UpdateView();
         }
 
         private void sliderScale_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
