@@ -3834,5 +3834,22 @@ namespace SB_IDE.Dialogs
 
             }
         }
+
+        private void buttonHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Add shapes or controls by clicking shape name on left panel.\n\n" +
+                "Select a shape by clicking it or blue move handle.\n" +
+                "The properties of a selected shape are shown on the right panel, they can be changed by editing or using Set button.\n\n" +
+                "Select multiple shapes by selecting a shape with Shift key held down or by selecting round a group of shapes (Shift to add to current selected shapes).\n" +
+                "Deslect all shapes by left click on the backgiund.\n\n" +
+                "Move, resize (using corner handles) or change the properties of a shape (holding Shift to apply to multiple selected shapes).\n" +
+                "Triangles and polygons are resized by moving individual corners.\n\n" +
+                "Nudge selected shapes using arrow keys (hold Shift to move by snap distance).\n\n" +
+                "Press Delete over a shape to delete it.\n\n" +
+                "Right click for additional options, including copy and paste code to current document, or copy selected shapes (new copied shapes lie over the originals so can then be moved as a group using Shift key).\n\n" +
+                "The current code is shown in the code window.  This can be edited and use \"Import From Code\" to add the current code to the current view.\n\n" +
+                "Questions and suggestions welcome.",
+                "SB-IDE", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }
