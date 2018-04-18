@@ -3843,7 +3843,7 @@ namespace SB_IDE.Dialogs
                 "Select multiple shapes by selecting a shape with Shift key held down or by selecting round a group of shapes (Shift to add to current selected shapes).\n" +
                 "Deslect all shapes by left click on the backgound.\n\n" +
                 "Move, resize (using corner handles) or change the properties of a shape (holding Shift to apply to multiple selected shapes).\n" +
-                "Triangles and polygons are resized by moving individual corners.\n\n" +
+                "Triangles, lines and polygons are resized by moving individual corners.\n\n" +
                 "Nudge selected shapes using arrow keys (hold Shift to move by snap distance).\n\n" +
                 "Press Delete over a shape to delete it.\n\n" +
                 "Right click for additional options, including copy and paste code to current document, or copy selected shapes (new copied shapes lie over the originals so can then be moved as a group using Shift key).\n\n" +
