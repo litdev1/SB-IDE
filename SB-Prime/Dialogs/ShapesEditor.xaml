@@ -1,0 +1,149 @@
+﻿<Window x:Class="SB_Prime.Dialogs.ShapesEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_Prime.Dialogs"
+        mc:Ignorable="d"
+        Title="Shapes Editor" Height="800" Width="1000" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated" PreviewKeyDown="Window_PreviewKeyDown">
+    <Window.Resources>
+        <SolidColorBrush x:Key="SplitterBrush" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="GridBrushBackground" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="GridBrushForeground" Color="#FF000000"/>
+    </Window.Resources>
+    <Grid x:Name="mainGrid" Background="{DynamicResource GridBrushBackground}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="250" />
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="controlGrid" Grid.Column="0" Margin="0">
+            <Label Content="Shapes" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+            <ListBox x:Name="listBoxShapes" Height="124" Margin="10,41,10,0" VerticalAlignment="Top">
+                <ListBoxItem Content="Rectangle" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="Ellipse" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="Triangle" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="Line" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="Text" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="Image" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+            </ListBox>
+            <Label Content="Controls" Margin="10,170,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+            <ListBox x:Name="listBoxControls" Height="64" Margin="10,200,10,0" VerticalAlignment="Top">
+                <ListBoxItem Content="Button" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="TextBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="MultiLineTextBox" PreviewMouseDown="AddShape_MouseDown"/>
+            </ListBox>
+            <Label Content="LDControls" Margin="10,269,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+            <ListBox x:Name="listBoxLDControls" Margin="10,300,10.4,244.4">
+                <ListBoxItem Content="Polygon" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="Browser" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="CheckBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="ComboBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="DataView" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="DocumentViewer" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="ListBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="ListView" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="MediaPlayer" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="Menu" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="PasswordBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="ProgressBar" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="RadioButton" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="RichTextBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="Slider" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="TreeView" PreviewMouseDown="AddShape_MouseDown"/>
+            </ListBox>
+            <Button x:Name="buttonDelete" Content="Delete Selected Shapes" Margin="10,0,10.4,58.4" Height="19" VerticalAlignment="Bottom" Click="buttonDelete_Click"/>
+            <Label x:Name="label" Content="Snap Size" HorizontalAlignment="Left" Margin="9,0,0,107.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
+            <TextBox x:Name="textBoxSnap" Margin="104,0,10.4,106.4" TextWrapping="Wrap" Text="10" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxSnap_TextChanged"/>
+            <Button x:Name="buttonImport" Content="Import From Code" Margin="10,0,10.4,10.4" Height="19" VerticalAlignment="Bottom" Click="buttonImport_Click">
+                <Button.ToolTip>
+                    <TextBlock> 
+                        Create new shapes from the code window.<LineBreak/>
+                        You can paste any code here first.<LineBreak/>
+                        Note that most arguments should be literals, not variables.
+                    </TextBlock>
+                </Button.ToolTip>
+            </Button>
+            <Button x:Name="buttonDeleteAll" Content="Delete All Shapes" Margin="10,0,10.4,34.4" Height="19" VerticalAlignment="Bottom" Click="buttonDeleteAll_Click"/>
+            <Label x:Name="label_Copy" Content="View Height" HorizontalAlignment="Left" Margin="8,0,0,135.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
+            <TextBox x:Name="textBoxHeight" Margin="103,0,11.4,134.4" TextWrapping="Wrap" Text="1000" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxHeight_TextChanged"/>
+            <Label x:Name="label_Copy1" Content="View Width" HorizontalAlignment="Left" Margin="8,0,0,163.4" Height="26" VerticalAlignment="Bottom" Width="91" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
+            <TextBox x:Name="textBoxWidth" Margin="104,0,10.4,162.4" TextWrapping="Wrap" Text="1000" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxWidth_TextChanged"/>
+            <Slider x:Name="sliderScale" Margin="10,0,10.4,190.4" RenderTransformOrigin="0.75,0.611" Height="18" VerticalAlignment="Bottom" Minimum="-10" ValueChanged="sliderScale_ValueChanged" SmallChange="1" LargeChange="2"/>
+            <Label x:Name="label_Copy2" Content="Scale View" Margin="9,0,10.4,213.4" Height="26" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" RenderTransformOrigin="0.503,0.146"/>
+            <Button x:Name="buttonHelp" Content="Help" Margin="10,0,10.4,82.4" Height="19" VerticalAlignment="Bottom" Click="buttonHelp_Click"/>
+        </Grid>
+        <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
+        <Grid x:Name="viewGrid" Grid.Column="2" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="6"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="previewGrid" Grid.Row="0" Margin="0">
+                <ScrollViewer x:Name="scrollViewer" Margin="10" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Grid x:Name="visualGrid" Margin="0">
+                        <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="200" Margin="0" VerticalAlignment="Top" Width="300" Background="White"/>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+            <GridSplitter Margin="0" Grid.Row="1" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
+            <Grid x:Name="codeGrid" Grid.Row="2" Margin="0">
+            </Grid>
+        </Grid>
+        <GridSplitter Margin="0" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
+        <Grid x:Name="propertiesGrid" Grid.Column="4" Margin="0">
+            <Label Content="Properties" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+            <DataGrid x:Name="dataGridProperties" Height="342" Margin="10,41,9.6,0" VerticalAlignment="Top" HeadersVisibility="Column" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" CellEditEnding="dataGridProperties_CellEditEnding">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Padding" Value="8,4,8,4" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Property" IsReadOnly="True" Binding="{Binding Property}"/>
+                    <DataGridTextColumn Header="Value" IsReadOnly="False" Width="*" Binding="{Binding Value}"/>
+                    <DataGridTemplateColumn Header="Set Value" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Set" Click="dataGridPropertySet" Tag="{Binding}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Visibility" Value="{Binding Visible}" />
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="Modifiers" Margin="10,388,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.506,1.734"/>
+            <DataGrid x:Name="dataGridModifiers" Margin="10,419,9.6,37.4" HeadersVisibility="Column" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" CellEditEnding="dataGridModifiers_CellEditEnding">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Padding" Value="8,4,8,4" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Property" IsReadOnly="True" Binding="{Binding Property}"/>
+                    <DataGridTextColumn Header="Value" IsReadOnly="False" Width="*" Binding="{Binding Value}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label x:Name="labelPosition" Content="" Margin="10,0,9.6,6.4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" UseLayoutRounding="True" Height="26" VerticalAlignment="Bottom"/>
+        </Grid>
+    </Grid>
+</Window>

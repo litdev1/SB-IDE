@@ -1,0 +1,16 @@
+﻿<Window x:Class="SB_Prime.Dialogs.Import"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_Prime.Dialogs"
+        mc:Ignorable="d"
+        Title="Import" Height="177.616" Width="300" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True">
+    <Grid>
+        <TextBox x:Name="textBoxImport" Height="23" Margin="10,78,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top" SpellCheck.IsEnabled="True" KeyDown="textBoxImport_KeyDown"/>
+        <Label x:Name="label" Content="Import a program from the web" Margin="10,10,9.6,0" VerticalAlignment="Top" RenderTransformOrigin="-0.908,-2.063" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>
+        <Button x:Name="buttonOK" Content="OK" HorizontalAlignment="Right" Margin="0,0,93.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonOK_Click" ToolTip="Import program ID and close"/>
+        <Button x:Name="buttonCancel" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,9.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click" ToolTip="Close with no action"/>
+        <Label x:Name="label_Copy" Content="Enter the program ID" Margin="10,47,9.6,0" VerticalAlignment="Top" RenderTransformOrigin="-0.908,-2.063" HorizontalContentAlignment="Center"/>
+    </Grid>
+</Window>
