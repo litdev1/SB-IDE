@@ -176,7 +176,7 @@ namespace SB_Prime
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            string settings = Environment.CurrentDirectory + "\\SB-Prime.config";
+            string settings = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\SB-Prime.config";
             if (File.Exists(settings))
             {
                 ImportSettingsFromFile(settings);
@@ -185,6 +185,12 @@ namespace SB_Prime
             else
             {
                 LoadSettings();
+            }
+            string update = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Update.exe-";
+            if (File.Exists(update))
+            {
+                File.Copy(update, System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Update.exe", true);
+                File.Delete(update);
             }
 
             InitWindow();

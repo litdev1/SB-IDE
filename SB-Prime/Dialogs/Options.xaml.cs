@@ -44,10 +44,17 @@ namespace SB_Prime.Dialogs
 
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
-            string settings = Environment.CurrentDirectory + "\\SB-Prime.config";
-            mainWindow.ExportSettingsToFile(settings);
-            Process.Start(Environment.CurrentDirectory + "\\Update.exe");
-            mainWindow.Close();
+            try
+            {
+                string settings = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\SB-Prime.config";
+                mainWindow.ExportSettingsToFile(settings);
+                Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Update.exe");
+                mainWindow.Close();
+            }
+            catch
+            {
+
+            }
         }
 
         private void buttonInstallation_Click(object sender, RoutedEventArgs e)
