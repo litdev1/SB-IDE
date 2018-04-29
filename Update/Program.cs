@@ -27,7 +27,7 @@ namespace Update
                 i++;
             }
             Updater updater = new Updater();
-            updater.Update("https://gallery.technet.microsoft.com/Small-Basic-IDE-10-42648328/file/181459/167/SB-Prime.zip");
+            updater.Update("http://litdev.co.uk/downloads/SB-Prime.zip");
             Console.WriteLine("Restarting SB-Prime...");
             Thread.Sleep(100);
             Process.Start(Environment.CurrentDirectory + "\\SB-Prime.exe");
@@ -63,6 +63,9 @@ namespace Update
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Error : " + ex.Message);
+                Console.WriteLine("Press a key to close");
+                Console.ReadKey(true);
             }
         }
 
