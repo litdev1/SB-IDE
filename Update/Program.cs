@@ -30,7 +30,7 @@ namespace Update
             updater.Update("http://litdev.co.uk/downloads/SB-Prime.zip");
             Console.WriteLine("Restarting SB-Prime...");
             Thread.Sleep(100);
-            Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\SB-Prime.exe");
+            Process.Start(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\SB-Prime.exe");
         }
     }
 
@@ -119,7 +119,7 @@ namespace Update
 
         private void CopyFiles(string zipFolder)
         {
-            string exeFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string exeFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             foreach (string file in Directory.GetFiles(zipFolder))
             {
                 try

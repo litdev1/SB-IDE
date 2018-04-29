@@ -46,9 +46,9 @@ namespace SB_Prime.Dialogs
         {
             try
             {
-                string settings = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\SB-Prime.config";
+                string settings = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\SB-Prime.config";
                 mainWindow.ExportSettingsToFile(settings);
-                Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Update.exe");
+                Process.Start(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Update.exe");
                 mainWindow.Close();
             }
             catch

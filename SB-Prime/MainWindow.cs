@@ -73,7 +73,7 @@ namespace SB_Prime
         {
             THIS = this;
 
-            statusVersion.Content = "SB-Prime Version " + Assembly.GetEntryAssembly().GetName().Version + " (Debug Extension " + SBInterop.CurrentVersion + ")";
+            statusVersion.Content = "SB-Prime Version " + Assembly.GetExecutingAssembly().GetName().Version + " (Debug Extension " + SBInterop.CurrentVersion + ")";
             Errors.Add(new Error("Welcome to Small Basic Prime"));
 
             sbInterop = new SBInterop();
