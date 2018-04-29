@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SB-Prime", "SB-Prime\SB-Pri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBPlugins", "SBPlugins\SBPlugins.csproj", "{70C29965-7B5D-4EAD-8BF1-33AD8DA3586D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Update", "Update\Update.csproj", "{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{70C29965-7B5D-4EAD-8BF1-33AD8DA3586D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70C29965-7B5D-4EAD-8BF1-33AD8DA3586D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70C29965-7B5D-4EAD-8BF1-33AD8DA3586D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

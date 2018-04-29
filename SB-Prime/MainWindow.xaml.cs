@@ -176,7 +176,16 @@ namespace SB_Prime
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            LoadSettings();
+            string settings = Environment.CurrentDirectory + "\\SB-Prime.config";
+            if (File.Exists(settings))
+            {
+                ImportSettingsFromFile(settings);
+                File.Delete(settings);
+            }
+            else
+            {
+                LoadSettings();
+            }
 
             InitWindow();
 

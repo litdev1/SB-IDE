@@ -42,6 +42,14 @@ namespace SB_Prime.Dialogs
             Process.Start("https://gallery.technet.microsoft.com/Small-Basic-IDE-10-42648328");
         }
 
+        private void buttonUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            string settings = Environment.CurrentDirectory + "\\SB-Prime.config";
+            mainWindow.ExportSettingsToFile(settings);
+            Process.Start(Environment.CurrentDirectory + "\\Update.exe");
+            mainWindow.Close();
+        }
+
         private void buttonInstallation_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();

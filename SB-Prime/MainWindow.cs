@@ -502,10 +502,15 @@ namespace SB_Prime
             saveFileDialog.RestoreDirectory = true;
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                SaveSettings();
-                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
-                config.SaveAs(saveFileDialog.FileName);
+                ExportSettingsToFile(saveFileDialog.FileName);
             }
+        }
+
+        public void ExportSettingsToFile(string file)
+        {
+            SaveSettings();
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+            config.SaveAs(file);
         }
 
         private void ImportSettings()
@@ -516,35 +521,40 @@ namespace SB_Prime
             openFileDialog.RestoreDirectory = true;
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                var appSettings = Properties.Settings.Default;
-                try
-                {
-                    var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+                ImportSettingsFromFile(openFileDialog.FileName);
+            }
+        }
 
-                    string appSettingsXmlName = Properties.Settings.Default.Context["GroupName"].ToString();
-                    // returns "MyApplication.Properties.Settings";
+        public void ImportSettingsFromFile(string file)
+        {
+            var appSettings = Properties.Settings.Default;
+            try
+            {
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
 
-                    // Open settings file as XML
-                    var import = XDocument.Load(openFileDialog.FileName);
-                    // Get the whole XML inside the settings node
-                    var settings = import.XPathSelectElements("//" + appSettingsXmlName);
+                string appSettingsXmlName = Properties.Settings.Default.Context["GroupName"].ToString();
+                // returns "MyApplication.Properties.Settings";
 
-                    config.GetSectionGroup("userSettings")
-                        .Sections[appSettingsXmlName]
-                        .SectionInformation
-                        .SetRawXml(settings.Single().ToString());
-                    config.Save(ConfigurationSaveMode.Modified);
-                    ConfigurationManager.RefreshSection("userSettings");
+                // Open settings file as XML
+                var import = XDocument.Load(file);
+                // Get the whole XML inside the settings node
+                var settings = import.XPathSelectElements("//" + appSettingsXmlName);
 
-                    appSettings.Reload();
-                    LoadSettings();
-                }
-                catch (Exception ex) // Should make this more specific
-                {
-                    // Could not import settings.
-                    Errors.Add(new Error("Import Settings : " + ex.Message));
-                    appSettings.Reload(); // from last set saved, not defaults
-                }
+                config.GetSectionGroup("userSettings")
+                    .Sections[appSettingsXmlName]
+                    .SectionInformation
+                    .SetRawXml(settings.Single().ToString());
+                config.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("userSettings");
+
+                appSettings.Reload();
+                LoadSettings();
+            }
+            catch (Exception ex) // Should make this more specific
+            {
+                // Could not import settings.
+                Errors.Add(new Error("Import Settings : " + ex.Message));
+                appSettings.Reload(); // from last set saved, not defaults
             }
         }
 
