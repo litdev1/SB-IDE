@@ -16,6 +16,8 @@ namespace Update
     {
         static void Main(string[] args)
         {
+            string exeFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
             Console.Title = "SB-Prime Update";
             Console.WriteLine("Updating SB-Prime...");
             Console.WriteLine("Please close all instances of SB-Prime...");
@@ -26,11 +28,11 @@ namespace Update
                 Thread.Sleep(100);
                 i++;
             }
-            Updater updater = new Updater();
+            Updater updater = new Updater(exeFolder);
             updater.Update("http://litdev.co.uk/downloads/SB-Prime.zip");
             Console.WriteLine("Restarting SB-Prime...");
             Thread.Sleep(100);
-            Process.Start(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\SB-Prime.exe");
+            Process.Start(exeFolder + "\\SB-Prime.exe");
         }
     }
 
@@ -39,6 +41,13 @@ namespace Update
         [DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool DeleteFile(string name);
+
+        private string exeFolder;
+
+        public Updater(string exeFolder)
+        {
+            this.exeFolder = exeFolder;
+        }
 
         private bool Unblock(string fileName)
         {
@@ -119,7 +128,6 @@ namespace Update
 
         private void CopyFiles(string zipFolder)
         {
-            string exeFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             foreach (string file in Directory.GetFiles(zipFolder))
             {
                 try

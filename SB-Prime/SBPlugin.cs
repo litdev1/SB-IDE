@@ -42,7 +42,7 @@ namespace SB_Prime
                 bool bCreated = false;
                 RibbonTab tab = new RibbonTab() { Header = "Plugins", KeyTip = "P" };
 
-                string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\plugins";
+                string path = mainWindow.exeFolder + "\\plugins";
                 if (!Directory.Exists(path)) return;
 
                 string[] dlls = Directory.GetFiles(path, "*.dll");

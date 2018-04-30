@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -67,7 +68,8 @@ namespace SB_Prime
         public static int CHART_CODE_COLOR = 0xFFFFFF;
 
         public Dictionary<string, int> DefaultColors { get; }
-        public Dialogs.StackVariables stackVariables = null;
+        public StackVariables stackVariables = null;
+        public string exeFolder;
 
         SplashScreen splashScreen;
 
@@ -176,7 +178,9 @@ namespace SB_Prime
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            string settings = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\SB-Prime.config";
+            exeFolder = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            string settings = exeFolder + "\\SB-Prime.config";
             if (File.Exists(settings))
             {
                 ImportSettingsFromFile(settings);
@@ -186,10 +190,10 @@ namespace SB_Prime
             {
                 LoadSettings();
             }
-            string update = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Update.exe-";
+            string update = exeFolder + "\\Update.exe-";
             if (File.Exists(update))
             {
-                File.Copy(update, System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Update.exe", true);
+                File.Copy(update, exeFolder + "\\Update.exe", true);
                 File.Delete(update);
             }
 
