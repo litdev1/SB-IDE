@@ -274,12 +274,40 @@ namespace SB_Prime
             button3.ToolTip = "Imported program details";
             button3.Click += new RoutedEventHandler(details_Click);
             wrapperGrid.Children.Add(button3);
+
+            Image img4 = new Image()
+            {
+                Width = 20,
+                Height = 20,
+                Source = ImageSourceFromBitmap(Properties.Resources.Difference),
+                Stretch = Stretch.Fill
+            };
+            Button button4 = new Button()
+            {
+                Content = img4,
+                Width = 24,
+                Height = 24,
+                VerticalAlignment = VerticalAlignment.Top,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                Margin = new Thickness(0, 0, 88, 0),
+                Background = new SolidColorBrush(Colors.Transparent),
+                BorderBrush = new SolidColorBrush(Colors.Transparent)
+            };
+            button4.ToolTip = "Toggle difference files in split screen";
+            button4.Click += new RoutedEventHandler(difference_Click);
+            wrapperGrid.Children.Add(button4);
+            wrapperGrid.Children[4].Visibility = dualScreen ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void details_Click(object sender, RoutedEventArgs e)
         {
             Details details = new Details(((TabHeader)activeTab.Header).FileName, sbInterop);
             details.ShowDialog();
+        }
+
+        private void difference_Click(object sender, RoutedEventArgs e)
+        {
+            SBDiff.UpdateDiff(tabControlSB1, tabControlSB2);
         }
 
         private void ClickIntellisenseToggle(object sender, RoutedEventArgs e)
@@ -1535,6 +1563,7 @@ namespace SB_Prime
             toggleSplit.IsChecked = dualScreen;
             documentGrid.ColumnDefinitions[1].MaxWidth = dualScreen ? 6 : 0;
             documentGrid.ColumnDefinitions[2].MaxWidth = dualScreen ? double.PositiveInfinity : 0;
+            wrapperGrid.Children[4].Visibility = dualScreen ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void Wrap()

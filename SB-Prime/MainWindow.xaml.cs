@@ -45,6 +45,8 @@ namespace SB_Prime
         public static int SELECT_COLOR = 0xCCDDFF;
         public static int DEBUG_HIGHLIGHT_COLOR = 0xFFFF50;
         public static int FIND_HIGHLIGHT_COLOR = 0xFF0000;
+        public static int DELETED_HIGHLIGHT_COLOR = 0xFF0000;
+        public static int INSERTED_HIGHLIGHT_COLOR = 0x00FF00;
         // Lexer Colors
         public static int FORE_COLOR = 0x000000;
         public static int BACK_COLOR = 0xFFFFFF;
@@ -104,6 +106,8 @@ namespace SB_Prime
                 colors["D:Select"] = SELECT_COLOR;
                 colors["D:Highlight Debug"] = DEBUG_HIGHLIGHT_COLOR;
                 colors["D:Highlight Find"] = FIND_HIGHLIGHT_COLOR;
+                colors["D:Highlight Deleted"] = DELETED_HIGHLIGHT_COLOR;
+                colors["D:Highlight Inserted"] = INSERTED_HIGHLIGHT_COLOR;
 
                 colors["L:Foreground"] = FORE_COLOR;
                 colors["L:Background"] = BACK_COLOR;
@@ -147,6 +151,8 @@ namespace SB_Prime
                 SELECT_COLOR = colors["D:Select"];
                 DEBUG_HIGHLIGHT_COLOR = colors["D:Highlight Debug"];
                 FIND_HIGHLIGHT_COLOR = colors["D:Highlight Find"];
+                DELETED_HIGHLIGHT_COLOR = colors["D:Highlight Deleted"];
+                INSERTED_HIGHLIGHT_COLOR = colors["D:Highlight Inserted"];
 
                 FORE_COLOR = colors["L:Foreground"];
                 BACK_COLOR = colors["L:Background"];

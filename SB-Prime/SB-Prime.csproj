@@ -147,10 +147,12 @@
     <Compile Include="Dialogs\StackVariables.xaml.cs">
       <DependentUpon>StackVariables.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Diff.cs" />
     <Compile Include="HotKeyManager.cs" />
     <Compile Include="MainWindow.cs" />
     <Compile Include="SBContext.cs" />
     <Compile Include="SBDebug.cs" />
+    <Compile Include="SBDiff.cs" />
     <Compile Include="SBDocument.cs" />
     <Compile Include="SBInterop.cs" />
     <Compile Include="SBLexer.cs" />
@@ -535,6 +537,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\CopyShapes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Difference.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
