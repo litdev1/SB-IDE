@@ -45,8 +45,8 @@ namespace SB_Prime
         public static int SELECT_COLOR = 0xCCDDFF;
         public static int DEBUG_HIGHLIGHT_COLOR = 0xFFFF50;
         public static int FIND_HIGHLIGHT_COLOR = 0xFF0000;
-        public static int DELETED_HIGHLIGHT_COLOR = 0xFF0000;
-        public static int INSERTED_HIGHLIGHT_COLOR = 0x00FF00;
+        public static int DELETED_HIGHLIGHT_COLOR = 0xFF8080;
+        public static int INSERTED_HIGHLIGHT_COLOR = 0x80FF80;
         // Lexer Colors
         public static int FORE_COLOR = 0x000000;
         public static int BACK_COLOR = 0xFFFFFF;

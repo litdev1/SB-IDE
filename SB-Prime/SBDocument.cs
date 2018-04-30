@@ -216,8 +216,8 @@ namespace SB_Prime
         public const int BREAKPOINT_MARGIN = 1;
         public const int BREAKPOINT_MARKER = 1;
         public const int HIGHLIGHT_MARKER = 0;
-        public const int DELETED_MARKER = 1;
-        public const int INSERTED_MARKER = 2;
+        public const int DELETED_MARKER = 4;
+        public const int INSERTED_MARKER = 5;
 
         /// <summary>
         /// change this to whatever margin you want the code folding tree (+/-) to show in
