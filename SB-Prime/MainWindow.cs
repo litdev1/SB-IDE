@@ -27,6 +27,7 @@ using System.Configuration;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using System.Windows.Controls.Ribbon;
+using System.Windows.Media.Effects;
 
 namespace SB_Prime
 {
@@ -308,6 +309,14 @@ namespace SB_Prime
         private void difference_Click(object sender, RoutedEventArgs e)
         {
             SBDiff.UpdateDiff(tabControlSB1, tabControlSB2);
+            wrapperGrid.Children[4].Effect = SBDiff.bShowDiff ? new DropShadowEffect
+            {
+                Color = Colors.DarkCyan,
+                Direction = 0,
+                ShadowDepth = 0,
+                BlurRadius = 8,
+                Opacity = 1,
+            } : null;
         }
 
         private void ClickIntellisenseToggle(object sender, RoutedEventArgs e)

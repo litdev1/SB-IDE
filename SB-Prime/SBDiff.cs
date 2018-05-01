@@ -28,7 +28,7 @@ namespace SB_Prime
 {
     static class SBDiff
     {
-        private static bool bShowDiff = false;
+        public static bool bShowDiff = false;
 
         public static void UpdateDiff(TabControl tabConstrol1, TabControl tabConstrol2)
         {
