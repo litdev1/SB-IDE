@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
@@ -29,21 +30,34 @@ namespace SB_Prime
     static class SBDiff
     {
         public static bool bShowDiff = false;
+        private static Timer timer = new Timer(_timer, null, 1000, 1000);
+        private static bool bRefresh = false;
+        private static TabControl tabConstrol1 = MainWindow.THIS.tabControlSB1;
+        private static TabControl tabConstrol2 = MainWindow.THIS.tabControlSB2;
 
-        public static void UpdateDiff(TabControl tabConstrol1, TabControl tabConstrol2)
+        private static void _timer(object state)
         {
-            bShowDiff = !bShowDiff;
-            if (bShowDiff)
+            MainWindow.THIS.Dispatcher.Invoke(() =>
             {
-                SetDiff(tabConstrol1, tabConstrol2);
-            }
-            else
-            {
-                ClearDiff(tabConstrol1, tabConstrol2);
-            }
+                if (bRefresh) ClearDiff();
+                if (bShowDiff)
+                {
+                    SetDiff();
+                    bRefresh = true;
+                }
+                else
+                {
+                    bRefresh = false;
+                }
+            });
         }
 
-        private static void SetDiff(TabControl tabConstrol1, TabControl tabConstrol2)
+        public static void UpdateDiff()
+        {
+            bShowDiff = !bShowDiff;
+        }
+
+        private static void SetDiff()
         {
             TabItem item1 = (TabItem)tabConstrol1.Items[tabConstrol1.SelectedIndex];
             SBDocument doc1 = (SBDocument)item1.Tag;
@@ -71,7 +85,7 @@ namespace SB_Prime
             }
         }
 
-        private static void ClearDiff(TabControl tabConstrol1, TabControl tabConstrol2)
+        private static void ClearDiff()
         {
             foreach (TabItem item in tabConstrol1.Items)
             {

@@ -308,7 +308,7 @@ namespace SB_Prime
 
         private void difference_Click(object sender, RoutedEventArgs e)
         {
-            SBDiff.UpdateDiff(tabControlSB1, tabControlSB2);
+            SBDiff.UpdateDiff();
             wrapperGrid.Children[4].Effect = SBDiff.bShowDiff ? new DropShadowEffect
             {
                 Color = Colors.DarkCyan,
