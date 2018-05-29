@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Flow Chart" Height="500" Width="500" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated">
     <Grid x:Name="grid">
-        <Button x:Name="buttonZoomIn" Content="Zoom In" VerticalAlignment="Top" Click="buttonZoomIn_Click" Margin="10,10,0,0" Panel.ZIndex="2" ToolTip="Zoom in to view more" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
-        <Button x:Name="buttonZoomOut" Content="Zoom Out" VerticalAlignment="Top" Click="buttonZoomOut_Click" Margin="10,34,0,0" Panel.ZIndex="2" ToolTip="Zoom in to view less" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonZoomOut" Content="Zoom Out" VerticalAlignment="Top" Click="buttonZoomOut_Click" Margin="10,10,0,0" Panel.ZIndex="2" ToolTip="Zoom out to view more (smaller)" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonZoomIn" Content="Zoom In" VerticalAlignment="Top" Click="buttonZoomIn_Click" Margin="10,34,0,0" Panel.ZIndex="2" ToolTip="Zoom in to view less (larger)" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
         <Button x:Name="buttonStart" Content="Start" VerticalAlignment="Top" Click="buttonStart_Click" Margin="90,10,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="Zoom to start" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
         <Button x:Name="buttonEnd" Content="End" VerticalAlignment="Top" Click="buttonEnd_Click" Margin="90,34,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="Zoom in to end of main code" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
         <Button x:Name="buttonUpdate" Content="Update" VerticalAlignment="Top" Click="buttonUpdate_Click" Margin="250,10,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="Update flow chart from current document" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>

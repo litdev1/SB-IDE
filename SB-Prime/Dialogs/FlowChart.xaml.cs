@@ -826,13 +826,13 @@ namespace SB_Prime.Dialogs
 
         private void buttonZoomIn_Click(object sender, RoutedEventArgs e)
         {
-            if (scrollViewer.ComputedHorizontalScrollBarVisibility == Visibility.Collapsed && scrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Collapsed) return;
-            Zoom(0.8);
+            Zoom(1.25);
         }
 
         private void buttonZoomOut_Click(object sender, RoutedEventArgs e)
         {
-            Zoom(1.25);
+            if (scrollViewer.ComputedHorizontalScrollBarVisibility == Visibility.Collapsed && scrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Collapsed) return;
+            Zoom(0.8);
         }
 
         private void Zoom(double scale)
