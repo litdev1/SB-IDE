@@ -670,7 +670,6 @@ namespace SB_Prime
             activeTab.Header = new TabHeader("Untitled" + num);
             activeTab.Tag = activeDocument;
             activeDocument.Tab = activeTab;
-            activeDocument.TextArea.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(OnPreviewKeyDown);
             activeDocument.WrapMode = wrap ? WrapMode.Whitespace : WrapMode.None;
             activeDocument.IndentationGuides = indent ? IndentView.LookBoth : IndentView.None;
             activeDocument.ViewWhitespace = whitespace ? WhitespaceMode.VisibleAlways : WhitespaceMode.Invisible;
@@ -679,26 +678,6 @@ namespace SB_Prime
 
             GetTabContol(iTab).SelectedIndex = GetTabContol(iTab).Items.Count - 1;
             activeTab.Focus();
-        }
-
-        private void OnPreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
-        {
-            if (e.KeyCode == System.Windows.Forms.Keys.F && e.Modifiers == System.Windows.Forms.Keys.Control)
-            {
-                OpenFindDialog();
-            }
-            else if (e.KeyCode == System.Windows.Forms.Keys.H && e.Modifiers == System.Windows.Forms.Keys.Control)
-            {
-                OpenReplaceDialog();
-            }
-            else if (e.KeyCode == System.Windows.Forms.Keys.F3 && !e.Shift)
-            {
-                FindNext();
-            }
-            else if (e.KeyCode == System.Windows.Forms.Keys.F3 && e.Shift)
-            {
-                FindPrevious();
-            }
         }
 
         private System.Windows.Forms.DialogResult DeleteDocument()

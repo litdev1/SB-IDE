@@ -766,6 +766,26 @@ namespace SB_Prime
                 Step();
                 e.Handled = true;
             }
+            else if (e.Key == Key.F && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+            {
+                OpenFindDialog();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.H && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+            {
+                OpenReplaceDialog();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.F3 && e.KeyboardDevice.Modifiers == ModifierKeys.None)
+            {
+                FindNext();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.F3 && e.KeyboardDevice.Modifiers == ModifierKeys.Shift)
+            {
+                FindPrevious();
+                e.Handled = true;
+            }
         }
 
         //Forms
@@ -798,6 +818,22 @@ namespace SB_Prime
             else if (e.KeyCode == System.Windows.Forms.Keys.F11 && e.Modifiers == System.Windows.Forms.Keys.None)
             {
                 Step();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.F && e.Modifiers == System.Windows.Forms.Keys.Control)
+            {
+                OpenFindDialog();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.H && e.Modifiers == System.Windows.Forms.Keys.Control)
+            {
+                OpenReplaceDialog();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.F3 && e.Modifiers == System.Windows.Forms.Keys.None)
+            {
+                FindNext();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.F3 && e.Modifiers == System.Windows.Forms.Keys.Shift)
+            {
+                FindPrevious();
             }
         }
 
