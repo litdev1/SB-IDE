@@ -234,7 +234,7 @@ namespace SB_Prime
             AddDocument();
         }
 
-        private void fileOpen_Click(object sender, RoutedEventArgs e)
+        private void FileOpen()
         {
             System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
             openFileDialog.Filter = "Small Basic files (*.sb)|*.sb|All files (*.*)|*.*";
@@ -249,12 +249,17 @@ namespace SB_Prime
             }
         }
 
+        private void fileOpen_Click(object sender, RoutedEventArgs e)
+        {
+            FileOpen();
+        }
+
         private void fileClose_Click(object sender, RoutedEventArgs e)
         {
             DeleteDocument();
         }
 
-        private void fileSave_Click(object sender, RoutedEventArgs e)
+        private void FileSave()
         {
             if (activeDocument.IsDirty)
             {
@@ -267,6 +272,11 @@ namespace SB_Prime
                     SaveDocumentAs();
                 }
             }
+        }
+
+        private void fileSave_Click(object sender, RoutedEventArgs e)
+        {
+            FileSave();
         }
 
         private void fileSaveAs_Click(object sender, RoutedEventArgs e)
@@ -728,7 +738,7 @@ namespace SB_Prime
             Close();
         }
 
-        //WPF
+        //WPF - Hotkeys that work when TextArea doesn't have focus
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F5 && e.KeyboardDevice.Modifiers == ModifierKeys.None)
@@ -766,6 +776,26 @@ namespace SB_Prime
                 Step();
                 e.Handled = true;
             }
+            else if (e.Key == Key.N && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+            {
+                AddDocument();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.O && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+            {
+                FileOpen();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.S && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+            {
+                FileSave();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.S && e.KeyboardDevice.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift))
+            {
+                Publish();
+                e.Handled = true;
+            }
             else if (e.Key == Key.F && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
             {
                 OpenFindDialog();
@@ -788,7 +818,7 @@ namespace SB_Prime
             }
         }
 
-        //Forms
+        //Forms - Hotkeys that work when TextArea has focus
         private void Window_PreviewKeyDown(object sender, System.Windows.Forms.PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == System.Windows.Forms.Keys.F5 && e.Modifiers == System.Windows.Forms.Keys.None)
@@ -822,6 +852,23 @@ namespace SB_Prime
             else if (e.KeyCode == System.Windows.Forms.Keys.F && e.Modifiers == System.Windows.Forms.Keys.Control)
             {
                 OpenFindDialog();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.N && e.Modifiers == System.Windows.Forms.Keys.Control)
+            {
+                AddDocument();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.O && e.Modifiers == System.Windows.Forms.Keys.Control)
+            {
+                FileOpen();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.S && e.Modifiers == System.Windows.Forms.Keys.Control)
+            {
+                FileSave();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.S && e.Modifiers == (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift))
+            {
+                // Prints an s for some reason
+                //Publish(); 
             }
             else if (e.KeyCode == System.Windows.Forms.Keys.H && e.Modifiers == System.Windows.Forms.Keys.Control)
             {

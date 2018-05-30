@@ -109,10 +109,10 @@
             <RibbonTab Header="Home" KeyTip="H" >
                 <!-- Home/File group-->
                 <RibbonGroup x:Name="FileGroup" Header="File">
-                    <RibbonButton Label="New" SmallImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="Start a new program"/>
-                    <RibbonButton Label="Open" SmallImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="Open an existing program"/>
+                    <RibbonButton Label="New" SmallImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="Start a new program (Ctrl+N)"/>
+                    <RibbonButton Label="Open" SmallImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="Open an existing program (Ctrl+O)"/>
                     <!--<RibbonButton Label="Close" SmallImageSource="Images/Close file.png" KeyTip="CL" Click="fileClose_Click" ToolTipTitle="Close current program"/>-->
-                    <RibbonButton Label="Save" SmallImageSource="Images/Save.png" KeyTip="SV" Click="fileSave_Click" ToolTipTitle="Save current program"/>
+                    <RibbonButton Label="Save" SmallImageSource="Images/Save.png" KeyTip="SV" Click="fileSave_Click" ToolTipTitle="Save current program (Ctrl+S)"/>
                     <!--<RibbonButton Label="Save As" SmallImageSource="Images/Save as.png" KeyTip="SA" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>-->
                     <!--<RibbonButton Label="Save All" SmallImageSource="Images/Save all.png" KeyTip="A" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>-->
                 </RibbonGroup>

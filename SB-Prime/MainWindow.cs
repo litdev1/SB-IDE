@@ -1501,7 +1501,7 @@ namespace SB_Prime
             activeDocument.Redo();
         }
 
-        private void Publish()
+        public void Publish()
         {
             string key = sbInterop.Publish(activeDocument.TextArea.Text);
             if (key == "error")

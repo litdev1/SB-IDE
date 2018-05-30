@@ -185,20 +185,25 @@ namespace SB_Prime
         private void InitHotkeys()
         {
             // register the hotkeys with the document
-            HotKeyManager.AddHotKey(textArea, Uppercase, Keys.U, true);
-            HotKeyManager.AddHotKey(textArea, Lowercase, Keys.L, true);
             HotKeyManager.AddHotKey(textArea, ZoomIn, Keys.Oemplus, true);
             HotKeyManager.AddHotKey(textArea, ZoomOut, Keys.OemMinus, true);
             HotKeyManager.AddHotKey(textArea, ZoomDefault, Keys.D0, true);
-            HotKeyManager.AddHotKey(textArea, AddWatch, Keys.W, true);
+            HotKeyManager.AddHotKey(textArea, AddWatch, Keys.W, true, true);
+            HotKeyManager.AddHotKey(textArea, SelectWord, Keys.W, true);
+            HotKeyManager.AddHotKey(textArea, TopOfView, Keys.End, true, false, true);
+            HotKeyManager.AddHotKey(textArea, ClearSelection, Keys.Escape);
 
             // remove conflicting hotkeys from scintilla
+            textArea.ClearCmdKey(Keys.Control | Keys.N);
+            textArea.ClearCmdKey(Keys.Control | Keys.O);
+            textArea.ClearCmdKey(Keys.Control | Keys.S);
+            textArea.ClearCmdKey(Keys.Control | Keys.Shift | Keys.S);
             textArea.ClearCmdKey(Keys.Control | Keys.F);
-            textArea.ClearCmdKey(Keys.Control | Keys.R);
             textArea.ClearCmdKey(Keys.Control | Keys.H);
-            textArea.ClearCmdKey(Keys.Control | Keys.L);
-            textArea.ClearCmdKey(Keys.Control | Keys.U);
+            textArea.ClearCmdKey(Keys.Control | Keys.Shift | Keys.W);
             textArea.ClearCmdKey(Keys.Control | Keys.W);
+            textArea.ClearCmdKey(Keys.Control | Keys.Alt | Keys.End);
+            textArea.ClearCmdKey(Keys.Escape);
         }
 
         #region Numbers, Bookmarks, Code Folding
@@ -392,36 +397,6 @@ namespace SB_Prime
 
         #endregion
 
-        #region Uppercase / Lowercase
-
-        public void Lowercase()
-        {
-            // save the selection
-            int start = textArea.SelectionStart;
-            int end = textArea.SelectionEnd;
-
-            // modify the selected text
-            textArea.ReplaceSelection(textArea.GetTextRange(start, end - start).ToLower());
-
-            // preserve the original selection
-            textArea.SetSelection(start, end);
-        }
-
-        public void Uppercase()
-        {
-            // save the selection
-            int start = textArea.SelectionStart;
-            int end = textArea.SelectionEnd;
-
-            // modify the selected text
-            textArea.ReplaceSelection(textArea.GetTextRange(start, end - start).ToUpper());
-
-            // preserve the original selection
-            textArea.SetSelection(start, end);
-        }
-
-        #endregion
-
         #region Selection Copy Cut Paste
 
         public void Cut()
@@ -599,6 +574,22 @@ namespace SB_Prime
         public void AddWatch()
         {
             MainWindow.MarkedForWatch.Enqueue(textArea.SelectedText);
+        }
+
+        public void SelectWord()
+        {
+            textArea.SelectionStart = textArea.WordStartPosition(textArea.CurrentPosition, true);
+            textArea.SelectionEnd = textArea.WordEndPosition(textArea.CurrentPosition, true);
+        }
+
+        public void TopOfView()
+        {
+            textArea.FirstVisibleLine = textArea.CurrentLine;
+        }
+
+        public void ClearSelection()
+        {
+            textArea.ClearSelections();
         }
 
         #endregion
