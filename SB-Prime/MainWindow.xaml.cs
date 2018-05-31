@@ -859,16 +859,16 @@ namespace SB_Prime
             }
             else if (e.KeyCode == System.Windows.Forms.Keys.O && e.Modifiers == System.Windows.Forms.Keys.Control)
             {
-                FileOpen();
+                MarkedForHotKey.Enqueue(FileOpen);
             }
             else if (e.KeyCode == System.Windows.Forms.Keys.S && e.Modifiers == System.Windows.Forms.Keys.Control)
             {
-                FileSave();
+                MarkedForHotKey.Enqueue(FileSave);
             }
             else if (e.KeyCode == System.Windows.Forms.Keys.S && e.Modifiers == (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift))
             {
                 // Prints an s for some reason
-                //Publish(); 
+                MarkedForHotKey.Enqueue(Publish);
             }
             else if (e.KeyCode == System.Windows.Forms.Keys.H && e.Modifiers == System.Windows.Forms.Keys.Control)
             {

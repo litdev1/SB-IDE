@@ -57,6 +57,7 @@ namespace SB_Prime
         public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
         public static Queue<string> MarkedForOpen = new Queue<string>();
         public static Queue<string> MarkedForWatch = new Queue<string>();
+        public static Queue<Action> MarkedForHotKey = new Queue<Action>();
         public static bool GetStackVariables = false;
 
         public ObservableCollection<DebugData> debugData = new ObservableCollection<DebugData>();
@@ -774,6 +775,7 @@ namespace SB_Prime
                     UpdateFileSeracher();
                     UpdateStatusBar();
                     UpdateZoom();
+                    UpdateHotKey();
                 }
                 else
                 {
@@ -787,12 +789,21 @@ namespace SB_Prime
                         UpdateFileSeracher();
                         UpdateStatusBar();
                         UpdateZoom();
+                        UpdateHotKey();
                     });
                 }
             }
             catch (Exception ex)
             {
 
+            }
+        }
+
+        private void UpdateHotKey()
+        {
+            if (MarkedForHotKey.Count > 0)
+            {
+                MarkedForHotKey.Dequeue().Method.Invoke(this, null);
             }
         }
 
