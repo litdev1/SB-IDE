@@ -796,6 +796,11 @@ namespace SB_Prime
                 Publish();
                 e.Handled = true;
             }
+            else if (e.Key == Key.O && e.KeyboardDevice.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift))
+            {
+                Import();
+                e.Handled = true;
+            }
             else if (e.Key == Key.F && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
             {
                 OpenFindDialog();
@@ -869,6 +874,10 @@ namespace SB_Prime
             {
                 // Prints an s for some reason
                 MarkedForHotKey.Enqueue(Publish);
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.O && e.Modifiers == (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift))
+            {
+                MarkedForHotKey.Enqueue(Import);
             }
             else if (e.KeyCode == System.Windows.Forms.Keys.H && e.Modifiers == System.Windows.Forms.Keys.Control)
             {

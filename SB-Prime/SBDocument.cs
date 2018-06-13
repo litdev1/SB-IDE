@@ -198,6 +198,7 @@ namespace SB_Prime
             textArea.ClearCmdKey(Keys.Control | Keys.O);
             textArea.ClearCmdKey(Keys.Control | Keys.S);
             textArea.ClearCmdKey(Keys.Control | Keys.Shift | Keys.S);
+            textArea.ClearCmdKey(Keys.Control | Keys.Shift | Keys.O);
             textArea.ClearCmdKey(Keys.Control | Keys.F);
             textArea.ClearCmdKey(Keys.Control | Keys.H);
             textArea.ClearCmdKey(Keys.Control | Keys.Shift | Keys.W);
