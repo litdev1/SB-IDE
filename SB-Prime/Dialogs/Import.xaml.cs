@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,14 @@ namespace SB_Prime.Dialogs
 
             textBoxImport.Focus();
             textBoxImport.Text = "";
+
+            string data = (string)Clipboard.GetData(DataFormats.Text);
+            if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}").Success)
+            {
+                textBoxImport.Text = data;
+                textBoxImport.CaretIndex = data.Length;
+                textBoxImport.SelectAll();
+            }
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
