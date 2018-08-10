@@ -97,7 +97,9 @@ namespace SB_Prime
                     }
 
                     // Search the remainder of the document
-                    TextArea.TargetStart = TextArea.TargetEnd;
+                    int iEnd = TextArea.TargetEnd;
+                    TextArea.TargetStart = iEnd;
+                    if (TextArea.TargetStart != iEnd) break; //No idea why this is necessary sometimes
                     TextArea.TargetEnd = TextArea.TextLength;
                 }
 
