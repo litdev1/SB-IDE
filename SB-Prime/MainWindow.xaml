@@ -18,6 +18,8 @@
             <Separator/>
             <StatusBarItem x:Name="statusLines" Content="Lines"/>
             <Separator/>
+            <StatusBarItem x:Name="statusPosition" Content=""/>
+            <Separator/>
             <StatusBarItem x:Name="statusRun" Content=""/>
             <StatusBarItem HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">

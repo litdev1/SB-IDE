@@ -1238,6 +1238,7 @@ namespace SB_Prime
         private void UpdateStatusBar()
         {
             statusLines.Content = activeDocument.TextArea.Lines.Count + " lines";
+            statusPosition.Content = "line " + (activeDocument.TextArea.CurrentLine + 1) + " column " + (activeDocument.TextArea.GetColumn(activeDocument.TextArea.CurrentPosition) + 1);
             statusCaps.Content = Keyboard.IsKeyToggled(Key.CapsLock) ? "Caps Lock" : "";
             statusNumlock.Content = Keyboard.IsKeyToggled(Key.NumLock) ? "Num Lock" : "";
             statusInsert.Content = Keyboard.IsKeyToggled(Key.Insert) ? "Insert" : "";
