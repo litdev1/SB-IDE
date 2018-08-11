@@ -37,19 +37,26 @@ namespace SB_Prime
 
         private static void _timer(object state)
         {
-            MainWindow.THIS.Dispatcher.Invoke(() =>
+            try
             {
-                if (bRefresh) ClearDiff();
-                if (bShowDiff)
+                MainWindow.THIS.Dispatcher.Invoke(() =>
                 {
-                    SetDiff();
-                    bRefresh = true;
-                }
-                else
-                {
-                    bRefresh = false;
-                }
-            });
+                    if (bRefresh) ClearDiff();
+                    if (bShowDiff)
+                    {
+                        SetDiff();
+                        bRefresh = true;
+                    }
+                    else
+                    {
+                        bRefresh = false;
+                    }
+                });
+            }
+            catch
+            {
+
+            }
         }
 
         public static void UpdateDiff()
