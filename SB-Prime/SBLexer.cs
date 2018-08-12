@@ -123,6 +123,15 @@ namespace SB_Prime
             System.Windows.Input.Cursor cursor = System.Windows.Input.Mouse.OverrideCursor;
             System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
 
+            for (int i = textArea.Lines.Count - 1; i > 0; i--)
+            {
+                if (string.IsNullOrWhiteSpace(textArea.Lines[i].Text) && string.IsNullOrWhiteSpace(textArea.Lines[i - 1].Text))
+                {
+                    textArea.SetTargetRange(textArea.Lines[i-1].Position, textArea.Lines[i-1].EndPosition);
+                    textArea.ReplaceTarget("");
+                }
+            }
+
             int foldBase = textArea.Lines[0].FoldLevel;
             int fold = foldBase;
 

@@ -529,6 +529,9 @@ namespace SB_Prime
 
         public void UnCommentFile()
         {
+            System.Windows.Input.Cursor cursor = System.Windows.Input.Mouse.OverrideCursor;
+            System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+
             string search = "' The following line could be harmful and has been automatically commented.";
 
             TextArea.TargetStart = 0;
@@ -565,6 +568,8 @@ namespace SB_Prime
                 if (textArea.TargetStart != iEnd) break; //No idea why this is necessary sometimes
                 textArea.TargetEnd = textArea.TextLength;
             }
+
+            System.Windows.Input.Mouse.OverrideCursor = cursor;
         }
 
         #endregion
