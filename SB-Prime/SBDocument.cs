@@ -537,22 +537,25 @@ namespace SB_Prime
             while (TextArea.SearchInTarget(search) != -1)
             {
                 // Uncomment File command
-                int iLine = textArea.LineFromPosition(textArea.TargetStart) + 1;
-                int iStart;
-                int iEnd;
+                int iLine = textArea.LineFromPosition(textArea.TargetStart);
+                Line line = textArea.Lines[iLine];
+                int iStart = line.Position;
+                int iEnd = line.EndPosition;
+                textArea.SetTargetRange(iStart, iEnd);
+                textArea.ReplaceTarget("");
+                lexer.IsDirty = true;
                 if (iLine < textArea.Lines.Count)
                 {
-                    Line line = textArea.Lines[iLine];
+                    line = textArea.Lines[iLine];
                     iStart = line.Position;
                     iEnd = line.EndPosition;
                     string text = line.Text;
                     int pos = text.TakeWhile(c => char.IsWhiteSpace(c)).Count();
-                    if (pos < text.Length && text[pos] == '\'')
+                    if (pos < text.Length - 1 && text[pos] == '\'' && text[pos+1] == ' ')
                     {
-                        text = text.Remove(pos, 1);
+                        text = text.Remove(pos, 2);
                         textArea.SetTargetRange(iStart, iEnd);
                         textArea.ReplaceTarget(text);
-                        lexer.IsDirty = true;
                     }
                 }
 
