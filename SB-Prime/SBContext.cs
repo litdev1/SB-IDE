@@ -67,6 +67,7 @@ namespace SB_Prime
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem("Comment Selected Lines", null, (s, ea) => sbDocument.Comment(true)));
             menu.Items.Add(new ToolStripMenuItem("Un-Comment Selected Lines", null, (s, ea) => sbDocument.Comment(false)));
+            menu.Items.Add(new ToolStripMenuItem("Un-Comment File Commands", null, (s, ea) => sbDocument.UnCommentFile()));
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem("Collapse Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Contract)));
             menu.Items.Add(new ToolStripMenuItem("Expand Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Expand)));

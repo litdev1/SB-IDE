@@ -82,8 +82,6 @@ namespace SB_Prime
             {
                 TextArea.Indicators[0].ForeColor = SBDocument.IntToColor(MainWindow.FIND_HIGHLIGHT_COLOR);
                 TextArea.Indicators[0].Style = IndicatorStyle.RoundBox;
-                TextArea.TargetStart = 0;
-                TextArea.TargetEnd = TextArea.TextLength;
 
                 TextArea.TargetStart = 0;
                 TextArea.TargetEnd = TextArea.TextLength;

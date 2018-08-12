@@ -527,6 +527,43 @@ namespace SB_Prime
             lexer.IsDirty = true;
         }
 
+        public void UnCommentFile()
+        {
+            string search = "' The following line could be harmful and has been automatically commented.";
+
+            TextArea.TargetStart = 0;
+            TextArea.TargetEnd = TextArea.TextLength;
+            TextArea.SearchFlags = MainWindow.searchFlags;
+            while (TextArea.SearchInTarget(search) != -1)
+            {
+                // Uncomment File command
+                int iLine = textArea.LineFromPosition(textArea.TargetStart) + 1;
+                int iStart;
+                int iEnd;
+                if (iLine < textArea.Lines.Count)
+                {
+                    Line line = textArea.Lines[iLine];
+                    iStart = line.Position;
+                    iEnd = line.EndPosition;
+                    string text = line.Text;
+                    int pos = text.TakeWhile(c => char.IsWhiteSpace(c)).Count();
+                    if (pos < text.Length && text[pos] == '\'')
+                    {
+                        text = text.Remove(pos, 1);
+                        textArea.SetTargetRange(iStart, iEnd);
+                        textArea.ReplaceTarget(text);
+                        lexer.IsDirty = true;
+                    }
+                }
+
+                // Search the remainder of the document
+                iEnd = textArea.TargetEnd;
+                textArea.TargetStart = iEnd;
+                if (textArea.TargetStart != iEnd) break; //No idea why this is necessary sometimes
+                textArea.TargetEnd = textArea.TextLength;
+            }
+        }
+
         #endregion
 
         #region Indent / Outdent
