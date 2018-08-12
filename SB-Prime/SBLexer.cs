@@ -228,7 +228,7 @@ namespace SB_Prime
 
             styles.Add(new SBStyle(STYLE_SPACE, new Regex("^[\\s+]")));
             styles.Add(new SBStyle(STYLE_COMMENT, new Regex("^[\'].*")));
-            styles.Add(new SBStyle(STYLE_STRING, new Regex("^[\"][^\"\\n?]*[\"\\n]")));
+            styles.Add(new SBStyle(STYLE_STRING, new Regex("^[\"][^\"\\n]*[\"\\n]")));
             styles.Add(new SBStyle(STYLE_OPERATOR, new Regex("^[\\+|-|*|/|<|>|=]|^(AND|OR)")));
             styles.Add(new SBStyle(STYLE_KEYWORD, new Regex("^[\\W]("+keywords.ToUpper()+")[\\W]")));
             styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[A-Za-z_][\\w]*[\\.][A-Za-z_][\\w]*")));
