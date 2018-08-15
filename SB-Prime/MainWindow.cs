@@ -776,6 +776,7 @@ namespace SB_Prime
                     UpdateStatusBar();
                     UpdateZoom();
                     UpdateHotKey();
+                    UpdateLine();
                 }
                 else
                 {
@@ -790,6 +791,7 @@ namespace SB_Prime
                         UpdateStatusBar();
                         UpdateZoom();
                         UpdateHotKey();
+                        UpdateLine();
                     });
                 }
             }
@@ -797,6 +799,11 @@ namespace SB_Prime
             {
 
             }
+        }
+
+        private void UpdateLine()
+        {
+            activeDocument.lineStack.PushBackwards(activeDocument.TextArea.CurrentLine);
         }
 
         private void UpdateHotKey()

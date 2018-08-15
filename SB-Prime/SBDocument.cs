@@ -18,6 +18,7 @@
 using ScintillaNET;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -37,6 +38,7 @@ namespace SB_Prime
         public SBDebug debug = null;
         public Process Proc = null;
         public SearchManager searchManager = new SearchManager();
+        public LineStack lineStack = new LineStack();
 
         public SBDocument()
         {
@@ -192,6 +194,8 @@ namespace SB_Prime
             HotKeyManager.AddHotKey(textArea, SelectWord, Keys.W, true);
             HotKeyManager.AddHotKey(textArea, TopOfView, Keys.End, true, false, true);
             HotKeyManager.AddHotKey(textArea, ClearSelection, Keys.Escape);
+            HotKeyManager.AddHotKey(textArea, GoBackwards, Keys.B, true);
+            HotKeyManager.AddHotKey(textArea, GoForwards, Keys.B, true, true);
 
             // remove conflicting hotkeys from scintilla
             textArea.ClearCmdKey(Keys.Control | Keys.N);
@@ -205,6 +209,8 @@ namespace SB_Prime
             textArea.ClearCmdKey(Keys.Control | Keys.W);
             textArea.ClearCmdKey(Keys.Control | Keys.Alt | Keys.End);
             textArea.ClearCmdKey(Keys.Escape);
+            textArea.ClearCmdKey(Keys.Control | Keys.B);
+            textArea.ClearCmdKey(Keys.Control | Keys.Shift | Keys.B);
         }
 
         #region Numbers, Bookmarks, Code Folding
@@ -329,6 +335,7 @@ namespace SB_Prime
         {
             if (e.Button == MouseButtons.Right)
             {
+                lineStack.bActive = true;
                 sbContext.SetMenu();
             }
         }
@@ -638,6 +645,22 @@ namespace SB_Prime
             textArea.ClearSelections();
         }
 
+        public void GoBackwards()
+        {
+            int iLine = lineStack.GetBackwards();
+            if (iLine < 0 || iLine >= textArea.Lines.Count) return;
+            textArea.GotoPosition(textArea.Lines[iLine].Position);
+            SelectLine();
+        }
+
+        public void GoForwards()
+        {
+            int iLine = lineStack.GetForwards();
+            if (iLine < 0 || iLine >= textArea.Lines.Count) return;
+            textArea.GotoPosition(textArea.Lines[iLine].Position);
+            SelectLine();
+        }
+
         #endregion
 
         #region Navigation
@@ -682,5 +705,45 @@ namespace SB_Prime
         }
 
         #endregion
+    }
+
+    public class LineStack
+    {
+        public int MaxItems { get; set; } = 100;
+
+        public List<int> backwards = new List<int>();
+        public List<int> forwards = new List<int>();
+        public bool bActive = false;
+
+        public void PushBackwards(int iLine)
+        {
+            if (bActive) return;
+            if (backwards.Count > 0 && iLine == backwards[backwards.Count - 1]) return;
+            backwards.Add(iLine);
+            while (backwards.Count > MaxItems) backwards.RemoveAt(0);
+        }
+
+        public void PushForwards(int iLine)
+        {
+            if (forwards.Count > 0 && iLine == forwards[0]) return;
+            forwards.Insert(0, iLine);
+            while (forwards.Count > MaxItems) forwards.RemoveAt(forwards.Count - 1);
+        }
+
+        public int GetBackwards()
+        {
+            if (backwards.Count <= 2) return -1;
+            PushForwards(backwards[backwards.Count - 1]);
+            backwards.RemoveAt(backwards.Count - 1);
+            return backwards[backwards.Count - 1];
+        }
+
+        public int GetForwards()
+        {
+            if (forwards.Count == 0) return -1;
+            int iLine = forwards[0];
+            forwards.RemoveAt(0);
+            return iLine;
+        }
     }
 }

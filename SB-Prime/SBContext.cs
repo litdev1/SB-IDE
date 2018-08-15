@@ -28,6 +28,7 @@ using SB_Prime.Dialogs;
 using System.Reflection;
 using System.IO;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace SB_Prime
 {
@@ -48,8 +49,9 @@ namespace SB_Prime
         }
 
         public void SetMenu()
-        { 
+        {
             ContextMenuStrip menu = new ContextMenuStrip();
+            menu.Closed += new ToolStripDropDownClosedEventHandler(OnClosed);
             textArea.ContextMenuStrip = menu;
 
             menu.Items.Add(new ToolStripMenuItem("Undo Ctrl+Z", null, (s, ea) => textArea.Undo()) { Enabled = textArea.CanUndo });
@@ -72,6 +74,9 @@ namespace SB_Prime
             menu.Items.Add(new ToolStripMenuItem("Collapse Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Contract)));
             menu.Items.Add(new ToolStripMenuItem("Expand Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Expand)));
             menu.Items.Add(new ToolStripSeparator());
+            menu.Items.Add(new ToolStripMenuItem("Navigate Back Ctrl+B", null, (s, ea) => sbDocument.GoBackwards()));
+            menu.Items.Add(new ToolStripMenuItem("Navigate Forwards Ctrl+Shift+B", null, (s, ea) => sbDocument.GoForwards()));
+            menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(menuColors);
             menu.Items.Add(menuFonts);
             menu.Items.Add(new ToolStripSeparator());
@@ -83,6 +88,11 @@ namespace SB_Prime
             menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+Shift+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem("Display Flow Chart", null, OpenFlowChart) { Enabled = null != sbDocument.Tab });
             menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));
+        }
+
+        private void OnClosed(object sender, ToolStripDropDownClosedEventArgs e)
+        {
+            sbDocument.lineStack.bActive = false;
         }
 
         private void OpenFlowChart(object sender, EventArgs e)
