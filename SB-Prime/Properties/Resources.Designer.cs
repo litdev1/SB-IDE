@@ -543,6 +543,16 @@ namespace SB_Prime.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Next {
+            get {
+                object obj = ResourceManager.GetObject("Next", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap No_image {
             get {
                 object obj = ResourceManager.GetObject("No_image", resourceCulture);
@@ -626,6 +636,16 @@ namespace SB_Prime.Properties {
         internal static System.Drawing.Bitmap Plugin {
             get {
                 object obj = ResourceManager.GetObject("Plugin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Previous {
+            get {
+                object obj = ResourceManager.GetObject("Previous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

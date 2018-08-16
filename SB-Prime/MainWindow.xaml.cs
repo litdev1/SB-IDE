@@ -960,6 +960,16 @@ namespace SB_Prime
             ce.Show();
         }
 
+        private void editForwards_Click(object sender, RoutedEventArgs e)
+        {
+            activeDocument.GoForwards();
+        }
+
+        private void editBackwards_Click(object sender, RoutedEventArgs e)
+        {
+            activeDocument.GoBackwards();
+        }
+
         /*
 private bool mRestoreForDragMove;
 

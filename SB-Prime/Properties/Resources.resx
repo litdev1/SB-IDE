@@ -382,4 +382,10 @@
   <data name="Difference" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Difference.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Next" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Previous" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Previous.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
