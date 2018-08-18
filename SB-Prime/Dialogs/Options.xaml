@@ -11,7 +11,7 @@
             <ImageBrush ImageSource="/SB-Prime;component/images/appworkspace.png"/>
         </Grid.Background>
         <Button x:Name="buttonUpdates" Content="SB-Prime on Gallery" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="125" Click="buttonUpdates_Click" ToolTip="Navigate to download website"/>
-        <Button x:Name="buttonUpdate" Content="Update to latest" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="125" Click="buttonUpdate_Click" ToolTip="Update SB-Prime to latest version"/>
+        <Button x:Name="buttonUpdate" Content="Update to latest" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="125" Click="buttonUpdate_Click" ToolTip="Update SB-Prime to latest version" Visibility="Hidden"/>
         <Label x:Name="label" Content="Small Basic Installation Path" HorizontalAlignment="Left" Margin="13,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.013,0.039"/>
         <TextBox x:Name="textBoxInstallation" Height="23" Margin="170,36,81.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
         <Button x:Name="buttonInstallation" Content="Browse" HorizontalAlignment="Right" Margin="0,36,6.6,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonInstallation_Click" Height="23" ToolTip="Browse to Small Basic installation folder"/>

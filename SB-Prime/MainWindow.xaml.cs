@@ -970,6 +970,26 @@ namespace SB_Prime
             activeDocument.GoBackwards();
         }
 
+        private void settingsUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            Update();
+        }
+
+        public void Update()
+        {
+            try
+            {
+                string settings = exeFolder + "\\SB-Prime.config";
+                ExportSettingsToFile(settings);
+                Process.Start(exeFolder + "\\Update.exe");
+                Close();
+            }
+            catch
+            {
+
+            }
+        }
+
         /*
 private bool mRestoreForDragMove;
 

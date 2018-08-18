@@ -218,7 +218,8 @@
                     <RibbonButton Name="settingsExport" Label="Export Settings" SmallImageSource="Images/SettingsSave.png" KeyTip="SE" Click="settingsExport_Click" ToolTipTitle="Export settings to a file"/>
                     <RibbonButton Name="settingsImport" Label="Import Settings" SmallImageSource="Images/SettingsLoad.png" KeyTip="SI" Click="settingsImport_Click" ToolTipTitle="Import settings from a file, restart SB-Prime to take full effect"/>
                     <RibbonButton Name="settingsReset" Label="Reset Settings" SmallImageSource="Images/Settings.png" KeyTip="SR" Click="settingsReset_Click" ToolTipTitle="Reset settings to default, restart SB-Prime to take full effect"/>
-                    <RibbonButton Name="settingsOptionsr" Label="Options" LargeImageSource="Images/Options.png" KeyTip="SO" Click="settingsOptions_Click" ToolTipTitle="Additional options and settings"/>
+                    <RibbonButton Name="settingsOptions" Label="Options" LargeImageSource="Images/Options.png" KeyTip="SO" Click="settingsOptions_Click" ToolTipTitle="Additional options and settings"/>
+                    <RibbonButton Name="settingsUpdate" Label="Update" LargeImageSource="Images/Update.png" KeyTip="SU" Click="settingsUpdate_Click" ToolTipTitle="Update SB-Prime to latest version"/>
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
