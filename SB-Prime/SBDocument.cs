@@ -113,7 +113,7 @@ namespace SB_Prime
                     {
                         foreach (int iLine in lines)
                         {
-                            textArea.Lines[iLine].MarkerAdd(BREAKPOINT_MARKER);
+                            if (iLine >= 0 && iLine < textArea.Lines.Count) textArea.Lines[iLine].MarkerAdd(BREAKPOINT_MARKER);
                         }
                     }
                     MainWindow.bookmarks.TryGetValue(path, out lines);
@@ -121,7 +121,7 @@ namespace SB_Prime
                     {
                         foreach (int iLine in lines)
                         {
-                            textArea.Lines[iLine].MarkerAdd(BOOKMARK_MARKER);
+                            if (iLine >= 0 && iLine < textArea.Lines.Count) textArea.Lines[iLine].MarkerAdd(BOOKMARK_MARKER);
                         }
                     }
                 }

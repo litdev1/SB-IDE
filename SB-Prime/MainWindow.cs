@@ -418,32 +418,23 @@ namespace SB_Prime
             if (Properties.Settings.Default.MRU.Count > i) MRU9.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU10.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
 
+            breakpoints.Clear();
             foreach (string breakpoint in Properties.Settings.Default.Breakpoints)
             {
                 List<int> lines = new List<int>();
                 string[] data = breakpoint.Split(new char[] { '#' }, StringSplitOptions.RemoveEmptyEntries);
                 int line = -1;
                 for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
-                breakpoints[data[0]] = lines;
+                if (File.Exists(data[0]) && lines.Count > 0) breakpoints[data[0]] = lines;
             }
+            bookmarks.Clear();
             foreach (string bookmark in Properties.Settings.Default.Bookmarks)
             {
                 List<int> lines = new List<int>();
                 string[] data = bookmark.Split(new char[] { '#' }, StringSplitOptions.RemoveEmptyEntries);
                 int line = -1;
                 for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
-                bookmarks[data[0]] = lines;
-            }
-
-            for (i = breakpoints.Count - 1; i >= 0; i--)
-            {
-                KeyValuePair<string, List<int>> kvp = breakpoints.ElementAt(i);
-                if (!File.Exists(kvp.Key)) breakpoints.Remove(kvp.Key);
-            }
-            for (i = bookmarks.Count - 1; i >= 0; i--)
-            {
-                KeyValuePair<string, List<int>> kvp = bookmarks.ElementAt(i);
-                if (!File.Exists(kvp.Key)) bookmarks.Remove(kvp.Key);
+                if (File.Exists(data[0]) && lines.Count > 0) bookmarks[data[0]] = lines;
             }
         }
 
