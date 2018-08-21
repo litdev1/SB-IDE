@@ -23,6 +23,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Controls;
 using System.Windows.Forms;
 
@@ -104,6 +106,24 @@ namespace SB_Prime
                     filepath = path;
                     if (Properties.Settings.Default.MRU.Contains(filepath)) Properties.Settings.Default.MRU.Remove(filepath);
                     Properties.Settings.Default.MRU.Insert(0, filepath);
+
+                    List<int> lines = new List<int>();
+                    MainWindow.breakpoints.TryGetValue(path, out lines);
+                    if (null != lines)
+                    {
+                        foreach (int iLine in lines)
+                        {
+                            textArea.Lines[iLine].MarkerAdd(BREAKPOINT_MARKER);
+                        }
+                    }
+                    MainWindow.bookmarks.TryGetValue(path, out lines);
+                    if (null != lines)
+                    {
+                        foreach (int iLine in lines)
+                        {
+                            textArea.Lines[iLine].MarkerAdd(BOOKMARK_MARKER);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -145,11 +165,39 @@ namespace SB_Prime
                     File.WriteAllText(path, textArea.Text);
                     filepath = path;
                     lexer.IsDirty = false;
+                    SetMarks();
                 }
             }
             catch (Exception ex)
             {
                 MainWindow.Errors.Add(new Error("Save File : " + ex.Message));
+            }
+        }
+
+        public void SetMarks()
+        {
+            try
+            {
+                if (Directory.Exists(Path.GetDirectoryName(filepath)))
+                {
+                    const uint maskBP = (1 << BREAKPOINT_MARKER);
+                    const uint maskBM = (1 << BOOKMARK_MARKER);
+                    List<int> BPs = new List<int>();
+                    List<int> BMs = new List<int>();
+                    foreach (Line line in textArea.Lines)
+                    {
+                        if ((line.MarkerGet() & maskBP) > 0) BPs.Add(line.Index);
+                        if ((line.MarkerGet() & maskBM) > 0) BMs.Add(line.Index);
+                    }
+                    if (BPs.Count > 0) MainWindow.breakpoints[filepath] = BPs;
+                    else if (MainWindow.breakpoints.ContainsKey(filepath)) MainWindow.breakpoints.Remove(filepath);
+                    if (BMs.Count > 0) MainWindow.bookmarks[filepath] = BMs;
+                    else if (MainWindow.bookmarks.ContainsKey(filepath)) MainWindow.bookmarks.Remove(filepath);
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -732,7 +780,7 @@ namespace SB_Prime
 
         public int GetBackwards()
         {
-            if (backwards.Count <= 2) return -1;
+            if (backwards.Count < 2) return -1;
             PushForwards(backwards[backwards.Count - 1]);
             backwards.RemoveAt(backwards.Count - 1);
             return backwards[backwards.Count - 1];

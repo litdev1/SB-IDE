@@ -135,8 +135,8 @@
                     <RibbonButton Label="Collapse All" SmallImageSource="Images/Collapse.png" KeyTip="CA" Click="editCollapse_Click" ToolTipTitle="Collapse all folding"/>
                     <RibbonButton Label="Expand All" SmallImageSource="Images/Expand.png" KeyTip="EA" Click="editExpand_Click" ToolTipTitle="Expand all folding"/>
                     <RibbonButton Label="Format" SmallImageSource="Images/Form.png" KeyTip="FM" Click="editFormat_Click" ToolTipTitle="Format current program"/>
-                    <RibbonButton Label="Previous" SmallImageSource="Images/Previous.png" KeyTip="EP" Click="editBackwards_Click" ToolTipTitle="Navigate to previous line"/>
-                    <RibbonButton Label="Next" SmallImageSource="Images/Next.png" KeyTip="EN" Click="editForwards_Click" ToolTipTitle="Navigate to next line"/>
+                    <RibbonButton Name="EditPrevious" Label="Previous" SmallImageSource="Images/Previous.png" KeyTip="EP" Click="editBackwards_Click" ToolTipTitle="Navigate to previous line"/>
+                    <RibbonButton Name="EditNext" Label="Next" SmallImageSource="Images/Next.png" KeyTip="EN" Click="editForwards_Click" ToolTipTitle="Navigate to next line"/>
                 </RibbonGroup>
                 <!-- Home/Web group-->
                 <RibbonGroup x:Name="Web" Header="Web">

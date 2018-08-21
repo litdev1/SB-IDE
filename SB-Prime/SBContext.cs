@@ -74,8 +74,8 @@ namespace SB_Prime
             menu.Items.Add(new ToolStripMenuItem("Collapse Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Contract)));
             menu.Items.Add(new ToolStripMenuItem("Expand Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Expand)));
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Navigate Back Ctrl+B", null, (s, ea) => sbDocument.GoBackwards()));
-            menu.Items.Add(new ToolStripMenuItem("Navigate Forwards Ctrl+Shift+B", null, (s, ea) => sbDocument.GoForwards()));
+            menu.Items.Add(new ToolStripMenuItem("Navigate Back Ctrl+B", null, (s, ea) => sbDocument.GoBackwards()) { Enabled = sbDocument.lineStack.backwards.Count > 1 });
+            menu.Items.Add(new ToolStripMenuItem("Navigate Forwards Ctrl+Shift+B", null, (s, ea) => sbDocument.GoForwards()) { Enabled = sbDocument.lineStack.forwards.Count > 0 });
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(menuColors);
             menu.Items.Add(menuFonts);

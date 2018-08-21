@@ -59,6 +59,8 @@ namespace SB_Prime
         public static Queue<string> MarkedForWatch = new Queue<string>();
         public static Queue<Action> MarkedForHotKey = new Queue<Action>();
         public static bool GetStackVariables = false;
+        public static Dictionary<string, List<int>> breakpoints = new Dictionary<string, List<int>>();
+        public static Dictionary<string, List<int>> bookmarks = new Dictionary<string, List<int>>();
 
         public ObservableCollection<DebugData> debugData = new ObservableCollection<DebugData>();
         public SBInterop sbInterop;
@@ -415,6 +417,34 @@ namespace SB_Prime
             if (Properties.Settings.Default.MRU.Count > i) MRU8.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU9.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
             if (Properties.Settings.Default.MRU.Count > i) MRU10.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+
+            foreach (string breakpoint in Properties.Settings.Default.Breakpoints)
+            {
+                List<int> lines = new List<int>();
+                string[] data = breakpoint.Split(new char[] { '#' }, StringSplitOptions.RemoveEmptyEntries);
+                int line = -1;
+                for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
+                breakpoints[data[0]] = lines;
+            }
+            foreach (string bookmark in Properties.Settings.Default.Bookmarks)
+            {
+                List<int> lines = new List<int>();
+                string[] data = bookmark.Split(new char[] { '#' }, StringSplitOptions.RemoveEmptyEntries);
+                int line = -1;
+                for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
+                bookmarks[data[0]] = lines;
+            }
+
+            for (i = breakpoints.Count - 1; i >= 0; i--)
+            {
+                KeyValuePair<string, List<int>> kvp = breakpoints.ElementAt(i);
+                if (!File.Exists(kvp.Key)) breakpoints.Remove(kvp.Key);
+            }
+            for (i = bookmarks.Count - 1; i >= 0; i--)
+            {
+                KeyValuePair<string, List<int>> kvp = bookmarks.ElementAt(i);
+                if (!File.Exists(kvp.Key)) bookmarks.Remove(kvp.Key);
+            }
         }
 
         private void ResetSettings()
@@ -526,6 +556,34 @@ namespace SB_Prime
             foreach (KeyValuePair<string,int> kvp in IDEColors)
             {
                 Properties.Settings.Default.Colors.Add(kvp.Key + "?" + kvp.Value);
+            }
+
+            foreach (TabItem tab in tabControlSB1.Items)
+            {
+                activeTab = tab;
+                activeDocument = GetDocument();
+                activeDocument.SetMarks();
+            }
+            foreach (TabItem tab in tabControlSB2.Items)
+            {
+                activeTab = tab;
+                activeDocument = GetDocument();
+                activeDocument.SetMarks();
+            }
+
+            Properties.Settings.Default.Breakpoints.Clear();
+            foreach (KeyValuePair<string, List<int>> kvp in breakpoints)
+            {
+                string data = kvp.Key;
+                foreach (int line in kvp.Value) data += "#" + line;
+                Properties.Settings.Default.Breakpoints.Add(data);
+            }
+            Properties.Settings.Default.Bookmarks.Clear();
+            foreach (KeyValuePair<string, List<int>> kvp in bookmarks)
+            {
+                string data = kvp.Key;
+                foreach (int line in kvp.Value) data += "#" + line;
+                Properties.Settings.Default.Bookmarks.Add(data);
             }
 
             Properties.Settings.Default.Save();
@@ -804,6 +862,8 @@ namespace SB_Prime
         private void UpdateLine()
         {
             activeDocument.lineStack.PushBackwards(activeDocument.TextArea.CurrentLine);
+            EditPrevious.IsEnabled = activeDocument.lineStack.backwards.Count > 1;
+            EditNext.IsEnabled = activeDocument.lineStack.forwards.Count > 0;
         }
 
         private void UpdateHotKey()
