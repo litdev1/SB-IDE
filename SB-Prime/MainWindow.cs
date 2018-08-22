@@ -72,6 +72,7 @@ namespace SB_Prime
         bool highlightsUpdated = false;
         int maxMRU = 10;
         object lockRun = new object();
+        const char delimBP = '#';
 
         private void InitWindow()
         {
@@ -422,7 +423,7 @@ namespace SB_Prime
             foreach (string breakpoint in Properties.Settings.Default.Breakpoints)
             {
                 List<int> lines = new List<int>();
-                string[] data = breakpoint.Split(new char[] { '#' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] data = breakpoint.Split(new char[] { delimBP }, StringSplitOptions.RemoveEmptyEntries);
                 int line = -1;
                 for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
                 if (File.Exists(data[0]) && lines.Count > 0) breakpoints[data[0]] = lines;
@@ -431,7 +432,7 @@ namespace SB_Prime
             foreach (string bookmark in Properties.Settings.Default.Bookmarks)
             {
                 List<int> lines = new List<int>();
-                string[] data = bookmark.Split(new char[] { '#' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] data = bookmark.Split(new char[] { delimBP }, StringSplitOptions.RemoveEmptyEntries);
                 int line = -1;
                 for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
                 if (File.Exists(data[0]) && lines.Count > 0) bookmarks[data[0]] = lines;
@@ -566,14 +567,14 @@ namespace SB_Prime
             foreach (KeyValuePair<string, List<int>> kvp in breakpoints)
             {
                 string data = kvp.Key;
-                foreach (int line in kvp.Value) data += "#" + line;
+                foreach (int line in kvp.Value) data += delimBP.ToString() + line;
                 Properties.Settings.Default.Breakpoints.Add(data);
             }
             Properties.Settings.Default.Bookmarks.Clear();
             foreach (KeyValuePair<string, List<int>> kvp in bookmarks)
             {
                 string data = kvp.Key;
-                foreach (int line in kvp.Value) data += "#" + line;
+                foreach (int line in kvp.Value) data += delimBP.ToString() + line;
                 Properties.Settings.Default.Bookmarks.Add(data);
             }
 
