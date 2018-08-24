@@ -61,6 +61,8 @@ namespace SB_Prime
         public static bool GetStackVariables = false;
         public static Dictionary<string, List<int>> breakpoints = new Dictionary<string, List<int>>();
         public static Dictionary<string, List<int>> bookmarks = new Dictionary<string, List<int>>();
+        public static int MaxMRU = 50;
+        public static char DelimBP = '#';
 
         public ObservableCollection<DebugData> debugData = new ObservableCollection<DebugData>();
         public SBInterop sbInterop;
@@ -70,9 +72,7 @@ namespace SB_Prime
         Timer threadTimer;
         bool debugUpdated = false;
         bool highlightsUpdated = false;
-        int maxMRU = 10;
         object lockRun = new object();
-        const char delimBP = '#';
 
         private void InitWindow()
         {
@@ -407,23 +407,16 @@ namespace SB_Prime
             {
                 if (!File.Exists(Properties.Settings.Default.MRU[i])) Properties.Settings.Default.MRU.RemoveAt(i);
             }
-            i = 0;
-            if (Properties.Settings.Default.MRU.Count > i) MRU1.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU2.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU3.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU4.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU5.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU6.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU7.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU8.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU9.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
-            if (Properties.Settings.Default.MRU.Count > i) MRU10.Content = Ellipsis(Properties.Settings.Default.MRU[i++]);
+            for (i = 0; i < Properties.Settings.Default.MRU.Count; i++)
+            {
+                MRUlst.Add(new MRUdata() { Ellipsis = Ellipsis(Properties.Settings.Default.MRU[i]) });
+            }
 
             breakpoints.Clear();
             foreach (string breakpoint in Properties.Settings.Default.Breakpoints)
             {
                 List<int> lines = new List<int>();
-                string[] data = breakpoint.Split(new char[] { delimBP }, StringSplitOptions.RemoveEmptyEntries);
+                string[] data = breakpoint.Split(new char[] { DelimBP }, StringSplitOptions.RemoveEmptyEntries);
                 int line = -1;
                 for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
                 if (File.Exists(data[0]) && lines.Count > 0) breakpoints[data[0]] = lines;
@@ -432,7 +425,7 @@ namespace SB_Prime
             foreach (string bookmark in Properties.Settings.Default.Bookmarks)
             {
                 List<int> lines = new List<int>();
-                string[] data = bookmark.Split(new char[] { delimBP }, StringSplitOptions.RemoveEmptyEntries);
+                string[] data = bookmark.Split(new char[] { DelimBP }, StringSplitOptions.RemoveEmptyEntries);
                 int line = -1;
                 for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
                 if (File.Exists(data[0]) && lines.Count > 0) bookmarks[data[0]] = lines;
@@ -521,7 +514,7 @@ namespace SB_Prime
                 if (Properties.Settings.Default.MRU.Contains(doc.Filepath)) Properties.Settings.Default.MRU.Remove(doc.Filepath);
                 if (File.Exists(doc.Filepath)) Properties.Settings.Default.MRU.Insert(0, doc.Filepath);
             }
-            for (int i = Properties.Settings.Default.MRU.Count - 1; i >= maxMRU; i--) Properties.Settings.Default.MRU.RemoveAt(i);
+            for (int i = Properties.Settings.Default.MRU.Count - 1; i >= MaxMRU; i--) Properties.Settings.Default.MRU.RemoveAt(i);
 
             Properties.Settings.Default.SplitScreen = dualScreen;
             Properties.Settings.Default.WordWrap = wrap;
@@ -567,14 +560,14 @@ namespace SB_Prime
             foreach (KeyValuePair<string, List<int>> kvp in breakpoints)
             {
                 string data = kvp.Key;
-                foreach (int line in kvp.Value) data += delimBP.ToString() + line;
+                foreach (int line in kvp.Value) data += DelimBP.ToString() + line;
                 Properties.Settings.Default.Breakpoints.Add(data);
             }
             Properties.Settings.Default.Bookmarks.Clear();
             foreach (KeyValuePair<string, List<int>> kvp in bookmarks)
             {
                 string data = kvp.Key;
-                foreach (int line in kvp.Value) data += delimBP.ToString() + line;
+                foreach (int line in kvp.Value) data += DelimBP.ToString() + line;
                 Properties.Settings.Default.Bookmarks.Add(data);
             }
 

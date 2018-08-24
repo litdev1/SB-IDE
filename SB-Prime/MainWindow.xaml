@@ -51,7 +51,7 @@
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu KeyTip="F" Label="File">
                     <RibbonApplicationMenu.AuxiliaryPaneContent>
-                        <Grid MinHeight="500">
+                        <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="*"/>
@@ -62,20 +62,15 @@
                                        VerticalContentAlignment="Center" Content="Recent File List" FontWeight="Bold"  />
                                 </StackPanel>
                             </Border>
-                            <ListBox Grid.Row="1">
+                            <ListBox Name="MRUlist" Grid.Row="1">
                                 <ListBox.Background>
                                     <ImageBrush ImageSource="images/appworkspace.png"/>
                                 </ListBox.Background>
-                                <ListBoxItem x:Name="MRU1" MouseDoubleClick="CLickMRU" ></ListBoxItem>
-                                <ListBoxItem x:Name="MRU2" MouseDoubleClick="CLickMRU" ></ListBoxItem>
-                                <ListBoxItem x:Name="MRU3" MouseDoubleClick="CLickMRU" ></ListBoxItem>
-                                <ListBoxItem x:Name="MRU4" MouseDoubleClick="CLickMRU" ></ListBoxItem>
-                                <ListBoxItem x:Name="MRU5" MouseDoubleClick="CLickMRU" ></ListBoxItem>
-                                <ListBoxItem x:Name="MRU6" MouseDoubleClick="CLickMRU" ></ListBoxItem>
-                                <ListBoxItem x:Name="MRU7" MouseDoubleClick="CLickMRU" ></ListBoxItem>
-                                <ListBoxItem x:Name="MRU8" MouseDoubleClick="CLickMRU" ></ListBoxItem>
-                                <ListBoxItem x:Name="MRU9" MouseDoubleClick="CLickMRU" ></ListBoxItem>
-                                <ListBoxItem x:Name="MRU10" MouseDoubleClick="CLickMRU" ></ListBoxItem>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ListBoxItem Content="{Binding Ellipsis}" MouseDoubleClick="ClickMRU" ></ListBoxItem>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
                             </ListBox>
                         </Grid>
                     </RibbonApplicationMenu.AuxiliaryPaneContent>

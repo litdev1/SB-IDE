@@ -75,6 +75,13 @@ namespace SB_Prime
 
         SplashScreen splashScreen;
 
+        private List<MRUdata> MRUlst = new List<MRUdata>();
+
+        public class MRUdata
+        {
+            public Grid Ellipsis { get; set; }
+        }
+
         public MainWindow()
         {
             splashScreen = new SplashScreen("Images/splash.png");
@@ -83,6 +90,8 @@ namespace SB_Prime
             DefaultColors = IDEColors;
 
             InitializeComponent();
+
+            MRUlist.ItemsSource = MRUlst;
         }
 
         public Dictionary<string, int> IDEColors
@@ -589,7 +598,7 @@ namespace SB_Prime
                 "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void CLickMRU(object sender, MouseButtonEventArgs e)
+        private void ClickMRU(object sender, MouseButtonEventArgs e)
         {
             ListBoxItem item = (ListBoxItem)sender;
             string MRU = (string)((Grid)item.Content).Tag;
