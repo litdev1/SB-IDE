@@ -22,6 +22,28 @@
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter TargetName="Border" Property="Background" Value="#1000" />
                             </Trigger>
+                            <!--<Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#4FFF" />
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="RoundedTabItem2" TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border Name="Border" BorderThickness="2,0,2,2" BorderBrush="{DynamicResource SplitterBrush}" CornerRadius="0,0,8,8" Margin="2,0">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="4,2"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#1000" />
+                            </Trigger>
+                            <!--<Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#4FFF" />
+                            </Trigger>-->
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -277,7 +299,10 @@
             </Grid>
             <GridSplitter Margin="0" Grid.Row="1" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
             <TabControl x:Name="tabControlResults" Margin="0" Grid.Row="2" HorizontalContentAlignment="Stretch" TabStripPlacement="Bottom" VerticalContentAlignment="Stretch">
-                <TabItem x:Name="tabOutput" Header="Output">
+                <TabItem x:Name="tabOutput" Style="{StaticResource RoundedTabItem2}">
+                    <TabItem.Header>
+                        <TextBlock Text="Output" FontWeight="Bold"/>
+                    </TabItem.Header>
                     <Grid Background="#FFE5E5E5">
                         <DataGrid x:Name="dataGridResults" HeadersVisibility="Column" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" SelectionChanged="dataGridResults_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}" LoadingRow="dataGridResults_LoadingRow" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
                             <DataGrid.ColumnHeaderStyle>
@@ -299,7 +324,10 @@
                         </DataGrid>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="tabDebug" Header="Debug">
+                <TabItem x:Name="tabDebug" Style="{StaticResource RoundedTabItem2}">
+                    <TabItem.Header>
+                        <TextBlock Text="Debug" FontWeight="Bold"/>
+                    </TabItem.Header>
                     <Grid Background="#FFE5E5E5">
                         <DataGrid x:Name="dataGridDebug" HeadersVisibility="Column" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}">
                             <DataGrid.ColumnHeaderStyle>
