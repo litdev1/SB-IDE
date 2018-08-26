@@ -18,6 +18,11 @@
                         <Border Name="Border" BorderThickness="2,2,2,0" BorderBrush="{DynamicResource SplitterBrush}" CornerRadius="8,8,0,0" Margin="2,0">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="4,2"/>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#1000" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
