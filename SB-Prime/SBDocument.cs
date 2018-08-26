@@ -446,6 +446,7 @@ namespace SB_Prime
 
                         LoadDataFromFile(path);
                         Tab.Header = new TabHeader(path);
+                        MainWindow.THIS.SetTabHeaderStyle(Tab);
                     }
                 }
             };

@@ -255,6 +255,7 @@ namespace SB_Prime
                 AddDocument();
                 activeDocument.LoadDataFromFile(path);
                 activeTab.Header = new TabHeader(path);
+                SetTabHeaderStyle(activeTab);
             }
         }
 
@@ -607,6 +608,7 @@ namespace SB_Prime
                 AddDocument();
                 activeDocument.LoadDataFromFile(MRU);
                 activeTab.Header = new TabHeader(MRU);
+                SetTabHeaderStyle(activeTab);
             }
         }
 

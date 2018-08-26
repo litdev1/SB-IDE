@@ -112,6 +112,7 @@ namespace SB_Prime
                 {
                     activeDocument.LoadDataFromFile(app.Arguments[i]);
                     activeTab.Header = new TabHeader(app.Arguments[i]);
+                    SetTabHeaderStyle(activeTab);
                 }
                 else
                 {
@@ -668,6 +669,7 @@ namespace SB_Prime
                 {
                     activeDocument.SaveDataToFile(saveFileDialog.FileName);
                     activeTab.Header = new TabHeader(saveFileDialog.FileName);
+                    SetTabHeaderStyle(activeTab);
                     if (Properties.Settings.Default.MRU.Contains(activeDocument.Filepath)) Properties.Settings.Default.MRU.Remove(activeDocument.Filepath);
                     if (File.Exists(activeDocument.Filepath)) Properties.Settings.Default.MRU.Insert(0, activeDocument.Filepath);
                 }
@@ -712,6 +714,7 @@ namespace SB_Prime
             activeTab = (TabItem)GetTabContol(iTab).Items[GetTabContol(iTab).Items.Count - 1];
             activeTab.Content = host;
             activeTab.Header = new TabHeader("Untitled" + num);
+            SetTabHeaderStyle(activeTab);
             activeTab.Tag = activeDocument;
             activeDocument.Tab = activeTab;
             activeDocument.WrapMode = wrap ? WrapMode.Whitespace : WrapMode.None;
@@ -751,6 +754,7 @@ namespace SB_Prime
                         {
                             activeDocument.SaveDataToFile(saveFileDialog.FileName);
                             activeTab.Header = new TabHeader(System.IO.Path.GetFileName(saveFileDialog.FileName));
+                            SetTabHeaderStyle(activeTab);
                         }
                     }
                 }
@@ -1284,6 +1288,7 @@ namespace SB_Prime
                 string path = MarkedForOpen.Dequeue();
                 activeDocument.LoadDataFromFile(path);
                 activeTab.Header = new TabHeader(path);
+                SetTabHeaderStyle(activeTab);
             }
         }
 
@@ -1781,6 +1786,11 @@ namespace SB_Prime
                     Process.Start(result);
                 }
             }
+        }
+
+        public void SetTabHeaderStyle(TabItem tab)
+        {
+            tab.Style = (System.Windows.Style)FindResource("RoundedTabItem");
         }
     }
 

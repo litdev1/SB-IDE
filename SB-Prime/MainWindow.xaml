@@ -11,6 +11,17 @@
         <SolidColorBrush x:Key="SplitterBrush" Color="#FFF0F0F0"/>
         <SolidColorBrush x:Key="GridBrushBackground" Color="#FFF0F0F0"/>
         <SolidColorBrush x:Key="GridBrushForeground" Color="#FF000000"/>
+        <Style x:Key="RoundedTabItem" TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border Name="Border" BorderThickness="2,2,2,0" BorderBrush="{DynamicResource SplitterBrush}" CornerRadius="8,8,0,0" Margin="2,0">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="4,2"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <DockPanel Margin="0" PreviewKeyDown="Window_PreviewKeyDown">
         <StatusBar x:Name="statusBar" Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
@@ -238,18 +249,13 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TabControl x:Name="tabControlSB1" Grid.Column="0" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="tabControlSB1_SelectionChanged" MouseDown="tabControlSB1_MouseDown" GotFocus="tabControlSB1_GotFocus">
-                        <TabItem Header="Untitled1">
-                            <Grid Background="#FFE5E5E5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80*"/>
-                                    <ColumnDefinition Width="229*"/>
-                                </Grid.ColumnDefinitions>
-                            </Grid>
+                            <TabItem Header="Untitled1" Style="{StaticResource RoundedTabItem}">
+                            <Grid Background="#FFE5E5E5"/>
                         </TabItem>
                     </TabControl>
                     <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
                     <TabControl x:Name="tabControlSB2" Grid.Column="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="tabControlSB2_SelectionChanged" MouseDown="tabControlSB2_MouseDown" GotFocus="tabControlSB2_GotFocus">
-                        <TabItem Header="Untitled2">
+                            <TabItem Header="Untitled2" Style="{StaticResource RoundedTabItem}">
                             <Grid Background="#FFE5E5E5"/>
                         </TabItem>
                     </TabControl>
