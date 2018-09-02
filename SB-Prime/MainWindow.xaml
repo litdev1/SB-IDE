@@ -20,7 +20,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#1000" />
+                                <Setter TargetName="Border" Property="Background" Value="#AFFF" />
                             </Trigger>
                             <!--<Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="Border" Property="Background" Value="#4FFF" />
@@ -39,7 +39,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#1000" />
+                                <Setter TargetName="Border" Property="Background" Value="#AFFF" />
                             </Trigger>
                             <!--<Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="Border" Property="Background" Value="#4FFF" />
