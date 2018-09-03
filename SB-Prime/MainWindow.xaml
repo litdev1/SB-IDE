@@ -69,7 +69,7 @@
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
-        <Ribbon x:Name="ribbon" VerticalAlignment="Top"  DockPanel.Dock="Top" Margin="0" SelectedIndex="0" SelectionChanged="ribbon_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}">
+        <Ribbon x:Name="ribbon" VerticalAlignment="Top"  DockPanel.Dock="Top" Margin="0" SelectedIndex="0" SelectionChanged="ribbon_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" Loaded="ribbon_Loaded">
             <!-- Help Pane, located at the right-hand side -->
             <Ribbon.HelpPaneContent>
                 <RibbonButton SmallImageSource="Images\Help.png" Click="helpClick" ToolTip="Help"/>
