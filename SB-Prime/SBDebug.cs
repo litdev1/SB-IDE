@@ -477,6 +477,7 @@ namespace SB_Prime
                     string value = pos > 0 ? message.Substring(pos).Trim() : "";
                     if (value.Length > maxValueLen) value = value.Substring(0, maxValueLen) + " ...";
                     sbDocument.TextArea.CallTipShow(sbDocument.Lexer.toolTipPosition, value);
+
                     sbDocument.TextArea.CallTipSetHlt(0, value.Length);
                 }
                 else if (message.ToUpper().StartsWith("STACKLEVEL"))

@@ -246,6 +246,8 @@ namespace SB_Prime
 
             // Configure the default style
             textArea.StyleResetDefault();
+            //textArea.Styles[Style.CallTip].Font = "Consolas";
+            //textArea.Styles[Style.CallTip].Size = 20;
             textArea.Styles[Style.Default].Font = "Consolas";
             textArea.Styles[Style.Default].Size = 10;
             textArea.Styles[Style.Default].BackColor = backColor;
@@ -289,6 +291,8 @@ namespace SB_Prime
 
             // Configure the lexer styles
             textArea.Lexer = Lexer.Container;
+
+            textArea.CallTipSetForeHlt(SBDocument.IntToColor(MainWindow.DEBUG_CALLTIP_COLOR));
         }
 
         private void InitAutoComplete()
@@ -549,19 +553,19 @@ namespace SB_Prime
             }
             if (currentWord != "" && sbObjects.GetObjects(currentWord) != "")
             {
-                showObjectData(currentWord);
+                showObjectData(currentWord, e.Position);
              }
             else if (lastWord != "" && currentWord != "" && sbObjects.GetMembers(lastWord, currentWord) != "")
             {
-                showMethodData(lastWord, currentWord);
+                showMethodData(lastWord, currentWord, e.Position);
             }
             else if (currentWord != "" && sbObjects.GetKeywords(currentWord) != "")
             {
-                showObjectData(currentWord);
+                showObjectData(currentWord, e.Position);
             }
         }
 
-        private void showObjectData(string currentWord)
+        private void showObjectData(string currentWord, int Position = -1)
         {
             foreach (Member member in SBObjects.keywords)
             {
@@ -569,7 +573,7 @@ namespace SB_Prime
                 {
                     MainWindow.showObject = null;
                     MainWindow.showMember = member;
-                    //sbDocument.TextArea.CallTipShow(e.Position, member.summary);
+                    if (Position >= 0 && MainWindow.THIS.viewGrid.ColumnDefinitions[2].Width.Value == 0) sbDocument.TextArea.CallTipShow(Position, CallTipFormat(member.summary));
                     //sbDocument.TextArea.CallTipSetHlt(0, member.summary.Length);
                     break;
                 }
@@ -580,14 +584,14 @@ namespace SB_Prime
                 {
                     MainWindow.showObject = obj;
                     MainWindow.showMember = null;
-                    //sbDocument.TextArea.CallTipShow(sbDocument.TextArea.CurrentPosition, obj.summary);
+                    if (Position >= 0 && MainWindow.THIS.viewGrid.ColumnDefinitions[2].Width.Value == 0) sbDocument.TextArea.CallTipShow(Position, CallTipFormat(obj.summary));
                     //sbDocument.TextArea.CallTipSetHlt(0, obj.summary.Length);
                     break;
                 }
             }
         }
 
-        private void showMethodData(string lastWord, string currentWord)
+        private void showMethodData(string lastWord, string currentWord, int Position = -1)
         {
             foreach (SBObject obj in SBObjects.objects)
             {
@@ -599,7 +603,7 @@ namespace SB_Prime
                         {
                             MainWindow.showObject = null;
                             MainWindow.showMember = member;
-                            //sbDocument.TextArea.CallTipShow(e.Position, member.summary);
+                            if (Position >= 0 && MainWindow.THIS.viewGrid.ColumnDefinitions[2].Width.Value == 0) sbDocument.TextArea.CallTipShow(Position, CallTipFormat(member.summary));
                             //sbDocument.TextArea.CallTipSetHlt(0, member.summary.Length);
                             break;
                         }
@@ -607,6 +611,25 @@ namespace SB_Prime
                     break;
                 }
             }
+        }
+
+        private string CallTipFormat(string text)
+        {
+            if (text.Contains('\n')) return text;
+            string result = "";
+            string[] words = text.Split(new char[] { ' ' }, StringSplitOptions.None);
+            string line = "";
+            foreach (string word in words)
+            {
+                line += word + ' ';
+                if (line.Length > 50)
+                {
+                    result += line + '\n';
+                    line = "";
+                }
+            }
+            result += line;
+            return result;
         }
 
         private void OnDwellEnd(object sender, DwellEventArgs e)
