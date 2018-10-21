@@ -47,7 +47,9 @@ namespace SB_Prime
         public static int FIND_HIGHLIGHT_COLOR = 0xFF0000;
         public static int DELETED_HIGHLIGHT_COLOR = 0xFF8080;
         public static int INSERTED_HIGHLIGHT_COLOR = 0x80FF80;
-        public static int DEBUG_CALLTIP_COLOR = 0xFF0000;
+        public static int FORE_CALLTIP_COLOR = 0x5C5C5C;
+        public static int BACK_CALLTIP_COLOR = 0xFFFFFF;
+        public static int HIGHLIGHT_CALLTIP_COLOR = 0xFF0000;
         // Lexer Colors
         public static int FORE_COLOR = 0x000000;
         public static int BACK_COLOR = 0xFFFFFF;
@@ -118,7 +120,9 @@ namespace SB_Prime
                 colors["D:Highlight Find"] = FIND_HIGHLIGHT_COLOR;
                 colors["D:Highlight Deleted"] = DELETED_HIGHLIGHT_COLOR;
                 colors["D:Highlight Inserted"] = INSERTED_HIGHLIGHT_COLOR;
-                colors["D:CallTip Debug"] = DEBUG_CALLTIP_COLOR;
+                colors["D:CallTip Foreground"] = FORE_CALLTIP_COLOR;
+                colors["D:CallTip Background"] = BACK_CALLTIP_COLOR;
+                colors["D:CallTip Highlight"] = HIGHLIGHT_CALLTIP_COLOR;
 
                 colors["L:Foreground"] = FORE_COLOR;
                 colors["L:Background"] = BACK_COLOR;
@@ -164,7 +168,9 @@ namespace SB_Prime
                 FIND_HIGHLIGHT_COLOR = colors["D:Highlight Find"];
                 DELETED_HIGHLIGHT_COLOR = colors["D:Highlight Deleted"];
                 INSERTED_HIGHLIGHT_COLOR = colors["D:Highlight Inserted"];
-                DEBUG_CALLTIP_COLOR = colors["D:CallTip Debug"];
+                FORE_CALLTIP_COLOR = colors["D:CallTip Foreground"];
+                BACK_CALLTIP_COLOR = colors["D:CallTip Background"];
+                HIGHLIGHT_CALLTIP_COLOR = colors["D:CallTip Highlight"];
 
                 FORE_COLOR = colors["L:Foreground"];
                 BACK_COLOR = colors["L:Background"];

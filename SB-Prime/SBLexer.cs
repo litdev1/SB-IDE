@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -220,9 +221,13 @@ namespace SB_Prime
                 {
                     int start = Math.Max(0, pos + match.Index);
                     int len = match.Length - 2;
+                    int style = sbDocument.TextArea.GetStyleAt(start);
 
-                    sbDocument.TextArea.SetTargetRange(start, start+len);
-                    sbDocument.TextArea.ReplaceTarget(keyword);
+                    if (style == STYLE_KEYWORD)
+                    {
+                        sbDocument.TextArea.SetTargetRange(start, start + len);
+                        sbDocument.TextArea.ReplaceTarget(keyword);
+                    }
 
                     pos += match.Index + len;
                     if (pos >= textArea.Text.Length) break;
@@ -292,7 +297,11 @@ namespace SB_Prime
             // Configure the lexer styles
             textArea.Lexer = Lexer.Container;
 
-            textArea.CallTipSetForeHlt(SBDocument.IntToColor(MainWindow.DEBUG_CALLTIP_COLOR));
+            const int SCI_CALLTIPSETBACK = 2205;
+            const int SCI_CALLTIPSETFORE = 2206;
+            textArea.DirectMessage(SCI_CALLTIPSETBACK, new IntPtr(ColorTranslator.ToWin32(SBDocument.IntToColor(MainWindow.BACK_CALLTIP_COLOR))), IntPtr.Zero);
+            textArea.DirectMessage(SCI_CALLTIPSETFORE, new IntPtr(ColorTranslator.ToWin32(SBDocument.IntToColor(MainWindow.FORE_CALLTIP_COLOR))), IntPtr.Zero);
+            textArea.CallTipSetForeHlt(SBDocument.IntToColor(MainWindow.HIGHLIGHT_CALLTIP_COLOR));
         }
 
         private void InitAutoComplete()
@@ -603,8 +612,41 @@ namespace SB_Prime
                         {
                             MainWindow.showObject = null;
                             MainWindow.showMember = member;
-                            if (Position >= 0 && MainWindow.THIS.viewGrid.ColumnDefinitions[2].Width.Value == 0) sbDocument.TextArea.CallTipShow(Position, CallTipFormat(member.summary));
-                            //sbDocument.TextArea.CallTipSetHlt(0, member.summary.Length);
+                            if (Position >= 0 && MainWindow.THIS.viewGrid.ColumnDefinitions[2].Width.Value == 0)
+                            {
+                                string name = "";
+                                switch (member.type)
+                                {
+                                    case MemberTypes.Custom:
+                                        name = member.name;
+                                        break;
+                                    case MemberTypes.Method:
+                                        name = member.name;
+                                        if (member.arguments.Count > 0)
+                                        {
+                                            name += "(";
+                                            for (int i = 0; i < member.arguments.Count; i++)
+                                            {
+                                                name += member.arguments.Keys.ElementAt(i);
+                                                if (i < member.arguments.Count - 1) name += ',';
+                                            }
+                                            name += ")";
+                                        }
+                                        else
+                                        {
+                                            name += "()";
+                                        }
+                                        break;
+                                    case MemberTypes.Property:
+                                        name = member.name;
+                                        break;
+                                    case MemberTypes.Event:
+                                        name = member.name;
+                                        break;
+                                }
+                                sbDocument.TextArea.CallTipShow(Position, name + "\n" + CallTipFormat(member.summary));
+                                sbDocument.TextArea.CallTipSetHlt(0, name.Length);
+                            }
                             break;
                         }
                     }
@@ -629,7 +671,7 @@ namespace SB_Prime
                 }
             }
             result += line;
-            return result;
+            return result.Trim();
         }
 
         private void OnDwellEnd(object sender, DwellEventArgs e)
