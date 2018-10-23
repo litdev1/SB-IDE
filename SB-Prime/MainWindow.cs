@@ -1329,9 +1329,29 @@ namespace SB_Prime
         private void OpenFindDialog()
         {
             if (activeDocument.TextArea.SelectedText != "") tbFind.Text = activeDocument.TextArea.SelectedText;
+            if (!cbFindText.Items.Contains(tbFind.Text)) cbFindText.Items.Insert(0, tbFind.Text);
+            cbFind.SelectedItem = tbFind.Text;
             tbFind.Focus();
             tbFind.SelectAll();
             FindNext();
+        }
+
+        private void cbFind_SelectionChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            tbFind.Text = e.NewValue.ToString();
+            tbFind.Focus();
+            tbFind.SelectAll();
+            FindNext();
+        }
+
+        private void tbFind_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                if (!cbFindText.Items.Contains(tbFind.Text)) cbFindText.Items.Insert(0, tbFind.Text);
+                cbFind.SelectedItem = tbFind.Text;
+                FindNext();
+            }
         }
 
         private void OpenReplaceDialog()

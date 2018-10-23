@@ -7,13 +7,14 @@
         mc:Ignorable="d"
         Title="Find and Replace" Height="204" Width="444.6" ShowInTaskbar="False" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" Topmost="True" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid Margin="0">
-        <TextBox x:Name="textBoxFind" Margin="69,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23"/>
+        <TextBox x:Name="textBoxFind" Margin="69,10,199.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23"/>
         <Label x:Name="label" Content="Find" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox x:Name="textBoxReplace" Margin="69,44,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" RenderTransformOrigin="0.499,0.756"/>
+        <TextBox x:Name="textBoxReplace" Margin="69,44,199.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" RenderTransformOrigin="0.499,0.756"/>
         <Label x:Name="label_Copy" Content="Replace" Margin="10,41,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Button x:Name="buttonFind" Content="Find" HorizontalAlignment="Right" Margin="0,0,10,60" VerticalAlignment="Bottom" Click="buttonFind_Click" Width="75" ToolTip="Find the next occurrence of the Find text"/>
         <Button x:Name="buttonReplace" Content="Replace" HorizontalAlignment="Right" Margin="0,0,10,35" VerticalAlignment="Bottom" Click="buttonReplace_Click" Width="75" ToolTip="Replace the current occurrence and find the next"/>
         <Button x:Name="buttonReplaceAll" Content="Replace All" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Click="buttonReplaceAll_Click" Width="75" ToolTip="Replace all occurreces of the Find text with the Replace text"/>
-
+        <ComboBox x:Name="comboBoxFind" Margin="0,10,10.4,0" VerticalAlignment="Top" SelectionChanged="comboBoxFind_SelectionChanged" HorizontalAlignment="Right" Width="184"/>
+        <ComboBox x:Name="comboBoxReplace" Margin="0,45,10.4,0" VerticalAlignment="Top" SelectionChanged="comboBoxReplace_SelectionChanged" HorizontalAlignment="Right" Width="184"/>
     </Grid>
 </Window>

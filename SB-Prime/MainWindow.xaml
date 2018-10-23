@@ -184,7 +184,12 @@
                     <RibbonToggleButton Name="toggleHighlight" Label="Highlight All" SmallImageSource="Images/Highlight.png" KeyTip="FH" Click="fileHightlight_Click" ToolTipTitle="Highlight all instances found"/>
                     <RibbonToggleButton Name="toggleWholeWord" Label="Whole Word" SmallImageSource="Images/Text.png" KeyTip="FW" Click="fileWholeWord_Click" ToolTipTitle="Search and highlight only whole word matches"/>
                     <RibbonToggleButton Name="toggleCaseSensitive" Label="Case Sensitive" SmallImageSource="Images/Text_uppercase.png" KeyTip="CS" Click="fileCaseSensitive_Click" ToolTipTitle="Search and highlight only case sensitive matches"/>
-                    <RibbonTextBox x:Name="tbFind" Label="Find" KeyTip="FD" TextBoxWidth="160" KeyDown="tbFind_KeyDown"/>
+                    <RibbonTextBox x:Name="tbFind" Label="Find" KeyTip="FD" KeyDown="tbFind_KeyDown" TextBoxWidth="160"/>
+                    <RibbonComboBox x:Name="cbFindControl" Label="History" KeyTip="FDH">
+                        <RibbonGallery x:Name="cbFind" SelectionChanged="cbFind_SelectionChanged">
+                            <RibbonGalleryCategory x:Name="cbFindText"/>
+                        </RibbonGallery>
+                    </RibbonComboBox>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Debug" KeyTip="D" >

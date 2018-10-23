@@ -45,12 +45,20 @@ namespace SB_Prime.Dialogs
 
         private void buttonFind_Click(object sender, RoutedEventArgs e)
         {
+            if (!comboBoxFind.Items.Contains(textBoxFind.Text)) comboBoxFind.Items.Insert(0, textBoxFind.Text);
+            comboBoxFind.SelectedItem = textBoxFind.Text;
+
             SBDocument sbDocument = mainWindow.GetActiveDocument();
             sbDocument.searchManager.Find(true, textBoxFind.Text);
         }
 
         private void buttonReplace_Click(object sender, RoutedEventArgs e)
         {
+            if (!comboBoxFind.Items.Contains(textBoxFind.Text)) comboBoxFind.Items.Insert(0, textBoxFind.Text);
+            comboBoxFind.SelectedItem = textBoxFind.Text;
+            if (!comboBoxReplace.Items.Contains(textBoxReplace.Text)) comboBoxReplace.Items.Insert(0, textBoxReplace.Text);
+            comboBoxReplace.SelectedItem = textBoxReplace.Text;
+
             SBDocument sbDocument = mainWindow.GetActiveDocument();
             if (sbDocument.TextArea.SelectedText.ToUpper() != textBoxFind.Text.ToUpper())
             {
@@ -69,6 +77,11 @@ namespace SB_Prime.Dialogs
 
         private void buttonReplaceAll_Click(object sender, RoutedEventArgs e)
         {
+            if (!comboBoxFind.Items.Contains(textBoxFind.Text)) comboBoxFind.Items.Insert(0, textBoxFind.Text);
+            comboBoxFind.SelectedItem = textBoxFind.Text;
+            if (!comboBoxReplace.Items.Contains(textBoxReplace.Text)) comboBoxReplace.Items.Insert(0, textBoxReplace.Text);
+            comboBoxReplace.SelectedItem = textBoxReplace.Text;
+
             SBDocument sbDocument = mainWindow.GetActiveDocument();
             if (sbDocument.TextArea.SelectedText.ToUpper() != textBoxFind.Text.ToUpper())
             {
@@ -110,6 +123,20 @@ namespace SB_Prime.Dialogs
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Active = true;
+        }
+
+        private void comboBoxFind_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            textBoxFind.Text = comboBoxFind.SelectedItem.ToString();
+            textBoxFind.Focus();
+            textBoxFind.SelectAll();
+        }
+
+        private void comboBoxReplace_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            textBoxReplace.Text = comboBoxReplace.SelectedItem.ToString();
+            textBoxReplace.Focus();
+            textBoxReplace.SelectAll();
         }
     }
 }

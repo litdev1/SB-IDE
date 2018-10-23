@@ -650,14 +650,6 @@ namespace SB_Prime
             SBInterop.Language = viewLanguage.Text;
         }
 
-        private void tbFind_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                FindNext();
-            }
-        }
-
         private void dataGridResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (null == dataGridResults.SelectedItem) return;
@@ -1017,6 +1009,7 @@ namespace SB_Prime
             {
                 child.RowDefinitions[0].Height = new GridLength(0);
             }
+            cbFindControl.SelectionBoxWidth += tbFind.ActualWidth - cbFindControl.ActualWidth;
         }
 
         /*
