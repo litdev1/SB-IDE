@@ -319,11 +319,11 @@ namespace SB_Prime
             SBObjects.objects.Sort();
         }
 
-        public string Publish(string program)
+        public string Publish(string program, string baseID)
         {
             try
             { 
-                string key = (string)SaveProgram.Invoke(Service, new object[] { "", program, "SBProgram" });
+                string key = (string)SaveProgram.Invoke(Service, new object[] { "", program, baseID });
                 return key;
             }
             catch (Exception ex)

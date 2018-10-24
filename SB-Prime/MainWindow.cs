@@ -1592,13 +1592,14 @@ namespace SB_Prime
 
         public void Publish()
         {
-            string key = sbInterop.Publish(activeDocument.TextArea.Text);
+            string key = sbInterop.Publish(activeDocument.TextArea.Text, ((TabHeader)activeTab.Header).BaseID);
             if (key == "error")
             {
                 Errors.Add(new Error("Publish : " + "Failed to publish program (perhaps too short or too long)"));
             }
             else
             {
+                ((TabHeader)activeTab.Header).BaseID = key;
                 Errors.Add(new Error("Publish : " + "Successfully published program with ID " + key));
                 Publish publish = new Publish(sbInterop, key);
                 publish.ShowDialog();
@@ -1614,6 +1615,7 @@ namespace SB_Prime
                 AddDocument();
                 activeDocument.LoadDataFromText(ImportProgram);
                 ((TabHeader)activeTab.Header).FilePath = import.textBoxImport.Text;
+                ((TabHeader)activeTab.Header).BaseID = import.textBoxImport.Text;
             }
         }
 
@@ -1818,6 +1820,7 @@ namespace SB_Prime
     {
         private string filePath;
         private string fileName;
+        private string baseID;
         private TextBlock textBlock = new TextBlock() { FontWeight = FontWeights.Bold, FontSize = 12 + MainWindow.zoom };
 
         public string FileName
@@ -1836,6 +1839,12 @@ namespace SB_Prime
             }
         }
 
+        public string BaseID
+        {
+            get { return baseID; }
+            set { baseID = value; }
+        }
+
         public TabHeader(string _filePath)
         {
             ImageSource imgSource = MainWindow.ImageSourceFromBitmap(Properties.Resources.Erase);
@@ -1848,6 +1857,7 @@ namespace SB_Prime
             Button button = new Button() { Content = img,
                 Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent) };
 
+            baseID = "SBProgram";
             filePath = _filePath;
             fileName = Path.GetFileName(filePath);
             Children.Add(textBlock);
