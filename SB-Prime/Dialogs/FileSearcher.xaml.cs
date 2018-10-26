@@ -79,33 +79,39 @@ namespace SB_Prime.Dialogs
             if (!Directory.Exists(RootPath)) return;
             System.Windows.Input.Cursor cursor = Mouse.OverrideCursor;
             Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-
-            Stack<string> dirs = new Stack<string>();
-            List<string> files = new List<string>();
-            dirs.Push(RootPath);
-
-            while (dirs.Count > 0)
+            try
             {
-                string dir = dirs.Pop();
-                string[] _dirs = Directory.GetDirectories(dir);
-                foreach (string _dir in _dirs)
+                Stack<string> dirs = new Stack<string>();
+                List<string> files = new List<string>();
+                dirs.Push(RootPath);
+
+                while (dirs.Count > 0)
                 {
-                    dirs.Push(_dir);
+                    string dir = dirs.Pop();
+                    string[] _dirs = Directory.GetDirectories(dir);
+                    foreach (string _dir in _dirs)
+                    {
+                        dirs.Push(_dir);
+                    }
+                    string[] _files = Directory.GetFiles(dir);
+                    foreach (string _file in _files)
+                    {
+                        if (_file.EndsWith(".sb") || _file.EndsWith(".smallbasic")) files.Add(_file);
+                    }
                 }
-                string[] _files = Directory.GetFiles(dir);
-                foreach (string _file in _files)
+                searchFiles.Clear();
+                foreach (string file in files)
                 {
-                    if (_file.EndsWith(".sb") || _file.EndsWith(".smallbasic")) files.Add(_file);
+                    searchFiles.Add(new SearchFile(file));
                 }
+                searchFiles.Sort();
+                dataGridSearcher.ItemsSource = searchFiles;
+                textBoxCount.Text = searchFiles.Count + " files found";
             }
-            searchFiles.Clear();
-            foreach (string file in files)
+            catch (Exception ex)
             {
-                searchFiles.Add(new SearchFile(file));
+                MainWindow.Errors.Add(new Error("File Searcher : " + ex.Message));
             }
-            searchFiles.Sort();
-            dataGridSearcher.ItemsSource = searchFiles;
-            textBoxCount.Text = searchFiles.Count+" files found";
 
             Mouse.OverrideCursor = cursor;
         }

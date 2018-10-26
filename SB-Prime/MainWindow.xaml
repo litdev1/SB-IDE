@@ -162,8 +162,8 @@
                     <RibbonButton Label="Paste" SmallImageSource="Images/Paste.png" KeyTip="V" Click="editPaste_Click" ToolTipTitle="Past clipboard at current selection"/>
                     <RibbonButton Label="Cut" SmallImageSource="Images/Cut.png" KeyTip="X" Click="editCut_Click" ToolTipTitle="Delete current selection to clipboard"/>
                     <RibbonButton Label="Delete" SmallImageSource="Images/Delete.png" KeyTip="D" Click="editDelete_Click" ToolTipTitle="Delete current selection"/>
-                    <RibbonButton Label="Redo" SmallImageSource="Images/Redo.png" KeyTip="Y" Click="editRedo_Click" ToolTipTitle="Redo last action"/>
                     <RibbonButton Label="Undo" SmallImageSource="Images/Undo.png" KeyTip="Z" Click="editUndo_Click" ToolTipTitle="Undo last action"/>
+                    <RibbonButton Label="Redo" SmallImageSource="Images/Redo.png" KeyTip="Y" Click="editRedo_Click" ToolTipTitle="Redo last action"/>
                     <RibbonButton Label="Select All" SmallImageSource="Images/Selection.png" KeyTip="SE" Click="editSelectAll_Click" ToolTipTitle="Select complete program"/>
                     <RibbonButton Label="Collapse All" SmallImageSource="Images/Collapse.png" KeyTip="CA" Click="editCollapse_Click" ToolTipTitle="Collapse all folding"/>
                     <RibbonButton Label="Expand All" SmallImageSource="Images/Expand.png" KeyTip="EA" Click="editExpand_Click" ToolTipTitle="Expand all folding"/>
@@ -193,7 +193,14 @@
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="Debug" KeyTip="D" >
-                <!-- Debug/Debug group-->
+                <RibbonGroup x:Name="FileGroup2" Header="File">
+                    <RibbonButton Label="New" SmallImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="Start a new program (Ctrl+N)"/>
+                    <RibbonButton Label="Open" SmallImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="Open an existing program (Ctrl+O)"/>
+                    <!--<RibbonButton Label="Close" SmallImageSource="Images/Close file.png" KeyTip="CL" Click="fileClose_Click" ToolTipTitle="Close current program"/>-->
+                    <RibbonButton Label="Save" SmallImageSource="Images/Save.png" KeyTip="SV" Click="fileSave_Click" ToolTipTitle="Save current program (Ctrl+S)"/>
+                    <!--<RibbonButton Label="Save As" SmallImageSource="Images/Save as.png" KeyTip="SA" Click="fileSaveAs_Click" ToolTipTitle="Save current program to a new file"/>-->
+                    <!--<RibbonButton Label="Save All" SmallImageSource="Images/Save all.png" KeyTip="A" Click="fileSaveAll_Click" ToolTipTitle="Save all programs"/>-->
+                </RibbonGroup>                <!-- Debug/Debug group-->
                 <RibbonGroup x:Name="DebugGroup" Header="Debug">
                     <RibbonButton Label="Stop" LargeImageSource="Images/Stop playing.png" KeyTip="ST" Click="debugStop_Click" ToolTipTitle="Stop current program (Shift+F6)"/>
                     <RibbonButton Label="Pause" LargeImageSource="Images/Pause.png" KeyTip="P" Click="debugPause_Click" ToolTipTitle="Pause current program"/>
@@ -211,9 +218,9 @@
                 <!-- Debug/Bookmark group-->
                 <RibbonGroup x:Name="Bookmarks" Header="Bookmarks">
                     <RibbonButton Label="Toggle Bookmark" SmallImageSource="Images/Bookmark.png" KeyTip="KB" Click="bookmarkToggle_Click" ToolTipTitle="Toggle bookmark at current line"/>
-                    <RibbonButton Label="Clear Bookmarks" SmallImageSource="Images/BookmarkOff.png" KeyTip="KC" Click="bookmarkClear_Click" ToolTipTitle="Clear all bookmarks"/>
                     <RibbonButton Label="Next Bookmark" SmallImageSource="Images/BookmarkNext.png" KeyTip="KN" Click="bookmarkNext_Click" ToolTipTitle="Move to next bookmark down"/>
                     <RibbonButton Label="Previous Bookmark" SmallImageSource="Images/BookmarkPrevious.png" KeyTip="KP" Click="bookmarkPrevious_Click" ToolTipTitle="Move to previous bookmark up"/>
+                    <RibbonButton Label="Clear Bookmarks" SmallImageSource="Images/BookmarkOff.png" KeyTip="KC" Click="bookmarkClear_Click" ToolTipTitle="Clear all bookmarks"/>
                 </RibbonGroup>
                 <!-- Debug/Tools group-->
                 <RibbonGroup x:Name="DebugTools" Header="Tools">
