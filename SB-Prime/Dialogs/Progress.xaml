@@ -1,0 +1,16 @@
+﻿<Window x:Class="SB_Prime.Dialogs.Progress"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_Prime.Dialogs"
+        mc:Ignorable="d"
+        Title="Progress" Height="168.8" Width="596.8" Loaded="Window_Loaded" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Topmost="True" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid >
+        <TextBox x:Name="textBoxDir" IsReadOnly="True" Margin="10,10,10.4,0" TextWrapping="Wrap" Height="70" VerticalAlignment="Top"/>
+        <Button x:Name="buttonCancel" Content="Cancel" Margin="0,97,10.4,0" Click="buttonCancel_Click" HorizontalAlignment="Right" Width="75" Height="23" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxFound" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="10,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBoxFailed" IsReadOnly="True" Height="23" Margin="135,97,90.4,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

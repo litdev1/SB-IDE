@@ -3,19 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SB_Prime.Dialogs
 {
@@ -27,6 +21,16 @@ namespace SB_Prime.Dialogs
         private List<SearchFile> searchFiles = new List<SearchFile>();
         public static string RootPath = "";
         public static bool Active = false;
+        public static int ProgressState = 0;
+        public static string ProgressDir = "";
+        public static int ProgressCount = 0;
+        public static int ProgressFailed = 0;
+        private static Stack<string> dirs = new Stack<string>();
+        private static List<string> files = new List<string>();
+        private Progress dlg;
+        private System.Threading.Timer timer;
+        //private System.Windows.Input.Cursor cursor;
+
 
         public FileSearcher()
         {
@@ -77,50 +81,74 @@ namespace SB_Prime.Dialogs
         private void GetFiles()
         {
             if (!Directory.Exists(RootPath)) return;
-            System.Windows.Input.Cursor cursor = Mouse.OverrideCursor;
-            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            if (ProgressState != 0) return;
+            ProgressState = 1;
+            dlg = new Progress();
+            dlg.Show();
+
+            //cursor = Mouse.OverrideCursor;
+            //Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+
+            Thread worker = new Thread(new ThreadStart(GetFilesWorker));
+            worker.Start();
+        }
+
+        private void GetFilesWorker()
+        {
             try
             {
-                Stack<string> dirs = new Stack<string>();
-                List<string> files = new List<string>();
+                dirs.Clear();
+                files.Clear();
+                ProgressCount = 0;
+                ProgressFailed = 0;
+
                 dirs.Push(RootPath);
 
-                while (dirs.Count > 0)
+                while (ProgressState == 1 && dirs.Count > 0)
                 {
-                    string dir = dirs.Pop();
-                    string[] _dirs = Directory.GetDirectories(dir);
-                    foreach (string _dir in _dirs)
+                    try
                     {
-                        dirs.Push(_dir);
+                        string dir = dirs.Pop();
+                        ProgressDir = dir;
+                        string[] _files = Directory.GetFiles(dir);
+                        foreach (string _file in _files)
+                        {
+                            if (_file.EndsWith(".sb") || _file.EndsWith(".smallbasic"))
+                            {
+                                files.Add(_file);
+                                ProgressCount++;
+                            }
+                        }
+                        string[] _dirs = Directory.GetDirectories(dir);
+                        foreach (string _dir in _dirs)
+                        {
+                            dirs.Push(_dir);
+                        }
                     }
-                    string[] _files = Directory.GetFiles(dir);
-                    foreach (string _file in _files)
+                    catch (Exception ex)
                     {
-                        if (_file.EndsWith(".sb") || _file.EndsWith(".smallbasic")) files.Add(_file);
+                        Dispatcher.Invoke(() =>
+                        {
+                            ProgressFailed++;
+                            //MainWindow.Errors.Add(new Error("File Searcher : " + ex.Message));
+                        });
                     }
                 }
-                searchFiles.Clear();
-                foreach (string file in files)
-                {
-                    searchFiles.Add(new SearchFile(file));
-                }
-                searchFiles.Sort();
-                dataGridSearcher.ItemsSource = searchFiles;
-                textBoxCount.Text = searchFiles.Count + " files found";
             }
             catch (Exception ex)
             {
-                MainWindow.Errors.Add(new Error("File Searcher : " + ex.Message));
+                Dispatcher.Invoke(() =>
+                {
+                    MainWindow.Errors.Add(new Error("File Searcher : " + ex.Message));
+                });
             }
 
-            Mouse.OverrideCursor = cursor;
+            ProgressState = 2;
         }
 
         private void Filter()
         {
             if (!Directory.Exists(RootPath)) return;
-
-            GetFiles();
 
             string keyword = textBoxSearcherText.Text;
             List<SearchFile> filterFiles = new List<SearchFile>();
@@ -183,13 +211,38 @@ namespace SB_Prime.Dialogs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            timer = new System.Threading.Timer(new TimerCallback(_timer), null, 0, 100);
             Active = true;
+            ProgressState = 0;
             GetFiles();
+        }
+
+        private void _timer(object state)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                buttonSearcherBrowse.IsEnabled = ProgressState == 0;
+                buttonSearcherFilter.IsEnabled = ProgressState == 0;
+                if (ProgressState == 2)
+                {
+                    ProgressState = 0;
+                    searchFiles.Clear();
+                    foreach (string file in files)
+                    {
+                        searchFiles.Add(new SearchFile(file));
+                    }
+                    searchFiles.Sort();
+                    dataGridSearcher.ItemsSource = searchFiles;
+                    textBoxCount.Text = searchFiles.Count + " files found";
+                    //Mouse.OverrideCursor = cursor;
+                }
+            });
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Active = false;
+            ProgressState = 0;
         }
     }
 

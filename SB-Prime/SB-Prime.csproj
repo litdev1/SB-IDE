@@ -111,6 +111,9 @@
     <Compile Include="Dialogs\PolygonSides.xaml.cs">
       <DependentUpon>PolygonSides.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\Progress.xaml.cs">
+      <DependentUpon>Progress.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\ShapesEditor.xaml.cs">
       <DependentUpon>ShapesEditor.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\PolygonSides.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Progress.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
