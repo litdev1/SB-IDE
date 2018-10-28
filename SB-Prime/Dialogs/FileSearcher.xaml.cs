@@ -42,6 +42,8 @@ namespace SB_Prime.Dialogs
             Topmost = true;
             textBoxSearcherRoot.Text = RootPath;
             checkBoxSearcherWord.IsChecked = true;
+            checkBoxSearcherCase.IsChecked = false;
+            checkBoxSearcherPath.IsChecked = true;
 
             Left = SystemParameters.PrimaryScreenWidth - Width - 20;
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
@@ -149,12 +151,17 @@ namespace SB_Prime.Dialogs
 
             string keyword = textBoxSearcherText.Text;
             filterFiles.Clear();
-            RegexOptions caseSensitive = RegexOptions.IgnoreCase;
+            RegexOptions caseSensitive = (bool)checkBoxSearcherCase.IsChecked ? RegexOptions.None : RegexOptions.IgnoreCase;
             string wholeWord = (bool)checkBoxSearcherWord.IsChecked ? "\\b" + keyword + "\\b" : keyword;
             foreach (SearchFile file in searchFiles)
             {
                 bool isFound = Regex.IsMatch(string.Concat(file.Text), wholeWord, caseSensitive);
-                if (keyword == "" || file.FilePath.ToLower().Contains(keyword.ToLower()) || isFound) filterFiles.Add(file);
+                if ((bool)checkBoxSearcherPath.IsChecked)
+                {
+                    if ((bool)checkBoxSearcherCase.IsChecked) isFound |= file.FilePath.Contains(keyword);
+                    else isFound |= file.FilePath.ToLower().Contains(keyword.ToLower());
+                }
+                if (keyword == "" || isFound) filterFiles.Add(file);
             }
             dataGridSearcher.ItemsSource = filterFiles;
             dataGridSearcher.Items.Refresh();
@@ -184,7 +191,7 @@ namespace SB_Prime.Dialogs
                 doc.TextArea.TargetEnd = doc.TextArea.TextLength;
 
                 string keyword = textBoxSearcherText.Text;
-                RegexOptions caseSensitive = RegexOptions.IgnoreCase;
+                RegexOptions caseSensitive = (bool)checkBoxSearcherCase.IsChecked ? RegexOptions.None : RegexOptions.IgnoreCase;
                 string wholeWord = (bool)checkBoxSearcherWord.IsChecked ? "\\b" + keyword + "\\b" : keyword;
                 MatchCollection matches = Regex.Matches(doc.TextArea.Text, wholeWord, caseSensitive);
                 foreach (Match match in matches)
@@ -241,6 +248,15 @@ namespace SB_Prime.Dialogs
         {
             Active = false;
             ProgressState = 0;
+        }
+
+        private void textBoxSearcherRoot_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                RootPath = textBoxSearcherRoot.Text;
+                GetFiles();
+            }
         }
     }
 

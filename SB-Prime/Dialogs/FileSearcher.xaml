@@ -9,7 +9,7 @@
     <Grid>
         <Label x:Name="label" Content="Root Folder" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Button x:Name="buttonSearcherBrowse" ToolTip="Select a root folder to recursively search for Small Basic files" Content="Browse" HorizontalAlignment="Right" Margin="0,10,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherBrowse_Click"/>
-        <TextBox x:Name="textBoxSearcherRoot" Height="23" Margin="87,10,146.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxSearcherRoot" Height="23" Margin="87,10,146.6,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBoxSearcherRoot_KeyDown"/>
         <Grid Margin="10,41,146.6,9.4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -40,13 +40,18 @@
             <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1"/>
             <Grid x:Name="gridSearcherPreview" Margin="0" Grid.Row="2"/>
         </Grid>
-        <CheckBox x:Name="checkBoxSearcherWord" ToolTip="Filter on whole words only" Content="Whole Word" HorizontalAlignment="Right" Margin="0,34,10.6,0" VerticalAlignment="Top" Width="131"/>
-        <TextBox x:Name="textBoxSearcherText" ToolTip="Only show files containing the filter text" HorizontalAlignment="Right" Height="23" Margin="0,86,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
-        <Button x:Name="buttonSearcherFilter" ToolTip="Perform a filter on files, blank filter text to reshow all files" Content="Apply Filter" HorizontalAlignment="Right" Margin="0,114,8.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherFilter_Click"/>
-        <Button x:Name="buttonSearcherOpen" ToolTip="Open the current selected file in SB-Prime" Content="Open" HorizontalAlignment="Right" Margin="0,138,8.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherOpen_Click"/>
-        <TextBox x:Name="textBoxCount" ToolTip="The number of files meeting filter" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,162,8.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
-        <TextBox x:Name="textBoxMatches" ToolTip ="The number of filter matches in the selected file" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,190,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
-        <Label x:Name="label1" Content="Filter Text" HorizontalAlignment="Right" Margin="0,55,9.6,0" VerticalAlignment="Top" Width="132" HorizontalContentAlignment="Center"/>
-
+        <Button x:Name="buttonSearcherOpen" ToolTip="Open the current selected file in SB-Prime" Content="Open" HorizontalAlignment="Right" Margin="0,267,8.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherOpen_Click"/>
+        <TextBox x:Name="textBoxCount" ToolTip="The number of files meeting filter" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,239,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
+        <GroupBox x:Name="groupBox" Header="Filter Search" Margin="0,34,9.6,0" VerticalAlignment="Top" Height="200" HorizontalAlignment="Right" Width="132">
+            <Grid>
+                <CheckBox x:Name="checkBoxSearcherWord" ToolTip="Filter on whole words only" Content="Whole Word" Margin="0,6,-0.2,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="checkBoxSearcherCase" ToolTip="Filter on case matches only" Content="Case Sensitive" Margin="0,26,-0.2,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="checkBoxSearcherPath" ToolTip="Include file path name in search" Content="Include Filepath" Margin="0,46,0.8,0" VerticalAlignment="Top"/>
+                <Label x:Name="label1" Content="Filter Text" Margin="0,66,-0.2,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.497,0.211"/>
+                <TextBox x:Name="textBoxSearcherText" ToolTip="Only show files containing the filter text" Height="23" Margin="0,97,0.8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <Button x:Name="buttonSearcherFilter" ToolTip="Perform a filter on files, blank filter text to reshow all files" Content="Apply Filter" Margin="0,125,-0.2,0" VerticalAlignment="Top" Click="buttonSearcherFilter_Click"/>
+                <TextBox x:Name="textBoxMatches" ToolTip ="The number of filter matches in the selected file" IsReadOnly="True" Height="23" Margin="0,149,1,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" AllowDrop="False"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>
