@@ -19,6 +19,7 @@ namespace SB_Prime.Dialogs
     public partial class FileSearcher : Window
     {
         private List<SearchFile> searchFiles = new List<SearchFile>();
+        private List<SearchFile> filterFiles = new List<SearchFile>();
         public static string RootPath = "";
         public static bool Active = false;
         public static int ProgressState = 0;
@@ -83,14 +84,10 @@ namespace SB_Prime.Dialogs
             if (!Directory.Exists(RootPath)) return;
             if (ProgressState != 0) return;
             ProgressState = 1;
-            dlg = new Progress();
-            dlg.Show();
-
-            //cursor = Mouse.OverrideCursor;
-            //Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-
             Thread worker = new Thread(new ThreadStart(GetFilesWorker));
             worker.Start();
+            dlg = new Progress();
+            dlg.Show();
         }
 
         private void GetFilesWorker()
@@ -110,6 +107,11 @@ namespace SB_Prime.Dialogs
                     {
                         string dir = dirs.Pop();
                         ProgressDir = dir;
+                        string[] _dirs = Directory.GetDirectories(dir);
+                        foreach (string _dir in _dirs)
+                        {
+                            dirs.Push(_dir);
+                        }
                         string[] _files = Directory.GetFiles(dir);
                         foreach (string _file in _files)
                         {
@@ -118,11 +120,6 @@ namespace SB_Prime.Dialogs
                                 files.Add(_file);
                                 ProgressCount++;
                             }
-                        }
-                        string[] _dirs = Directory.GetDirectories(dir);
-                        foreach (string _dir in _dirs)
-                        {
-                            dirs.Push(_dir);
                         }
                     }
                     catch (Exception ex)
@@ -143,7 +140,7 @@ namespace SB_Prime.Dialogs
                 });
             }
 
-            if (ProgressState !=  2) ProgressState = 0;
+            ProgressState = 2;
         }
 
         private void Filter()
@@ -151,7 +148,7 @@ namespace SB_Prime.Dialogs
             if (!Directory.Exists(RootPath)) return;
 
             string keyword = textBoxSearcherText.Text;
-            List<SearchFile> filterFiles = new List<SearchFile>();
+            filterFiles.Clear();
             RegexOptions caseSensitive = RegexOptions.IgnoreCase;
             string wholeWord = (bool)checkBoxSearcherWord.IsChecked ? "\\b" + keyword + "\\b" : keyword;
             foreach (SearchFile file in searchFiles)
@@ -160,6 +157,7 @@ namespace SB_Prime.Dialogs
                 if (keyword == "" || file.FilePath.ToLower().Contains(keyword.ToLower()) || isFound) filterFiles.Add(file);
             }
             dataGridSearcher.ItemsSource = filterFiles;
+            dataGridSearcher.Items.Refresh();
             textBoxCount.Text = filterFiles.Count + " files found";
         }
 
@@ -233,8 +231,8 @@ namespace SB_Prime.Dialogs
                     }
                     searchFiles.Sort();
                     dataGridSearcher.ItemsSource = searchFiles;
+                    dataGridSearcher.Items.Refresh();
                     textBoxCount.Text = searchFiles.Count + " files found";
-                    //Mouse.OverrideCursor = cursor;
                 }
             });
         }

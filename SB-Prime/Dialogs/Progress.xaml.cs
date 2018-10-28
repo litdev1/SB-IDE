@@ -43,7 +43,7 @@ namespace SB_Prime.Dialogs
                     textBoxDir.Text = FileSearcher.ProgressDir;
                     textBoxFound.Text = FileSearcher.ProgressCount + " files found";
                     textBoxFailed.Text = FileSearcher.ProgressFailed + " folders or files could not be processed";
-                    if (FileSearcher.ProgressState == 0) Close();
+                    if (FileSearcher.ProgressState != 1) Close();
                 });
             }
             catch
