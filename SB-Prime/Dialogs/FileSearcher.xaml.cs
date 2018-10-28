@@ -143,7 +143,7 @@ namespace SB_Prime.Dialogs
                 });
             }
 
-            ProgressState = 2;
+            ProgressState = 0;
         }
 
         private void Filter()
@@ -211,10 +211,10 @@ namespace SB_Prime.Dialogs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            timer = new System.Threading.Timer(new TimerCallback(_timer), null, 0, 100);
             Active = true;
             ProgressState = 0;
             GetFiles();
+            timer = new System.Threading.Timer(new TimerCallback(_timer), null, 100, 100);
         }
 
         private void _timer(object state)
@@ -230,6 +230,10 @@ namespace SB_Prime.Dialogs
                     foreach (string file in files)
                     {
                         searchFiles.Add(new SearchFile(file));
+                    }
+                    if (searchFiles.Count == 0)
+                    {
+                        ProgressState = 0;
                     }
                     searchFiles.Sort();
                     dataGridSearcher.ItemsSource = searchFiles;

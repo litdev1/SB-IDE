@@ -31,7 +31,7 @@ namespace SB_Prime.Dialogs
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            timer = new Timer(new TimerCallback(_timer), null, 0, 100);
+            timer = new Timer(new TimerCallback(_timer), null, 100, 100);
         }
 
         private void _timer(object state)
