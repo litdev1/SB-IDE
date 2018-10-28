@@ -221,7 +221,7 @@ namespace SB_Prime.Dialogs
             {
                 buttonSearcherBrowse.IsEnabled = ProgressState == 0;
                 buttonSearcherFilter.IsEnabled = ProgressState == 0;
-                if (ProgressState == 2)
+                if (ProgressState == 2 || (ProgressState == 0 && files.Count != searchFiles.Count))
                 {
                     ProgressState = 0;
                     searchFiles.Clear();
