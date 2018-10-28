@@ -11,8 +11,6 @@ namespace SB_Prime
 
         public void Find(bool next, string search)
         {
-            HighLight(MainWindow.highlightAll ? search : "");
-
             if (search.Length > 0)
             {
 				if (next)
@@ -69,8 +67,9 @@ namespace SB_Prime
 				// Select the occurance
 				TextArea.SetSelection(TextArea.TargetEnd, TextArea.TargetStart);
 				TextArea.ScrollCaret();
-			}
-		}
+                HighLight(MainWindow.highlightAll ? search : "");
+            }
+        }
 
         public void HighLight(string search)
         {
