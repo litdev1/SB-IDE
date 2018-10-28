@@ -143,7 +143,7 @@ namespace SB_Prime.Dialogs
                 });
             }
 
-            ProgressState = 0;
+            if (ProgressState !=  2) ProgressState = 0;
         }
 
         private void Filter()
@@ -230,10 +230,6 @@ namespace SB_Prime.Dialogs
                     foreach (string file in files)
                     {
                         searchFiles.Add(new SearchFile(file));
-                    }
-                    if (searchFiles.Count == 0)
-                    {
-                        ProgressState = 0;
                     }
                     searchFiles.Sort();
                     dataGridSearcher.ItemsSource = searchFiles;
