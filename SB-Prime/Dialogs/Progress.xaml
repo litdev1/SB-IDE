@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="Progress" Height="168.8" Width="596.8" Loaded="Window_Loaded" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Topmost="True" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid >
-        <TextBox x:Name="textBoxDir" IsReadOnly="True" Margin="10,10,10.4,0" TextWrapping="Wrap" Height="70" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxDir" IsReadOnly="True" Margin="10,10,10.4,0" TextWrapping="Wrap" Height="70" VerticalAlignment="Top" Text="Folders Searched"/>
         <Button x:Name="buttonCancel" Content="Cancel" Margin="0,97,10.4,0" Click="buttonCancel_Click" HorizontalAlignment="Right" Width="75" Height="23" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxFound" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="10,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxFailed" IsReadOnly="True" Height="23" Margin="135,97,90.4,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxFound" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="10,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="0 Files found"/>
+        <TextBox x:Name="textBoxFailed" IsReadOnly="True" Height="23" Margin="135,97,90.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0 folders or files could not be processed"/>
 
     </Grid>
 </Window>
