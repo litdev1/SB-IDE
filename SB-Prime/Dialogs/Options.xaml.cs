@@ -35,6 +35,7 @@ namespace SB_Prime.Dialogs
             textBoxInstallation.Text = MainWindow.InstallDir;
             checkBoxQuoteInserts.IsChecked = MainWindow.quoteInserts;
             checkBoxHEXColors.IsChecked = MainWindow.hexColors;
+            checkBoxLoadExtensions.IsChecked = MainWindow.loadExtensions;
         }
 
         private void buttonUpdates_Click(object sender, RoutedEventArgs e)
@@ -75,6 +76,7 @@ namespace SB_Prime.Dialogs
             }
             MainWindow.quoteInserts = (bool)checkBoxQuoteInserts.IsChecked;
             MainWindow.hexColors = (bool)checkBoxHEXColors.IsChecked;
+            MainWindow.loadExtensions = (bool)checkBoxLoadExtensions.IsChecked;
 
             Close();
         }

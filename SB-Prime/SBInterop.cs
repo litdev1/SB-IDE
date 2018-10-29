@@ -75,7 +75,7 @@ namespace SB_Prime
             LoadSB();
             LoadCompiler();
             CompileExtension(Properties.Resources.SBClient, "SBDebugger", overwriteSBDebug);
-            LoadExtensions();
+            LoadExtensions(MainWindow.loadExtensions);
         }
 
         private void LoadSB()
@@ -126,7 +126,7 @@ namespace SB_Prime
             }
         }
 
-        private void LoadExtensions()
+        private void LoadExtensions(bool bLoadExtensions)
         {
             try
             {
@@ -151,6 +151,7 @@ namespace SB_Prime
                 foreach (string extension in extensions)
                 {
                     if (extension.Contains("SBDebugger")) continue;
+                    if (!bLoadExtensions && !extension.Contains("SmallBasicLibrary")) continue;
 
                     XmlDocument doc = new XmlDocument();
                     SBObject obj = null;

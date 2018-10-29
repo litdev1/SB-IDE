@@ -51,6 +51,7 @@ namespace SB_Prime
         public static int theme = 0;
         public static bool quoteInserts = false;
         public static bool hexColors = false;
+        public static bool loadExtensions = true;
         public static SearchFlags searchFlags = SearchFlags.None;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
@@ -431,6 +432,7 @@ namespace SB_Prime
                 for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
                 if (File.Exists(data[0]) && lines.Count > 0) bookmarks[data[0]] = lines;
             }
+            loadExtensions = Properties.Settings.Default.LoadExtensions;
         }
 
         private void ResetSettings()
@@ -571,6 +573,7 @@ namespace SB_Prime
                 foreach (int line in kvp.Value) data += DelimBP.ToString() + line;
                 Properties.Settings.Default.Bookmarks.Add(data);
             }
+            Properties.Settings.Default.LoadExtensions = loadExtensions;
 
             Properties.Settings.Default.Save();
         }
@@ -1621,9 +1624,12 @@ namespace SB_Prime
 
         private void ExtensionManager()
         {
-            EMWindow windowEM = new EMWindow(Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "settings"), InstallDir);
-            windowEM.ShowDialog();
-            sbInterop = new SBInterop();
+            if (!loadExtensions || MessageBox.Show("Uncheck \"Load extension dlls on startup\" in Advanced->Options and restart to modify installed extensions.\n\nOK to continue with extensions loaded.", "SB-Prime", MessageBoxButton.OKCancel, MessageBoxImage.Information) == MessageBoxResult.OK)
+            {
+                EMWindow windowEM = new EMWindow(Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "settings"), InstallDir);
+                windowEM.ShowDialog();
+                sbInterop = new SBInterop();
+            }
         }
 
         public void FindNext()
