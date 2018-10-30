@@ -21,8 +21,8 @@ namespace SB_Prime.Dialogs
     {
         MainWindow mainWindow;
         public static bool Active = false;
-        public static string lastFind = "";
-        public static string lastReplace = "";
+        public static List<string> lastFind = new List<string>();
+        public static List<string> lastReplace = new List<string>();
 
         internal FindAndReplace(MainWindow mainWindow)
         {
@@ -32,12 +32,27 @@ namespace SB_Prime.Dialogs
             FontSize = 12 + MainWindow.zoom;
 
             Topmost = true;
+
             SBDocument sbDocument = mainWindow.GetActiveDocument();
-            textBoxFind.Text = lastFind;
-            textBoxReplace.Text = lastReplace;
-            if (sbDocument.TextArea.SelectedText != "") textBoxFind.Text = sbDocument.TextArea.SelectedText;
-            textBoxFind.Focus();
-            textBoxFind.SelectAll();
+            foreach (string item in mainWindow.cbFindText.Items)
+            {
+                if (!lastFind.Contains(item)) lastFind.Add(item);
+            }
+            if (sbDocument.TextArea.SelectedText != "" && !lastFind.Contains(sbDocument.TextArea.SelectedText)) lastFind.Insert(0, sbDocument.TextArea.SelectedText);
+
+            foreach (string item in lastFind)
+            {
+                comboBoxFind.Items.Add(item);
+            }
+            foreach (string item in lastReplace)
+            {
+                comboBoxReplace.Items.Add(item);
+            }
+
+            textBoxFind.Text = lastFind.Count > 0 ? lastFind[0] : "";
+            textBoxReplace.Text = lastReplace.Count > 0 ? lastReplace[0] : "";
+            comboBoxFind.SelectedItem = textBoxFind.Text;
+            comboBoxReplace.SelectedItem = textBoxReplace.Text;
 
             Left = SystemParameters.PrimaryScreenWidth - Width - 20;
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
@@ -45,6 +60,7 @@ namespace SB_Prime.Dialogs
 
         private void buttonFind_Click(object sender, RoutedEventArgs e)
         {
+            if (!lastFind.Contains(textBoxFind.Text)) lastFind.Insert(0, textBoxFind.Text);
             if (!comboBoxFind.Items.Contains(textBoxFind.Text)) comboBoxFind.Items.Insert(0, textBoxFind.Text);
             comboBoxFind.SelectedItem = textBoxFind.Text;
 
@@ -54,8 +70,10 @@ namespace SB_Prime.Dialogs
 
         private void buttonReplace_Click(object sender, RoutedEventArgs e)
         {
+            if (!lastFind.Contains(textBoxFind.Text)) lastFind.Insert(0, textBoxFind.Text);
             if (!comboBoxFind.Items.Contains(textBoxFind.Text)) comboBoxFind.Items.Insert(0, textBoxFind.Text);
             comboBoxFind.SelectedItem = textBoxFind.Text;
+            if (!lastReplace.Contains(textBoxReplace.Text)) lastReplace.Insert(0, textBoxReplace.Text);
             if (!comboBoxReplace.Items.Contains(textBoxReplace.Text)) comboBoxReplace.Items.Insert(0, textBoxReplace.Text);
             comboBoxReplace.SelectedItem = textBoxReplace.Text;
 
@@ -77,8 +95,10 @@ namespace SB_Prime.Dialogs
 
         private void buttonReplaceAll_Click(object sender, RoutedEventArgs e)
         {
+            if (!lastFind.Contains(textBoxFind.Text)) lastFind.Insert(0, textBoxFind.Text);
             if (!comboBoxFind.Items.Contains(textBoxFind.Text)) comboBoxFind.Items.Insert(0, textBoxFind.Text);
             comboBoxFind.SelectedItem = textBoxFind.Text;
+            if (!lastReplace.Contains(textBoxReplace.Text)) lastReplace.Insert(0, textBoxReplace.Text);
             if (!comboBoxReplace.Items.Contains(textBoxReplace.Text)) comboBoxReplace.Items.Insert(0, textBoxReplace.Text);
             comboBoxReplace.SelectedItem = textBoxReplace.Text;
 
@@ -115,14 +135,16 @@ namespace SB_Prime.Dialogs
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            lastFind = textBoxFind.Text;
-            lastReplace = textBoxReplace.Text;
+            if (!lastFind.Contains(textBoxFind.Text)) lastFind.Insert(0, textBoxFind.Text);
+            if (!lastReplace.Contains(textBoxReplace.Text)) lastReplace.Insert(0, textBoxReplace.Text);
             Active = false;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Active = true;
+            textBoxReplace.Focus();
+            textBoxReplace.SelectAll();
         }
 
         private void comboBoxFind_SelectionChanged(object sender, SelectionChangedEventArgs e)
