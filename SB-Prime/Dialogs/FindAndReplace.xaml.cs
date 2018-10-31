@@ -137,6 +137,10 @@ namespace SB_Prime.Dialogs
         {
             if (!lastFind.Contains(textBoxFind.Text)) lastFind.Insert(0, textBoxFind.Text);
             if (!lastReplace.Contains(textBoxReplace.Text)) lastReplace.Insert(0, textBoxReplace.Text);
+            foreach (string item in lastFind)
+            {
+                if (!mainWindow.cbFindText.Items.Contains(item)) mainWindow.cbFindText.Items.Add(item);
+            }
             Active = false;
         }
 
