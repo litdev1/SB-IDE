@@ -204,16 +204,14 @@ namespace SB_Prime
         {
             exeFolder = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            string settings = exeFolder + "\\SB-Prime.config";
-            if (File.Exists(settings))
+            if (Properties.Settings.Default.UpgradeRequired)
             {
-                ImportSettingsFromFile(settings);
-                File.Delete(settings);
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeRequired = false;
+                Properties.Settings.Default.Save();
             }
-            else
-            {
-                LoadSettings();
-            }
+            LoadSettings();
+
             string update = exeFolder + "\\Update.exe-";
             if (File.Exists(update))
             {
@@ -991,8 +989,6 @@ namespace SB_Prime
         {
             try
             {
-                string settings = exeFolder + "\\SB-Prime.config";
-                ExportSettingsToFile(settings);
                 Process.Start(exeFolder + "\\Update.exe");
                 Close();
             }
