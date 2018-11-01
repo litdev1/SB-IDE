@@ -35,7 +35,7 @@ namespace SB_Prime.Dialogs
             textBoxImport.Text = "";
 
             string data = (string)Clipboard.GetData(DataFormats.Text);
-            data = data.Trim();
+            data = null == data ? "" : data.Trim();
             if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}").Success)
             {
                 textBoxImport.Text = data;
