@@ -235,7 +235,8 @@
                     <RibbonButton Name="ToolsFlowChart" Label="Flow Chart" LargeImageSource="Images/FlowChart.png" KeyTip="FC" Click="ToolsFlowChart_Click" ToolTipTitle="Display a flow chart"/>
                     <RibbonButton Name="ToolsColor" Label="Insert Colors" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="Insert color names into document"/>
                     <RibbonButton Name="ToolsFont" Label="Insert Fonts" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="Insert font names into document"/>
-                    <RibbonButton Name="ToolsExtensionSearcher" Label="Search Extensions" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="Serch extension objects"/>
+                    <RibbonButton Name="Links" Label="Links" LargeImageSource="Images/Link.png" KeyTip="TL" Click="ToolsLinks_Click" ToolTipTitle="Useful links and free resources"/>
+                    <RibbonButton Name="ToolsExtensionSearcher" Label="Search Extensions" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="Search extension objects"/>
                     <RibbonButton Label="File Searcher" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="Search for content in Small Basic files"/>
                 </RibbonGroup>
             </RibbonTab>

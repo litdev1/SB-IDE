@@ -1008,6 +1008,12 @@ namespace SB_Prime
             cbFindControl.SelectionBoxWidth += tbFind.ActualWidth - cbFindControl.ActualWidth;
         }
 
+        private void ToolsLinks_Click(object sender, RoutedEventArgs e)
+        {
+            Links links = new Links();
+            links.Show();
+        }
+
         /*
 private bool mRestoreForDragMove;
 

@@ -114,6 +114,9 @@
     <Compile Include="Dialogs\Colours.xaml.cs">
       <DependentUpon>Colours.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\Links.xaml.cs">
+      <DependentUpon>Links.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\PolygonSides.xaml.cs">
       <DependentUpon>PolygonSides.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Settings1.cs" />
     <Page Include="Dialogs\Colours.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\Links.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -563,6 +570,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-ILSpy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-VS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-Paint.Net.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-Notepad++.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-Greenfish.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
