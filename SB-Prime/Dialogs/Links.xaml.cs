@@ -35,37 +35,44 @@ namespace SB_Prime.Dialogs
             links.Add(new LinkData()
             {
                 Name = "Visual Studio",
-                Description = "Microsoft Visual Studio Community development environment.\nWrite your own extensions and bigger projects.",
+                Description = "Microsoft Visual Studio Community development environment.\nWrite your own extensions and bigger projects.\nA big download, but a professional level IDE.",
                 Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_VS) },
-                URL = "https://visualstudio.microsoft.com/free-developer-offers/"
+                URL = "https://visualstudio.microsoft.com/free-developer-offers"
             });
             links.Add(new LinkData()
             {
                 Name = "ILSpy",
-                Description = "View and decompile .Net assemblies.  Find out how extensions work.\nDownload zip and extract (no installation).",
+                Description = "View and decompile .Net assemblies.  Find out how extensions work.\nEssential for getting under the hood of Small Basic.\nDownload zip binaries and extract (no installation).",
                 Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_ILSpy) },
                 URL = "https://github.com/icsharpcode/ILSpy/releases/tag/v4.0-beta2"
             });
             links.Add(new LinkData()
             {
                 Name = "Paint.Net",
-                Description = "Create and manipulate images, including easily giving png images transparent borders.",
+                Description = "Create and manipulate images, including easily giving png images transparent backgrounds and creating animated gifs.\nCheck out the magic wand tool.",
                 Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_Paint_Net) },
                 URL = "https://www.getpaint.net/index.html"
             });
             links.Add(new LinkData()
             {
                 Name = "Notepad++",
-                Description = "Excellent text editor alternative to notepad.",
+                Description = "Excellent text editor alternative to notepad.\nUseful to quickly look at or edit most text readable file formats.",
                 Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_Notepad__) },
-                URL = "https://notepad-plus-plus.org/"
+                URL = "https://notepad-plus-plus.org"
+            });
+            links.Add(new LinkData()
+            {
+                Name = "jZip",
+                Description = "File zip compression.\nThe best way to share multiple documents in a single compressed file.",
+                Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_jZip) },
+                URL = "http://www.jzip.com"
             });
             links.Add(new LinkData()
             {
                 Name = "Greenfish\nIcon Editor",
-                Description = "Create and edit icons.",
+                Description = "Create and edit icons.\nIcon formats are quite tricky without a simple tool like this.",
                 Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_Greenfish) },
-                URL = "https://greenfish-icon-editor-pro.en.softonic.com"
+                URL = "https://download.cnet.com/Greenfish-Icon-Editor-Pro/3000-2193_4-10773415.html"
             });
         }
 
@@ -93,5 +100,9 @@ namespace SB_Prime.Dialogs
         public string Description { get; set; }
         public Image Link { get; set; }
         public string URL { get; set; }
+        public string Details
+        {
+            get { return URL; }
+        }
     }
 }

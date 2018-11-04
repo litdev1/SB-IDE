@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Dialogs"
         mc:Ignorable="d"
-        Title="Links" Height="500" Width="600" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="CanResize">
+        Title="Links" Height="500" Width="600" Icon="/SB-Prime;component/AppIcon.ico" Topmost="True" WindowStartupLocation="CenterOwner" ResizeMode="CanResize">
     <Grid>
         <Label x:Name="label" Content="Below are some links to essential free developer resources" Margin="10,10,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <DataGrid x:Name="dataGridLinks" Margin="10,41,9.6,10.4" HeadersVisibility="Column" CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="All" HorizontalGridLinesBrush="Gray">
@@ -26,11 +26,16 @@
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
             </DataGrid.Resources>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <TextBox Text="{Binding Details, Mode=OneWay}" Margin="10" Background="Transparent" BorderThickness="0" IsReadOnly="True"/>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Name" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <TextBlock Text="{Binding Name}" Margin="2"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

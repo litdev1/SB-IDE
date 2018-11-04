@@ -1011,7 +1011,7 @@ namespace SB_Prime
         private void ToolsLinks_Click(object sender, RoutedEventArgs e)
         {
             Links links = new Links();
-            links.Show();
+            links.ShowDialog();
         }
 
         /*

@@ -543,6 +543,16 @@ namespace SB_Prime.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Link_jZip {
+            get {
+                object obj = ResourceManager.GetObject("Link_jZip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Link_Notepad__ {
             get {
                 object obj = ResourceManager.GetObject("Link_Notepad__", resourceCulture);
