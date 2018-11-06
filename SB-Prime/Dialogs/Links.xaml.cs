@@ -35,7 +35,7 @@ namespace SB_Prime.Dialogs
             links.Add(new LinkData()
             {
                 Name = "Visual Studio",
-                Description = "Microsoft Visual Studio Community development environment.\nWrite your own extensions and bigger projects.\nA big download, but a professional level IDE.",
+                Description = "Microsoft Visual Studio Community development environment.\nWrite your own Small Basic extensions and bigger projects.\nA big download, but a professional level IDE.",
                 Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_VS) },
                 URL = "https://visualstudio.microsoft.com/free-developer-offers"
             });
@@ -49,7 +49,7 @@ namespace SB_Prime.Dialogs
             links.Add(new LinkData()
             {
                 Name = "Paint.Net",
-                Description = "Create and manipulate images, including easily giving png images transparent backgrounds and creating animated gifs.\nCheck out the magic wand tool.",
+                Description = "Create and manipulate images, including easily giving png images transparent backgrounds and creating animated gifs.\nCheck out the magic wand selection tool.",
                 Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_Paint_Net) },
                 URL = "https://www.getpaint.net/index.html"
             });
