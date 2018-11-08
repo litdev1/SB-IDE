@@ -1014,6 +1014,11 @@ namespace SB_Prime
             links.ShowDialog();
         }
 
+        private void decompileCS_Click(object sender, RoutedEventArgs e)
+        {
+            DecompileCS();
+        }
+
         /*
 private bool mRestoreForDragMove;
 

@@ -1,0 +1,22 @@
+﻿<Window x:Class="SB_Prime.Dialogs.Decompile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_Prime.Dialogs"
+        mc:Ignorable="d"
+        Title="Decompile" Height="326" Width="582.4" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True">
+    <Grid Margin="0">
+        <Label x:Name="label" Content="Decompile to C#" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB" Height="32"/>
+        <TextBlock TextWrapping="WrapWithOverflow" Margin="10,37,10,0" VerticalAlignment="Top" Height="77"><Run Text="This wizard will "/><Run Text="decompile"/><Run Text=" "/><Run Text="a valid .Net assembly "/><Run Text="to Microsoft "/><Run Text="C# (dll or exe)"/><Run Text=" and then open "/><Run Text="the folder containing the decompiled C# source code"/><Run Text="."/><LineBreak/><Run/><LineBreak/><Run Text="If successful, and Visual Studio is installed then open the project file (*.csproj)."/></TextBlock>
+        <Label Content="Output Location (must be an empty folder - use 'Make New Folder')" Margin="9,183,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="557"/>
+        <TextBox x:Name="textBoxDecompileFolder" Height="23" Margin="9,214,90,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="textBoxDecompileFolder_TextChanged"/>
+        <Button x:Name="buttonDecompileFolder" Content="Browse" Margin="0,214,10,0" VerticalAlignment="Top" Height="23" Click="buttonDecompileFolder_Click" RenderTransformOrigin="0.583,-0.061" ToolTip="Browse to location to export decompiled solution" HorizontalAlignment="Right" Width="75"/>
+        <Button x:Name="buttonDecompileCancel" Content="Cancel" Margin="0,255,10,0" Click="buttonDecompileCancel_Click" ToolTip="Close with no action" HorizontalAlignment="Right" Width="75" Height="19" VerticalAlignment="Top"/>
+        <Button x:Name="buttonDecompileContinue" Content="Continue" Margin="0,255,90,0" Click="buttonDecompileContinue_Click" ToolTip="Decompile a Visual Studio solution" HorizontalAlignment="Right" Width="75" Height="19" VerticalAlignment="Top"/>
+        <Label Content="Source File (.Net dll or exe)" Margin="9,119,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="557"/>
+        <TextBox x:Name="textBoxDecompileSource" Height="23" Margin="9,149,90,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="textBoxDecompileSource_TextChanged"/>
+        <Button x:Name="buttonDecompileSource" Content="Browse" Margin="0,149,10,0" VerticalAlignment="Top" Height="23" Click="buttonDecompileSource_Click" RenderTransformOrigin="0.583,-0.061" ToolTip="Browse to source file to decompile" HorizontalAlignment="Right" Width="75"/>
+        <CheckBox x:Name="checkBoxConsole" Content="Export as Console Application" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" ToolTip="If selected allows TextWindow to be used in decompiled exe"/>
+    </Grid>
+</Window>

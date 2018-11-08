@@ -1816,6 +1816,11 @@ namespace SB_Prime
             }
         }
 
+        private void DecompileCS()
+        {
+            Decompile decompile = new Decompile(this);
+            decompile.ShowDialog();
+        }
         public void SetTabHeaderStyle(TabItem tab)
         {
             tab.Style = (System.Windows.Style)FindResource("RoundedTabItem");

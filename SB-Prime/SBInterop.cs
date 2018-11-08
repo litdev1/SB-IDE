@@ -27,6 +27,10 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Runtime.Versioning;
 using System.Windows;
+using ICSharpCode.Decompiler.CSharp;
+using ICSharpCode.Decompiler.Metadata;
+using System.Threading;
+using System.Reflection.PortableExecutable;
 
 namespace SB_Prime
 {
@@ -588,7 +592,7 @@ namespace SB_Prime
 
                 string vbproj = File.ReadAllText(result);
                 vbproj = vbproj.Replace("<HintPath>$(programfiles)\\ (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>", "<HintPath>$(programfiles)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>");
-                vbproj = vbproj.Replace("<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>", "<TargetFrameworkVersion>" + runtime + " </TargetFrameworkVersion>");
+                vbproj = vbproj.Replace("<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>", "<TargetFrameworkVersion>" + runtime + "</TargetFrameworkVersion>");
                 //vcproj = vcproj.Replace("<Project ToolsVersion=\"3.5\" DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">", "<Project ToolsVersion=\"15.0\" DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">");
                 File.WriteAllText(result, vbproj);
 
@@ -640,6 +644,92 @@ namespace SB_Prime
             {
                 MainWindow.Errors.Add(new Error("UACcommand : " + ex.Message));
             }
+        }
+
+        public bool Decomple(string targetProj, string source, bool bConsole)
+        {
+            targetProj = Environment.ExpandEnvironmentVariables(targetProj);
+            source = Environment.ExpandEnvironmentVariables(source);
+            string targetDirectory = Path.GetDirectoryName(targetProj);
+            string targetName = Path.GetFileNameWithoutExtension(targetProj);
+            bool bSuccess = false;
+
+            try
+            {
+                using (FileStream fs = new FileStream(source, FileMode.Open, FileAccess.Read))
+                {
+                    WholeProjectDecompiler decompiler = new WholeProjectDecompiler();
+                    PEFile moduleDefinition = new PEFile(source, fs, PEStreamOptions.PrefetchEntireImage);
+                    CancellationToken cancellationToken = default(CancellationToken);
+                    UniversalAssemblyResolver universalAssemblyResolver = new UniversalAssemblyResolver(source, false, moduleDefinition.Reader.DetectTargetFrameworkId(), PEStreamOptions.PrefetchEntireImage);
+                    decompiler.AssemblyResolver = universalAssemblyResolver;
+                    decompiler.DecompileProject(moduleDefinition, targetDirectory, cancellationToken);
+
+                    // Set runtime to SB runtime
+                    // Update case target name
+                    // Copy and rename paths for dlls
+                    string runtime;
+                    try
+                    {
+                        string sblPath = MainWindow.InstallDir + "\\SmallBasicLibrary.dll";
+                        Assembly sblAssembly = Assembly.LoadFile(sblPath);
+                        TargetFrameworkAttribute attrib = (TargetFrameworkAttribute)sblAssembly.GetCustomAttribute(typeof(TargetFrameworkAttribute));
+                        runtime = attrib.FrameworkName.Substring(attrib.FrameworkName.Length - 4);
+                    }
+                    catch
+                    {
+                        runtime = "v4.5";
+                    }
+
+                    string result = targetDirectory + "\\" + moduleDefinition.Name + ".csproj";
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(result);
+                    XmlNodeList elemList = doc.GetElementsByTagName("AssemblyName");
+                    if (elemList.Count == 1 && elemList[0].InnerText == moduleDefinition.Name) elemList[0].InnerText = targetName;
+                    elemList = doc.GetElementsByTagName("TargetFrameworkVersion");
+                    if (elemList.Count == 1) elemList[0].InnerText = runtime;
+                    elemList = doc.GetElementsByTagName("OutputType");
+                    if (bConsole && elemList.Count == 1 && elemList[0].InnerText == "WinExe") elemList[0].InnerText = "Exe";
+                    elemList = doc.GetElementsByTagName("HintPath");
+                    foreach (XmlNode xmlNode in elemList)
+                    {
+                        if (xmlNode.InnerText.EndsWith(".dll"))
+                        {
+                            string dll = targetDirectory + "\\" + Path.GetFileName(xmlNode.InnerText);
+                            File.Copy(xmlNode.InnerText, dll);
+                            xmlNode.InnerText = dll;
+                        }
+                    }
+                    File.Delete(result);
+                    doc.Save(targetProj);
+
+                    //Set Main
+                    string projectFile = targetDirectory + "\\_SmallBasicProgram.cs";
+                    if (File.Exists(projectFile))
+                    {
+                        string prog = File.ReadAllText(projectFile);
+                        prog = prog.Replace("static void _Main()", "static void Main()");
+                        if (bConsole)
+                        {
+                            prog = prog.Replace("SmallBasicApplication.BeginProgram();", "SmallBasicApplication.BeginProgram();\r\n\t\t//Initialise and hide TextWindow for Console App\r\n\t\tTextWindow.Show();\r\n\t\tTextWindow.Hide();");
+                        }
+                        File.WriteAllText(projectFile, prog);
+                    }
+                }
+
+                MainWindow.Errors.Add(new Error("Decompile : " + "Successfully decompiled assembly to " + targetProj));
+                bSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                MainWindow.Errors.Add(new Error("Decomple : " + ex.Message));
+                bSuccess = false;
+            }
+            //Start VS or open containing folder
+            //if (File.Exists(targetProj)) Process.Start(targetProj);
+            //else if (Directory.Exists(targetDirectory)) Process.Start("explorer.exe", "\"" + targetDirectory + "\"");
+            if (Directory.Exists(targetDirectory)) Process.Start("explorer.exe", "\"" + targetDirectory + "\"");
+            return bSuccess;
         }
     }
 }

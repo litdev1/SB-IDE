@@ -245,6 +245,7 @@
                 <RibbonGroup x:Name="Extend" Header="Extend">
                     <RibbonButton Label="Extension Manager" LargeImageSource="Images/Objects.png" KeyTip="EM" Click="extensionsManage_Click" ToolTipTitle="Manage extensions"/>
                     <RibbonButton Label="Graduate" LargeImageSource="Images/Graduate.png" KeyTip="G" Click="graduateVB_Click" ToolTipTitle="Graduate current program to Visual Basic"/>
+                    <RibbonButton Label="Decompile" LargeImageSource="Images/Link-ILSpy.png" KeyTip="D" Click="decompileCS_Click" ToolTipTitle="Decompile .Net assemblies (dll or exe) to C# using ILSpy"/>
                 </RibbonGroup>
                 <!-- Advanced/View group-->
                 <RibbonGroup x:Name="View" Header="View">
