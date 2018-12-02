@@ -49,11 +49,15 @@ namespace SB_Prime.Dialogs
                     fef.SetValue(UniformGrid.ColumnsProperty, 3);
                     SetFonts();
                     break;
+                case 2:
+                    fef.SetValue(UniformGrid.ColumnsProperty, 16);
+                    SetCharacters();
+                    break;
             }
 
             listViewPopup.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             Left = SystemParameters.PrimaryScreenWidth - listViewPopup.DesiredSize.Width - 20;
-            Top = (SystemParameters.PrimaryScreenHeight - listViewPopup.DesiredSize.Height) * (1 + mode) / 4;
+            Top = (SystemParameters.PrimaryScreenHeight - listViewPopup.DesiredSize.Height) * (1 + mode) / 6;
         }
 
         private void listViewPopup_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,6 +73,17 @@ namespace SB_Prime.Dialogs
                     textArea.ReplaceSelection("\"" + value + "\"");
                 else
                     textArea.ReplaceSelection(value);
+                textArea.SelectionStart = textArea.CurrentPosition;
+                textArea.SelectionEnd = textArea.CurrentPosition;
+            }
+            else if (mode == 2)
+            {
+                ListView listView = (ListView)sender;
+                Grid grid = (Grid)listView.SelectedItem;
+                TextBlock tb = (TextBlock)grid.Children[0];
+                string value = char.ConvertFromUtf32((int)grid.Tag);
+                Scintilla textArea = mainWindow.GetActiveDocument().TextArea;
+                textArea.ReplaceSelection(value);
                 textArea.SelectionStart = textArea.CurrentPosition;
                 textArea.SelectionEnd = textArea.CurrentPosition;
             }
@@ -132,6 +147,41 @@ namespace SB_Prime.Dialogs
                     Grid.SetRow(tb, 0);
                     Grid.SetRow(text, 1);
                     grid.Tag = fontName;
+
+                    listViewPopup.Items.Add(grid);
+                }
+                catch
+                {
+
+                }
+            }
+
+            listViewPopup.Items.SortDescriptions.Add(
+                new System.ComponentModel.SortDescription("Tag",
+                System.ComponentModel.ListSortDirection.Ascending));
+        }
+
+        private void SetCharacters()
+        {
+            Title = "Insert Character";
+
+            for (int i = 0; i < 10000; i++)
+            {
+                try
+                {
+                    Grid grid = new Grid();
+                    //grid.ColumnDefinitions.Add(new ColumnDefinition() { });
+                    //grid.ColumnDefinitions.Add(new ColumnDefinition() { });
+
+                    //TextBlock tb = new TextBlock() { Text = i.ToString(), HorizontalAlignment = HorizontalAlignment.Center };
+                    string value = char.ConvertFromUtf32(i);
+                    //value += char.GetUnicodeCategory(value, 0);
+                    TextBlock text = new TextBlock() { Text = value, FontWeight=FontWeights.Bold, HorizontalAlignment = HorizontalAlignment.Center };
+                    //grid.Children.Add(tb);
+                    grid.Children.Add(text);
+                    grid.Tag = i;
+                    //Grid.SetColumn(tb, 0);
+                    //Grid.SetColumn(text, 1);
 
                     listViewPopup.Items.Add(grid);
                 }
