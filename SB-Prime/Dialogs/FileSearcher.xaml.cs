@@ -260,7 +260,7 @@ namespace SB_Prime.Dialogs
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Active = false;
-            timer.Change(Timeout.Infinite, Timeout.Infinite);
+            timer.Dispose();
             ProgressState = 0;
             sHits.Add("Window_Closing");
         }

@@ -57,11 +57,13 @@ namespace SB_Prime.Dialogs
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
+            timer.Change(Timeout.Infinite, Timeout.Infinite);
             FileSearcher.ProgressState = 2;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            timer.Dispose();
             FileSearcher.ProgressState = 2;
         }
     }
