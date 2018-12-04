@@ -577,6 +577,7 @@ namespace SB_Prime
                 // free managed resources
                 try
                 {
+                    threadTimer.Dispose();
                     if (null != tcpServer) tcpServer.Close();
                     if (null != tcpListener) tcpListener.Stop();
                     tcpServer = null;

@@ -57,7 +57,7 @@ namespace SB_Prime.Dialogs
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
-            timer.Change(Timeout.Infinite, Timeout.Infinite);
+            timer.Dispose();
             FileSearcher.ProgressState = 2;
         }
 
