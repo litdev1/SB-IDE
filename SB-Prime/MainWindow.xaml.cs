@@ -33,6 +33,7 @@ namespace SB_Prime
         public static int BACKGROUND_COLOR = 0xDFE9F5;
         public static int FOREGROUND_COLOR = 0x000000;
         public static int SPLITTER_COLOR = 0x96AFFF;
+        public static int SELECTION_COLOR = 0xC0D0FF;
         // Text Area Colors
         public static int BACK_MARGIN_COLOR = 0xF0F0F0;
         public static int FORE_MARGIN_COLOR = 0x5C5C5C;
@@ -106,6 +107,7 @@ namespace SB_Prime
                 colors["W:Background"] = BACKGROUND_COLOR;
                 colors["W:Foreground"] = FOREGROUND_COLOR;
                 colors["W:Splitter"] = SPLITTER_COLOR;
+                colors["W:Selection"] = SELECTION_COLOR;
 
                 colors["D:Margin Background"] = BACK_MARGIN_COLOR;
                 colors["D:Margin Foreground"] = FORE_MARGIN_COLOR;
@@ -154,6 +156,7 @@ namespace SB_Prime
                 BACKGROUND_COLOR = colors["W:Background"];
                 FOREGROUND_COLOR = colors["W:Foreground"];
                 SPLITTER_COLOR = colors["W:Splitter"];
+                SELECTION_COLOR = colors["W:Selection"];
 
                 BACK_MARGIN_COLOR = colors["D:Margin Background"];
                 FORE_MARGIN_COLOR = colors["D:Margin Foreground"];

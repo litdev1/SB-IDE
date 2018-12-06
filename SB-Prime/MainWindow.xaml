@@ -8,8 +8,9 @@
         Title="Small Basic Prime" Height="600" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" Icon="AppIcon.ico" WindowStartupLocation="Manual" Initialized="Window_Initialized">
     <Window.Resources>
         <CollectionViewSource x:Key="DebugDataSource"  CollectionViewType="ListCollectionView"/>
-        <SolidColorBrush x:Key="SplitterBrush" Color="#FFF0F0F0"/>
-        <SolidColorBrush x:Key="GridBrushBackground" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="SplitterBrush" Color="#FF96AFFF"/>
+        <SolidColorBrush x:Key="SelectionBrush" Color="#FFC0D0FF"/>
+        <SolidColorBrush x:Key="GridBrushBackground" Color="#FFDFE9F5"/>
         <SolidColorBrush x:Key="GridBrushForeground" Color="#FF000000"/>
         <Style x:Key="RoundedTabItem" TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
             <Setter Property="Template">
@@ -69,7 +70,7 @@
                 </StackPanel>
             </StatusBarItem>
         </StatusBar>
-        <Ribbon x:Name="ribbon" VerticalAlignment="Top"  DockPanel.Dock="Top" Margin="0" SelectedIndex="0" SelectionChanged="ribbon_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" Loaded="ribbon_Loaded">
+        <Ribbon x:Name="ribbon" VerticalAlignment="Top"  DockPanel.Dock="Top" Margin="0" SelectedIndex="0" SelectionChanged="ribbon_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" Loaded="ribbon_Loaded" BorderBrush="{DynamicResource SplitterBrush}" CheckedBackground="{DynamicResource SelectionBrush}" CheckedBorderBrush="{DynamicResource SelectionBrush}" PressedBackground="{DynamicResource SelectionBrush}" PressedBorderBrush="{DynamicResource SelectionBrush}" MouseOverBackground="{DynamicResource SelectionBrush}" FocusedBackground="{DynamicResource SelectionBrush}" FocusedBorderBrush="{DynamicResource SelectionBrush}" MouseOverBorderBrush="{DynamicResource SelectionBrush}">
             <!-- Help Pane, located at the right-hand side -->
             <Ribbon.HelpPaneContent>
                 <RibbonButton SmallImageSource="Images\Help.png" Click="helpClick" ToolTip="Help"/>

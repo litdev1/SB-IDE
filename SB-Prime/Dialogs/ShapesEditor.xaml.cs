@@ -79,6 +79,7 @@ namespace SB_Prime.Dialogs
             Resources["GridBrushBackground"] = new SolidColorBrush(MainWindow.IntToColor(MainWindow.BACKGROUND_COLOR));
             Resources["GridBrushForeground"] = new SolidColorBrush(MainWindow.IntToColor(MainWindow.FOREGROUND_COLOR));
             Resources["SplitterBrush"] = new SolidColorBrush(MainWindow.IntToColor(MainWindow.SPLITTER_COLOR));
+            Resources["SelectionBrush"] = new SolidColorBrush(MainWindow.IntToColor(MainWindow.SELECTION_COLOR));
 
             canvas.Width = double.Parse(textBoxWidth.Text);
             canvas.Height = double.Parse(textBoxHeight.Text);

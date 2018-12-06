@@ -184,6 +184,7 @@ namespace SB_Prime
             Resources["GridBrushBackground"] = new SolidColorBrush(IntToColor(BACKGROUND_COLOR));
             Resources["GridBrushForeground"] = new SolidColorBrush(IntToColor(FOREGROUND_COLOR));
             Resources["SplitterBrush"] = new SolidColorBrush(IntToColor(SPLITTER_COLOR));
+            Resources["SelectionBrush"] = new SolidColorBrush(IntToColor(SELECTION_COLOR));
             dataGridResults.Items.Refresh();
             dataGridDebug.Items.Refresh();
         }
