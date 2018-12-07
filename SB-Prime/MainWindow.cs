@@ -31,7 +31,7 @@ using System.Windows.Media.Effects;
 
 namespace SB_Prime
 {
-    public partial class MainWindow
+    public partial class MainWindow : IDisposable
     {
         public static MainWindow THIS;
         public static ObservableCollection<Error> Errors = new ObservableCollection<Error>();
@@ -1825,6 +1825,21 @@ namespace SB_Prime
         public void SetTabHeaderStyle(TabItem tab)
         {
             tab.Style = (System.Windows.Style)FindResource("RoundedTabItem");
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                threadTimer.Dispose();
+                activeDocument.Dispose();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 

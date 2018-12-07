@@ -18,7 +18,7 @@ namespace SB_Prime.Dialogs
     /// <summary>
     /// Interaction logic for Progress.xaml
     /// </summary>
-    public partial class Progress : Window
+    public partial class Progress : Window, IDisposable
     {
         private Timer timer;
 
@@ -64,6 +64,20 @@ namespace SB_Prime.Dialogs
         {
             timer.Dispose();
             FileSearcher.ProgressState = 2;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                timer.Dispose();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

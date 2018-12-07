@@ -19,7 +19,7 @@ namespace SB_Prime.Dialogs
     /// <summary>
          /// Interaction logic for ShapesEditor.xaml
          /// </summary>
-    public partial class ShapesEditor : Window
+    public partial class ShapesEditor : Window, IDisposable
     {
         public static bool Active = false;
         public static ShapesEditor THIS;
@@ -3851,6 +3851,20 @@ namespace SB_Prime.Dialogs
                 "The current code is shown in the code window.  This can be edited and use \"Import From Code\" to add the current code to the current view.\n\n" +
                 "Questions and suggestions welcome.",
                 "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                sbDocument.Dispose();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

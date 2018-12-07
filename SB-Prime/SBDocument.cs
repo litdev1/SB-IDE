@@ -30,7 +30,7 @@ using System.Windows.Forms;
 
 namespace SB_Prime
 {
-    public class SBDocument
+    public class SBDocument : IDisposable
     {
         private Scintilla textArea;
         private SBLexer lexer;
@@ -754,6 +754,21 @@ namespace SB_Prime
         }
 
         #endregion
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                textArea.Dispose();
+                lexer.Dispose();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
 
     public class LineStack

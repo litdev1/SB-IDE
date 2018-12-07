@@ -18,7 +18,7 @@ namespace SB_Prime.Dialogs
     /// <summary>
     /// Interaction logic for FlowChart.xaml
     /// </summary>
-    public partial class FlowChart : Window
+    public partial class FlowChart : Window, IDisposable
     {
         public static bool Active = false;
         public static FlowChart THIS;
@@ -946,6 +946,24 @@ namespace SB_Prime.Dialogs
                 "During a debug session, the current paused line will be selected\n\n" +
                 "Colors can be set in IDE Colors, and the Dark Theme is applied if selected",
                 "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                try
+                {
+                    timer.Dispose();
+                }
+                catch { }
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 

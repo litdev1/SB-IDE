@@ -38,7 +38,7 @@ namespace SB_Prime
         }
     }
 
-    public class SBLexer
+    public class SBLexer : IDisposable
     {
         private SBDocument sbDocument;
         private Scintilla textArea;
@@ -712,6 +712,20 @@ namespace SB_Prime
         private static Color IntToColor(int rgb)
         {
             return Color.FromArgb(255, (byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                AutoCTimer.Dispose();
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

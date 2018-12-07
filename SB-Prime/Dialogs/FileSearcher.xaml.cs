@@ -16,7 +16,7 @@ namespace SB_Prime.Dialogs
     /// <summary>
     /// Interaction logic for FileSearcher.xaml
     /// </summary>
-    public partial class FileSearcher : Window
+    public partial class FileSearcher : Window, IDisposable
     {
         public static List<string> sHits = new List<string>();
 
@@ -272,6 +272,25 @@ namespace SB_Prime.Dialogs
                 RootPath = textBoxSearcherRoot.Text;
                 GetFiles();
             }
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                try
+                {
+                    timer.Dispose();
+                    dlg.Dispose();
+                }
+                catch { }
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 
