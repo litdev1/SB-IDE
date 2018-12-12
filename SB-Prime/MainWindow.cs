@@ -310,6 +310,7 @@ namespace SB_Prime
         private void details_Click(object sender, RoutedEventArgs e)
         {
             Details details = new Details(((TabHeader)activeTab.Header).FileName, sbInterop);
+            details.Owner = GetWindow(this);
             details.ShowDialog();
         }
 
@@ -1606,6 +1607,7 @@ namespace SB_Prime
                 ((TabHeader)activeTab.Header).BaseID = key;
                 Errors.Add(new Error("Publish : " + "Successfully published program with ID " + key));
                 Publish publish = new Publish(sbInterop, key);
+                publish.Owner = GetWindow(this);
                 publish.ShowDialog();
             }
         }
@@ -1613,6 +1615,7 @@ namespace SB_Prime
         private void Import()
         {
             Import import = new Import(sbInterop);
+            import.Owner = GetWindow(this);
             import.ShowDialog();
             if (ImportProgram != "error" && ImportProgram != "")
             {
@@ -1801,6 +1804,7 @@ namespace SB_Prime
         private void GraduateVB()
         {
             Graduate graduate = new Graduate();
+            graduate.Owner = GetWindow(this);
             graduate.ShowDialog();
             if (graduate.OK)
             {
@@ -1820,6 +1824,7 @@ namespace SB_Prime
         private void DecompileCS()
         {
             Decompile decompile = new Decompile(this);
+            decompile.Owner = GetWindow(this);
             decompile.ShowDialog();
         }
         public void SetTabHeaderStyle(TabItem tab)

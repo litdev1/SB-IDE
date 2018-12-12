@@ -908,7 +908,8 @@ namespace SB_Prime
 
         private void settingsOptions_Click(object sender, RoutedEventArgs e)
         {
-            Dialogs.Options opt = new Dialogs.Options(this);
+            Options opt = new Options(this);
+            opt.Owner = GetWindow(this);
             opt.ShowDialog();
         }
 
@@ -1014,6 +1015,7 @@ namespace SB_Prime
         private void ToolsLinks_Click(object sender, RoutedEventArgs e)
         {
             Links links = new Links();
+            links.Owner = GetWindow(this);
             links.ShowDialog();
         }
 

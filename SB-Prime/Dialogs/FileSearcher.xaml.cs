@@ -18,8 +18,7 @@ namespace SB_Prime.Dialogs
     /// </summary>
     public partial class FileSearcher : Window, IDisposable
     {
-        public static List<string> sHits = new List<string>();
-
+        private PleaseWait pleaseWait = new PleaseWait("Please Wait...\nLoading Files");
         private List<SearchFile> searchFiles = new List<SearchFile>();
         private List<SearchFile> filterFiles = new List<SearchFile>();
         public static string RootPath = "";
@@ -88,10 +87,10 @@ namespace SB_Prime.Dialogs
             if (!Directory.Exists(RootPath)) return;
             if (ProgressState != 0) return;
             ProgressState = 1;
-            sHits.Add("GetFiles");
             Thread worker = new Thread(new ThreadStart(GetFilesWorker));
             worker.Start();
             dlg = new Progress();
+            dlg.Owner = GetWindow(this);
             dlg.Show();
         }
 
@@ -145,7 +144,11 @@ namespace SB_Prime.Dialogs
                 });
             }
             ProgressState = 2;
-            sHits.Add("GetFilesWorker");
+            Dispatcher.Invoke(() =>
+            {
+                pleaseWait.Owner = GetWindow(this);
+                pleaseWait.Show();
+            });
         }
 
         private void Filter()
@@ -221,7 +224,6 @@ namespace SB_Prime.Dialogs
         {
             Active = true;
             ProgressState = 0;
-            sHits.Add("Window_Loaded");
             GetFiles();
             timer = new System.Threading.Timer(new TimerCallback(_timer), null, 100, 100);
         }
@@ -230,18 +232,16 @@ namespace SB_Prime.Dialogs
         {
             Dispatcher.Invoke(() =>
             {
+                buttonSearcherBrowse.IsEnabled = ProgressState == 0;
+                buttonSearcherFilter.IsEnabled = ProgressState == 0;
                 if (ProgressState == 0 && files.Count != searchFiles.Count)
                 {
                     ProgressState = 2; // don't understand how it ever gets here?  Fixed by stoppping timer on close
                 }
-                buttonSearcherBrowse.IsEnabled = ProgressState == 0;
-                buttonSearcherFilter.IsEnabled = ProgressState == 0;
                 if (ProgressState == 2)
                 {
                     ProgressState = 0;
-                    sHits.Add("_timer");
                     searchFiles.Clear();
-                    sHits.Add("files "+ files.Count);
                     foreach (string file in files)
                     {
                         searchFiles.Add(new SearchFile(file));
@@ -250,9 +250,7 @@ namespace SB_Prime.Dialogs
                     dataGridSearcher.ItemsSource = searchFiles;
                     dataGridSearcher.Items.Refresh();
                     textBoxCount.Text = searchFiles.Count + " files found";
-                    sHits.Add("_timerEnd");
-                    sHits.Add("searchFiles " + searchFiles.Count);
-                    sHits.Add("dataGridSearcher.ItemsSource " + dataGridSearcher.Items.Count);
+                    pleaseWait.Hide();
                 }
             });
         }
@@ -262,7 +260,6 @@ namespace SB_Prime.Dialogs
             Active = false;
             timer.Dispose();
             ProgressState = 0;
-            sHits.Add("Window_Closing");
         }
 
         private void textBoxSearcherRoot_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)

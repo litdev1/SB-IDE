@@ -2666,6 +2666,7 @@ namespace SB_Prime.Dialogs
                 case "Polygon":
                     // Get number of points
                     PolygonSides dlg = new PolygonSides();
+                    dlg.Owner = GetWindow(this);
                     dlg.ShowDialog();
 
                     int nPoint = PolygonSides.NumSides;

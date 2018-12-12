@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Dialogs"
         mc:Ignorable="d"
-        Title="Progress" Height="168.8" Width="596.8" Loaded="Window_Loaded" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Topmost="True" ResizeMode="NoResize" Closing="Window_Closing">
+        Title="Progress" Height="168.8" Width="596.8" Loaded="Window_Loaded" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid >
         <TextBox x:Name="textBoxDir" IsReadOnly="True" Margin="10,10,10.4,0" TextWrapping="Wrap" Height="70" VerticalAlignment="Top" Text="Folders Searched"/>
         <Button x:Name="buttonCancel" Content="Cancel" Margin="0,97,10.4,0" Click="buttonCancel_Click" HorizontalAlignment="Right" Width="75" Height="23" VerticalAlignment="Top"/>

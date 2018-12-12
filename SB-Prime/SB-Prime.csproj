@@ -140,6 +140,9 @@
     <Compile Include="Dialogs\Links.xaml.cs">
       <DependentUpon>Links.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\PleaseWait.xaml.cs">
+      <DependentUpon>PleaseWait.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\PolygonSides.xaml.cs">
       <DependentUpon>PolygonSides.xaml</DependentUpon>
     </Compile>
@@ -205,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\Links.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\PleaseWait.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
