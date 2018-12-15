@@ -58,7 +58,17 @@ namespace SB_Prime.Dialogs
             Top = (SystemParameters.PrimaryScreenHeight - Height) / 2;
         }
 
-        private void buttonFind_Click(object sender, RoutedEventArgs e)
+        private void buttonFindPrevious_Click(object sender, RoutedEventArgs e)
+        {
+            if (!lastFind.Contains(textBoxFind.Text)) lastFind.Insert(0, textBoxFind.Text);
+            if (!comboBoxFind.Items.Contains(textBoxFind.Text)) comboBoxFind.Items.Insert(0, textBoxFind.Text);
+            comboBoxFind.SelectedItem = textBoxFind.Text;
+
+            SBDocument sbDocument = mainWindow.GetActiveDocument();
+            sbDocument.searchManager.Find(false, textBoxFind.Text);
+        }
+
+        private void buttonFindNext_Click(object sender, RoutedEventArgs e)
         {
             if (!lastFind.Contains(textBoxFind.Text)) lastFind.Insert(0, textBoxFind.Text);
             if (!comboBoxFind.Items.Contains(textBoxFind.Text)) comboBoxFind.Items.Insert(0, textBoxFind.Text);
