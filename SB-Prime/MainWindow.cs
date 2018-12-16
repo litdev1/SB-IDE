@@ -52,6 +52,8 @@ namespace SB_Prime
         public static bool quoteInserts = false;
         public static bool hexColors = false;
         public static bool loadExtensions = true;
+        public static short printMagnification = 0;
+        public static int printColours = 0;
         public static SearchFlags searchFlags = SearchFlags.None;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
@@ -435,6 +437,8 @@ namespace SB_Prime
                 if (File.Exists(data[0]) && lines.Count > 0) bookmarks[data[0]] = lines;
             }
             loadExtensions = Properties.Settings.Default.LoadExtensions;
+            printMagnification = Properties.Settings.Default.PrintMagnification;
+            printColours = Properties.Settings.Default.PrintColours;
         }
 
         private void ResetSettings()
@@ -576,6 +580,8 @@ namespace SB_Prime
                 Properties.Settings.Default.Bookmarks.Add(data);
             }
             Properties.Settings.Default.LoadExtensions = loadExtensions;
+            Properties.Settings.Default.PrintMagnification = printMagnification;
+            Properties.Settings.Default.PrintColours = printColours;
 
             Properties.Settings.Default.Save();
         }
@@ -1706,7 +1712,7 @@ namespace SB_Prime
             {
                 ScintillaPrinting.Printing printer = new ScintillaPrinting.Printing(activeDocument.TextArea);
                 printer.PrintDocument.DocumentName = activeDocument.Filepath == "" ? ((TabHeader)activeTab.Header).FilePath : activeDocument.Filepath;
-                printer.PageSettings = new ScintillaPrinting.PageSettings() { ColorMode = ScintillaPrinting.PageSettings.PrintColorMode.ColorOnWhite };
+                printer.PageSettings = new ScintillaPrinting.PageSettings() { ColorMode = (ScintillaPrinting.PageSettings.PrintColorMode)printColours, FontMagnification = printMagnification };
                 //printer.PrintPreview();
                 printer.Print();
 

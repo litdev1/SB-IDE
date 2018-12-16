@@ -20,5 +20,9 @@
         <CheckBox x:Name="checkBoxQuoteInserts" Content="Quote &quot;&quot; inserted color and font names" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxHEXColors" Content="Insert colors as Hex values" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxLoadExtensions" Content="Load extension dlls on startup (turn off and restart to use Extension Manager)" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_PrintMagnification" Content="Print Magnification" HorizontalAlignment="Left" Margin="13,123,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxPrintMagnification" Height="23" Margin="128,127,414.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" ToolTip="Increase (&gt;0) or decrease (&lt;0) the print font size"/>
+        <Label x:Name="label_PrintColours" Content="Print Colours" HorizontalAlignment="Left" Margin="184,123,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxPrintColours" HorizontalAlignment="Left" Margin="267,127,0,0" VerticalAlignment="Top" Width="120" Height="23" IsReadOnly="True" ToolTip="Colouring used for printing"/>
     </Grid>
 </Window>

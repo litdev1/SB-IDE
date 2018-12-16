@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static ScintillaPrinting.PageSettings;
 
 namespace SB_Prime.Dialogs
 {
@@ -36,6 +37,13 @@ namespace SB_Prime.Dialogs
             checkBoxQuoteInserts.IsChecked = MainWindow.quoteInserts;
             checkBoxHEXColors.IsChecked = MainWindow.hexColors;
             checkBoxLoadExtensions.IsChecked = MainWindow.loadExtensions;
+            textBoxPrintMagnification.Text = MainWindow.printMagnification.ToString();
+            comboBoxPrintColours.Items.Clear();
+            comboBoxPrintColours.Items.Add("True Colour");
+            comboBoxPrintColours.Items.Add("Invert Colours" );
+            comboBoxPrintColours.Items.Add( "Black and White" );
+            comboBoxPrintColours.Items.Add("Colour on White" );
+            comboBoxPrintColours.SelectedIndex = MainWindow.printColours;
         }
 
         private void buttonUpdates_Click(object sender, RoutedEventArgs e)
@@ -77,6 +85,8 @@ namespace SB_Prime.Dialogs
             MainWindow.quoteInserts = (bool)checkBoxQuoteInserts.IsChecked;
             MainWindow.hexColors = (bool)checkBoxHEXColors.IsChecked;
             MainWindow.loadExtensions = (bool)checkBoxLoadExtensions.IsChecked;
+            short.TryParse(textBoxPrintMagnification.Text, out MainWindow.printMagnification);
+            MainWindow.printColours = comboBoxPrintColours.SelectedIndex;
 
             Close();
         }
