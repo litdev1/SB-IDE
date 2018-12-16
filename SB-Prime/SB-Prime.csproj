@@ -199,6 +199,12 @@
     <Compile Include="SearchManager.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Settings1.cs" />
+    <Compile Include="SintillaNetPrinting\PageInformation.cs" />
+    <Compile Include="SintillaNetPrinting\PageSettings.cs" />
+    <Compile Include="SintillaNetPrinting\PrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SintillaNetPrinting\Printing.cs" />
     <Page Include="Dialogs\Colours.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

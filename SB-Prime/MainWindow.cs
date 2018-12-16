@@ -1704,8 +1704,16 @@ namespace SB_Prime
         {
             try
             {
+                ScintillaPrinting.Printing printer = new ScintillaPrinting.Printing(activeDocument.TextArea);
+                printer.PrintDocument.DocumentName = activeDocument.Filepath == "" ? ((TabHeader)activeTab.Header).FilePath : activeDocument.Filepath;
+                printer.PageSettings = new ScintillaPrinting.PageSettings() { ColorMode = ScintillaPrinting.PageSettings.PrintColorMode.ColorOnWhite };
+                //printer.PrintPreview();
+                printer.Print();
+
+                return;
+
                 PrintDialog pd = new PrintDialog();
-                if ((bool)pd.ShowDialog().GetValueOrDefault())
+                if (pd.ShowDialog().GetValueOrDefault())
                 {
                     FlowDocument flowDocument = new FlowDocument();
                     flowDocument.PageHeight = pd.PrintableAreaHeight;
