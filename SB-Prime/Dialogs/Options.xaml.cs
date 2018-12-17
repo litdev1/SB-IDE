@@ -23,7 +23,7 @@ namespace SB_Prime.Dialogs
     /// </summary>
     public partial class Options : Window
     {
-        MainWindow mainWindow;
+        private MainWindow mainWindow;
 
         public Options(MainWindow mainWindow)
         {
@@ -39,11 +39,10 @@ namespace SB_Prime.Dialogs
             checkBoxLoadExtensions.IsChecked = MainWindow.loadExtensions;
             textBoxPrintMagnification.Text = MainWindow.printMagnification.ToString();
             comboBoxPrintColours.Items.Clear();
-            comboBoxPrintColours.Items.Add("True Colour");
-            comboBoxPrintColours.Items.Add("Invert Colours" );
-            comboBoxPrintColours.Items.Add( "Black and White" );
-            comboBoxPrintColours.Items.Add("Colour on White" );
-            comboBoxPrintColours.SelectedIndex = MainWindow.printColours;
+            comboBoxPrintColours.Items.Add(new TextBlock() { Text = "Colour on White", Tag = (int)PrintColorMode.ColorOnWhite });
+            comboBoxPrintColours.Items.Add(new TextBlock() { Text = "True Colour", Tag = (int)PrintColorMode.Normal });
+            comboBoxPrintColours.Items.Add(new TextBlock() { Text = "Black and White", Tag = (int)PrintColorMode.BlackOnWhite });
+            comboBoxPrintColours.SelectedItem = comboBoxPrintColours.Items.OfType<TextBlock>().SingleOrDefault(x => (int)x.Tag == MainWindow.printColours);
         }
 
         private void buttonUpdates_Click(object sender, RoutedEventArgs e)
@@ -86,7 +85,7 @@ namespace SB_Prime.Dialogs
             MainWindow.hexColors = (bool)checkBoxHEXColors.IsChecked;
             MainWindow.loadExtensions = (bool)checkBoxLoadExtensions.IsChecked;
             short.TryParse(textBoxPrintMagnification.Text, out MainWindow.printMagnification);
-            MainWindow.printColours = comboBoxPrintColours.SelectedIndex;
+            MainWindow.printColours = (int)((TextBlock)comboBoxPrintColours.SelectedItem).Tag;
 
             Close();
         }
