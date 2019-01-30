@@ -631,5 +631,8 @@
   <ItemGroup>
     <Resource Include="images\Link-jZip.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\NumberMargin.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

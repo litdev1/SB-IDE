@@ -54,6 +54,7 @@ namespace SB_Prime
         public static bool loadExtensions = true;
         public static short printMagnification = 0;
         public static int printColours = 0;
+        public static bool showNumberMargin = true;
         public static SearchFlags searchFlags = SearchFlags.None;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
@@ -97,6 +98,7 @@ namespace SB_Prime
             toggleWrap.IsChecked = wrap;
             toggleIndent.IsChecked = indent;
             toggleWhiteSpace.IsChecked = whitespace;
+            toggleNumberMargin.IsChecked = showNumberMargin;
             toggleHighlight.IsChecked = highlightAll;
             toggleWholeWord.IsChecked = searchFlags.HasFlag(SearchFlags.WholeWord);
             toggleCaseSensitive.IsChecked = searchFlags.HasFlag(SearchFlags.MatchCase);
@@ -439,6 +441,7 @@ namespace SB_Prime
             loadExtensions = Properties.Settings.Default.LoadExtensions;
             printMagnification = Properties.Settings.Default.PrintMagnification;
             printColours = Properties.Settings.Default.PrintColours;
+            showNumberMargin = Properties.Settings.Default.ShowNumberMargin;
         }
 
         private void ResetSettings()
@@ -582,6 +585,7 @@ namespace SB_Prime
             Properties.Settings.Default.LoadExtensions = loadExtensions;
             Properties.Settings.Default.PrintMagnification = printMagnification;
             Properties.Settings.Default.PrintColours = printColours;
+            Properties.Settings.Default.ShowNumberMargin = showNumberMargin;
 
             Properties.Settings.Default.Save();
         }
@@ -1703,6 +1707,21 @@ namespace SB_Prime
             {
                 SBDocument doc = (SBDocument)tab.Tag;
                 doc.ViewWhitespace = whitespace ? WhitespaceMode.VisibleAlways : WhitespaceMode.Invisible;
+            }
+        }
+
+        private void NumberMargin()
+        {
+            showNumberMargin = !showNumberMargin;
+            foreach (TabItem tab in tabControlSB2.Items)
+            {
+                SBDocument doc = (SBDocument)tab.Tag;
+                doc.TextArea.Margins[SBDocument.NUMBER_MARGIN].Width = MainWindow.showNumberMargin ? Math.Max(50, 10 * (int)Math.Log10(doc.TextArea.Lines.Count)) : 0;
+            }
+            foreach (TabItem tab in tabControlSB1.Items)
+            {
+                SBDocument doc = (SBDocument)tab.Tag;
+                doc.TextArea.Margins[SBDocument.NUMBER_MARGIN].Width = MainWindow.showNumberMargin ? Math.Max(50, 10 * (int)Math.Log10(doc.TextArea.Lines.Count)) : 0;
             }
         }
 

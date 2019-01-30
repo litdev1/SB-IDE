@@ -387,5 +387,17 @@ namespace SB_Prime.Properties {
                 this["PrintColours"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowNumberMargin {
+            get {
+                return ((bool)(this["ShowNumberMargin"]));
+            }
+            set {
+                this["ShowNumberMargin"] = value;
+            }
+        }
     }
 }

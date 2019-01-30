@@ -258,6 +258,7 @@
                     <RibbonButton Label="Reset Zoom" SmallImageSource="Images/Zoom.png" KeyTip="0" Click="viewZoomReset_Click" ToolTipTitle="Reset zoom (default font)"/>
                     <RibbonToggleButton Name="toggleTheme" Label="Dark Theme" SmallImageSource="Images/Contrast.png" KeyTip="TH" Click="viewTheme_Click" ToolTipTitle="Use a dark theme (reverse video)"/>
                     <RibbonToggleButton Name="toggleWhiteSpace" Label="View Whitespace" SmallImageSource="Images/WhiteSpace.png" KeyTip="WS" Click="viewWhitespace_Click" ToolTipTitle="Toggle show whitespace"/>
+                    <RibbonToggleButton Name="toggleNumberMargin" Label="View Number Margin" SmallImageSource="Images/NumberMargin.png" KeyTip="NM" Click="viewNumberMargin_Click" ToolTipTitle="Toggle show number margin"/>
                     <RibbonTextBox x:Name="viewLanguage" Label="Language Code" KeyTip="L" TextBoxWidth="30" ToolTipTitle="Change the intellisence locale (e.g. 'de' for German, restart SB-Prime to take effect)" TextChanged="viewLanguage_TextChanged"/>
                 </RibbonGroup>
                 <!-- Advanced/Settings group-->

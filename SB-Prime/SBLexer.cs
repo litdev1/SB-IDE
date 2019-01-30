@@ -535,7 +535,7 @@ namespace SB_Prime
                 LastLineCount = textArea.Lines.Count;
             }
             isDirty = true;
-            textArea.Margins[SBDocument.NUMBER_MARGIN].Width = Math.Max(50, 10 * (int)Math.Log10(textArea.Lines.Count));
+            textArea.Margins[SBDocument.NUMBER_MARGIN].Width = MainWindow.showNumberMargin ? Math.Max(50, 10 * (int)Math.Log10(textArea.Lines.Count)) : 0;
         }
 
         private void OnDwellStart(object sender, DwellEventArgs e)

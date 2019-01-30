@@ -292,7 +292,7 @@ namespace SB_Prime
         private void InitNumberMargin()
         {
             var nums = textArea.Margins[NUMBER_MARGIN];
-            nums.Width = 50;
+            nums.Width = MainWindow.showNumberMargin ? 50 : 0;
             nums.Type = MarginType.Number;
             nums.Sensitive = true;
             nums.Mask = 0;

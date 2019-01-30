@@ -1024,6 +1024,11 @@ namespace SB_Prime
             DecompileCS();
         }
 
+        private void viewNumberMargin_Click(object sender, RoutedEventArgs e)
+        {
+            NumberMargin();
+        }
+
         /*
 private bool mRestoreForDragMove;
 

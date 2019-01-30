@@ -633,6 +633,16 @@ namespace SB_Prime.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NumberMargin {
+            get {
+                object obj = ResourceManager.GetObject("NumberMargin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Objects {
             get {
                 object obj = ResourceManager.GetObject("Objects", resourceCulture);
