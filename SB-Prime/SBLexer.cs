@@ -541,6 +541,7 @@ namespace SB_Prime
         private void OnDwellStart(object sender, DwellEventArgs e)
         {
             int currentPos = e.Position;
+            if (currentPos < 0) return;
             int wordStartPos = textArea.WordStartPosition(currentPos, true);
             string currentWord = textArea.GetWordFromPosition(wordStartPos);
             string lastWord = "";
