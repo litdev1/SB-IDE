@@ -36,7 +36,7 @@ namespace ScintillaPrinting
                     pd.UseEXDialog = true;
                     pd.AllowCurrentPage = false;
                     pd.AllowSelection = true;
-                    pd.AllowSomePages = true;
+                    pd.AllowSomePages = false;
                     pd.PrinterSettings = PageSettings.PrinterSettings;
 
                     if (pd.ShowDialog(scintilla) == DialogResult.OK)
