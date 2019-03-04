@@ -5,6 +5,7 @@ using System.Drawing.Printing;
 using System.ComponentModel;
 using ScintillaNET;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace ScintillaPrinting
 {
@@ -102,9 +103,20 @@ namespace ScintillaPrinting
 		{
 			base.OnBeginPrint(e);
 
-			m_iPosition = 0;
-			m_iPrintEnd = m_oScintillaControl.TextLength;
-			m_iCurrentPage = 1;
+            switch (PrinterSettings.PrintRange)
+            {
+                case PrintRange.AllPages:
+                case PrintRange.CurrentPage:
+                case PrintRange.SomePages:
+                    m_iPosition = 0;
+                    m_iPrintEnd = m_oScintillaControl.TextLength;
+                    break;
+                case PrintRange.Selection:
+                    m_iPosition = m_oScintillaControl.SelectionStart;
+                    m_iPrintEnd = m_oScintillaControl.SelectionEnd;
+                    break;
+            }
+            m_iCurrentPage = 1;
 		}
 
 		/// <summary>
@@ -123,9 +135,18 @@ namespace ScintillaPrinting
         /// <param name="e">A PrintPageEventArgs that contains the event data</param>
         protected override void OnPrintPage(PrintPageEventArgs e)
 		{
-			base.OnPrintPage(e);
+            base.OnPrintPage(e);
 
-			PageSettings oPageSettings = null;
+            nextPage:
+
+            Graphics graphics = e.Graphics;
+            if (PrinterSettings.PrintRange == PrintRange.SomePages && m_iCurrentPage < PrinterSettings.FromPage)
+            {
+                Form form = new Form();
+                graphics = form.CreateGraphics();
+            }
+
+            PageSettings oPageSettings = null;
 			HeaderInformation oHeader = ((PageSettings)DefaultPageSettings).Header;
 			FooterInformation oFooter = ((PageSettings)DefaultPageSettings).Footer;
 			Rectangle oPrintBounds = e.MarginBounds;
@@ -134,7 +155,7 @@ namespace ScintillaPrinting
 			// When not in preview mode, adjust graphics to account for hard margin of the printer
 			if (!bIsPreview)
 			{
-				e.Graphics.TranslateTransform(-e.PageSettings.HardMarginX, -e.PageSettings.HardMarginY);
+                graphics.TranslateTransform(-e.PageSettings.HardMarginX, -e.PageSettings.HardMarginY);
 			}
 
 			// Get the header and footer provided if using Scintilla.Printing.PageSettings
@@ -149,23 +170,26 @@ namespace ScintillaPrinting
                 SetPrintColourMode((int)oPageSettings.ColorMode);
             }
 
-			// Draw the header and footer and get remainder of page bounds
-			oPrintBounds = DrawHeader(e.Graphics, oPrintBounds, oHeader);
-			oPrintBounds = DrawFooter(e.Graphics, oPrintBounds, oFooter);
+            // Draw the header and footer and get remainder of page bounds
+            oPrintBounds = DrawHeader(graphics, oPrintBounds, oHeader);
+			oPrintBounds = DrawFooter(graphics, oPrintBounds, oFooter);
 
 			// When not in preview mode, adjust page bounds to account for hard margin of the printer
 			if (!bIsPreview)
 			{
 				oPrintBounds.Offset((int)-e.PageSettings.HardMarginX, (int)-e.PageSettings.HardMarginY);
 			}
-			DrawCurrentPage(e.Graphics, oPrintBounds);
+			DrawCurrentPage(graphics, oPrintBounds);
 
-			// Increment the page count and determine if there are more pages to be printed
-			m_iCurrentPage++;
+            // Increment the page count and determine if there are more pages to be printed
+            m_iCurrentPage++;
 			e.HasMorePages = (m_iPosition < m_iPrintEnd);
-
-            
-		}
+            if (PrinterSettings.PrintRange == PrintRange.SomePages)
+            {
+                if (m_iCurrentPage <= PrinterSettings.FromPage) goto nextPage;
+                if (m_iCurrentPage > PrinterSettings.ToPage) e.HasMorePages = false;
+            }
+        }
 
         private void SetPrintMagnification(int magnification)
         {

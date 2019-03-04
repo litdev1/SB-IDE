@@ -34,7 +34,7 @@ namespace ScintillaPrinting
                     PrintDialog pd = new PrintDialog();
                     pd.Document = _printDocument;
                     pd.UseEXDialog = true;
-                    pd.AllowCurrentPage = true;
+                    pd.AllowCurrentPage = false;
                     pd.AllowSelection = true;
                     pd.AllowSomePages = true;
                     pd.PrinterSettings = PageSettings.PrinterSettings;
