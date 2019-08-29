@@ -3643,6 +3643,9 @@ namespace SB_Prime.Dialogs
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            Type type = FocusManager.GetFocusedElement(this).GetType();
+            if (type == typeof(TextBox)) return;
+
             int nudge = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift) ? snap : 1;
             if (e.Key == Key.Delete)
             {
