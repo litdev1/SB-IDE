@@ -283,10 +283,10 @@ namespace SB_Prime
             textArea.Styles[STYLE_COMMENT].Italic = true;
             textArea.Styles[STYLE_KEYWORD].Bold = true;
 
-            styles.Add(new SBStyle(STYLE_SPACE, new Regex("^[\\s+]")));
             styles.Add(new SBStyle(STYLE_COMMENT, new Regex("^[\'].*")));
             styles.Add(new SBStyle(STYLE_STRING, new Regex("^[\"][^\"\\n]*[\"\\n]")));
-            styles.Add(new SBStyle(STYLE_OPERATOR, new Regex("^[\\+|-|*|/|<|>|=]|^(AND|OR)")));
+            styles.Add(new SBStyle(STYLE_OPERATOR, new Regex("^[\\+|\\-|*|/|<|>|=]|^( AND | OR )")));
+            styles.Add(new SBStyle(STYLE_SPACE, new Regex("^[\\s]")));
             styles.Add(new SBStyle(STYLE_KEYWORD, new Regex("^[\\W]("+keywords.ToUpper()+")[\\W]")));
             styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[A-Za-z_][\\w]*[\\.][A-Za-z_][\\w]*")));
             styles.Add(new SBStyle(STYLE_SUBROUTINE, new Regex("^[A-Za-z_][\\w]*[(]")));
@@ -365,10 +365,13 @@ namespace SB_Prime
             // Display the autocompletion list
             int currentPos = textArea.CurrentPosition;
             int wordStartPos = textArea.WordStartPosition(currentPos, true);
+            int style = textArea.GetStyleAt(currentPos-2);
             string currentWord = textArea.GetWordFromPosition(wordStartPos);
             int lenEntered = currentPos - wordStartPos;
             textArea.AutoCSetFillUps("");
-            textArea.AutoCStops("");
+            textArea.AutoCStops("");         
+
+            if (style == STYLE_COMMENT || style == STYLE_STRING) return;
 
             if (wordStartPos > 1 && textArea.GetCharAt(wordStartPos - 1) == '.') //method
             {
@@ -524,7 +527,7 @@ namespace SB_Prime
                         textArea.Lines[i].FoldLevelFlags = FoldLevelFlags.White;
                         if (fold < foldBase) fold = foldBase;
                     }
-                    else if (keyword2.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
+                    else if (keyword3.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
                     {
                         textArea.Lines[i].FoldLevel--;
                         textArea.Lines[i].FoldLevelFlags = FoldLevelFlags.White;
