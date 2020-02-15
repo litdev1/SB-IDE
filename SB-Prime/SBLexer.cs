@@ -258,7 +258,7 @@ namespace SB_Prime
             textArea.Styles[Style.Default].BackColor = backColor;
             textArea.Styles[Style.Default].ForeColor = foreColor;
             textArea.CaretForeColor = foreColor;
-            textArea.TabWidth = 2;
+            textArea.TabWidth = MainWindow.indentSpaces;
             spaces = "";
             for (int i = 0; i < textArea.TabWidth; i++) spaces += " ";
             textArea.StyleClearAll();

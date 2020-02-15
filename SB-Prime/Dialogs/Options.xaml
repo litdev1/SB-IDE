@@ -24,5 +24,9 @@
         <TextBox x:Name="textBoxPrintMagnification" Height="23" Margin="128,127,414.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" ToolTip="Increase (&gt;0) or decrease (&lt;0) the print font size"/>
         <Label x:Name="label_PrintColours" Content="Print Colours" HorizontalAlignment="Left" Margin="184,123,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBoxPrintColours" HorizontalAlignment="Left" Margin="267,127,0,0" VerticalAlignment="Top" Width="120" Height="23" IsReadOnly="True" ToolTip="Colouring used for printing"/>
+        <RadioButton x:Name="radioButton1" Content="1" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" GroupName="Indent"/>
+        <RadioButton x:Name="radioButton2" Content="2" HorizontalAlignment="Left" Margin="41,154,0,0" VerticalAlignment="Top" GroupName="Indent"/>
+        <RadioButton x:Name="radioButton4" Content="4" HorizontalAlignment="Left" Margin="72,154,0,0" VerticalAlignment="Top" GroupName="Indent"/>
+        <Label x:Name="label_Indent" Content="Indent spaces" HorizontalAlignment="Left" Margin="103,148,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -50,6 +50,7 @@ namespace SB_Prime
         public static int zoom = 0;
         public static int theme = 0;
         public static bool quoteInserts = false;
+        public static int indentSpaces = 2;
         public static bool hexColors = false;
         public static bool loadExtensions = true;
         public static short printMagnification = 0;
@@ -385,6 +386,7 @@ namespace SB_Prime
             zoom = Properties.Settings.Default.Zoom;
             theme = Properties.Settings.Default.Theme;
             quoteInserts = Properties.Settings.Default.QuoteInserts;
+            indentSpaces = Properties.Settings.Default.IndentSpaces;
             hexColors = Properties.Settings.Default.HEXColors;
             searchFlags = (SearchFlags)Properties.Settings.Default.SearchFlags;
             SBInterop.Language = Properties.Settings.Default.Language;
@@ -536,6 +538,7 @@ namespace SB_Prime
             Properties.Settings.Default.Zoom = zoom;
             Properties.Settings.Default.Theme = theme;
             Properties.Settings.Default.QuoteInserts = quoteInserts;
+            Properties.Settings.Default.IndentSpaces = indentSpaces;
             Properties.Settings.Default.HEXColors = hexColors;
             Properties.Settings.Default.SearchFlags = (int)searchFlags;
             Properties.Settings.Default.Language = SBInterop.Language;

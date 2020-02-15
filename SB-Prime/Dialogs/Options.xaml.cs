@@ -43,6 +43,9 @@ namespace SB_Prime.Dialogs
             comboBoxPrintColours.Items.Add(new TextBlock() { Text = "True Colour", Tag = (int)PrintColorMode.Normal });
             comboBoxPrintColours.Items.Add(new TextBlock() { Text = "Black and White", Tag = (int)PrintColorMode.BlackOnWhite });
             comboBoxPrintColours.SelectedItem = comboBoxPrintColours.Items.OfType<TextBlock>().SingleOrDefault(x => (int)x.Tag == MainWindow.printColours);
+            if (MainWindow.indentSpaces == 1) radioButton1.IsChecked = true;
+            else if (MainWindow.indentSpaces == 4) radioButton4.IsChecked = true;
+            else radioButton2.IsChecked = true;
         }
 
         private void buttonUpdates_Click(object sender, RoutedEventArgs e)
@@ -86,6 +89,9 @@ namespace SB_Prime.Dialogs
             MainWindow.loadExtensions = (bool)checkBoxLoadExtensions.IsChecked;
             short.TryParse(textBoxPrintMagnification.Text, out MainWindow.printMagnification);
             MainWindow.printColours = (int)((TextBlock)comboBoxPrintColours.SelectedItem).Tag;
+            if (radioButton1.IsChecked == true) MainWindow.indentSpaces = 1;
+            else if (radioButton4.IsChecked == true) MainWindow.indentSpaces = 4;
+            else MainWindow.indentSpaces = 2;
 
             Close();
         }
