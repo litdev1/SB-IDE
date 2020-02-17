@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Dialogs"
         mc:Ignorable="d"
-        Title="Find and Replace" Height="235" Width="540.362" ShowInTaskbar="False" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" Topmost="True" Closing="Window_Closing" Loaded="Window_Loaded">
+        Title="Find and Replace" Height="235" Width="540.362" ShowInTaskbar="False" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" Topmost="True" Closing="Window_Closing" Loaded="Window_Loaded" MinWidth="100" MinHeight="100">
     <Grid Margin="0">
         <TextBox x:Name="textBoxFind" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="200"/>
         <Label x:Name="label" Content="Find" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Center"/>

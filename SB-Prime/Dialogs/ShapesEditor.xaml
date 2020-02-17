@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Dialogs"
         mc:Ignorable="d"
-        Title="Shapes Editor" Height="800" Width="1000" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated" PreviewKeyDown="Window_PreviewKeyDown">
+        Title="Shapes Editor" Height="800" Width="1000" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated" PreviewKeyDown="Window_PreviewKeyDown" MinWidth="100" MinHeight="100">
     <Window.Resources>
         <SolidColorBrush x:Key="SplitterBrush" Color="#FFF0F0F0"/>
         <SolidColorBrush x:Key="GridBrushBackground" Color="#FFF0F0F0"/>
