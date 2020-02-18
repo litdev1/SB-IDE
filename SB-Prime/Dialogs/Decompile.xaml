@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SB_Prime.Dialogs"
         mc:Ignorable="d"
         Title="Decompile" Height="326" Width="582.4" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
-    <Grid Margin="0" MinWidth="100" MinHeight="100">
+    <Grid Margin="0">
         <Label x:Name="label" Content="Decompile to C#" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB" Height="32"/>
         <TextBlock TextWrapping="WrapWithOverflow" Margin="10,37,10,0" VerticalAlignment="Top" Height="77"><Run Text="This wizard will "/><Run Text="decompile"/><Run Text=" "/><Run Text="a valid .Net assembly "/><Run Text="to Microsoft "/><Run Text="C# (dll or exe)"/><Run Text=" and then open "/><Run Text="the folder containing the decompiled C# source code"/><Run Text="."/><LineBreak/><Run/><LineBreak/><Run Text="If successful, and Visual Studio is installed then open the project file (*.csproj)."/></TextBlock>
         <Label Content="Output Location (must be an empty folder - use 'Make New Folder')" Margin="9,183,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="557"/>

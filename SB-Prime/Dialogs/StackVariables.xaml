@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Dialogs"
         mc:Ignorable="d"
-        Title="Variables &amp; Call Stack" Width="600" Height="600" Deactivated="Window_Deactivated" Topmost="True" Icon="/SB-Prime;component/AppIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing" ShowInTaskbar="False" MinWidth="100">
+        Title="Variables &amp; Call Stack" Width="600" Height="600" Deactivated="Window_Deactivated" Topmost="True" Icon="/SB-Prime;component/AppIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing" ShowInTaskbar="False" MinWidth="220" MinHeight="100">
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />

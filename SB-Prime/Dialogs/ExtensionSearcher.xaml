@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Dialogs"
         mc:Ignorable="d"
-        Title="Extension Searcher" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged" Topmost="True" Closing="Window_Closing" MinWidth="100" MinHeight="100">
+        Title="Extension Searcher" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged" Topmost="True" Closing="Window_Closing" MinWidth="220" MinHeight="100">
     <Grid x:Name="gridMain">
         <TextBox x:Name="textBoxSearchText" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Search Text" VerticalAlignment="Top" Width="200"/>
         <Button x:Name="buttonSearch" Content="Search" HorizontalAlignment="Left" Margin="215,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonSearch_Click" ToolTip="Search for the text in extension APIs"/>
