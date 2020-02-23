@@ -485,6 +485,10 @@ namespace SB_Prime
         {
             try
             {
+                string source = File.ReadAllText(fileName);
+                string output = Path.ChangeExtension(fileName, ".exe");
+                if (File.Exists(output)) File.Delete(output);
+
                 string compiler = MainWindow.InstallDir + "\\SmallBasicCompiler.exe";
                 Process process = new Process();
                 ProcessStartInfo psi = new ProcessStartInfo();
@@ -498,8 +502,6 @@ namespace SB_Prime
                 process.Start();
                 string result = process.StandardOutput.ReadToEnd();
 
-                string source = File.ReadAllText(fileName);
-                string output = Path.ChangeExtension(fileName, ".exe");
                 List<string> errors = new List<string>();
 
                 if (!result.Contains("0 errors"))
@@ -534,11 +536,12 @@ namespace SB_Prime
                     File.Delete(pdb);
                 }
 
-                if (File.Exists(output) && DateTime.Now - File.GetLastWriteTime(output) < TimeSpan.FromMilliseconds(1000))
+                if (File.Exists(output))
                 {
                     MainWindow.Errors.Add(new Error("Compile : " + "0 Errors"));
                     return output;
                 }
+
                 MainWindow.Errors.Add(new Error("Compile : " + "Failed to create exe"));
                 return "";
             }
