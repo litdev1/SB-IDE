@@ -1,5 +1,5 @@
 ﻿//The following Copyright applies to SB-Prime for Small Basic and files in the namespace SB_Prime. 
-//Copyright (C) <2017> litdev@hotmail.co.uk 
+//Copyright (C) <2020> litdev@hotmail.co.uk 
 //This file is part of SB-Prime for Small Basic. 
 
 //SB-Prime for Small Basic is free software: you can redistribute it and/or modify 
