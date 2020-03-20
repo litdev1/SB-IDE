@@ -3,27 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="Publish" Height="395.4" Width="400" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
+        Title="{ x:Static local:Strings.Label397 }" Height="395.4" Width="400" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="textBoxPublish" Height="23" Margin="10,78,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="Your program was published to the web" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>
-        <Button x:Name="buttonClose" Content="Update and Close" HorizontalAlignment="Right" Margin="0,0,9.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonClose_Click" ToolTip="Set the additional details and close"/>
-        <Label x:Name="label_Copy" Content="Below is the ID for your program that you can share" Margin="10,47,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-        <Button x:Name="buttonOpen" Content="Open in Browser" HorizontalAlignment="Right" Margin="0,0,139.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonOpen_Click" ToolTip="Open published program in Internet Explorer (SilverLight required)"/>
+        <Label x:Name="label" Content="{ x:Static local:Strings.Label398 }" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>
+        <Button x:Name="buttonClose" Content="{ x:Static local:Strings.Label400 }" HorizontalAlignment="Right" Margin="0,0,9.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonClose_Click" ToolTip="{ x:Static local:Strings.Label399 }"/>
+        <Label x:Name="label_Copy" Content="{ x:Static local:Strings.Label401 }" Margin="10,47,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Button x:Name="buttonOpen" Content="{ x:Static local:Strings.Label403 }" HorizontalAlignment="Right" Margin="0,0,139.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonOpen_Click" ToolTip="{ x:Static local:Strings.Label402 }"/>
         <TextBox x:Name="textBoxTitle" Height="23" Margin="10,136,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy1" Content="Optional Title (255 max)" Margin="10,106,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-        <Label x:Name="label_Copy3" Content="Optional Description (1024 max)" Margin="10,164,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Copy1" Content="{ x:Static local:Strings.Label404 }" Margin="10,106,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Copy3" Content="{ x:Static local:Strings.Label405 }" Margin="10,164,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="textBoxDescription" Height="69" Margin="9,195,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto"/>
-        <Label x:Name="label_Copy2" Content="Category" Margin="9,269,10.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Copy2" Content="{ x:Static local:Strings.Label406 }" Margin="9,269,10.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <ComboBox x:Name="comboBoxCategory" Margin="9,300,10.6,0" VerticalAlignment="Top">
-            <ComboBoxItem Content="Miscellaneous"/>
-            <ComboBoxItem Content="Game"/>
-            <ComboBoxItem Content="Sample"/>
-            <ComboBoxItem Content="Exercise"/>
-            <ComboBoxItem Content="Example"/>
-            <ComboBoxItem Content="Math"/>
-            <ComboBoxItem Content="Fun"/>
+            <ComboBoxItem Content="{ x:Static local:Strings.Label407 }"/>
+            <ComboBoxItem Content="{ x:Static local:Strings.Label408 }"/>
+            <ComboBoxItem Content="{ x:Static local:Strings.Label409 }"/>
+            <ComboBoxItem Content="{ x:Static local:Strings.Label410 }"/>
+            <ComboBoxItem Content="{ x:Static local:Strings.Label411 }"/>
+            <ComboBoxItem Content="{ x:Static local:Strings.Label412 }"/>
+            <ComboBoxItem Content="{ x:Static local:Strings.Label413 }"/>
         </ComboBox>
     </Grid>
 </Window>

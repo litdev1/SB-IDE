@@ -134,6 +134,8 @@ namespace SB_Prime.Dialogs
             canvas.ContextMenu = contextMenu;
 
             ToolTipService.SetShowDuration(buttonImport, 10000);
+            TextBlock tb = (TextBlock)buttonImport.ToolTip;
+            tb.Text = Properties.Strings.String72 + "\n" + Properties.Strings.String73 + "\n" + Properties.Strings.String74;
 
             rubberZoom = new Rectangle()
             {
@@ -302,12 +304,12 @@ namespace SB_Prime.Dialogs
             contextMenu.Items.Clear();
 
             MenuItem itemShape = new MenuItem();
-            itemShape.Header = "Select Shape";
+            itemShape.Header = Properties.Strings.String14;
             itemShape.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Objects)};
             contextMenu.Items.Add(itemShape);
 
             MenuItem itemUnShape = new MenuItem();
-            itemUnShape.Header = "Unselect Shape";
+            itemUnShape.Header = Properties.Strings.String15;
             itemUnShape.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.UnObjects) };
             contextMenu.Items.Add(itemUnShape);
 
@@ -336,25 +338,25 @@ namespace SB_Prime.Dialogs
             }
 
             MenuItem itemCopyShapes = new MenuItem();
-            itemCopyShapes.Header = "Copy Selected Shapes";
+            itemCopyShapes.Header = Properties.Strings.String16;
             itemCopyShapes.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.CopyShapes) };
             itemCopyShapes.Click += new RoutedEventHandler(CopyShapes);
             contextMenu.Items.Add(itemCopyShapes);
 
             MenuItem itemBackground = new MenuItem();
-            itemBackground.Header = "Background Color";
+            itemBackground.Header = Properties.Strings.String17;
             itemBackground.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Color_palette) };
             itemBackground.Click += new RoutedEventHandler(SelectBackground);
             contextMenu.Items.Add(itemBackground);
 
             MenuItem itemSetCode = new MenuItem();
-            itemSetCode.Header = "Paste Code to Current Document";
+            itemSetCode.Header = Properties.Strings.String18;
             itemSetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Paste) };
             itemSetCode.Click += new RoutedEventHandler(SetNewCode);
             contextMenu.Items.Add(itemSetCode);
 
             MenuItem itemGetCode = new MenuItem();
-            itemGetCode.Header = "Copy Code from Current Document";
+            itemGetCode.Header = Properties.Strings.String19;
             itemGetCode.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Copy) };
             itemGetCode.Click += new RoutedEventHandler(GetNewCode);
             contextMenu.Items.Add(itemGetCode);
@@ -1027,7 +1029,7 @@ namespace SB_Prime.Dialogs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Shapes Editor failed to set a property input.", "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Strings.String31, "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -1536,7 +1538,7 @@ namespace SB_Prime.Dialogs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Shapes Editor failed to export some shapes to code.", "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Strings.String32, "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -2228,7 +2230,7 @@ namespace SB_Prime.Dialogs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Shapes Editor failed to import some shapes from code.", "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.Strings.String33, "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -3842,18 +3844,18 @@ namespace SB_Prime.Dialogs
 
         private void buttonHelp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Add shapes or controls by clicking shape name on left panel.\n\n" +
-                "Select a shape by clicking it or blue move handle.\n" +
-                "The properties of a selected shape are shown on the right panel, they can be changed by editing or using Set button.\n\n" +
-                "Select multiple shapes by selecting a shape with Shift key held down or by selecting round a group of shapes (Shift to add to current selected shapes).\n" +
-                "Deslect all shapes by left click on the backgound.\n\n" +
-                "Move, resize (using corner handles) or change the properties of a shape (holding Shift to apply to multiple selected shapes).\n" +
-                "Triangles, lines and polygons are resized by moving individual corners.\n\n" +
-                "Nudge selected shapes using arrow keys (hold Shift to move by snap distance).\n\n" +
-                "Press Delete over a shape to delete it.\n\n" +
-                "Right click for additional options, including copy and paste code to current document, or copy selected shapes (new copied shapes lie over the originals so can then be moved as a group using Shift key).\n\n" +
-                "The current code is shown in the code window.  This can be edited and use \"Import From Code\" to add the current code to the current view.\n\n" +
-                "Questions and suggestions welcome.",
+            MessageBox.Show(Properties.Strings.String34 + "\n\n" +
+                Properties.Strings.String35 + "\n" +
+                Properties.Strings.String36 + "\n\n" +
+                Properties.Strings.String37 + "\n" +
+                Properties.Strings.String38 + "\n\n" +
+                Properties.Strings.String39 + "\n" +
+                Properties.Strings.String40 + "\n\n" +
+                Properties.Strings.String41 + "\n\n" +
+                Properties.Strings.String42 + "\n\n" +
+                Properties.Strings.String43 + "\n\n" +
+                Properties.Strings.String44 + "\n\n" +
+                Properties.Strings.String45,
                 "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 

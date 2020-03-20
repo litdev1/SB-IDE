@@ -123,7 +123,7 @@ namespace SB_Prime
             {
                 if (tempExe == "")
                 {
-                    MainWindow.Errors.Add(new Error("Run : " + "Cannot run case since exe has not been successfully compiled"));
+                    MainWindow.Errors.Add(new Error("Run : " + Properties.Strings.String67));
                     sbDocument.Proc = null;
                     if (null == sbDocument.debug) return null;
                     sbDocument.debug.Dispose();
@@ -146,7 +146,7 @@ namespace SB_Prime
                     Thread worker = new Thread(new ThreadStart(Listen));
                     worker.Start();
                 }
-                MainWindow.Errors.Add(new Error("Run : " + "Successfully started run with process " + process.Id));
+                MainWindow.Errors.Add(new Error("Run : " + Properties.Strings.String68 + " " + process.Id));
                 return process;
             }
             catch (Exception ex)
@@ -397,7 +397,7 @@ namespace SB_Prime
                 //if (null != sbDocument.Proc)
                 //{
                 //    sbDocument.ClearHighlights();
-                //    MainWindow.Errors.Add(new Error("Run : " + "Successfully terminated run with process " + sbDocument.Proc.Id));
+                //    MainWindow.Errors.Add(new Error("Run : " + Properties.Strings.String71 + " " + sbDocument.Proc.Id));
                 //}
                 if (sbDocument.Filepath == "" || debug) File.Delete(tempExe);
                 sbDocument.Proc = null;
@@ -587,7 +587,7 @@ namespace SB_Prime
                     if (null != sbDocument.Proc)
                     {
                         sbDocument.ClearHighlights();
-                        MainWindow.Errors.Add(new Error("Run : " + "Successfully terminated run with process " + sbDocument.Proc.Id));
+                        MainWindow.Errors.Add(new Error("Run : " + Properties.Strings.String61 + " " + sbDocument.Proc.Id));
                         sbDocument.Proc = null;
                     }
                     if (sbDocument.Filepath == "" || debug) File.Delete(tempExe);

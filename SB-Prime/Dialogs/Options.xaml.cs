@@ -39,9 +39,9 @@ namespace SB_Prime.Dialogs
             checkBoxLoadExtensions.IsChecked = MainWindow.loadExtensions;
             textBoxPrintMagnification.Text = MainWindow.printMagnification.ToString();
             comboBoxPrintColours.Items.Clear();
-            comboBoxPrintColours.Items.Add(new TextBlock() { Text = "Colour on White", Tag = (int)PrintColorMode.ColorOnWhite });
-            comboBoxPrintColours.Items.Add(new TextBlock() { Text = "True Colour", Tag = (int)PrintColorMode.Normal });
-            comboBoxPrintColours.Items.Add(new TextBlock() { Text = "Black and White", Tag = (int)PrintColorMode.BlackOnWhite });
+            comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String114, Tag = (int)PrintColorMode.ColorOnWhite });
+            comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String115, Tag = (int)PrintColorMode.Normal });
+            comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String116, Tag = (int)PrintColorMode.BlackOnWhite });
             comboBoxPrintColours.SelectedItem = comboBoxPrintColours.Items.OfType<TextBlock>().SingleOrDefault(x => (int)x.Tag == MainWindow.printColours);
             if (MainWindow.indentSpaces == 1) radioButton1.IsChecked = true;
             else if (MainWindow.indentSpaces == 4) radioButton4.IsChecked = true;

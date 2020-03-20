@@ -19,7 +19,7 @@ namespace SB_Prime.Dialogs
     /// </summary>
     public partial class PleaseWait : Window
     {
-        public PleaseWait(string Message = "Please Wait..")
+        public PleaseWait(string Message = "Please Wait...")
         {
             InitializeComponent();
 

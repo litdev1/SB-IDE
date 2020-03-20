@@ -3,28 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SB_Prime.Dialogs"
+        xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="Imported Program Details" Height="324.8" Width="600" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
+        Title="{ x:Static local:Strings.Label258 }" Height="324.8" Width="600" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
     <Grid>
-        <Label x:Name="label" Content="Program ID" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="110"/>
-        <TextBox x:Name="textBoxID" Height="23" Margin="125,10,115.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Background="White"/>
-        <Label x:Name="labe2" Content="Title" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="textBoxTitle" Height="23" Margin="125,38,9.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
-        <Label x:Name="labe3" Content="Description" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="textBoxDescription" Height="69" Margin="125,66,9.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF" VerticalScrollBarVisibility="Auto"/>
-        <Label x:Name="labe4" Content="Category" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="textBoxCategory" Height="23" Margin="125,140,9.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
-        <Label x:Name="labe5" Content="Popularity" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="textBoxPopularity" Height="23" Margin="125,168,9.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
-        <Label x:Name="labe6" Content="Number of Ratings" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="textBoxNumberofRatings" Height="23" Margin="125,196,10.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
-        <Label x:Name="labe7" Content="Overall Rating" HorizontalAlignment="Left" Margin="11,221,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="109"/>
-        <TextBox x:Name="textBoxRating" Height="23" Margin="250,224,115.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
-        <Label x:Name="labe8" Content="My Rating" HorizontalAlignment="Left" Margin="11,249,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="109"/>
-        <TextBox x:Name="textBoxMyRating" Height="23" Margin="250,252,115.6,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Background="#FFC8C8FF" IsReadOnly="True"/>
-        <Button x:Name="buttonSetRating" Content="Submit Rating" Margin="0,252,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="buttonSetRating_Click" Height="23" ToolTip="Submit your rating for program, this can only be done once per ID"/>
-        <Button x:Name="buttonReload" Content="Reload ID" Margin="0,10,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="buttonReload_Click" Height="23" ToolTip="Get details for a program ID"/>
+        <Label x:Name="label" Content="{ x:Static local:Strings.Label259 }" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="110"/>
+        <TextBox x:Name="textBoxID" Height="23" Margin="125,10,115.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label260 }" VerticalAlignment="Top" Background="White"/>
+        <Label x:Name="labe2" Content="{ x:Static local:Strings.Label261 }" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxTitle" Height="23" Margin="125,38,9.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label262 }" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe3" Content="{ x:Static local:Strings.Label263 }" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxDescription" Height="69" Margin="125,66,9.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label264 }" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF" VerticalScrollBarVisibility="Auto"/>
+        <Label x:Name="labe4" Content="{ x:Static local:Strings.Label265 }" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxCategory" Height="23" Margin="125,140,9.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label266 }" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe5" Content="{ x:Static local:Strings.Label267 }" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="110" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxPopularity" Height="23" Margin="125,168,9.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label268 }" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe6" Content="{ x:Static local:Strings.Label269 }" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+        <TextBox x:Name="textBoxNumberofRatings" Height="23" Margin="125,196,10.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label270 }" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe7" Content="{ x:Static local:Strings.Label271 }" HorizontalAlignment="Left" Margin="11,221,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="109"/>
+        <TextBox x:Name="textBoxRating" Height="23" Margin="250,224,115.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label272 }" VerticalAlignment="Top" IsReadOnly="True" Background="#FFC8C8FF"/>
+        <Label x:Name="labe8" Content="{ x:Static local:Strings.Label273 }" HorizontalAlignment="Left" Margin="11,249,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="109"/>
+        <TextBox x:Name="textBoxMyRating" Height="23" Margin="250,252,115.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label274 }" VerticalAlignment="Top" Background="#FFC8C8FF" IsReadOnly="True"/>
+        <Button x:Name="buttonSetRating" Content="{ x:Static local:Strings.Label276 }" Margin="0,252,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="buttonSetRating_Click" Height="23" ToolTip="{ x:Static local:Strings.Label275 }"/>
+        <Button x:Name="buttonReload" Content="{ x:Static local:Strings.Label278 }" Margin="0,10,10.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Click="buttonReload_Click" Height="23" ToolTip="{ x:Static local:Strings.Label277 }"/>
         <Rectangle x:Name="starRating" Fill="Yellow" Height="24" Margin="125,224,0,0" VerticalAlignment="Top" StrokeThickness="0" HorizontalAlignment="Left" Width="120"/>
         <Rectangle Height="24" Margin="125,224,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120">
             <Rectangle.Fill>

@@ -71,7 +71,7 @@ namespace SB_Prime
 
             if (!Directory.Exists(MainWindow.InstallDir+"\\lib"))
             {
-                MessageBox.Show("Permission to create extension lib folder is required\n\n" + MainWindow.InstallDir + "\\lib", "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Strings.String57 + "\n\n" + MainWindow.InstallDir + "\\lib", "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
                 string command = "mkdir \"" + MainWindow.InstallDir + "\\lib" + "\"";
                 UACcommand(command);
             }
@@ -162,6 +162,14 @@ namespace SB_Prime
                     if (File.Exists(MainWindow.InstallDir + extension + "." + Language + ".xml"))
                     {
                         doc.Load(MainWindow.InstallDir + extension + "." + Language + ".xml");
+                    }
+                    else if (File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.TwoLetterISOLanguageName + ".xml"))
+                    {
+                        doc.Load(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.TwoLetterISOLanguageName + ".xml");
+                    }
+                    else if (File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml"))
+                    {
+                        doc.Load(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml");
                     }
                     else
                     {
@@ -720,7 +728,7 @@ namespace SB_Prime
                     }
                 }
 
-                MainWindow.Errors.Add(new Error("Decompile : " + "Successfully decompiled assembly to " + targetProj));
+                MainWindow.Errors.Add(new Error("Decompile : " + Properties.Strings.String69 + " " + targetProj));
                 bSuccess = true;
             }
             catch (Exception ex)

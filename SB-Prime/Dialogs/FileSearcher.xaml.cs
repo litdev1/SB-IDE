@@ -18,7 +18,7 @@ namespace SB_Prime.Dialogs
     /// </summary>
     public partial class FileSearcher : Window, IDisposable
     {
-        private PleaseWait pleaseWait = new PleaseWait("Please Wait...\nLoading Files");
+        private PleaseWait pleaseWait = new PleaseWait(Properties.Strings.String117 + "\n" + Properties.Strings.String118);
         private List<SearchFile> searchFiles = new List<SearchFile>();
         private List<SearchFile> filterFiles = new List<SearchFile>();
         public static string RootPath = "";

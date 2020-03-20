@@ -3,18 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SB_Prime.Dialogs"
+        xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="Flow Chart" Height="500" Width="500" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated" MinWidth="220" MinHeight="100">
+        Title="{ x:Static local:Strings.Label324 }" Height="500" Width="500" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Topmost="True" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated" MinWidth="220" MinHeight="100">
     <Grid x:Name="grid">
-        <Button x:Name="buttonZoomOut" Content="Zoom Out" VerticalAlignment="Top" Click="buttonZoomOut_Click" Margin="10,10,0,0" Panel.ZIndex="2" ToolTip="Zoom out to view more (smaller)" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
-        <Button x:Name="buttonZoomIn" Content="Zoom In" VerticalAlignment="Top" Click="buttonZoomIn_Click" Margin="10,34,0,0" Panel.ZIndex="2" ToolTip="Zoom in to view less (larger)" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
-        <Button x:Name="buttonStart" Content="Start" VerticalAlignment="Top" Click="buttonStart_Click" Margin="90,10,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="Zoom to start" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
-        <Button x:Name="buttonEnd" Content="End" VerticalAlignment="Top" Click="buttonEnd_Click" Margin="90,34,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="Zoom in to end of main code" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
-        <Button x:Name="buttonUpdate" Content="Update" VerticalAlignment="Top" Click="buttonUpdate_Click" Margin="250,10,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="Update flow chart from current document" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
-        <Button x:Name="buttonSyncFrom" Content="Sync From" VerticalAlignment="Top" Click="buttonSyncFrom_Click" Margin="170,10,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="Zoom flow chart to select item at document location" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
-        <Button x:Name="buttonSyncTo" Content="Sync To" VerticalAlignment="Top" Click="buttonSyncTo_Click" Margin="170,33,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="Scroll document to view selected flow chart item" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
-        <Button x:Name="buttonInfo" Content="Info" VerticalAlignment="Top" Click="buttonInfo_Click" Margin="250,33,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="Info about using Flow Chart" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonZoomOut" Content="{ x:Static local:Strings.Label326 }" VerticalAlignment="Top" Click="buttonZoomOut_Click" Margin="10,10,0,0" Panel.ZIndex="2" ToolTip="{ x:Static local:Strings.Label325 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonZoomIn" Content="{ x:Static local:Strings.Label328 }" VerticalAlignment="Top" Click="buttonZoomIn_Click" Margin="10,34,0,0" Panel.ZIndex="2" ToolTip="{ x:Static local:Strings.Label327 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonStart" Content="{ x:Static local:Strings.Label330 }" VerticalAlignment="Top" Click="buttonStart_Click" Margin="90,10,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="{ x:Static local:Strings.Label329 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonEnd" Content="{ x:Static local:Strings.Label332 }" VerticalAlignment="Top" Click="buttonEnd_Click" Margin="90,34,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="{ x:Static local:Strings.Label331 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonUpdate" Content="{ x:Static local:Strings.Label334 }" VerticalAlignment="Top" Click="buttonUpdate_Click" Margin="250,10,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="{ x:Static local:Strings.Label333 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonSyncFrom" Content="{ x:Static local:Strings.Label336 }" VerticalAlignment="Top" Click="buttonSyncFrom_Click" Margin="170,10,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="{ x:Static local:Strings.Label335 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonSyncTo" Content="{ x:Static local:Strings.Label338 }" VerticalAlignment="Top" Click="buttonSyncTo_Click" Margin="170,33,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="{ x:Static local:Strings.Label337 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="buttonInfo" Content="{ x:Static local:Strings.Label340 }" VerticalAlignment="Top" Click="buttonInfo_Click" Margin="250,33,0,0" Panel.ZIndex="2" RenderTransformOrigin="0.469,1.51" ToolTip="{ x:Static local:Strings.Label339 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
         <ScrollViewer x:Name="scrollViewer" Margin="10,58,9.6,10.4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <Canvas x:Name="canvas" Margin="10">
             </Canvas>

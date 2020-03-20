@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SB_Prime.Dialogs"
+        xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="Variables &amp; Call Stack" Width="600" Height="600" Deactivated="Window_Deactivated" Topmost="True" Icon="/SB-Prime;component/AppIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing" ShowInTaskbar="False" MinWidth="220" MinHeight="100">
+        Title="{ x:Static local:Strings.Label462 }" Width="600" Height="600" Deactivated="Window_Deactivated" Topmost="True" Icon="/SB-Prime;component/AppIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing" ShowInTaskbar="False" MinWidth="220" MinHeight="100">
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -24,8 +24,8 @@
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Variable" IsReadOnly="True" Binding="{Binding Variable}"/>
-                <DataGridTextColumn Header="Value" IsReadOnly="True" Binding="{Binding Value}"/>
+                <DataGridTextColumn Header="{ x:Static local:Strings.Label463 }" IsReadOnly="True" Binding="{Binding Variable}"/>
+                <DataGridTextColumn Header="{ x:Static local:Strings.Label464 }" IsReadOnly="True" Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dataGridStack" HeadersVisibility="Column" CanUserAddRows="False" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" AutoGenerateColumns="False" Margin="10" Grid.Column="1" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray">
@@ -41,7 +41,7 @@
                 <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Call Stack" IsReadOnly="True" Binding="{Binding Stack}"/>
+                <DataGridTextColumn Header="{ x:Static local:Strings.Label465 }" IsReadOnly="True" Binding="{Binding Stack}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

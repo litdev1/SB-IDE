@@ -54,40 +54,40 @@ namespace SB_Prime
             menu.Closed += new ToolStripDropDownClosedEventHandler(OnClosed);
             textArea.ContextMenuStrip = menu;
 
-            menu.Items.Add(new ToolStripMenuItem("Undo Ctrl+Z", null, (s, ea) => textArea.Undo()) { Enabled = textArea.CanUndo });
-            menu.Items.Add(new ToolStripMenuItem("Redo Ctrl+Y", null, (s, ea) => textArea.Redo()) { Enabled = textArea.CanRedo });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String89, null, (s, ea) => textArea.Undo()) { Enabled = textArea.CanUndo });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String90, null, (s, ea) => textArea.Redo()) { Enabled = textArea.CanRedo });
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Cut Ctrl+X", null, (s, ea) => textArea.Cut()) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripMenuItem("Copy Ctrl+C", null, (s, ea) => textArea.Copy()) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripMenuItem("Paste Ctrl+V", null, (s, ea) => textArea.Paste()) { Enabled = textArea.CanPaste });
-            menu.Items.Add(new ToolStripMenuItem("Delete", null, (s, ea) => textArea.DeleteRange(textArea.SelectionStart, textArea.SelectionEnd - textArea.SelectionStart)) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String91, null, (s, ea) => textArea.Cut()) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String92, null, (s, ea) => textArea.Copy()) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String93, null, (s, ea) => textArea.Paste()) { Enabled = textArea.CanPaste });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String94, null, (s, ea) => textArea.DeleteRange(textArea.SelectionStart, textArea.SelectionEnd - textArea.SelectionStart)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Select All Ctrl+A", null, (s, ea) => textArea.SelectAll()));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String95, null, (s, ea) => textArea.SelectAll()));
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Find Ctrl+F", null, OpenFindDialog) { Enabled = null != sbDocument.Tab });
-            menu.Items.Add(new ToolStripMenuItem("Find and Replace Ctrl+H", null, OpenReplaceDialog) { Enabled = null != sbDocument.Tab });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String96, null, OpenFindDialog) { Enabled = null != sbDocument.Tab });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String97, null, OpenReplaceDialog) { Enabled = null != sbDocument.Tab });
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Comment Selected Lines", null, (s, ea) => sbDocument.Comment(true)));
-            menu.Items.Add(new ToolStripMenuItem("Un-Comment Selected Lines", null, (s, ea) => sbDocument.Comment(false)));
-            menu.Items.Add(new ToolStripMenuItem("Un-Comment File Commands", null, (s, ea) => sbDocument.UnCommentFile()));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String98, null, (s, ea) => sbDocument.Comment(true)));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String99, null, (s, ea) => sbDocument.Comment(false)));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String100, null, (s, ea) => sbDocument.UnCommentFile()));
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Collapse Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Contract)));
-            menu.Items.Add(new ToolStripMenuItem("Expand Folding", null, (s, ea) => sbDocument.FoldAll(FoldAction.Expand)));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String101, null, (s, ea) => sbDocument.FoldAll(FoldAction.Contract)));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String102, null, (s, ea) => sbDocument.FoldAll(FoldAction.Expand)));
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Navigate Back Ctrl+B", null, (s, ea) => sbDocument.GoBackwards()) { Enabled = sbDocument.lineStack.backwards.Count > 1 });
-            menu.Items.Add(new ToolStripMenuItem("Navigate Forwards Ctrl+Shift+B", null, (s, ea) => sbDocument.GoForwards()) { Enabled = sbDocument.lineStack.forwards.Count > 0 });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String103, null, (s, ea) => sbDocument.GoBackwards()) { Enabled = sbDocument.lineStack.backwards.Count > 1 });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String104, null, (s, ea) => sbDocument.GoForwards()) { Enabled = sbDocument.lineStack.forwards.Count > 0 });
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(menuColors);
             menu.Items.Add(menuFonts);
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as HTML text", null, CopyToHtml) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as HTML", null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Html)) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripMenuItem("Copy Selection to Clipboard as RTF", null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Rtf)) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String105, null, CopyToHtml) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String106, null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Html)) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String107, null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Rtf)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem("Open Containing Folder", null, OpenContainingFolder) { Enabled = null != sbDocument.Tab && File.Exists(((TabHeader)sbDocument.Tab.Header).FilePath) });
-            menu.Items.Add(new ToolStripMenuItem("Add to Debug Watch Ctrl+Shift+W", null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripMenuItem("Display Flow Chart", null, OpenFlowChart) { Enabled = null != sbDocument.Tab });
-            menu.Items.Add(new ToolStripMenuItem("Format Program", null, (s, ea) => sbDocument.Lexer.Format()));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String108, null, OpenContainingFolder) { Enabled = null != sbDocument.Tab && File.Exists(((TabHeader)sbDocument.Tab.Header).FilePath) });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String109, null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String110, null, OpenFlowChart) { Enabled = null != sbDocument.Tab });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String111, null, (s, ea) => sbDocument.Lexer.Format()));
         }
 
         private void OnClosed(object sender, ToolStripDropDownClosedEventArgs e)
@@ -166,7 +166,7 @@ namespace SB_Prime
 
         private ToolStripMenuItem SetColors()
         {
-            ToolStripMenuItem menuItem = new ToolStripMenuItem("Insert Color");
+            ToolStripMenuItem menuItem = new ToolStripMenuItem(Properties.Strings.String112);
 
             Type colorsType = typeof(System.Windows.Media.Colors);
             PropertyInfo[] colorsTypePropertyInfos = colorsType.GetProperties(BindingFlags.Public | BindingFlags.Static);
@@ -195,7 +195,7 @@ namespace SB_Prime
 
         private ToolStripMenuItem SetFonts()
         {
-            ToolStripMenuItem menuItem = new ToolStripMenuItem("Insert Font");
+            ToolStripMenuItem menuItem = new ToolStripMenuItem(Properties.Strings.String113);
 
             List<string> fonts = new List<string>();
             foreach (System.Windows.Media.FontFamily font in System.Windows.Media.Fonts.SystemFontFamilies) //WPF fonts

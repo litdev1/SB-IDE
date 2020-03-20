@@ -77,7 +77,7 @@ namespace SB_Prime.Dialogs
                 if (!Directory.Exists(targetFolder) || !File.Exists(sourceFile)) return;
                 if (Directory.GetFiles(targetFolder).Length > 0 || Directory.GetDirectories(targetFolder).Length > 0)
                 {
-                    System.Windows.MessageBox.Show("This folder already contains files.\n\nChoose another location or empty this folder and try again.", "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    System.Windows.MessageBox.Show(Properties.Strings.String22 + "\n\n" + Properties.Strings.String23, "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 string targetProg = textBoxDecompileFolder.Text + "\\" + Path.GetFileNameWithoutExtension(sourceFile) + ".csproj";

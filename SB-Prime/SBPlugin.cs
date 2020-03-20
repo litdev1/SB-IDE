@@ -90,7 +90,7 @@ namespace SB_Prime
                             }
                             else
                             {
-                                MainWindow.Errors.Add(new Error("Plugin Add : Failed to add a plugin in group " + group.Header));
+                                MainWindow.Errors.Add(new Error(Properties.Strings.String70 + " " + group.Header));
                             }
                         }
                     }

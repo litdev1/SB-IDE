@@ -3,18 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SB_Prime.Dialogs"
+        xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="Find and Replace" Height="235" Width="540.362" ShowInTaskbar="False" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" Topmost="True" Closing="Window_Closing" Loaded="Window_Loaded" MinWidth="220" MinHeight="100">
+        Title="{ x:Static local:Strings.Label313 }" Height="235" Width="540.362" ShowInTaskbar="False" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" Topmost="True" Closing="Window_Closing" Loaded="Window_Loaded" MinWidth="220" MinHeight="100">
     <Grid Margin="0">
         <TextBox x:Name="textBoxFind" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="200"/>
-        <Label x:Name="label" Content="Find" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label" Content="{ x:Static local:Strings.Label314 }" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="textBoxReplace" Margin="215,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="200"/>
-        <Label x:Name="label_Copy" Content="Replace" Margin="215,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Center"/>
-        <Button x:Name="buttonFindPrevious" Content="Find Previous" Margin="0,0,9.6,82.2" VerticalAlignment="Bottom" Click="buttonFindPrevious_Click" ToolTip="Find the previous occurrence of the Find text" HorizontalAlignment="Right" Width="91"/>
-        <Button x:Name="buttonFindNext" Content="Find Next" Margin="0,0,9.6,58.2" VerticalAlignment="Bottom" Click="buttonFindNext_Click" ToolTip="Find the next occurrence of the Find text" HorizontalAlignment="Right" Width="91"/>
-        <Button x:Name="buttonReplace" Content="Replace" Margin="0,0,9.6,34.2" VerticalAlignment="Bottom" Click="buttonReplace_Click" ToolTip="Replace the current occurrence and find the next" HorizontalAlignment="Right" Width="91"/>
-        <Button x:Name="buttonReplaceAll" Content="Replace All" Margin="0,0,9.6,10.2" VerticalAlignment="Bottom" Click="buttonReplaceAll_Click" ToolTip="Replace all occurreces of the Find text with the Replace text" HorizontalAlignment="Right" Width="91"/>
+        <Label x:Name="label_Copy" Content="{ x:Static local:Strings.Label315 }" Margin="215,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Center"/>
+        <Button x:Name="buttonFindPrevious" Content="{ x:Static local:Strings.Label317 }" Margin="0,0,9.6,82.2" VerticalAlignment="Bottom" Click="buttonFindPrevious_Click" ToolTip="{ x:Static local:Strings.Label316 }" HorizontalAlignment="Right" Width="91"/>
+        <Button x:Name="buttonFindNext" Content="{ x:Static local:Strings.Label319 }" Margin="0,0,9.6,58.2" VerticalAlignment="Bottom" Click="buttonFindNext_Click" ToolTip="{ x:Static local:Strings.Label318 }" HorizontalAlignment="Right" Width="91"/>
+        <Button x:Name="buttonReplace" Content="{ x:Static local:Strings.Label321 }" Margin="0,0,9.6,34.2" VerticalAlignment="Bottom" Click="buttonReplace_Click" ToolTip="{ x:Static local:Strings.Label320 }" HorizontalAlignment="Right" Width="91"/>
+        <Button x:Name="buttonReplaceAll" Content="{ x:Static local:Strings.Label323 }" Margin="0,0,9.6,10.2" VerticalAlignment="Bottom" Click="buttonReplaceAll_Click" ToolTip="{ x:Static local:Strings.Label322 }" HorizontalAlignment="Right" Width="91"/>
         <ComboBox x:Name="comboBoxFind" Margin="10,68,0,0" VerticalAlignment="Top" SelectionChanged="comboBoxFind_SelectionChanged" HorizontalAlignment="Left" Width="200"/>
         <ComboBox x:Name="comboBoxReplace" Margin="215,68,0,0" VerticalAlignment="Top" SelectionChanged="comboBoxReplace_SelectionChanged" HorizontalAlignment="Left" Width="200"/>
     </Grid>

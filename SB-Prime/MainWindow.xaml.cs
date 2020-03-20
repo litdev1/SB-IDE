@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Printing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -88,6 +89,16 @@ namespace SB_Prime
 
         public MainWindow()
         {
+            App app = (App)Application.Current;
+            for (int i = 0; i < app.Arguments.Length; i++)
+            {
+                if (app.Arguments[i].StartsWith("/l"))
+                {
+                    string lang = app.Arguments[i].Substring(app.Arguments[i].IndexOf(":") + 1);
+                    Properties.Strings.Culture = new CultureInfo(lang);
+                }
+            }
+
             splashScreen = new SplashScreen("Images/splash.png");
             splashScreen.Show(false);
 
@@ -601,11 +612,11 @@ namespace SB_Prime
 
         public static void Help()
         {
-            MessageBox.Show("There is currently no extended help.\n\n" +
-                "SB-Prime should work with any installed version of Small Basic, debugging works on Small Basic version 1.1 onwards.\n\n" +
-                "To enable debugging an extension is directly compiled and installed in the lib folder the first time SB-Prime is started, requiring User Account Control (UAC) permission.\n\n" +
-                "Additionally UAC may be required the first time a debug session is performed to allow required communication between applications.\n\n" +
-                "Debugging requires running to break points or 'stepping' through the code.  Once paused, values can be be viewed by hovering the mouse over a variable, or by adding variable names to the watch list in the debug tab.  Watch list variables may be viewed as they change and may also be modified.  Array values with [] syntax may also be viewed and modified.\n\n",
+            MessageBox.Show(Properties.Strings.String51 + "\n\n" +
+                Properties.Strings.String52 + "\n\n" +
+                Properties.Strings.String53 + "\n\n" +
+                Properties.Strings.String54 + "\n\n" +
+                Properties.Strings.String55 + "\n\n",
                 "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 

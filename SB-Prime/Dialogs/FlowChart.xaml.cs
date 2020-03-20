@@ -877,7 +877,7 @@ namespace SB_Prime.Dialogs
 
         private void OnError()
         {
-            MessageBox.Show("Flow Chart failed, probably because of code error - check program compiles.", "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(Properties.Strings.String24, "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
@@ -940,11 +940,11 @@ namespace SB_Prime.Dialogs
 
         private void buttonInfo_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Left click an item to select it\n\n" +
-                "Right click an item to select its parent (EndFor, EndWhile, EndIf, Else or ElseIf) or select its link (Goto or Sub)\n\n" +
-                "A selected item will be moved near the top of the view\n\n" +
-                "During a debug session, the current paused line will be selected\n\n" +
-                "Colors can be set in IDE Colors, and the Dark Theme is applied if selected",
+            MessageBox.Show(Properties.Strings.String26 + "\n\n" +
+                Properties.Strings.String27 + "\n\n" +
+                Properties.Strings.String28 + "\n\n" +
+                Properties.Strings.String29 + "\n\n" +
+                Properties.Strings.String30,
                 "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 

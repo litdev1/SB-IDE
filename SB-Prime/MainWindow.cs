@@ -84,7 +84,7 @@ namespace SB_Prime
             THIS = this;
 
             statusVersion.Content = "SB-Prime Version " + Assembly.GetExecutingAssembly().GetName().Version + " (Debug Extension " + SBInterop.CurrentVersion + ")";
-            Errors.Add(new Error("Welcome to Small Basic Prime"));
+            Errors.Add(new Error(Properties.Strings.String58));
 
             sbInterop = new SBInterop();
             sbPlugin = new SBplugin(this);
@@ -114,6 +114,7 @@ namespace SB_Prime
             App app = (App)Application.Current;
             for (int i = 0; i < app.Arguments.Length; i++)
             {
+                if (app.Arguments[i].StartsWith("/")) continue;
                 if (i == 0)
                 {
                     activeDocument.LoadDataFromFile(app.Arguments[i]);
@@ -132,7 +133,7 @@ namespace SB_Prime
             dataGridResults.ContextMenu = menu;
             MenuItem clear = new MenuItem();
             menu.Items.Add(clear);
-            clear.Header = "Clear";
+            clear.Header = Properties.Strings.String20;
             clear.Icon = new Image()
             {
                 Width = 14,
@@ -145,7 +146,7 @@ namespace SB_Prime
             dataGridDebug.ContextMenu = menu;
             clear = new MenuItem();
             menu.Items.Add(clear);
-            clear.Header = "Clear";
+            clear.Header = Properties.Strings.String20;
             clear.Icon = new Image()
             {
                 Width = 14,
@@ -155,7 +156,7 @@ namespace SB_Prime
             clear.Click += new RoutedEventHandler(GridDebugClick);
             clear = new MenuItem();
             menu.Items.Add(clear);
-            clear.Header = "Clear Watch Conditions";
+            clear.Header = Properties.Strings.String21;
             clear.Icon = new Image()
             {
                 Width = 14,
@@ -201,7 +202,7 @@ namespace SB_Prime
 
             TextBlock tb = new TextBlock()
             {
-                Text = "Intellisense",
+                Text = Properties.Strings.String9,
                 TextWrapping = TextWrapping.Wrap,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 FontSize = 24 + zoom
@@ -214,8 +215,7 @@ namespace SB_Prime
 
             tb = new TextBlock()
             {
-                Text = "Intellisense will appear here when you hover over objects and methods as well as when you type and view potential options.\n\n" +
-                "Additionally, a popup description for methods can be viewed in this window by hovering the mouse over methods, properties or events when viewing an object.",
+                Text = Properties.Strings.String10 + "\n\n" + Properties.Strings.String13,
                 TextWrapping = TextWrapping.Wrap,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 FontSize = 14 + zoom,
@@ -244,7 +244,7 @@ namespace SB_Prime
                 Margin = new Thickness(0, 0, 4, 0),
                 Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent)
             };
-            button.ToolTip = "Toggle intellisense view";
+            button.ToolTip = Properties.Strings.String2;
             button.Click += new RoutedEventHandler(ClickIntellisenseToggle);
             wrapperGrid.Children.Add(button);
 
@@ -262,7 +262,7 @@ namespace SB_Prime
                 Margin = new Thickness(0, 0, 32, 0),
                 Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent)
             };
-            button2.ToolTip = "Toggle split screen program layout";
+            button2.ToolTip = Properties.Strings.String3;
             button2.Click += new RoutedEventHandler(viewDual_Click);
             wrapperGrid.Children.Add(button2);
 
@@ -284,7 +284,7 @@ namespace SB_Prime
                 Background = new SolidColorBrush(Colors.Transparent),
                 BorderBrush = new SolidColorBrush(Colors.Transparent)
             };
-            button3.ToolTip = "Imported program details";
+            button3.ToolTip = Properties.Strings.String4;
             button3.Click += new RoutedEventHandler(details_Click);
             wrapperGrid.Children.Add(button3);
 
@@ -306,7 +306,7 @@ namespace SB_Prime
                 Background = new SolidColorBrush(Colors.Transparent),
                 BorderBrush = new SolidColorBrush(Colors.Transparent)
             };
-            button4.ToolTip = "Toggle difference files in split screen";
+            button4.ToolTip = Properties.Strings.String5;
             button4.Click += new RoutedEventHandler(difference_Click);
             wrapperGrid.Children.Add(button4);
             wrapperGrid.Children[4].Visibility = dualScreen ? Visibility.Visible : Visibility.Hidden;
@@ -347,7 +347,7 @@ namespace SB_Prime
         private void GridDebugClick(object sender, RoutedEventArgs e)
         {
             MenuItem item = (MenuItem)sender;
-            if ((string)item.Header == "Clear Watch Conditions")
+            if ((string)item.Header == Properties.Strings.String21)
             {
                 foreach (DebugData data in debugData)
                 {
@@ -751,7 +751,7 @@ namespace SB_Prime
 
             if (activeDocument.IsDirty)
             {
-                System.Windows.Forms.DialogResult dlg = System.Windows.Forms.MessageBox.Show("The text in " + ((TabHeader)activeTab.Header).FileName + " has changed.\n\nDo you want to save the changes?", "SB-Prime", System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Question);
+                System.Windows.Forms.DialogResult dlg = System.Windows.Forms.MessageBox.Show(Properties.Strings.String46 + " " + ((TabHeader)activeTab.Header).FileName + " " + Properties.Strings.String47 +"\n\n" + Properties.Strings.String48, "SB-Prime", System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Question);
                 if (dlg == System.Windows.Forms.DialogResult.Cancel) return dlg;
                 else if (dlg == System.Windows.Forms.DialogResult.Yes)
                 {
@@ -963,7 +963,7 @@ namespace SB_Prime
                 if (null != activeDocument.Proc && activeDocument.Proc.HasExited)
                 {
                     activeDocument.ClearHighlights();
-                    Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
+                    Errors.Add(new Error("Run : " + Properties.Strings.String61 + " " + activeDocument.Proc.Id));
                     activeDocument.Proc = null;
                     if (null == activeDocument.debug) return;
                     activeDocument.debug.Dispose();
@@ -1173,7 +1173,7 @@ namespace SB_Prime
                     {
                         tb = new TextBlock()
                         {
-                            Text = "Arguments",
+                            Text = Properties.Strings.String11,
                             Width = 300,
                             TextWrapping = TextWrapping.Wrap,
                             FontSize = 14 + zoom,
@@ -1220,7 +1220,7 @@ namespace SB_Prime
                     {
                         tb = new TextBlock()
                         {
-                            Text = "Returns",
+                            Text = Properties.Strings.String12,
                             Width = 300,
                             TextWrapping = TextWrapping.Wrap,
                             FontSize = 14 + zoom,
@@ -1386,7 +1386,7 @@ namespace SB_Prime
             {
                 if (null != activeDocument.debug && !activeDocument.debug.IsDebug())
                 {
-                    Errors.Add(new Error("Run : " + "Cannot mix debug and non-debug runs"));
+                    Errors.Add(new Error("Run : " + Properties.Strings.String62));
                     return;
                 }
                 if (null != activeDocument.debug && activeDocument.debug.IsRunning())
@@ -1501,7 +1501,7 @@ namespace SB_Prime
                 if (null != activeDocument.Proc && !activeDocument.Proc.HasExited)
                 {
                     activeDocument.ClearHighlights();
-                    Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
+                    Errors.Add(new Error("Run : " + Properties.Strings.String61 + " " + activeDocument.Proc.Id));
                     activeDocument.Proc.Kill();
                 }
                 activeDocument.Proc = null;
@@ -1528,7 +1528,7 @@ namespace SB_Prime
             {
                 if (null != activeDocument.debug)
                 {
-                    Errors.Add(new Error("Run : " + "Cannot compile a program that is already running"));
+                    Errors.Add(new Error("Run : " + Properties.Strings.String63));
                     return;
                 }
                 activeDocument.debug = new SBDebug(this, sbInterop, activeDocument, false);
@@ -1544,7 +1544,7 @@ namespace SB_Prime
                 if (null != activeDocument.Proc && !activeDocument.Proc.HasExited)
                 {
                     activeDocument.ClearHighlights();
-                    Errors.Add(new Error("Run : " + "Successfully terminated run with process " + activeDocument.Proc.Id));
+                    Errors.Add(new Error("Run : " + Properties.Strings.String61 + " " + activeDocument.Proc.Id));
                     activeDocument.Proc.Kill();
                 }
                 activeDocument.Proc = null;
@@ -1613,12 +1613,12 @@ namespace SB_Prime
             string key = sbInterop.Publish(activeDocument.TextArea.Text, ((TabHeader)activeTab.Header).BaseID);
             if (key == "error")
             {
-                Errors.Add(new Error("Publish : " + "Failed to publish program (perhaps too short or too long)"));
+                Errors.Add(new Error("Publish : " + Properties.Strings.String64));
             }
             else
             {
                 ((TabHeader)activeTab.Header).BaseID = key;
-                Errors.Add(new Error("Publish : " + "Successfully published program with ID " + key));
+                Errors.Add(new Error("Publish : " + Properties.Strings.String65 + " " + key));
                 Publish publish = new Publish(sbInterop, key);
                 publish.Owner = GetWindow(this);
                 publish.ShowDialog();
@@ -1641,7 +1641,7 @@ namespace SB_Prime
 
         private void ExtensionManager()
         {
-            if (!loadExtensions || MessageBox.Show("Uncheck \"Load extension dlls on startup\" in Advanced->Options and restart to modify installed extensions.\n\nOK to continue with extensions loaded.", "SB-Prime", MessageBoxButton.OKCancel, MessageBoxImage.Information) == MessageBoxResult.OK)
+            if (!loadExtensions || MessageBox.Show(Properties.Strings.String49 + "\n\n" + Properties.Strings.String50, "SB-Prime", MessageBoxButton.OKCancel, MessageBoxImage.Information) == MessageBoxResult.OK)
             {
                 EMWindow windowEM = new EMWindow(Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "settings"), InstallDir);
                 windowEM.ShowDialog();
@@ -1851,7 +1851,7 @@ namespace SB_Prime
                 File.Delete(tempCode);
                 if (result != "")
                 {
-                    Errors.Add(new Error("Graduate : " + "Successfully graduated program to " + result));
+                    Errors.Add(new Error("Graduate : " + Properties.Strings.String66 +" " + result));
                     Process.Start(result);
                 }
             }

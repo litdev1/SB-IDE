@@ -64,7 +64,7 @@ namespace SB_Prime.Dialogs
             {
                 if (Directory.GetFiles(textBoxGraduate.Text).Count() > 0)
                 {
-                    if (System.Windows.MessageBox.Show("This folder already contains files.\n\nDo you want to continue?", "SB-Prime", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+                    if (System.Windows.MessageBox.Show(Properties.Strings.String24 + "\n\n" + Properties.Strings.String25, "SB-Prime", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
                 }
                 OK = true;
                 ProjectPath = textBoxGraduate.Text;

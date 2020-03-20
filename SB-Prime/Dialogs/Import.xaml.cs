@@ -68,11 +68,11 @@ namespace SB_Prime.Dialogs
             MainWindow.ImportProgram = sbInterop.Import(textBoxImport.Text);
             if (MainWindow.ImportProgram == "error")
             {
-                MainWindow.Errors.Add(new Error("Import : " + "Failed to import program with ID " + textBoxImport.Text));
+                MainWindow.Errors.Add(new Error("Import : " + Properties.Strings.String59 + " " + textBoxImport.Text));
             }
             else
             {
-                MainWindow.Errors.Add(new Error("Import : " + "Successfully imported program with ID " + textBoxImport.Text));
+                MainWindow.Errors.Add(new Error("Import : " + Properties.Strings.String60 + " " + textBoxImport.Text));
             }
             Close();
         }

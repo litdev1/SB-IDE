@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SB_Prime.Dialogs"
+        xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="Links" Height="500" Width="600" Icon="/SB-Prime;component/AppIcon.ico" Topmost="True" WindowStartupLocation="CenterOwner" ResizeMode="CanResize" MinWidth="220" MinHeight="100">
+        Title="{ x:Static local:Strings.Label357 }" Height="500" Width="600" Icon="/SB-Prime;component/AppIcon.ico" Topmost="True" WindowStartupLocation="CenterOwner" ResizeMode="CanResize" MinWidth="220" MinHeight="100">
     <Grid>
-        <Label x:Name="label" Content="Below are some links to essential free developer resources" Margin="10,10,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label" Content="{ x:Static local:Strings.Label358 }" Margin="10,10,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <DataGrid x:Name="dataGridLinks" Margin="10,41,9.6,10.4" HeadersVisibility="Column" CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="All" HorizontalGridLinesBrush="Gray">
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
@@ -32,24 +32,24 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Name" IsReadOnly="True">
+                <DataGridTemplateColumn Header="{ x:Static local:Strings.Label359 }" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}" Margin="2"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Description" IsReadOnly="True" Width="*">
+                <DataGridTemplateColumn Header="{ x:Static local:Strings.Label360 }" IsReadOnly="True" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Description}" Margin="2" TextWrapping="Wrap"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Link" IsReadOnly="True">
+                <DataGridTemplateColumn Header="{ x:Static local:Strings.Label361 }" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="dataGridLinkSet" ToolTip="Click to open link" Tag="{Binding}" Content="{Binding Link}"/>
+                            <Button Click="dataGridLinkSet" ToolTip="{ x:Static local:Strings.Label362 }" Tag="{Binding}" Content="{Binding Link}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
