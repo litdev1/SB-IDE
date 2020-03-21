@@ -66,11 +66,15 @@ namespace Update
                 Unblock(tempZip);
                 Console.WriteLine("Replacing downloaded files...");
                 UnZip(tempZip, tempFolder);
-                CopyFiles(tempFolder);
+                CopyFiles(exeFolder, tempFolder);
                 foreach (string subFolder in Directory.GetDirectories(tempFolder))
                 {
-                    CopyFiles(subFolder);
+                    string langPath = exeFolder + "\\" + new DirectoryInfo(subFolder).Name;
+                    if (!Directory.Exists(langPath)) Directory.CreateDirectory(langPath);
+                    CopyFiles(langPath, subFolder);
                 }
+                string langFile = exeFolder + "\\SB-Prime.resources.dll";
+                if (File.Exists(langFile)) File.Delete(langFile);
                 File.Delete(tempZip);
                 Directory.Delete(tempFolder, true);
             }
@@ -130,7 +134,7 @@ namespace Update
             zip = null;
         }
 
-        private void CopyFiles(string zipFolder)
+        private void CopyFiles(string outFolder, string zipFolder)
         {
             foreach (string file in Directory.GetFiles(zipFolder))
             {
@@ -138,17 +142,11 @@ namespace Update
                 {
                     if (Path.GetFileName(file) == "Update.exe")
                     {
-                        File.Copy(file, exeFolder + "\\" + Path.GetFileName(file) + "-", true);
-                    }
-                    else if (Path.GetFileName(file) == "SB-Prime.resources.dll")
-                    {
-                        string langPath = exeFolder +"\\" + new DirectoryInfo(Path.GetDirectoryName(file)).Name;
-                        if (!Directory.Exists(langPath)) Directory.CreateDirectory(langPath);
-                        File.Copy(file, langPath + "\\" + Path.GetFileName(file), true);
+                        File.Copy(file, outFolder + "\\" + Path.GetFileName(file) + "-", true);
                     }
                     else
                     {
-                        File.Copy(file, exeFolder + "\\" + Path.GetFileName(file), true);
+                        File.Copy(file, outFolder + "\\" + Path.GetFileName(file), true);
                     }
                 }
                 catch
