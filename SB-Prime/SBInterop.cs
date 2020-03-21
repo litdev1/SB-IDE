@@ -163,11 +163,11 @@ namespace SB_Prime
                     {
                         doc.Load(MainWindow.InstallDir + extension + "." + Language + ".xml");
                     }
-                    else if (File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.TwoLetterISOLanguageName + ".xml"))
+                    else if (null != Properties.Strings.Culture && File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.TwoLetterISOLanguageName + ".xml"))
                     {
                         doc.Load(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.TwoLetterISOLanguageName + ".xml");
                     }
-                    else if (File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml"))
+                    else if (null != Properties.Strings.Culture && File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml"))
                     {
                         doc.Load(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml");
                     }
