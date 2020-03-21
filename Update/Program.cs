@@ -128,7 +128,7 @@ namespace Update
 
         private void CopyFiles(string zipFolder)
         {
-            foreach (string file in Directory.GetFiles(zipFolder))
+            foreach (string file in Directory.GetFiles(zipFolder, "*.*", SearchOption.AllDirectories))
             {
                 try
                 {
