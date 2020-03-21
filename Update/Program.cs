@@ -67,6 +67,10 @@ namespace Update
                 Console.WriteLine("Replacing downloaded files...");
                 UnZip(tempZip, tempFolder);
                 CopyFiles(tempFolder);
+                foreach (string subFolder in Directory.GetDirectories(tempFolder))
+                {
+                    CopyFiles(subFolder);
+                }
                 File.Delete(tempZip);
                 Directory.Delete(tempFolder, true);
             }
@@ -128,13 +132,19 @@ namespace Update
 
         private void CopyFiles(string zipFolder)
         {
-            foreach (string file in Directory.GetFiles(zipFolder, "*.*", SearchOption.AllDirectories))
+            foreach (string file in Directory.GetFiles(zipFolder))
             {
                 try
                 {
                     if (Path.GetFileName(file) == "Update.exe")
                     {
                         File.Copy(file, exeFolder + "\\" + Path.GetFileName(file) + "-", true);
+                    }
+                    else if (Path.GetFileName(file) == "SB-Prime.resources.dll")
+                    {
+                        string langPath = exeFolder +"\\" + new DirectoryInfo(Path.GetDirectoryName(file)).Name;
+                        if (!Directory.Exists(langPath)) Directory.CreateDirectory(langPath);
+                        File.Copy(file, langPath + "\\" + Path.GetFileName(file), true);
                     }
                     else
                     {
