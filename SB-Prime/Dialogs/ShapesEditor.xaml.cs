@@ -26,7 +26,7 @@ namespace SB_Prime.Dialogs
         private MainWindow mainWindow;
         private SBDocument sbDocument;
         private VisualContainer visualContainer;
-        private DrawingGroup drawingGroup;
+        private DrawingGroup drawingGroup = null;
         private List<PropertyData> properties;
         private List<PropertyData> modifiers;
         private ContextMenu contextMenu;
@@ -739,12 +739,26 @@ namespace SB_Prime.Dialogs
         private void UpdateLine(double changeX, double changeY)
         {
             Line line = (Line)currentElt;
-            double scaleX = (startWidth + changeX) / currentElt.Width;
-            double scaleY = (startHeight + changeY) / currentElt.Height;
-            line.X1 *= scaleX;
-            line.Y1 *= scaleY;
-            line.X2 *= scaleX;
-            line.Y2 *= scaleY;
+            if (currentElt.Width > 0)
+            {
+                double scaleX = (startWidth + changeX) / currentElt.Width;
+                line.X1 *= scaleX;
+                line.X2 *= scaleX;
+            }
+            else
+            {
+                line.X2 += changeX;
+            }
+            if (currentElt.Height > 0)
+            {
+                double scaleY = (startHeight + changeY) / currentElt.Height;
+                line.Y1 *= scaleY;
+                line.Y2 *= scaleY;
+            }
+            else
+            {
+                line.Y2 += changeY;
+            }
         }
 
         private Point Snap(Point point)
@@ -765,6 +779,7 @@ namespace SB_Prime.Dialogs
 
         private void SetSnap()
         {
+            if (null == drawingGroup) return;
             DrawingContext dc = drawingGroup.Open();
             Pen _Pen = new Pen(foreground, 0.5);
             if (snap >= 5)
@@ -2694,7 +2709,7 @@ namespace SB_Prime.Dialogs
                         Width = 100,
                         Height = 100,
                     };
-                    webBrowser.Navigate(new Uri("http://www.smallbasic.com"));
+                    webBrowser.Navigate(new Uri("http://www.litdev.co.uk"));
                     elt = webBrowser;
                     break;
                 case "CheckBox":
@@ -3617,6 +3632,7 @@ namespace SB_Prime.Dialogs
         {
             try
             {
+                if (null == canvas) return;
                 double width = canvas.Width;
                 double.TryParse(textBoxWidth.Text, out width);
                 canvas.Width = width;
@@ -3632,6 +3648,7 @@ namespace SB_Prime.Dialogs
         {
             try
             {
+                if (null == canvas) return;
                 double height = canvas.Height;
                 double.TryParse(textBoxHeight.Text, out height);
                 canvas.Height = height;
