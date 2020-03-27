@@ -327,7 +327,7 @@ namespace SB_Prime.Dialogs
             Stack<CodeLine> sWhile = new Stack<CodeLine>();
             Dictionary<string, CodeLine> labels = new Dictionary<string, CodeLine>();
 
-            codeLines.Add(new CodeLine(-1, "START", eBlock.START));
+            codeLines.Add(new CodeLine(-1, Properties.Strings.String122, eBlock.START));
             for (int i = 0; i < sbDocument.TextArea.Lines.Count; i++)
             {
                 string line = Clean(sbDocument.TextArea.Lines[i].Text);
@@ -414,7 +414,7 @@ namespace SB_Prime.Dialogs
                     }
                 }
             }
-            codeLines.Add(new CodeLine(-1, "END", eBlock.END, codeLines[0]));
+            codeLines.Add(new CodeLine(-1, Properties.Strings.String123, eBlock.END, codeLines[0]));
             codeLines[0].rootLine = codeLines.Last();
 
             // Set parents for GOTO

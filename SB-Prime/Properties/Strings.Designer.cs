@@ -4444,11 +4444,56 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This wizard will convert your Small Basic program to Microsoft Visual Basic.
+        /// </summary>
+        public static string String119 {
+            get {
+                return ResourceManager.GetString("String119", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Returns.
         /// </summary>
         public static string String12 {
             get {
                 return ResourceManager.GetString("String12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to decompile a valid .Net assembly to Microsoft C# (dll or exe) and then open the folder containing the decompiled C# source code..
+        /// </summary>
+        public static string String120 {
+            get {
+                return ResourceManager.GetString("String120", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If successful, and Visual Studio is installed then open the project file (*.csproj)..
+        /// </summary>
+        public static string String121 {
+            get {
+                return ResourceManager.GetString("String121", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to START.
+        /// </summary>
+        public static string String122 {
+            get {
+                return ResourceManager.GetString("String122", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to END.
+        /// </summary>
+        public static string String123 {
+            get {
+                return ResourceManager.GetString("String123", resourceCulture);
             }
         }
         
@@ -5290,7 +5335,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comment Selected Lines.
+        ///   Looks up a localized string similar to Comment Selected Lines Ctrl+?.
         /// </summary>
         public static string String98 {
             get {
@@ -5299,7 +5344,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Un-Comment Selected Lines.
+        ///   Looks up a localized string similar to Un-Comment Selected Lines Ctrl+?.
         /// </summary>
         public static string String99 {
             get {

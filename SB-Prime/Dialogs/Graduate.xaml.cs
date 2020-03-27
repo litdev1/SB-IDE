@@ -35,6 +35,7 @@ namespace SB_Prime.Dialogs
             textBoxGraduate.Focus();
             textBoxGraduate.Text = ProjectPath;
             buttonGraduateContinue.IsEnabled = Directory.Exists(textBoxGraduate.Text);
+            textBlock.Text = Properties.Strings.String119;
         }
 
         private void buttonGraduateFolder_Click(object sender, RoutedEventArgs e)

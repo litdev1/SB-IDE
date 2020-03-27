@@ -1578,8 +1578,23 @@
   <data name="String118" xml:space="preserve">
     <value>Загрузка файлов</value>
   </data>
+  <data name="String119" xml:space="preserve">
+    <value>This wizard will convert your Small Basic program to Microsoft Visual Basic</value>
+  </data>
   <data name="String12" xml:space="preserve">
     <value>Возвращает</value>
+  </data>
+  <data name="String120" xml:space="preserve">
+    <value>decompile a valid .Net assembly to Microsoft C# (dll or exe) and then open the folder containing the decompiled C# source code.</value>
+  </data>
+  <data name="String121" xml:space="preserve">
+    <value>If successful, and Visual Studio is installed then open the project file (*.csproj).</value>
+  </data>
+  <data name="String122" xml:space="preserve">
+    <value>START</value>
+  </data>
+  <data name="String123" xml:space="preserve">
+    <value>END</value>
   </data>
   <data name="String13" xml:space="preserve">
     <value>Также, здесь будут появляться описания методов, свойств или событиями объекта при прохождении над ними курсора мыши.</value>
@@ -1861,9 +1876,9 @@
     <value>Найти и заменить Ctrl+H</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Закомментировать выбранные строки</value>
+    <value>Закомментировать выбранные строки Ctrl+?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>Раскомментировать выбранные строки</value>
+    <value>Раскомментировать выбранные строки Ctrl+?</value>
   </data>
 </root>

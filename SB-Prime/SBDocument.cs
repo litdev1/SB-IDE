@@ -244,6 +244,7 @@ namespace SB_Prime
             HotKeyManager.AddHotKey(textArea, ClearSelection, Keys.Escape);
             HotKeyManager.AddHotKey(textArea, GoBackwards, Keys.B, true);
             HotKeyManager.AddHotKey(textArea, GoForwards, Keys.B, true, true);
+            HotKeyManager.AddHotKey(textArea, Comment, Keys.OemQuestion, true);
 
             // remove conflicting hotkeys from scintilla
             textArea.ClearCmdKey(Keys.Control | Keys.N);
@@ -544,6 +545,46 @@ namespace SB_Prime
             textArea.FoldAll(foldAction);
         }
 
+        public void Comment()
+        {
+            int lineA = textArea.LineFromPosition(textArea.SelectionStart);
+            int lineB = textArea.LineFromPosition(textArea.SelectionEnd);
+            if (lineB < lineA)
+            {
+                int iTemp = lineA;
+                lineA = lineB;
+                lineB = iTemp;
+            }
+            if (lineB > lineA && textArea.SelectionEnd == textArea.Lines[lineB - 1].EndPosition) lineB--;
+            int iStart = textArea.Lines[lineA].Position;
+            int iEnd = textArea.Lines[lineB].EndPosition;
+
+            string selected = "";
+            for (int i = lineA; i <= lineB; i++)
+            {
+                Line line = textArea.Lines[i];
+                string text = line.Text;
+                int pos = text.TakeWhile(c => char.IsWhiteSpace(c)).Count();
+                if (pos < text.Length)
+                {
+                    if (text[pos] != '\'')
+                    {
+                        text = text.Insert(pos, "'");
+                    }
+                    else if (text[pos] == '\'')
+                    {
+                        text = text.Remove(pos, 1);
+                    }
+                }
+                selected += text;
+            }
+
+            textArea.SetTargetRange(iStart, iEnd);
+            textArea.ReplaceTarget(selected);
+            textArea.CurrentPosition = textArea.Lines[lineA].Position+1;
+            lexer.IsDirty = true;
+        }
+
         public void Comment(bool bComment)
         {
             int lineA = textArea.LineFromPosition(textArea.SelectionStart);
@@ -580,6 +621,7 @@ namespace SB_Prime
 
             textArea.SetTargetRange(iStart, iEnd);
             textArea.ReplaceTarget(selected);
+            //textArea.SetStyle(iStart, iEnd);
             lexer.IsDirty = true;
         }
 

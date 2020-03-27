@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -855,36 +856,36 @@ namespace SB_Prime.Dialogs
                         Rectangle shape = (Rectangle)currentElt;
                         properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(Ellipse))
                     {
                         Ellipse shape = (Ellipse)currentElt;
                         properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(Polygon))
                     {
                         Polygon shape = (Polygon)currentElt;
                         properties.Add(new PropertyData() { Property = "Fill", Value = ColorName(shape.Fill), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness), Visible = Visibility.Hidden });
                         for (int i = 0; i < shape.Points.Count; i++)
                         {
-                            properties.Add(new PropertyData() { Property = "X" + (i + 1).ToString(), Value = Fix(shape.Points[i].X).ToString(), Visible = Visibility.Hidden });
-                            properties.Add(new PropertyData() { Property = "Y" + (i + 1).ToString(), Value = Fix(shape.Points[i].Y).ToString(), Visible = Visibility.Hidden });
+                            properties.Add(new PropertyData() { Property = "X" + (i + 1).ToString(), Value = Fix(shape.Points[i].X), Visible = Visibility.Hidden });
+                            properties.Add(new PropertyData() { Property = "Y" + (i + 1).ToString(), Value = Fix(shape.Points[i].Y), Visible = Visibility.Hidden });
                         }
                     }
                     else if (currentElt.GetType() == typeof(Line))
                     {
                         Line shape = (Line)currentElt;
                         properties.Add(new PropertyData() { Property = "Stroke", Value = ColorName(shape.Stroke), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness).ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "X1", Value = Fix(shape.X1).ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "Y1", Value = Fix(shape.Y1).ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "X2", Value = Fix(shape.X2).ToString(), Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "Y2", Value = Fix(shape.Y2).ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "StrokeThickness", Value = Fix(shape.StrokeThickness), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "X1", Value = Fix(shape.X1), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Y1", Value = Fix(shape.Y1), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "X2", Value = Fix(shape.X2), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "Y2", Value = Fix(shape.Y2), Visible = Visibility.Hidden });
                     }
                     else if (currentElt.GetType() == typeof(TextBlock))
                     {
@@ -893,7 +894,7 @@ namespace SB_Prime.Dialogs
                         properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
-                        properties.Add(new PropertyData() { Property = "FontSize", Value = Fix(shape.FontSize).ToString(), Visible = Visibility.Visible });
+                        properties.Add(new PropertyData() { Property = "FontSize", Value = Fix(shape.FontSize), Visible = Visibility.Visible });
                         properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
                     }
                     else if (currentElt.GetType() == typeof(Image))
@@ -934,7 +935,7 @@ namespace SB_Prime.Dialogs
                             list += (i++).ToString() + "=" + item.Content.ToString() + ";";
                         }
                         properties.Add(new PropertyData() { Property = "List", Value = list, Visible = Visibility.Hidden });
-                        properties.Add(new PropertyData() { Property = "DropDownHeight", Value = Fix(shape.MaxDropDownHeight).ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "DropDownHeight", Value = Fix(shape.MaxDropDownHeight), Visible = Visibility.Hidden });
                         GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(WindowsFormsHost))
@@ -1000,7 +1001,7 @@ namespace SB_Prime.Dialogs
                     else if (currentElt.GetType() == typeof(PasswordBox))
                     {
                         PasswordBox shape = (PasswordBox)currentElt;
-                        properties.Add(new PropertyData() { Property = "MaxLength", Value = Fix(shape.MaxLength).ToString(), Visible = Visibility.Hidden });
+                        properties.Add(new PropertyData() { Property = "MaxLength", Value = Fix(shape.MaxLength), Visible = Visibility.Hidden });
                         GetControlProperties(shape);
                     }
                     else if (currentElt.GetType() == typeof(ProgressBar))
@@ -1053,7 +1054,7 @@ namespace SB_Prime.Dialogs
             properties.Add(new PropertyData() { Property = "Foreground", Value = ColorName(shape.Foreground), Visible = Visibility.Visible });
             properties.Add(new PropertyData() { Property = "FontFamily", Value = shape.FontFamily.ToString(), Visible = Visibility.Visible });
             properties.Add(new PropertyData() { Property = "FontStyle", Value = shape.FontStyle.ToString(), Visible = Visibility.Visible });
-            properties.Add(new PropertyData() { Property = "FontSize", Value = Fix(shape.FontSize).ToString(), Visible = Visibility.Visible });
+            properties.Add(new PropertyData() { Property = "FontSize", Value = Fix(shape.FontSize), Visible = Visibility.Visible });
             properties.Add(new PropertyData() { Property = "FontWeight", Value = shape.FontWeight.ToString(), Visible = Visibility.Visible });
         }
 
@@ -1102,12 +1103,12 @@ namespace SB_Prime.Dialogs
                     if (currentElt.GetType() != typeof(CheckBox) && currentElt.GetType() != typeof(RadioButton))
                     {
                         currentElt.Measure(new Size(double.MaxValue, double.MaxValue));
-                        currentShape.modifiers["Width"] = Fix(currentElt.DesiredSize.Width).ToString();
-                        currentShape.modifiers["Height"] = Fix(currentElt.DesiredSize.Height).ToString();
+                        currentShape.modifiers["Width"] = Fix(currentElt.DesiredSize.Width);
+                        currentShape.modifiers["Height"] = Fix(currentElt.DesiredSize.Height);
                     }
                     Point point = currentShape.shape.TranslatePoint(new Point(0, 0), canvas);
-                    currentShape.modifiers["Left"] = Fix(point.X + Shape.HandleShort).ToString();
-                    currentShape.modifiers["Top"] = Fix(point.Y + Shape.HandleShort).ToString();
+                    currentShape.modifiers["Left"] = Fix(point.X + Shape.HandleShort);
+                    currentShape.modifiers["Top"] = Fix(point.Y + Shape.HandleShort);
                     if (!currentShape.modifiers.ContainsKey("Angle")) currentShape.modifiers["Angle"] = "0";
                     if (!currentShape.modifiers.ContainsKey("Opacity")) currentShape.modifiers["Opacity"] = "100";
 
@@ -1172,7 +1173,7 @@ namespace SB_Prime.Dialogs
                                     if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
                                     {
                                         _pen.Thickness = obj.StrokeThickness;
-                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + Fix(_pen.Thickness) + "\n";
                                     }
                                     sbDocument.TextArea.Text += obj.Name + " = Shapes.AddRectangle(" + Fix(obj.Width) + "," + Fix(obj.Height) + ")\n";
                                     sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
@@ -1196,7 +1197,7 @@ namespace SB_Prime.Dialogs
                                     if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
                                     {
                                         _pen.Thickness = obj.StrokeThickness;
-                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + Fix(_pen.Thickness) + "\n";
                                     }
                                     sbDocument.TextArea.Text += obj.Name + " = Shapes.AddEllipse(" + Fix(obj.Width) + "," + Fix(obj.Height) + ")\n";
                                     sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
@@ -1220,7 +1221,7 @@ namespace SB_Prime.Dialogs
                                     if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
                                     {
                                         _pen.Thickness = obj.StrokeThickness;
-                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + Fix(_pen.Thickness) + "\n";
                                     }
                                     if (obj.Points.Count == 3)
                                     {
@@ -1252,7 +1253,7 @@ namespace SB_Prime.Dialogs
                                     if (obj.StrokeThickness.ToString() != _pen.Thickness.ToString())
                                     {
                                         _pen.Thickness = obj.StrokeThickness;
-                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + _pen.Thickness.ToString() + "\n";
+                                        sbDocument.TextArea.Text += "GraphicsWindow.PenWidth = " + Fix(_pen.Thickness) + "\n";
                                     }
                                     sbDocument.TextArea.Text += obj.Name + " = Shapes.AddLine(" + Fix(obj.X1) + "," + Fix(obj.Y1) + "," + Fix(obj.X2) + "," + Fix(obj.Y2) + ")\n";
                                     sbDocument.TextArea.Text += "Shapes.Move(" + obj.Name + "," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
@@ -1281,7 +1282,7 @@ namespace SB_Prime.Dialogs
                                     if (obj.FontSize.ToString() != _fontSize.ToString())
                                     {
                                         _fontSize = obj.FontSize;
-                                        sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + Fix(_fontSize) + "\n";
                                     }
                                     if (obj.FontWeight.ToString() != _fontWeight.ToString())
                                     {
@@ -1524,7 +1525,7 @@ namespace SB_Prime.Dialogs
                                     if (obj.FontSize.ToString() != _fontSize.ToString())
                                     {
                                         _fontSize = obj.FontSize;
-                                        sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
+                                        sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + Fix(_fontSize) + "\n";
                                     }
                                     if (obj.FontWeight.ToString() != _fontWeight.ToString())
                                     {
@@ -1577,7 +1578,7 @@ namespace SB_Prime.Dialogs
             if (obj.FontSize.ToString() != _fontSize.ToString())
             {
                 _fontSize = obj.FontSize;
-                sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + _fontSize + "\n";
+                sbDocument.TextArea.Text += "GraphicsWindow.FontSize = " + Fix(_fontSize) + "\n";
             }
             if (obj.FontWeight.ToString() != _fontWeight.ToString())
             {
@@ -1588,12 +1589,12 @@ namespace SB_Prime.Dialogs
 
         private string Fix(string value)
         {
-            return (fixDec * Math.Round(double.Parse(value) / fixDec)).ToString();
+            return (fixDec * Math.Round(double.Parse(value) / fixDec)).ToString("G", CultureInfo.InvariantCulture);
         }
 
         private string Fix(double value)
         {
-            return (fixDec * Math.Round(value / fixDec)).ToString();
+            return (fixDec * Math.Round(value / fixDec)).ToString("G", CultureInfo.InvariantCulture);
         }
 
         private void ReadCode(bool bSelect = false)
@@ -2225,8 +2226,8 @@ namespace SB_Prime.Dialogs
                         if (shape.elt.GetType() != typeof(CheckBox) && shape.elt.GetType() != typeof(RadioButton))
                         {
                             shape.elt.Measure(new Size(double.MaxValue, double.MaxValue));
-                            if (!shape.modifiers.ContainsKey("Width")) shape.modifiers["Width"] = Fix(shape.elt.DesiredSize.Width).ToString();
-                            if (!shape.modifiers.ContainsKey("Height")) shape.modifiers["Height"] = Fix(shape.elt.DesiredSize.Height).ToString();
+                            if (!shape.modifiers.ContainsKey("Width")) shape.modifiers["Width"] = Fix(shape.elt.DesiredSize.Width);
+                            if (!shape.modifiers.ContainsKey("Height")) shape.modifiers["Height"] = Fix(shape.elt.DesiredSize.Height);
                         }
                         if (!shape.modifiers.ContainsKey("Left")) shape.modifiers["Left"] = "0";
                         if (!shape.modifiers.ContainsKey("Top")) shape.modifiers["Top"] = "0";
@@ -3400,10 +3401,10 @@ namespace SB_Prime.Dialogs
                 Canvas.SetLeft(parent.shape, Canvas.GetLeft(parent.shape) + minX);
                 Canvas.SetTop(parent.shape, Canvas.GetTop(parent.shape) + minY);
 
-                currentShape.modifiers["Width"] = Fix(shape.Width).ToString();
-                currentShape.modifiers["Height"] = Fix(shape.Height).ToString();
-                currentShape.modifiers["Left"] = Fix(Canvas.GetLeft(parent.shape) + Shape.HandleShort).ToString();
-                currentShape.modifiers["Top"] = Fix(Canvas.GetTop(parent.shape) + Shape.HandleShort).ToString();
+                currentShape.modifiers["Width"] = Fix(shape.Width);
+                currentShape.modifiers["Height"] = Fix(shape.Height);
+                currentShape.modifiers["Left"] = Fix(Canvas.GetLeft(parent.shape) + Shape.HandleShort);
+                currentShape.modifiers["Top"] = Fix(Canvas.GetTop(parent.shape) + Shape.HandleShort);
             }
         }
 
@@ -3831,7 +3832,7 @@ namespace SB_Prime.Dialogs
                                 if (data.Property == "FontFamily") data.Value = fd.Font.Name;
                                 else if (data.Property == "FontStyle") data.Value = fd.Font.Italic ? "Italic" : "Normal";
                                 else if (data.Property == "FontWeight") data.Value = fd.Font.Bold ? "Bold" : "Normal";
-                                else if (data.Property == "FontSize") data.Value = fd.Font.Size.ToString();
+                                else if (data.Property == "FontSize") data.Value = Convert.ToInt32(fd.Font.Size).ToString(); //Font size are usually integers
                                 UpdateProperty(data, data.Value);
                             }
                             dataGridProperties.Items.Refresh();
