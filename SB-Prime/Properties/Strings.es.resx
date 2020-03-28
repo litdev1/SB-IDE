@@ -1596,17 +1596,149 @@
   <data name="String123" xml:space="preserve">
     <value>Final</value>
   </data>
+  <data name="String124" xml:space="preserve">
+    <value>Unset</value>
+  </data>
+  <data name="String125" xml:space="preserve">
+    <value>Ventana principal</value>
+  </data>
+  <data name="String126" xml:space="preserve">
+    <value>Diseño del documento</value>
+  </data>
+  <data name="String127" xml:space="preserve">
+    <value>Documento Lexer</value>
+  </data>
+  <data name="String128" xml:space="preserve">
+    <value>Organigrama</value>
+  </data>
+  <data name="String129" xml:space="preserve">
+    <value>Fondo</value>
+  </data>
   <data name="String13" xml:space="preserve">
     <value>Además, se puede ver una descripción emergente de los métodos en esta ventana colocando el mouse sobre métodos, propiedades o eventos al ver un objeto.</value>
+  </data>
+  <data name="String130" xml:space="preserve">
+    <value>Primer plano</value>
+  </data>
+  <data name="String131" xml:space="preserve">
+    <value>Divisor</value>
+  </data>
+  <data name="String132" xml:space="preserve">
+    <value>Selección</value>
+  </data>
+  <data name="String133" xml:space="preserve">
+    <value>Fondo de margen</value>
+  </data>
+  <data name="String134" xml:space="preserve">
+    <value>Margen de primer plano</value>
+  </data>
+  <data name="String135" xml:space="preserve">
+    <value>Fondo plegable</value>
+  </data>
+  <data name="String136" xml:space="preserve">
+    <value>Pelonante de primer plano</value>
+  </data>
+  <data name="String137" xml:space="preserve">
+    <value>Fondo del marcador</value>
+  </data>
+  <data name="String138" xml:space="preserve">
+    <value>Marcador en primer plano</value>
+  </data>
+  <data name="String139" xml:space="preserve">
+    <value>Fondo de punto de interrupción</value>
   </data>
   <data name="String14" xml:space="preserve">
     <value>Seleccionar forma</value>
   </data>
+  <data name="String140" xml:space="preserve">
+    <value>Breakpoint Foreground</value>
+  </data>
+  <data name="String141" xml:space="preserve">
+    <value>Seleccione</value>
+  </data>
+  <data name="String142" xml:space="preserve">
+    <value>Resaltar depuración</value>
+  </data>
+  <data name="String143" xml:space="preserve">
+    <value>Resaltar Buscar</value>
+  </data>
+  <data name="String144" xml:space="preserve">
+    <value>Resaltar eliminado</value>
+  </data>
+  <data name="String145" xml:space="preserve">
+    <value>Resaltar insertado</value>
+  </data>
+  <data name="String146" xml:space="preserve">
+    <value>CallTip Foreground</value>
+  </data>
+  <data name="String147" xml:space="preserve">
+    <value>Fondo de la información de llamada</value>
+  </data>
+  <data name="String148" xml:space="preserve">
+    <value>Punto culminante de la sugerencia de llamada</value>
+  </data>
+  <data name="String149" xml:space="preserve">
+    <value>Primer plano</value>
+  </data>
   <data name="String15" xml:space="preserve">
     <value>Anular la selección de Forma</value>
   </data>
+  <data name="String150" xml:space="preserve">
+    <value>Fondo</value>
+  </data>
+  <data name="String151" xml:space="preserve">
+    <value>Comentario</value>
+  </data>
+  <data name="String152" xml:space="preserve">
+    <value>Cadena</value>
+  </data>
+  <data name="String153" xml:space="preserve">
+    <value>Operador</value>
+  </data>
+  <data name="String154" xml:space="preserve">
+    <value>Palabra clave</value>
+  </data>
+  <data name="String155" xml:space="preserve">
+    <value>Objeto</value>
+  </data>
+  <data name="String156" xml:space="preserve">
+    <value>Método</value>
+  </data>
+  <data name="String157" xml:space="preserve">
+    <value>Literal</value>
+  </data>
+  <data name="String158" xml:space="preserve">
+    <value>Primer plano</value>
+  </data>
+  <data name="String159" xml:space="preserve">
+    <value>Fondo</value>
+  </data>
   <data name="String16" xml:space="preserve">
     <value>Copiar formas seleccionadas</value>
+  </data>
+  <data name="String160" xml:space="preserve">
+    <value>Resaltar</value>
+  </data>
+  <data name="String161" xml:space="preserve">
+    <value>Condición</value>
+  </data>
+  <data name="String162" xml:space="preserve">
+    <value>Empezar</value>
+  </data>
+  <data name="String163" xml:space="preserve">
+    <value>Llamar</value>
+  </data>
+  <data name="String164" xml:space="preserve">
+    <value>Para</value>
+  </data>
+  <data name="String165" xml:space="preserve">
+    <value>Mientras</value>
+  </data>
+  <data name="String166" xml:space="preserve">
+    <value>Declaración</value>
+  </data>
+  <data name="String167" xml:space="preserve">
+    <value>Código</value>
   </data>
   <data name="String17" xml:space="preserve">
     <value>Color de fondo</value>

@@ -22,6 +22,48 @@ namespace SB_Prime.Dialogs
     {
         MainWindow mainWindow;
         private List<ColourData> colours = new List<ColourData>();
+        private string[] labels = new string[]
+        {
+                Properties.Strings.String129,
+                Properties.Strings.String130,
+                Properties.Strings.String131,
+                Properties.Strings.String132,
+                Properties.Strings.String133,
+                Properties.Strings.String134,
+                Properties.Strings.String135,
+                Properties.Strings.String136,
+                Properties.Strings.String137,
+                Properties.Strings.String138,
+                Properties.Strings.String139,
+                Properties.Strings.String140,
+                Properties.Strings.String141,
+                Properties.Strings.String142,
+                Properties.Strings.String143,
+                Properties.Strings.String144,
+                Properties.Strings.String145,
+                Properties.Strings.String146,
+                Properties.Strings.String147,
+                Properties.Strings.String148,
+                Properties.Strings.String149,
+                Properties.Strings.String150,
+                Properties.Strings.String151,
+                Properties.Strings.String152,
+                Properties.Strings.String153,
+                Properties.Strings.String154,
+                Properties.Strings.String155,
+                Properties.Strings.String156,
+                Properties.Strings.String157,
+                Properties.Strings.String158,
+                Properties.Strings.String159,
+                Properties.Strings.String160,
+                Properties.Strings.String161,
+                Properties.Strings.String162,
+                Properties.Strings.String163,
+                Properties.Strings.String164,
+                Properties.Strings.String165,
+                Properties.Strings.String166,
+                Properties.Strings.String167,
+        };
 
         public Colours(MainWindow mainWindow)
         {
@@ -34,18 +76,19 @@ namespace SB_Prime.Dialogs
             dataGridColours.ItemsSource = colours;
 
             var ideColors = mainWindow.IDEColors;
+            int i = 0;
             foreach (KeyValuePair<string,int> kvp in ideColors)
             {
                 string[] data = kvp.Key.Split(':');
-                string region = "Unset";
-                if (data[0] == "W") region = "Main Window";
-                else if (data[0] == "D") region = "Document Layout";
-                else if (data[0] == "L") region = "Document Lexer";
-                else if (data[0] == "C") region = "Flow Chart";
+                string region = Properties.Strings.String124;
+                if (data[0] == "W") region = Properties.Strings.String125;
+                else if (data[0] == "D") region = Properties.Strings.String126;
+                else if (data[0] == "L") region = Properties.Strings.String127;
+                else if (data[0] == "C") region = Properties.Strings.String128;
                 byte R = (byte)(kvp.Value >> 16);
                 byte G = (byte)(kvp.Value >> 8);
                 byte B = (byte)(kvp.Value);
-                colours.Add(new ColourData() { Region = region, Label = data[1], R = R, G = G, B = B, Color = new SolidColorBrush(Color.FromRgb(R, G, B)) });
+                colours.Add(new ColourData() { Region = region, Label = labels[i++], R = R, G = G, B = B, Color = new SolidColorBrush(Color.FromRgb(R, G, B)) });
             }
         }
 

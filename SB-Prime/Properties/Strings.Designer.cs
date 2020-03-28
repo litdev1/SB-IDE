@@ -4498,11 +4498,155 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unset.
+        /// </summary>
+        public static string String124 {
+            get {
+                return ResourceManager.GetString("String124", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main Window.
+        /// </summary>
+        public static string String125 {
+            get {
+                return ResourceManager.GetString("String125", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document Layout.
+        /// </summary>
+        public static string String126 {
+            get {
+                return ResourceManager.GetString("String126", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document Lexer.
+        /// </summary>
+        public static string String127 {
+            get {
+                return ResourceManager.GetString("String127", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flow Chart.
+        /// </summary>
+        public static string String128 {
+            get {
+                return ResourceManager.GetString("String128", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Background.
+        /// </summary>
+        public static string String129 {
+            get {
+                return ResourceManager.GetString("String129", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Additionally, a popup description for methods can be viewed in this window by hovering the mouse over methods, properties or events when viewing an object..
         /// </summary>
         public static string String13 {
             get {
                 return ResourceManager.GetString("String13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreground.
+        /// </summary>
+        public static string String130 {
+            get {
+                return ResourceManager.GetString("String130", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Splitter.
+        /// </summary>
+        public static string String131 {
+            get {
+                return ResourceManager.GetString("String131", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selection.
+        /// </summary>
+        public static string String132 {
+            get {
+                return ResourceManager.GetString("String132", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Margin Background.
+        /// </summary>
+        public static string String133 {
+            get {
+                return ResourceManager.GetString("String133", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Margin Foreground.
+        /// </summary>
+        public static string String134 {
+            get {
+                return ResourceManager.GetString("String134", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folding Background.
+        /// </summary>
+        public static string String135 {
+            get {
+                return ResourceManager.GetString("String135", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folding Foreground.
+        /// </summary>
+        public static string String136 {
+            get {
+                return ResourceManager.GetString("String136", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bookmark Background.
+        /// </summary>
+        public static string String137 {
+            get {
+                return ResourceManager.GetString("String137", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bookmark Foreground.
+        /// </summary>
+        public static string String138 {
+            get {
+                return ResourceManager.GetString("String138", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breakpoint Background.
+        /// </summary>
+        public static string String139 {
+            get {
+                return ResourceManager.GetString("String139", resourceCulture);
             }
         }
         
@@ -4516,6 +4660,96 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Breakpoint Foreground.
+        /// </summary>
+        public static string String140 {
+            get {
+                return ResourceManager.GetString("String140", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string String141 {
+            get {
+                return ResourceManager.GetString("String141", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highlight Debug.
+        /// </summary>
+        public static string String142 {
+            get {
+                return ResourceManager.GetString("String142", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highlight Find.
+        /// </summary>
+        public static string String143 {
+            get {
+                return ResourceManager.GetString("String143", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highlight Deleted.
+        /// </summary>
+        public static string String144 {
+            get {
+                return ResourceManager.GetString("String144", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highlight Inserted.
+        /// </summary>
+        public static string String145 {
+            get {
+                return ResourceManager.GetString("String145", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CallTip Foreground.
+        /// </summary>
+        public static string String146 {
+            get {
+                return ResourceManager.GetString("String146", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CallTip Background.
+        /// </summary>
+        public static string String147 {
+            get {
+                return ResourceManager.GetString("String147", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CallTip Highlight.
+        /// </summary>
+        public static string String148 {
+            get {
+                return ResourceManager.GetString("String148", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreground.
+        /// </summary>
+        public static string String149 {
+            get {
+                return ResourceManager.GetString("String149", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unselect Shape.
         /// </summary>
         public static string String15 {
@@ -4525,11 +4759,173 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Background.
+        /// </summary>
+        public static string String150 {
+            get {
+                return ResourceManager.GetString("String150", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        public static string String151 {
+            get {
+                return ResourceManager.GetString("String151", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String.
+        /// </summary>
+        public static string String152 {
+            get {
+                return ResourceManager.GetString("String152", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operator.
+        /// </summary>
+        public static string String153 {
+            get {
+                return ResourceManager.GetString("String153", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyword.
+        /// </summary>
+        public static string String154 {
+            get {
+                return ResourceManager.GetString("String154", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object.
+        /// </summary>
+        public static string String155 {
+            get {
+                return ResourceManager.GetString("String155", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method.
+        /// </summary>
+        public static string String156 {
+            get {
+                return ResourceManager.GetString("String156", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Literal.
+        /// </summary>
+        public static string String157 {
+            get {
+                return ResourceManager.GetString("String157", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foreground.
+        /// </summary>
+        public static string String158 {
+            get {
+                return ResourceManager.GetString("String158", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Background.
+        /// </summary>
+        public static string String159 {
+            get {
+                return ResourceManager.GetString("String159", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy Selected Shapes.
         /// </summary>
         public static string String16 {
             get {
                 return ResourceManager.GetString("String16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highlight.
+        /// </summary>
+        public static string String160 {
+            get {
+                return ResourceManager.GetString("String160", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Condition.
+        /// </summary>
+        public static string String161 {
+            get {
+                return ResourceManager.GetString("String161", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string String162 {
+            get {
+                return ResourceManager.GetString("String162", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Call.
+        /// </summary>
+        public static string String163 {
+            get {
+                return ResourceManager.GetString("String163", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For.
+        /// </summary>
+        public static string String164 {
+            get {
+                return ResourceManager.GetString("String164", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to While.
+        /// </summary>
+        public static string String165 {
+            get {
+                return ResourceManager.GetString("String165", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statement.
+        /// </summary>
+        public static string String166 {
+            get {
+                return ResourceManager.GetString("String166", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string String167 {
+            get {
+                return ResourceManager.GetString("String167", resourceCulture);
             }
         }
         

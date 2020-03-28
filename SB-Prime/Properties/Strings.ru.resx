@@ -1596,17 +1596,149 @@
   <data name="String123" xml:space="preserve">
     <value>END</value>
   </data>
+  <data name="String124" xml:space="preserve">
+    <value>Unset</value>
+  </data>
+  <data name="String125" xml:space="preserve">
+    <value>Main Window</value>
+  </data>
+  <data name="String126" xml:space="preserve">
+    <value>Document Layout</value>
+  </data>
+  <data name="String127" xml:space="preserve">
+    <value>Document Lexer</value>
+  </data>
+  <data name="String128" xml:space="preserve">
+    <value>Flow Chart</value>
+  </data>
+  <data name="String129" xml:space="preserve">
+    <value>Background</value>
+  </data>
   <data name="String13" xml:space="preserve">
     <value>Также, здесь будут появляться описания методов, свойств или событиями объекта при прохождении над ними курсора мыши.</value>
+  </data>
+  <data name="String130" xml:space="preserve">
+    <value>Foreground</value>
+  </data>
+  <data name="String131" xml:space="preserve">
+    <value>Splitter</value>
+  </data>
+  <data name="String132" xml:space="preserve">
+    <value>Selection</value>
+  </data>
+  <data name="String133" xml:space="preserve">
+    <value>Margin Background</value>
+  </data>
+  <data name="String134" xml:space="preserve">
+    <value>Margin Foreground</value>
+  </data>
+  <data name="String135" xml:space="preserve">
+    <value>Folding Background</value>
+  </data>
+  <data name="String136" xml:space="preserve">
+    <value>Folding Foreground</value>
+  </data>
+  <data name="String137" xml:space="preserve">
+    <value>Bookmark Background</value>
+  </data>
+  <data name="String138" xml:space="preserve">
+    <value>Bookmark Foreground</value>
+  </data>
+  <data name="String139" xml:space="preserve">
+    <value>Breakpoint Background</value>
   </data>
   <data name="String14" xml:space="preserve">
     <value>Выделить форму</value>
   </data>
+  <data name="String140" xml:space="preserve">
+    <value>Breakpoint Foreground</value>
+  </data>
+  <data name="String141" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="String142" xml:space="preserve">
+    <value>Highlight Debug</value>
+  </data>
+  <data name="String143" xml:space="preserve">
+    <value>Highlight Find</value>
+  </data>
+  <data name="String144" xml:space="preserve">
+    <value>Highlight Deleted</value>
+  </data>
+  <data name="String145" xml:space="preserve">
+    <value>Highlight Inserted</value>
+  </data>
+  <data name="String146" xml:space="preserve">
+    <value>CallTip Foreground</value>
+  </data>
+  <data name="String147" xml:space="preserve">
+    <value>CallTip Background</value>
+  </data>
+  <data name="String148" xml:space="preserve">
+    <value>CallTip Highlight</value>
+  </data>
+  <data name="String149" xml:space="preserve">
+    <value>Foreground</value>
+  </data>
   <data name="String15" xml:space="preserve">
     <value>Снять выделение</value>
   </data>
+  <data name="String150" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="String151" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="String152" xml:space="preserve">
+    <value>String</value>
+  </data>
+  <data name="String153" xml:space="preserve">
+    <value>Operator</value>
+  </data>
+  <data name="String154" xml:space="preserve">
+    <value>Keyword</value>
+  </data>
+  <data name="String155" xml:space="preserve">
+    <value>Object</value>
+  </data>
+  <data name="String156" xml:space="preserve">
+    <value>Method</value>
+  </data>
+  <data name="String157" xml:space="preserve">
+    <value>Literal</value>
+  </data>
+  <data name="String158" xml:space="preserve">
+    <value>Foreground</value>
+  </data>
+  <data name="String159" xml:space="preserve">
+    <value>Background</value>
+  </data>
   <data name="String16" xml:space="preserve">
     <value>Копировать выбранные формы</value>
+  </data>
+  <data name="String160" xml:space="preserve">
+    <value>Highlight</value>
+  </data>
+  <data name="String161" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="String162" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="String163" xml:space="preserve">
+    <value>Call</value>
+  </data>
+  <data name="String164" xml:space="preserve">
+    <value>For</value>
+  </data>
+  <data name="String165" xml:space="preserve">
+    <value>While</value>
+  </data>
+  <data name="String166" xml:space="preserve">
+    <value>Statement</value>
+  </data>
+  <data name="String167" xml:space="preserve">
+    <value>Code</value>
   </data>
   <data name="String17" xml:space="preserve">
     <value>Цвет фона</value>
