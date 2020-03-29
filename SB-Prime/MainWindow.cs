@@ -83,7 +83,7 @@ namespace SB_Prime
         {
             THIS = this;
 
-            statusVersion.Content = "SB-Prime Version " + Assembly.GetExecutingAssembly().GetName().Version + " (Debug Extension " + SBInterop.CurrentVersion + ")";
+            statusVersion.Content = Properties.Strings.String168 + " " + Assembly.GetExecutingAssembly().GetName().Version + " " + "(" + Properties.Strings.String169 + " " + SBInterop.CurrentVersion + ")";
             Errors.Add(new Error(Properties.Strings.String58));
 
             sbInterop = new SBInterop();
@@ -1312,14 +1312,14 @@ namespace SB_Prime
 
         private void UpdateStatusBar()
         {
-            statusLines.Content = activeDocument.TextArea.Lines.Count + " lines";
-            statusPosition.Content = "line " + (activeDocument.TextArea.CurrentLine + 1) + " column " + (activeDocument.TextArea.GetColumn(activeDocument.TextArea.CurrentPosition) + 1);
-            statusCaps.Content = Keyboard.IsKeyToggled(Key.CapsLock) ? "Caps Lock" : "";
-            statusNumlock.Content = Keyboard.IsKeyToggled(Key.NumLock) ? "Num Lock" : "";
-            statusInsert.Content = Keyboard.IsKeyToggled(Key.Insert) ? "Insert" : "";
+            statusLines.Content = activeDocument.TextArea.Lines.Count + " " + Properties.Strings.String170;
+            statusPosition.Content = Properties.Strings.String171 + " " + (activeDocument.TextArea.CurrentLine + 1) + " " + Properties.Strings.String172 + " " + (activeDocument.TextArea.GetColumn(activeDocument.TextArea.CurrentPosition) + 1);
+            statusCaps.Content = Keyboard.IsKeyToggled(Key.CapsLock) ? Properties.Strings.String173 : "";
+            statusNumlock.Content = Keyboard.IsKeyToggled(Key.NumLock) ? Properties.Strings.String174 : "";
+            statusInsert.Content = Keyboard.IsKeyToggled(Key.Insert) ? Properties.Strings.String175 : "";
             if (null == activeDocument.debug) statusRun.Content = "";
-            else if (activeDocument.debug.IsDebug()) statusRun.Content = "Debugging " + ((TabHeader)activeTab.Header).FileName;
-            else if (!activeDocument.debug.IsDebug()) statusRun.Content = "Running " + ((TabHeader)activeTab.Header).FileName;
+            else if (activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String176 + " " + ((TabHeader)activeTab.Header).FileName;
+            else if (!activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String177 + " " + ((TabHeader)activeTab.Header).FileName;
         }
 
         private void UpdateZoom()

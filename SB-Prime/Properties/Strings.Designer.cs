@@ -4930,11 +4930,101 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SB-Prime Version.
+        /// </summary>
+        public static string String168 {
+            get {
+                return ResourceManager.GetString("String168", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debug Extension.
+        /// </summary>
+        public static string String169 {
+            get {
+                return ResourceManager.GetString("String169", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Background Color.
         /// </summary>
         public static string String17 {
             get {
                 return ResourceManager.GetString("String17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to lines.
+        /// </summary>
+        public static string String170 {
+            get {
+                return ResourceManager.GetString("String170", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to line.
+        /// </summary>
+        public static string String171 {
+            get {
+                return ResourceManager.GetString("String171", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to column.
+        /// </summary>
+        public static string String172 {
+            get {
+                return ResourceManager.GetString("String172", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Caps Lock.
+        /// </summary>
+        public static string String173 {
+            get {
+                return ResourceManager.GetString("String173", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Num Lock.
+        /// </summary>
+        public static string String174 {
+            get {
+                return ResourceManager.GetString("String174", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert.
+        /// </summary>
+        public static string String175 {
+            get {
+                return ResourceManager.GetString("String175", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debugging.
+        /// </summary>
+        public static string String176 {
+            get {
+                return ResourceManager.GetString("String176", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Running.
+        /// </summary>
+        public static string String177 {
+            get {
+                return ResourceManager.GetString("String177", resourceCulture);
             }
         }
         

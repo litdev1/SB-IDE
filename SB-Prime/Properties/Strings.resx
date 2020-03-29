@@ -1740,8 +1740,38 @@
   <data name="String167" xml:space="preserve">
     <value>Code</value>
   </data>
+  <data name="String168" xml:space="preserve">
+    <value>SB-Prime Version</value>
+  </data>
+  <data name="String169" xml:space="preserve">
+    <value>Debug Extension</value>
+  </data>
   <data name="String17" xml:space="preserve">
     <value>Background Color</value>
+  </data>
+  <data name="String170" xml:space="preserve">
+    <value>lines</value>
+  </data>
+  <data name="String171" xml:space="preserve">
+    <value>line</value>
+  </data>
+  <data name="String172" xml:space="preserve">
+    <value>column</value>
+  </data>
+  <data name="String173" xml:space="preserve">
+    <value>Caps Lock</value>
+  </data>
+  <data name="String174" xml:space="preserve">
+    <value>Num Lock</value>
+  </data>
+  <data name="String175" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="String176" xml:space="preserve">
+    <value>Debugging</value>
+  </data>
+  <data name="String177" xml:space="preserve">
+    <value>Running</value>
   </data>
   <data name="String18" xml:space="preserve">
     <value>Paste Code to Current Document</value>
