@@ -1589,12 +1589,28 @@ namespace SB_Prime.Dialogs
 
         private string Fix(string value)
         {
-            return (fixDec * Math.Round(double.Parse(value) / fixDec)).ToString("G", CultureInfo.InvariantCulture);
+            try
+            {
+                return (fixDec * Math.Round(double.Parse(value, CultureInfo.CurrentUICulture) / fixDec)).ToString("G", CultureInfo.InvariantCulture);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
+                return "0";
+            }
         }
 
         private string Fix(double value)
         {
-            return (fixDec * Math.Round(value / fixDec)).ToString("G", CultureInfo.InvariantCulture);
+            try
+            {
+                return (fixDec * Math.Round(value / fixDec)).ToString("G", CultureInfo.InvariantCulture);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
+                return "0";
+            }
         }
 
         private void ReadCode(bool bSelect = false)
