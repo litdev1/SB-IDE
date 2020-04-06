@@ -280,7 +280,7 @@
     <value>View all variables and call stack</value>
   </data>
   <data name="Label148" xml:space="preserve">
-    <value>Variables &amp;amp; Call Stack</value>
+    <value>Variables &amp; Call Stack</value>
   </data>
   <data name="Label149" xml:space="preserve">
     <value>View a guide to debugging</value>
@@ -538,10 +538,10 @@
     <value>Delete</value>
   </data>
   <data name="Label225" xml:space="preserve">
-    <value>Break if &amp;lt;</value>
+    <value>Break if &lt;</value>
   </data>
   <data name="Label226" xml:space="preserve">
-    <value>Break if &amp;gt;</value>
+    <value>Break if &gt;</value>
   </data>
   <data name="Label227" xml:space="preserve">
     <value>Break if =</value>
@@ -1033,7 +1033,7 @@
     <value>Cancel</value>
   </data>
   <data name="Label374" xml:space="preserve">
-    <value>Quote &amp;quot;&amp;quot; inserted color and font names</value>
+    <value>Quote "" inserted color and font names</value>
   </data>
   <data name="Label375" xml:space="preserve">
     <value>Insert colors as Hex values</value>
@@ -1045,7 +1045,7 @@
     <value>Print Magnification</value>
   </data>
   <data name="Label378" xml:space="preserve">
-    <value>Increase (&amp;gt;0) or decrease (&amp;lt;0) the print font size</value>
+    <value>Increase (&gt;0) or decrease (&lt;0) the print font size</value>
   </data>
   <data name="Label379" xml:space="preserve">
     <value>TextBox</value>
@@ -1327,7 +1327,7 @@
     <value>Value</value>
   </data>
   <data name="Label462" xml:space="preserve">
-    <value>Variables &amp;amp; Call Stack</value>
+    <value>Variables &amp; Call Stack</value>
   </data>
   <data name="Label463" xml:space="preserve">
     <value>Variable</value>

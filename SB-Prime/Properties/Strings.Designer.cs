@@ -547,7 +547,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Variables &amp;amp; Call Stack.
+        ///   Looks up a localized string similar to Variables &amp; Call Stack.
         /// </summary>
         public static string Label148 {
             get {
@@ -1321,7 +1321,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Break if &amp;lt;.
+        ///   Looks up a localized string similar to Break if &lt;.
         /// </summary>
         public static string Label225 {
             get {
@@ -1330,7 +1330,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Break if &amp;gt;.
+        ///   Looks up a localized string similar to Break if &gt;.
         /// </summary>
         public static string Label226 {
             get {
@@ -2806,7 +2806,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quote &amp;quot;&amp;quot; inserted color and font names.
+        ///   Looks up a localized string similar to Quote &quot;&quot; inserted color and font names.
         /// </summary>
         public static string Label374 {
             get {
@@ -2842,7 +2842,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Increase (&amp;gt;0) or decrease (&amp;lt;0) the print font size.
+        ///   Looks up a localized string similar to Increase (&gt;0) or decrease (&lt;0) the print font size.
         /// </summary>
         public static string Label378 {
             get {
@@ -3688,7 +3688,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Variables &amp;amp; Call Stack.
+        ///   Looks up a localized string similar to Variables &amp; Call Stack.
         /// </summary>
         public static string Label462 {
             get {

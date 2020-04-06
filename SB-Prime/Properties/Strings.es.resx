@@ -538,10 +538,10 @@
     <value>Eliminar</value>
   </data>
   <data name="Label225" xml:space="preserve">
-    <value>Romper si &amp;lt;</value>
+    <value>Romper si &lt;</value>
   </data>
   <data name="Label226" xml:space="preserve">
-    <value>Romper si &amp;gt;</value>
+    <value>Romper si &gt;</value>
   </data>
   <data name="Label227" xml:space="preserve">
     <value>Romper si el valor de la página de la página de</value>
@@ -1033,7 +1033,7 @@
     <value>Cancelar</value>
   </data>
   <data name="Label374" xml:space="preserve">
-    <value>Cita &amp;quot;&amp;quot; color insertado y nombres de fuente</value>
+    <value>Cita "" color insertado y nombres de fuente</value>
   </data>
   <data name="Label375" xml:space="preserve">
     <value>Insertar colores como valores hexadecimales</value>
@@ -1045,7 +1045,7 @@
     <value>Ampliación de impresión</value>
   </data>
   <data name="Label378" xml:space="preserve">
-    <value>Aumentar (&amp;gt;0) o disminuir (&amp;lt;0) el tamaño de fuente de impresión</value>
+    <value>Aumentar (&gt;0) o disminuir (&lt;0) el tamaño de fuente de impresión</value>
   </data>
   <data name="Label379" xml:space="preserve">
     <value>Textbox</value>
