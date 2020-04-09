@@ -18,10 +18,12 @@ using System.Windows.Shapes;
 namespace SB_Prime.Dialogs
 {
     /// <summary>
-         /// Interaction logic for ShapesEditor.xaml
-         /// </summary>
+    /// Interaction logic for ShapesEditor.xaml
+    /// </summary>
     public partial class ShapesEditor : Window, IDisposable
     {
+        private bool DEBUG = false;
+
         public static bool Active = false;
         public static ShapesEditor THIS;
         private MainWindow mainWindow;
@@ -904,9 +906,11 @@ namespace SB_Prime.Dialogs
                     }
                     else if (currentElt.GetType() == typeof(Button))
                     {
+                        if (DEBUG) MessageBox.Show("ShowProperties 1", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                         Button shape = (Button)currentElt;
                         properties.Add(new PropertyData() { Property = "Content", Value = shape.Content.ToString(), Visible = Visibility.Hidden });
                         GetControlProperties(shape);
+                        if (DEBUG) MessageBox.Show("ShowProperties 2", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else if (currentElt.GetType() == typeof(TextBox))
                     {
@@ -1308,13 +1312,19 @@ namespace SB_Prime.Dialogs
                                 }
                                 else if (elt.GetType() == typeof(Button))
                                 {
+                                    if (DEBUG) MessageBox.Show("ShowCode 1", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                                     Button obj = (Button)elt;
                                     SetControlPropertyCode(obj, ref _brush, ref _fontFamily, ref _fontStyle, ref _fontSize, ref _fontWeight);
+                                    if (DEBUG) MessageBox.Show("ShowCode 2", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                                     sbDocument.TextArea.Text += obj.Name + " = Controls.AddButton(\"" + obj.Content + "\"," + Fix(shape.modifiers["Left"]) + "," + Fix(shape.modifiers["Top"]) + ")\n";
+                                    if (DEBUG) MessageBox.Show("ShowCode 3", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                                     sbDocument.TextArea.Text += "Controls.SetSize(" + obj.Name + "," + Fix(shape.modifiers["Width"]) + "," + Fix(shape.modifiers["Height"]) + ")\n";
+                                    if (DEBUG) MessageBox.Show("ShowCode 4", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                                     if (shape.modifiers["Opacity"] != "100") sbDocument.TextArea.Text += "Shapes.SetOpacity(" + obj.Name + "," + Fix(shape.modifiers["Opacity"]) + ")\n";
+                                    if (DEBUG) MessageBox.Show("ShowCode 5", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                                     if (shape.modifiers["Angle"] != "0") sbDocument.TextArea.Text += "Shapes.Rotate(" + obj.Name + "," + Fix(shape.modifiers["Angle"]) + ")\n";
                                     sbDocument.TextArea.Text += "\n";
+                                    if (DEBUG) MessageBox.Show("ShowCode 6", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                                 }
                                 else if (elt.GetType() == typeof(TextBox))
                                 {
@@ -1591,10 +1601,24 @@ namespace SB_Prime.Dialogs
         {
             try
             {
-                return (fixDec * Math.Round(double.Parse(value, CultureInfo.CurrentUICulture) / fixDec)).ToString("G", CultureInfo.InvariantCulture);
+                if (DEBUG) MessageBox.Show("Fix String 1 : "+ value, "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
+                double dValue = 0;
+                if (!double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out dValue))
+                {
+                    if (!double.TryParse(value, NumberStyles.Any, CultureInfo.CurrentUICulture, out dValue))
+                    {
+                        MessageBox.Show("Failed to convert " + value + " to a number", "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return "0";
+                    }
+                }
+                if (DEBUG) MessageBox.Show("Fix String 2 : " + dValue, "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
+                string ret = (dValue).ToString("G", CultureInfo.InvariantCulture);
+                if (DEBUG) MessageBox.Show("Fix String 3 : " + ret, "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
+                return ret;
             }
             catch (Exception ex)
             {
+                if (DEBUG) MessageBox.Show("Fix String 4 : " + value, "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                 MessageBox.Show(ex.Message, "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Error);
                 return "0";
             }
@@ -1604,6 +1628,7 @@ namespace SB_Prime.Dialogs
         {
             try
             {
+                if (DEBUG) MessageBox.Show("Fix Double " + value, "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                 return (fixDec * Math.Round(value / fixDec)).ToString("G", CultureInfo.InvariantCulture);
             }
             catch (Exception ex)
@@ -1768,6 +1793,7 @@ namespace SB_Prime.Dialogs
                     }
                     else if (codeLower.Contains("controls.addbutton"))
                     {
+                        if (DEBUG) MessageBox.Show("Read Code 1", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                         string[] parts = code.Split(new char[] { '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
                         name = GetName("Button", parts[0]);
                         elt = new Button()
@@ -1786,6 +1812,7 @@ namespace SB_Prime.Dialogs
                         canvas.Children.Add(shape.shape);
                         shape.modifiers["Left"] = Fix(parts[2]);
                         shape.modifiers["Top"] = Fix(parts[3]);
+                        if (DEBUG) MessageBox.Show("Read Code 2", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else if (codeLower.Contains("controls.addtextbox"))
                     {
@@ -2653,6 +2680,7 @@ namespace SB_Prime.Dialogs
                     };
                     break;
                 case "Button":
+                    if (DEBUG) MessageBox.Show("AddShape 1", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                     elt = new Button()
                     {
                         Name = name,
@@ -3102,6 +3130,7 @@ namespace SB_Prime.Dialogs
                 }
                 else if (selectedElt.GetType() == typeof(Button))
                 {
+                    if (DEBUG) MessageBox.Show("UpdateProperty 1", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                     Button shape = (Button)selectedElt;
                     switch (property.Property)
                     {
@@ -3115,6 +3144,7 @@ namespace SB_Prime.Dialogs
                             SetControlProperties(shape, property, value);
                             break;
                     }
+                    if (DEBUG) MessageBox.Show("UpdateProperty 2", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else if (selectedElt.GetType() == typeof(TextBox))
                 {
@@ -3800,6 +3830,7 @@ namespace SB_Prime.Dialogs
 
         private void dataGridPropertySet(object sender, RoutedEventArgs e)
         {
+            if (DEBUG) MessageBox.Show("SetDataGridProperty 1", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
             Button button = (Button)sender;
             try
             {
@@ -3874,6 +3905,7 @@ namespace SB_Prime.Dialogs
             {
 
             }
+            if (DEBUG) MessageBox.Show("SetDataGridProperty 2", "Debugging", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void buttonHelp_Click(object sender, RoutedEventArgs e)
