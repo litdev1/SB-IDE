@@ -39,7 +39,7 @@
             <ListBox x:Name="listBoxLDControls" Margin="10,300,10.4,244.4">
                 <ListBoxItem Content="Polygon" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="Browser" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="Checkbox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="CheckBox" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="ComboBox" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="DataView" PreviewMouseDown="AddShape_MouseDown"/>
                 <ListBoxItem Content="DocumentViewer" PreviewMouseDown="AddShape_MouseDown"/>
