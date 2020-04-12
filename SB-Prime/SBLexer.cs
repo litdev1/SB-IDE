@@ -461,7 +461,7 @@ namespace SB_Prime
                                 if (!sbObjects.variables.Contains(variable, StringComparer.OrdinalIgnoreCase) &&
                                     !sbObjects.subroutines.Contains(variable, StringComparer.OrdinalIgnoreCase) &&
                                     !sbObjects.labels.Contains(variable, StringComparer.OrdinalIgnoreCase) &&
-                                    textArea.CurrentLine != line)
+                                    (textArea.CurrentLine != line || (line == 0 && textArea.Lines.Count() > 0)))
                                 {
                                     sbObjects.variables.Add(variable);
                                 }
