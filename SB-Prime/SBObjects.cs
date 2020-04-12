@@ -38,7 +38,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (Member member in keywords)
             {
-                if (member.name.ToUpper().StartsWith(input.ToUpper()))
+                if (member.name.StartsWith(input, StringComparison.OrdinalIgnoreCase))
                 {
                     data.Add(member.name + "?0");
                 }
@@ -58,7 +58,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (SBObject label in objects)
             {
-                if (label.name.ToUpper().StartsWith(input.ToUpper()))
+                if (label.name.StartsWith(input, StringComparison.OrdinalIgnoreCase))
                 {
                     data.Add(label.name + "?1");
                 }
@@ -83,7 +83,7 @@ namespace SB_Prime
                 {
                     foreach (Member member in label.members)
                     {
-                        if (member.name.ToUpper().StartsWith(input.ToUpper()))
+                        if (member.name.StartsWith(input, StringComparison.OrdinalIgnoreCase))
                         {
                             switch (member.type)
                             {
@@ -117,7 +117,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (string label in variables)
             {
-                if (label.ToUpper().StartsWith(input.ToUpper()))
+                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase))
                 {
                     data.Add(label + "?5");
                 }
@@ -137,7 +137,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (string label in subroutines)
             {
-                if (label.ToUpper().StartsWith(input.ToUpper()))
+                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase))
                 {
                     data.Add(label + "?6");
                 }
@@ -157,7 +157,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (string label in labels)
             {
-                if (label.ToUpper().StartsWith(input.ToUpper()))
+                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase))
                 {
                     data.Add(label + "?7");
                 }

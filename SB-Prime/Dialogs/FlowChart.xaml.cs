@@ -439,7 +439,7 @@ namespace SB_Prime.Dialogs
                     subs.Add(sub);
                     foreach (CodeLine codeLineCall in codeLines)
                     {
-                        if (codeLineCall.block == eBlock.CALL && codeLineCall.code.ToLower().StartsWith(sub))
+                        if (codeLineCall.block == eBlock.CALL && codeLineCall.code.StartsWith(sub, StringComparison.OrdinalIgnoreCase))
                         {
                             codeLineCall.rootLine = codeLine;
                         }

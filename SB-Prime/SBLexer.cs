@@ -290,8 +290,8 @@ namespace SB_Prime
             styles.Add(new SBStyle(STYLE_KEYWORD, new Regex("^[\\W]("+keywords.ToUpper()+")[\\W]")));
             styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[A-Za-z_][\\w]*[\\.][A-Za-z_][\\w]*")));
             styles.Add(new SBStyle(STYLE_SUBROUTINE, new Regex("^[A-Za-z_][\\w]*[(]")));
-            styles.Add(new SBStyle(STYLE_LABEL, new Regex("^[A-Za-z_][\\w]*[ ]*[:]")));
-            styles.Add(new SBStyle(STYLE_VARIABLE, new Regex("^[A-Za-z_][\\w]*[\\W]")));
+            styles.Add(new SBStyle(STYLE_LABEL, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*[ ]*[:]")));
+            styles.Add(new SBStyle(STYLE_VARIABLE, new Regex("^[" + MainWindow.exRegex + "A - Za-z_][" + MainWindow.exRegex + "\\w]*[\\W]")));
             styles.Add(new SBStyle(STYLE_LITERAL, new Regex("^[-?\\d*\\.?\\d*]")));
 
             // Configure the lexer styles

@@ -5029,6 +5029,24 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Variable Regex.
+        /// </summary>
+        public static string String178 {
+            get {
+                return ResourceManager.GetString("String178", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aditional Regex to define valid variable characters.
+        /// </summary>
+        public static string String179 {
+            get {
+                return ResourceManager.GetString("String179", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Paste Code to Current Document.
         /// </summary>
         public static string String18 {

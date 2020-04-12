@@ -38,6 +38,7 @@ namespace SB_Prime.Dialogs
             checkBoxHEXColors.IsChecked = MainWindow.hexColors;
             checkBoxLoadExtensions.IsChecked = MainWindow.loadExtensions;
             textBoxPrintMagnification.Text = MainWindow.printMagnification.ToString();
+            textBoxRegex.Text = MainWindow.exRegex;
             comboBoxPrintColours.Items.Clear();
             comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String114, Tag = (int)PrintColorMode.ColorOnWhite });
             comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String115, Tag = (int)PrintColorMode.Normal });
@@ -88,6 +89,7 @@ namespace SB_Prime.Dialogs
             MainWindow.hexColors = (bool)checkBoxHEXColors.IsChecked;
             MainWindow.loadExtensions = (bool)checkBoxLoadExtensions.IsChecked;
             short.TryParse(textBoxPrintMagnification.Text, out MainWindow.printMagnification);
+            MainWindow.exRegex = textBoxRegex.Text;
             MainWindow.printColours = (int)((TextBlock)comboBoxPrintColours.SelectedItem).Tag;
             if (radioButton1.IsChecked == true) MainWindow.indentSpaces = 1;
             else if (radioButton4.IsChecked == true) MainWindow.indentSpaces = 4;

@@ -1773,6 +1773,12 @@
   <data name="String177" xml:space="preserve">
     <value>Corriendo</value>
   </data>
+  <data name="String178" xml:space="preserve">
+    <value>Variable Regex</value>
+  </data>
+  <data name="String179" xml:space="preserve">
+    <value>Aditional Regex to define valid variable characters</value>
+  </data>
   <data name="String18" xml:space="preserve">
     <value>Pegar código en el documento actual</value>
   </data>
