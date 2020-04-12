@@ -1777,7 +1777,7 @@
     <value>Variable Regex</value>
   </data>
   <data name="String179" xml:space="preserve">
-    <value>Aditional Regex to define valid variable characters</value>
+    <value>Aditional Regex to define valid variable names</value>
   </data>
   <data name="String18" xml:space="preserve">
     <value>Вставить код в текущий документ</value>

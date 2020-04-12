@@ -5038,7 +5038,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aditional Regex to define valid variable characters.
+        ///   Looks up a localized string similar to Aditional Regex to define valid variable names.
         /// </summary>
         public static string String179 {
             get {
