@@ -173,7 +173,7 @@ namespace SB_Prime.Dialogs
             }
             else
             {
-                if (header.Text.ToUpper().Contains(textBoxSearchText.Text.ToUpper()))
+                if (header.Text.ToUpperInvariant().Contains(textBoxSearchText.Text.ToUpperInvariant()))
                 {
                     header.HighLight(textBoxSearchText.Text);
                     TreeViewItem parent = item;
@@ -379,14 +379,14 @@ namespace SB_Prime.Dialogs
                     {
                         string txt = (string)tb.Tag;
                         string search = highlight;
-                        int pos = txt.ToUpper().IndexOf(search.ToUpper());
+                        int pos = txt.ToUpperInvariant().IndexOf(search.ToUpperInvariant());
                         int len = highlight.Length;
                         while (pos >= 0)
                         {
                             tb.Inlines.Add(txt.Substring(0, pos));
                             tb.Inlines.Add(new Run(txt.Substring(pos, len)) { Background = new SolidColorBrush(MainWindow.IntToColor(MainWindow.FIND_HIGHLIGHT_COLOR)) { Opacity = 0.25 }, FontStyle = FontStyles.Italic, FontWeight = FontWeights.Bold });
                             txt = txt.Substring(pos + len);
-                            pos = txt.ToUpper().IndexOf(search.ToUpper());
+                            pos = txt.ToUpperInvariant().IndexOf(search.ToUpperInvariant());
                         }
                         if (txt.Length > 0) tb.Inlines.Add(txt);
                     }

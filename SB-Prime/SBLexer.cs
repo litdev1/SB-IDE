@@ -180,20 +180,20 @@ namespace SB_Prime
             for (int lineCur = 0; lineCur < textArea.Lines.Count; lineCur++)
             {
                 textArea.Lines[lineCur].FoldLevel = fold;
-                string text = textArea.Lines[lineCur].Text.Trim().ToUpper();
-                if (keyword1.Match((' ' + text + ' ').ToUpper()).Value.Length > 0)
+                string text = textArea.Lines[lineCur].Text.Trim().ToUpperInvariant();
+                if (keyword1.Match((' ' + text + ' ').ToUpperInvariant()).Value.Length > 0)
                 {
                     fold++;
                     textArea.Lines[lineCur].FoldLevelFlags = FoldLevelFlags.Header;
                 }
-                else if (keyword2.Match((' ' + text + ' ').ToUpper()).Value.Length > 0)
+                else if (keyword2.Match((' ' + text + ' ').ToUpperInvariant()).Value.Length > 0)
                 {
                     fold--;
                     textArea.Lines[lineCur].FoldLevel--;
                     textArea.Lines[lineCur].FoldLevelFlags = FoldLevelFlags.White;
                     if (fold < foldBase) fold = foldBase;
                 }
-                else if (keyword3.Match((' ' + text + ' ').ToUpper()).Value.Length > 0)
+                else if (keyword3.Match((' ' + text + ' ').ToUpperInvariant()).Value.Length > 0)
                 {
                     textArea.Lines[lineCur].FoldLevel--;
                     textArea.Lines[lineCur].FoldLevelFlags = FoldLevelFlags.White;
@@ -216,7 +216,7 @@ namespace SB_Prime
             foreach (string keyword in keywords.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 int pos = 0;
-                Match match = Regex.Match(' ' + textArea.Text.Substring(pos).ToUpper() + ' ', "[\\W](" + keyword.ToUpper() + ")[\\W]");
+                Match match = Regex.Match(' ' + textArea.Text.Substring(pos).ToUpperInvariant() + ' ', "[\\W](" + keyword.ToUpperInvariant() + ")[\\W]");
                 while (match.Success)
                 {
                     int start = Math.Max(0, pos + match.Index);
@@ -231,7 +231,7 @@ namespace SB_Prime
 
                     pos += match.Index + len;
                     if (pos >= textArea.Text.Length) break;
-                    match = Regex.Match(' ' + textArea.Text.Substring(pos).ToUpper() + ' ', "[\\W](" + keyword.ToUpper() + ")[\\W]");
+                    match = Regex.Match(' ' + textArea.Text.Substring(pos).ToUpperInvariant() + ' ', "[\\W](" + keyword.ToUpperInvariant() + ")[\\W]");
                 }
             }
 
@@ -287,9 +287,9 @@ namespace SB_Prime
             styles.Add(new SBStyle(STYLE_STRING, new Regex("^[\"][^\"\\n]*[\"\\n]")));
             styles.Add(new SBStyle(STYLE_OPERATOR, new Regex("^[\\+|\\-|*|/|<|>|=]|^( AND | OR )")));
             styles.Add(new SBStyle(STYLE_SPACE, new Regex("^[\\s]")));
-            styles.Add(new SBStyle(STYLE_KEYWORD, new Regex("^[\\W]("+keywords.ToUpper()+")[\\W]")));
-            styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[A-Za-z_][\\w]*[\\.][A-Za-z_][\\w]*")));
-            styles.Add(new SBStyle(STYLE_SUBROUTINE, new Regex("^[A-Za-z_][\\w]*[(]")));
+            styles.Add(new SBStyle(STYLE_KEYWORD, new Regex("^[\\W]("+keywords.ToUpperInvariant()+")[\\W]")));
+            styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*[\\.][A-Za-z_][\\w]*")));
+            styles.Add(new SBStyle(STYLE_SUBROUTINE, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*[(]")));
             styles.Add(new SBStyle(STYLE_LABEL, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*[ ]*[:]")));
             styles.Add(new SBStyle(STYLE_VARIABLE, new Regex("^[" + MainWindow.exRegex + "A - Za-z_][" + MainWindow.exRegex + "\\w]*[\\W]")));
             styles.Add(new SBStyle(STYLE_LITERAL, new Regex("^[-?\\d*\\.?\\d*]")));
@@ -421,12 +421,12 @@ namespace SB_Prime
                 {
                     if (style.style == STYLE_KEYWORD)
                     {
-                        value = style.regex.Match((' ' + text + ' ').ToUpper()).Value;
+                        value = style.regex.Match((' ' + text + ' ').ToUpperInvariant()).Value;
                         length = value.Length - 2;
                     }
                     else if (style.style == STYLE_OPERATOR)
                     {
-                        value = style.regex.Match(text.ToUpper()).Value;
+                        value = style.regex.Match(text.ToUpperInvariant()).Value;
                         length = value.Length;
                     }
                     else
@@ -514,20 +514,20 @@ namespace SB_Prime
                 for (int i = 0; i < textArea.Lines.Count; i++)
                 {
                     textArea.Lines[i].FoldLevel = fold;
-                    string text = textArea.Lines[i].Text.Trim().ToUpper();
-                    if (keyword1.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
+                    string text = textArea.Lines[i].Text.Trim().ToUpperInvariant();
+                    if (keyword1.Match(('\n' + text + '\n').ToUpperInvariant()).Value.Length > 0)
                     {
                         fold++;
                         textArea.Lines[i].FoldLevelFlags = FoldLevelFlags.Header;
                     }
-                    else if (keyword2.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
+                    else if (keyword2.Match(('\n' + text + '\n').ToUpperInvariant()).Value.Length > 0)
                     {
                         fold--;
                         textArea.Lines[i].FoldLevel--;
                         textArea.Lines[i].FoldLevelFlags = FoldLevelFlags.White;
                         if (fold < foldBase) fold = foldBase;
                     }
-                    else if (keyword3.Match(('\n' + text + '\n').ToUpper()).Value.Length > 0)
+                    else if (keyword3.Match(('\n' + text + '\n').ToUpperInvariant()).Value.Length > 0)
                     {
                         textArea.Lines[i].FoldLevel--;
                         textArea.Lines[i].FoldLevelFlags = FoldLevelFlags.White;
@@ -582,7 +582,7 @@ namespace SB_Prime
         {
             foreach (Member member in SBObjects.keywords)
             {
-                if (member.name.ToUpper() == currentWord.ToUpper())
+                if (member.name.ToUpperInvariant() == currentWord.ToUpperInvariant())
                 {
                     MainWindow.showObject = null;
                     MainWindow.showMember = member;
@@ -593,7 +593,7 @@ namespace SB_Prime
             }
             foreach (SBObject obj in SBObjects.objects)
             {
-                if (obj.name.ToUpper() == currentWord.ToUpper())
+                if (obj.name.ToUpperInvariant() == currentWord.ToUpperInvariant())
                 {
                     MainWindow.showObject = obj;
                     MainWindow.showMember = null;
@@ -608,11 +608,11 @@ namespace SB_Prime
         {
             foreach (SBObject obj in SBObjects.objects)
             {
-                if (obj.name.ToUpper() == lastWord.ToUpper())
+                if (obj.name.ToUpperInvariant() == lastWord.ToUpperInvariant())
                 {
                     foreach (Member member in obj.members)
                     {
-                        if (member.name.ToUpper() == currentWord.ToUpper())
+                        if (member.name.ToUpperInvariant() == currentWord.ToUpperInvariant())
                         {
                             MainWindow.showObject = null;
                             MainWindow.showMember = member;

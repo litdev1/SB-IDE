@@ -88,11 +88,11 @@ namespace SB_Prime.Dialogs
             comboBoxReplace.SelectedItem = textBoxReplace.Text;
 
             SBDocument sbDocument = mainWindow.GetActiveDocument();
-            if (sbDocument.TextArea.SelectedText.ToUpper() != textBoxFind.Text.ToUpper())
+            if (sbDocument.TextArea.SelectedText.ToUpperInvariant() != textBoxFind.Text.ToUpperInvariant())
             {
                 sbDocument.searchManager.Find(true, textBoxFind.Text);
             }
-            if (sbDocument.TextArea.SelectedText.ToUpper() != textBoxFind.Text.ToUpper()) return;
+            if (sbDocument.TextArea.SelectedText.ToUpperInvariant() != textBoxFind.Text.ToUpperInvariant()) return;
 
             int iStart = sbDocument.TextArea.SelectionStart;
             int iLen = sbDocument.TextArea.SelectedText.Length;
@@ -113,14 +113,14 @@ namespace SB_Prime.Dialogs
             comboBoxReplace.SelectedItem = textBoxReplace.Text;
 
             SBDocument sbDocument = mainWindow.GetActiveDocument();
-            if (sbDocument.TextArea.SelectedText.ToUpper() != textBoxFind.Text.ToUpper())
+            if (sbDocument.TextArea.SelectedText.ToUpperInvariant() != textBoxFind.Text.ToUpperInvariant())
             {
                 sbDocument.searchManager.Find(true, textBoxFind.Text);
             }
-            if (sbDocument.TextArea.SelectedText.ToUpper() != textBoxFind.Text.ToUpper()) return;
+            if (sbDocument.TextArea.SelectedText.ToUpperInvariant() != textBoxFind.Text.ToUpperInvariant()) return;
 
             List<int> markStart = new List<int>();
-            while (sbDocument.TextArea.SelectedText.ToUpper() == textBoxFind.Text.ToUpper())
+            while (sbDocument.TextArea.SelectedText.ToUpperInvariant() == textBoxFind.Text.ToUpperInvariant())
             {
                 if (markStart.Contains(sbDocument.TextArea.SelectionStart)) break;
                 markStart.Add(sbDocument.TextArea.SelectionStart);

@@ -38,7 +38,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (Member member in keywords)
             {
-                if (member.name.StartsWith(input, StringComparison.OrdinalIgnoreCase))
+                if (member.name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || member.name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                 {
                     data.Add(member.name + "?0");
                 }
@@ -58,7 +58,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (SBObject label in objects)
             {
-                if (label.name.StartsWith(input, StringComparison.OrdinalIgnoreCase))
+                if (label.name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                 {
                     data.Add(label.name + "?1");
                 }
@@ -75,15 +75,15 @@ namespace SB_Prime
         public string GetMembers(string obj, string input)
         {
             string result = "";
-            input = input.ToUpper();
+            input = input.ToUpperInvariant();
             List<string> data = new List<string>();
             foreach (SBObject label in objects)
             {
-                if (obj.ToUpper() == label.name.ToUpper())
+                if (obj.ToUpperInvariant() == label.name.ToUpperInvariant())
                 {
                     foreach (Member member in label.members)
                     {
-                        if (member.name.StartsWith(input, StringComparison.OrdinalIgnoreCase))
+                        if (member.name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || member.name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                         {
                             switch (member.type)
                             {
@@ -117,7 +117,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (string label in variables)
             {
-                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase))
+                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                 {
                     data.Add(label + "?5");
                 }
@@ -137,7 +137,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (string label in subroutines)
             {
-                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase))
+                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                 {
                     data.Add(label + "?6");
                 }
@@ -157,7 +157,7 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (string label in labels)
             {
-                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase))
+                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                 {
                     data.Add(label + "?7");
                 }

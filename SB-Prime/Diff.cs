@@ -275,7 +275,7 @@ namespace my.utils {
         }
 
         if (ignoreCase)
-          s = s.ToLower();
+          s = s.ToLowerInvariant();
         
         aCode = h[s];
         if (aCode == null) {

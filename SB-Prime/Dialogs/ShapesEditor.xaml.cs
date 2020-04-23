@@ -1658,7 +1658,7 @@ namespace SB_Prime.Dialogs
                 {
                     string code = line.Text.Trim();
                     if (code.StartsWith("\'")) continue;
-                    string codeLower = code.ToLower();
+                    string codeLower = code.ToLowerInvariant();
                     if (codeLower.Contains("graphicswindow.backgroundcolor"))
                     {
                         string[] parts = code.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
@@ -3489,7 +3489,7 @@ namespace SB_Prime.Dialogs
 
         private static MenuItem findMenuItem(ItemCollection items, string parent)
         {
-            parent = parent.ToLower();
+            parent = parent.ToLowerInvariant();
             foreach (Object i in items)
             {
                 if (i.GetType() == typeof(MenuItem))
@@ -3497,7 +3497,7 @@ namespace SB_Prime.Dialogs
                     MenuItem item = (MenuItem)i;
                     MenuItem children = findMenuItem(item.Items, parent);
                     if (null != children) return children;
-                    if (((string)item.Header).ToLower() == parent) return item;
+                    if (((string)item.Header).ToLowerInvariant() == parent) return item;
                 }
             }
             return null;

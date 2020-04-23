@@ -332,7 +332,7 @@ namespace SB_Prime.Dialogs
             {
                 string line = Clean(sbDocument.TextArea.Lines[i].Text);
                 if (line.Length == 0) continue;
-                string lineLower = line.ToLower();
+                string lineLower = line.ToLowerInvariant();
 
                 if (Regex.Match(lineLower, "^(sub)[\\W]").Success)
                 {
@@ -392,12 +392,12 @@ namespace SB_Prime.Dialogs
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.GOTO));
                 }
-                else if (Regex.Match(lineLower, "^[a-z_][\\w]*[ ]*[:]").Success)
+                else if (Regex.Match(lineLower, "^[a-z_" + MainWindow.exRegex + "][" + MainWindow.exRegex + "\\w]*[ ]*[:]").Success)
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.LABEL));
                     labels[lineLower.Substring(0, lineLower.Length - 1).Trim()] = codeLines.Last();
                 }
-                else if (Regex.Match(lineLower, "^[a-z_][\\w]*[ ]*[()]").Success)
+                else if (Regex.Match(lineLower, "^[a-z_" + MainWindow.exRegex + "][" + MainWindow.exRegex + "\\w]*[ ]*[()]").Success)
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.CALL));
                 }
@@ -422,7 +422,7 @@ namespace SB_Prime.Dialogs
             {
                 foreach (CodeLine codeLine in codeLines)
                 {
-                    if (codeLine.block == eBlock.GOTO && codeLine.code.ToLower().EndsWith(kvp.Key))
+                    if (codeLine.block == eBlock.GOTO && codeLine.code.ToLowerInvariant().EndsWith(kvp.Key))
                     {
                         codeLine.rootLine = kvp.Value;
                     }
@@ -435,7 +435,7 @@ namespace SB_Prime.Dialogs
             {
                 if (codeLine.block == eBlock.SUB)
                 {
-                    sub = codeLine.code.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Last().ToLower();
+                    sub = codeLine.code.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Last().ToLowerInvariant();
                     subs.Add(sub);
                     foreach (CodeLine codeLineCall in codeLines)
                     {

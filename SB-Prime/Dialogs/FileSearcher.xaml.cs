@@ -165,7 +165,7 @@ namespace SB_Prime.Dialogs
                 if ((bool)checkBoxSearcherPath.IsChecked)
                 {
                     if ((bool)checkBoxSearcherCase.IsChecked) isFound |= file.FilePath.Contains(keyword);
-                    else isFound |= file.FilePath.ToLower().Contains(keyword.ToLower());
+                    else isFound |= file.FilePath.ToUpperInvariant().Contains(keyword.ToUpperInvariant());
                 }
                 if (keyword == "" || isFound) filterFiles.Add(file);
             }

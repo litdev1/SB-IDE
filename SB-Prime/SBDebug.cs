@@ -440,7 +440,7 @@ namespace SB_Prime
                         mainWindow.dataGridDebug.SelectedCells.Clear();
                         foreach (DebugData item in mainWindow.debugData)
                         {
-                            if (item.Variable.ToUpper() == data[1])
+                            if (item.Variable.ToUpperInvariant() == data[1])
                             {
                                 mainWindow.dataGridDebug.ScrollIntoView(item);
                                 mainWindow.dataGridDebug.CurrentCell = new DataGridCellInfo(item, mainWindow.dataGridDebug.Columns[1]);
@@ -459,7 +459,7 @@ namespace SB_Prime
                     for (int i = 0; i < mainWindow.debugData.Count; i++)
                     {
                         DebugData data = mainWindow.debugData[i];
-                        if (data.Variable.ToUpper() == key.ToUpper())
+                        if (data.Variable.ToUpperInvariant() == key.ToUpperInvariant())
                         {
                             if (value.Length > maxValueLen) value = value.Substring(0, maxValueLen) + " ...";
                             data.Value = value;
