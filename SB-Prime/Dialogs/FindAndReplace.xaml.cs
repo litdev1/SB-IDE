@@ -29,9 +29,8 @@ namespace SB_Prime.Dialogs
             this.mainWindow = mainWindow;
             InitializeComponent();
 
+            Topmost = MainWindow.topmost;
             FontSize = 12 + MainWindow.zoom;
-
-            Topmost = true;
 
             SBDocument sbDocument = mainWindow.GetActiveDocument();
             foreach (string item in mainWindow.cbFindText.Items)
@@ -139,7 +138,7 @@ namespace SB_Prime.Dialogs
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            Topmost = true;
+            Topmost = MainWindow.topmost;
             Activate();
         }
 

@@ -37,6 +37,7 @@ namespace SB_Prime.Dialogs
             checkBoxQuoteInserts.IsChecked = MainWindow.quoteInserts;
             checkBoxHEXColors.IsChecked = MainWindow.hexColors;
             checkBoxLoadExtensions.IsChecked = MainWindow.loadExtensions;
+            checkBoxTopmost.IsChecked = MainWindow.topmost;
             textBoxPrintMagnification.Text = MainWindow.printMagnification.ToString();
             textBoxRegex.Text = MainWindow.exRegex;
             comboBoxPrintColours.Items.Clear();
@@ -88,6 +89,7 @@ namespace SB_Prime.Dialogs
             MainWindow.quoteInserts = (bool)checkBoxQuoteInserts.IsChecked;
             MainWindow.hexColors = (bool)checkBoxHEXColors.IsChecked;
             MainWindow.loadExtensions = (bool)checkBoxLoadExtensions.IsChecked;
+            MainWindow.topmost = (bool)checkBoxTopmost.IsChecked;
             short.TryParse(textBoxPrintMagnification.Text, out MainWindow.printMagnification);
             MainWindow.exRegex = textBoxRegex.Text;
             MainWindow.printColours = (int)((TextBlock)comboBoxPrintColours.SelectedItem).Tag;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="{ x:Static local:Strings.Label357 }" Height="500" Width="600" Icon="/SB-Prime;component/AppIcon.ico" Topmost="True" WindowStartupLocation="CenterOwner" ResizeMode="CanResize" MinWidth="220" MinHeight="100">
+        Title="{ x:Static local:Strings.Label357 }" Height="500" Width="600" Icon="/SB-Prime;component/AppIcon.ico" WindowStartupLocation="CenterOwner" ResizeMode="CanResize" MinWidth="220" MinHeight="100">
     <Grid>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label358 }" Margin="10,10,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <DataGrid x:Name="dataGridLinks" Margin="10,41,9.6,10.4" HeadersVisibility="Column" CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="All" HorizontalGridLinesBrush="Gray">

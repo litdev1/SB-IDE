@@ -48,6 +48,7 @@ namespace SB_Prime
         public static bool whitespace = false;
         public static bool highlightAll = false;
         public static int zoom = 0;
+        public static bool topmost = true;
         public static int theme = 0;
         public static bool quoteInserts = false;
         public static int indentSpaces = 2;
@@ -385,6 +386,7 @@ namespace SB_Prime
             whitespace = Properties.Settings.Default.WhiteSpace;
             highlightAll = Properties.Settings.Default.HighlightAll;
             zoom = Properties.Settings.Default.Zoom;
+            topmost = Properties.Settings.Default.Topmost;
             theme = Properties.Settings.Default.Theme;
             quoteInserts = Properties.Settings.Default.QuoteInserts;
             indentSpaces = Properties.Settings.Default.IndentSpaces;
@@ -538,6 +540,7 @@ namespace SB_Prime
             Properties.Settings.Default.WhiteSpace = whitespace;
             Properties.Settings.Default.HighlightAll = highlightAll;
             Properties.Settings.Default.Zoom = zoom;
+            Properties.Settings.Default.Topmost = topmost;
             Properties.Settings.Default.Theme = theme;
             Properties.Settings.Default.QuoteInserts = quoteInserts;
             Properties.Settings.Default.IndentSpaces = indentSpaces;

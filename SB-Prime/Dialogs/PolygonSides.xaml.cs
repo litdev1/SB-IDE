@@ -26,6 +26,7 @@ namespace SB_Prime.Dialogs
         {
             InitializeComponent();
 
+            Topmost = MainWindow.topmost;
             FontSize = 12 + MainWindow.zoom;
 
             textBoxNumSides.Text = NumSides.ToString();

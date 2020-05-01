@@ -28,6 +28,7 @@ namespace SB_Prime.Dialogs
         {
             InitializeComponent();
 
+            Topmost = MainWindow.topmost;
             FontSize = 12 + MainWindow.zoom;
             label.FontSize = 16 + MainWindow.zoom;
 

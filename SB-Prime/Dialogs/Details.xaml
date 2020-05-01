@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="{ x:Static local:Strings.Label258 }" Height="324.8" Width="600" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize">
+        Title="{ x:Static local:Strings.Label258 }" Height="324.8" Width="600" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label259 }" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="110"/>
         <TextBox x:Name="textBoxID" Height="23" Margin="125,10,115.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label260 }" VerticalAlignment="Top" Background="White"/>

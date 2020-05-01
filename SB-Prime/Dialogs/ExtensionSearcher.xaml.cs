@@ -34,8 +34,8 @@ namespace SB_Prime.Dialogs
         {
             InitializeComponent();
 
+            Topmost = MainWindow.topmost;
             FontSize = 12 + MainWindow.zoom;
-            Topmost = true;
 
             buttonNext.IsEnabled = false;
             buttonPrevious.IsEnabled = false;
@@ -139,7 +139,7 @@ namespace SB_Prime.Dialogs
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            Topmost = true;
+            Topmost = MainWindow.topmost;
             Activate();
         }
 

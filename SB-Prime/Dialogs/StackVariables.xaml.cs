@@ -32,7 +32,7 @@ namespace SB_Prime.Dialogs
 
             InitializeComponent();
 
-            Topmost = true;
+            Topmost = MainWindow.topmost;
             FontSize = 12 + MainWindow.zoom;
 
             dataGridVariables.ItemsSource = variables;
@@ -44,7 +44,7 @@ namespace SB_Prime.Dialogs
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            Topmost = true;
+            Topmost = MainWindow.topmost;
             Activate();
         }
 

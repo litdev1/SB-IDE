@@ -72,8 +72,8 @@ namespace SB_Prime.Dialogs
             Cursor cursor = Mouse.OverrideCursor;
             Mouse.OverrideCursor = Cursors.Wait;
 
+            Topmost = MainWindow.topmost;
             FontSize = 12 + MainWindow.zoom;
-            Topmost = true;
 
             Height = SystemParameters.PrimaryScreenHeight - 40;
             Left = SystemParameters.PrimaryScreenWidth - Width - 20;
@@ -2589,7 +2589,7 @@ namespace SB_Prime.Dialogs
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            Topmost = true;
+            Topmost = MainWindow.topmost;
             Activate();
         }
 

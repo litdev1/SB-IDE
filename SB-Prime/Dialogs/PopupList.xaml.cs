@@ -33,7 +33,7 @@ namespace SB_Prime.Dialogs
 
             InitializeComponent();
 
-            Topmost = true;
+            Topmost = MainWindow.topmost;
             FontSize = 12 + MainWindow.zoom;
 
             FrameworkElementFactory fef = new FrameworkElementFactory(typeof(UniformGrid));
@@ -198,7 +198,7 @@ namespace SB_Prime.Dialogs
 
         private void Window_Deactivated(object sender, EventArgs e)
         {
-            Topmost = true;
+            Topmost = MainWindow.topmost;
             Activate();
         }
 
@@ -209,7 +209,7 @@ namespace SB_Prime.Dialogs
                 if (mode == popup.mode)
                 {
                     popup.WindowState = WindowState.Normal;
-                    popup.Topmost = true;
+                    popup.Topmost = MainWindow.topmost;
                     popup.Activate();
                     Close();
                     return;
