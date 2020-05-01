@@ -5056,6 +5056,15 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tool windows to be &apos;always on top&apos;.
+        /// </summary>
+        public static string String180 {
+            get {
+                return ResourceManager.GetString("String180", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy Code from Current Document.
         /// </summary>
         public static string String19 {

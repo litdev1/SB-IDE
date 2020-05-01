@@ -1782,6 +1782,9 @@
   <data name="String18" xml:space="preserve">
     <value>Вставить код в текущий документ</value>
   </data>
+  <data name="String180" xml:space="preserve">
+    <value>Tool windows to be 'always on top'</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Копирование кода из текущего документа</value>
   </data>
