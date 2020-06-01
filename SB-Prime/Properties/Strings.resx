@@ -1785,6 +1785,12 @@
   <data name="String180" xml:space="preserve">
     <value>Tool windows to be 'always on top'</value>
   </data>
+  <data name="String181" xml:space="preserve">
+    <value>Source-code font</value>
+  </data>
+  <data name="String182" xml:space="preserve">
+    <value>The font family for the source code</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Copy Code from Current Document</value>
   </data>

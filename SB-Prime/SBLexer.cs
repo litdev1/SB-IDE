@@ -253,7 +253,7 @@ namespace SB_Prime
             textArea.StyleResetDefault();
             //textArea.Styles[Style.CallTip].Font = "Consolas";
             //textArea.Styles[Style.CallTip].Size = 20;
-            textArea.Styles[Style.Default].Font = "Consolas";
+            textArea.Styles[Style.Default].Font = MainWindow.lexerFont;
             textArea.Styles[Style.Default].Size = 10;
             textArea.Styles[Style.Default].BackColor = backColor;
             textArea.Styles[Style.Default].ForeColor = foreColor;

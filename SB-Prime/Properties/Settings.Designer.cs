@@ -435,5 +435,17 @@ namespace SB_Prime.Properties {
                 this["Topmost"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Consolas")]
+        public string LexerFont {
+            get {
+                return ((string)(this["LexerFont"]));
+            }
+            set {
+                this["LexerFont"] = value;
+            }
+        }
     }
 }

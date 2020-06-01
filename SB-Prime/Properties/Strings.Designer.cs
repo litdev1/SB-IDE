@@ -5065,6 +5065,24 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Source-code font.
+        /// </summary>
+        public static string String181 {
+            get {
+                return ResourceManager.GetString("String181", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The font family for the source code.
+        /// </summary>
+        public static string String182 {
+            get {
+                return ResourceManager.GetString("String182", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy Code from Current Document.
         /// </summary>
         public static string String19 {

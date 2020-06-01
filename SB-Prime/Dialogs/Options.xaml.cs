@@ -48,6 +48,28 @@ namespace SB_Prime.Dialogs
             if (MainWindow.indentSpaces == 1) radioButton1.IsChecked = true;
             else if (MainWindow.indentSpaces == 4) radioButton4.IsChecked = true;
             else radioButton2.IsChecked = true;
+            List<TextBlock> fonts = new List<TextBlock>();
+            foreach (FontFamily font in Fonts.SystemFontFamilies) //WPF fonts
+            {
+                string fontName = font.FamilyNames.Values.First();
+                double fontSize = FontSize;
+
+                TextBlock text = new TextBlock() { Text = fontName, FontFamily = font, FontSize = fontSize, HorizontalAlignment = System.Windows.HorizontalAlignment.Center };
+                text.Tag = fontName;
+                fonts.Add(text);
+            }
+            fonts.Sort(SortCompareFont);
+            comboBoxLexerFont.Items.Clear();
+            foreach (TextBlock text in fonts)
+            {
+                comboBoxLexerFont.Items.Add(text);
+            }
+            comboBoxLexerFont.SelectedItem = comboBoxLexerFont.Items.OfType<TextBlock>().SingleOrDefault(x => (string)x.Tag == MainWindow.lexerFont);
+        }
+
+        private int SortCompareFont(TextBlock x, TextBlock y)
+        {
+            return x.Tag.ToString().CompareTo(y.Tag.ToString());
         }
 
         private void buttonUpdates_Click(object sender, RoutedEventArgs e)
@@ -96,7 +118,7 @@ namespace SB_Prime.Dialogs
             if (radioButton1.IsChecked == true) MainWindow.indentSpaces = 1;
             else if (radioButton4.IsChecked == true) MainWindow.indentSpaces = 4;
             else MainWindow.indentSpaces = 2;
-
+            MainWindow.lexerFont = ((TextBlock)(comboBoxLexerFont.SelectedItem)).Tag.ToString();
             Close();
         }
     }

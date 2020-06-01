@@ -53,6 +53,7 @@ namespace SB_Prime
         public static bool quoteInserts = false;
         public static int indentSpaces = 2;
         public static string exRegex = ""; //а-яА-ЯёЁ
+        public static string lexerFont = "Consolas";
         public static bool hexColors = false;
         public static bool loadExtensions = true;
         public static short printMagnification = 0;
@@ -391,6 +392,7 @@ namespace SB_Prime
             quoteInserts = Properties.Settings.Default.QuoteInserts;
             indentSpaces = Properties.Settings.Default.IndentSpaces;
             exRegex = Properties.Settings.Default.ExRegex;
+            lexerFont = Properties.Settings.Default.LexerFont;
             hexColors = Properties.Settings.Default.HEXColors;
             searchFlags = (SearchFlags)Properties.Settings.Default.SearchFlags;
             SBInterop.Language = Properties.Settings.Default.Language;
@@ -545,6 +547,7 @@ namespace SB_Prime
             Properties.Settings.Default.QuoteInserts = quoteInserts;
             Properties.Settings.Default.IndentSpaces = indentSpaces;
             Properties.Settings.Default.ExRegex = exRegex;
+            Properties.Settings.Default.LexerFont = lexerFont;
             Properties.Settings.Default.HEXColors = hexColors;
             Properties.Settings.Default.SearchFlags = (int)searchFlags;
             Properties.Settings.Default.Language = SBInterop.Language;
