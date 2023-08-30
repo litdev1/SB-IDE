@@ -2754,7 +2754,7 @@ namespace SB_Prime.Dialogs
                         Width = 100,
                         Height = 100,
                     };
-                    webBrowser.Navigate(new Uri("http://www.litdev.co.uk"));
+                    webBrowser.Navigate(new Uri("http://www.litdev.uk"));
                     elt = webBrowser;
                     break;
                 case "CheckBox":

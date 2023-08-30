@@ -29,7 +29,7 @@ namespace Update
                 i++;
             }
             Updater updater = new Updater(exeFolder);
-            updater.Update("http://litdev.co.uk/downloads/SB-Prime.zip");
+            updater.Update("http://litdev.uk/downloads/SB-Prime.zip");
             Console.WriteLine("Restarting SB-Prime...");
             Thread.Sleep(100);
             Process.Start(exeFolder + "\\SB-Prime.exe");

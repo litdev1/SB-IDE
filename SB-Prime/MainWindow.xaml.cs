@@ -940,7 +940,7 @@ namespace SB_Prime
 
         private void toolsDebugGuide_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("http://litdev.co.uk/forum/HowToDebug.pdf");
+            Process.Start("http://litdev.uk/forum/HowToDebug.pdf");
         }
 
         private void fileWholeWord_Click(object sender, RoutedEventArgs e)
