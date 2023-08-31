@@ -29,7 +29,7 @@ namespace Update
                 i++;
             }
             Updater updater = new Updater(exeFolder);
-            updater.Update("http://litdev.uk/downloads/SB-Prime.zip");
+            updater.Update("https://litdev.uk/downloads/SB-Prime.zip");
             Console.WriteLine("Restarting SB-Prime...");
             Thread.Sleep(100);
             Process.Start(exeFolder + "\\SB-Prime.exe");
@@ -104,6 +104,7 @@ namespace Update
             FileInfo fileInf = new FileInfo(zipFile);
             Uri uri = new Uri(zipURL);
             WebRequest.DefaultWebProxy.Credentials = CredentialCache.DefaultCredentials;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(uri);
 
             int bufferSize = 2048;
