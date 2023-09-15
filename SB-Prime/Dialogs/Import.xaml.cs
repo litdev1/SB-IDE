@@ -35,7 +35,7 @@ namespace SB_Prime.Dialogs
             textBoxImport.Focus();
             textBoxImport.Text = "";
 
-            string data = (string)Clipboard.GetData(DataFormats.Text);
+            string data = ((string)Clipboard.GetData(DataFormats.Text)).ToUpper();
             data = null == data ? "" : data.Trim();
             if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}").Success || Regex.Match(data, "^[A-Z]{4}[0-9]{3}\\.[0-9]{3}").Success)
             {
@@ -73,7 +73,7 @@ namespace SB_Prime.Dialogs
 
         private void OK()
         {
-            string data = textBoxImport.Text;
+            string data = textBoxImport.Text.ToUpper();
             if (Regex.Match(data, "^[A-Z]{4}[0-9]{3}").Success && !data.Contains('.'))
             {
                 data += ".000";
