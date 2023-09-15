@@ -37,13 +37,13 @@ namespace SB_Prime.Dialogs
 
             string data = (string)Clipboard.GetData(DataFormats.Text);
             data = null == data ? "" : data.Trim();
-            if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}\\.[0-9]{3}").Success || Regex.Match(data, "^[A-Z]{4}[0-9]{3}\\.[0-9]{3}").Success)
+            if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}").Success || Regex.Match(data, "^[A-Z]{4}[0-9]{3}\\.[0-9]{3}").Success)
             {
                 textBoxImport.Text = data;
                 textBoxImport.CaretIndex = data.Length;
                 textBoxImport.SelectAll();
             }
-            else if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}").Success || Regex.Match(data, "^[A-Z]{4}[0-9]{3}").Success)
+            else if (Regex.Match(data, "^[A-Z]{4}[0-9]{3}").Success)
             {
                 data += ".000";
                 textBoxImport.Text = data;
@@ -74,7 +74,7 @@ namespace SB_Prime.Dialogs
         private void OK()
         {
             string data = textBoxImport.Text;
-            if (!data.Contains('.'))
+            if (Regex.Match(data, "^[A-Z]{4}[0-9]{3}").Success && !data.Contains('.'))
             {
                 data += ".000";
             }
