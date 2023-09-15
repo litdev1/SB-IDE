@@ -73,7 +73,12 @@ namespace SB_Prime.Dialogs
 
         private void OK()
         {
-            MainWindow.ImportProgram = sbInterop.Import(textBoxImport.Text);
+            string data = textBoxImport.Text;
+            if (!data.Contains('.'))
+            {
+                data += ".000";
+            }
+            MainWindow.ImportProgram = sbInterop.Import(data);
             if (MainWindow.ImportProgram == "error")
             {
                 MainWindow.Errors.Add(new Error("Import : " + Properties.Strings.String59 + " " + textBoxImport.Text));
