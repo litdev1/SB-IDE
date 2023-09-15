@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="{ x:Static local:Strings.Label324 }" Height="500" Width="500" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated" MinWidth="220" MinHeight="100">
+        Title="{ x:Static local:Strings.Label324 }" Height="500" Width="500" Icon="/SB-Prime;component/AppIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing"  Deactivated="Window_Deactivated" MinWidth="220" MinHeight="100">
     <Grid x:Name="grid">
         <Button x:Name="buttonZoomOut" Content="{ x:Static local:Strings.Label326 }" VerticalAlignment="Top" Click="buttonZoomOut_Click" Margin="10,10,0,0" Panel.ZIndex="2" ToolTip="{ x:Static local:Strings.Label325 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>
         <Button x:Name="buttonZoomIn" Content="{ x:Static local:Strings.Label328 }" VerticalAlignment="Top" Click="buttonZoomIn_Click" Margin="10,34,0,0" Panel.ZIndex="2" ToolTip="{ x:Static local:Strings.Label327 }" Background="#FF8FA9BD" HorizontalAlignment="Left" Width="75"/>

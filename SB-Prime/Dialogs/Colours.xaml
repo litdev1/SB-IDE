@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="{ x:Static local:Strings.Label229 }" Height="550" Width="500" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" MinWidth="220" MinHeight="100">
+        Title="{ x:Static local:Strings.Label229 }" Height="550" Width="500" Icon="/SB-Prime;component/AppIcon.ico" MinWidth="220" MinHeight="100">
     <Grid>
         <DataGrid x:Name="dataGridColours" HeadersVisibility="Column" CanUserAddRows="False" SelectionUnit="Cell" ItemsSource="{Binding}" SelectionChanged="dataGridColours_SelectionChanged" AutoGenerateColumns="False" Margin="10,10,9.8,34.4" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray" KeyDown="dataGridColours_KeyDown" CellEditEnding="dataGridColours_CellEditEnding">
             <DataGrid.ColumnHeaderStyle>

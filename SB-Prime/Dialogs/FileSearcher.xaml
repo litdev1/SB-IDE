@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="{ x:Static local:Strings.Label291 }" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" Loaded="Window_Loaded" Closing="Window_Closing" MinWidth="220" MinHeight="100">
+        Title="{ x:Static local:Strings.Label291 }" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing" MinWidth="220" MinHeight="100">
     <Grid>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label292 }" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Button x:Name="buttonSearcherBrowse" ToolTip="{ x:Static local:Strings.Label293 }" Content="{ x:Static local:Strings.Label294 }" HorizontalAlignment="Right" Margin="0,10,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherBrowse_Click"/>

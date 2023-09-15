@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Properties"
         mc:Ignorable="d"
-        Title="{ x:Static local:Strings.Label363 }" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Width="600" Height="333.6" ResizeMode="NoResize">
+        Title="{ x:Static local:Strings.Label363 }" Icon="/SB-Prime;component/AppIcon.ico" WindowStartupLocation="CenterOwner" Width="600" Height="333.6" ResizeMode="NoResize">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/SB-Prime;component/images/appworkspace.png"/>
