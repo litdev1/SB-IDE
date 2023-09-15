@@ -45,7 +45,8 @@ namespace SB_Prime.Dialogs
             }
             else if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}").Success)
             {
-                textBoxImport.Text = data + ".000";
+                data += ".000";
+                textBoxImport.Text = data;
                 textBoxImport.CaretIndex = data.Length;
                 textBoxImport.SelectAll();
             }
