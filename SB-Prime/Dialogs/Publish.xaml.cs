@@ -39,6 +39,8 @@ namespace SB_Prime.Dialogs
             textBoxTitle.Text = "";
             textBoxDescription.Text = "";
             comboBoxCategory.SelectedIndex = 0;
+
+            Clipboard.SetText(key);
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
