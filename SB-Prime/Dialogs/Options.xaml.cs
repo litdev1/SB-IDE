@@ -72,11 +72,6 @@ namespace SB_Prime.Dialogs
             return x.Tag.ToString().CompareTo(y.Tag.ToString());
         }
 
-        private void buttonUpdates_Click(object sender, RoutedEventArgs e)
-        {
-            Process.Start("https://gallery.technet.microsoft.com/Small-Basic-IDE-10-42648328");
-        }
-
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
             mainWindow.Update();

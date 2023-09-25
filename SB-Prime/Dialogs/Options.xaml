@@ -10,28 +10,27 @@
         <Grid.Background>
             <ImageBrush ImageSource="/SB-Prime;component/images/appworkspace.png"/>
         </Grid.Background>
-        <Button x:Name="buttonUpdates" Content="{ x:Static local:Strings.Label365 }" HorizontalAlignment="Left" Margin="10" VerticalAlignment="Top" Width="125" Click="buttonUpdates_Click" ToolTip="{ x:Static local:Strings.Label364 }"/>
         <Button x:Name="buttonUpdate" Content="{ x:Static local:Strings.Label367 }" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="125" Click="buttonUpdate_Click" ToolTip="{ x:Static local:Strings.Label366 }" Visibility="Hidden"/>
-        <Label x:Name="label" Content="{ x:Static local:Strings.Label368 }" HorizontalAlignment="Left" Margin="13,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.013,0.039"/>
-        <TextBox x:Name="textBoxInstallation" Height="23" Margin="170,36,81.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label369 }" VerticalAlignment="Top"/>
-        <Button x:Name="buttonInstallation" Content="{ x:Static local:Strings.Label371 }" HorizontalAlignment="Right" Margin="0,36,6.6,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonInstallation_Click" Height="23" ToolTip="{ x:Static local:Strings.Label370 }"/>
+        <Label x:Name="label" Content="{ x:Static local:Strings.Label368 }" HorizontalAlignment="Left" Margin="13,8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.013,0.039"/>
+        <TextBox x:Name="textBoxInstallation" Height="23" Margin="170,10,81.6,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label369 }" VerticalAlignment="Top"/>
+        <Button x:Name="buttonInstallation" Content="{ x:Static local:Strings.Label371 }" HorizontalAlignment="Right" Margin="0,10,6.6,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonInstallation_Click" Height="23" ToolTip="{ x:Static local:Strings.Label370 }"/>
         <Button x:Name="buttonOK" Content="{ x:Static local:Strings.Label372 }" HorizontalAlignment="Right" Margin="0,0,9.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonOK_Click"/>
         <Button x:Name="buttonCancel" Content="{ x:Static local:Strings.Label373 }" HorizontalAlignment="Right" Margin="0,0,89.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click"/>
-        <CheckBox x:Name="checkBoxQuoteInserts" Content="{ x:Static local:Strings.Label374 }" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBoxHEXColors" Content="{ x:Static local:Strings.Label375 }" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBoxLoadExtensions" Content="{ x:Static local:Strings.Label376 }" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_PrintMagnification" Content="{ x:Static local:Strings.Label377 }" HorizontalAlignment="Left" Margin="13,145,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxPrintMagnification" Height="23" Margin="128,149,0,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label379 }" VerticalAlignment="Top" ToolTip="{ x:Static local:Strings.Label378 }" HorizontalAlignment="Left" Width="51"/>
-        <Label x:Name="label_PrintColours" Content="{ x:Static local:Strings.Label380 }" HorizontalAlignment="Left" Margin="184,145,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxPrintColours" HorizontalAlignment="Left" Margin="267,149,0,0" VerticalAlignment="Top" Width="120" Height="23" IsReadOnly="True" ToolTip="{ x:Static local:Strings.Label381 }"/>
-        <RadioButton x:Name="radioButton1" Content="{ x:Static local:Strings.Label382 }" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top" GroupName="Indent"/>
-        <RadioButton x:Name="radioButton2" Content="{ x:Static local:Strings.Label383 }" HorizontalAlignment="Left" Margin="41,176,0,0" VerticalAlignment="Top" GroupName="Indent"/>
-        <RadioButton x:Name="radioButton4" Content="{ x:Static local:Strings.Label384 }" HorizontalAlignment="Left" Margin="72,176,0,0" VerticalAlignment="Top" GroupName="Indent"/>
-        <Label x:Name="label_Indent" Content="{ x:Static local:Strings.Label385 }" HorizontalAlignment="Left" Margin="103,170,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Regex" Content="{ x:Static local:Strings.String178 }" HorizontalAlignment="Left" Margin="13,197,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxRegex" Height="23" Margin="131,201,0,0" TextWrapping="Wrap" Text="{x:Static local:Strings.Label379}" VerticalAlignment="Top" ToolTip="{x:Static local:Strings.String179}" HorizontalAlignment="Left" Width="134"/>
-        <CheckBox x:Name="checkBoxTopmost" Content="{ x:Static local:Strings.String180 }" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_LexerFont" Content="{x:Static local:Strings.String181}" HorizontalAlignment="Left" Margin="13,225,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxLexerFont" HorizontalAlignment="Left" Margin="131,229,0,0" VerticalAlignment="Top" Width="134" Height="23" IsReadOnly="True" ToolTip="{x:Static local:Strings.String182}"/>
+        <CheckBox x:Name="checkBoxQuoteInserts" Content="{ x:Static local:Strings.Label374 }" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBoxHEXColors" Content="{ x:Static local:Strings.Label375 }" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBoxLoadExtensions" Content="{ x:Static local:Strings.Label376 }" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_PrintMagnification" Content="{ x:Static local:Strings.Label377 }" HorizontalAlignment="Left" Margin="13,119,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxPrintMagnification" Height="23" Margin="128,123,0,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label379 }" VerticalAlignment="Top" ToolTip="{ x:Static local:Strings.Label378 }" HorizontalAlignment="Left" Width="51"/>
+        <Label x:Name="label_PrintColours" Content="{ x:Static local:Strings.Label380 }" HorizontalAlignment="Left" Margin="184,119,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxPrintColours" HorizontalAlignment="Left" Margin="267,123,0,0" VerticalAlignment="Top" Width="120" Height="23" IsReadOnly="True" ToolTip="{ x:Static local:Strings.Label381 }"/>
+        <RadioButton x:Name="radioButton1" Content="{ x:Static local:Strings.Label382 }" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" GroupName="Indent"/>
+        <RadioButton x:Name="radioButton2" Content="{ x:Static local:Strings.Label383 }" HorizontalAlignment="Left" Margin="41,150,0,0" VerticalAlignment="Top" GroupName="Indent"/>
+        <RadioButton x:Name="radioButton4" Content="{ x:Static local:Strings.Label384 }" HorizontalAlignment="Left" Margin="72,150,0,0" VerticalAlignment="Top" GroupName="Indent"/>
+        <Label x:Name="label_Indent" Content="{ x:Static local:Strings.Label385 }" HorizontalAlignment="Left" Margin="103,144,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Regex" Content="{ x:Static local:Strings.String178 }" HorizontalAlignment="Left" Margin="13,171,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxRegex" Height="23" Margin="131,173,0,0" TextWrapping="Wrap" Text="{x:Static local:Strings.Label379}" VerticalAlignment="Top" ToolTip="Additional Regex for tooltip intellisense variable names (e.g. Russian а-яА-ЯёЁ)" HorizontalAlignment="Left" Width="134"/>
+        <CheckBox x:Name="checkBoxTopmost" Content="{ x:Static local:Strings.String180 }" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_LexerFont" Content="{x:Static local:Strings.String181}" HorizontalAlignment="Left" Margin="13,199,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxLexerFont" HorizontalAlignment="Left" Margin="131,201,0,0" VerticalAlignment="Top" Width="134" Height="23" IsReadOnly="True" ToolTip="{x:Static local:Strings.String182}"/>
     </Grid>
 </Window>
