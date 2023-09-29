@@ -118,901 +118,901 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>Kleine Basic Prime</value>
+    <value>رئيس أساسي صغير</value>
   </data>
   <data name="Label10" xml:space="preserve">
-    <value>Öffne ein bestehendes Programm</value>
+    <value>افتح البرنامج الحالي</value>
   </data>
   <data name="Label100" xml:space="preserve">
-    <value>Fallempfindlichkeit</value>
+    <value>Case Sensitive</value>
   </data>
   <data name="Label101" xml:space="preserve">
-    <value>Finden</value>
+    <value>ابحث</value>
   </data>
   <data name="Label102" xml:space="preserve">
-    <value>Geschichte</value>
+    <value>التاريخ</value>
   </data>
   <data name="Label103" xml:space="preserve">
     <value>Debug</value>
   </data>
   <data name="Label104" xml:space="preserve">
-    <value>Datei</value>
+    <value>File</value>
   </data>
   <data name="Label105" xml:space="preserve">
-    <value>Starten Sie ein neues Programm (Ctrl+N)</value>
+    <value>بدء برنامج جديد (Ctrl+N)</value>
   </data>
   <data name="Label106" xml:space="preserve">
-    <value>Neu</value>
+    <value>جديدة</value>
   </data>
   <data name="Label107" xml:space="preserve">
-    <value>Öffne ein bestehendes Programm (Ctrl+O)</value>
+    <value>فتح برنامج قائم (Ctrl+O)</value>
   </data>
   <data name="Label108" xml:space="preserve">
-    <value>Öffnen</value>
+    <value>مفتوح</value>
   </data>
   <data name="Label109" xml:space="preserve">
-    <value>Aktuelles Programm schließen</value>
+    <value>البرنامج الحالي</value>
   </data>
   <data name="Label11" xml:space="preserve">
-    <value>Öffnen</value>
+    <value>مفتوح</value>
   </data>
   <data name="Label110" xml:space="preserve">
-    <value>Schließen</value>
+    <value>اقترب</value>
   </data>
   <data name="Label111" xml:space="preserve">
-    <value>Aktuelles Programm speichern (Ctrl+S)</value>
+    <value>وفّر البرنامج الحالي (Ctrl+S)</value>
   </data>
   <data name="Label112" xml:space="preserve">
-    <value>Speichern</value>
+    <value>أنقذ</value>
   </data>
   <data name="Label113" xml:space="preserve">
-    <value>Speichern Sie das aktuelle Programm zu einer neuen Datei</value>
+    <value>أنقذ البرنامج الحالي إلى ملف جديد</value>
   </data>
   <data name="Label114" xml:space="preserve">
-    <value>Speichern als</value>
+    <value>إنقاذ</value>
   </data>
   <data name="Label115" xml:space="preserve">
-    <value>Alle Programme speichern</value>
+    <value>أنقذ جميع البرامج</value>
   </data>
   <data name="Label116" xml:space="preserve">
-    <value>Alle speichern</value>
+    <value>أنقذوا الجميع</value>
   </data>
   <data name="Label117" xml:space="preserve">
     <value>Debug</value>
   </data>
   <data name="Label118" xml:space="preserve">
-    <value>Aktuelles Programm stoppen (Shift+F6)</value>
+    <value>أوقف البرنامج الحالي (السرقة +F6)</value>
   </data>
   <data name="Label119" xml:space="preserve">
-    <value>Stopp</value>
+    <value>توقف</value>
   </data>
   <data name="Label12" xml:space="preserve">
-    <value>Aktuelles Programm schließen</value>
+    <value>البرنامج الحالي</value>
   </data>
   <data name="Label120" xml:space="preserve">
-    <value>Aktuelles Programm einstellen</value>
+    <value>البرنامج الحالي</value>
   </data>
   <data name="Label121" xml:space="preserve">
-    <value>Pause</value>
+    <value>وقف</value>
   </data>
   <data name="Label122" xml:space="preserve">
-    <value>Schritt aus dem aktuellen Unterprogramm</value>
+    <value>الخروج من تحت الروتين الحالي</value>
   </data>
   <data name="Label123" xml:space="preserve">
-    <value>Aussteigen</value>
+    <value>خطوة</value>
   </data>
   <data name="Label124" xml:space="preserve">
-    <value>Schritt über die nächste Aussage, wenn es ein Unterprogramm ist (F10)</value>
+    <value>تنحى عن البيان التالي إذا كان تحت الروتين (F10)</value>
   </data>
   <data name="Label125" xml:space="preserve">
-    <value>Schritt für Schritt</value>
+    <value>الخطوة</value>
   </data>
   <data name="Label126" xml:space="preserve">
-    <value>Schritt durch aktuelles Programm oder Start und Pause bei der ersten Aussage (F11)</value>
+    <value>الخطوة من خلال البرنامج الحالي، أو البدء والتوقف في البيان الأول (F11)</value>
   </data>
   <data name="Label127" xml:space="preserve">
-    <value>Schritt</value>
+    <value>الخطوة</value>
   </data>
   <data name="Label128" xml:space="preserve">
-    <value>Aktuelles Programm Start/Resume (F6)</value>
+    <value>بدء/استئناف البرنامج الحالي (F6)</value>
   </data>
   <data name="Label129" xml:space="preserve">
-    <value>Start/Resume</value>
+    <value>البداية/الاستكمال</value>
   </data>
   <data name="Label13" xml:space="preserve">
-    <value>Schließen</value>
+    <value>اقترب</value>
   </data>
   <data name="Label130" xml:space="preserve">
-    <value>Bruchpunkte</value>
+    <value>نقاط التفتيش</value>
   </data>
   <data name="Label131" xml:space="preserve">
-    <value>Brechpunkt in der aktuellen Linie (F9)</value>
+    <value>نقطة انفصال في الخط الحالي (F9)</value>
   </data>
   <data name="Label132" xml:space="preserve">
     <value>Toggle Breakpoint</value>
   </data>
   <data name="Label133" xml:space="preserve">
-    <value>Alle Breakpoints löschen</value>
+    <value>إزالة جميع نقاط التفتيش</value>
   </data>
   <data name="Label134" xml:space="preserve">
-    <value>Klare Bruchpunkte</value>
+    <value>نقاط تفتيش واضحة</value>
   </data>
   <data name="Label135" xml:space="preserve">
-    <value>Ignorieren Sie alle Breakpoints</value>
+    <value>تجاهل كل نقاط التفتيش</value>
   </data>
   <data name="Label136" xml:space="preserve">
-    <value>Breakpoints ignorieren</value>
+    <value>Ignore Breakpoints</value>
   </data>
   <data name="Label137" xml:space="preserve">
-    <value>Lesezeichen</value>
+    <value>العلامات الكتابية</value>
   </data>
   <data name="Label138" xml:space="preserve">
-    <value>Toggle Bookmark bei aktueller Linie</value>
+    <value>علامة كتابية للضحك على الخط الحالي</value>
   </data>
   <data name="Label139" xml:space="preserve">
     <value>Toggle Bookmark</value>
   </data>
   <data name="Label14" xml:space="preserve">
-    <value>Aktuelles Programm speichern</value>
+    <value>أنقذ البرنامج الحالي</value>
   </data>
   <data name="Label140" xml:space="preserve">
-    <value>Zurück zum nächsten Lesezeichen</value>
+    <value>انتقل إلى علامة الكتاب القادمة</value>
   </data>
   <data name="Label141" xml:space="preserve">
-    <value>Nächstes Lesezeichen</value>
+    <value>الكتاب المقبل</value>
   </data>
   <data name="Label142" xml:space="preserve">
-    <value>Zurück zum vorherigen Lesezeichen</value>
+    <value>انتقل إلى علامة الكتاب السابقة</value>
   </data>
   <data name="Label143" xml:space="preserve">
-    <value>Vorheriges Lesezeichen</value>
+    <value>كتاب سابق</value>
   </data>
   <data name="Label144" xml:space="preserve">
-    <value>Alle Lesezeichen löschen</value>
+    <value>نظف كل العلامات الكتابية</value>
   </data>
   <data name="Label145" xml:space="preserve">
-    <value>Klare Lesezeichen</value>
+    <value>علامات كتاب واضحة</value>
   </data>
   <data name="Label146" xml:space="preserve">
-    <value>Werkzeuge</value>
+    <value>الأدوات</value>
   </data>
   <data name="Label147" xml:space="preserve">
-    <value>Alle Variablen und Anrufstapel anzeigen</value>
+    <value>افحصوا جميع المتغيرات واتصلوا</value>
   </data>
   <data name="Label148" xml:space="preserve">
-    <value>Variablen &amp; Call Stack</value>
+    <value>Variables " Call Stack</value>
   </data>
   <data name="Label149" xml:space="preserve">
-    <value>Eine Anleitung zum Debuggen ansehen</value>
+    <value>مشاهدة دليل للتشويه</value>
   </data>
   <data name="Label15" xml:space="preserve">
-    <value>Speichern</value>
+    <value>أنقذ</value>
   </data>
   <data name="Label150" xml:space="preserve">
-    <value>Debug Guide</value>
+    <value>دليل الديون</value>
   </data>
   <data name="Label151" xml:space="preserve">
-    <value>Werkzeuge</value>
+    <value>الأدوات</value>
   </data>
   <data name="Label152" xml:space="preserve">
-    <value>Werkzeuge</value>
+    <value>الأدوات</value>
   </data>
   <data name="Label153" xml:space="preserve">
-    <value>Eine Form und Steuerung Editor</value>
+    <value>A shapes and controls editor</value>
   </data>
   <data name="Label154" xml:space="preserve">
-    <value>Formeditor</value>
+    <value>Shapes Editor</value>
   </data>
   <data name="Label155" xml:space="preserve">
-    <value>Flussdiagramm anzeigen</value>
+    <value>عرض خريطة تدفق</value>
   </data>
   <data name="Label156" xml:space="preserve">
-    <value>Flussdiagramm</value>
+    <value>Flow Chart</value>
   </data>
   <data name="Label157" xml:space="preserve">
-    <value>Farbnamen in das Dokument einfügen</value>
+    <value>إدراج أسماء الألوان في الوثيقة</value>
   </data>
   <data name="Label158" xml:space="preserve">
-    <value>Farben einfügen</value>
+    <value>الملوِّثات</value>
   </data>
   <data name="Label159" xml:space="preserve">
-    <value>Schriftnamen in das Dokument einfügen</value>
+    <value>إدراج الأسماء المكتوبة في الوثيقة</value>
   </data>
   <data name="Label16" xml:space="preserve">
-    <value>Speichern Sie das aktuelle Programm zu einer neuen Datei</value>
+    <value>أنقذ البرنامج الحالي إلى ملف جديد</value>
   </data>
   <data name="Label160" xml:space="preserve">
-    <value>Schriftarten einfügen</value>
+    <value>Insert Fonts</value>
   </data>
   <data name="Label161" xml:space="preserve">
-    <value>Nützliche Links und kostenlose Ressourcen</value>
+    <value>الروابط المفيدة والموارد الحرة</value>
   </data>
   <data name="Label162" xml:space="preserve">
-    <value>Links</value>
+    <value>الروابط</value>
   </data>
   <data name="Label163" xml:space="preserve">
-    <value>Erweiterungsobjekte suchen</value>
+    <value>مواد التمديد</value>
   </data>
   <data name="Label164" xml:space="preserve">
-    <value>Erweiterungen suchen</value>
+    <value>تمديدات البحث</value>
   </data>
   <data name="Label165" xml:space="preserve">
-    <value>Suche nach Inhalten in Small Basic Dateien</value>
+    <value>البحث عن المحتوى في الملفات الأساسية الصغيرة</value>
   </data>
   <data name="Label166" xml:space="preserve">
-    <value>Suche nach:</value>
+    <value>File searcher</value>
   </data>
   <data name="Label167" xml:space="preserve">
-    <value>Fortgeschritten</value>
+    <value>السلف</value>
   </data>
   <data name="Label168" xml:space="preserve">
-    <value>Extensiv</value>
+    <value>Extend</value>
   </data>
   <data name="Label169" xml:space="preserve">
-    <value>Erweiterungen verwalten</value>
+    <value>تمديد الخدمة</value>
   </data>
   <data name="Label17" xml:space="preserve">
-    <value>Speichern als</value>
+    <value>إنقاذ</value>
   </data>
   <data name="Label170" xml:space="preserve">
-    <value>Erweiterungsleiter</value>
+    <value>مدير الإرشاد</value>
   </data>
   <data name="Label171" xml:space="preserve">
-    <value>Aktuelles Studium an Visual Basic</value>
+    <value>البرنامج الحالي للرؤية</value>
   </data>
   <data name="Label172" xml:space="preserve">
-    <value>Graduiertenkolleg</value>
+    <value>خريج</value>
   </data>
   <data name="Label173" xml:space="preserve">
-    <value>Decompile .Net-Baugruppen (dll oder exe) zu C# mit ILSpy</value>
+    <value>Decompile.Net assemblies (dll or exe) to C# using ILSpy</value>
   </data>
   <data name="Label174" xml:space="preserve">
-    <value>Dekompiliert</value>
+    <value>Decompile</value>
   </data>
   <data name="Label175" xml:space="preserve">
-    <value>Blick</value>
+    <value>View</value>
   </data>
   <data name="Label176" xml:space="preserve">
-    <value>Toggle Split Bildschirm Programm Layout</value>
+    <value>تخطيط برنامج الشاشة</value>
   </data>
   <data name="Label177" xml:space="preserve">
-    <value>Split Bildschirm</value>
+    <value>Split Screen</value>
   </data>
   <data name="Label178" xml:space="preserve">
-    <value>Um den Text zu verschieben Modus</value>
+    <value>وضعية لفائف النص</value>
   </data>
   <data name="Label179" xml:space="preserve">
-    <value>Wort Wrap</value>
+    <value>الكلمات</value>
   </data>
   <data name="Label18" xml:space="preserve">
-    <value>Alle Programme speichern</value>
+    <value>أنقذ جميع البرامج</value>
   </data>
   <data name="Label180" xml:space="preserve">
-    <value>Toggle indent Führungen</value>
+    <value>مرشدو الدوافع المضحكة</value>
   </data>
   <data name="Label181" xml:space="preserve">
-    <value>Anmerkungen</value>
+    <value>أدلة الإثبات</value>
   </data>
   <data name="Label182" xml:space="preserve">
-    <value>Zoom in (größere Schriftart)</value>
+    <value>زوم في (ضفير)</value>
   </data>
   <data name="Label183" xml:space="preserve">
-    <value>In den Warenkorb</value>
+    <value>زوم</value>
   </data>
   <data name="Label184" xml:space="preserve">
-    <value>Zoom out (kleiner schriftart)</value>
+    <value>زوم خارج (المولر فونت)</value>
   </data>
   <data name="Label185" xml:space="preserve">
-    <value>Vergrößern</value>
+    <value>زوم</value>
   </data>
   <data name="Label186" xml:space="preserve">
-    <value>Zoom zurücksetzen (Standardschrift)</value>
+    <value>Reset zoom (default font)</value>
   </data>
   <data name="Label187" xml:space="preserve">
-    <value>Alle Filter zurücksetzen</value>
+    <value>Reset Zoom</value>
   </data>
   <data name="Label188" xml:space="preserve">
-    <value>Verwenden Sie ein dunkles Thema (reverse Video)</value>
+    <value>استخدام موضوع مظلم (فيديو عكسي)</value>
   </data>
   <data name="Label189" xml:space="preserve">
-    <value>Dark Theme</value>
+    <value>القاتم</value>
   </data>
   <data name="Label19" xml:space="preserve">
-    <value>Alle speichern</value>
+    <value>أنقذوا الجميع</value>
   </data>
   <data name="Label190" xml:space="preserve">
-    <value>Toggle show whitespace</value>
+    <value>تُنظّفُ الفضاءَ الأبيضَ</value>
   </data>
   <data name="Label191" xml:space="preserve">
-    <value>Whitespace ansehen</value>
+    <value>View Whitespace</value>
   </data>
   <data name="Label192" xml:space="preserve">
-    <value>Toggle zeigt Zahlenrand</value>
+    <value>هامش العرض</value>
   </data>
   <data name="Label193" xml:space="preserve">
-    <value>Anzahl anzeigen Spielraum</value>
+    <value>View Number Margin</value>
   </data>
   <data name="Label194" xml:space="preserve">
-    <value>Ändern Sie die Intellisence Locale (z.B. "de" für Deutsch, starten Sie SB-Prime in Kraft)</value>
+    <value>غيّر التلميذ المحلي (مثلاً، (دي) للألمان، إعادة تشغيل (س.ب.ب.ب.ت)</value>
   </data>
   <data name="Label195" xml:space="preserve">
-    <value>Sprachcode</value>
+    <value>قانون اللغات</value>
   </data>
   <data name="Label196" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>الترتيبات</value>
   </data>
   <data name="Label197" xml:space="preserve">
-    <value>Änderung der Anwendungsfarben</value>
+    <value>تغيير ألوان الطلب</value>
   </data>
   <data name="Label198" xml:space="preserve">
-    <value>IDE Farben</value>
+    <value>IDE Colors</value>
   </data>
   <data name="Label199" xml:space="preserve">
-    <value>Exportieren von Einstellungen in eine Datei</value>
+    <value>حالات التصدير إلى ملف</value>
   </data>
   <data name="Label2" xml:space="preserve">
-    <value>Version</value>
+    <value>الفصل</value>
   </data>
   <data name="Label20" xml:space="preserve">
-    <value>Datei</value>
+    <value>File</value>
   </data>
   <data name="Label200" xml:space="preserve">
-    <value>Exporteinstellungen</value>
+    <value>الصادرات</value>
   </data>
   <data name="Label201" xml:space="preserve">
-    <value>Importieren Sie Einstellungen aus einer Datei, starten Sie SB-Prime erneut, um vollen Effekt zu nehmen</value>
+    <value>عمليات استيراد من ملف، إعادة تشغيل SB-Prime</value>
   </data>
   <data name="Label202" xml:space="preserve">
-    <value>Importeinstellungen</value>
+    <value>مجموعة الواردات</value>
   </data>
   <data name="Label203" xml:space="preserve">
-    <value>Setzen Sie die Einstellungen standardmäßig zurück, starten Sie SB-Prime, um die volle Wirkung zu nehmen</value>
+    <value>Reset settings to default, restart SB-Prime to take full effect</value>
   </data>
   <data name="Label204" xml:space="preserve">
-    <value>Einstellungen zurücksetzen</value>
+    <value>Reset Settings</value>
   </data>
   <data name="Label205" xml:space="preserve">
-    <value>Zusätzliche Optionen und Einstellungen</value>
+    <value>الخيارات والأوضاع الإضافية</value>
   </data>
   <data name="Label206" xml:space="preserve">
-    <value>Optionen</value>
+    <value>الخيارات</value>
   </data>
   <data name="Label207" xml:space="preserve">
-    <value>Update SB-Prime auf die neueste Version</value>
+    <value>Update SB-Prime to latest version</value>
   </data>
   <data name="Label208" xml:space="preserve">
-    <value>Aktualisierung</value>
+    <value>آخر</value>
   </data>
   <data name="Label209" xml:space="preserve">
-    <value>Ohne Titel</value>
+    <value>Untitle1</value>
   </data>
   <data name="Label21" xml:space="preserve">
-    <value>Aktuelle Dateiliste</value>
+    <value>القائمة النهائية الأخيرة</value>
   </data>
   <data name="Label210" xml:space="preserve">
-    <value>Ohne Titel2</value>
+    <value>Untitle2</value>
   </data>
   <data name="Label211" xml:space="preserve">
-    <value>Ausgangsleistung</value>
+    <value>الناتج</value>
   </data>
   <data name="Label212" xml:space="preserve">
-    <value>Ausgabe, Fehler und Warnungen</value>
+    <value>النواتج والأخطاء والتحذيرات</value>
   </data>
   <data name="Label213" xml:space="preserve">
     <value>Debug</value>
   </data>
   <data name="Label214" xml:space="preserve">
-    <value>Variabel</value>
+    <value>الفرق</value>
   </data>
   <data name="Label215" xml:space="preserve">
-    <value>Wert</value>
+    <value>القيمة</value>
   </data>
   <data name="Label216" xml:space="preserve">
-    <value>Veränderungswert</value>
+    <value>تغيير القيمة</value>
   </data>
   <data name="Label217" xml:space="preserve">
-    <value>Änderung des Wertes der Uhrgröße</value>
+    <value>تغيير قيمة متغير الساعة</value>
   </data>
   <data name="Label218" xml:space="preserve">
-    <value>Set</value>
+    <value>المجموعة</value>
   </data>
   <data name="Label219" xml:space="preserve">
-    <value>Daten aktualisieren</value>
+    <value>بيانات التجديد</value>
   </data>
   <data name="Label22" xml:space="preserve">
-    <value>Datei</value>
+    <value>File</value>
   </data>
   <data name="Label220" xml:space="preserve">
-    <value>Erfrischen Sie den Wert der Uhrgröße</value>
+    <value>إعادة تنشيط قيمة متغير الساعة</value>
   </data>
   <data name="Label221" xml:space="preserve">
-    <value>Refreshing</value>
+    <value>التجديد</value>
   </data>
   <data name="Label222" xml:space="preserve">
-    <value>Entfernen Sie die Uhr</value>
+    <value>Remove Watch</value>
   </data>
   <data name="Label223" xml:space="preserve">
-    <value>Löschen Uhrenvariable</value>
+    <value>متغير الساعة</value>
   </data>
   <data name="Label224" xml:space="preserve">
-    <value>Löschen</value>
+    <value>تحذف</value>
   </data>
   <data name="Label225" xml:space="preserve">
-    <value>Bruch</value>
+    <value>انكسر</value>
   </data>
   <data name="Label226" xml:space="preserve">
-    <value>Bruch</value>
+    <value>اكسر اذا</value>
   </data>
   <data name="Label227" xml:space="preserve">
-    <value>Bruch =</value>
+    <value>انكسر</value>
   </data>
   <data name="Label228" xml:space="preserve">
-    <value>Bruch, wenn Änderungen</value>
+    <value>انكسر اذا تغير</value>
   </data>
   <data name="Label229" xml:space="preserve">
-    <value>IDE Farben</value>
+    <value>IDE Colors</value>
   </data>
   <data name="Label23" xml:space="preserve">
-    <value>Neues Programm starten</value>
+    <value>بدء برنامج جديد</value>
   </data>
   <data name="Label230" xml:space="preserve">
-    <value>Region</value>
+    <value>المنطقة</value>
   </data>
   <data name="Label231" xml:space="preserve">
-    <value>Bezeichnung</value>
+    <value>Label</value>
   </data>
   <data name="Label232" xml:space="preserve">
-    <value>Farbe</value>
+    <value>Color</value>
   </data>
   <data name="Label233" xml:space="preserve">
-    <value>Klicken Sie auf Farbe einstellen</value>
+    <value>لون اللون</value>
   </data>
   <data name="Label234" xml:space="preserve">
-    <value>Rot</value>
+    <value>أحمر</value>
   </data>
   <data name="Label235" xml:space="preserve">
-    <value>Grün</value>
+    <value>الأخضر</value>
   </data>
   <data name="Label236" xml:space="preserve">
-    <value>Blau</value>
+    <value>الأزرق</value>
   </data>
   <data name="Label237" xml:space="preserve">
-    <value>Zurücksetzen in Standardeinstellungen</value>
+    <value>Reset to defaults</value>
   </data>
   <data name="Label238" xml:space="preserve">
-    <value>Fehler</value>
+    <value>العجز</value>
   </data>
   <data name="Label239" xml:space="preserve">
-    <value>Änderungen schließen und anwenden</value>
+    <value>التغييرات التقريبية والتطبيقية</value>
   </data>
   <data name="Label24" xml:space="preserve">
-    <value>Neu</value>
+    <value>جديدة</value>
   </data>
   <data name="Label240" xml:space="preserve">
-    <value>KAPITEL</value>
+    <value>تم</value>
   </data>
   <data name="Label241" xml:space="preserve">
-    <value>Schließen Sie ohne Änderungen</value>
+    <value>قريب دون إدخال تغييرات</value>
   </data>
   <data name="Label242" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>إلغاء</value>
   </data>
   <data name="Label243" xml:space="preserve">
-    <value>Dekompiliert</value>
+    <value>Decompile</value>
   </data>
   <data name="Label244" xml:space="preserve">
-    <value>Entkompiliert zu C#</value>
+    <value>(ب)</value>
   </data>
   <data name="Label245" xml:space="preserve">
-    <value>Dieser Zauberer wird</value>
+    <value>هذا الساحر</value>
   </data>
   <data name="Label246" xml:space="preserve">
-    <value>Ausgabeort (muss ein leerer Ordner sein - verwenden Sie 'Make New Folder')</value>
+    <value>موقع الناتج (يجب أن يكون ملفاً فارغاً، استخدموا "مطعم جديد"</value>
   </data>
   <data name="Label247" xml:space="preserve">
-    <value>Suchen Sie nach Ort, um dekompilierte Lösung zu exportieren</value>
+    <value>Browse to location to export decompiled solution</value>
   </data>
   <data name="Label248" xml:space="preserve">
-    <value>Nach oben</value>
+    <value>Browse</value>
   </data>
   <data name="Label249" xml:space="preserve">
-    <value>Schließen ohne Aktion</value>
+    <value>قريب من أي عمل</value>
   </data>
   <data name="Label25" xml:space="preserve">
-    <value>Öffne ein bestehendes Programm</value>
+    <value>افتح البرنامج الحالي</value>
   </data>
   <data name="Label250" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>إلغاء</value>
   </data>
   <data name="Label251" xml:space="preserve">
-    <value>Eine Visual Studio-Lösung dekompilieren</value>
+    <value>Decompile a Visual Studio solution</value>
   </data>
   <data name="Label252" xml:space="preserve">
-    <value>Dekompiliert</value>
+    <value>Decompile</value>
   </data>
   <data name="Label253" xml:space="preserve">
-    <value>Quelldatei (.Net dll oder exe)</value>
+    <value>المصدر File (.Net dll أو exe)</value>
   </data>
   <data name="Label254" xml:space="preserve">
-    <value>Suchen Sie nach Quelldatei decompile</value>
+    <value>Browse to source file to decompile</value>
   </data>
   <data name="Label255" xml:space="preserve">
-    <value>Nach oben</value>
+    <value>Browse</value>
   </data>
   <data name="Label256" xml:space="preserve">
-    <value>Wenn ausgewählt, können TextWindow in decompiled exe verwendet werden</value>
+    <value>If selected allows TextWindow to be used in decompiled exe</value>
   </data>
   <data name="Label257" xml:space="preserve">
-    <value>Export als Console Application</value>
+    <value>Export as Console Application</value>
   </data>
   <data name="Label258" xml:space="preserve">
-    <value>Eingeführte Programmdetails</value>
+    <value>تفاصيل البرامج المستوردة</value>
   </data>
   <data name="Label259" xml:space="preserve">
-    <value>Programm ID</value>
+    <value>Program ID</value>
   </data>
   <data name="Label26" xml:space="preserve">
-    <value>Öffnen</value>
+    <value>مفتوح</value>
   </data>
   <data name="Label260" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label261" xml:space="preserve">
-    <value>Titel</value>
+    <value>العنوان</value>
   </data>
   <data name="Label262" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label263" xml:space="preserve">
-    <value>Warenbezeichnung</value>
+    <value>الوصف</value>
   </data>
   <data name="Label264" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label265" xml:space="preserve">
-    <value>Kategorie</value>
+    <value>الفئة</value>
   </data>
   <data name="Label266" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label267" xml:space="preserve">
-    <value>Beliebtheit</value>
+    <value>الشعبية</value>
   </data>
   <data name="Label268" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label269" xml:space="preserve">
-    <value>Anzahl der Bewertungen</value>
+    <value>عدد التقييمات</value>
   </data>
   <data name="Label27" xml:space="preserve">
-    <value>Aktuelles Programm schließen</value>
+    <value>البرنامج الحالي</value>
   </data>
   <data name="Label270" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label271" xml:space="preserve">
-    <value>Gesamtbewertung</value>
+    <value>التقييم العام</value>
   </data>
   <data name="Label272" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label273" xml:space="preserve">
-    <value>Meine Bewertung</value>
+    <value>راتي</value>
   </data>
   <data name="Label274" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label275" xml:space="preserve">
-    <value>Senden Sie Ihre Bewertung für Programm, dies kann nur einmal pro ID erfolgen</value>
+    <value>تقدم تقديرك للبرنامج، هذا لا يمكن القيام به إلا مرة واحدة لكل هوية</value>
   </data>
   <data name="Label276" xml:space="preserve">
-    <value>Bewertung abgeben</value>
+    <value>Submit Rating</value>
   </data>
   <data name="Label277" xml:space="preserve">
-    <value>Details zu einer Programm-ID erhalten</value>
+    <value>الحصول على التفاصيل لبرنامج هويات</value>
   </data>
   <data name="Label278" xml:space="preserve">
-    <value>Reload-ID</value>
+    <value>Reload ID</value>
   </data>
   <data name="Label279" xml:space="preserve">
-    <value>Suche nach der Erweiterung</value>
+    <value>مفترس التمديد</value>
   </data>
   <data name="Label28" xml:space="preserve">
-    <value>Schließen</value>
+    <value>اقترب</value>
   </data>
   <data name="Label280" xml:space="preserve">
-    <value>Suchtext</value>
+    <value>البحث</value>
   </data>
   <data name="Label281" xml:space="preserve">
-    <value>Suche nach dem Text in Erweiterung APIs</value>
+    <value>البحث عن النص في التمديد</value>
   </data>
   <data name="Label282" xml:space="preserve">
-    <value>Suche</value>
+    <value>البحث</value>
   </data>
   <data name="Label283" xml:space="preserve">
-    <value>Alle Elemente im Baum zusammenfallen</value>
+    <value>تلف جميع الأشياء في الشجرة</value>
   </data>
   <data name="Label284" xml:space="preserve">
-    <value>Alle anzeigen</value>
+    <value>كل شيء</value>
   </data>
   <data name="Label285" xml:space="preserve">
-    <value>Erweitern Sie alle Kinderartikel am ausgewählten Artikel</value>
+    <value>توسيع جميع بنود الأطفال في البند المختار</value>
   </data>
   <data name="Label286" xml:space="preserve">
-    <value>Erweiterung der Auswahl</value>
+    <value>Expand Selection</value>
   </data>
   <data name="Label287" xml:space="preserve">
-    <value>Gehen Sie zum nächsten Ereignis</value>
+    <value>الانتقال إلى الحدث التالي</value>
   </data>
   <data name="Label288" xml:space="preserve">
-    <value>Nächste</value>
+    <value>التالي</value>
   </data>
   <data name="Label289" xml:space="preserve">
-    <value>Gehen Sie zum vorherigen Ereignis</value>
+    <value>الانتقال إلى الحالة السابقة</value>
   </data>
   <data name="Label29" xml:space="preserve">
-    <value>Aktuelles Programm speichern</value>
+    <value>أنقذ البرنامج الحالي</value>
   </data>
   <data name="Label290" xml:space="preserve">
-    <value>Vorherige</value>
+    <value>سابقا</value>
   </data>
   <data name="Label291" xml:space="preserve">
-    <value>Suche nach:</value>
+    <value>File searcher</value>
   </data>
   <data name="Label292" xml:space="preserve">
     <value>Root Folder</value>
   </data>
   <data name="Label293" xml:space="preserve">
-    <value>Wählen Sie einen Root-Ordner aus, um nach Small Basic Dateien rekursiv zu suchen</value>
+    <value>اختيار ملف الجذر للبحث عن الملفات الأساسية الصغيرة</value>
   </data>
   <data name="Label294" xml:space="preserve">
-    <value>Nach oben</value>
+    <value>Browse</value>
   </data>
   <data name="Label295" xml:space="preserve">
-    <value>Dateiname</value>
+    <value>اسم الملف</value>
   </data>
   <data name="Label296" xml:space="preserve">
-    <value>Linienzähler</value>
+    <value>خط الكون</value>
   </data>
   <data name="Label297" xml:space="preserve">
-    <value>Datum</value>
+    <value>التاريخ</value>
   </data>
   <data name="Label298" xml:space="preserve">
-    <value>Ordner</value>
+    <value>فولدر</value>
   </data>
   <data name="Label299" xml:space="preserve">
-    <value>Öffnen Sie die aktuell ausgewählte Datei in SB-Prime</value>
+    <value>فتح الملف المختار الحالي في SB-Prime</value>
   </data>
   <data name="Label3" xml:space="preserve">
-    <value>Zeilen</value>
+    <value>خطوط</value>
   </data>
   <data name="Label30" xml:space="preserve">
-    <value>Speichern</value>
+    <value>أنقذ</value>
   </data>
   <data name="Label300" xml:space="preserve">
-    <value>Öffnen</value>
+    <value>مفتوح</value>
   </data>
   <data name="Label301" xml:space="preserve">
-    <value>Die Anzahl der Dateien Treffen Filter</value>
+    <value>عدد الملفات</value>
   </data>
   <data name="Label302" xml:space="preserve">
-    <value>Filter suchen</value>
+    <value>باحث في الأفلام</value>
   </data>
   <data name="Label303" xml:space="preserve">
-    <value>Nur ganze Wörter filtern</value>
+    <value>مصور لكلمات فقط</value>
   </data>
   <data name="Label304" xml:space="preserve">
-    <value>Vollständiges Wort</value>
+    <value>الكلمة</value>
   </data>
   <data name="Label305" xml:space="preserve">
-    <value>Nur auf Fallspiele filtern</value>
+    <value>المصور على تطابق القضية فقط</value>
   </data>
   <data name="Label306" xml:space="preserve">
-    <value>Fallempfindlichkeit</value>
+    <value>Case Sensitive</value>
   </data>
   <data name="Label307" xml:space="preserve">
-    <value>Dateipfadname in der Suche einschließen</value>
+    <value>Include file path name in search</value>
   </data>
   <data name="Label308" xml:space="preserve">
     <value>Include Filepath</value>
   </data>
   <data name="Label309" xml:space="preserve">
-    <value>Text</value>
+    <value>نص السينما</value>
   </data>
   <data name="Label31" xml:space="preserve">
-    <value>Speichern Sie das aktuelle Programm zu einer neuen Datei</value>
+    <value>أنقذ البرنامج الحالي إلى ملف جديد</value>
   </data>
   <data name="Label310" xml:space="preserve">
-    <value>Nur Dateien mit dem Filtertext anzeigen</value>
+    <value>فقط الملفات المحتوية على النص</value>
   </data>
   <data name="Label311" xml:space="preserve">
-    <value>Führen Sie einen Filter auf Dateien, leeren Filtertext, um alle Dateien neu anzuzeigen</value>
+    <value>افحصوا تصفية الملفات و تصفية الملفات</value>
   </data>
   <data name="Label312" xml:space="preserve">
-    <value>Filter anwenden</value>
+    <value>آلة تصوير التطبيق</value>
   </data>
   <data name="Label313" xml:space="preserve">
-    <value>Finden und ersetzen</value>
+    <value>البحث والاستبدال</value>
   </data>
   <data name="Label314" xml:space="preserve">
-    <value>Finden</value>
+    <value>ابحث</value>
   </data>
   <data name="Label315" xml:space="preserve">
-    <value>Ersatz</value>
+    <value>يستعاض عن عبارة:</value>
   </data>
   <data name="Label316" xml:space="preserve">
-    <value>Finden Sie das vorherige Vorkommen des Suchtextes</value>
+    <value>العثور على ما حدث سابقاً من نص البحث</value>
   </data>
   <data name="Label317" xml:space="preserve">
-    <value>Finden Sie den</value>
+    <value>اعثر على ما قبل</value>
   </data>
   <data name="Label318" xml:space="preserve">
-    <value>Finden Sie das nächste Vorkommen des Suchtextes</value>
+    <value>البحث عن الحدث التالي لنص البحث</value>
   </data>
   <data name="Label319" xml:space="preserve">
-    <value>Finden Sie den nächsten</value>
+    <value>ابحث عن التالي</value>
   </data>
   <data name="Label32" xml:space="preserve">
-    <value>Speichern als</value>
+    <value>إنقاذ</value>
   </data>
   <data name="Label320" xml:space="preserve">
-    <value>Ersetzen Sie das aktuelle Ereignis und finden Sie das nächste</value>
+    <value>يستعاض عن الحدث الحالي ويجد التالي</value>
   </data>
   <data name="Label321" xml:space="preserve">
-    <value>Ersatz</value>
+    <value>يستعاض عن عبارة:</value>
   </data>
   <data name="Label322" xml:space="preserve">
-    <value>Ersetzen Sie alle auftretendenErgebnisse des Textes Suchen mit dem Text Ersetzen</value>
+    <value>يستعاض عن عبارة " جميع " بعبارة " </value>
   </data>
   <data name="Label323" xml:space="preserve">
-    <value>Alle ersetzen</value>
+    <value>المجموع</value>
   </data>
   <data name="Label324" xml:space="preserve">
-    <value>Flussdiagramm</value>
+    <value>Flow Chart</value>
   </data>
   <data name="Label325" xml:space="preserve">
-    <value>Großansicht (kleiner)</value>
+    <value>زوم خارج لمشاهدة المزيد (السائل)</value>
   </data>
   <data name="Label326" xml:space="preserve">
-    <value>In den Warenkorb</value>
+    <value>زوم</value>
   </data>
   <data name="Label327" xml:space="preserve">
-    <value>Großansicht (größer)</value>
+    <value>التكبير في النظر إلى أقل (لاغر)</value>
   </data>
   <data name="Label328" xml:space="preserve">
-    <value>In den Warenkorb</value>
+    <value>Zoom In</value>
   </data>
   <data name="Label329" xml:space="preserve">
-    <value>Zoom zum Starten</value>
+    <value>(زوم) يبدأ</value>
   </data>
   <data name="Label33" xml:space="preserve">
-    <value>Alle Programme speichern</value>
+    <value>أنقذ جميع البرامج</value>
   </data>
   <data name="Label330" xml:space="preserve">
-    <value>Start</value>
+    <value>ابدأ</value>
   </data>
   <data name="Label331" xml:space="preserve">
-    <value>Zoom in bis zum Ende des Hauptcodes</value>
+    <value>التكبير في نهاية الشفرة الرئيسية</value>
   </data>
   <data name="Label332" xml:space="preserve">
-    <value>Ende</value>
+    <value>النهاية</value>
   </data>
   <data name="Label333" xml:space="preserve">
-    <value>Flussdiagramm des aktuellen Dokuments aktualisieren</value>
+    <value>خريطة تدفق مستكملة من الوثيقة الحالية</value>
   </data>
   <data name="Label334" xml:space="preserve">
-    <value>Aktualisierung</value>
+    <value>آخر</value>
   </data>
   <data name="Label335" xml:space="preserve">
-    <value>Flussdiagramm vergrößern, um Artikel am Standort des Dokuments auszuwählen</value>
+    <value>الجدول الزمني لاختيار البند في موقع الوثيقة</value>
   </data>
   <data name="Label336" xml:space="preserve">
-    <value>Synthetik aus</value>
+    <value>ترجمة</value>
   </data>
   <data name="Label337" xml:space="preserve">
-    <value>Scroll-Dokument zur Ansicht ausgewählter Flussdiagramm</value>
+    <value>وثيقة ملفية للنظر إلى بند مختار من بنود جدول التدفقات</value>
   </data>
   <data name="Label338" xml:space="preserve">
-    <value>Synthesizer</value>
+    <value>الموسم الثاني</value>
   </data>
   <data name="Label339" xml:space="preserve">
-    <value>Info zur Nutzung von Flow Chart</value>
+    <value>Info about using Flow Chart</value>
   </data>
   <data name="Label34" xml:space="preserve">
-    <value>Alle speichern</value>
+    <value>أنقذوا الجميع</value>
   </data>
   <data name="Label340" xml:space="preserve">
-    <value>Info</value>
+    <value>المعلومات</value>
   </data>
   <data name="Label341" xml:space="preserve">
-    <value>Graduiertenkolleg</value>
+    <value>خريج</value>
   </data>
   <data name="Label342" xml:space="preserve">
-    <value>Export nach Visual Basic</value>
+    <value>Export to Visual Basic</value>
   </data>
   <data name="Label343" xml:space="preserve">
-    <value>Ausgangsort</value>
+    <value>موقع النواتج</value>
   </data>
   <data name="Label344" xml:space="preserve">
-    <value>Suchen Sie nach Standort, um Absolvent-Lösung zu exportieren</value>
+    <value>Browse to location of export graduated solution</value>
   </data>
   <data name="Label345" xml:space="preserve">
-    <value>Nach oben</value>
+    <value>Browse</value>
   </data>
   <data name="Label346" xml:space="preserve">
-    <value>Schließen ohne Aktion</value>
+    <value>قريب من أي عمل</value>
   </data>
   <data name="Label347" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>إلغاء</value>
   </data>
   <data name="Label348" xml:space="preserve">
-    <value>Visual Studio-Lösung exportieren</value>
+    <value>Export a Visual Studio solution</value>
   </data>
   <data name="Label349" xml:space="preserve">
-    <value>Graduiertenkolleg</value>
+    <value>خريج</value>
   </data>
   <data name="Label35" xml:space="preserve">
-    <value>Aktuelles Programm drucken (siehe Advanced-&gt;Optionen für Druckeinstellungen)</value>
+    <value>البرنامج الحالي المطبوع (انظر الخيارات المتقدمة للطباعة)</value>
   </data>
   <data name="Label350" xml:space="preserve">
-    <value>Einfuhr</value>
+    <value>الواردات</value>
   </data>
   <data name="Label351" xml:space="preserve">
-    <value>Importieren Sie ein Programm aus dem Web</value>
+    <value>استيراد برنامج من الشبكة</value>
   </data>
   <data name="Label352" xml:space="preserve">
-    <value>Programm ID importieren und schließen</value>
+    <value>تحديد هوية برنامج الاستيراد وإغلاقه</value>
   </data>
   <data name="Label353" xml:space="preserve">
-    <value>OKAY</value>
+    <value>حسنا</value>
   </data>
   <data name="Label354" xml:space="preserve">
-    <value>Schließen ohne Aktion</value>
+    <value>قريب من أي عمل</value>
   </data>
   <data name="Label355" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>إلغاء</value>
   </data>
   <data name="Label356" xml:space="preserve">
-    <value>Geben Sie die Programm-ID ein</value>
+    <value>أدخل البرنامج</value>
   </data>
   <data name="Label357" xml:space="preserve">
-    <value>Links</value>
+    <value>الروابط</value>
   </data>
   <data name="Label358" xml:space="preserve">
-    <value>Im Folgenden finden Sie einige Links zu wesentlichen kostenlosen Entwickler-Ressourcen</value>
+    <value>وفيما يلي بعض الروابط مع الموارد الأساسية للمطورين الحرين</value>
   </data>
   <data name="Label359" xml:space="preserve">
-    <value>Name</value>
+    <value>الاسم</value>
   </data>
   <data name="Label36" xml:space="preserve">
-    <value>Drucken</value>
+    <value>الطباعة</value>
   </data>
   <data name="Label360" xml:space="preserve">
-    <value>Warenbezeichnung</value>
+    <value>الوصف</value>
   </data>
   <data name="Label361" xml:space="preserve">
     <value>Link</value>
   </data>
   <data name="Label362" xml:space="preserve">
-    <value>Klicken Sie auf Link zu öffnen</value>
+    <value>انقروا إلى الوصلة المفتوحة</value>
   </data>
   <data name="Label363" xml:space="preserve">
-    <value>Optionen</value>
+    <value>الخيارات</value>
   </data>
   <data name="Label364" xml:space="preserve">
-    <value>Navigieren Sie zur Webseite</value>
+    <value>الملاحة في موقع التنزيل</value>
   </data>
   <data name="Label365" xml:space="preserve">
-    <value>SB-Prime auf der Galerie</value>
+    <value>SB-Prime on Gallery</value>
   </data>
   <data name="Label366" xml:space="preserve">
-    <value>Update SB-Prime auf die neueste Version</value>
+    <value>Update SB-Prime to latest version</value>
   </data>
   <data name="Label367" xml:space="preserve">
-    <value>Aktualisieren der neuesten</value>
+    <value>آخر المستجدات</value>
   </data>
   <data name="Label368" xml:space="preserve">
-    <value>Kleine grundlegende Installationspfad</value>
+    <value>مسار التركيب الأساسي الصغير</value>
   </data>
   <data name="Label369" xml:space="preserve">
     <value>TextBox</value>
@@ -1021,43 +1021,43 @@
     <value>Exit SB-Prime</value>
   </data>
   <data name="Label370" xml:space="preserve">
-    <value>Browse to Small Basic Installationsordner</value>
+    <value>Browse to Small Basic installation folder</value>
   </data>
   <data name="Label371" xml:space="preserve">
-    <value>Nach oben</value>
+    <value>Browse</value>
   </data>
   <data name="Label372" xml:space="preserve">
-    <value>OKAY</value>
+    <value>حسنا</value>
   </data>
   <data name="Label373" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>إلغاء</value>
   </data>
   <data name="Label374" xml:space="preserve">
-    <value>Zitat "" eingefügt Farbe und Schriftnamen</value>
+    <value>"اللواء المضاف" "والأسماء الفوتونية"</value>
   </data>
   <data name="Label375" xml:space="preserve">
-    <value>Farben als Hex-Werte einfügen</value>
+    <value>الألوان الخفية مثل قيم السم</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Laden Sie Erweiterung dlls auf dem Start (ausschalten und neu starten, um Extension Manager zu verwenden)</value>
+    <value>معدلات تمديد القروض عند بدء التشغيل (الانطلاق والعودة إلى استخدام مدير الإرشاد)</value>
   </data>
   <data name="Label377" xml:space="preserve">
-    <value>Drucken Vergrößerung</value>
+    <value>الطبع</value>
   </data>
   <data name="Label378" xml:space="preserve">
-    <value>Erhöhen (&gt;0) oder verringern (&lt;0) die Schriftgröße</value>
+    <value>الزيادة (0) أو النقصان (0)</value>
   </data>
   <data name="Label379" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label38" xml:space="preserve">
-    <value>Aus</value>
+    <value>Exit</value>
   </data>
   <data name="Label380" xml:space="preserve">
-    <value>Druckfarben</value>
+    <value>الألوان المطبوعة</value>
   </data>
   <data name="Label381" xml:space="preserve">
-    <value>Farbgebung zum Drucken</value>
+    <value>الملونة المستخدمة في الطباعة</value>
   </data>
   <data name="Label382" xml:space="preserve">
     <value>1</value>
@@ -1066,145 +1066,145 @@
     <value>2</value>
   </data>
   <data name="Label384" xml:space="preserve">
-    <value>ANHANG</value>
+    <value>4</value>
   </data>
   <data name="Label385" xml:space="preserve">
-    <value>Leerzeichen</value>
+    <value>أماكن الحوادث</value>
   </data>
   <data name="Label386" xml:space="preserve">
-    <value>Bitte warten Sie...</value>
+    <value>من فضلك انتظر.</value>
   </data>
   <data name="Label387" xml:space="preserve">
-    <value>Polygonseiten</value>
+    <value>Polygon Sides</value>
   </data>
   <data name="Label388" xml:space="preserve">
-    <value>Geben Sie die Anzahl der Seiten für das Polygon ein (&gt; 3)</value>
+    <value>أدخل عدد الأطراف إلى البوليغون 3)</value>
   </data>
   <data name="Label389" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label39" xml:space="preserve">
-    <value>Home</value>
+    <value>البيت</value>
   </data>
   <data name="Label390" xml:space="preserve">
-    <value>KAPITEL</value>
+    <value>تم</value>
   </data>
   <data name="Label391" xml:space="preserve">
-    <value>Width andHeight</value>
+    <value>الزوجة والروح</value>
   </data>
   <data name="Label392" xml:space="preserve">
-    <value>Fortschritte</value>
+    <value>التقدم</value>
   </data>
   <data name="Label393" xml:space="preserve">
-    <value>Ordner gesucht</value>
+    <value>الجنود فتشوا</value>
   </data>
   <data name="Label394" xml:space="preserve">
-    <value>Abbrechen</value>
+    <value>إلغاء</value>
   </data>
   <data name="Label395" xml:space="preserve">
-    <value>0 Dateien gefunden</value>
+    <value>لا توجد ملفات</value>
   </data>
   <data name="Label396" xml:space="preserve">
-    <value>0 ordner oder dateien konnten nicht bearbeitet werden</value>
+    <value>لا يمكن تجهيز 0 ملف أو ملفات</value>
   </data>
   <data name="Label397" xml:space="preserve">
-    <value>Veröffentlichung</value>
+    <value>النشر</value>
   </data>
   <data name="Label398" xml:space="preserve">
-    <value>Ihr Programm wurde im Internet veröffentlicht</value>
+    <value>تم نشر برنامجك على الشبكة</value>
   </data>
   <data name="Label399" xml:space="preserve">
-    <value>Weitere Details und Schließen</value>
+    <value>وضع التفاصيل الإضافية وإغلاقها</value>
   </data>
   <data name="Label4" xml:space="preserve">
     <value>Caps</value>
   </data>
   <data name="Label40" xml:space="preserve">
-    <value>Datei</value>
+    <value>File</value>
   </data>
   <data name="Label400" xml:space="preserve">
-    <value>Aktualisieren und schließen</value>
+    <value>تحديث وإغلاق</value>
   </data>
   <data name="Label401" xml:space="preserve">
-    <value>Unten ist die ID für Ihr Programm, die Sie teilen können</value>
+    <value>تحت هويّة هويّة برنامجك الذي يُمْكِنُ أَنْ تَشتركَ فيه</value>
   </data>
   <data name="Label402" xml:space="preserve">
-    <value>Offenes Programm im Internet Explorer (SilverLight erforderlich)</value>
+    <value>برنامج منشور مفتوح في مستكشف الإنترنت (يتطلب الأمر بدء النفاذ)</value>
   </data>
   <data name="Label403" xml:space="preserve">
-    <value>Öffnen im Browser</value>
+    <value>مفتوح في بروزر</value>
   </data>
   <data name="Label404" xml:space="preserve">
-    <value>Optionaler Titel (255 max)</value>
+    <value>الباب الاختياري (255 كحد أقصى)</value>
   </data>
   <data name="Label405" xml:space="preserve">
-    <value>Optionale Beschreibung (1024 max)</value>
+    <value>الوصف الاختياري (1024 كحد أقصى)</value>
   </data>
   <data name="Label406" xml:space="preserve">
-    <value>Kategorie</value>
+    <value>الفئة</value>
   </data>
   <data name="Label407" xml:space="preserve">
-    <value>Verschiedenes</value>
+    <value>متنوعة</value>
   </data>
   <data name="Label408" xml:space="preserve">
-    <value>Spiel</value>
+    <value>اللعبة</value>
   </data>
   <data name="Label409" xml:space="preserve">
-    <value>Stichprobe</value>
+    <value>العينات</value>
   </data>
   <data name="Label41" xml:space="preserve">
-    <value>Starten Sie ein neues Programm (Ctrl+N)</value>
+    <value>بدء برنامج جديد (Ctrl+N)</value>
   </data>
   <data name="Label410" xml:space="preserve">
-    <value>Übung</value>
+    <value>التمرين</value>
   </data>
   <data name="Label411" xml:space="preserve">
-    <value>Beispiel</value>
+    <value>مثال</value>
   </data>
   <data name="Label412" xml:space="preserve">
-    <value>Mathematik</value>
+    <value>الرياضيات</value>
   </data>
   <data name="Label413" xml:space="preserve">
-    <value>Spaß</value>
+    <value>المرح</value>
   </data>
   <data name="Label414" xml:space="preserve">
-    <value>Formeditor</value>
+    <value>Shapes Editor</value>
   </data>
   <data name="Label415" xml:space="preserve">
-    <value>Formen</value>
+    <value>Shapes</value>
   </data>
   <data name="Label416" xml:space="preserve">
-    <value>Rechteck</value>
+    <value>Rectangle</value>
   </data>
   <data name="Label417" xml:space="preserve">
-    <value>Ellipsen</value>
+    <value>Ellipse</value>
   </data>
   <data name="Label418" xml:space="preserve">
-    <value>Dreieck</value>
+    <value>المثلث</value>
   </data>
   <data name="Label419" xml:space="preserve">
-    <value>Linie</value>
+    <value>الخط</value>
   </data>
   <data name="Label42" xml:space="preserve">
-    <value>Neu</value>
+    <value>جديدة</value>
   </data>
   <data name="Label420" xml:space="preserve">
-    <value>Text</value>
+    <value>النص</value>
   </data>
   <data name="Label421" xml:space="preserve">
-    <value>Bild</value>
+    <value>الصورة</value>
   </data>
   <data name="Label422" xml:space="preserve">
-    <value>Kontrolle</value>
+    <value>الضوابط</value>
   </data>
   <data name="Label423" xml:space="preserve">
-    <value>Knopf</value>
+    <value>Button</value>
   </data>
   <data name="Label424" xml:space="preserve">
     <value>TextBox</value>
   </data>
   <data name="Label425" xml:space="preserve">
-    <value>MultiLineTextbox</value>
+    <value>MultiLineTextBox</value>
   </data>
   <data name="Label426" xml:space="preserve">
     <value>LDControls</value>
@@ -1216,846 +1216,846 @@
     <value>Browser</value>
   </data>
   <data name="Label429" xml:space="preserve">
-    <value>CheckBox</value>
+    <value>شيك بوكس</value>
   </data>
   <data name="Label43" xml:space="preserve">
-    <value>Öffne ein bestehendes Programm (Ctrl+O)</value>
+    <value>فتح برنامج قائم (Ctrl+O)</value>
   </data>
   <data name="Label430" xml:space="preserve">
-    <value>STRUKTUR</value>
+    <value>ComboBox</value>
   </data>
   <data name="Label431" xml:space="preserve">
-    <value>Datenschutzerklärung</value>
+    <value>DataView</value>
   </data>
   <data name="Label432" xml:space="preserve">
-    <value>Dokument Blick</value>
+    <value>الوثيقة Viewer</value>
   </data>
   <data name="Label433" xml:space="preserve">
-    <value>ListeBox</value>
+    <value>ListBox</value>
   </data>
   <data name="Label434" xml:space="preserve">
-    <value>In den Warenkorb</value>
+    <value>ListView</value>
   </data>
   <data name="Label435" xml:space="preserve">
-    <value>Medienmitarbeiter</value>
+    <value>MediaPlayer</value>
   </data>
   <data name="Label436" xml:space="preserve">
-    <value>Menü schließen</value>
+    <value>Menu</value>
   </data>
   <data name="Label437" xml:space="preserve">
-    <value>Passwort vergessen</value>
+    <value>كلمة السر</value>
   </data>
   <data name="Label438" xml:space="preserve">
-    <value>Fortschritte Bar</value>
+    <value>التقدم بار</value>
   </data>
   <data name="Label439" xml:space="preserve">
-    <value>RadioButton</value>
+    <value>Radiobutton</value>
   </data>
   <data name="Label44" xml:space="preserve">
-    <value>Öffnen</value>
+    <value>مفتوح</value>
   </data>
   <data name="Label440" xml:space="preserve">
-    <value>Das ist nicht gut</value>
+    <value>RichTextBox</value>
   </data>
   <data name="Label441" xml:space="preserve">
     <value>Slider</value>
   </data>
   <data name="Label442" xml:space="preserve">
-    <value>Ein Blick auf das Meer</value>
+    <value>تريفيو</value>
   </data>
   <data name="Label443" xml:space="preserve">
-    <value>Ausgewählte Formen löschen</value>
+    <value>تحذف الشباك المختارة</value>
   </data>
   <data name="Label444" xml:space="preserve">
-    <value>Snap Größe</value>
+    <value>Snap Size</value>
   </data>
   <data name="Label445" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="Label446" xml:space="preserve">
-    <value>Import von Code</value>
+    <value>الواردات من المدونة</value>
   </data>
   <data name="Label447" xml:space="preserve">
-    <value>Alle Formen löschen</value>
+    <value>تحذف جميع الشباك</value>
   </data>
   <data name="Label448" xml:space="preserve">
-    <value>Blick auf die Höhe</value>
+    <value>View Height</value>
   </data>
   <data name="Label449" xml:space="preserve">
-    <value>ANHANG</value>
+    <value>1000</value>
   </data>
   <data name="Label45" xml:space="preserve">
-    <value>Aktuelles Programm schließen</value>
+    <value>البرنامج الحالي</value>
   </data>
   <data name="Label450" xml:space="preserve">
     <value>View Width</value>
   </data>
   <data name="Label451" xml:space="preserve">
-    <value>ANHANG</value>
+    <value>1000</value>
   </data>
   <data name="Label452" xml:space="preserve">
-    <value>Ansicht der Waage</value>
+    <value>Scale View</value>
   </data>
   <data name="Label453" xml:space="preserve">
-    <value>Hilfe</value>
+    <value>النجدة</value>
   </data>
   <data name="Label454" xml:space="preserve">
-    <value>Eigenschaften</value>
+    <value>الممتلكات</value>
   </data>
   <data name="Label455" xml:space="preserve">
-    <value>Eigentum</value>
+    <value>الممتلكات</value>
   </data>
   <data name="Label456" xml:space="preserve">
-    <value>Wert</value>
+    <value>القيمة</value>
   </data>
   <data name="Label457" xml:space="preserve">
-    <value>Wert bestimmen</value>
+    <value>بيان القيمة</value>
   </data>
   <data name="Label458" xml:space="preserve">
-    <value>Set</value>
+    <value>المجموعة</value>
   </data>
   <data name="Label459" xml:space="preserve">
-    <value>Modifier</value>
+    <value>أجهزة تعديل</value>
   </data>
   <data name="Label46" xml:space="preserve">
-    <value>Schließen</value>
+    <value>اقترب</value>
   </data>
   <data name="Label460" xml:space="preserve">
-    <value>Eigentum</value>
+    <value>الممتلكات</value>
   </data>
   <data name="Label461" xml:space="preserve">
-    <value>Wert</value>
+    <value>القيمة</value>
   </data>
   <data name="Label462" xml:space="preserve">
-    <value>Variablen &amp; Call Stack</value>
+    <value>Variables " Call Stack</value>
   </data>
   <data name="Label463" xml:space="preserve">
-    <value>Variabel</value>
+    <value>الفرق</value>
   </data>
   <data name="Label464" xml:space="preserve">
-    <value>Wert</value>
+    <value>القيمة</value>
   </data>
   <data name="Label465" xml:space="preserve">
-    <value>Angemeldet bleiben</value>
+    <value>اتصل بـ(ستاك)</value>
   </data>
   <data name="Label47" xml:space="preserve">
-    <value>Aktuelles Programm speichern (Ctrl+S)</value>
+    <value>وفّر البرنامج الحالي (Ctrl+S)</value>
   </data>
   <data name="Label48" xml:space="preserve">
-    <value>Speichern</value>
+    <value>أنقذ</value>
   </data>
   <data name="Label49" xml:space="preserve">
-    <value>Speichern Sie das aktuelle Programm zu einer neuen Datei</value>
+    <value>أنقذ البرنامج الحالي إلى ملف جديد</value>
   </data>
   <data name="Label5" xml:space="preserve">
     <value>Numlock</value>
   </data>
   <data name="Label50" xml:space="preserve">
-    <value>Speichern als</value>
+    <value>إنقاذ</value>
   </data>
   <data name="Label51" xml:space="preserve">
-    <value>Alle Programme speichern</value>
+    <value>أنقذ جميع البرامج</value>
   </data>
   <data name="Label52" xml:space="preserve">
-    <value>Alle speichern</value>
+    <value>أنقذوا الجميع</value>
   </data>
   <data name="Label53" xml:space="preserve">
-    <value>Programm</value>
+    <value>Program</value>
   </data>
   <data name="Label54" xml:space="preserve">
-    <value>Aktuelles Programm stoppen (Shift+F5)</value>
+    <value>أوقف البرنامج الحالي (السرقة +F5)</value>
   </data>
   <data name="Label55" xml:space="preserve">
-    <value>Stopp</value>
+    <value>توقف</value>
   </data>
   <data name="Label56" xml:space="preserve">
-    <value>Aktuelles Programm ausführen (F5)</value>
+    <value>تشغيل البرنامج الحالي (F5)</value>
   </data>
   <data name="Label57" xml:space="preserve">
-    <value>Laufen</value>
+    <value>اركض</value>
   </data>
   <data name="Label58" xml:space="preserve">
-    <value>Bearbeiten</value>
+    <value>Edit</value>
   </data>
   <data name="Label59" xml:space="preserve">
-    <value>Aktuelle Auswahl kopieren in der Zwischenablage</value>
+    <value>الانتقاء الحالي للكتاب</value>
   </data>
   <data name="Label6" xml:space="preserve">
-    <value>Einsatz</value>
+    <value>Insert</value>
   </data>
   <data name="Label60" xml:space="preserve">
-    <value>Kopie</value>
+    <value>نسخ</value>
   </data>
   <data name="Label61" xml:space="preserve">
-    <value>Zwischenablage bei aktueller Auswahl</value>
+    <value>اللوحة السابقة للاختيار الحالي</value>
   </data>
   <data name="Label62" xml:space="preserve">
     <value>Paste</value>
   </data>
   <data name="Label63" xml:space="preserve">
-    <value>Löschen Sie die aktuelle Auswahl an Clipboard</value>
+    <value>يحذف الاختيار الحالي للوحة</value>
   </data>
   <data name="Label64" xml:space="preserve">
-    <value>Schnitt</value>
+    <value>قطع</value>
   </data>
   <data name="Label65" xml:space="preserve">
-    <value>Aktuelle Auswahl löschen</value>
+    <value>يحذف الاختيار الحالي</value>
   </data>
   <data name="Label66" xml:space="preserve">
-    <value>Löschen</value>
+    <value>تحذف</value>
   </data>
   <data name="Label67" xml:space="preserve">
-    <value>Und die letzte Aktion</value>
+    <value>العمل الأخير</value>
   </data>
   <data name="Label68" xml:space="preserve">
-    <value>Und</value>
+    <value>Undo</value>
   </data>
   <data name="Label69" xml:space="preserve">
-    <value>Redo letzte Aktion</value>
+    <value>الإجراء الأخير</value>
   </data>
   <data name="Label7" xml:space="preserve">
-    <value>Hilfe</value>
+    <value>النجدة</value>
   </data>
   <data name="Label70" xml:space="preserve">
-    <value>Rot</value>
+    <value>Redo</value>
   </data>
   <data name="Label71" xml:space="preserve">
-    <value>Vollständiges Programm auswählen</value>
+    <value>البرنامج المكتمل</value>
   </data>
   <data name="Label72" xml:space="preserve">
-    <value>Alle auswählen</value>
+    <value>بيع</value>
   </data>
   <data name="Label73" xml:space="preserve">
-    <value>Kollaps alle Falten</value>
+    <value>التصفيق كله</value>
   </data>
   <data name="Label74" xml:space="preserve">
-    <value>Alle anzeigen</value>
+    <value>كل شيء</value>
   </data>
   <data name="Label75" xml:space="preserve">
-    <value>Erweitern Sie alle Falten</value>
+    <value>توسيع جميع الطي</value>
   </data>
   <data name="Label76" xml:space="preserve">
-    <value>Alle erweitern</value>
+    <value>Expand All</value>
   </data>
   <data name="Label77" xml:space="preserve">
-    <value>Format aktuelles Programm</value>
+    <value>البرنامج الحالي</value>
   </data>
   <data name="Label78" xml:space="preserve">
-    <value>Format</value>
+    <value>الشكل</value>
   </data>
   <data name="Label79" xml:space="preserve">
-    <value>Navigieren Sie zur vorherigen Zeile</value>
+    <value>الملاحة في الخط السابق</value>
   </data>
   <data name="Label8" xml:space="preserve">
-    <value>Neues Programm starten</value>
+    <value>بدء برنامج جديد</value>
   </data>
   <data name="Label80" xml:space="preserve">
-    <value>Vorherige</value>
+    <value>سابقا</value>
   </data>
   <data name="Label81" xml:space="preserve">
-    <value>Navigieren Sie zur nächsten Zeile</value>
+    <value>نفايجات إلى الخط التالي</value>
   </data>
   <data name="Label82" xml:space="preserve">
-    <value>Nächste</value>
+    <value>التالي</value>
   </data>
   <data name="Label83" xml:space="preserve">
-    <value>Internet</value>
+    <value>Web</value>
   </data>
   <data name="Label84" xml:space="preserve">
-    <value>Importieren Sie ein Programm aus dem Web</value>
+    <value>استيراد برنامج من الشبكة</value>
   </data>
   <data name="Label85" xml:space="preserve">
-    <value>Einfuhr</value>
+    <value>الواردات</value>
   </data>
   <data name="Label86" xml:space="preserve">
-    <value>Aktuelles Programm im Web veröffentlichen</value>
+    <value>نشر البرنامج الحالي على الشبكة</value>
   </data>
   <data name="Label87" xml:space="preserve">
-    <value>Veröffentlichung</value>
+    <value>النشر</value>
   </data>
   <data name="Label88" xml:space="preserve">
-    <value>Suche</value>
+    <value>البحث</value>
   </data>
   <data name="Label89" xml:space="preserve">
-    <value>Finden Sie vorherige</value>
+    <value>بسرعة</value>
   </data>
   <data name="Label9" xml:space="preserve">
-    <value>Neu</value>
+    <value>جديدة</value>
   </data>
   <data name="Label90" xml:space="preserve">
-    <value>Finden Sie den</value>
+    <value>اعثر على ما قبل</value>
   </data>
   <data name="Label91" xml:space="preserve">
-    <value>Finden Sie weiter</value>
+    <value>إعثر على التالي</value>
   </data>
   <data name="Label92" xml:space="preserve">
-    <value>Finden Sie den nächsten</value>
+    <value>ابحث عن التالي</value>
   </data>
   <data name="Label93" xml:space="preserve">
-    <value>Dialog suchen und ersetzen</value>
+    <value>البحث والاستعاضة عن رقم الهاتف</value>
   </data>
   <data name="Label94" xml:space="preserve">
-    <value>Finden und ersetzen</value>
+    <value>البحث والاستبدال</value>
   </data>
   <data name="Label95" xml:space="preserve">
-    <value>Alle gefundenen Instanzen markieren</value>
+    <value>أبرز كل الحالات</value>
   </data>
   <data name="Label96" xml:space="preserve">
-    <value>Alle anzeigen</value>
+    <value>ضوء عالي</value>
   </data>
   <data name="Label97" xml:space="preserve">
-    <value>Suche und Highlight nur ganze Wortspiele</value>
+    <value>البحث وتسليط الضوء على الكلمات الكاملة فقط</value>
   </data>
   <data name="Label98" xml:space="preserve">
-    <value>Vollständiges Wort</value>
+    <value>الكلمة</value>
   </data>
   <data name="Label99" xml:space="preserve">
-    <value>Suche und Highlight nur Case sensitive Spiele</value>
+    <value>البحث والتسليط الضوء فقط على المباريات الحساسة</value>
   </data>
   <data name="String1" xml:space="preserve">
-    <value>Verwenden Sie Umschalten, um mehrere Formen auszuwählen, um zusammen zu bewegen oder zu ändern</value>
+    <value>استخدام الشفة لاختيار أشكال متعددة، للتحرك أو التعديل معا</value>
   </data>
   <data name="String10" xml:space="preserve">
-    <value>Intellisense erscheint hier, wenn Sie über Objekte und Methoden schweben, sowie wenn Sie mögliche Optionen eingeben und anzeigen.</value>
+    <value>ستظهر المعلومات هنا عندما تقفز على الأشياء والأساليب وكذلك عندما تكتب وتنظر للخيارات المحتملة.</value>
   </data>
   <data name="String100" xml:space="preserve">
-    <value>Un-Comment Dateibefehle</value>
+    <value>قيادة من طراز UnComment File Commands</value>
   </data>
   <data name="String101" xml:space="preserve">
-    <value>Kollaps Falten</value>
+    <value>التصفيق</value>
   </data>
   <data name="String102" xml:space="preserve">
-    <value>Erweitertes Falten</value>
+    <value>Expand Folding</value>
   </data>
   <data name="String103" xml:space="preserve">
-    <value>Navigation Zurück Ctrl+B</value>
+    <value>Navigate Back Ctrl+B</value>
   </data>
   <data name="String104" xml:space="preserve">
-    <value>Navigieren Sie für Ctrl+Shift+B</value>
+    <value>Navigate Forwards Ctrl+Shift+B</value>
   </data>
   <data name="String105" xml:space="preserve">
-    <value>Auswahl kopieren als HTML-Text</value>
+    <value>انتقاء نسخة إلى لوح النسيج</value>
   </data>
   <data name="String106" xml:space="preserve">
-    <value>Auswahl an Clipboard als HTML kopieren</value>
+    <value>انتقاء نسخة إلى لوح النسيج</value>
   </data>
   <data name="String107" xml:space="preserve">
-    <value>Auswahl kopieren als RTF</value>
+    <value>انتقاء نسخة إلى لوح كليب كفرقة RTF</value>
   </data>
   <data name="String108" xml:space="preserve">
-    <value>Open Containing Ordner</value>
+    <value>مفتوحة</value>
   </data>
   <data name="String109" xml:space="preserve">
-    <value>Zu Debug Watch Ctrl+Shift+W hinzufügen</value>
+    <value>مضافا إليها: " رصد الديون "</value>
   </data>
   <data name="String11" xml:space="preserve">
-    <value>Argumente</value>
+    <value>الأحكام</value>
   </data>
   <data name="String110" xml:space="preserve">
-    <value>Flussdiagramm anzeigen</value>
+    <value>Display Flow Chart</value>
   </data>
   <data name="String111" xml:space="preserve">
-    <value>Format Programm</value>
+    <value>Format Program</value>
   </data>
   <data name="String112" xml:space="preserve">
-    <value>Fügen Sie Farbe</value>
+    <value>كولور</value>
   </data>
   <data name="String113" xml:space="preserve">
-    <value>Fügen Sie Font</value>
+    <value>Insert Font</value>
   </data>
   <data name="String114" xml:space="preserve">
-    <value>Farbe auf Weiß</value>
+    <value>اللون الأبيض</value>
   </data>
   <data name="String115" xml:space="preserve">
-    <value>Echte Farbe</value>
+    <value>كولور الحقيقي</value>
   </data>
   <data name="String116" xml:space="preserve">
-    <value>Schwarz und Weiß</value>
+    <value>أسود وأبيض</value>
   </data>
   <data name="String117" xml:space="preserve">
-    <value>Bitte warten Sie...</value>
+    <value>من فضلك انتظر.</value>
   </data>
   <data name="String118" xml:space="preserve">
-    <value>Dateien laden</value>
+    <value>ملفات الشحن</value>
   </data>
   <data name="String119" xml:space="preserve">
-    <value>Dieser Assistent wird Ihr Small Basic Programm in Microsoft Visual Basic konvertieren</value>
+    <value>هذا الساحر سيحوّل برنامجك الأساسي الصغير إلى (مايكروسوفت) الأساسي</value>
   </data>
   <data name="String12" xml:space="preserve">
-    <value>Rückgabe</value>
+    <value>العودة</value>
   </data>
   <data name="String120" xml:space="preserve">
-    <value>dekompilieren Sie eine gültige .Net-Montage zu Microsoft C# (dll oder exe) und öffnen Sie dann den Ordner mit dem dekompilierten C#-Quellcode.</value>
+    <value>decompile a valid.Net assembly to Microsoft C# (dll or exe) and then open the folder containing the decompiled C# source code.</value>
   </data>
   <data name="String121" xml:space="preserve">
-    <value>Wenn erfolgreich, und Visual Studio installiert ist, öffnen Sie die Projektdatei (*.csproj).</value>
+    <value>وإذا نجح ذلك، وتم تركيب الاستديو البصري، فُتح ملف المشروع (*.csproj).</value>
   </data>
   <data name="String122" xml:space="preserve">
-    <value>HERSTELLUNG</value>
+    <value>ستارت</value>
   </data>
   <data name="String123" xml:space="preserve">
-    <value>END</value>
+    <value>نهاية</value>
   </data>
   <data name="String124" xml:space="preserve">
-    <value>Unmenge</value>
+    <value>Unset</value>
   </data>
   <data name="String125" xml:space="preserve">
-    <value>Hauptfenster</value>
+    <value>النافذة الرئيسية</value>
   </data>
   <data name="String126" xml:space="preserve">
-    <value>Dokumentenlayout</value>
+    <value>الوثيقة Lyout</value>
   </data>
   <data name="String127" xml:space="preserve">
-    <value>Dokument Lexer</value>
+    <value>Document Lexer</value>
   </data>
   <data name="String128" xml:space="preserve">
-    <value>Flussdiagramm</value>
+    <value>Flow Chart</value>
   </data>
   <data name="String129" xml:space="preserve">
-    <value>Hintergrund</value>
+    <value>معلومات أساسية</value>
   </data>
   <data name="String13" xml:space="preserve">
-    <value>Zusätzlich kann in diesem Fenster eine Popup-Beschreibung für Methoden durch Hovering der Maus über Methoden, Eigenschaften oder Ereignisse beim Betrachten eines Objekts angesehen werden.</value>
+    <value>وبالإضافة إلى ذلك، يمكن النظر إلى وصف البوب للأساليب في هذه النافذة عن طريق سحق الفأر على الأساليب أو الممتلكات أو الأحداث عند النظر إلى غرض ما.</value>
   </data>
   <data name="String130" xml:space="preserve">
-    <value>Forst</value>
+    <value>الأرض الأمامية</value>
   </data>
   <data name="String131" xml:space="preserve">
     <value>Splitter</value>
   </data>
   <data name="String132" xml:space="preserve">
-    <value>Auswahl</value>
+    <value>الاختيار</value>
   </data>
   <data name="String133" xml:space="preserve">
-    <value>Margin Hintergrund</value>
+    <value>Margin Background</value>
   </data>
   <data name="String134" xml:space="preserve">
     <value>Margin Foreground</value>
   </data>
   <data name="String135" xml:space="preserve">
-    <value>Hintergrund falten</value>
+    <value>الخلفية</value>
   </data>
   <data name="String136" xml:space="preserve">
-    <value>Faltbarer Vordergrund</value>
+    <value>Folding Foreground</value>
   </data>
   <data name="String137" xml:space="preserve">
-    <value>Lesezeichen Hintergrund</value>
+    <value>معلومات أساسية</value>
   </data>
   <data name="String138" xml:space="preserve">
-    <value>Lesezeichen Foreground</value>
+    <value>برقية</value>
   </data>
   <data name="String139" xml:space="preserve">
-    <value>Hintergrund</value>
+    <value>معلومات أساسية</value>
   </data>
   <data name="String14" xml:space="preserve">
-    <value>Wählen Sie die Form</value>
+    <value>Sect Shape</value>
   </data>
   <data name="String140" xml:space="preserve">
-    <value>Auf der Karte anzeigen</value>
+    <value>نقطة الانطلاق</value>
   </data>
   <data name="String141" xml:space="preserve">
-    <value>Wählen</value>
+    <value>مختارة</value>
   </data>
   <data name="String142" xml:space="preserve">
     <value>Highlight Debug</value>
   </data>
   <data name="String143" xml:space="preserve">
-    <value>Finden Sie das Highlight</value>
+    <value>Highlight Find</value>
   </data>
   <data name="String144" xml:space="preserve">
-    <value>Highlight gelöscht</value>
+    <value>مهجورة</value>
   </data>
   <data name="String145" xml:space="preserve">
-    <value>Highlight eingefügt</value>
+    <value>Highlight Inserted</value>
   </data>
   <data name="String146" xml:space="preserve">
     <value>CallTip Foreground</value>
   </data>
   <data name="String147" xml:space="preserve">
-    <value>CallTip Hintergrund</value>
+    <value>CallTip Background</value>
   </data>
   <data name="String148" xml:space="preserve">
     <value>CallTip Highlight</value>
   </data>
   <data name="String149" xml:space="preserve">
-    <value>Forst</value>
+    <value>الأرض الأمامية</value>
   </data>
   <data name="String15" xml:space="preserve">
-    <value>Nicht auswählen</value>
+    <value>Unselect Shape</value>
   </data>
   <data name="String150" xml:space="preserve">
-    <value>Hintergrund</value>
+    <value>معلومات أساسية</value>
   </data>
   <data name="String151" xml:space="preserve">
-    <value>Anmerkung</value>
+    <value>التعليق</value>
   </data>
   <data name="String152" xml:space="preserve">
-    <value>Streichung</value>
+    <value>String</value>
   </data>
   <data name="String153" xml:space="preserve">
-    <value>Betreiber</value>
+    <value>عامل</value>
   </data>
   <data name="String154" xml:space="preserve">
-    <value>Schlüsselwort</value>
+    <value>الكلمة الرئيسية</value>
   </data>
   <data name="String155" xml:space="preserve">
-    <value>Gegenstand</value>
+    <value>اعتراض</value>
   </data>
   <data name="String156" xml:space="preserve">
-    <value>Methode</value>
+    <value>المنهجية</value>
   </data>
   <data name="String157" xml:space="preserve">
-    <value>Liter</value>
+    <value>Literal</value>
   </data>
   <data name="String158" xml:space="preserve">
-    <value>Forst</value>
+    <value>الأرض الأمامية</value>
   </data>
   <data name="String159" xml:space="preserve">
-    <value>Hintergrund</value>
+    <value>معلومات أساسية</value>
   </data>
   <data name="String16" xml:space="preserve">
-    <value>Ausgewählte Formen kopieren</value>
+    <value>نسخ Selected Shapes</value>
   </data>
   <data name="String160" xml:space="preserve">
-    <value>Höhepunkt</value>
+    <value>Highlight</value>
   </data>
   <data name="String161" xml:space="preserve">
-    <value>Zustand</value>
+    <value>الشرط</value>
   </data>
   <data name="String162" xml:space="preserve">
-    <value>Start</value>
+    <value>ابدأ</value>
   </data>
   <data name="String163" xml:space="preserve">
-    <value>Anruf</value>
+    <value>اتصل</value>
   </data>
   <data name="String164" xml:space="preserve">
-    <value>Für</value>
+    <value>For</value>
   </data>
   <data name="String165" xml:space="preserve">
-    <value>Während</value>
+    <value>بينما</value>
   </data>
   <data name="String166" xml:space="preserve">
-    <value>Angaben</value>
+    <value>البيان</value>
   </data>
   <data name="String167" xml:space="preserve">
-    <value>Code</value>
+    <value>المدونة</value>
   </data>
   <data name="String168" xml:space="preserve">
     <value>SB-Prime Version</value>
   </data>
   <data name="String169" xml:space="preserve">
-    <value>Debug Erweiterung</value>
+    <value>تمديد الديون</value>
   </data>
   <data name="String17" xml:space="preserve">
-    <value>Hintergrundfarbe</value>
+    <value>Color</value>
   </data>
   <data name="String170" xml:space="preserve">
-    <value>linien</value>
+    <value>خطوط</value>
   </data>
   <data name="String171" xml:space="preserve">
-    <value>linie</value>
+    <value>السطر</value>
   </data>
   <data name="String172" xml:space="preserve">
-    <value>spalte</value>
+    <value>العمود</value>
   </data>
   <data name="String173" xml:space="preserve">
-    <value>Schlösser</value>
+    <value>Caps Lock</value>
   </data>
   <data name="String174" xml:space="preserve">
     <value>Num Lock</value>
   </data>
   <data name="String175" xml:space="preserve">
-    <value>Einsatz</value>
+    <value>Insert</value>
   </data>
   <data name="String176" xml:space="preserve">
-    <value>Debugging</value>
+    <value>الديون</value>
   </data>
   <data name="String177" xml:space="preserve">
-    <value>Laufen</value>
+    <value>تشغيل</value>
   </data>
   <data name="String178" xml:space="preserve">
-    <value>Variabler Regex</value>
+    <value>Variable Regex</value>
   </data>
   <data name="String179" xml:space="preserve">
-    <value>Zusätzliche Regex für tooltip intellisense variable Namen</value>
+    <value>Regex Additional Regex for tooltip intellisense variable names</value>
   </data>
   <data name="String18" xml:space="preserve">
-    <value>Paste-Code zum aktuellen Dokument</value>
+    <value>قانون المراعي للوثيقة الحالية</value>
   </data>
   <data name="String180" xml:space="preserve">
-    <value>Werkzeugfenster "immer oben"</value>
+    <value>نوافذ المذؤوبين لتكون على القمة</value>
   </data>
   <data name="String181" xml:space="preserve">
-    <value>Quelle-Code Schriftart</value>
+    <value>رمز المصدر</value>
   </data>
   <data name="String182" xml:space="preserve">
-    <value>Die Schriftfamilie für den Quellcode</value>
+    <value>العائلة الضبابية لرمز المصدر</value>
   </data>
   <data name="String19" xml:space="preserve">
-    <value>Kopieren von Code aus dem aktuellen Dokument</value>
+    <value>رمز النسخ من الوثيقة الحالية</value>
   </data>
   <data name="String2" xml:space="preserve">
-    <value>Toggle intellisense view</value>
+    <value>النظرة الخفية</value>
   </data>
   <data name="String20" xml:space="preserve">
-    <value>Klar</value>
+    <value>آمن</value>
   </data>
   <data name="String21" xml:space="preserve">
-    <value>Klare Uhr Bedingungen</value>
+    <value>شروط المراقبة الواضحة</value>
   </data>
   <data name="String22" xml:space="preserve">
-    <value>Dieser Ordner enthält bereits Dateien.</value>
+    <value>هذا الملف يحتوي على ملفات.</value>
   </data>
   <data name="String23" xml:space="preserve">
-    <value>Wählen Sie einen anderen Standort oder leeren Sie diesen Ordner und versuchen Sie es erneut.</value>
+    <value>اختر مكاناً آخر أو أفرغ هذا الملف وحاول مرة أخرى.</value>
   </data>
   <data name="String24" xml:space="preserve">
-    <value>Flow Chart scheiterte, wahrscheinlich wegen Codefehler - überprüfen Programm-Compiles.</value>
+    <value>(فلو شارت) فشل، ربما بسبب خطأ رمزي، برنامج التحقق يجمع.</value>
   </data>
   <data name="String25" xml:space="preserve">
-    <value>Willst du weitermachen?</value>
+    <value>هل تريد الاستمرار؟?</value>
   </data>
   <data name="String26" xml:space="preserve">
-    <value>Klicken Sie auf einen Artikel, um ihn auszuwählen</value>
+    <value>النقر اليساري بند لاختياره</value>
   </data>
   <data name="String27" xml:space="preserve">
-    <value>Rechtsklicken Sie auf einen Artikel, um seinen Elternteil auszuwählen (EndFor, EndWhile, EndIf, Else oder ElseIf) oder wählen Sie seinen Link (Goto oder Sub)</value>
+    <value>النقرة الصحيحة لاختيار أحد والديها (إندل وايل أو إنديف أو إلس أو إلسيف) أو اختيار رابطه (غوتو أو دون)</value>
   </data>
   <data name="String28" xml:space="preserve">
-    <value>Ein ausgewählter Artikel wird in der Nähe der Spitze der Ansicht bewegt</value>
+    <value>سيتم نقل بند منتقاة بالقرب من أعلى المنظر</value>
   </data>
   <data name="String29" xml:space="preserve">
-    <value>Während einer Debug-Session wird die aktuelle paused line ausgewählt</value>
+    <value>سيتم اختيار الخط المرهق الحالي خلال جلسة تصفية</value>
   </data>
   <data name="String3" xml:space="preserve">
-    <value>Toggle Split Bildschirm Programm Layout</value>
+    <value>تخطيط برنامج الشاشة</value>
   </data>
   <data name="String30" xml:space="preserve">
-    <value>Farben können in IDE-Farben gesetzt werden, und die Dunkelheit Thema wird angewendet, wenn ausgewählt</value>
+    <value>يمكن وضع الألوان في محلات " آي دي " و " الظلام Theme is applied if selected</value>
   </data>
   <data name="String31" xml:space="preserve">
-    <value>Shapes Editor hat keine Eigenschaftseingabe eingestellt.</value>
+    <value>ولم يقم محرر شبز بوضع مساهمة في الممتلكات.</value>
   </data>
   <data name="String32" xml:space="preserve">
-    <value>Shapes Editor hat es nicht geschafft, einige Formen zum Code zu exportieren.</value>
+    <value>ولم يُصدّر محررو الأشرطة بعض الأشكال إلى الرمز.</value>
   </data>
   <data name="String33" xml:space="preserve">
-    <value>Shapes Editor hat nicht einige Formen aus dem Code importiert.</value>
+    <value>المحرر لم يستورد بعض الأشكال من الشفرة.</value>
   </data>
   <data name="String34" xml:space="preserve">
-    <value>Fügen Sie Formen oder Bedienelemente hinzu, indem Sie auf das linke Panel klicken.</value>
+    <value>أضف الأشكال أو الضوابط بتصفيق الاسم على اللوحة اليسرى.</value>
   </data>
   <data name="String35" xml:space="preserve">
-    <value>Wählen Sie eine Form, indem Sie es oder blau bewegen Griff.</value>
+    <value>اختيار شكل من خلال النقر عليه أو مقبض التحرك الأزرق.</value>
   </data>
   <data name="String36" xml:space="preserve">
-    <value>Die Eigenschaften einer ausgewählten Form sind auf der rechten Seite dargestellt, sie können durch Bearbeiten oder mit Set-Taste geändert werden.</value>
+    <value>وتظهر خصائص شكل منتقاة على اللوحة الصحيحة، ويمكن تغييرها عن طريق التحرير أو استخدام زر المجموعة.</value>
   </data>
   <data name="String37" xml:space="preserve">
-    <value>Wählen Sie mehrere Formen aus, indem Sie eine Form mit Shift-Taste nach unten oder durch die Auswahl einer Gruppe von Formen (Shift zu aktuellen ausgewählten Formen hinzufügen).</value>
+    <value>(ب) اختيار أشكال متعددة باختيار شكل بمفتاح شيفت المحتفظ به أو باختيار مجموعة من الأشكال (السرقة لإضافة الأشكال المختارة الحالية).</value>
   </data>
   <data name="String38" xml:space="preserve">
-    <value>Schalten Sie alle Formen nach links auf das Backgound.</value>
+    <value>حطموا جميع الأشكال من خلال النقر الأيسر على ظهر السفينة.</value>
   </data>
   <data name="String39" xml:space="preserve">
-    <value>Bewegen, resize (mit Eckgriffen) oder ändern Sie die Eigenschaften einer Form (halten Shift für mehrere ausgewählte Formen).</value>
+    <value>:: النقل، أو إعادة الاستخدام (مقابس الزاوية المستخدمة) أو تغيير خصائص الشكل (يحتفظ بالسياقة لتطبيقها على أشكال متعددة مختارة).</value>
   </data>
   <data name="String4" xml:space="preserve">
-    <value>Eingeführte Programmdetails</value>
+    <value>تفاصيل البرامج المستوردة</value>
   </data>
   <data name="String40" xml:space="preserve">
-    <value>Dreiecke, Linien und Polygone werden durch Bewegen einzelner Ecken rediziert.</value>
+    <value>وتعاد ترقيم المثلثات والخطوط والبوليغون بنقل زوايا فردية.</value>
   </data>
   <data name="String41" xml:space="preserve">
-    <value>Nudge ausgewählte Formen mit Pfeiltasten (halten Sie Shift, um mit Schnappabstand zu bewegen).</value>
+    <value>ندغ منتقاة من الأشكال باستخدام مفاتيح السهم (استمر بالتحرك من مسافة سريعة).</value>
   </data>
   <data name="String42" xml:space="preserve">
-    <value>Klicken Sie auf Löschen über eine Form, um es zu löschen.</value>
+    <value>اضغط على شكل لحذفه.</value>
   </data>
   <data name="String43" xml:space="preserve">
-    <value>Klicken Sie mit der rechten Maustaste auf zusätzliche Optionen, einschließlich Kopieren und Einfügen von Code in aktuelles Dokument oder kopieren Sie ausgewählte Formen (neue kopierte Formen liegen über den Originalen, so kann dann als Gruppe mit Shift-Taste bewegt werden).</value>
+    <value>النقرة الصحيحة للخيارات الإضافية، بما في ذلك النسخ ورمز المعجنات إلى الوثيقة الحالية، أو نسخ أشكال مختارة (توجد أشكال جديدة مستنسخة على النسخ الأصلية بحيث يمكن عندئذ نقلها كمجموعة تستخدم مفتاح الشيعة).</value>
   </data>
   <data name="String44" xml:space="preserve">
-    <value>Der aktuelle Code wird im Codefenster angezeigt. Dies kann bearbeitet werden und \"Import From Code\" verwenden, um den aktuellen Code zur aktuellen Ansicht hinzuzufügen.</value>
+    <value>الرمز الحالي يظهر في نافذة الشفرة هذا يمكن تحريره واستعماله لإضافة الرمز الحالي إلى الرأي الحالي.</value>
   </data>
   <data name="String45" xml:space="preserve">
-    <value>Fragen und Vorschläge willkommen.</value>
+    <value>ونرحب بالأسئلة والاقتراحات.</value>
   </data>
   <data name="String46" xml:space="preserve">
-    <value>Der Text in</value>
+    <value>النص الوارد فيه</value>
   </data>
   <data name="String47" xml:space="preserve">
-    <value>hat sich geändert</value>
+    <value>تغير</value>
   </data>
   <data name="String48" xml:space="preserve">
-    <value>Möchten Sie die Änderungen speichern?</value>
+    <value>هل تريد إنقاذ التغييرات؟?</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>Uncheck \"Load Extension dlls on startup\" in Advanced-&gt;Optionen und neu starten, um installierte Erweiterungen zu ändern.</value>
+    <value>لا يُدقّقُ "مُدَرَّدَةَ مُقَدَّمَة" في الإبتدائياتِ المُقدّمةِ ويُعيدُ التَعَدُّم لتَعَدُّل التمديدات المُركَّبةِ.</value>
   </data>
   <data name="String5" xml:space="preserve">
-    <value>Differenzdateien in Split-Bildschirm wechseln</value>
+    <value>تهذيب ملفات الفرق في الشاشة</value>
   </data>
   <data name="String50" xml:space="preserve">
-    <value>OK, um mit geladenen Erweiterungen fortzufahren.</value>
+    <value>حسناً، لنكمل التمديدات المحملة.</value>
   </data>
   <data name="String51" xml:space="preserve">
-    <value>Es gibt derzeit keine erweiterte Hilfe.</value>
+    <value>There is currently no extended help.</value>
   </data>
   <data name="String52" xml:space="preserve">
-    <value>SB-Prime sollte mit jeder installierten Version von Small Basic arbeiten, debugging arbeitet an Small Basic Version 1.1.</value>
+    <value>SB-Prime should work with any installed version of Small Basic, debugging works on Small Basic version 1.1 onwards.</value>
   </data>
   <data name="String53" xml:space="preserve">
-    <value>Damit die Debugging-Erweiterung direkt kompiliert und im lib-Ordner installiert wird, wird zum ersten Mal SB-Prime gestartet, was die Benutzerkontokontrolle (UAC)-Berechtigung erfordert.</value>
+    <value>ولتمكين إجراء عملية تمديد يتم تجميعها وتركيبها بصورة مباشرة في ملف العينة في المرة الأولى التي يبدأ فيها نظام SB-Prime، مما يتطلب إذنا من محاسبة المستعملين.</value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value>Zusätzlich kann UAC zum ersten Mal eine Debug-Session erforderlich sein, um eine erforderliche Kommunikation zwischen Anwendungen zu ermöglichen.</value>
+    <value>وبالإضافة إلى ذلك، قد يُشترط أن تُعقد لجنة المساعدة القانونية في أول مرة دورة تصفية تسمح بالتواصل المطلوب بين الطلبات.</value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value>Debugging erfordert, Punkte zu brechen oder 'Stepping' durch den Code. Sobald sie gepatelt sind, können Werte durch Hovering der Maus über eine Variable oder durch Hinzufügen von variablen Namen in die Uhrenliste in der Debug-Tab angezeigt werden. Die Variablen der Merkliste können beim Wechsel betrachtet werden und können auch geändert werden. Array-Werte mit [] Syntax können auch angesehen und modifiziert werden.</value>
+    <value>الإستئناف يتطلب الركض لكسر النقاط أو تجاوز الشفرة وبمجرد توقف القيم، يمكن النظر إليها عن طريق سحق الفأر على متغير، أو بإضافة أسماء متغيرة إلى قائمة المراقبة في دفتر الشظايا. ويمكن النظر إلى متغيرات قائمة المراقبة على أنها تتغير ويمكن أيضا تعديلها. ويمكن أيضاً النظر إلى قيم التصويب بـ[الضرائب] وتعديلها.</value>
   </data>
   <data name="String56" xml:space="preserve">
-    <value>Für diese Anwendung existieren keine Ressourcen. Ausgeben.</value>
+    <value>ولا توجد موارد لهذا الطلب. توقف.</value>
   </data>
   <data name="String57" xml:space="preserve">
-    <value>Berechtigung zum Erstellen eines Erweiterungs-Li-Ordners ist erforderlich</value>
+    <value>الاذن بصنع مطوّر lib</value>
   </data>
   <data name="String58" xml:space="preserve">
-    <value>Willkommen bei Small Basic</value>
+    <value>مرحباً بكم في الرئيس الأساسي الصغير</value>
   </data>
   <data name="String59" xml:space="preserve">
-    <value>Nicht zu importieren Programm mit ID</value>
+    <value>فشل في برنامج الاستيراد مع الهوية</value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value>Farbe auf Weiß</value>
+    <value>اللون الأبيض</value>
   </data>
   <data name="String60" xml:space="preserve">
-    <value>Erfolgreich eingeführtes Programm mit ID</value>
+    <value>برنامج مستورد بنجاح مع الهوية</value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value>Erfolgreich beendeter Lauf mit Prozess</value>
+    <value>أنهيت بنجاح العملية</value>
   </data>
   <data name="String62" xml:space="preserve">
-    <value>Kann keine Debug- und Non-Debug-Läufe mischen</value>
+    <value>لا يمكن أن يخلط بين المزيجات و الجرعات غير الديبوج</value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value>Kann nicht kompilieren ein Programm, das bereits läuft</value>
+    <value>لا يمكن تجميع برنامج يجري بالفعل</value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value>Nicht veröffentlicht Programm (vielleicht zu kurz oder zu lang)</value>
+    <value>عدم نشر البرنامج (يستغرق وقتاً طويلاً جداً)</value>
   </data>
   <data name="String65" xml:space="preserve">
-    <value>Erfolgreich veröffentlichtes Programm mit ID</value>
+    <value>برنامج منشور بنجاح مع الهوية</value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value>Erfolgreiches Studium an</value>
+    <value>برنامج متخرج بنجاح</value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value>Kann nicht laufen Fall seit exe wurde nicht erfolgreich kompiliert</value>
+    <value>لا يمكن تشغيل القضية منذ أن تم تجميع المنفى بنجاح</value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value>Erfolgreich mit Prozess gestartet</value>
+    <value>بدأت بنجاح العملية</value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value>Erfolgreich dekompilierte Montage</value>
+    <value>التجمع المقطع بنجاح</value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value>Echte Farbe</value>
+    <value>كولور الحقيقي</value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value>Plugin hinzufügen : Nicht zu einem Plugin in Gruppe hinzufügen</value>
+    <value>Plugin Add: فشل في إضافة مضرب في المجموعة</value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value>Erfolgreich beendeter Lauf mit Prozess</value>
+    <value>أنهيت بنجاح العملية</value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value>Erstellen Sie neue Formen aus dem Codefenster.</value>
+    <value>خلق أشكال جديدة من نافذة الشفرة.</value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value>Sie können hier zuerst einen beliebigen Code einfügen.</value>
+    <value>يمكنك أن ترعى أي شفرة هنا أولاً.</value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value>Beachten Sie, dass die meisten Argumente sollten Literale, nicht Variablen sein.</value>
+    <value>ملاحظة أن معظم الحجج ينبغي أن تكون أدبية وليس متغيرات.</value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value>Microsoft Visual Studio Community Entwicklungsumgebung.</value>
+    <value>Microsoft Visual Studio Community development environment.</value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value>Schreibe deine eigenen Small Basic Erweiterungen und größere Projekte.</value>
+    <value>اكتبوا ارشاداتكم الأساسية الصغيرة ومشاريعكم الكبيرة.</value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value>Anzeigen und decompile .Net-Aggregate. Erfahren Sie, wie Erweiterungen funktionieren.</value>
+    <value>فيو و لا يتنافسون إكتشف كيف يعمل التمديد.</value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value>Wesentlich für unter die Kapuze von Small Basic.</value>
+    <value>أساساً للحصول على تحت غطاء صغير.</value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>Zip-Binaries und Extrakt herunterladen (keine Installation).</value>
+    <value>حمولة الزبدة والمستخرجات (لا تركيب).</value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value>Schwarz und Weiß</value>
+    <value>أسود وأبيض</value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value>Erstellen und Manipulieren von Bildern, einschließlich leicht geben png Bilder transparente Hintergründe und erstellen animierte Gifs.</value>
+    <value>Create and manipulate images, including easily giving png images transparent backgrounds and creating animated gifs.</value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value>Schauen Sie sich das magische Zauberstab Auswahl-Tool.</value>
+    <value>تحقق من أداة اختيار العصا السحرية.</value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value>Ausgezeichnete Texteditor Alternative zu Notebook.</value>
+    <value>محرر نص ممتاز بديل للملاحظة.</value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value>Ein großer Download, aber eine professionelle Ebene IDE.</value>
+    <value>حمولة كبيرة، ولكن درجة مهنية IDE.</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>Nützlich, die meisten textlesbaren Dateiformate schnell anzuschauen oder zu bearbeiten.</value>
+    <value>من المفيد النظر بسرعة إلى معظم صيغ الملفات القابلة للقراءة أو تحريرها.</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>Datei Zip Kompression.</value>
+    <value>ضغط الزبدة.</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>Die beste Möglichkeit, mehrere Dokumente in einer einzigen komprimierten Datei zu teilen.</value>
+    <value>أفضل طريقة لتقاسم الوثائق المتعددة في ملف مضغوط واحد.</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>Icons erstellen und bearbeiten.</value>
+    <value>الخلق والتحرير.</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>Icon-Formate sind ziemlich knifflig ohne ein einfaches Werkzeug wie dieses.</value>
+    <value>أشكال الشيكات مخادعة بدون أداة بسيطة كهذه.</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Und dann noch mehr</value>
+    <value>Undo Ctrl+Z</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Intellisons</value>
+    <value>Intellisense</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Redo Ctrl+ Y</value>
+    <value>Redo Ctrl+ نعم</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Schneiden von Strg+ X</value>
+    <value>القطع X</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>Kopieren von Ctrl+C</value>
+    <value>نسخة Ctrl+C</value>
   </data>
   <data name="String93" xml:space="preserve">
     <value>Paste Ctrl+V</value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value>Löschen</value>
+    <value>تحذف</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>Alle anzeigen Ctrl+A</value>
+    <value>اختيار جميع Ctrl+A</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Finden Sie Strg+F</value>
+    <value>اعثر على Ctrl+F</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>Finden und ersetzen Ctrl+ H</value>
+    <value>البحث والاستبدال حاء</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Kommentar Ausgewählte Zeilen Ctrl+?</value>
+    <value>تعليق Selected Lines Ctrl+?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>Un-Comment Selected Lines Ctrl+?</value>
+    <value>خطوط مختارة من طراز Ctrl+؟?</value>
   </data>
 </root>
