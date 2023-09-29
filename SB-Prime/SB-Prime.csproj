@@ -81,9 +81,8 @@
     <StartupObject>SB_Prime.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ExtensionManagerLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ExtensionManagerLibrary.dll</HintPath>
+    <Reference Include="ExtensionManagerLibrary">
+      <HintPath>..\..\ExtensionManager\ExtensionManagerLibrary\bin\Release\ExtensionManagerLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Humanizer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
