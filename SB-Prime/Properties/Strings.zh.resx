@@ -118,178 +118,178 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>小型基本必需品</value>
+    <value>小基本素数</value>
   </data>
   <data name="Label10" xml:space="preserve">
-    <value>开放现有方案</value>
+    <value>打开现有程序</value>
   </data>
   <data name="Label100" xml:space="preserve">
-    <value>Case Sensitive</value>
+    <value>区分大小写</value>
   </data>
   <data name="Label101" xml:space="preserve">
-    <value>Find</value>
+    <value>找到</value>
   </data>
   <data name="Label102" xml:space="preserve">
-    <value>A. 历史</value>
+    <value>历史</value>
   </data>
   <data name="Label103" xml:space="preserve">
-    <value> De</value>
+    <value>调试</value>
   </data>
   <data name="Label104" xml:space="preserve">
     <value>文件</value>
   </data>
   <data name="Label105" xml:space="preserve">
-    <value>启动新的方案(Ctrl+N)</value>
+    <value>启动新程序 （Ctrl+N）</value>
   </data>
   <data name="Label106" xml:space="preserve">
-    <value>新</value>
+    <value>新增功能</value>
   </data>
   <data name="Label107" xml:space="preserve">
-    <value>开放现有方案(Ctrl+O)</value>
+    <value>打开现有程序 （Ctrl+O）</value>
   </data>
   <data name="Label108" xml:space="preserve">
-    <value>开放</value>
+    <value>打开</value>
   </data>
   <data name="Label109" xml:space="preserve">
-    <value>近期方案</value>
+    <value>关闭当前程序</value>
   </data>
   <data name="Label11" xml:space="preserve">
-    <value>开放</value>
+    <value>打开</value>
   </data>
   <data name="Label110" xml:space="preserve">
-    <value>近距离</value>
+    <value>关闭</value>
   </data>
   <data name="Label111" xml:space="preserve">
-    <value>Save current program (Ctrl+S)</value>
+    <value>保存当前程序 （Ctrl+S）</value>
   </data>
   <data name="Label112" xml:space="preserve">
-    <value>Save</value>
+    <value>救</value>
   </data>
   <data name="Label113" xml:space="preserve">
-    <value>1. 拯救现有方案,使之符合新的档案</value>
+    <value>将当前程序保存到新文件</value>
   </data>
   <data name="Label114" xml:space="preserve">
-    <value>Save As</value>
+    <value>另存为</value>
   </data>
   <data name="Label115" xml:space="preserve">
-    <value>取消所有方案</value>
+    <value>保存所有程序</value>
   </data>
   <data name="Label116" xml:space="preserve">
-    <value>页: 1</value>
+    <value>全部保存</value>
   </data>
   <data name="Label117" xml:space="preserve">
-    <value> De</value>
+    <value>调试</value>
   </data>
   <data name="Label118" xml:space="preserve">
-    <value>停止目前的方案(Shift+F6)</value>
+    <value>停止当前程序 （Shift+F6）</value>
   </data>
   <data name="Label119" xml:space="preserve">
-    <value>停止</value>
+    <value>停</value>
   </data>
   <data name="Label12" xml:space="preserve">
-    <value>近期方案</value>
+    <value>关闭当前程序</value>
   </data>
   <data name="Label120" xml:space="preserve">
-    <value>经常方案</value>
+    <value>暂停当前程序</value>
   </data>
   <data name="Label121" xml:space="preserve">
-    <value>分娩</value>
+    <value>暂停</value>
   </data>
   <data name="Label122" xml:space="preserve">
-    <value>三. 走出目前这一次路线</value>
+    <value>跳出当前子例程</value>
   </data>
   <data name="Label123" xml:space="preserve">
-    <value>步骤</value>
+    <value>走出去</value>
   </data>
   <data name="Label124" xml:space="preserve">
-    <value>如果是非例行声明(F10)的话,就在下一个声明的后面步骤</value>
+    <value>如果是子例程，则单步跳过下一条语句 （F10）</value>
   </data>
   <data name="Label125" xml:space="preserve">
-    <value>步骤</value>
+    <value>跨过</value>
   </data>
   <data name="Label126" xml:space="preserve">
-    <value>通过现行方案的步骤,或首先发言开始和暂停(F11)</value>
+    <value>单步执行当前程序，或在第一个语句处开始和暂停 （F11）</value>
   </data>
   <data name="Label127" xml:space="preserve">
-    <value>步骤</value>
+    <value>步</value>
   </data>
   <data name="Label128" xml:space="preserve">
-    <value>启动/执行现行方案(F6)</value>
+    <value>启动/恢复当前程序 （F6）</value>
   </data>
   <data name="Label129" xml:space="preserve">
-    <value>开始/续会</value>
+    <value>开始/恢复</value>
   </data>
   <data name="Label13" xml:space="preserve">
-    <value>近距离</value>
+    <value>关闭</value>
   </data>
   <data name="Label130" xml:space="preserve">
-    <value>细目</value>
+    <value>断点</value>
   </data>
   <data name="Label131" xml:space="preserve">
-    <value>目前线的角点(F9)</value>
+    <value>在当前行切换断点 （F9）</value>
   </data>
   <data name="Label132" xml:space="preserve">
-    <value>Toggle Breakpoint</value>
+    <value>切换断点</value>
   </data>
   <data name="Label133" xml:space="preserve">
-    <value>明确所有休息点</value>
+    <value>清除所有断点</value>
   </data>
   <data name="Label134" xml:space="preserve">
-    <value>明确分点</value>
+    <value>清除断点</value>
   </data>
   <data name="Label135" xml:space="preserve">
-    <value>Ignore all Dispoints</value>
+    <value>忽略所有断点</value>
   </data>
   <data name="Label136" xml:space="preserve">
-    <value>Ignore Breakpoints</value>
+    <value>忽略断点</value>
   </data>
   <data name="Label137" xml:space="preserve">
-    <value>书目</value>
+    <value>书签</value>
   </data>
   <data name="Label138" xml:space="preserve">
-    <value>现行行文</value>
+    <value>在当前行切换书签</value>
   </data>
   <data name="Label139" xml:space="preserve">
-    <value>Toggle Bookmark</value>
+    <value>切换书签</value>
   </data>
   <data name="Label14" xml:space="preserve">
-    <value>救助现行方案</value>
+    <value>保存当前程序</value>
   </data>
   <data name="Label140" xml:space="preserve">
-    <value>接下来的书目</value>
+    <value>向下移动到下一个书签</value>
   </data>
   <data name="Label141" xml:space="preserve">
-    <value>下面的书目</value>
+    <value>下一个书签</value>
   </data>
   <data name="Label142" xml:space="preserve">
-    <value>阅读前书记</value>
+    <value>向上移动到上一个书签</value>
   </data>
   <data name="Label143" xml:space="preserve">
-    <value>以往著作</value>
+    <value>上一个书签</value>
   </data>
   <data name="Label144" xml:space="preserve">
-    <value>明确所有书目</value>
+    <value>清除所有书签</value>
   </data>
   <data name="Label145" xml:space="preserve">
-    <value>专著</value>
+    <value>清除书签</value>
   </data>
   <data name="Label146" xml:space="preserve">
     <value>工具</value>
   </data>
   <data name="Label147" xml:space="preserve">
-    <value>2. 对所有变量和中点进行观察</value>
+    <value>查看所有变量和调用堆栈</value>
   </data>
   <data name="Label148" xml:space="preserve">
-    <value>Variables &amp; Call Stack</value>
+    <value>变量和调用堆栈</value>
   </data>
   <data name="Label149" xml:space="preserve">
-    <value>观点指南</value>
+    <value>查看调试指南</value>
   </data>
   <data name="Label15" xml:space="preserve">
-    <value>Save</value>
+    <value>救</value>
   </data>
   <data name="Label150" xml:space="preserve">
-    <value>示范指南</value>
+    <value>调试指南</value>
   </data>
   <data name="Label151" xml:space="preserve">
     <value>工具</value>
@@ -298,10 +298,10 @@
     <value>工具</value>
   </data>
   <data name="Label153" xml:space="preserve">
-    <value>形状和控制编辑</value>
+    <value>形状和控件编辑器</value>
   </data>
   <data name="Label154" xml:space="preserve">
-    <value>Shapes Editor</value>
+    <value>形状编辑器</value>
   </data>
   <data name="Label155" xml:space="preserve">
     <value>显示流程图</value>
@@ -310,145 +310,145 @@
     <value>流程图</value>
   </data>
   <data name="Label157" xml:space="preserve">
-    <value>在文件中插入彩色名字</value>
+    <value>在文档中插入颜色名称</value>
   </data>
   <data name="Label158" xml:space="preserve">
-    <value>加入</value>
+    <value>插入颜色</value>
   </data>
   <data name="Label159" xml:space="preserve">
-    <value>插入字体名称为文件</value>
+    <value>在文档中插入字体名称</value>
   </data>
   <data name="Label16" xml:space="preserve">
-    <value>1. 拯救现有方案,使之符合新的档案</value>
+    <value>将当前程序保存到新文件</value>
   </data>
   <data name="Label160" xml:space="preserve">
-    <value>加入:</value>
+    <value>插入字体</value>
   </data>
   <data name="Label161" xml:space="preserve">
-    <value>有用联系和自由资源</value>
+    <value>有用的链接和免费资源</value>
   </data>
   <data name="Label162" xml:space="preserve">
     <value>链接</value>
   </data>
   <data name="Label163" xml:space="preserve">
-    <value>搜索延伸物体</value>
+    <value>搜索扩展对象</value>
   </data>
   <data name="Label164" xml:space="preserve">
-    <value>延期</value>
+    <value>搜索扩展</value>
   </data>
   <data name="Label165" xml:space="preserve">
-    <value>收集小型基本档案的内容</value>
+    <value>在小型基本文件中搜索内容</value>
   </data>
   <data name="Label166" xml:space="preserve">
-    <value>档案查询员</value>
+    <value>文件搜索器</value>
   </data>
   <data name="Label167" xml:space="preserve">
-    <value>专 员</value>
+    <value>高深</value>
   </data>
   <data name="Label168" xml:space="preserve">
     <value>扩展</value>
   </data>
   <data name="Label169" xml:space="preserve">
-    <value>管理延期</value>
+    <value>管理扩展</value>
   </data>
   <data name="Label17" xml:space="preserve">
-    <value>Save As</value>
+    <value>另存为</value>
   </data>
   <data name="Label170" xml:space="preserve">
-    <value>推广干事</value>
+    <value>扩展管理器</value>
   </data>
   <data name="Label171" xml:space="preserve">
-    <value>研究生课程</value>
+    <value>Visual Basic 的当前研究生课程</value>
   </data>
   <data name="Label172" xml:space="preserve">
     <value>毕业</value>
   </data>
   <data name="Label173" xml:space="preserve">
-    <value>使用IL Spy的C#</value>
+    <value>使用 ILSpy 将 .Net 程序集（dll 或 exe）反编译为 C#</value>
   </data>
   <data name="Label174" xml:space="preserve">
-    <value>不完整</value>
+    <value>反编译</value>
   </data>
   <data name="Label175" xml:space="preserve">
-    <value>观点</value>
+    <value>视图</value>
   </data>
   <data name="Label176" xml:space="preserve">
-    <value>Toggle di Screen programout</value>
+    <value>切换分屏程序布局</value>
   </data>
   <data name="Label177" xml:space="preserve">
-    <value>席卷检查</value>
+    <value>分屏</value>
   </data>
   <data name="Label178" xml:space="preserve">
-    <value> To 结 论</value>
+    <value>切换文本绕排模式</value>
   </data>
   <data name="Label179" xml:space="preserve">
-    <value>Word Wrap</value>
+    <value>自动换行</value>
   </data>
   <data name="Label18" xml:space="preserve">
-    <value>取消所有方案</value>
+    <value>保存所有程序</value>
   </data>
   <data name="Label180" xml:space="preserve">
-    <value>Toggle indent Guide</value>
+    <value>切换缩进参考线</value>
   </data>
   <data name="Label181" xml:space="preserve">
-    <value>背 景</value>
+    <value>缩进参考线</value>
   </data>
   <data name="Label182" xml:space="preserve">
-    <value>动物群(大体字体)</value>
+    <value>放大（大字体）</value>
   </data>
   <data name="Label183" xml:space="preserve">
-    <value>动物园</value>
+    <value>放大</value>
   </data>
   <data name="Label184" xml:space="preserve">
-    <value>冲绳</value>
+    <value>缩小（较小的字体）</value>
   </data>
   <data name="Label185" xml:space="preserve">
-    <value>动物园区</value>
+    <value>缩小</value>
   </data>
   <data name="Label186" xml:space="preserve">
-    <value>Reset zoom (default font)</value>
+    <value>重置缩放（默认字体）</value>
   </data>
   <data name="Label187" xml:space="preserve">
-    <value>Resetzom</value>
+    <value>重置缩放</value>
   </data>
   <data name="Label188" xml:space="preserve">
-    <value>利用黑暗主题(反向录像)</value>
+    <value>使用深色主题（反向视频）</value>
   </data>
   <data name="Label189" xml:space="preserve">
-    <value>黎明</value>
+    <value>深色主题</value>
   </data>
   <data name="Label19" xml:space="preserve">
-    <value>页: 1</value>
+    <value>全部保存</value>
   </data>
   <data name="Label190" xml:space="preserve">
-    <value>Toggle 显示白色空间</value>
+    <value>切换显示空格</value>
   </data>
   <data name="Label191" xml:space="preserve">
-    <value>View Whitespace</value>
+    <value>查看空白</value>
   </data>
   <data name="Label192" xml:space="preserve">
-    <value>图ggle</value>
+    <value>切换显示数字边距</value>
   </data>
   <data name="Label193" xml:space="preserve">
-    <value>观点</value>
+    <value>查看号码边距</value>
   </data>
   <data name="Label194" xml:space="preserve">
-    <value>改变当地电话(例如德国的`de',重新启动SB-Prime生效)</value>
+    <value>更改智能区域设置（例如，“de”表示德语，重新启动 SB-Prime 以生效）</value>
   </data>
   <data name="Label195" xml:space="preserve">
-    <value>语言法</value>
+    <value>语言代码</value>
   </data>
   <data name="Label196" xml:space="preserve">
-    <value>二、背景</value>
+    <value>设置</value>
   </data>
   <data name="Label197" xml:space="preserve">
-    <value>更改申请颜色</value>
+    <value>更改应用程序颜色</value>
   </data>
   <data name="Label198" xml:space="preserve">
-    <value>IDE Colors</value>
+    <value>IDE 颜色</value>
   </data>
   <data name="Label199" xml:space="preserve">
-    <value>出口环境</value>
+    <value>将设置导出到文件</value>
   </data>
   <data name="Label2" xml:space="preserve">
     <value>版本</value>
@@ -457,469 +457,469 @@
     <value>文件</value>
   </data>
   <data name="Label200" xml:space="preserve">
-    <value>出口环境</value>
+    <value>导出设置</value>
   </data>
   <data name="Label201" xml:space="preserve">
-    <value>从档案中进口环境,重新启动SB-Prime,以充分发挥效力</value>
+    <value>从文件导入设置，重新启动SB-Prime以完全生效</value>
   </data>
   <data name="Label202" xml:space="preserve">
-    <value>进口环境</value>
+    <value>导入设置</value>
   </data>
   <data name="Label203" xml:space="preserve">
-    <value>恢复环境,重新启动SB-Prime,以充分发挥效力</value>
+    <value>将设置重置为默认值，重新启动SB-Prime以完全生效</value>
   </data>
   <data name="Label204" xml:space="preserve">
-    <value>B. 重新定位</value>
+    <value>重置设置</value>
   </data>
   <data name="Label205" xml:space="preserve">
-    <value>其他选择和背景</value>
+    <value>其他选项和设置</value>
   </data>
   <data name="Label206" xml:space="preserve">
-    <value>备选办法</value>
+    <value>选项</value>
   </data>
   <data name="Label207" xml:space="preserve">
-    <value>最新版本的SB-Prime</value>
+    <value>将 SB-Prime 更新到最新版本</value>
   </data>
   <data name="Label208" xml:space="preserve">
-    <value>A. 更新</value>
+    <value>更新</value>
   </data>
   <data name="Label209" xml:space="preserve">
-    <value>不详1</value>
+    <value>无题1</value>
   </data>
   <data name="Label21" xml:space="preserve">
-    <value>近期档案</value>
+    <value>最近的文件列表</value>
   </data>
   <data name="Label210" xml:space="preserve">
-    <value>不详2</value>
+    <value>无题2</value>
   </data>
   <data name="Label211" xml:space="preserve">
-    <value>产出</value>
+    <value>输出</value>
   </data>
   <data name="Label212" xml:space="preserve">
-    <value>产出、错误和警告</value>
+    <value>输出、错误和警告</value>
   </data>
   <data name="Label213" xml:space="preserve">
-    <value> De</value>
+    <value>调试</value>
   </data>
   <data name="Label214" xml:space="preserve">
-    <value>变式</value>
+    <value>变量</value>
   </data>
   <data name="Label215" xml:space="preserve">
     <value>价值</value>
   </data>
   <data name="Label216" xml:space="preserve">
-    <value>变化价值</value>
+    <value>更改值</value>
   </data>
   <data name="Label217" xml:space="preserve">
-    <value>改变观察变量的价值</value>
+    <value>更改监视变量的值</value>
   </data>
   <data name="Label218" xml:space="preserve">
-    <value>集邮</value>
+    <value>设置</value>
   </data>
   <data name="Label219" xml:space="preserve">
-    <value>最新数据</value>
+    <value>刷新数据</value>
   </data>
   <data name="Label22" xml:space="preserve">
     <value>文件</value>
   </data>
   <data name="Label220" xml:space="preserve">
-    <value>重述观察变量的价值</value>
+    <value>刷新监视变量的值</value>
   </data>
   <data name="Label221" xml:space="preserve">
-    <value>Refresh</value>
+    <value>刷新</value>
   </data>
   <data name="Label222" xml:space="preserve">
-    <value>Remove Watch</value>
+    <value>移除监视</value>
   </data>
   <data name="Label223" xml:space="preserve">
-    <value>删除观察变量</value>
+    <value>删除监视变量</value>
   </data>
   <data name="Label224" xml:space="preserve">
     <value>删除</value>
   </data>
   <data name="Label225" xml:space="preserve">
-    <value>页: 1</value>
+    <value>如果中断&lt;</value>
   </data>
   <data name="Label226" xml:space="preserve">
-    <value>如果是</value>
+    <value>如果&gt;则中断</value>
   </data>
   <data name="Label227" xml:space="preserve">
-    <value>细目:</value>
+    <value>如果中断 =</value>
   </data>
   <data name="Label228" xml:space="preserve">
-    <value>三. 变动情况</value>
+    <value>如果更改，则中断</value>
   </data>
   <data name="Label229" xml:space="preserve">
-    <value>IDE Colors</value>
+    <value>IDE 颜色</value>
   </data>
   <data name="Label23" xml:space="preserve">
-    <value>启动新的方案</value>
+    <value>启动新程序</value>
   </data>
   <data name="Label230" xml:space="preserve">
     <value>地区</value>
   </data>
   <data name="Label231" xml:space="preserve">
-    <value>Label</value>
+    <value>标签</value>
   </data>
   <data name="Label232" xml:space="preserve">
-    <value>学历</value>
+    <value>颜色</value>
   </data>
   <data name="Label233" xml:space="preserve">
-    <value>浮标</value>
+    <value>点击设置颜色</value>
   </data>
   <data name="Label234" xml:space="preserve">
-    <value>红色</value>
+    <value>红</value>
   </data>
   <data name="Label235" xml:space="preserve">
-    <value>绿色</value>
+    <value>绿</value>
   </data>
   <data name="Label236" xml:space="preserve">
-    <value>蓝线</value>
+    <value>蓝</value>
   </data>
   <data name="Label237" xml:space="preserve">
-    <value>撤回违约</value>
+    <value>重置为默认值</value>
   </data>
   <data name="Label238" xml:space="preserve">
     <value>违约</value>
   </data>
   <data name="Label239" xml:space="preserve">
-    <value>接近和适用的变化</value>
+    <value>关闭并应用更改</value>
   </data>
   <data name="Label24" xml:space="preserve">
-    <value>新</value>
+    <value>新增功能</value>
   </data>
   <data name="Label240" xml:space="preserve">
-    <value>Done</value>
+    <value>做</value>
   </data>
   <data name="Label241" xml:space="preserve">
-    <value>接近于不作改动</value>
+    <value>关闭而不应用更改</value>
   </data>
   <data name="Label242" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="Label243" xml:space="preserve">
-    <value>不完整</value>
+    <value>反编译</value>
   </data>
   <data name="Label244" xml:space="preserve">
-    <value>C#</value>
+    <value>反编译为 C#</value>
   </data>
   <data name="Label245" xml:space="preserve">
-    <value>Izar</value>
+    <value>此向导将</value>
   </data>
   <data name="Label246" xml:space="preserve">
-    <value>产出地点(必须是一个空洞的夹——使用`Make New Folder')</value>
+    <value>输出位置（必须是空文件夹 - 使用“创建新文件夹”）</value>
   </data>
   <data name="Label247" xml:space="preserve">
-    <value>Browed to place to export decompiled Solutions</value>
+    <value>浏览到位置以导出反编译的解决方案</value>
   </data>
   <data name="Label248" xml:space="preserve">
-    <value>Browse</value>
+    <value>浏览</value>
   </data>
   <data name="Label249" xml:space="preserve">
-    <value>停止行动</value>
+    <value>关闭而不执行任何操作</value>
   </data>
   <data name="Label25" xml:space="preserve">
-    <value>开放现有方案</value>
+    <value>打开现有程序</value>
   </data>
   <data name="Label250" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="Label251" xml:space="preserve">
-    <value>视频演播室解决办法</value>
+    <value>反编译 Visual Studio 解决方案</value>
   </data>
   <data name="Label252" xml:space="preserve">
-    <value>不完整</value>
+    <value>反编译</value>
   </data>
   <data name="Label253" xml:space="preserve">
-    <value>资料来源:Net dll或 exe</value>
+    <value>源文件（.Net dll 或 exe）</value>
   </data>
   <data name="Label254" xml:space="preserve">
-    <value>Browse to source file to decompile</value>
+    <value>浏览到要反编译的源文件</value>
   </data>
   <data name="Label255" xml:space="preserve">
-    <value>Browse</value>
+    <value>浏览</value>
   </data>
   <data name="Label256" xml:space="preserve">
-    <value>如果选定的话,允许将原产地寡妇用于未完成婚前工作</value>
+    <value>如果选中，则允许在反编译的 exe 中使用文本窗口</value>
   </data>
   <data name="Label257" xml:space="preserve">
-    <value>出口作为假释申请</value>
+    <value>导出为控制台应用程序</value>
   </data>
   <data name="Label258" xml:space="preserve">
-    <value>进口方案细节</value>
+    <value>导入的程序详细信息</value>
   </data>
   <data name="Label259" xml:space="preserve">
-    <value>Program ID</value>
+    <value>程序标识</value>
   </data>
   <data name="Label26" xml:space="preserve">
-    <value>开放</value>
+    <value>打开</value>
   </data>
   <data name="Label260" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label261" xml:space="preserve">
     <value>标题</value>
   </data>
   <data name="Label262" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label263" xml:space="preserve">
-    <value>说明</value>
+    <value>描述</value>
   </data>
   <data name="Label264" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label265" xml:space="preserve">
     <value>类别</value>
   </data>
   <data name="Label266" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label267" xml:space="preserve">
-    <value>民众</value>
+    <value>人气</value>
   </data>
   <data name="Label268" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label269" xml:space="preserve">
-    <value>数量</value>
+    <value>评分数</value>
   </data>
   <data name="Label27" xml:space="preserve">
-    <value>近期方案</value>
+    <value>关闭当前程序</value>
   </data>
   <data name="Label270" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label271" xml:space="preserve">
-    <value>总体评级</value>
+    <value>总体评分</value>
   </data>
   <data name="Label272" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label273" xml:space="preserve">
-    <value>My Rating</value>
+    <value>我的评分</value>
   </data>
   <data name="Label274" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label275" xml:space="preserve">
-    <value>仅凭每个国际发展法学会一度完成学业</value>
+    <value>提交您的程序评级，每个ID只能完成一次</value>
   </data>
   <data name="Label276" xml:space="preserve">
-    <value>提交批准</value>
+    <value>提交评分</value>
   </data>
   <data name="Label277" xml:space="preserve">
-    <value>A. 寻找方案细节</value>
+    <value>获取程序 ID 的详细信息</value>
   </data>
   <data name="Label278" xml:space="preserve">
-    <value>Reload ID</value>
+    <value>充值编号</value>
   </data>
   <data name="Label279" xml:space="preserve">
-    <value>推广</value>
+    <value>扩展搜索器</value>
   </data>
   <data name="Label28" xml:space="preserve">
-    <value>近距离</value>
+    <value>关闭</value>
   </data>
   <data name="Label280" xml:space="preserve">
-    <value>搜索</value>
+    <value>搜索文本</value>
   </data>
   <data name="Label281" xml:space="preserve">
-    <value>A. 寻找延期案文</value>
+    <value>在扩展 API 中搜索文本</value>
   </data>
   <data name="Label282" xml:space="preserve">
     <value>搜索</value>
   </data>
   <data name="Label283" xml:space="preserve">
-    <value>吸收树木中的所有物品</value>
+    <value>折叠树中的所有项</value>
   </data>
   <data name="Label284" xml:space="preserve">
-    <value>全科</value>
+    <value>全部折叠</value>
   </data>
   <data name="Label285" xml:space="preserve">
-    <value>扩大选定项目的所有儿童项目</value>
+    <value>展开所选项目的所有子项</value>
   </data>
   <data name="Label286" xml:space="preserve">
-    <value>扩大甄选</value>
+    <value>展开所选内容</value>
   </data>
   <data name="Label287" xml:space="preserve">
-    <value>接下来的发生</value>
+    <value>移动到下一个匹配项</value>
   </data>
   <data name="Label288" xml:space="preserve">
-    <value>下一步</value>
+    <value>下一个</value>
   </data>
   <data name="Label289" xml:space="preserve">
-    <value>此前发生的情况</value>
+    <value>移动到上一个匹配项</value>
   </data>
   <data name="Label29" xml:space="preserve">
-    <value>救助现行方案</value>
+    <value>保存当前程序</value>
   </data>
   <data name="Label290" xml:space="preserve">
-    <value>曾任</value>
+    <value>以前</value>
   </data>
   <data name="Label291" xml:space="preserve">
-    <value>档案查询员</value>
+    <value>文件搜索器</value>
   </data>
   <data name="Label292" xml:space="preserve">
-    <value>根基</value>
+    <value>根文件夹</value>
   </data>
   <data name="Label293" xml:space="preserve">
-    <value>挑选一根主子,重新寻找小型基本档案</value>
+    <value>选择要以递归方式搜索小型基本文件的根文件夹</value>
   </data>
   <data name="Label294" xml:space="preserve">
-    <value>Browse</value>
+    <value>浏览</value>
   </data>
   <data name="Label295" xml:space="preserve">
-    <value>文件名称</value>
+    <value>文件名</value>
   </data>
   <data name="Label296" xml:space="preserve">
-    <value>1. 界线</value>
+    <value>行数</value>
   </data>
   <data name="Label297" xml:space="preserve">
     <value>日期</value>
   </data>
   <data name="Label298" xml:space="preserve">
-    <value>Folder</value>
+    <value>文件夹</value>
   </data>
   <data name="Label299" xml:space="preserve">
-    <value>1. 在SB-Prime开放目前选定的档案</value>
+    <value>在SB-Prime中打开当前选定的文件</value>
   </data>
   <data name="Label3" xml:space="preserve">
-    <value>线路</value>
+    <value>线</value>
   </data>
   <data name="Label30" xml:space="preserve">
-    <value>Save</value>
+    <value>救</value>
   </data>
   <data name="Label300" xml:space="preserve">
-    <value>开放</value>
+    <value>打开</value>
   </data>
   <data name="Label301" xml:space="preserve">
-    <value>文档数量</value>
+    <value>会议筛选器的文件数</value>
   </data>
   <data name="Label302" xml:space="preserve">
-    <value>履历</value>
+    <value>过滤器搜索</value>
   </data>
   <data name="Label303" xml:space="preserve">
-    <value>只字句</value>
+    <value>仅筛选整个单词</value>
   </data>
   <data name="Label304" xml:space="preserve">
-    <value>内容提要</value>
+    <value>整句话</value>
   </data>
   <data name="Label305" xml:space="preserve">
-    <value>仅对案件匹配进行过滤</value>
+    <value>仅筛选大小写匹配项</value>
   </data>
   <data name="Label306" xml:space="preserve">
-    <value>Case Sensitive</value>
+    <value>区分大小写</value>
   </data>
   <data name="Label307" xml:space="preserve">
-    <value>列入搜索档案</value>
+    <value>在搜索中包含文件路径名</value>
   </data>
   <data name="Label308" xml:space="preserve">
-    <value>包括档案馆</value>
+    <value>包含文件路径</value>
   </data>
   <data name="Label309" xml:space="preserve">
-    <value>装饰本</value>
+    <value>筛选文本</value>
   </data>
   <data name="Label31" xml:space="preserve">
-    <value>1. 拯救现有方案,使之符合新的档案</value>
+    <value>将当前程序保存到新文件</value>
   </data>
   <data name="Label310" xml:space="preserve">
-    <value>只有显示含有过滤文本的档案</value>
+    <value>仅显示包含筛选器文本的文件</value>
   </data>
   <data name="Label311" xml:space="preserve">
-    <value>在档案中进行过滤,用空白过滤器复制所有档案</value>
+    <value>对文件执行筛选器，空白筛选器文本以重新显示所有文件</value>
   </data>
   <data name="Label312" xml:space="preserve">
-    <value>Apply Filter</value>
+    <value>应用过滤器</value>
   </data>
   <data name="Label313" xml:space="preserve">
-    <value>定 义</value>
+    <value>查找和替换</value>
   </data>
   <data name="Label314" xml:space="preserve">
-    <value>Find</value>
+    <value>找到</value>
   </data>
   <data name="Label315" xml:space="preserve">
-    <value>替换</value>
+    <value>取代</value>
   </data>
   <data name="Label316" xml:space="preserve">
-    <value>裁定原案文的发生</value>
+    <value>查找以前出现的“查找”文本</value>
   </data>
   <data name="Label317" xml:space="preserve">
-    <value>Find 曾</value>
+    <value>查找上一页</value>
   </data>
   <data name="Label318" xml:space="preserve">
-    <value>裁定下一份定本</value>
+    <value>查找下一个出现的“查找”文本</value>
   </data>
   <data name="Label319" xml:space="preserve">
-    <value>Find Next</value>
+    <value>查找下一个</value>
   </data>
   <data name="Label32" xml:space="preserve">
-    <value>Save As</value>
+    <value>另存为</value>
   </data>
   <data name="Label320" xml:space="preserve">
-    <value>取代目前的情况,找到下一个步骤</value>
+    <value>替换当前匹配项并查找下一个匹配项</value>
   </data>
   <data name="Label321" xml:space="preserve">
-    <value>替换</value>
+    <value>取代</value>
   </data>
   <data name="Label322" xml:space="preserve">
-    <value>用替换案文取代原案文的所有出现情况</value>
+    <value>将“查找”文本的所有出现项替换为“替换文本”</value>
   </data>
   <data name="Label323" xml:space="preserve">
-    <value>替换</value>
+    <value>全部替换</value>
   </data>
   <data name="Label324" xml:space="preserve">
     <value>流程图</value>
   </data>
   <data name="Label325" xml:space="preserve">
-    <value>• 注意更多(小)</value>
+    <value>缩小以查看更多（更小）</value>
   </data>
   <data name="Label326" xml:space="preserve">
-    <value>冲绳</value>
+    <value>缩小</value>
   </data>
   <data name="Label327" xml:space="preserve">
-    <value>低(大)</value>
+    <value>放大以查看更少（更大）</value>
   </data>
   <data name="Label328" xml:space="preserve">
-    <value>动物园区</value>
+    <value>放大</value>
   </data>
   <data name="Label329" xml:space="preserve">
-    <value>开始</value>
+    <value>缩放以开始</value>
   </data>
   <data name="Label33" xml:space="preserve">
-    <value>取消所有方案</value>
+    <value>保存所有程序</value>
   </data>
   <data name="Label330" xml:space="preserve">
     <value>开始</value>
   </data>
   <data name="Label331" xml:space="preserve">
-    <value>主要法典末的动物群</value>
+    <value>放大到主代码的末尾</value>
   </data>
   <data name="Label332" xml:space="preserve">
     <value>结束</value>
   </data>
   <data name="Label333" xml:space="preserve">
-    <value>本文件最新流程图</value>
+    <value>从当前文档更新流程图</value>
   </data>
   <data name="Label334" xml:space="preserve">
-    <value>A. 更新</value>
+    <value>更新</value>
   </data>
   <data name="Label335" xml:space="preserve">
-    <value>在文件地点选择项目的动物流程图</value>
+    <value>缩放流程图以选择文档位置的项目</value>
   </data>
   <data name="Label336" xml:space="preserve">
-    <value>摘自</value>
+    <value>同步自</value>
   </data>
   <data name="Label337" xml:space="preserve">
-    <value>观察选定流程图项目的设想文件</value>
+    <value>滚动文档以查看选定的流程图项目</value>
   </data>
   <data name="Label338" xml:space="preserve">
-    <value>结 论</value>
+    <value>同步到</value>
   </data>
   <data name="Label339" xml:space="preserve">
-    <value>利用流程图提供信息</value>
+    <value>有关使用流程图的信息</value>
   </data>
   <data name="Label34" xml:space="preserve">
-    <value>页: 1</value>
+    <value>全部保存</value>
   </data>
   <data name="Label340" xml:space="preserve">
     <value>信息</value>
@@ -928,217 +928,217 @@
     <value>毕业</value>
   </data>
   <data name="Label342" xml:space="preserve">
-    <value>视像出口</value>
+    <value>导出到 Visual Basic</value>
   </data>
   <data name="Label343" xml:space="preserve">
-    <value>产出地点</value>
+    <value>输出位置</value>
   </data>
   <data name="Label344" xml:space="preserve">
-    <value>前往地点出口毕业解决方案</value>
+    <value>浏览到位置以导出分级解决方案</value>
   </data>
   <data name="Label345" xml:space="preserve">
-    <value>Browse</value>
+    <value>浏览</value>
   </data>
   <data name="Label346" xml:space="preserve">
-    <value>停止行动</value>
+    <value>关闭而不执行任何操作</value>
   </data>
   <data name="Label347" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="Label348" xml:space="preserve">
-    <value>出口视频演播室解决方案</value>
+    <value>导出 Visual Studio 解决方案</value>
   </data>
   <data name="Label349" xml:space="preserve">
     <value>毕业</value>
   </data>
   <data name="Label35" xml:space="preserve">
-    <value>印刷经常方案(印刷环境预选)</value>
+    <value>打印当前程序（请参阅高级&gt;打印设置选项）</value>
   </data>
   <data name="Label350" xml:space="preserve">
     <value>进口</value>
   </data>
   <data name="Label351" xml:space="preserve">
-    <value>网上进口方案</value>
+    <value>从 Web 导入程序</value>
   </data>
   <data name="Label352" xml:space="preserve">
-    <value>进口方案ID和近距离</value>
+    <value>导入程序 ID 并关闭</value>
   </data>
   <data name="Label353" xml:space="preserve">
-    <value>OK</value>
+    <value>还行</value>
   </data>
   <data name="Label354" xml:space="preserve">
-    <value>停止行动</value>
+    <value>关闭而不执行任何操作</value>
   </data>
   <data name="Label355" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="Label356" xml:space="preserve">
-    <value>进入该方案</value>
+    <value>输入程序 ID</value>
   </data>
   <data name="Label357" xml:space="preserve">
     <value>链接</value>
   </data>
   <data name="Label358" xml:space="preserve">
-    <value>以下是与基本自由开发资源的一些联系</value>
+    <value>以下是一些指向基本免费开发人员资源的链接</value>
   </data>
   <data name="Label359" xml:space="preserve">
-    <value>姓名</value>
+    <value>名字</value>
   </data>
   <data name="Label36" xml:space="preserve">
-    <value>印刷</value>
+    <value>打印</value>
   </data>
   <data name="Label360" xml:space="preserve">
-    <value>说明</value>
+    <value>描述</value>
   </data>
   <data name="Label361" xml:space="preserve">
     <value>链接</value>
   </data>
   <data name="Label362" xml:space="preserve">
-    <value>Click to openlink</value>
+    <value>点击打开链接</value>
   </data>
   <data name="Label363" xml:space="preserve">
-    <value>备选办法</value>
+    <value>选项</value>
   </data>
   <data name="Label364" xml:space="preserve">
-    <value>下载网站</value>
+    <value>导航到下载网站</value>
   </data>
   <data name="Label365" xml:space="preserve">
-    <value>SB-Prime on Line</value>
+    <value>SB-Prime画廊</value>
   </data>
   <data name="Label366" xml:space="preserve">
-    <value>最新版本的SB-Prime</value>
+    <value>将 SB-Prime 更新到最新版本</value>
   </data>
   <data name="Label367" xml:space="preserve">
-    <value>最新消息</value>
+    <value>更新到最新版本</value>
   </data>
   <data name="Label368" xml:space="preserve">
-    <value>小型基本装置</value>
+    <value>小型基本安装路径</value>
   </data>
   <data name="Label369" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label37" xml:space="preserve">
-    <value>Exit SB-Prime</value>
+    <value>退出SB-总理</value>
   </data>
   <data name="Label370" xml:space="preserve">
-    <value>小型基本安装箱</value>
+    <value>浏览到小型基本安装文件夹</value>
   </data>
   <data name="Label371" xml:space="preserve">
-    <value>Browse</value>
+    <value>浏览</value>
   </data>
   <data name="Label372" xml:space="preserve">
-    <value>OK</value>
+    <value>还行</value>
   </data>
   <data name="Label373" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="Label374" xml:space="preserve">
-    <value>插图“”</value>
+    <value>引用 “” 插入的颜色和字体名称</value>
   </data>
   <data name="Label375" xml:space="preserve">
-    <value>添加颜色作为海产值</value>
+    <value>将颜色插入为十六进制值</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>启动时的拖车(停机坪,重新启用推广管理员)</value>
+    <value>启动时加载扩展 dll（关闭并重新启动以使用扩展管理器）</value>
   </data>
   <data name="Label377" xml:space="preserve">
-    <value>印刷</value>
+    <value>打印放大倍率</value>
   </data>
   <data name="Label378" xml:space="preserve">
-    <value>增加(&gt;0)或减少(&lt;0)</value>
+    <value>增大 （&gt;0） 或减小 （&lt;0） 打印字体大小</value>
   </data>
   <data name="Label379" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label38" xml:space="preserve">
-    <value>收益</value>
+    <value>退出</value>
   </data>
   <data name="Label380" xml:space="preserve">
-    <value>印刷颜色</value>
+    <value>打印颜色</value>
   </data>
   <data name="Label381" xml:space="preserve">
-    <value>印刷所用的颜色</value>
+    <value>用于印刷的着色剂</value>
   </data>
   <data name="Label382" xml:space="preserve">
-    <value>页: 1</value>
+    <value>1</value>
   </data>
   <data name="Label383" xml:space="preserve">
-    <value>2 P-4, 2 P-3, 2 FS, 2 NS</value>
+    <value>2</value>
   </data>
   <data name="Label384" xml:space="preserve">
-    <value>4月</value>
+    <value>4</value>
   </data>
   <data name="Label385" xml:space="preserve">
-    <value>静态空间</value>
+    <value>缩进空格</value>
   </data>
   <data name="Label386" xml:space="preserve">
-    <value>请瓦伊特人.</value>
+    <value>请稍候。。。</value>
   </data>
   <data name="Label387" xml:space="preserve">
-    <value>多角边</value>
+    <value>多边形边</value>
   </data>
   <data name="Label388" xml:space="preserve">
-    <value>进入多角两侧(&gt;) 3)</value>
+    <value>输入多边形的边数 （&gt; 3）</value>
   </data>
   <data name="Label389" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label39" xml:space="preserve">
-    <value>家庭</value>
+    <value>家</value>
   </data>
   <data name="Label390" xml:space="preserve">
-    <value>Done</value>
+    <value>做</value>
   </data>
   <data name="Label391" xml:space="preserve">
-    <value>WidthAndHala</value>
+    <value>宽度和高度</value>
   </data>
   <data name="Label392" xml:space="preserve">
     <value>进展</value>
   </data>
   <data name="Label393" xml:space="preserve">
-    <value>搜索器</value>
+    <value>搜索的文件夹</value>
   </data>
   <data name="Label394" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="Label395" xml:space="preserve">
-    <value>0 找到的档案</value>
+    <value>0 找到的文件</value>
   </data>
   <data name="Label396" xml:space="preserve">
-    <value>零件或档案无法处理</value>
+    <value>无法处理 0 个文件夹或文件</value>
   </data>
   <data name="Label397" xml:space="preserve">
-    <value> Publish</value>
+    <value>发布</value>
   </data>
   <data name="Label398" xml:space="preserve">
-    <value>你们的方案在网上公布</value>
+    <value>您的程序已发布到 Web</value>
   </data>
   <data name="Label399" xml:space="preserve">
-    <value>2. 提出补充细节和结束</value>
+    <value>设置其他详细信息并关闭</value>
   </data>
   <data name="Label4" xml:space="preserve">
-    <value>页: 1</value>
+    <value>帽</value>
   </data>
   <data name="Label40" xml:space="preserve">
     <value>文件</value>
   </data>
   <data name="Label400" xml:space="preserve">
-    <value>更新和接近</value>
+    <value>更新和关闭</value>
   </data>
   <data name="Label401" xml:space="preserve">
-    <value>下面是您可以分享的方案的身份证</value>
+    <value>以下是您可以共享的程序的 ID</value>
   </data>
   <data name="Label402" xml:space="preserve">
-    <value>互联网探索者公开发表的节目(需要)</value>
+    <value>在 Internet Explorer 中打开已发布的程序（需要 SilverLight）</value>
   </data>
   <data name="Label403" xml:space="preserve">
-    <value>Browser开放</value>
+    <value>在浏览器中打开</value>
   </data>
   <data name="Label404" xml:space="preserve">
-    <value>选编(255×)</value>
+    <value>可选标题（最大 255）</value>
   </data>
   <data name="Label405" xml:space="preserve">
-    <value>任择说明(1024 max)</value>
+    <value>可选描述 （最大 1024）</value>
   </data>
   <data name="Label406" xml:space="preserve">
     <value>类别</value>
@@ -1147,49 +1147,49 @@
     <value>杂项</value>
   </data>
   <data name="Label408" xml:space="preserve">
-    <value>动物</value>
+    <value>游戏</value>
   </data>
   <data name="Label409" xml:space="preserve">
-    <value>抽样</value>
+    <value>样本</value>
   </data>
   <data name="Label41" xml:space="preserve">
-    <value>启动新的方案(Ctrl+N)</value>
+    <value>启动新程序 （Ctrl+N）</value>
   </data>
   <data name="Label410" xml:space="preserve">
-    <value>演习</value>
+    <value>锻炼</value>
   </data>
   <data name="Label411" xml:space="preserve">
     <value>例</value>
   </data>
   <data name="Label412" xml:space="preserve">
-    <value>马蒂</value>
+    <value>数学</value>
   </data>
   <data name="Label413" xml:space="preserve">
-    <value>Fun</value>
+    <value>乐趣</value>
   </data>
   <data name="Label414" xml:space="preserve">
-    <value>Shapes Editor</value>
+    <value>形状编辑器</value>
   </data>
   <data name="Label415" xml:space="preserve">
-    <value>Shapes</value>
+    <value>形状</value>
   </data>
   <data name="Label416" xml:space="preserve">
-    <value>累进式</value>
+    <value>矩形</value>
   </data>
   <data name="Label417" xml:space="preserve">
-    <value>Ellipse</value>
+    <value>椭圆</value>
   </data>
   <data name="Label418" xml:space="preserve">
-    <value>Triangle</value>
+    <value>三角形</value>
   </data>
   <data name="Label419" xml:space="preserve">
-    <value>线路</value>
+    <value>线</value>
   </data>
   <data name="Label42" xml:space="preserve">
-    <value>新</value>
+    <value>新增功能</value>
   </data>
   <data name="Label420" xml:space="preserve">
-    <value>案文</value>
+    <value>发短信</value>
   </data>
   <data name="Label421" xml:space="preserve">
     <value>图像</value>
@@ -1198,109 +1198,109 @@
     <value>控制</value>
   </data>
   <data name="Label423" xml:space="preserve">
-    <value>Button</value>
+    <value>按钮</value>
   </data>
   <data name="Label424" xml:space="preserve">
-    <value>文本</value>
+    <value>文本框</value>
   </data>
   <data name="Label425" xml:space="preserve">
-    <value>多种语言</value>
+    <value>多行文本框</value>
   </data>
   <data name="Label426" xml:space="preserve">
-    <value>最不发达国家</value>
+    <value>LDControls</value>
   </data>
   <data name="Label427" xml:space="preserve">
-    <value>多功能</value>
+    <value>多边形</value>
   </data>
   <data name="Label428" xml:space="preserve">
-    <value>Browser</value>
+    <value>浏览器</value>
   </data>
   <data name="Label429" xml:space="preserve">
-    <value> Check</value>
+    <value>复选框</value>
   </data>
   <data name="Label43" xml:space="preserve">
-    <value>开放现有方案(Ctrl+O)</value>
+    <value>打开现有程序 （Ctrl+O）</value>
   </data>
   <data name="Label430" xml:space="preserve">
-    <value>ComboBox</value>
+    <value>组合框</value>
   </data>
   <data name="Label431" xml:space="preserve">
-    <value>资料</value>
+    <value>数据视图</value>
   </data>
   <data name="Label432" xml:space="preserve">
-    <value>文件 观点</value>
+    <value>文档查看器</value>
   </data>
   <data name="Label433" xml:space="preserve">
-    <value>ListBox</value>
+    <value>列表框</value>
   </data>
   <data name="Label434" xml:space="preserve">
-    <value>名单</value>
+    <value>列表视图</value>
   </data>
   <data name="Label435" xml:space="preserve">
-    <value>MediaPlayer</value>
+    <value>媒体播放器</value>
   </data>
   <data name="Label436" xml:space="preserve">
-    <value>Menu</value>
+    <value>菜单</value>
   </data>
   <data name="Label437" xml:space="preserve">
-    <value>密码Box</value>
+    <value>密码框</value>
   </data>
   <data name="Label438" xml:space="preserve">
-    <value>进展 律师</value>
+    <value>进度条</value>
   </data>
   <data name="Label439" xml:space="preserve">
-    <value>无线电台</value>
+    <value>单选按钮</value>
   </data>
   <data name="Label44" xml:space="preserve">
-    <value>开放</value>
+    <value>打开</value>
   </data>
   <data name="Label440" xml:space="preserve">
-    <value>RyTextBox</value>
+    <value>富文本框</value>
   </data>
   <data name="Label441" xml:space="preserve">
-    <value>Slider</value>
+    <value>滑 块</value>
   </data>
   <data name="Label442" xml:space="preserve">
-    <value>树木</value>
+    <value>树视图</value>
   </data>
   <data name="Label443" xml:space="preserve">
-    <value>删除部分沙皮</value>
+    <value>删除所选形状</value>
   </data>
   <data name="Label444" xml:space="preserve">
-    <value>Snap Size</value>
+    <value>捕捉大小</value>
   </data>
   <data name="Label445" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="Label446" xml:space="preserve">
-    <value>进口</value>
+    <value>从代码导入</value>
   </data>
   <data name="Label447" xml:space="preserve">
-    <value>删除所有沙pes</value>
+    <value>删除所有形状</value>
   </data>
   <data name="Label448" xml:space="preserve">
-    <value>观点</value>
+    <value>视图高度</value>
   </data>
   <data name="Label449" xml:space="preserve">
-    <value>页: 1</value>
+    <value>1000</value>
   </data>
   <data name="Label45" xml:space="preserve">
-    <value>近期方案</value>
+    <value>关闭当前程序</value>
   </data>
   <data name="Label450" xml:space="preserve">
-    <value>观点</value>
+    <value>视图宽度</value>
   </data>
   <data name="Label451" xml:space="preserve">
-    <value>页: 1</value>
+    <value>1000</value>
   </data>
   <data name="Label452" xml:space="preserve">
-    <value>观点</value>
+    <value>比例视图</value>
   </data>
   <data name="Label453" xml:space="preserve">
     <value>帮助</value>
   </data>
   <data name="Label454" xml:space="preserve">
-    <value>财产</value>
+    <value>性能</value>
   </data>
   <data name="Label455" xml:space="preserve">
     <value>财产</value>
@@ -1309,16 +1309,16 @@
     <value>价值</value>
   </data>
   <data name="Label457" xml:space="preserve">
-    <value>固定价值</value>
+    <value>设置值</value>
   </data>
   <data name="Label458" xml:space="preserve">
-    <value>集邮</value>
+    <value>设置</value>
   </data>
   <data name="Label459" xml:space="preserve">
-    <value>Modifiers</value>
+    <value>修饰 符</value>
   </data>
   <data name="Label46" xml:space="preserve">
-    <value>近距离</value>
+    <value>关闭</value>
   </data>
   <data name="Label460" xml:space="preserve">
     <value>财产</value>
@@ -1327,286 +1327,364 @@
     <value>价值</value>
   </data>
   <data name="Label462" xml:space="preserve">
-    <value>Variables &amp; Call Stack</value>
+    <value>变量和调用堆栈</value>
   </data>
   <data name="Label463" xml:space="preserve">
-    <value>变式</value>
+    <value>变量</value>
   </data>
   <data name="Label464" xml:space="preserve">
     <value>价值</value>
   </data>
   <data name="Label465" xml:space="preserve">
-    <value>Call Stack</value>
+    <value>调用堆栈</value>
+  </data>
+  <data name="Label466" xml:space="preserve">
+    <value>工具提示智能感知变量名称的附加正则表达式（例如俄语 а-яА-ЯёЁЁ）</value>
+  </data>
+  <data name="Label467" xml:space="preserve">
+    <value>矩形</value>
+  </data>
+  <data name="Label468" xml:space="preserve">
+    <value>椭圆</value>
+  </data>
+  <data name="Label469" xml:space="preserve">
+    <value>三角形</value>
   </data>
   <data name="Label47" xml:space="preserve">
-    <value>Save current program (Ctrl+S)</value>
+    <value>保存当前程序 （Ctrl+S）</value>
+  </data>
+  <data name="Label470" xml:space="preserve">
+    <value>线</value>
+  </data>
+  <data name="Label471" xml:space="preserve">
+    <value>发短信</value>
+  </data>
+  <data name="Label472" xml:space="preserve">
+    <value>图像</value>
+  </data>
+  <data name="Label473" xml:space="preserve">
+    <value>按钮</value>
+  </data>
+  <data name="Label474" xml:space="preserve">
+    <value>文本框</value>
+  </data>
+  <data name="Label475" xml:space="preserve">
+    <value>多行文本框</value>
+  </data>
+  <data name="Label476" xml:space="preserve">
+    <value>多边形</value>
+  </data>
+  <data name="Label477" xml:space="preserve">
+    <value>浏览器</value>
+  </data>
+  <data name="Label478" xml:space="preserve">
+    <value>复选框</value>
+  </data>
+  <data name="Label479" xml:space="preserve">
+    <value>组合框</value>
   </data>
   <data name="Label48" xml:space="preserve">
-    <value>Save</value>
+    <value>救</value>
+  </data>
+  <data name="Label480" xml:space="preserve">
+    <value>数据视图</value>
+  </data>
+  <data name="Label481" xml:space="preserve">
+    <value>文档查看器</value>
+  </data>
+  <data name="Label482" xml:space="preserve">
+    <value>列表框</value>
+  </data>
+  <data name="Label483" xml:space="preserve">
+    <value>列表视图</value>
+  </data>
+  <data name="Label484" xml:space="preserve">
+    <value>媒体播放器</value>
+  </data>
+  <data name="Label485" xml:space="preserve">
+    <value>菜单</value>
+  </data>
+  <data name="Label486" xml:space="preserve">
+    <value>密码框</value>
+  </data>
+  <data name="Label487" xml:space="preserve">
+    <value>进度条</value>
+  </data>
+  <data name="Label488" xml:space="preserve">
+    <value>单选按钮</value>
+  </data>
+  <data name="Label489" xml:space="preserve">
+    <value>富文本框</value>
   </data>
   <data name="Label49" xml:space="preserve">
-    <value>1. 拯救现有方案,使之符合新的档案</value>
+    <value>将当前程序保存到新文件</value>
+  </data>
+  <data name="Label490" xml:space="preserve">
+    <value>滑 块</value>
+  </data>
+  <data name="Label491" xml:space="preserve">
+    <value>树视图</value>
   </data>
   <data name="Label5" xml:space="preserve">
-    <value>Numlock</value>
+    <value>数字锁</value>
   </data>
   <data name="Label50" xml:space="preserve">
-    <value>Save As</value>
+    <value>另存为</value>
   </data>
   <data name="Label51" xml:space="preserve">
-    <value>取消所有方案</value>
+    <value>保存所有程序</value>
   </data>
   <data name="Label52" xml:space="preserve">
-    <value>页: 1</value>
+    <value>全部保存</value>
   </data>
   <data name="Label53" xml:space="preserve">
-    <value>方案</value>
+    <value>程序</value>
   </data>
   <data name="Label54" xml:space="preserve">
-    <value>停止目前的方案(Shift+F5)</value>
+    <value>停止当前程序 （Shift+F5）</value>
   </data>
   <data name="Label55" xml:space="preserve">
-    <value>停止</value>
+    <value>停</value>
   </data>
   <data name="Label56" xml:space="preserve">
-    <value>现行方案(F5)</value>
+    <value>运行当前程序 （F5）</value>
   </data>
   <data name="Label57" xml:space="preserve">
-    <value>页: 1</value>
+    <value>跑</value>
   </data>
   <data name="Label58" xml:space="preserve">
-    <value>Edit</value>
+    <value>编辑</value>
   </data>
   <data name="Label59" xml:space="preserve">
-    <value>现行甄选办法</value>
+    <value>将当前所选内容复制到剪贴板</value>
   </data>
   <data name="Label6" xml:space="preserve">
     <value>插入</value>
   </data>
   <data name="Label60" xml:space="preserve">
-    <value>页: 1</value>
+    <value>复制</value>
   </data>
   <data name="Label61" xml:space="preserve">
-    <value>B. 现行甄选的以往记号</value>
+    <value>当前选择的过去剪贴板</value>
   </data>
   <data name="Label62" xml:space="preserve">
-    <value>Paste</value>
+    <value>糊</value>
   </data>
   <data name="Label63" xml:space="preserve">
-    <value>删除目前的选择,以排在上</value>
+    <value>将当前所选内容删除到剪贴板</value>
   </data>
   <data name="Label64" xml:space="preserve">
-    <value>简称</value>
+    <value>切</value>
   </data>
   <data name="Label65" xml:space="preserve">
-    <value>删除目前的甄选</value>
+    <value>删除当前所选内容</value>
   </data>
   <data name="Label66" xml:space="preserve">
     <value>删除</value>
   </data>
   <data name="Label67" xml:space="preserve">
-    <value>以往的行动</value>
+    <value>撤消上一个操作</value>
   </data>
   <data name="Label68" xml:space="preserve">
-    <value>Undo</value>
+    <value>撤消</value>
   </data>
   <data name="Label69" xml:space="preserve">
-    <value>最近的行动</value>
+    <value>重做上一个操作</value>
   </data>
   <data name="Label7" xml:space="preserve">
     <value>帮助</value>
   </data>
   <data name="Label70" xml:space="preserve">
-    <value>Redo</value>
+    <value>重做</value>
   </data>
   <data name="Label71" xml:space="preserve">
-    <value>选择完整的方案</value>
+    <value>选择完整程序</value>
   </data>
   <data name="Label72" xml:space="preserve">
-    <value>选择</value>
+    <value>全选</value>
   </data>
   <data name="Label73" xml:space="preserve">
-    <value>一切组合</value>
+    <value>折叠所有折叠</value>
   </data>
   <data name="Label74" xml:space="preserve">
-    <value>全科</value>
+    <value>全部折叠</value>
   </data>
   <data name="Label75" xml:space="preserve">
-    <value>1. 扩大所有方面</value>
+    <value>展开所有折叠</value>
   </data>
   <data name="Label76" xml:space="preserve">
-    <value>扩大</value>
+    <value>全部展开</value>
   </data>
   <data name="Label77" xml:space="preserve">
-    <value>A. 格式</value>
+    <value>格式化当前程序</value>
   </data>
   <data name="Label78" xml:space="preserve">
     <value>格式</value>
   </data>
   <data name="Label79" xml:space="preserve">
-    <value>前面的行文</value>
+    <value>导航到上一行</value>
   </data>
   <data name="Label8" xml:space="preserve">
-    <value>启动新的方案</value>
+    <value>启动新程序</value>
   </data>
   <data name="Label80" xml:space="preserve">
-    <value>曾任</value>
+    <value>以前</value>
   </data>
   <data name="Label81" xml:space="preserve">
-    <value>离下线</value>
+    <value>导航到下一行</value>
   </data>
   <data name="Label82" xml:space="preserve">
-    <value>下一步</value>
+    <value>下一个</value>
   </data>
   <data name="Label83" xml:space="preserve">
-    <value>网站</value>
+    <value>蹼</value>
   </data>
   <data name="Label84" xml:space="preserve">
-    <value>网上进口方案</value>
+    <value>从 Web 导入程序</value>
   </data>
   <data name="Label85" xml:space="preserve">
     <value>进口</value>
   </data>
   <data name="Label86" xml:space="preserve">
-    <value>将现行方案纳入网站</value>
+    <value>将当前程序发布到网络</value>
   </data>
   <data name="Label87" xml:space="preserve">
-    <value> Publish</value>
+    <value>发布</value>
   </data>
   <data name="Label88" xml:space="preserve">
     <value>搜索</value>
   </data>
   <data name="Label89" xml:space="preserve">
-    <value>先前的快速调查</value>
+    <value>快速查找上一页</value>
   </data>
   <data name="Label9" xml:space="preserve">
-    <value>新</value>
+    <value>新增功能</value>
   </data>
   <data name="Label90" xml:space="preserve">
-    <value>Find 曾</value>
+    <value>查找上一页</value>
   </data>
   <data name="Label91" xml:space="preserve">
-    <value>下一次</value>
+    <value>快速查找下一个</value>
   </data>
   <data name="Label92" xml:space="preserve">
-    <value>Find Next</value>
+    <value>查找下一个</value>
   </data>
   <data name="Label93" xml:space="preserve">
-    <value>鉴定和替换方言</value>
+    <value>“查找和替换”对话框</value>
   </data>
   <data name="Label94" xml:space="preserve">
-    <value>定 义</value>
+    <value>查找和替换</value>
   </data>
   <data name="Label95" xml:space="preserve">
-    <value>突出发现的所有案件</value>
+    <value>突出显示找到的所有实例</value>
   </data>
   <data name="Label96" xml:space="preserve">
-    <value>十二、结 论</value>
+    <value>突出显示全部</value>
   </data>
   <data name="Label97" xml:space="preserve">
-    <value>2. 仅强调一字对应</value>
+    <value>仅搜索并突出显示整个单词匹配项</value>
   </data>
   <data name="Label98" xml:space="preserve">
-    <value>内容提要</value>
+    <value>整句话</value>
   </data>
   <data name="Label99" xml:space="preserve">
-    <value>仅发现和强调敏感案例</value>
+    <value>仅搜索和突出显示区分大小写的匹配项</value>
   </data>
   <data name="String1" xml:space="preserve">
-    <value>选择多种形状、迁移或共同修改</value>
+    <value>使用 Shift 选择多个形状，以便一起移动或修改</value>
   </data>
   <data name="String10" xml:space="preserve">
-    <value>国际英特尔利斯公司将出现在您对物体和方法的掌握以及您的类型和看法中.</value>
+    <value>当您将鼠标悬停在对象和方法上以及键入和查看潜在选项时，智能感知将显示在此处。</value>
   </data>
   <data name="String100" xml:space="preserve">
-    <value>统一档案指挥部</value>
+    <value>取消注释文件命令</value>
   </data>
   <data name="String101" xml:space="preserve">
-    <value>Collapse Folding</value>
+    <value>折叠折叠</value>
   </data>
   <data name="String102" xml:space="preserve">
-    <value>1. 扩大颜色</value>
+    <value>展开折叠</value>
   </data>
   <data name="String103" xml:space="preserve">
-    <value>5. 进口</value>
+    <value>向后导航 Ctrl+B</value>
   </data>
   <data name="String104" xml:space="preserve">
-    <value>5. 进口</value>
+    <value>向前导航 Ctrl+Shift+B</value>
   </data>
   <data name="String105" xml:space="preserve">
-    <value>作为超文本录制</value>
+    <value>将所选内容作为 HTML 文本复制到剪贴板</value>
   </data>
   <data name="String106" xml:space="preserve">
-    <value>作为超文本录制的剪辑</value>
+    <value>将所选内容作为 HTML 复制到剪贴板</value>
   </data>
   <data name="String107" xml:space="preserve">
-    <value>登上卡片作为皇家警察部队</value>
+    <value>将所选内容作为 RTF 复制到剪贴板</value>
   </data>
   <data name="String108" xml:space="preserve">
-    <value>露天捕获物</value>
+    <value>打开包含文件夹</value>
   </data>
   <data name="String109" xml:space="preserve">
-    <value>Add to Debug Watch Ctrl+Shift+W</value>
+    <value>添加到调试手表 Ctrl+Shift+W</value>
   </data>
   <data name="String11" xml:space="preserve">
-    <value>理由</value>
+    <value>参数</value>
   </data>
   <data name="String110" xml:space="preserve">
     <value>显示流程图</value>
   </data>
   <data name="String111" xml:space="preserve">
-    <value>格式</value>
+    <value>格式化程序</value>
   </data>
   <data name="String112" xml:space="preserve">
-    <value>注</value>
+    <value>插入颜色</value>
   </data>
   <data name="String113" xml:space="preserve">
-    <value>插入</value>
+    <value>插入字体</value>
   </data>
   <data name="String114" xml:space="preserve">
-    <value>白宫</value>
+    <value>白底色</value>
   </data>
   <data name="String115" xml:space="preserve">
-    <value>真正的颜色</value>
+    <value>真彩色</value>
   </data>
   <data name="String116" xml:space="preserve">
-    <value>黑人和白人</value>
+    <value>黑与白</value>
   </data>
   <data name="String117" xml:space="preserve">
-    <value>请瓦伊特人.</value>
+    <value>请稍候。。。</value>
   </data>
   <data name="String118" xml:space="preserve">
-    <value>Loading files</value>
+    <value>加载文件</value>
   </data>
   <data name="String119" xml:space="preserve">
-    <value>这一担心将使你的小型基本方案变成微软基本视像</value>
+    <value>此向导将把您的小型基本程序转换为Microsoft Visual Basic</value>
   </data>
   <data name="String12" xml:space="preserve">
-    <value>回返</value>
+    <value>返回</value>
   </data>
   <data name="String120" xml:space="preserve">
-    <value>配对Microsoft C#(批量或出价)的有效网络组装,然后打开载有不匹配的C#源代码的夹.</value>
+    <value>将有效的 .Net 程序集反编译为Microsoft C#（dll 或 exe），然后打开包含反编译的 C# 源代码的文件夹。</value>
   </data>
   <data name="String121" xml:space="preserve">
-    <value>如果安装了视像室,那么项目档案就会开放(*.csproj).</value>
+    <value>如果成功，并且安装了Visual Studio，则打开项目文件（*.csproj）。</value>
   </data>
   <data name="String122" xml:space="preserve">
-    <value>裁武会谈</value>
+    <value>开始</value>
   </data>
   <data name="String123" xml:space="preserve">
-    <value>出席情况</value>
+    <value>结束</value>
   </data>
   <data name="String124" xml:space="preserve">
-    <value>不稳定</value>
+    <value>未凝固的</value>
   </data>
   <data name="String125" xml:space="preserve">
-    <value>主要窗口</value>
+    <value>主窗口</value>
   </data>
   <data name="String126" xml:space="preserve">
-    <value>文件 Layout</value>
+    <value>文档布局</value>
   </data>
   <data name="String127" xml:space="preserve">
-    <value>文件Lexer</value>
+    <value>文档词法分析</value>
   </data>
   <data name="String128" xml:space="preserve">
     <value>流程图</value>
@@ -1615,73 +1693,73 @@
     <value>背景</value>
   </data>
   <data name="String13" xml:space="preserve">
-    <value>此外,在这个窗口中,在看到物体时,可将烟雾压倒在方法、财产或事件上.</value>
+    <value>此外，在查看对象时，通过将鼠标悬停在方法、属性或事件上，可以在此窗口中查看方法的弹出说明。</value>
   </data>
   <data name="String130" xml:space="preserve">
-    <value>理由</value>
+    <value>前景</value>
   </data>
   <data name="String131" xml:space="preserve">
-    <value>排放</value>
+    <value>分配器</value>
   </data>
   <data name="String132" xml:space="preserve">
-    <value>甄选</value>
+    <value>选择</value>
   </data>
   <data name="String133" xml:space="preserve">
-    <value>边缘化</value>
+    <value>保证金背景</value>
   </data>
   <data name="String134" xml:space="preserve">
-    <value>Margin Foreground</value>
+    <value>边距前景</value>
   </data>
   <data name="String135" xml:space="preserve">
-    <value>编目背 景</value>
+    <value>折叠背景</value>
   </data>
   <data name="String136" xml:space="preserve">
-    <value>Folding Foreground</value>
+    <value>折叠前景</value>
   </data>
   <data name="String137" xml:space="preserve">
-    <value>缩略语</value>
+    <value>书签背景</value>
   </data>
   <data name="String138" xml:space="preserve">
-    <value>书目</value>
+    <value>书签前景</value>
   </data>
   <data name="String139" xml:space="preserve">
-    <value>背 景</value>
+    <value>断点背景</value>
   </data>
   <data name="String14" xml:space="preserve">
-    <value>选择Shape</value>
+    <value>选择形状</value>
   </data>
   <data name="String140" xml:space="preserve">
-    <value>地点</value>
+    <value>断点前景</value>
   </data>
   <data name="String141" xml:space="preserve">
-    <value>选 举</value>
+    <value>选择</value>
   </data>
   <data name="String142" xml:space="preserve">
-    <value>灯光</value>
+    <value>突出显示调试</value>
   </data>
   <data name="String143" xml:space="preserve">
-    <value>Highlight Find</value>
+    <value>突出显示查找</value>
   </data>
   <data name="String144" xml:space="preserve">
-    <value>缩略语</value>
+    <value>突出显示已删除</value>
   </data>
   <data name="String145" xml:space="preserve">
-    <value>致谢</value>
+    <value>突出显示已插入</value>
   </data>
   <data name="String146" xml:space="preserve">
-    <value>CallTip Foreground</value>
+    <value>呼叫提示前景</value>
   </data>
   <data name="String147" xml:space="preserve">
-    <value>三、背 景</value>
+    <value>呼叫提示背景</value>
   </data>
   <data name="String148" xml:space="preserve">
-    <value>CallTip Highlight</value>
+    <value>呼叫提示突出显示</value>
   </data>
   <data name="String149" xml:space="preserve">
-    <value>理由</value>
+    <value>前景</value>
   </data>
   <data name="String15" xml:space="preserve">
-    <value>Unlect Shape</value>
+    <value>取消选择形状</value>
   </data>
   <data name="String150" xml:space="preserve">
     <value>背景</value>
@@ -1690,34 +1768,34 @@
     <value>评论</value>
   </data>
   <data name="String152" xml:space="preserve">
-    <value>努力</value>
+    <value>字符串</value>
   </data>
   <data name="String153" xml:space="preserve">
-    <value>操作员</value>
+    <value>算子</value>
   </data>
   <data name="String154" xml:space="preserve">
     <value>关键词</value>
   </data>
   <data name="String155" xml:space="preserve">
-    <value>目的</value>
+    <value>对象</value>
   </data>
   <data name="String156" xml:space="preserve">
     <value>方法</value>
   </data>
   <data name="String157" xml:space="preserve">
-    <value>许可证</value>
+    <value>字面</value>
   </data>
   <data name="String158" xml:space="preserve">
-    <value>理由</value>
+    <value>前景</value>
   </data>
   <data name="String159" xml:space="preserve">
     <value>背景</value>
   </data>
   <data name="String16" xml:space="preserve">
-    <value>表格</value>
+    <value>复制所选形状</value>
   </data>
   <data name="String160" xml:space="preserve">
-    <value>概要</value>
+    <value>高亮</value>
   </data>
   <data name="String161" xml:space="preserve">
     <value>条件</value>
@@ -1726,336 +1804,336 @@
     <value>开始</value>
   </data>
   <data name="String163" xml:space="preserve">
-    <value>电话</value>
+    <value>叫</value>
   </data>
   <data name="String164" xml:space="preserve">
-    <value>页: 1</value>
+    <value>为</value>
   </data>
   <data name="String165" xml:space="preserve">
-    <value>.....</value>
+    <value>而</value>
   </data>
   <data name="String166" xml:space="preserve">
-    <value>声明</value>
+    <value>陈述</value>
   </data>
   <data name="String167" xml:space="preserve">
     <value>法典</value>
   </data>
   <data name="String168" xml:space="preserve">
-    <value>SB-Prime edition</value>
+    <value>SB-总理版本</value>
   </data>
   <data name="String169" xml:space="preserve">
-    <value>延期</value>
+    <value>调试扩展</value>
   </data>
   <data name="String17" xml:space="preserve">
-    <value>背景</value>
+    <value>背景颜色</value>
   </data>
   <data name="String170" xml:space="preserve">
-    <value>线路</value>
+    <value>线</value>
   </data>
   <data name="String171" xml:space="preserve">
-    <value>段 次 页 次</value>
+    <value>线</value>
   </data>
   <data name="String172" xml:space="preserve">
-    <value>页 次</value>
+    <value>列</value>
   </data>
   <data name="String173" xml:space="preserve">
-    <value>页: 1</value>
+    <value>大写锁定</value>
   </data>
   <data name="String174" xml:space="preserve">
-    <value>Num Lock</value>
+    <value>数字锁</value>
   </data>
   <data name="String175" xml:space="preserve">
     <value>插入</value>
   </data>
   <data name="String176" xml:space="preserve">
-    <value>偷窃</value>
+    <value>调试</value>
   </data>
   <data name="String177" xml:space="preserve">
-    <value>驾驶</value>
+    <value>运行</value>
   </data>
   <data name="String178" xml:space="preserve">
-    <value>Variable Regex</value>
+    <value>可变正则表达式</value>
   </data>
   <data name="String179" xml:space="preserve">
-    <value>传真号码: 传真号码</value>
+    <value>工具提示智能感知变量名称的其他正则表达式</value>
   </data>
   <data name="String18" xml:space="preserve">
-    <value>现行文书的教条</value>
+    <value>将代码粘贴到当前文档</value>
   </data>
   <data name="String180" xml:space="preserve">
-    <value>顶端“途径”的工具窗口</value>
+    <value>工具窗口“始终位于顶部”</value>
   </data>
   <data name="String181" xml:space="preserve">
-    <value>资料来源:编码</value>
+    <value>源代码字体</value>
   </data>
   <data name="String182" xml:space="preserve">
-    <value>来源法的亲子家庭</value>
+    <value>源代码的字体系列</value>
   </data>
   <data name="String19" xml:space="preserve">
-    <value>现行文件版</value>
+    <value>从当前文档复制代码</value>
   </data>
   <data name="String2" xml:space="preserve">
-    <value>Toggle intellisense view</value>
+    <value>切换智能感知视图</value>
   </data>
   <data name="String20" xml:space="preserve">
-    <value>明确</value>
+    <value>清楚</value>
   </data>
   <data name="String21" xml:space="preserve">
-    <value>明确观察条件</value>
+    <value>清除监视条件</value>
   </data>
   <data name="String22" xml:space="preserve">
-    <value>这套文件已经包含档案.</value>
+    <value>此文件夹已包含文件。</value>
   </data>
   <data name="String23" xml:space="preserve">
-    <value>选择另一个地点或空出这个夹子,并再次尝试.</value>
+    <value>选择其他位置或清空此文件夹，然后重试。</value>
   </data>
   <data name="String24" xml:space="preserve">
-    <value>流程图失败,很可能是因为编码错误,因此核对方案汇编了数据.</value>
+    <value>流程图失败，可能是因为代码错误 - 检查程序编译。</value>
   </data>
   <data name="String25" xml:space="preserve">
-    <value>你们是否希望继续?</value>
+    <value>是否要继续？</value>
   </data>
   <data name="String26" xml:space="preserve">
-    <value>左上点选定一个项目</value>
+    <value>左键单击项目以将其选中</value>
   </data>
   <data name="String27" xml:space="preserve">
-    <value>有权点击某一项选择母子(EndFor, EndWhile, EndIf, Else or ElseIf)或选择其联系(Goto或Sub)</value>
+    <value>右键单击项目以选择其父项（EndFor，EndWhile，EndIf，Else或ElseIf）或选择其链接（Goto或Sub）</value>
   </data>
   <data name="String28" xml:space="preserve">
-    <value>选定项目将移至最高层</value>
+    <value>所选项目将移动到视图顶部附近</value>
   </data>
   <data name="String29" xml:space="preserve">
-    <value>在辩论会期间,将选定目前停用的线路</value>
+    <value>在调试会话期间，将选择当前暂停的行</value>
   </data>
   <data name="String3" xml:space="preserve">
-    <value>Toggle di Screen programout</value>
+    <value>切换分屏程序布局</value>
   </data>
   <data name="String30" xml:space="preserve">
-    <value>能够将科罗拉和达尔富拉设。 如果选定主题,该主题即适用</value>
+    <value>可以在 IDE 颜色中设置颜色，如果选择，则应用深色主题</value>
   </data>
   <data name="String31" xml:space="preserve">
-    <value>Shapes编辑没有确定财产投入.</value>
+    <value>形状编辑器无法设置属性输入。</value>
   </data>
   <data name="String32" xml:space="preserve">
-    <value>Shapes编辑没有出口某些形状.</value>
+    <value>形状编辑器无法将某些形状导出到代码。</value>
   </data>
   <data name="String33" xml:space="preserve">
-    <value>Shapes编辑没有从法典中进口某些形状.</value>
+    <value>形状编辑器无法从代码导入某些形状。</value>
   </data>
   <data name="String34" xml:space="preserve">
-    <value>在左派小组上点击形名,添加形状或控制.</value>
+    <value>通过单击左侧面板上的形状名称添加形状或控件。</value>
   </data>
   <data name="String35" xml:space="preserve">
-    <value>选择一种形状,点击或蓝色移动处理.</value>
+    <value>通过单击形状或蓝色移动手柄来选择形状。</value>
   </data>
   <data name="String36" xml:space="preserve">
-    <value>选定的形形形体的特性在右板上显示,可以通过编辑或使用《Seta》加以改变.</value>
+    <value>所选形状的属性显示在右侧面板上，可以通过编辑或使用“设置”按钮进行更改。</value>
   </data>
   <data name="String37" xml:space="preserve">
-    <value>选择多种形状,选择了一种带 Shi钥匙的形状,或选择一组形状(在目前选定的形状中添加).</value>
+    <value>通过在按住 Shift 键的情况下选择一个形状或选择对一组形状进行舍入（按住 Shift 键以添加到当前所选形状）来选择多个形状。</value>
   </data>
   <data name="String38" xml:space="preserve">
-    <value>左上点击后台,把所有形状都照相.</value>
+    <value>通过左键单击背景来去除所有形状。</value>
   </data>
   <data name="String39" xml:space="preserve">
-    <value>变形、变现(使用玉米处理器)或改变形状的特性(将Shft适用于多种选定的形状).</value>
+    <value>移动、调整大小（使用角手柄）或更改形状的属性（按住 Shift 键可应用于多个选定形状）。</value>
   </data>
   <data name="String4" xml:space="preserve">
-    <value>进口方案细节</value>
+    <value>导入的程序详细信息</value>
   </data>
   <data name="String40" xml:space="preserve">
-    <value>三角形、线和多角通过移动单个玉米进行改装.</value>
+    <value>三角形、直线和多边形通过移动各个角来调整大小。</value>
   </data>
   <data name="String41" xml:space="preserve">
-    <value>法官选择了使用arrow钥匙的形形形状(把小偷走到天线).</value>
+    <value>使用箭头键微移所选形状（按住 Shift 键可按对齐距离移动）。</value>
   </data>
   <data name="String42" xml:space="preserve">
-    <value>删除案文.</value>
+    <value>在形状上按 Delete 键可将其删除。</value>
   </data>
   <data name="String43" xml:space="preserve">
-    <value>权利点击其他选择,包括现有文件的复印件和过去代码,或复制选定的形状(新版面形比原样更重),然后作为使用Shft钥匙的群体迁移.</value>
+    <value>右键单击其他选项，包括将代码复制并粘贴到当前文档，或复制所选形状（新复制的形状位于原始形状上，因此可以使用 Shift 键作为一个组移动）。</value>
   </data>
   <data name="String44" xml:space="preserve">
-    <value>现行法典载于代码窗口。 本条可加以编辑和使用,以“从法典/法典中删除”来补充现行法典.</value>
+    <value>当前代码显示在代码窗口中。 可以对其进行编辑，并使用“从代码导入”将当前代码添加到当前视图中。</value>
   </data>
   <data name="String45" xml:space="preserve">
-    <value>问题和建议受到欢迎.</value>
+    <value>欢迎提出问题和建议。</value>
   </data>
   <data name="String46" xml:space="preserve">
-    <value>案文</value>
+    <value>中的文本</value>
   </data>
   <data name="String47" xml:space="preserve">
-    <value>变化</value>
+    <value>已更改</value>
   </data>
   <data name="String48" xml:space="preserve">
-    <value>你们是否想要拯救变化?</value>
+    <value>是否要保存更改？</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>预选和重新启动以修改已安装的延期.</value>
+    <value>取消选中“高级&gt;选项”中的“启动时加载扩展 dll”，然后重新启动以修改已安装的扩展。</value>
   </data>
   <data name="String5" xml:space="preserve">
-    <value>图g 分散屏幕中的区别档案</value>
+    <value>在分屏中切换差异文件</value>
   </data>
   <data name="String50" xml:space="preserve">
-    <value>大韩民国将继续增加延期.</value>
+    <value>确定以继续加载扩展。</value>
   </data>
   <data name="String51" xml:space="preserve">
-    <value>目前没有扩大的帮助.</value>
+    <value>目前没有扩展帮助。</value>
   </data>
   <data name="String52" xml:space="preserve">
-    <value>SB-Prime应当与任何已安装的小型基础工程(小型基本版本1.1)合作.</value>
+    <value>SB-Prime应该适用于任何已安装的Small Basic版本，调试适用于Small Basic版本1.1及更高版本。</value>
   </data>
   <data name="String53" xml:space="preserve">
-    <value>为使延期得以进行直接编辑,并首次在SB-Prime开始的校正中安装,需要用户账户控制.</value>
+    <value>若要启用调试，扩展在首次启动 SB-Prime 时直接编译并安装在 lib 文件夹中，需要用户帐户控制 （UAC） 权限。</value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value>此外,为了便于在申请之间进行必要的沟通,可以第一次举行辩论会.</value>
+    <value>此外，首次执行调试会话时可能需要 UAC 以允许应用程序之间的所需通信。</value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value>偷窃要求通过该守则打破点或“逐步”。 一旦停止使用,就可以通过在变数上对 mo进行控制,或将变数列入 de表的观察清单来看待价值。 观察清单变量可视为变化,也可修改。 还可浏览和修改[]合成物的射线值.</value>
+    <value>调试需要运行到断点或“单步执行”代码。 暂停后，可以通过将鼠标悬停在变量上或将变量名称添加到调试选项卡的监视列表来查看值。 监视列表变量可以在它们更改时查看，也可以被修改。 也可以查看和修改带有 [] 语法的数组值。</value>
   </data>
   <data name="String56" xml:space="preserve">
-    <value>这一申请没有资源。 计算.</value>
+    <value>此应用程序不存在任何资源。 退出。</value>
   </data>
   <data name="String57" xml:space="preserve">
-    <value>要求允许设立分机</value>
+    <value>需要创建扩展库文件夹的权限</value>
   </data>
   <data name="String58" xml:space="preserve">
-    <value>欢迎小型基本总理</value>
+    <value>欢迎来到小基本素数</value>
   </data>
   <data name="String59" xml:space="preserve">
-    <value>Failed with ID</value>
+    <value>无法导入具有 ID 的程序</value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value>白宫</value>
+    <value>白底色</value>
   </data>
   <data name="String60" xml:space="preserve">
-    <value>成功进口的ID方案</value>
+    <value>成功导入带 ID 的程序</value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value>成功终止的进程</value>
+    <value>使用进程成功终止运行</value>
   </data>
   <data name="String62" xml:space="preserve">
-    <value>不能混杂 de和不折</value>
+    <value>无法混合调试和非调试运行</value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value>Cannot汇编一个已经运行的方案</value>
+    <value>无法编译已在运行的程序</value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value>未能公布方案(可能太短或太长)</value>
+    <value>无法发布程序（可能太短或太长）</value>
   </data>
   <data name="String65" xml:space="preserve">
-    <value>成功出版的ID方案</value>
+    <value>成功发布带有 ID 的程序</value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value>成功毕业方案</value>
+    <value>成功毕业课程</value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value>Cannot 案件,因为没有成功汇编</value>
+    <value>无法运行大小写，因为 exe 尚未成功编译</value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value>成功启动进程</value>
+    <value>已成功启动运行与进程</value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value>成功完成集会</value>
+    <value>已成功反编译程序集到</value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value>真正的颜色</value>
+    <value>真彩色</value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value>Plugin Add: 未能在组别中添加一个gin</value>
+    <value>插件添加：无法在组中添加插件</value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value>成功终止的进程</value>
+    <value>使用进程成功终止运行</value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value>创建代码窗口的新形状.</value>
+    <value>从代码窗口创建新形状。</value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value>你们首先可以在此颁布任何法典.</value>
+    <value>您可以先在此处粘贴任何代码。</value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value>请注意,大多数论点应是字面,而不是变数.</value>
+    <value>请注意，大多数参数应该是文字，而不是变量。</value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value>微软视频演播室社区发展环境.</value>
+    <value>Microsoft Visual Studio Community开发环境。</value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value>撰写自己的小型基本推广和大型项目.</value>
+    <value>编写您自己的小型基本扩展和更大的项目。</value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value>View and decompile .Net bodies. 说明延期是如何运作的.</value>
+    <value>查看和反编译 .Net 程序集。 了解扩展程序的工作原理。</value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value>成为小型基本必需品.</value>
+    <value>对于深入了解小型基本软件至关重要。</value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>下载双筒和抽取(无安装).</value>
+    <value>下载 zip 二进制文件并解压缩（无需安装）。</value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value>黑人和白人</value>
+    <value>黑与白</value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value>• 制作和操纵图像,包括轻松地展示透明的背景,并制作动画片.</value>
+    <value>创建和操作图像，包括轻松为 png 图像提供透明背景和创建动画 gif。</value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value>消除魔.选择工具.</value>
+    <value>查看魔杖选择工具。</value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value>注.</value>
+    <value>记事本的优秀文本编辑器替代品。</value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value>下载量大,但专业水平高.</value>
+    <value>下载量大，但专业级IDE。</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>快速研究或编辑大部分可读文件格式.</value>
+    <value>可用于快速查看或编辑大多数文本可读文件格式。</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>文档压缩.</value>
+    <value>文件压缩。</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>在单一压缩文档中分享多份文件的最佳方式.</value>
+    <value>在单个压缩文件中共享多个文档的最佳方式。</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>创建和编辑.</value>
+    <value>创建和编辑图标。</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>没有像这样的简单工具,便形形形形色色.</value>
+    <value>如果没有像这样的简单工具，图标格式非常棘手。</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Undo Ctrl+Z</value>
+    <value>撤消 Ctrl+Z</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Britishlis</value>
+    <value>智能感知</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Redo Ctrl+ 页: 1</value>
+    <value>重做 Ctrl+Y</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Cut Ctrl+ 页: 1</value>
+    <value>剪切 Ctrl+X</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>页: 1</value>
+    <value>复制 Ctrl+C</value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value>Paste Ctrl+V</value>
+    <value>粘贴 Ctrl+V</value>
   </data>
   <data name="String94" xml:space="preserve">
     <value>删除</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>全委会</value>
+    <value>全选 Ctrl+A</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Find Ctrl+F</value>
+    <value>查找 Ctrl+F</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>裁决和替换Ctrl+ HH</value>
+    <value>查找和替换 Ctrl+H</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>评注部分Ctrl+?</value>
+    <value>注释所选行 Ctrl+？</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>UnComment Selected Lines Ctrl+?</value>
+    <value>取消注释所选行 Ctrl+？</value>
   </data>
 </root>
