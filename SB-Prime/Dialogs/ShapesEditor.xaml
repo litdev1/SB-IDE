@@ -22,37 +22,37 @@
         <Grid x:Name="controlGrid" Grid.Column="0" Margin="0">
             <Label Content="{ x:Static local:Strings.Label415 }" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
             <ListBox x:Name="listBoxShapes" Height="124" Margin="10,41,10,0" VerticalAlignment="Top">
-                <ListBoxItem Content="Rectangle" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
-                <ListBoxItem Content="Ellipse" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
-                <ListBoxItem Content="Triangle" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
-                <ListBoxItem Content="Line" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
-                <ListBoxItem Content="Text" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
-                <ListBoxItem Content="Image" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="{ x:Static local:Strings.Label467 }" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="{ x:Static local:Strings.Label468 }" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="{ x:Static local:Strings.Label469 }" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="{ x:Static local:Strings.Label470 }" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="{ x:Static local:Strings.Label471 }" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
+                <ListBoxItem Content="{ x:Static local:Strings.Label472 }" PreviewMouseDown="AddShape_MouseDown"></ListBoxItem>
             </ListBox>
             <Label Content="{ x:Static local:Strings.Label422 }" Margin="10,170,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
             <ListBox x:Name="listBoxControls" Height="64" Margin="10,200,10,0" VerticalAlignment="Top">
-                <ListBoxItem Content="Button" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="TextBox" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="MultiLineTextBox" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label473 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label474 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label475 }" PreviewMouseDown="AddShape_MouseDown"/>
             </ListBox>
             <Label Content="{ x:Static local:Strings.Label426 }" Margin="10,269,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
             <ListBox x:Name="listBoxLDControls" Margin="10,300,10.4,244.4">
-                <ListBoxItem Content="Polygon" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="Browser" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="CheckBox" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="ComboBox" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="DataView" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="DocumentViewer" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="ListBox" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="ListView" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="MediaPlayer" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="Menu" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="PasswordBox" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="ProgressBar" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="RadioButton" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="RichTextBox" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="Slider" PreviewMouseDown="AddShape_MouseDown"/>
-                <ListBoxItem Content="TreeView" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label476 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label477 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label478 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label479 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label480 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label481 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label482 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label483 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label484 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label485 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label486 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label487 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label488 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label489 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label490 }" PreviewMouseDown="AddShape_MouseDown"/>
+                <ListBoxItem Content="{ x:Static local:Strings.Label491 }" PreviewMouseDown="AddShape_MouseDown"/>
             </ListBox>
             <Button x:Name="buttonDelete" Content="{ x:Static local:Strings.Label443 }" Margin="10,0,10.4,58.4" Height="19" VerticalAlignment="Bottom" Click="buttonDelete_Click"/>
             <Label x:Name="label" Content="{ x:Static local:Strings.Label444 }" HorizontalAlignment="Left" Margin="9,0,0,107.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>

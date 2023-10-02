@@ -1338,14 +1338,92 @@
   <data name="Label465" xml:space="preserve">
     <value>Call Stack</value>
   </data>
+  <data name="Label466" xml:space="preserve">
+    <value>Additional Regex for tooltip intellisense variable names (e.g. Russian а-яА-ЯёЁ)</value>
+  </data>
+  <data name="Label467" xml:space="preserve">
+    <value>Rectangle</value>
+  </data>
+  <data name="Label468" xml:space="preserve">
+    <value>Ellipse</value>
+  </data>
+  <data name="Label469" xml:space="preserve">
+    <value>Triangle</value>
+  </data>
   <data name="Label47" xml:space="preserve">
     <value>Save current program (Ctrl+S)</value>
+  </data>
+  <data name="Label470" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="Label471" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Label472" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Label473" xml:space="preserve">
+    <value>Button</value>
+  </data>
+  <data name="Label474" xml:space="preserve">
+    <value>TextBox</value>
+  </data>
+  <data name="Label475" xml:space="preserve">
+    <value>MultiLineTextBox</value>
+  </data>
+  <data name="Label476" xml:space="preserve">
+    <value>Polygon</value>
+  </data>
+  <data name="Label477" xml:space="preserve">
+    <value>Browser</value>
+  </data>
+  <data name="Label478" xml:space="preserve">
+    <value>CheckBox</value>
+  </data>
+  <data name="Label479" xml:space="preserve">
+    <value>ComboBox</value>
   </data>
   <data name="Label48" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Label480" xml:space="preserve">
+    <value>DataView</value>
+  </data>
+  <data name="Label481" xml:space="preserve">
+    <value>DocumentViewer</value>
+  </data>
+  <data name="Label482" xml:space="preserve">
+    <value>ListBox</value>
+  </data>
+  <data name="Label483" xml:space="preserve">
+    <value>ListView</value>
+  </data>
+  <data name="Label484" xml:space="preserve">
+    <value>MediaPlayer</value>
+  </data>
+  <data name="Label485" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="Label486" xml:space="preserve">
+    <value>PasswordBox</value>
+  </data>
+  <data name="Label487" xml:space="preserve">
+    <value>ProgressBar</value>
+  </data>
+  <data name="Label488" xml:space="preserve">
+    <value>RadioButton</value>
+  </data>
+  <data name="Label489" xml:space="preserve">
+    <value>RichTextBox</value>
+  </data>
   <data name="Label49" xml:space="preserve">
     <value>Save current program to a new file</value>
+  </data>
+  <data name="Label490" xml:space="preserve">
+    <value>Slider</value>
+  </data>
+  <data name="Label491" xml:space="preserve">
+    <value>TreeView</value>
   </data>
   <data name="Label5" xml:space="preserve">
     <value>Numlock</value>

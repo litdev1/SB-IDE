@@ -3724,11 +3724,137 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional Regex for tooltip intellisense variable names (e.g. Russian а-яА-ЯёЁ).
+        /// </summary>
+        public static string Label466 {
+            get {
+                return ResourceManager.GetString("Label466", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rectangle.
+        /// </summary>
+        public static string Label467 {
+            get {
+                return ResourceManager.GetString("Label467", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ellipse.
+        /// </summary>
+        public static string Label468 {
+            get {
+                return ResourceManager.GetString("Label468", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triangle.
+        /// </summary>
+        public static string Label469 {
+            get {
+                return ResourceManager.GetString("Label469", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save current program (Ctrl+S).
         /// </summary>
         public static string Label47 {
             get {
                 return ResourceManager.GetString("Label47", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Line.
+        /// </summary>
+        public static string Label470 {
+            get {
+                return ResourceManager.GetString("Label470", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text.
+        /// </summary>
+        public static string Label471 {
+            get {
+                return ResourceManager.GetString("Label471", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image.
+        /// </summary>
+        public static string Label472 {
+            get {
+                return ResourceManager.GetString("Label472", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Button.
+        /// </summary>
+        public static string Label473 {
+            get {
+                return ResourceManager.GetString("Label473", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TextBox.
+        /// </summary>
+        public static string Label474 {
+            get {
+                return ResourceManager.GetString("Label474", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MultiLineTextBox.
+        /// </summary>
+        public static string Label475 {
+            get {
+                return ResourceManager.GetString("Label475", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polygon.
+        /// </summary>
+        public static string Label476 {
+            get {
+                return ResourceManager.GetString("Label476", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browser.
+        /// </summary>
+        public static string Label477 {
+            get {
+                return ResourceManager.GetString("Label477", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CheckBox.
+        /// </summary>
+        public static string Label478 {
+            get {
+                return ResourceManager.GetString("Label478", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ComboBox.
+        /// </summary>
+        public static string Label479 {
+            get {
+                return ResourceManager.GetString("Label479", resourceCulture);
             }
         }
         
@@ -3742,11 +3868,119 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DataView.
+        /// </summary>
+        public static string Label480 {
+            get {
+                return ResourceManager.GetString("Label480", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DocumentViewer.
+        /// </summary>
+        public static string Label481 {
+            get {
+                return ResourceManager.GetString("Label481", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ListBox.
+        /// </summary>
+        public static string Label482 {
+            get {
+                return ResourceManager.GetString("Label482", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ListView.
+        /// </summary>
+        public static string Label483 {
+            get {
+                return ResourceManager.GetString("Label483", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MediaPlayer.
+        /// </summary>
+        public static string Label484 {
+            get {
+                return ResourceManager.GetString("Label484", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menu.
+        /// </summary>
+        public static string Label485 {
+            get {
+                return ResourceManager.GetString("Label485", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PasswordBox.
+        /// </summary>
+        public static string Label486 {
+            get {
+                return ResourceManager.GetString("Label486", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ProgressBar.
+        /// </summary>
+        public static string Label487 {
+            get {
+                return ResourceManager.GetString("Label487", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RadioButton.
+        /// </summary>
+        public static string Label488 {
+            get {
+                return ResourceManager.GetString("Label488", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RichTextBox.
+        /// </summary>
+        public static string Label489 {
+            get {
+                return ResourceManager.GetString("Label489", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save current program to a new file.
         /// </summary>
         public static string Label49 {
             get {
                 return ResourceManager.GetString("Label49", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slider.
+        /// </summary>
+        public static string Label490 {
+            get {
+                return ResourceManager.GetString("Label490", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TreeView.
+        /// </summary>
+        public static string Label491 {
+            get {
+                return ResourceManager.GetString("Label491", resourceCulture);
             }
         }
         
