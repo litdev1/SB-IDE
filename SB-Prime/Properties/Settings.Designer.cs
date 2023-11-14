@@ -447,5 +447,17 @@ namespace SB_Prime.Properties {
                 this["LexerFont"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int MaxStylingCount {
+            get {
+                return ((int)(this["MaxStylingCount"]));
+            }
+            set {
+                this["MaxStylingCount"] = value;
+            }
+        }
     }
 }

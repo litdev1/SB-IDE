@@ -58,6 +58,8 @@ namespace SB_Prime
         List<SBStyle> styles = new List<SBStyle>();
         int LastLineCount = 0;
         bool isDirty = false;
+        int maxStylingCount = 1000;
+        bool isFormatting = false;
         string lastObject = "";
         int AutoCMode = 0;
         string AutoCData = "";
@@ -151,6 +153,8 @@ namespace SB_Prime
 
         public void Format()
         {
+            isFormatting = true;
+
             System.Windows.Input.Cursor cursor = System.Windows.Input.Mouse.OverrideCursor;
             System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
 
@@ -235,6 +239,7 @@ namespace SB_Prime
                 }
             }
 
+            isFormatting = false;
             isDirty = true;
             System.Windows.Input.Mouse.OverrideCursor = cursor;
         }
@@ -250,6 +255,7 @@ namespace SB_Prime
             }
 
             // Configure the default style
+            maxStylingCount = MainWindow.maxStylingCount;
             textArea.StyleResetDefault();
             //textArea.Styles[Style.CallTip].Font = "Consolas";
             //textArea.Styles[Style.CallTip].Size = 20;
@@ -404,8 +410,12 @@ namespace SB_Prime
             SetStyle(startPos, endPos);
         }
 
+        //This is a big performance hit for large programs
         private void SetStyle(int startPos, int endPos)
         {
+            //Limit to maxStylingCount characters for performance reasons
+            endPos = Math.Min(endPos, startPos + maxStylingCount);
+
             int line = textArea.LineFromPosition(startPos);
             startPos = textArea.Lines[line].Position;
 
@@ -506,6 +516,8 @@ namespace SB_Prime
 
         private void OnTextChanged(object sender, EventArgs e)
         {
+            if (isFormatting) return;
+
             if (textArea.Lines.Count != LastLineCount)
             {
                 int position = textArea.CurrentPosition;
