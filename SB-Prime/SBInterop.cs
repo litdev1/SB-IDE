@@ -36,7 +36,7 @@ namespace SB_Prime
 {
     public class SBInterop
     {
-        public const int CurrentVersion = 9;
+        public const int CurrentVersion = 10;
 
         object Service = null;
         MethodInfo SaveProgram = null;
@@ -427,6 +427,7 @@ namespace SB_Prime
                 compiler_params.GenerateExecutable = false;
                 compiler_params.ReferencedAssemblies.Add("System.dll");
                 compiler_params.ReferencedAssemblies.Add("System.Net.Http.dll");
+                compiler_params.ReferencedAssemblies.Add("System.Runtime.InteropServices.dll");
                 compiler_params.ReferencedAssemblies.Add(sblPath);
                 var results = provider.CompileAssemblyFromSource(compiler_params, cs);
                 if (results.Errors.Count > 0)

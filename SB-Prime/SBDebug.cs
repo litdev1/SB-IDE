@@ -505,6 +505,9 @@ namespace SB_Prime
                 else if (message.ToUpper().StartsWith("DEBUG"))
                 {
                     message = message.Substring(6).Trim();
+#if DEBUG
+                    MainWindow.Errors.Add(new Error(message));
+#endif
                 }
             }
         }
@@ -583,11 +586,12 @@ namespace SB_Prime
                     if (null != tcpListener) tcpListener.Stop();
                     tcpServer = null;
                     tcpListener = null;
+                    int id = (null == sbDocument.Proc) ? -1 : sbDocument.Proc.Id;
                     if (!process.HasExited) process.Kill();
                     if (null != sbDocument.Proc)
                     {
                         sbDocument.ClearHighlights();
-                        MainWindow.Errors.Add(new Error("Run : " + Properties.Strings.String61 + " " + sbDocument.Proc.Id));
+                        MainWindow.Errors.Add(new Error("Run : " + Properties.Strings.String61 + " " + id));
                         sbDocument.Proc = null;
                     }
                     if (sbDocument.Filepath == "" || debug) File.Delete(tempExe);

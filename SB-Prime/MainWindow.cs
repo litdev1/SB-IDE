@@ -972,10 +972,11 @@ namespace SB_Prime
         {
             try
             {
+                int id = (null == activeDocument.Proc ? -1 : activeDocument.Proc.Id);
                 if (null != activeDocument.Proc && activeDocument.Proc.HasExited)
                 {
                     activeDocument.ClearHighlights();
-                    Errors.Add(new Error("Run : " + Properties.Strings.String61 + " " + activeDocument.Proc.Id));
+                    Errors.Add(new Error("Run : " + Properties.Strings.String61 + " " + id));
                     activeDocument.Proc = null;
                     if (null == activeDocument.debug) return;
                     activeDocument.debug.Dispose();
