@@ -37,7 +37,9 @@ namespace SB_Prime.Dialogs
 
             string data = (string)Clipboard.GetData(DataFormats.Text);
             data = null == data ? "" : data.Trim().ToUpper();
-            if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}").Success || Regex.Match(data, "^[A-Z]{4}[0-9]{3}\\.[0-9]{3}").Success)
+            if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}").Success || 
+                Regex.Match(data, "^[A-Z]{4}[0-9]{3}\\.[0-9]{3}").Success || 
+                Regex.Match(data, "^[A-Z]{4}[0-9]{2}\\.[0-9]{3}").Success)
             {
                 textBoxImport.Text = data;
                 textBoxImport.CaretIndex = data.Length;
