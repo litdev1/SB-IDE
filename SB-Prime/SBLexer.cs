@@ -418,6 +418,7 @@ namespace SB_Prime
 
             int line = textArea.LineFromPosition(startPos);
             startPos = textArea.Lines[line].Position;
+            endPos = Math.Max(endPos, startPos + textArea.Lines[line].Length);
 
             string text = textArea.GetTextRange(startPos, endPos - startPos + 1);
             string value;
