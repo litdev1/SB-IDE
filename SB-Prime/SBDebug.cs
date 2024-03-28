@@ -79,7 +79,7 @@ namespace SB_Prime
             {
                 string tempCode = Path.GetTempFileName();
                 File.Delete(tempCode);
-                File.WriteAllText(tempCode, sbDocument.TextArea.Text);
+                FileFilter.WriteAllText(tempCode, sbDocument.TextArea.Text);
 
                 if (debug)
                 {
@@ -529,7 +529,7 @@ namespace SB_Prime
             {
                 if (!File.Exists(fileName)) return "";
 
-                string[] lines = File.ReadAllLines(fileName);
+                string[] lines = FileFilter.ReadAllLines(fileName);
                 List<string> output = new List<string>();
                 output.Add("SBDebug.Start()");
                 for (int i = 0; i < lines.Length; i++)
@@ -539,7 +539,7 @@ namespace SB_Prime
                 }
                 string fileOutput = Path.GetTempFileName();
                 File.Delete(fileOutput);
-                File.WriteAllLines(fileOutput, output);
+                FileFilter.WriteAllLines(fileOutput, output);
                 return fileOutput;
             }
             catch (Exception ex)

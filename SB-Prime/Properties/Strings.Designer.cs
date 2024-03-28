@@ -19,7 +19,7 @@ namespace SB_Prime.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
@@ -3981,6 +3981,60 @@ namespace SB_Prime.Properties {
         public static string Label491 {
             get {
                 return ResourceManager.GetString("Label491", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aliases.
+        /// </summary>
+        public static string Label492 {
+            get {
+                return ResourceManager.GetString("Label492", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set object and method aliases.
+        /// </summary>
+        public static string Label493 {
+            get {
+                return ResourceManager.GetString("Label493", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aliases.
+        /// </summary>
+        public static string Label494 {
+            get {
+                return ResourceManager.GetString("Label494", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Object, Method, Property or Event name aliases.
+        /// </summary>
+        public static string Label495 {
+            get {
+                return ResourceManager.GetString("Label495", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default name.
+        /// </summary>
+        public static string Label496 {
+            get {
+                return ResourceManager.GetString("Label496", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alias name.
+        /// </summary>
+        public static string Label497 {
+            get {
+                return ResourceManager.GetString("Label497", resourceCulture);
             }
         }
         

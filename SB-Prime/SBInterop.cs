@@ -336,7 +336,7 @@ namespace SB_Prime
         {
             try
             { 
-                string key = (string)SaveProgram.Invoke(Service, new object[] { "", program, baseID });
+                string key = (string)SaveProgram.Invoke(Service, new object[] { "", FileFilter.Write(program), baseID });
                 return key;
             }
             catch (Exception ex)
@@ -366,7 +366,7 @@ namespace SB_Prime
             try
             {
                 string program = (string)LoadProgram.Invoke(Service, new object[] { key.Trim() });
-                return program;
+                return FileFilter.Read(program);
             }
             catch (Exception ex)
             {
@@ -494,7 +494,7 @@ namespace SB_Prime
         {
             try
             {
-                string source = File.ReadAllText(fileName);
+                string source = FileFilter.ReadAllText(fileName);
                 string output = Path.ChangeExtension(fileName, ".exe");
                 if (File.Exists(output)) File.Delete(output);
 
@@ -569,7 +569,7 @@ namespace SB_Prime
                 Type CompilerType = assembly.GetType("Microsoft.SmallBasic.Compiler");
 
                 List<string> errors = new List<string>();
-                string source = File.ReadAllText(fileName);
+                string source = FileFilter.ReadAllText(fileName);
                 var Compiler = CompileVB.Invoke(null, new object[] { source, errors });
                 if (errors.Count > 0)
                 {
@@ -602,11 +602,11 @@ namespace SB_Prime
                     runtime = "v4.5";
                 }
 
-                string vbproj = File.ReadAllText(result);
+                string vbproj = FileFilter.ReadAllText(result);
                 vbproj = vbproj.Replace("<HintPath>$(programfiles)\\ (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>", "<HintPath>$(programfiles)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>");
                 vbproj = vbproj.Replace("<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>", "<TargetFrameworkVersion>" + runtime + "</TargetFrameworkVersion>");
                 //vcproj = vcproj.Replace("<Project ToolsVersion=\"3.5\" DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">", "<Project ToolsVersion=\"15.0\" DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">");
-                File.WriteAllText(result, vbproj);
+                FileFilter.WriteAllText(result, vbproj);
 
                 return result;
             }
@@ -719,13 +719,13 @@ namespace SB_Prime
                     string projectFile = targetDirectory + "\\_SmallBasicProgram.cs";
                     if (File.Exists(projectFile))
                     {
-                        string prog = File.ReadAllText(projectFile);
+                        string prog = FileFilter.ReadAllText(projectFile);
                         prog = prog.Replace("static void _Main()", "static void Main()");
                         if (bConsole)
                         {
                             prog = prog.Replace("SmallBasicApplication.BeginProgram();", "SmallBasicApplication.BeginProgram();\r\n\t\t//Initialise and hide TextWindow for Console App\r\n\t\tTextWindow.Show();\r\n\t\tTextWindow.Hide();");
                         }
-                        File.WriteAllText(projectFile, prog);
+                        FileFilter.WriteAllText(projectFile, prog);
                     }
                 }
 

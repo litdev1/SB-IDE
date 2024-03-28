@@ -144,6 +144,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialogs\Aliases.xaml.cs">
+      <DependentUpon>Aliases.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Colours.xaml.cs">
       <DependentUpon>Colours.xaml</DependentUpon>
     </Compile>
@@ -199,6 +202,7 @@
       <DependentUpon>StackVariables.xaml</DependentUpon>
     </Compile>
     <Compile Include="Diff.cs" />
+    <Compile Include="FileFilter.cs" />
     <Compile Include="HotKeyManager.cs" />
     <Compile Include="MainWindow.cs" />
     <Compile Include="Properties\Strings.Designer.cs">
@@ -224,6 +228,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SintillaNetPrinting\Printing.cs" />
+    <Page Include="Dialogs\Aliases.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\Colours.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -665,6 +673,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\NumberMargin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Aliases.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -58,9 +58,17 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (SBObject label in objects)
             {
-                if (label.name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                string name = label.name;
+                if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                 {
-                    data.Add(label.name + "?1");
+                    data.Add(name + "?1");
+                }
+                if (FileFilter.Aliases.TryGetValue(name, out name))
+                {
+                    if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                    {
+                        data.Add(name + "?1");
+                    }
                 }
             }
             data = data.Distinct().ToList();
@@ -83,18 +91,34 @@ namespace SB_Prime
                 {
                     foreach (Member member in label.members)
                     {
-                        if (member.name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || member.name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                        string name = member.name;
+                        if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                         {
                             switch (member.type)
                             {
                                 case MemberTypes.Method:
-                                    data.Add(member.name + "?2");
+                                    data.Add(name + "?2");
                                     break;
                                 case MemberTypes.Property:
-                                    data.Add(member.name + "?3");
+                                    data.Add(name + "?3");
                                     break;
                                 case MemberTypes.Event:
-                                    data.Add(member.name + "?4");
+                                    data.Add(name + "?4");
+                                    break;
+                            }
+                        }
+                        if (FileFilter.Aliases.TryGetValue(name, out name))
+                        {
+                            switch (member.type)
+                            {
+                                case MemberTypes.Method:
+                                    data.Add(name + "?2");
+                                    break;
+                                case MemberTypes.Property:
+                                    data.Add(name + "?3");
+                                    break;
+                                case MemberTypes.Event:
+                                    data.Add(name + "?4");
                                     break;
                             }
                         }

@@ -98,7 +98,7 @@ namespace SB_Prime
             {
                 if (File.Exists(path))
                 {
-                    textArea.Text = File.ReadAllText(path);
+                    textArea.Text = FileFilter.ReadAllText(path);
                     //string spaces = "";
                     //for (int i = 0; i < textArea.TabWidth; i++) spaces += " ";
                     //textArea.Text = textArea.Text.Replace(spaces, "\t");
@@ -162,7 +162,7 @@ namespace SB_Prime
                 if (path == "") path = filepath;
                 if (Directory.Exists(Path.GetDirectoryName(path)))
                 {
-                    File.WriteAllText(path, textArea.Text);
+                    FileFilter.WriteAllText(path, textArea.Text);
                     filepath = path;
                     lexer.IsDirty = false;
                     SetMarks();

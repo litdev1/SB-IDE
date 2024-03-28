@@ -1,0 +1,6 @@
+Label492	Aliases
+Label493	Set object and method aliases
+Label494	Aliases
+Label495	Set Object, Method, Property or Event name aliases
+Label496	Default name
+Label497	Alias name

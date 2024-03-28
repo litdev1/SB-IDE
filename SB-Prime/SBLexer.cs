@@ -373,6 +373,7 @@ namespace SB_Prime
             int wordStartPos = textArea.WordStartPosition(currentPos, true);
             int style = textArea.GetStyleAt(currentPos-2);
             string currentWord = textArea.GetWordFromPosition(wordStartPos);
+            currentWord = FileFilter.Write(currentWord, false);
             int lenEntered = currentPos - wordStartPos;
             textArea.AutoCSetFillUps("");
             textArea.AutoCStops("");         
@@ -386,6 +387,7 @@ namespace SB_Prime
                 currentPos = wordStartPos - 2;
                 wordStartPos = textArea.WordStartPosition(currentPos, true);
                 lastObject = textArea.GetWordFromPosition(wordStartPos);
+                lastObject = FileFilter.Write(lastObject, false);
                 AutoCData = sbObjects.GetMembers(lastObject, currentWord).Trim();
                 textArea.AutoCShow(lenEntered, AutoCData);
                 AutoCMode = 2;
@@ -560,14 +562,17 @@ namespace SB_Prime
             if (currentPos < 0) return;
             int wordStartPos = textArea.WordStartPosition(currentPos, true);
             string currentWord = textArea.GetWordFromPosition(wordStartPos);
+            currentWord = FileFilter.Write(currentWord, false);
             string lastWord = "";
             if (textArea.GetCharAt(wordStartPos-1) == '.')
             {
                 lastWord = textArea.GetWordFromPosition(textArea.WordStartPosition(wordStartPos - 2, true));
+                lastWord = FileFilter.Write(lastWord, false);
             }
             if (currentPos > wordStartPos)
             {
                 lastObject = textArea.GetWordFromPosition(wordStartPos);
+                lastObject = FileFilter.Write(lastObject, false);
             }
             if (currentWord != "" && sbObjects.GetVariables(currentWord) != "")
             {

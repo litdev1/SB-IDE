@@ -28,6 +28,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using System.Windows.Controls.Ribbon;
 using System.Windows.Media.Effects;
+using System.Reflection.Emit;
 
 namespace SB_Prime
 {
@@ -445,9 +446,20 @@ namespace SB_Prime
                 List<int> lines = new List<int>();
                 string[] data = bookmark.Split(new char[] { DelimBP }, StringSplitOptions.RemoveEmptyEntries);
                 int line = -1;
-                for (i = 1; i < data.Length; i++) if (int.TryParse(data[i], out line)) lines.Add(line);
+                for (i = 1; i < data.Length; i++)
+                {
+                    if (int.TryParse(data[i], out line)) lines.Add(line);
+                }
                 if (File.Exists(data[0]) && lines.Count > 0) bookmarks[data[0]] = lines;
             }
+            FileFilter.Aliases.Clear();
+            foreach (string alias in Properties.Settings.Default.Aliases)
+            {
+                string[] data = alias.Split(new char[] { DelimBP }, StringSplitOptions.RemoveEmptyEntries);
+                if (data.Length != 2) continue;
+                FileFilter.Aliases[data[0]] = data[1];
+            }
+
             loadExtensions = Properties.Settings.Default.LoadExtensions;
             printMagnification = Properties.Settings.Default.PrintMagnification;
             printColours = Properties.Settings.Default.PrintColours;
@@ -597,6 +609,12 @@ namespace SB_Prime
                 foreach (int line in kvp.Value) data += DelimBP.ToString() + line;
                 Properties.Settings.Default.Bookmarks.Add(data);
             }
+            Properties.Settings.Default.Aliases.Clear();
+            foreach (KeyValuePair<string, string> kvp in FileFilter.Aliases)
+            {
+                string data = kvp.Key + DelimBP.ToString() + kvp.Value;
+                Properties.Settings.Default.Aliases.Add(data);
+            }
             Properties.Settings.Default.LoadExtensions = loadExtensions;
             Properties.Settings.Default.PrintMagnification = printMagnification;
             Properties.Settings.Default.PrintColours = printColours;
@@ -706,7 +724,7 @@ namespace SB_Prime
                 else if (saveFileDialog.FileName.ToLowerInvariant().EndsWith(".html"))
                 {
                     string html = activeDocument.TextArea.GetTextRangeAsHtml(0, activeDocument.TextArea.TextLength);
-                    File.WriteAllText(saveFileDialog.FileName, html);
+                    FileFilter.WriteAllText(saveFileDialog.FileName, html);
                 }
             }
         }
@@ -995,6 +1013,7 @@ namespace SB_Prime
             {
                 double left = 10;
                 double top = 10;
+                string name;
 
                 if (null != obj && obj != showObjectLast)
                 {
@@ -1009,10 +1028,15 @@ namespace SB_Prime
                     canvasInfo.Children.Add(img);
                     Canvas.SetLeft(img, left);
                     Canvas.SetTop(img, top);
+                    name = obj.name;
+                    if (!FileFilter.Aliases.TryGetValue(name, out name))
+                    {
+                        name = obj.name;
+                    }
 
                     TextBlock tb = new TextBlock()
                     {
-                        Text = obj.name,
+                        Text = name,
                         Width = 250,
                         TextWrapping = TextWrapping.Wrap,
                         FontSize = 18 + zoom
@@ -1079,10 +1103,15 @@ namespace SB_Prime
                         canvasInfo.Children.Add(img);
                         Canvas.SetLeft(img, left);
                         Canvas.SetTop(img, top);
+                        name = mem.name;
+                        if (!FileFilter.Aliases.TryGetValue(name, out name))
+                        {
+                            name = mem.name;
+                        }
 
                         tb = new TextBlock()
                         {
-                            Text = mem.name,
+                            Text = name,
                             Width = 300,
                             TextWrapping = TextWrapping.Wrap,
                             FontSize = 12 + zoom
@@ -1112,7 +1141,7 @@ namespace SB_Prime
                     canvasInfo.Children.Clear();
 
                     ImageSource imgSource = null;
-                    string name = "";
+                    name = "";
                     switch (member.type)
                     {
                         case MemberTypes.Custom:
@@ -1155,6 +1184,11 @@ namespace SB_Prime
                     canvasInfo.Children.Add(img);
                     Canvas.SetLeft(img, left);
                     Canvas.SetTop(img, top);
+                    string _name = name;
+                    if (!FileFilter.Aliases.TryGetValue(name, out name))
+                    {
+                        name = _name;
+                    }
 
                     TextBlock tb = new TextBlock()
                     {
@@ -1859,7 +1893,7 @@ namespace SB_Prime
             {
                 string tempCode = Path.GetTempFileName();
                 File.Delete(tempCode);
-                File.WriteAllText(tempCode, activeDocument.TextArea.Text);
+                FileFilter.WriteAllText(tempCode, activeDocument.TextArea.Text);
                 string result = sbInterop.Graduate(tempCode, Path.GetFileNameWithoutExtension(activeDocument.Filepath), Dialogs.Graduate.ProjectPath);
                 File.Delete(tempCode);
                 if (result != "")

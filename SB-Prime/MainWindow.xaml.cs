@@ -1040,6 +1040,13 @@ namespace SB_Prime
             NumberMargin();
         }
 
+        private void ToolsAliases_Click(object sender, RoutedEventArgs e)
+        {
+            Dialogs.Aliases aliases = new Aliases();
+            aliases.Owner = GetWindow(this);
+            aliases.ShowDialog();
+        }
+
         /*
 private bool mRestoreForDragMove;
 

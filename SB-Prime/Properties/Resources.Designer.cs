@@ -19,7 +19,7 @@ namespace SB_Prime.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,6 +57,16 @@ namespace SB_Prime.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Aliases {
+            get {
+                object obj = ResourceManager.GetObject("Aliases", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -801,6 +811,7 @@ namespace SB_Prime.Properties {
         ///using System.Collections.Generic;
         ///using System.Diagnostics;
         ///using System.Reflection;
+        ///using System.Runtime.InteropServices;
         ///
         ///[assembly: AssemblyVersion(&quot;1.0.0.0&quot;)]
         ///namespace SBDebugger
@@ -809,7 +820,7 @@ namespace SB_Prime.Properties {
         ///    public static class SBDebug
         ///    {
         ///        private static TcpClient tcpClient = null;
-        ///        private static object lockSend = [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SBClient {
             get {

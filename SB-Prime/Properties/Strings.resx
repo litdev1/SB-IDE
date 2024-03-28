@@ -1425,6 +1425,24 @@
   <data name="Label491" xml:space="preserve">
     <value>TreeView</value>
   </data>
+  <data name="Label492" xml:space="preserve">
+    <value>Aliases</value>
+  </data>
+  <data name="Label493" xml:space="preserve">
+    <value>Set object and method aliases</value>
+  </data>
+  <data name="Label494" xml:space="preserve">
+    <value>Aliases</value>
+  </data>
+  <data name="Label495" xml:space="preserve">
+    <value>Set Object, Method, Property or Event name aliases</value>
+  </data>
+  <data name="Label496" xml:space="preserve">
+    <value>Default name</value>
+  </data>
+  <data name="Label497" xml:space="preserve">
+    <value>Alias name</value>
+  </data>
   <data name="Label5" xml:space="preserve">
     <value>Numlock</value>
   </data>

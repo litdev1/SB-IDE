@@ -179,7 +179,7 @@ namespace SB_Prime.Dialogs
             WindowsFormsHost host = new WindowsFormsHost();
             SBDocument doc = new SBDocument();
             host.Child = doc.TextArea;
-            doc.TextArea.Text = File.ReadAllText(searchFile.FilePath);
+            doc.TextArea.Text = FileFilter.ReadAllText(searchFile.FilePath);
             gridSearcherPreview.Children.Add(host);
             doc.WrapMode = MainWindow.wrap ? WrapMode.Whitespace : WrapMode.None;
             doc.IndentationGuides = MainWindow.indent ? IndentView.LookBoth : IndentView.None;
@@ -306,7 +306,7 @@ namespace SB_Prime.Dialogs
             FilePath = fileName;
             Folder = System.IO.Path.GetDirectoryName(FilePath);
             FileName = System.IO.Path.GetFileNameWithoutExtension(FilePath);
-            Text = File.ReadLines(FilePath);
+            Text = FileFilter.ReadLines(FilePath);
             LineCount = Text.Count();
             Date = File.GetLastWriteTime(FilePath);
         }
