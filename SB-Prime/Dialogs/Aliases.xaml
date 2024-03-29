@@ -8,7 +8,7 @@
         Title="{ x:Static local:Strings.Label494 }" Height="450" Width="500" Icon="/SB-Prime;component/AppIcon.ico" WindowStartupLocation="CenterOwner" ResizeMode="CanResize" MinWidth="220" MinHeight="100">
     <Grid>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label495 }" Margin="10,10,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-        <DataGrid x:Name="dataGridAliases" HeadersVisibility="Column" CanUserAddRows="True" SelectionUnit="Cell" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,41,10,29" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray">
+        <DataGrid x:Name="dataGridAliases" HeadersVisibility="Column" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,41,10,29" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray" IsTextSearchEnabled="True" KeyDown="dataGridAliases_KeyDown">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />

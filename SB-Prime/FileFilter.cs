@@ -10,16 +10,12 @@ namespace SB_Prime
 {
     public static class FileFilter
     {
-        private static Dictionary<string,string> aliases = null;
+        private static Dictionary<string,string> aliases = new Dictionary<string, string>();
 
         public static Dictionary<string,string> Aliases
         {
             get
             {
-                if (aliases == null)
-                { 
-                    aliases = new Dictionary<string,string>();
-                }
                 return aliases;
             }
         }

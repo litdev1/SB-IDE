@@ -45,13 +45,32 @@ namespace SB_Prime.Dialogs
                 if (alias.Default.Length < 2 || alias.Alias.Length < 2) continue;
                 if (!alias.Default.All(Char.IsLetter) || !alias.Alias.All(Char.IsLetter)) continue;
                 FileFilter.Aliases[alias.Default] = alias.Alias;
-                Close();
             }
+            Close();
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void dataGridAliases_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.V && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                string data = (string)Clipboard.GetData(DataFormats.UnicodeText);
+                if (null == data) return;
+                string[] lines = data.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string line in lines)
+                {
+                    string[] values = line.Split(new char[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (values.Length != 2) continue;
+
+                    aliases.Add(new AliasesData() { Default = values[0], Alias = values[1] });
+                }
+                dataGridAliases.ItemsSource = null;
+                dataGridAliases.ItemsSource = aliases;
+            }
         }
     }
 
