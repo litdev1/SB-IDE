@@ -100,22 +100,10 @@ namespace SB_Prime
                     foreach (Member member in label.members)
                     {
                         string memberName = "";
-                        if (FileFilter.Aliases.TryGetValue(member.name, out memberName))
+                        if (!FileFilter.Aliases.TryGetValue(member.name, out memberName))
                         {
-                            switch (member.type)
-                            {
-                                case MemberTypes.Method:
-                                    data.Add(memberName + "?2");
-                                    break;
-                                case MemberTypes.Property:
-                                    data.Add(memberName + "?3");
-                                    break;
-                                case MemberTypes.Event:
-                                    data.Add(memberName + "?4");
-                                    break;
-                            }
+                            memberName = member.name;
                         }
-                        memberName = member.name;
                         if (memberName.StartsWith(input, StringComparison.OrdinalIgnoreCase) || memberName.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                         {
                             switch (member.type)
