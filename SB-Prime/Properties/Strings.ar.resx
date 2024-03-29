@@ -358,7 +358,7 @@
     <value>مدير الإرشاد</value>
   </data>
   <data name="Label171" xml:space="preserve">
-    <value>برنامج التخرج الحالي إلى Visual Basic</value>
+    <value>تخرج البرنامج الحالي إلى Visual Basic</value>
   </data>
   <data name="Label172" xml:space="preserve">
     <value>خريج</value>
@@ -625,7 +625,7 @@
     <value>إلغاء الأمر</value>
   </data>
   <data name="Label251" xml:space="preserve">
-    <value>إلغاء التحويل البرمجي لحل Visual Studio</value>
+    <value>فك التحويل البرمجي لحل Visual Studio</value>
   </data>
   <data name="Label252" xml:space="preserve">
     <value>فك</value>
@@ -703,7 +703,7 @@
     <value>مربع نص</value>
   </data>
   <data name="Label275" xml:space="preserve">
-    <value>أرسل تقييمك للبرنامج ، ولا يمكن القيام بذلك إلا مرة واحدة لكل معرف</value>
+    <value>أرسل تقييمك للبرنامج ، ويمكن القيام بذلك مرة واحدة فقط لكل معرف</value>
   </data>
   <data name="Label276" xml:space="preserve">
     <value>إرسال التقييم</value>
@@ -1425,6 +1425,24 @@
   <data name="Label491" xml:space="preserve">
     <value>تريفيو</value>
   </data>
+  <data name="Label492" xml:space="preserve">
+    <value>الاسماء المستعاره</value>
+  </data>
+  <data name="Label493" xml:space="preserve">
+    <value>تعيين الأسماء المستعارة للكائن والأسلوب</value>
+  </data>
+  <data name="Label494" xml:space="preserve">
+    <value>الاسماء المستعاره</value>
+  </data>
+  <data name="Label495" xml:space="preserve">
+    <value>تعيين الأسماء المستعارة لاسم الكائن أو الأسلوب أو الخاصية أو الحدث</value>
+  </data>
+  <data name="Label496" xml:space="preserve">
+    <value>الاسم الافتراضي</value>
+  </data>
+  <data name="Label497" xml:space="preserve">
+    <value>الاسم المستعار</value>
+  </data>
   <data name="Label5" xml:space="preserve">
     <value>نوملوك</value>
   </data>
@@ -1609,7 +1627,7 @@
     <value>انتقل إلى CTRL + B للخلف</value>
   </data>
   <data name="String104" xml:space="preserve">
-    <value>الانتقال إلى الأمام Ctrl+Shift+B</value>
+    <value>الانتقال إلى الأمام Ctrl + Shift + B</value>
   </data>
   <data name="String105" xml:space="preserve">
     <value>نسخ التحديد إلى الحافظة كنص HTML</value>
@@ -1744,7 +1762,7 @@
     <value>تسليط الضوء على المحذوفة</value>
   </data>
   <data name="String145" xml:space="preserve">
-    <value>تسليط الضوء المدرج</value>
+    <value>تسليط الضوء مدرج</value>
   </data>
   <data name="String146" xml:space="preserve">
     <value>CallTip الصدارة</value>
@@ -1930,13 +1948,13 @@
     <value>يتم عرض خصائص الشكل المحدد على اللوحة اليمنى ، ويمكن تغييرها عن طريق التحرير أو استخدام الزر "تعيين".</value>
   </data>
   <data name="String37" xml:space="preserve">
-    <value>حدد أشكالا متعددة عن طريق تحديد شكل مع الضغط باستمرار على مفتاح Shift أو عن طريق تحديد تقريب مجموعة من الأشكال (Shift للإضافة إلى الأشكال المحددة الحالية).</value>
+    <value>حدد أشكالا متعددة عن طريق تحديد شكل مع الضغط باستمرار على مفتاح Shift أو عن طريق تحديد دائري لمجموعة من الأشكال (Shift للإضافة إلى الأشكال المحددة الحالية).</value>
   </data>
   <data name="String38" xml:space="preserve">
     <value>قم بتقسيم جميع الأشكال عن طريق النقر بزر الماوس الأيسر على backgound.</value>
   </data>
   <data name="String39" xml:space="preserve">
-    <value>يمكنك نقل شكل أو تغيير حجمه (باستخدام مقابض الزوايا) أو تغيير خصائصه (مع الاستمرار مع الاستمرار على مفتاح العالي للتطبيق على أشكال متعددة محددة).</value>
+    <value>يمكنك نقل شكل أو تغيير حجمه (باستخدام مقابض الزوايا) أو تغيير خصائصه (مع الاستمرار على مفتاح العالي للتطبيق على أشكال متعددة محددة).</value>
   </data>
   <data name="String4" xml:space="preserve">
     <value>تفاصيل البرنامج المستوردة</value>
@@ -1990,7 +2008,7 @@
     <value>بالإضافة إلى ذلك ، قد تكون UAC مطلوبة في المرة الأولى التي يتم فيها تنفيذ جلسة تصحيح للسماح بالاتصال المطلوب بين التطبيقات.</value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value>يتطلب تصحيح الأخطاء التشغيل لكسر النقاط أو "الخطوة" عبر الكود.  بمجرد الإيقاف المؤقت ، يمكن عرض القيم عن طريق تحريك الماوس فوق متغير ، أو عن طريق إضافة أسماء المتغيرات إلى قائمة المراقبة في علامة تبويب التصحيح.  يمكن النظر إلى متغيرات قائمة المراقبة عند تغيرها ويمكن تعديلها أيضا.  يمكن أيضا عرض قيم الصفيف ذات بناء الجملة [] وتعديلها.</value>
+    <value>يتطلب تصحيح الأخطاء التشغيل لكسر النقاط أو "الخطوة" عبر التعليمات البرمجية.  بمجرد الإيقاف المؤقت ، يمكن عرض القيم عن طريق تحريك الماوس فوق متغير ، أو عن طريق إضافة أسماء المتغيرات إلى قائمة المراقبة في علامة تبويب التصحيح.  يمكن النظر إلى متغيرات قائمة المراقبة عند تغيرها ويمكن أيضا تعديلها.  يمكن أيضا عرض قيم الصفيف ذات بناء الجملة [] وتعديلها.</value>
   </data>
   <data name="String56" xml:space="preserve">
     <value>لا توجد موارد لهذا التطبيق.  الاقلاع عن التدخين.</value>

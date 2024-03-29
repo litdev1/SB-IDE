@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>Маленький базовый прайм</value>
+    <value>Малый Базовый Прайм</value>
   </data>
   <data name="Label10" xml:space="preserve">
-    <value>Открытие существующей программы</value>
+    <value>Откройте существующую программу</value>
   </data>
   <data name="Label100" xml:space="preserve">
-    <value>Чувствительный к регистру</value>
+    <value>Чувствительность к регистру</value>
   </data>
   <data name="Label101" xml:space="preserve">
     <value>Находить</value>
@@ -145,7 +145,7 @@
     <value>Новые функции</value>
   </data>
   <data name="Label107" xml:space="preserve">
-    <value>Открытие существующей программы (Ctrl+O)</value>
+    <value>Откройте существующую программу (Ctrl+O)</value>
   </data>
   <data name="Label108" xml:space="preserve">
     <value>Открытый</value>
@@ -196,13 +196,13 @@
     <value>Пауза</value>
   </data>
   <data name="Label122" xml:space="preserve">
-    <value>Выйдите из текущей подпрограммы</value>
+    <value>Выход из текущей подпрограммы</value>
   </data>
   <data name="Label123" xml:space="preserve">
-    <value>Выйди из дома</value>
+    <value>Выйдите из дома</value>
   </data>
   <data name="Label124" xml:space="preserve">
-    <value>Переход к следующему оператору, если он является подпрограммой (F10)</value>
+    <value>Перешагивание со следующей инструкцией, если она является подпрограммой (F10)</value>
   </data>
   <data name="Label125" xml:space="preserve">
     <value>Переступить</value>
@@ -217,7 +217,7 @@
     <value>Запуск/возобновление текущей программы (F6)</value>
   </data>
   <data name="Label129" xml:space="preserve">
-    <value>Начало/Возобновление</value>
+    <value>Старт/Возобновить</value>
   </data>
   <data name="Label13" xml:space="preserve">
     <value>Закрывать</value>
@@ -226,7 +226,7 @@
     <value>Точки останова</value>
   </data>
   <data name="Label131" xml:space="preserve">
-    <value>Переключить точку останова на текущей строке (F9)</value>
+    <value>Переключение точки останова на текущей строке (F9)</value>
   </data>
   <data name="Label132" xml:space="preserve">
     <value>Переключить точку останова</value>
@@ -241,13 +241,13 @@
     <value>Игнорировать все точки останова</value>
   </data>
   <data name="Label136" xml:space="preserve">
-    <value>Игнорирование точек останова</value>
+    <value>Игнорировать точки останова</value>
   </data>
   <data name="Label137" xml:space="preserve">
     <value>Закладки</value>
   </data>
   <data name="Label138" xml:space="preserve">
-    <value>Переключить закладку на текущей строке</value>
+    <value>Переключить закладку на текущую строку</value>
   </data>
   <data name="Label139" xml:space="preserve">
     <value>Переключить закладку</value>
@@ -262,7 +262,7 @@
     <value>Следующая закладка</value>
   </data>
   <data name="Label142" xml:space="preserve">
-    <value>Перейти к предыдущей закладке вверх</value>
+    <value>Перейти к предыдущей закладке</value>
   </data>
   <data name="Label143" xml:space="preserve">
     <value>Предыдущая закладка</value>
@@ -283,7 +283,7 @@
     <value>Переменные и стек вызовов</value>
   </data>
   <data name="Label149" xml:space="preserve">
-    <value>Ознакомьтесь с руководством по отладке</value>
+    <value>Просмотреть руководство по отладке</value>
   </data>
   <data name="Label15" xml:space="preserve">
     <value>Спасать</value>
@@ -334,7 +334,7 @@
     <value>Поиск объектов расширения</value>
   </data>
   <data name="Label164" xml:space="preserve">
-    <value>Расширения поиска</value>
+    <value>Поисковые расширения</value>
   </data>
   <data name="Label165" xml:space="preserve">
     <value>Поиск содержимого в файлах Small Basic</value>
@@ -358,7 +358,7 @@
     <value>Менеджер расширений</value>
   </data>
   <data name="Label171" xml:space="preserve">
-    <value>Окончание текущей программы Visual Basic</value>
+    <value>Переход от текущей программы к Visual Basic</value>
   </data>
   <data name="Label172" xml:space="preserve">
     <value>Выпускник</value>
@@ -373,7 +373,7 @@
     <value>Вид</value>
   </data>
   <data name="Label176" xml:space="preserve">
-    <value>Переключить макет программы с разделенным экраном</value>
+    <value>Переключение макета программы с разделенным экраном</value>
   </data>
   <data name="Label177" xml:space="preserve">
     <value>Разделенный экран</value>
@@ -391,28 +391,28 @@
     <value>Переключение направляющих отступов</value>
   </data>
   <data name="Label181" xml:space="preserve">
-    <value>Направляющие отступа</value>
+    <value>Направляющие отступов</value>
   </data>
   <data name="Label182" xml:space="preserve">
-    <value>Увеличение (более крупный шрифт)</value>
+    <value>Увеличить (более крупный шрифт)</value>
   </data>
   <data name="Label183" xml:space="preserve">
-    <value>Увеличьте масштаб</value>
+    <value>Увеличить масштаб</value>
   </data>
   <data name="Label184" xml:space="preserve">
-    <value>Уменьшение масштаба (более мелкий шрифт)</value>
+    <value>Уменьшить масштаб (более мелкий шрифт)</value>
   </data>
   <data name="Label185" xml:space="preserve">
     <value>Уменьшение масштаба</value>
   </data>
   <data name="Label186" xml:space="preserve">
-    <value>Сбросить масштабирование (шрифт по умолчанию)</value>
+    <value>Сброс масштаба (шрифт по умолчанию)</value>
   </data>
   <data name="Label187" xml:space="preserve">
-    <value>Сбросить масштаб</value>
+    <value>Сброс масштаба</value>
   </data>
   <data name="Label188" xml:space="preserve">
-    <value>Используйте темную тему (обратное видео)</value>
+    <value>Использование темной темы (обратное видео)</value>
   </data>
   <data name="Label189" xml:space="preserve">
     <value>Темная тема</value>
@@ -427,10 +427,10 @@
     <value>Просмотр пробелов</value>
   </data>
   <data name="Label192" xml:space="preserve">
-    <value>Переключить отображение поля номера</value>
+    <value>Переключить отображение числового поля</value>
   </data>
   <data name="Label193" xml:space="preserve">
-    <value>Просмотр поля номера</value>
+    <value>Поле для просмотров номеров</value>
   </data>
   <data name="Label194" xml:space="preserve">
     <value>Измените языковой стандарт intellisence (например, 'de' для немецкого, перезапустите SB-Prime, чтобы он вступил в силу)</value>
@@ -460,16 +460,16 @@
     <value>Настройки экспорта</value>
   </data>
   <data name="Label201" xml:space="preserve">
-    <value>Импортируйте настройки из файла, перезапустите SB-Prime, чтобы они вступили в силу</value>
+    <value>Импортируйте настройки из файла, перезапустите SB-Prime для полного вступления в силу</value>
   </data>
   <data name="Label202" xml:space="preserve">
-    <value>Импорт настроек</value>
+    <value>Настройки импорта</value>
   </data>
   <data name="Label203" xml:space="preserve">
-    <value>Сбросьте настройки по умолчанию, перезапустите SB-Prime, чтобы все вступило в силу</value>
+    <value>Сбросьте настройки по умолчанию, перезапустите SB-Prime, чтобы он вступил в полную силу.</value>
   </data>
   <data name="Label204" xml:space="preserve">
-    <value>Сбросить настройки</value>
+    <value>Сброс настроек</value>
   </data>
   <data name="Label205" xml:space="preserve">
     <value>Дополнительные опции и настройки</value>
@@ -487,7 +487,7 @@
     <value>Без названия1</value>
   </data>
   <data name="Label21" xml:space="preserve">
-    <value>Список последних файлов</value>
+    <value>Список недавних файлов</value>
   </data>
   <data name="Label210" xml:space="preserve">
     <value>Без названия2</value>
@@ -496,7 +496,7 @@
     <value>Выпуск</value>
   </data>
   <data name="Label212" xml:space="preserve">
-    <value>Вывод, ошибки и предупреждения</value>
+    <value>Выходные данные, ошибки и предупреждения</value>
   </data>
   <data name="Label213" xml:space="preserve">
     <value>Отлаживать</value>
@@ -529,22 +529,22 @@
     <value>Освежать</value>
   </data>
   <data name="Label222" xml:space="preserve">
-    <value>Удалить часы</value>
+    <value>Снять часы</value>
   </data>
   <data name="Label223" xml:space="preserve">
-    <value>Удалить переменную watch</value>
+    <value>Удаление контрольной переменной</value>
   </data>
   <data name="Label224" xml:space="preserve">
     <value>Удалить</value>
   </data>
   <data name="Label225" xml:space="preserve">
-    <value>Перерыв, если &lt;</value>
+    <value>Break, если &lt;</value>
   </data>
   <data name="Label226" xml:space="preserve">
     <value>Перерыв, если &gt;</value>
   </data>
   <data name="Label227" xml:space="preserve">
-    <value>Перерыв, если =</value>
+    <value>Break if =</value>
   </data>
   <data name="Label228" xml:space="preserve">
     <value>Перерыв при изменениях</value>
@@ -583,7 +583,7 @@
     <value>По умолчанию</value>
   </data>
   <data name="Label239" xml:space="preserve">
-    <value>Закройте и примените изменения</value>
+    <value>Закрытие и применение изменений</value>
   </data>
   <data name="Label24" xml:space="preserve">
     <value>Новые функции</value>
@@ -601,16 +601,16 @@
     <value>Декомпилировать</value>
   </data>
   <data name="Label244" xml:space="preserve">
-    <value>Декомпиляция в C#</value>
+    <value>Декомпилировать в C#</value>
   </data>
   <data name="Label245" xml:space="preserve">
-    <value>Этот мастер будет </value>
+    <value>Этот мастер выполнит </value>
   </data>
   <data name="Label246" xml:space="preserve">
-    <value>Место вывода (должна быть пустая папка - используйте «Создать новую папку»)</value>
+    <value>Output Location (должно быть пустой папкой - используйте 'Make New Folder')</value>
   </data>
   <data name="Label247" xml:space="preserve">
-    <value>Перейдите к расположению для экспорта декомпилированного решения</value>
+    <value>Перейдите в расположение, чтобы экспортировать декомпилированное решение</value>
   </data>
   <data name="Label248" xml:space="preserve">
     <value>Просматривать</value>
@@ -619,7 +619,7 @@
     <value>Закрытие без каких-либо действий</value>
   </data>
   <data name="Label25" xml:space="preserve">
-    <value>Открытие существующей программы</value>
+    <value>Откройте существующую программу</value>
   </data>
   <data name="Label250" xml:space="preserve">
     <value>Отмена</value>
@@ -631,7 +631,7 @@
     <value>Декомпилировать</value>
   </data>
   <data name="Label253" xml:space="preserve">
-    <value>Исходный файл (.net, dll или exe)</value>
+    <value>Исходный файл (.Net dll или exe)</value>
   </data>
   <data name="Label254" xml:space="preserve">
     <value>Перейдите к исходному файлу для декомпиляции</value>
@@ -640,13 +640,13 @@
     <value>Просматривать</value>
   </data>
   <data name="Label256" xml:space="preserve">
-    <value>Если выбран этот параметр, позволяет использовать TextWindow в декомпилированном исполняемом файле</value>
+    <value>Если опция выбрана, позволяет использовать TextWindow в декомпилированном exe</value>
   </data>
   <data name="Label257" xml:space="preserve">
-    <value>Экспорт как консольное приложение</value>
+    <value>Экспорт в консольное приложение</value>
   </data>
   <data name="Label258" xml:space="preserve">
-    <value>Импортированные сведения о программе</value>
+    <value>Сведения об импортированной программе</value>
   </data>
   <data name="Label259" xml:space="preserve">
     <value>Идентификатор программы</value>
@@ -655,31 +655,31 @@
     <value>Открытый</value>
   </data>
   <data name="Label260" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label261" xml:space="preserve">
     <value>Титул</value>
   </data>
   <data name="Label262" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label263" xml:space="preserve">
     <value>Описание</value>
   </data>
   <data name="Label264" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label265" xml:space="preserve">
     <value>Категория</value>
   </data>
   <data name="Label266" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label267" xml:space="preserve">
     <value>Популярность</value>
   </data>
   <data name="Label268" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label269" xml:space="preserve">
     <value>Количество оценок</value>
@@ -688,22 +688,22 @@
     <value>Закрыть текущую программу</value>
   </data>
   <data name="Label270" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label271" xml:space="preserve">
-    <value>Общий рейтинг</value>
+    <value>Общая оценка</value>
   </data>
   <data name="Label272" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label273" xml:space="preserve">
     <value>Моя оценка</value>
   </data>
   <data name="Label274" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label275" xml:space="preserve">
-    <value>Отправьте свой рейтинг для программы, это можно сделать только один раз для каждого идентификатора</value>
+    <value>Отправьте свою оценку для программы, это можно сделать только один раз для каждого идентификатора</value>
   </data>
   <data name="Label276" xml:space="preserve">
     <value>Отправить оценку</value>
@@ -721,7 +721,7 @@
     <value>Закрывать</value>
   </data>
   <data name="Label280" xml:space="preserve">
-    <value>Поиск по тексту</value>
+    <value>Поиск текста</value>
   </data>
   <data name="Label281" xml:space="preserve">
     <value>Поиск текста в API расширений</value>
@@ -736,7 +736,7 @@
     <value>Свернуть все</value>
   </data>
   <data name="Label285" xml:space="preserve">
-    <value>Разверните все дочерние элементы в выбранном элементе</value>
+    <value>Развернуть все дочерние элементы на выбранном элементе</value>
   </data>
   <data name="Label286" xml:space="preserve">
     <value>Развернуть выделение</value>
@@ -763,7 +763,7 @@
     <value>Корневая папка</value>
   </data>
   <data name="Label293" xml:space="preserve">
-    <value>Выбор корневой папки для рекурсивного поиска файлов Small Basic</value>
+    <value>Выберите корневую папку для рекурсивного поиска файлов Small Basic</value>
   </data>
   <data name="Label294" xml:space="preserve">
     <value>Просматривать</value>
@@ -793,31 +793,31 @@
     <value>Открытый</value>
   </data>
   <data name="Label301" xml:space="preserve">
-    <value>Фильтр собраний по количеству файлов</value>
+    <value>Фильтр по количеству файлов</value>
   </data>
   <data name="Label302" xml:space="preserve">
-    <value>Поиск по фильтрам</value>
+    <value>Фильтр поиска</value>
   </data>
   <data name="Label303" xml:space="preserve">
     <value>Фильтровать только по целым словам</value>
   </data>
   <data name="Label304" xml:space="preserve">
-    <value>Все слово</value>
+    <value>Целое слово</value>
   </data>
   <data name="Label305" xml:space="preserve">
-    <value>Фильтровать только по совпадениям регистра</value>
+    <value>Фильтр только по совпадениям регистра</value>
   </data>
   <data name="Label306" xml:space="preserve">
-    <value>Чувствительный к регистру</value>
+    <value>Чувствительность к регистру</value>
   </data>
   <data name="Label307" xml:space="preserve">
-    <value>Включить имя пути к файлу в поиск</value>
+    <value>Включить путь к файлу в поиск</value>
   </data>
   <data name="Label308" xml:space="preserve">
     <value>Включить путь к файлу</value>
   </data>
   <data name="Label309" xml:space="preserve">
-    <value>Фильтрация текста</value>
+    <value>Фильтр текста</value>
   </data>
   <data name="Label31" xml:space="preserve">
     <value>Сохранить текущую программу в новый файл</value>
@@ -826,13 +826,13 @@
     <value>Показывать только файлы, содержащие текст фильтра</value>
   </data>
   <data name="Label311" xml:space="preserve">
-    <value>Выполните фильтр по файлам, пустой текст фильтра, чтобы отобразить все файлы</value>
+    <value>Выполните фильтр по файлам, пустой текст фильтра, чтобы повторно показать все файлы</value>
   </data>
   <data name="Label312" xml:space="preserve">
     <value>Применить фильтр</value>
   </data>
   <data name="Label313" xml:space="preserve">
-    <value>Поиск и замена</value>
+    <value>Найти и заменить</value>
   </data>
   <data name="Label314" xml:space="preserve">
     <value>Находить</value>
@@ -841,16 +841,16 @@
     <value>Заменять</value>
   </data>
   <data name="Label316" xml:space="preserve">
-    <value>Найдите предыдущее вхождение текста «Найти»</value>
+    <value>Поиск предыдущего вхождения текста Найти</value>
   </data>
   <data name="Label317" xml:space="preserve">
-    <value>Найти предыдущую</value>
+    <value>Найти предыдущее</value>
   </data>
   <data name="Label318" xml:space="preserve">
-    <value>Поиск следующего вхождения текста «Найти»</value>
+    <value>Поиск следующего вхождения текста Найти</value>
   </data>
   <data name="Label319" xml:space="preserve">
-    <value>Найти далее</value>
+    <value>Найти дальше</value>
   </data>
   <data name="Label32" xml:space="preserve">
     <value>Сохранить как</value>
@@ -862,7 +862,7 @@
     <value>Заменять</value>
   </data>
   <data name="Label322" xml:space="preserve">
-    <value>Замените все вхождения текста «Найти» текстом «Заменить» текстом «Заменить»</value>
+    <value>Замените все вхождения текста Найти текстом на Заменить текст</value>
   </data>
   <data name="Label323" xml:space="preserve">
     <value>Заменить все</value>
@@ -871,19 +871,19 @@
     <value>Блок-схема</value>
   </data>
   <data name="Label325" xml:space="preserve">
-    <value>Уменьшите масштаб, чтобы просмотреть больше (меньше)</value>
+    <value>Уменьшить, чтобы увидеть больше (меньше)</value>
   </data>
   <data name="Label326" xml:space="preserve">
     <value>Уменьшить масштаб</value>
   </data>
   <data name="Label327" xml:space="preserve">
-    <value>Увеличьте масштаб, чтобы увидеть меньше (больше)</value>
+    <value>Увеличьте масштаб, чтобы уменьшить (увеличить)</value>
   </data>
   <data name="Label328" xml:space="preserve">
-    <value>Увеличьте масштаб</value>
+    <value>Увеличить масштаб</value>
   </data>
   <data name="Label329" xml:space="preserve">
-    <value>Увеличьте масштаб, чтобы начать</value>
+    <value>Масштабирование для начала</value>
   </data>
   <data name="Label33" xml:space="preserve">
     <value>Сохранить все программы</value>
@@ -892,7 +892,7 @@
     <value>Начало</value>
   </data>
   <data name="Label331" xml:space="preserve">
-    <value>Увеличьте масштаб до конца основного кода</value>
+    <value>Увеличение масштаба до конца основного кода</value>
   </data>
   <data name="Label332" xml:space="preserve">
     <value>Конец</value>
@@ -904,10 +904,10 @@
     <value>Обновлять</value>
   </data>
   <data name="Label335" xml:space="preserve">
-    <value>Масштабирование блок-схемы для выбора элемента в месте расположения документа</value>
+    <value>Масштабирование блок-схемы для выбора элемента в месте нахождения документа</value>
   </data>
   <data name="Label336" xml:space="preserve">
-    <value>Синхронизация с</value>
+    <value>Синхронизировать с</value>
   </data>
   <data name="Label337" xml:space="preserve">
     <value>Прокрутка документа для просмотра выбранного элемента блок-схемы</value>
@@ -931,10 +931,10 @@
     <value>Экспорт в Visual Basic</value>
   </data>
   <data name="Label343" xml:space="preserve">
-    <value>Расположение вывода</value>
+    <value>Выходное местоположение</value>
   </data>
   <data name="Label344" xml:space="preserve">
-    <value>Перейдите к расположению, чтобы экспортировать градуированное решение</value>
+    <value>Перейдите в расположение, чтобы экспортировать градуированное решение</value>
   </data>
   <data name="Label345" xml:space="preserve">
     <value>Просматривать</value>
@@ -952,7 +952,7 @@
     <value>Выпускник</value>
   </data>
   <data name="Label35" xml:space="preserve">
-    <value>Печать текущей программы (см. раздел Дополнительно-&gt;Параметры параметров печати)</value>
+    <value>Текущая программа печати (см. Дополнительно-&gt;Параметры параметров печати)</value>
   </data>
   <data name="Label350" xml:space="preserve">
     <value>Импорт</value>
@@ -1000,10 +1000,10 @@
     <value>Параметры</value>
   </data>
   <data name="Label364" xml:space="preserve">
-    <value>Перейдите на сайт загрузки</value>
+    <value>Перейти к загрузке веб-сайта</value>
   </data>
   <data name="Label365" xml:space="preserve">
-    <value>SB-Prime в галерее</value>
+    <value>СБ-Прайм в Галерее</value>
   </data>
   <data name="Label366" xml:space="preserve">
     <value>Обновите SB-Prime до последней версии</value>
@@ -1012,13 +1012,13 @@
     <value>Обновление до последней версии</value>
   </data>
   <data name="Label368" xml:space="preserve">
-    <value>Маленький базовый путь установки</value>
+    <value>Небольшой базовый путь установки</value>
   </data>
   <data name="Label369" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label37" xml:space="preserve">
-    <value>Выйдите из SB-Prime</value>
+    <value>Выход из СБ-Прайм</value>
   </data>
   <data name="Label370" xml:space="preserve">
     <value>Перейдите в папку установки Small Basic</value>
@@ -1033,13 +1033,13 @@
     <value>Отмена</value>
   </data>
   <data name="Label374" xml:space="preserve">
-    <value>Цитата "" вставляет названия цветов и шрифтов</value>
+    <value>В кавычку "" вставлены названия цветов и шрифтов</value>
   </data>
   <data name="Label375" xml:space="preserve">
     <value>Вставка цветов в виде шестнадцатеричных значений</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Загрузка библиотек DLL расширений при запуске (выключите и перезапустите для использования диспетчера расширений)</value>
+    <value>Загрузка библиотек DLL расширений при запуске (выключите и перезапустите для использования Extension Manager)</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>Увеличение печати</value>
@@ -1048,7 +1048,7 @@
     <value>Увеличение (&gt;0) или уменьшение (&lt;0) размера шрифта печати</value>
   </data>
   <data name="Label379" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label38" xml:space="preserve">
     <value>Выход</value>
@@ -1075,13 +1075,13 @@
     <value>Подождите...</value>
   </data>
   <data name="Label387" xml:space="preserve">
-    <value>Многоугольники Стороны</value>
+    <value>Стороны полигона</value>
   </data>
   <data name="Label388" xml:space="preserve">
     <value>Введите количество сторон многоугольника (&gt; 3)</value>
   </data>
   <data name="Label389" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label39" xml:space="preserve">
     <value>Дом</value>
@@ -1090,13 +1090,13 @@
     <value>Договорились</value>
   </data>
   <data name="Label391" xml:space="preserve">
-    <value>WidthAndHeight</value>
+    <value>ШиринаИВысота</value>
   </data>
   <data name="Label392" xml:space="preserve">
     <value>Прогресс</value>
   </data>
   <data name="Label393" xml:space="preserve">
-    <value>Искомые папки</value>
+    <value>Найденные папки</value>
   </data>
   <data name="Label394" xml:space="preserve">
     <value>Отмена</value>
@@ -1114,7 +1114,7 @@
     <value>Ваша программа была опубликована в Интернете</value>
   </data>
   <data name="Label399" xml:space="preserve">
-    <value>Установите дополнительные сведения и закройте</value>
+    <value>Задайте дополнительные сведения и закройте</value>
   </data>
   <data name="Label4" xml:space="preserve">
     <value>Прописные буквы</value>
@@ -1123,10 +1123,10 @@
     <value>Файл</value>
   </data>
   <data name="Label400" xml:space="preserve">
-    <value>Обновить и закрыть</value>
+    <value>Обновление и закрытие</value>
   </data>
   <data name="Label401" xml:space="preserve">
-    <value>Ниже приведен идентификатор вашей программы, которым вы можете поделиться.</value>
+    <value>Ниже приведен идентификатор вашей программы, которым вы можете поделиться</value>
   </data>
   <data name="Label402" xml:space="preserve">
     <value>Открытие опубликованной программы в Internet Explorer (требуется SilverLight)</value>
@@ -1135,10 +1135,10 @@
     <value>Открыть в браузере</value>
   </data>
   <data name="Label404" xml:space="preserve">
-    <value>Дополнительный заголовок (макс. 255)</value>
+    <value>Необязательный заголовок (макс. 255)</value>
   </data>
   <data name="Label405" xml:space="preserve">
-    <value>Дополнительное описание (макс. 1024)</value>
+    <value>Опциональное описание (макс. 1024)</value>
   </data>
   <data name="Label406" xml:space="preserve">
     <value>Категория</value>
@@ -1201,7 +1201,7 @@
     <value>Пуговица</value>
   </data>
   <data name="Label424" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label425" xml:space="preserve">
     <value>MultiLineTextBox</value>
@@ -1219,22 +1219,22 @@
     <value>Флажок</value>
   </data>
   <data name="Label43" xml:space="preserve">
-    <value>Открытие существующей программы (Ctrl+O)</value>
+    <value>Откройте существующую программу (Ctrl+O)</value>
   </data>
   <data name="Label430" xml:space="preserve">
     <value>Комбобокс</value>
   </data>
   <data name="Label431" xml:space="preserve">
-    <value>Просмотр данных</value>
+    <value>Представление данных</value>
   </data>
   <data name="Label432" xml:space="preserve">
-    <value>DocumentViewer</value>
+    <value>DocumentViewer (Просмотрщик документов)</value>
   </data>
   <data name="Label433" xml:space="preserve">
-    <value>ListBox</value>
+    <value>ListBox (СписокСписок)</value>
   </data>
   <data name="Label434" xml:space="preserve">
-    <value>ListView</value>
+    <value>ListView (СписокВью)</value>
   </data>
   <data name="Label435" xml:space="preserve">
     <value>Медиаплеер</value>
@@ -1243,10 +1243,10 @@
     <value>Меню</value>
   </data>
   <data name="Label437" xml:space="preserve">
-    <value>PasswordBox</value>
+    <value>PasswordBox (ПарольBox)</value>
   </data>
   <data name="Label438" xml:space="preserve">
-    <value>Прогресс-бар</value>
+    <value>ProgressBar (ПрогрессБар)</value>
   </data>
   <data name="Label439" xml:space="preserve">
     <value>Радиокнопка</value>
@@ -1264,10 +1264,10 @@
     <value>Древовидный вид</value>
   </data>
   <data name="Label443" xml:space="preserve">
-    <value>Удаление выделенных фигур</value>
+    <value>Удаление выбранных фигур</value>
   </data>
   <data name="Label444" xml:space="preserve">
-    <value>Размер оснастки</value>
+    <value>Размер привязки</value>
   </data>
   <data name="Label445" xml:space="preserve">
     <value>10</value>
@@ -1276,7 +1276,7 @@
     <value>Импорт из кода</value>
   </data>
   <data name="Label447" xml:space="preserve">
-    <value>Удалить все фигуры</value>
+    <value>Удалить Все Фигуры</value>
   </data>
   <data name="Label448" xml:space="preserve">
     <value>Высота обзора</value>
@@ -1294,7 +1294,7 @@
     <value>1000</value>
   </data>
   <data name="Label452" xml:space="preserve">
-    <value>Масштабное представление</value>
+    <value>Масштабный вид</value>
   </data>
   <data name="Label453" xml:space="preserve">
     <value>Справка</value>
@@ -1339,7 +1339,7 @@
     <value>Стек вызовов</value>
   </data>
   <data name="Label466" xml:space="preserve">
-    <value>Дополнительное регулярное выражение для имен переменных intellisense всплывающих подсказок (например, русское а-яА-Яёё)</value>
+    <value>Дополнительные регулярные выражения для имен переменных intellisense всплывающей подсказки (например, русские а-яА-ЯёЁЁ)</value>
   </data>
   <data name="Label467" xml:space="preserve">
     <value>Прямоугольник</value>
@@ -1366,7 +1366,7 @@
     <value>Пуговица</value>
   </data>
   <data name="Label474" xml:space="preserve">
-    <value>Текстовое поле</value>
+    <value>TextBox (Текстовое поле)</value>
   </data>
   <data name="Label475" xml:space="preserve">
     <value>MultiLineTextBox</value>
@@ -1387,16 +1387,16 @@
     <value>Спасать</value>
   </data>
   <data name="Label480" xml:space="preserve">
-    <value>Просмотр данных</value>
+    <value>Представление данных</value>
   </data>
   <data name="Label481" xml:space="preserve">
-    <value>DocumentViewer</value>
+    <value>DocumentViewer (Просмотрщик документов)</value>
   </data>
   <data name="Label482" xml:space="preserve">
-    <value>ListBox</value>
+    <value>ListBox (СписокСписок)</value>
   </data>
   <data name="Label483" xml:space="preserve">
-    <value>ListView</value>
+    <value>ListView (СписокВью)</value>
   </data>
   <data name="Label484" xml:space="preserve">
     <value>Медиаплеер</value>
@@ -1405,10 +1405,10 @@
     <value>Меню</value>
   </data>
   <data name="Label486" xml:space="preserve">
-    <value>PasswordBox</value>
+    <value>PasswordBox (ПарольBox)</value>
   </data>
   <data name="Label487" xml:space="preserve">
-    <value>Прогресс-бар</value>
+    <value>ProgressBar (ПрогрессБар)</value>
   </data>
   <data name="Label488" xml:space="preserve">
     <value>Радиокнопка</value>
@@ -1424,6 +1424,24 @@
   </data>
   <data name="Label491" xml:space="preserve">
     <value>Древовидный вид</value>
+  </data>
+  <data name="Label492" xml:space="preserve">
+    <value>Псевдонимы</value>
+  </data>
+  <data name="Label493" xml:space="preserve">
+    <value>Задание псевдонимов объектов и методов</value>
+  </data>
+  <data name="Label494" xml:space="preserve">
+    <value>Псевдонимы</value>
+  </data>
+  <data name="Label495" xml:space="preserve">
+    <value>Задание псевдонимов имен объектов, методов, свойств или событий</value>
+  </data>
+  <data name="Label496" xml:space="preserve">
+    <value>Имя по умолчанию</value>
+  </data>
+  <data name="Label497" xml:space="preserve">
+    <value>Псевдоним</value>
   </data>
   <data name="Label5" xml:space="preserve">
     <value>Нумлок</value>
@@ -1450,13 +1468,13 @@
     <value>Запуск текущей программы (F5)</value>
   </data>
   <data name="Label57" xml:space="preserve">
-    <value>Бежать</value>
+    <value>Ссуда</value>
   </data>
   <data name="Label58" xml:space="preserve">
     <value>Редактировать</value>
   </data>
   <data name="Label59" xml:space="preserve">
-    <value>Копирование текущего выделенного фрагмента в буфер обмена</value>
+    <value>Копировать текущую выделенную область в буфер обмена</value>
   </data>
   <data name="Label6" xml:space="preserve">
     <value>Вставка</value>
@@ -1465,19 +1483,19 @@
     <value>Копировать</value>
   </data>
   <data name="Label61" xml:space="preserve">
-    <value>Прошлый буфер обмена при текущем выделении</value>
+    <value>Прошлый буфер обмена при текущем выборе</value>
   </data>
   <data name="Label62" xml:space="preserve">
     <value>Паста</value>
   </data>
   <data name="Label63" xml:space="preserve">
-    <value>Удалить текущий выделенный фрагмент в буфер обмена</value>
+    <value>Удалить текущую выделенную область в буфер обмена</value>
   </data>
   <data name="Label64" xml:space="preserve">
     <value>Резать</value>
   </data>
   <data name="Label65" xml:space="preserve">
-    <value>Удалить текущий выделенный фрагмент</value>
+    <value>Удалить текущую выборку</value>
   </data>
   <data name="Label66" xml:space="preserve">
     <value>Удалить</value>
@@ -1504,25 +1522,25 @@
     <value>Выбрать все</value>
   </data>
   <data name="Label73" xml:space="preserve">
-    <value>Свернуть все складные</value>
+    <value>Свернуть все сворачиваемые</value>
   </data>
   <data name="Label74" xml:space="preserve">
     <value>Свернуть все</value>
   </data>
   <data name="Label75" xml:space="preserve">
-    <value>Развернуть все складывания</value>
+    <value>Развернуть все фальцовки</value>
   </data>
   <data name="Label76" xml:space="preserve">
     <value>Развернуть все</value>
   </data>
   <data name="Label77" xml:space="preserve">
-    <value>Формат текущей программы</value>
+    <value>Форматирование текущей программы</value>
   </data>
   <data name="Label78" xml:space="preserve">
     <value>Формат</value>
   </data>
   <data name="Label79" xml:space="preserve">
-    <value>Перейти на предыдущую строку</value>
+    <value>Перейти к предыдущей строке</value>
   </data>
   <data name="Label8" xml:space="preserve">
     <value>Начать новую программу</value>
@@ -1555,25 +1573,25 @@
     <value>Искать</value>
   </data>
   <data name="Label89" xml:space="preserve">
-    <value>Быстрый поиск предыдущей</value>
+    <value>Быстрый поиск предыдущего</value>
   </data>
   <data name="Label9" xml:space="preserve">
     <value>Новые функции</value>
   </data>
   <data name="Label90" xml:space="preserve">
-    <value>Найти предыдущую</value>
+    <value>Найти предыдущее</value>
   </data>
   <data name="Label91" xml:space="preserve">
-    <value>Быстрый поиск далее</value>
+    <value>Быстрый поиск следующего</value>
   </data>
   <data name="Label92" xml:space="preserve">
-    <value>Найти далее</value>
+    <value>Найти дальше</value>
   </data>
   <data name="Label93" xml:space="preserve">
-    <value>Диалоговое окно «Поиск и замена»</value>
+    <value>Диалоговое окно «Найти и заменить»</value>
   </data>
   <data name="Label94" xml:space="preserve">
-    <value>Поиск и замена</value>
+    <value>Найти и заменить</value>
   </data>
   <data name="Label95" xml:space="preserve">
     <value>Выделите все найденные экземпляры</value>
@@ -1582,49 +1600,49 @@
     <value>Выделить все</value>
   </data>
   <data name="Label97" xml:space="preserve">
-    <value>Ищите и выделяйте только целые совпадения слов</value>
+    <value>Поиск и выделение только совпадений целых слов</value>
   </data>
   <data name="Label98" xml:space="preserve">
-    <value>Все слово</value>
+    <value>Целое слово</value>
   </data>
   <data name="Label99" xml:space="preserve">
-    <value>Поиск и выделение только совпадений с учетом регистра</value>
+    <value>Поиск и выделение только совпадений, чувствительных к регистру</value>
   </data>
   <data name="String1" xml:space="preserve">
-    <value>Используйте клавишу «Shift» для выделения нескольких фигур, их перемещения или изменения вместе</value>
+    <value>Используйте клавишу Shift для выбора нескольких фигур, их перемещения или изменения вместе</value>
   </data>
   <data name="String10" xml:space="preserve">
-    <value>Intellisense появляется здесь при наведении курсора на объекты и методы, а также при вводе и просмотре возможных параметров.</value>
+    <value>IntelliSense будет отображаться здесь при наведении указателя мыши на объекты и методы, а также при вводе и просмотре потенциальных вариантов.</value>
   </data>
   <data name="String100" xml:space="preserve">
-    <value>Команды «Раскомментировать файл»</value>
+    <value>Команды для удаления комментариев к файлу</value>
   </data>
   <data name="String101" xml:space="preserve">
-    <value>Сворачивание Складывание</value>
+    <value>Сворачивание Свертывание</value>
   </data>
   <data name="String102" xml:space="preserve">
-    <value>Развернуть Складывание</value>
+    <value>Развернуть сворачивание</value>
   </data>
   <data name="String103" xml:space="preserve">
-    <value>Переход назад CTRL+B</value>
+    <value>Назад Ctrl+B</value>
   </data>
   <data name="String104" xml:space="preserve">
-    <value>Навигация вперед CTRL+SHIFT+B</value>
+    <value>Переход вперед Ctrl+Shift+B</value>
   </data>
   <data name="String105" xml:space="preserve">
-    <value>Копирование выделенного фрагмента в буфер обмена в виде текста HTML</value>
+    <value>Копировать выделение в буфер обмена в виде HTML-текста</value>
   </data>
   <data name="String106" xml:space="preserve">
-    <value>Копирование выделенного фрагмента в буфер обмена в формате HTML</value>
+    <value>Копировать выделенную область в буфер обмена в виде HTML</value>
   </data>
   <data name="String107" xml:space="preserve">
-    <value>Копирование выделенного фрагмента в буфер обмена в формате RTF</value>
+    <value>Копировать выделенную область в буфер обмена в формате RTF</value>
   </data>
   <data name="String108" xml:space="preserve">
     <value>Открыть содержащую папку</value>
   </data>
   <data name="String109" xml:space="preserve">
-    <value>Добавить в контрольные значения отладки CTRL+SHIFT+W</value>
+    <value>Добавить в контрольные значения отладки Ctrl+Shift+W</value>
   </data>
   <data name="String11" xml:space="preserve">
     <value>Аргументы</value>
@@ -1645,10 +1663,10 @@
     <value>Цвет на белом</value>
   </data>
   <data name="String115" xml:space="preserve">
-    <value>Истинный цвет</value>
+    <value>Естественная цветопередача</value>
   </data>
   <data name="String116" xml:space="preserve">
-    <value>Черное и белое</value>
+    <value>Черно-белое</value>
   </data>
   <data name="String117" xml:space="preserve">
     <value>Подождите...</value>
@@ -1663,7 +1681,7 @@
     <value>Возвращает</value>
   </data>
   <data name="String120" xml:space="preserve">
-    <value>декомпилируйте допустимую сборку .NET в Microsoft C# (dll или exe), а затем откройте папку, содержащую декомпилированный исходный код C#.</value>
+    <value>декомпилируйте допустимую сборку .Net в Microsoft C# (dll или exe), а затем откройте папку, содержащую декомпилированный исходный код C#.</value>
   </data>
   <data name="String121" xml:space="preserve">
     <value>В случае успеха и установки Visual Studio откройте файл проекта (*.csproj).</value>
@@ -1675,7 +1693,7 @@
     <value>КОНЕЦ</value>
   </data>
   <data name="String124" xml:space="preserve">
-    <value>Unset</value>
+    <value>Снять</value>
   </data>
   <data name="String125" xml:space="preserve">
     <value>Главное окно</value>
@@ -1684,7 +1702,7 @@
     <value>Макет документа</value>
   </data>
   <data name="String127" xml:space="preserve">
-    <value>Document Lexer</value>
+    <value>Документоанализатор</value>
   </data>
   <data name="String128" xml:space="preserve">
     <value>Блок-схема</value>
@@ -1705,10 +1723,10 @@
     <value>Отбор</value>
   </data>
   <data name="String133" xml:space="preserve">
-    <value>Предыстория полей</value>
+    <value>Фон полей</value>
   </data>
   <data name="String134" xml:space="preserve">
-    <value>Поля переднего плана</value>
+    <value>Поле переднего плана</value>
   </data>
   <data name="String135" xml:space="preserve">
     <value>Складной фон</value>
@@ -1717,49 +1735,49 @@
     <value>Складной передний план</value>
   </data>
   <data name="String137" xml:space="preserve">
-    <value>Закладка фона</value>
+    <value>Фон закладки</value>
   </data>
   <data name="String138" xml:space="preserve">
     <value>Закладка переднего плана</value>
   </data>
   <data name="String139" xml:space="preserve">
-    <value>Предыстория точки останова</value>
+    <value>Фон точки останова</value>
   </data>
   <data name="String14" xml:space="preserve">
-    <value>Выделение фигуры</value>
+    <value>Выберите форму</value>
   </data>
   <data name="String140" xml:space="preserve">
-    <value>Передний план точки останова</value>
+    <value>Точка останова на переднем плане</value>
   </data>
   <data name="String141" xml:space="preserve">
     <value>Выбирать</value>
   </data>
   <data name="String142" xml:space="preserve">
-    <value>Выделите пункт Отладка</value>
+    <value>Выделите отладку</value>
   </data>
   <data name="String143" xml:space="preserve">
     <value>Выделить Найти</value>
   </data>
   <data name="String144" xml:space="preserve">
-    <value>Выделите удаленные</value>
+    <value>Выделить удаленные</value>
   </data>
   <data name="String145" xml:space="preserve">
-    <value>Выделение вставленных</value>
+    <value>Вставлено выделение</value>
   </data>
   <data name="String146" xml:space="preserve">
-    <value>CallTip на переднем плане</value>
+    <value>Передний план CallTip</value>
   </data>
   <data name="String147" xml:space="preserve">
-    <value>Предыстория CallTip</value>
+    <value>Фон CallTip</value>
   </data>
   <data name="String148" xml:space="preserve">
-    <value>Изюминка CallTip</value>
+    <value>Подсветка CallTip</value>
   </data>
   <data name="String149" xml:space="preserve">
     <value>Передний план</value>
   </data>
   <data name="String15" xml:space="preserve">
-    <value>Отменить выделение фигуры</value>
+    <value>Отменить выбор фигуры</value>
   </data>
   <data name="String150" xml:space="preserve">
     <value>Фон</value>
@@ -1774,7 +1792,7 @@
     <value>Оператор</value>
   </data>
   <data name="String154" xml:space="preserve">
-    <value>Ключевое слово</value>
+    <value>Ключевые слова</value>
   </data>
   <data name="String155" xml:space="preserve">
     <value>Объект</value>
@@ -1795,7 +1813,7 @@
     <value>Копирование выделенных фигур</value>
   </data>
   <data name="String160" xml:space="preserve">
-    <value>Хайлайт</value>
+    <value>Выделите</value>
   </data>
   <data name="String161" xml:space="preserve">
     <value>Состояние</value>
@@ -1855,13 +1873,13 @@
     <value>Переменное регулярное выражение</value>
   </data>
   <data name="String179" xml:space="preserve">
-    <value>Дополнительное регулярное выражение для имен переменных intellisense всплывающих подсказок</value>
+    <value>Дополнительные регулярные выражения для имен переменных IntelliSense подсказки</value>
   </data>
   <data name="String18" xml:space="preserve">
-    <value>Вставка кода в текущий документ</value>
+    <value>Вставить код в текущий документ</value>
   </data>
   <data name="String180" xml:space="preserve">
-    <value>Окна инструментов должны быть «всегда на высоте»</value>
+    <value>Окна инструментов, чтобы быть «всегда на высоте»</value>
   </data>
   <data name="String181" xml:space="preserve">
     <value>Шрифт исходного кода</value>
@@ -1873,7 +1891,7 @@
     <value>Копирование кода из текущего документа</value>
   </data>
   <data name="String2" xml:space="preserve">
-    <value>Переключить представление intellisense</value>
+    <value>Переключение представления IntelliSense</value>
   </data>
   <data name="String20" xml:space="preserve">
     <value>Ясный</value>
@@ -1882,79 +1900,79 @@
     <value>Четкие условия просмотра</value>
   </data>
   <data name="String22" xml:space="preserve">
-    <value>Эта папка уже содержит файлы.</value>
+    <value>В этой папке уже есть файлы.</value>
   </data>
   <data name="String23" xml:space="preserve">
     <value>Выберите другое расположение или очистите эту папку и повторите попытку.</value>
   </data>
   <data name="String24" xml:space="preserve">
-    <value>Блок-схема не удалась, вероятно, из-за ошибки кода - проверка компиляции программы.</value>
+    <value>Блок-схема не удалась, вероятно, из-за ошибки в коде - проверьте компиляцию программы.</value>
   </data>
   <data name="String25" xml:space="preserve">
     <value>Хотите продолжить?</value>
   </data>
   <data name="String26" xml:space="preserve">
-    <value>Щелкните левой кнопкой мыши элемент, чтобы выбрать его</value>
+    <value>Щелкните элемент левой кнопкой мыши, чтобы выбрать его</value>
   </data>
   <data name="String27" xml:space="preserve">
-    <value>Щелкните правой кнопкой мыши элемент, чтобы выбрать его родительский элемент (EndFor, EndWhile, EndIf, Else или ElseIf) или выбрать его ссылку (Goto или Sub)</value>
+    <value>Щелкните элемент правой кнопкой мыши, чтобы выбрать его родительский элемент (EndFor, EndWhile, EndIf, Else или ElseIf) или выбрать его ссылку (Goto или Sub)</value>
   </data>
   <data name="String28" xml:space="preserve">
-    <value>Выбранный элемент будет перемещен в верхнюю часть представления</value>
+    <value>Выбранный элемент будет перемещен в верхнюю часть вида</value>
   </data>
   <data name="String29" xml:space="preserve">
     <value>Во время сеанса отладки будет выбрана текущая приостановленная строка</value>
   </data>
   <data name="String3" xml:space="preserve">
-    <value>Переключить макет программы с разделенным экраном</value>
+    <value>Переключение макета программы с разделенным экраном</value>
   </data>
   <data name="String30" xml:space="preserve">
-    <value>Цвета можно задать в разделе "Цвета IDE", а темная тема будет применена, если выбрана эта опция</value>
+    <value>Цвета могут быть установлены в IDE Colors, и если опция выбрана, применяется темная тема</value>
   </data>
   <data name="String31" xml:space="preserve">
     <value>Редактору фигур не удалось задать входные данные свойства.</value>
   </data>
   <data name="String32" xml:space="preserve">
-    <value>Редактору фигур не удалось экспортировать некоторые фигуры в код.</value>
+    <value>Редактору фигур не удавалось экспортировать некоторые фигуры в код.</value>
   </data>
   <data name="String33" xml:space="preserve">
-    <value>Редактору фигур не удалось импортировать некоторые фигуры из кода.</value>
+    <value>Редактору фигур не удавалось импортировать некоторые фигуры из кода.</value>
   </data>
   <data name="String34" xml:space="preserve">
     <value>Добавьте фигуры или элементы управления, щелкнув имя фигуры на левой панели.</value>
   </data>
   <data name="String35" xml:space="preserve">
-    <value>Выделите фигуру, щелкнув по ней синий маркер перемещения.</value>
+    <value>Выберите фигуру, щелкнув по ней или синий маркер перемещения.</value>
   </data>
   <data name="String36" xml:space="preserve">
-    <value>Свойства выбранной фигуры отображаются на правой панели, их можно изменить, отредактировав или нажав кнопку «Установить».</value>
+    <value>Свойства выбранной фигуры отображаются на правой панели, их можно изменить с помощью редактирования или с помощью кнопки Установить.</value>
   </data>
   <data name="String37" xml:space="preserve">
-    <value>Выделите несколько фигур, выделив фигуру с удерживаемой нажатой клавишей «Shift» или выделив группу фигур (Shift, чтобы добавить к текущим выделенным фигурам).</value>
+    <value>Выберите несколько фигур, выделив фигуру с удерживаемой клавишей Shift или выделив группу фигур (Shift для добавления к текущим выбранным фигурам).</value>
   </data>
   <data name="String38" xml:space="preserve">
-    <value>Разделите все фигуры, щелкнув левой кнопкой мыши на заднем плане.</value>
+    <value>Отключите все фигуры, щелкнув левой кнопкой мыши по заднему плану.</value>
   </data>
   <data name="String39" xml:space="preserve">
-    <value>Перемещение, изменение размера (с помощью угловых маркеров) или изменение свойств фигуры (удерживая нажатой клавишу «Shift» для применения к нескольким выделенным фигурам).</value>
+    <value>Перемещайте, изменяйте размер (с помощью угловых маркеров) или изменяйте свойства фигуры (удерживая клавишу Shift, чтобы применить ее к нескольким выбранным фигурам).</value>
   </data>
   <data name="String4" xml:space="preserve">
-    <value>Импортированные сведения о программе</value>
+    <value>Сведения об импортированной программе</value>
   </data>
   <data name="String40" xml:space="preserve">
-    <value>Размер треугольников, линий и многоугольников изменяется путем перемещения отдельных углов.</value>
+    <value>Размеры треугольников, линий и многоугольников изменяются путем перемещения отдельных углов.</value>
   </data>
   <data name="String41" xml:space="preserve">
-    <value>Перемещайте выделенные фигуры с помощью клавиш со стрелками (удерживайте клавишу «Shift» для перемещения на расстояние привязки).</value>
+    <value>Сдвигайте выбранные фигуры с помощью клавиш со стрелками (удерживайте клавишу Shift, чтобы переместиться на расстояние привязки).</value>
   </data>
   <data name="String42" xml:space="preserve">
-    <value>Нажмите клавишу «Delete» над фигурой, чтобы удалить ее.</value>
+    <value>Нажмите клавишу «Удалить» над фигурой, чтобы удалить ее.</value>
   </data>
   <data name="String43" xml:space="preserve">
-    <value>Щелкните правой кнопкой мыши, чтобы открыть дополнительные параметры, включая копирование и вставку кода в текущий документ или копирование выбранных фигур (новые скопированные фигуры накладываются поверх оригиналов, поэтому их можно перемещать как группу с помощью клавиши Shift).</value>
+    <value>Щелкните правой кнопкой мыши, чтобы открыть дополнительные параметры, в том числе скопировать и вставить код в текущий документ или скопировать выбранные фигуры (новые скопированные фигуры лежат поверх оригиналов, поэтому их можно перемещать группой с помощью клавиши Shift).</value>
   </data>
   <data name="String44" xml:space="preserve">
-    <value>Текущий код отображается в окне кода.  Это можно отредактировать и использовать \"Import From Code\" для добавления текущего кода в текущее представление.</value>
+    <value>Текущий код отображается в окне кода.  Его можно отредактировать и использовать \"Импорт из кода\", чтобы добавить текущий код в текущее представление.</value>
   </data>
   <data name="String45" xml:space="preserve">
     <value>Вопросы и предложения приветствуются.</value>
@@ -1963,16 +1981,16 @@
     <value>Текст в</value>
   </data>
   <data name="String47" xml:space="preserve">
-    <value>изменилась</value>
+    <value>изменился</value>
   </data>
   <data name="String48" xml:space="preserve">
-    <value>Вы хотите сохранить изменения?</value>
+    <value>Хотите сохранить изменения?</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>Снимите флажок «Загружать библиотеки расширений при запуске» в Advanced-&gt;Options и перезапустите, чтобы изменить установленные расширения.</value>
+    <value>Снимите флажок «Загружать расширения dll при запуске» в Advanced-&gt;Options и перезапустите, чтобы изменить установленные расширения.</value>
   </data>
   <data name="String5" xml:space="preserve">
-    <value>Переключить разностные файлы на разделенном экране</value>
+    <value>Переключение файлов различий в режиме разделенного экрана</value>
   </data>
   <data name="String50" xml:space="preserve">
     <value>ОК, чтобы продолжить работу с загруженными расширениями.</value>
@@ -1984,13 +2002,13 @@
     <value>SB-Prime должен работать с любой установленной версией Small Basic, отладка работает на Small Basic версии 1.1 и выше.</value>
   </data>
   <data name="String53" xml:space="preserve">
-    <value>Чтобы включить отладку, расширение компилируется и устанавливается непосредственно в папку lib при первом запуске SB-Prime, что требует разрешения контроля учетных записей (UAC).</value>
+    <value>Чтобы включить отладку, расширение компилируется и устанавливается в папку lib при первом запуске SB-Prime, требуя разрешения контроля учетных записей (UAC).</value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value>Кроме того, при первом выполнении сеанса отладки может потребоваться контроль учетных записей, чтобы обеспечить необходимую связь между приложениями.</value>
+    <value>Кроме того, контроль учетных записей может потребоваться при первом выполнении сеанса отладки, чтобы обеспечить необходимое взаимодействие между приложениями.</value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value>Отладка требует выполнения до точек останова или «пошагового выполнения» кода.  После паузы значения можно просмотреть, наведя указатель мыши на переменную или добавив имена переменных в список наблюдения на вкладке отладки.  Переменные списка наблюдения могут просматриваться по мере их изменения, а также могут быть изменены.  Значения массива с синтаксисом [] также можно просматривать и изменять.</value>
+    <value>Отладка требует выполнения до точек останова или «пошагового выполнения» кода.  После паузы значения можно просмотреть, наведя курсор мыши на переменную или добавив имена переменных в список наблюдения на вкладке отладки.  Переменные списка наблюдения могут просматриваться по мере их изменения, а также могут быть изменены.  Значения массивов с синтаксисом [] также можно просматривать и изменять.</value>
   </data>
   <data name="String56" xml:space="preserve">
     <value>Для этого приложения не существует ресурсов.  Бросить.</value>
@@ -2011,46 +2029,46 @@
     <value>Успешно импортированная программа с идентификатором</value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value>Успешно завершен запуск с процессом</value>
+    <value>Успешно завершенный запуск с процессом</value>
   </data>
   <data name="String62" xml:space="preserve">
     <value>Невозможно смешивать отладочные и неотладочные запуски</value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value>Не удается скомпилировать уже запущенную программу</value>
+    <value>Не удается скомпилировать программу, которая уже запущена</value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value>Не удалось опубликовать программу (возможно, слишком короткую или слишком длинную)</value>
+    <value>Не удалось опубликовать программу (возможно, слишком короткая или слишком длинная)</value>
   </data>
   <data name="String65" xml:space="preserve">
     <value>Успешно опубликованная программа с идентификатором</value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value>Успешно окончила программу</value>
+    <value>Успешно окончивший программу</value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value>Не удается запустить регистр, так как exe не был успешно скомпилирован</value>
+    <value>Не удается запустить case, так как exe не был успешно скомпилирован</value>
   </data>
   <data name="String68" xml:space="preserve">
     <value>Успешно запущен запуск с процессом</value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value>Успешно декомпилирована сборка в</value>
+    <value>Успешно декомпилированная сборка в</value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value>Истинный цвет</value>
+    <value>Естественная цветопередача</value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value>Добавить плагин : Не удалось добавить плагин в группу</value>
+    <value>Plugin Add : Не удалось добавить плагин в группу</value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value>Успешно завершен запуск с процессом</value>
+    <value>Успешно завершенный запуск с процессом</value>
   </data>
   <data name="String72" xml:space="preserve">
     <value>Создание новых фигур в окне кода.</value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value>Сначала вы можете вставить сюда любой код.</value>
+    <value>Вы можете сначала вставить сюда любой код.</value>
   </data>
   <data name="String74" xml:space="preserve">
     <value>Обратите внимание, что большинство аргументов должны быть литералами, а не переменными.</value>
@@ -2059,25 +2077,25 @@
     <value>Среда разработки Microsoft Visual Studio Community.</value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value>Создавайте свои собственные расширения Small Basic и более крупные проекты.</value>
+    <value>Создавайте свои собственные небольшие расширения Basic и более крупные проекты.</value>
   </data>
   <data name="String77" xml:space="preserve">
     <value>Просмотр и декомпиляция сборок .Net.  Узнайте, как работают расширения.</value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value>Необходим для того, чтобы залезть под капот Small Basic.</value>
+    <value>Незаменим для того, чтобы залезть под капот Small Basic.</value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>Загрузите zip-файлы и извлеките (без установки).</value>
+    <value>Загрузите двоичные файлы zip и распакуйте их (без установки).</value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value>Черное и белое</value>
+    <value>Черно-белое</value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value>Создавайте изображения и манипулируйте ими, в том числе легко придавая изображениям png прозрачный фон и создавая анимированные GIF-файлы.</value>
+    <value>Создавайте изображения и управляйте ими, в том числе легко придавайте изображениям в формате png прозрачный фон и создавайте анимированные GIF-файлы.</value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value>Попробуйте инструмент выбора волшебной палочки.</value>
+    <value>Ознакомьтесь с инструментом выбора волшебной палочки.</value>
   </data>
   <data name="String82" xml:space="preserve">
     <value>Отличный текстовый редактор, альтернатива блокноту.</value>
@@ -2086,34 +2104,34 @@
     <value>Большая загрузка, но IDE профессионального уровня.</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>Полезно для быстрого просмотра или редактирования большинства текстовочитаемых форматов файлов.</value>
+    <value>Полезно для быстрого просмотра или редактирования большинства текстовых форматов файлов.</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>Сжатие zip-файлов.</value>
+    <value>Сжатие zip-архива файла.</value>
   </data>
   <data name="String86" xml:space="preserve">
     <value>Лучший способ поделиться несколькими документами в одном сжатом файле.</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>Создание и редактирование значков.</value>
+    <value>Создавайте и редактируйте иконки.</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>Форматы значков довольно сложны без такого простого инструмента, как этот.</value>
+    <value>Форматы иконок довольно сложны без такого простого инструмента, как этот.</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Отмена нажатия клавиш CTRL+Z</value>
+    <value>Отменить Ctrl+Z</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Intellisense</value>
+    <value>Технология Intellisense</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Повторить CTRL+Y</value>
+    <value>Повторить Ctrl+Y</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Вырезать Ctrl+X</value>
+    <value>Нажмите Ctrl+X</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>Копирование клавиш CTRL+C</value>
+    <value>Копировать Ctrl+C</value>
   </data>
   <data name="String93" xml:space="preserve">
     <value>Вставить Ctrl+V</value>
@@ -2122,16 +2140,16 @@
     <value>Удалить</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>Выделить все клавиши CTRL+A</value>
+    <value>Выделите все Ctrl+A</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Поиск клавиш CTRL+F</value>
+    <value>Найдите Ctrl+F</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>Поиск и замена клавиш CTRL+H</value>
+    <value>Поиск и замена Ctrl+H</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Комментировать выделенные строки Ctrl+?</value>
+    <value>Комментарий к выделенным строкам Ctrl+?</value>
   </data>
   <data name="String99" xml:space="preserve">
     <value>Раскомментировать выделенные строки Ctrl+?</value>
