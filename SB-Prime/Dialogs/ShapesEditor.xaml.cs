@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SB_Prime.Properties;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -2606,7 +2607,7 @@ namespace SB_Prime.Dialogs
         private void AddShape_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ListBoxItem item = (ListBoxItem)sender;
-            string label = item.Content.ToString();
+            string label = item.Tag.ToString();
             string name = GetName(label);
 
             FrameworkElement elt = null;
