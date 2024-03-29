@@ -15,6 +15,7 @@
 //You should have received a copy of the GNU General Public License 
 //along with SB-Prime for Small Basic.  If not, see <http://www.gnu.org/licenses/>. 
 
+using ICSharpCode.Decompiler.TypeSystem;
 using ScintillaNET;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace SB_Prime
 {
@@ -373,7 +375,6 @@ namespace SB_Prime
             int wordStartPos = textArea.WordStartPosition(currentPos, true);
             int style = textArea.GetStyleAt(currentPos-2);
             string currentWord = textArea.GetWordFromPosition(wordStartPos);
-            currentWord = FileFilter.Write(currentWord, false);
             int lenEntered = currentPos - wordStartPos;
             textArea.AutoCSetFillUps("");
             textArea.AutoCStops("");         
@@ -387,7 +388,6 @@ namespace SB_Prime
                 currentPos = wordStartPos - 2;
                 wordStartPos = textArea.WordStartPosition(currentPos, true);
                 lastObject = textArea.GetWordFromPosition(wordStartPos);
-                lastObject = FileFilter.Write(lastObject, false);
                 AutoCData = sbObjects.GetMembers(lastObject, currentWord).Trim();
                 textArea.AutoCShow(lenEntered, AutoCData);
                 AutoCMode = 2;
@@ -562,17 +562,14 @@ namespace SB_Prime
             if (currentPos < 0) return;
             int wordStartPos = textArea.WordStartPosition(currentPos, true);
             string currentWord = textArea.GetWordFromPosition(wordStartPos);
-            currentWord = FileFilter.Write(currentWord, false);
             string lastWord = "";
             if (textArea.GetCharAt(wordStartPos-1) == '.')
             {
                 lastWord = textArea.GetWordFromPosition(textArea.WordStartPosition(wordStartPos - 2, true));
-                lastWord = FileFilter.Write(lastWord, false);
             }
             if (currentPos > wordStartPos)
             {
                 lastObject = textArea.GetWordFromPosition(wordStartPos);
-                lastObject = FileFilter.Write(lastObject, false);
             }
             if (currentWord != "" && sbObjects.GetVariables(currentWord) != "")
             {
@@ -611,7 +608,12 @@ namespace SB_Prime
             }
             foreach (SBObject obj in SBObjects.objects)
             {
-                if (obj.name.ToUpperInvariant() == currentWord.ToUpperInvariant())
+                string objName = "";
+                if (!FileFilter.Aliases.TryGetValue(obj.name, out objName))
+                {
+                    objName = obj.name;
+                }
+                if (objName.ToUpperInvariant() == currentWord.ToUpperInvariant())
                 {
                     MainWindow.showObject = obj;
                     MainWindow.showMember = null;
@@ -626,11 +628,21 @@ namespace SB_Prime
         {
             foreach (SBObject obj in SBObjects.objects)
             {
-                if (obj.name.ToUpperInvariant() == lastWord.ToUpperInvariant())
+                string objName = "";
+                if (!FileFilter.Aliases.TryGetValue(obj.name, out objName))
+                {
+                    objName = obj.name;
+                }
+                if (objName.ToUpperInvariant() == lastWord.ToUpperInvariant())
                 {
                     foreach (Member member in obj.members)
                     {
-                        if (member.name.ToUpperInvariant() == currentWord.ToUpperInvariant())
+                        string memberName = "";
+                        if (!FileFilter.Aliases.TryGetValue(member.name, out memberName))
+                        {
+                            memberName = member.name;
+                        }
+                        if (memberName.ToUpperInvariant() == currentWord.ToUpperInvariant())
                         {
                             MainWindow.showObject = null;
                             MainWindow.showMember = member;
@@ -640,10 +652,10 @@ namespace SB_Prime
                                 switch (member.type)
                                 {
                                     case MemberTypes.Custom:
-                                        name = member.name;
+                                        name = memberName;
                                         break;
                                     case MemberTypes.Method:
-                                        name = member.name;
+                                        name = memberName;
                                         if (member.arguments.Count > 0)
                                         {
                                             name += "(";
@@ -660,10 +672,10 @@ namespace SB_Prime
                                         }
                                         break;
                                     case MemberTypes.Property:
-                                        name = member.name;
+                                        name = memberName;
                                         break;
                                     case MemberTypes.Event:
-                                        name = member.name;
+                                        name = memberName;
                                         break;
                                 }
                                 sbDocument.TextArea.CallTipShow(Position, name + "\n" + CallTipFormat(member.summary));

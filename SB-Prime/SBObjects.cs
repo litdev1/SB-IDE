@@ -15,6 +15,7 @@
 //You should have received a copy of the GNU General Public License 
 //along with SB-Prime for Small Basic.  If not, see <http://www.gnu.org/licenses/>. 
 
+using ICSharpCode.Decompiler.TypeSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,17 +59,19 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (SBObject label in objects)
             {
-                string name = label.name;
-                if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
-                {
-                    data.Add(name + "?1");
-                }
-                if (FileFilter.Aliases.TryGetValue(name, out name))
+                string name = "";
+                if (FileFilter.Aliases.TryGetValue(label.name, out name))
                 {
                     if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                     {
                         data.Add(name + "?1");
+                        continue;
                     }
+                }
+                name = label.name;
+                if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                {
+                    data.Add(name + "?1");
                 }
             }
             data = data.Distinct().ToList();
@@ -87,38 +90,44 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (SBObject label in objects)
             {
-                if (obj.ToUpperInvariant() == label.name.ToUpperInvariant())
+                string labelName = "";
+                if (!FileFilter.Aliases.TryGetValue(label.name, out labelName))
+                {
+                    labelName = label.name;
+                }
+                if (obj.ToUpperInvariant() == labelName.ToUpperInvariant())
                 {
                     foreach (Member member in label.members)
                     {
-                        string name = member.name;
-                        if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                        string memberName = "";
+                        if (FileFilter.Aliases.TryGetValue(member.name, out memberName))
                         {
                             switch (member.type)
                             {
                                 case MemberTypes.Method:
-                                    data.Add(name + "?2");
+                                    data.Add(memberName + "?2");
                                     break;
                                 case MemberTypes.Property:
-                                    data.Add(name + "?3");
+                                    data.Add(memberName + "?3");
                                     break;
                                 case MemberTypes.Event:
-                                    data.Add(name + "?4");
+                                    data.Add(memberName + "?4");
                                     break;
                             }
                         }
-                        if (FileFilter.Aliases.TryGetValue(name, out name))
+                        memberName = member.name;
+                        if (memberName.StartsWith(input, StringComparison.OrdinalIgnoreCase) || memberName.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                         {
                             switch (member.type)
                             {
                                 case MemberTypes.Method:
-                                    data.Add(name + "?2");
+                                    data.Add(memberName + "?2");
                                     break;
                                 case MemberTypes.Property:
-                                    data.Add(name + "?3");
+                                    data.Add(memberName + "?3");
                                     break;
                                 case MemberTypes.Event:
-                                    data.Add(name + "?4");
+                                    data.Add(memberName + "?4");
                                     break;
                             }
                         }
