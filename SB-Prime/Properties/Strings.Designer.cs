@@ -4039,6 +4039,24 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggle the use of aliases.
+        /// </summary>
+        public static string Label498 {
+            get {
+                return ResourceManager.GetString("Label498", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable aliases.
+        /// </summary>
+        public static string Label499 {
+            get {
+                return ResourceManager.GetString("Label499", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Numlock.
         /// </summary>
         public static string Label5 {
@@ -5691,6 +5709,33 @@ namespace SB_Prime.Properties {
         public static string String50 {
             get {
                 return ResourceManager.GetString("String50", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Converts between file source code and SB-Prime IDE so that Save, Load, Publish, Import, Graduate, Run etc use the default SB commands, while the IDE and intellisense use the aliases..
+        /// </summary>
+        public static string String500 {
+            get {
+                return ResourceManager.GetString("String500", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The source file can be shared directly or with Publish without conflicts - it raimains fully SB compatible..
+        /// </summary>
+        public static string String501 {
+            get {
+                return ResourceManager.GetString("String501", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The aliases are only associated with the IDE, souce code can be copied/pasted from IDE with no conversion..
+        /// </summary>
+        public static string String502 {
+            get {
+                return ResourceManager.GetString("String502", resourceCulture);
             }
         }
         

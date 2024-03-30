@@ -1443,6 +1443,12 @@
   <data name="Label497" xml:space="preserve">
     <value>Alias name</value>
   </data>
+  <data name="Label498" xml:space="preserve">
+    <value>Toggle the use of aliases</value>
+  </data>
+  <data name="Label499" xml:space="preserve">
+    <value>Enable aliases</value>
+  </data>
   <data name="Label5" xml:space="preserve">
     <value>Numlock</value>
   </data>
@@ -1994,6 +2000,15 @@
   </data>
   <data name="String50" xml:space="preserve">
     <value>OK to continue with extensions loaded.</value>
+  </data>
+  <data name="String500" xml:space="preserve">
+    <value>Converts between file source code and SB-Prime IDE so that Save, Load, Publish, Import, Graduate, Run etc use the default SB commands, while the IDE and intellisense use the aliases.</value>
+  </data>
+  <data name="String501" xml:space="preserve">
+    <value>The source file can be shared directly or with Publish without conflicts - it raimains fully SB compatible.</value>
+  </data>
+  <data name="String502" xml:space="preserve">
+    <value>The aliases are only associated with the IDE, souce code can be copied/pasted from IDE with no conversion.</value>
   </data>
   <data name="String51" xml:space="preserve">
     <value>There is currently no extended help.</value>

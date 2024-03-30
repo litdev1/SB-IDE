@@ -60,7 +60,7 @@ namespace SB_Prime
             foreach (SBObject label in objects)
             {
                 string name = "";
-                if (FileFilter.Aliases.TryGetValue(label.name, out name))
+                if (FileFilter.EnableAliases && FileFilter.Aliases.TryGetValue(label.name, out name))
                 {
                     if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
                     {
@@ -91,7 +91,7 @@ namespace SB_Prime
             foreach (SBObject label in objects)
             {
                 string labelName = "";
-                if (!FileFilter.Aliases.TryGetValue(label.name, out labelName))
+                if (!FileFilter.EnableAliases || !FileFilter.Aliases.TryGetValue(label.name, out labelName))
                 {
                     labelName = label.name;
                 }
@@ -100,7 +100,7 @@ namespace SB_Prime
                     foreach (Member member in label.members)
                     {
                         string memberName = "";
-                        if (!FileFilter.Aliases.TryGetValue(member.name, out memberName))
+                        if (!FileFilter.EnableAliases || !FileFilter.Aliases.TryGetValue(member.name, out memberName))
                         {
                             memberName = member.name;
                         }

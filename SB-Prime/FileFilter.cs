@@ -11,6 +11,7 @@ namespace SB_Prime
     public static class FileFilter
     {
         private static Dictionary<string,string> aliases = new Dictionary<string, string>();
+        public static bool EnableAliases = true;
 
         public static Dictionary<string,string> Aliases
         {
@@ -19,6 +20,7 @@ namespace SB_Prime
                 return aliases;
             }
         }
+
 
         public static void WriteAllText(string path, string contents)
         {
@@ -53,19 +55,22 @@ namespace SB_Prime
         public static string Write(string text, bool appendDot = true)
         {
             string result = text;
-            if (appendDot)
+            if (EnableAliases)
             {
-                foreach (KeyValuePair<string, string> kvp in Aliases)
+                if (appendDot)
                 {
-                    result = Regex.Replace(result, @"\b" + kvp.Value + @"\.", kvp.Key + @".", RegexOptions.IgnoreCase);
-                    result = Regex.Replace(result, @"\." + kvp.Value + @"\b", @"." + kvp.Key, RegexOptions.IgnoreCase);
+                    foreach (KeyValuePair<string, string> kvp in Aliases)
+                    {
+                        result = Regex.Replace(result, @"\b" + kvp.Value + @"\.", kvp.Key + @".", RegexOptions.IgnoreCase);
+                        result = Regex.Replace(result, @"\." + kvp.Value + @"\b", @"." + kvp.Key, RegexOptions.IgnoreCase);
+                    }
                 }
-            }
-            else
-            {
-                foreach (KeyValuePair<string, string> kvp in Aliases)
+                else
                 {
-                    result = Regex.Replace(result, kvp.Value, kvp.Key, RegexOptions.IgnoreCase);
+                    foreach (KeyValuePair<string, string> kvp in Aliases)
+                    {
+                        result = Regex.Replace(result, kvp.Value, kvp.Key, RegexOptions.IgnoreCase);
+                    }
                 }
             }
             return result;
@@ -100,19 +105,22 @@ namespace SB_Prime
         public static string Read(string text, bool appendDot = true)
         {
             string result = text;
-            if (appendDot)
+            if (EnableAliases)
             {
-                foreach (KeyValuePair<string, string> kvp in Aliases)
+                if (appendDot)
                 {
-                    result = Regex.Replace(result, @"\b" + kvp.Key + @"\.", kvp.Value + @".", RegexOptions.IgnoreCase);
-                    result = Regex.Replace(result, @"\." + kvp.Key + @"\b", @"." + kvp.Value, RegexOptions.IgnoreCase);
+                    foreach (KeyValuePair<string, string> kvp in Aliases)
+                    {
+                        result = Regex.Replace(result, @"\b" + kvp.Key + @"\.", kvp.Value + @".", RegexOptions.IgnoreCase);
+                        result = Regex.Replace(result, @"\." + kvp.Key + @"\b", @"." + kvp.Value, RegexOptions.IgnoreCase);
+                    }
                 }
-            }
-            else
-            {
-                foreach (KeyValuePair<string, string> kvp in Aliases)
+                else
                 {
-                    result = Regex.Replace(result, kvp.Key, kvp.Value, RegexOptions.IgnoreCase);
+                    foreach (KeyValuePair<string, string> kvp in Aliases)
+                    {
+                        result = Regex.Replace(result, kvp.Key, kvp.Value, RegexOptions.IgnoreCase);
+                    }
                 }
             }
             return result;

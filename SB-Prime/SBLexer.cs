@@ -609,7 +609,7 @@ namespace SB_Prime
             foreach (SBObject obj in SBObjects.objects)
             {
                 string objName = "";
-                if (!FileFilter.Aliases.TryGetValue(obj.name, out objName))
+                if (!FileFilter.EnableAliases || !FileFilter.Aliases.TryGetValue(obj.name, out objName))
                 {
                     objName = obj.name;
                 }
@@ -629,7 +629,7 @@ namespace SB_Prime
             foreach (SBObject obj in SBObjects.objects)
             {
                 string objName = "";
-                if (!FileFilter.Aliases.TryGetValue(obj.name, out objName))
+                if (!FileFilter.EnableAliases || !FileFilter.Aliases.TryGetValue(obj.name, out objName))
                 {
                     objName = obj.name;
                 }
@@ -638,7 +638,7 @@ namespace SB_Prime
                     foreach (Member member in obj.members)
                     {
                         string memberName = "";
-                        if (!FileFilter.Aliases.TryGetValue(member.name, out memberName))
+                        if (!FileFilter.EnableAliases || !FileFilter.Aliases.TryGetValue(member.name, out memberName))
                         {
                             memberName = member.name;
                         }

@@ -1443,6 +1443,12 @@
   <data name="Label497" xml:space="preserve">
     <value>उपनाम नाम</value>
   </data>
+  <data name="Label498" xml:space="preserve">
+    <value>उपनामों के उपयोग को टॉगल करें</value>
+  </data>
+  <data name="Label499" xml:space="preserve">
+    <value>उपनाम सक्षम करें</value>
+  </data>
   <data name="Label5" xml:space="preserve">
     <value>न्यूमलॉक</value>
   </data>
@@ -1994,6 +2000,15 @@
   </data>
   <data name="String50" xml:space="preserve">
     <value>लोड किए गए एक्सटेंशन के साथ जारी रखने के लिए ठीक है।</value>
+  </data>
+  <data name="String500" xml:space="preserve">
+    <value>फ़ाइल स्रोत कोड और SB-Prime IDE के बीच कनवर्ट करता है ताकि सहेजें, लोड करें, प्रकाशित करें, आयात करें, स्नातक करें, चलाएं आदि डिफ़ॉल्ट SB कमांड का उपयोग करें, जबकि IDE और intellisense उपनामों का उपयोग करें।</value>
+  </data>
+  <data name="String501" xml:space="preserve">
+    <value>स्रोत फ़ाइल को सीधे या बिना किसी संघर्ष के प्रकाशित के साथ साझा किया जा सकता है - यह पूरी तरह से एसबी संगत है।</value>
+  </data>
+  <data name="String502" xml:space="preserve">
+    <value>उपनाम केवल आईडीई से जुड़े होते हैं, सॉस कोड को आईडीई से बिना किसी रूपांतरण के कॉपी/पेस्ट किया जा सकता है।</value>
   </data>
   <data name="String51" xml:space="preserve">
     <value>वर्तमान में कोई विस्तारित सहायता नहीं है।</value>

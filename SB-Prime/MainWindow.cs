@@ -459,6 +459,7 @@ namespace SB_Prime
                 if (data.Length != 2) continue;
                 FileFilter.Aliases[data[0]] = data[1];
             }
+            FileFilter.EnableAliases = Properties.Settings.Default.EnableAliases;
 
             loadExtensions = Properties.Settings.Default.LoadExtensions;
             printMagnification = Properties.Settings.Default.PrintMagnification;
@@ -615,6 +616,7 @@ namespace SB_Prime
                 string data = kvp.Key + DelimBP.ToString() + kvp.Value;
                 Properties.Settings.Default.Aliases.Add(data);
             }
+            Properties.Settings.Default.EnableAliases = FileFilter.EnableAliases;
             Properties.Settings.Default.LoadExtensions = loadExtensions;
             Properties.Settings.Default.PrintMagnification = printMagnification;
             Properties.Settings.Default.PrintColours = printColours;
@@ -1029,7 +1031,7 @@ namespace SB_Prime
                     Canvas.SetLeft(img, left);
                     Canvas.SetTop(img, top);
                     name = obj.name;
-                    if (!FileFilter.Aliases.TryGetValue(name, out name))
+                    if (!FileFilter.EnableAliases || !FileFilter.Aliases.TryGetValue(name, out name))
                     {
                         name = obj.name;
                     }
@@ -1104,7 +1106,7 @@ namespace SB_Prime
                         Canvas.SetLeft(img, left);
                         Canvas.SetTop(img, top);
                         name = mem.name;
-                        if (!FileFilter.Aliases.TryGetValue(name, out name))
+                        if (!FileFilter.EnableAliases || !FileFilter.Aliases.TryGetValue(name, out name))
                         {
                             name = mem.name;
                         }
@@ -1185,7 +1187,7 @@ namespace SB_Prime
                     Canvas.SetLeft(img, left);
                     Canvas.SetTop(img, top);
                     string _name = name;
-                    if (!FileFilter.Aliases.TryGetValue(name, out name))
+                    if (!FileFilter.EnableAliases || !FileFilter.Aliases.TryGetValue(name, out name))
                     {
                         name = _name;
                     }

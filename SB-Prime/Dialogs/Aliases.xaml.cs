@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Humanizer;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Resources.ResXFileRef;
 
 namespace SB_Prime.Dialogs
 {
@@ -35,6 +39,7 @@ namespace SB_Prime.Dialogs
             {
                 aliases.Add(new AliasesData() { Default = kvp.Key, Alias = kvp.Value });
             }
+            enableAliases.IsChecked = FileFilter.EnableAliases;
         }
 
         private void Done_Click(object sender, RoutedEventArgs e)
@@ -46,6 +51,7 @@ namespace SB_Prime.Dialogs
                 if (!alias.Default.All(Char.IsLetter) || !alias.Alias.All(Char.IsLetter)) continue;
                 FileFilter.Aliases[alias.Default] = alias.Alias;
             }
+            FileFilter.EnableAliases = (bool)enableAliases.IsChecked;
             Close();
         }
 
@@ -71,6 +77,14 @@ namespace SB_Prime.Dialogs
                 dataGridAliases.ItemsSource = null;
                 dataGridAliases.ItemsSource = aliases;
             }
+        }
+
+        private void buttonHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Properties.Strings.String500 + "\n\n" +
+                Properties.Strings.String501 + "\n\n" +
+                Properties.Strings.String502,
+                "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 

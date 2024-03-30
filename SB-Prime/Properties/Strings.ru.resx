@@ -1339,7 +1339,7 @@
     <value>Стек вызовов</value>
   </data>
   <data name="Label466" xml:space="preserve">
-    <value>Дополнительные регулярные выражения для имен переменных intellisense всплывающей подсказки (например, русские а-яА-ЯёЁЁ)</value>
+    <value>Дополнительные регулярные выражения для имен переменных intellisense всплывающей подсказки (например, русские а-яА-ЯёЁ)</value>
   </data>
   <data name="Label467" xml:space="preserve">
     <value>Прямоугольник</value>
@@ -1443,6 +1443,12 @@
   <data name="Label497" xml:space="preserve">
     <value>Псевдоним</value>
   </data>
+  <data name="Label498" xml:space="preserve">
+    <value>Переключение использования псевдонимов</value>
+  </data>
+  <data name="Label499" xml:space="preserve">
+    <value>Включение псевдонимов</value>
+  </data>
   <data name="Label5" xml:space="preserve">
     <value>Нумлок</value>
   </data>
@@ -1468,7 +1474,7 @@
     <value>Запуск текущей программы (F5)</value>
   </data>
   <data name="Label57" xml:space="preserve">
-    <value>Ссуда</value>
+    <value>Бежать</value>
   </data>
   <data name="Label58" xml:space="preserve">
     <value>Редактировать</value>
@@ -1792,7 +1798,7 @@
     <value>Оператор</value>
   </data>
   <data name="String154" xml:space="preserve">
-    <value>Ключевые слова</value>
+    <value>Ключевое слово</value>
   </data>
   <data name="String155" xml:space="preserve">
     <value>Объект</value>
@@ -1994,6 +2000,15 @@
   </data>
   <data name="String50" xml:space="preserve">
     <value>ОК, чтобы продолжить работу с загруженными расширениями.</value>
+  </data>
+  <data name="String500" xml:space="preserve">
+    <value>Преобразует исходный код файла в среду разработки SB-Prime таким образом, что команды "Сохранить", "Загрузить", "Опубликовать", "Импортировать", "Завершить", "Выполнить" и т. д. используют команды SB по умолчанию, а среда IDE и IntelliSense используют псевдонимы.</value>
+  </data>
+  <data name="String501" xml:space="preserve">
+    <value>Исходный файл может быть опубликован напрямую или с помощью Publish без конфликтов - он полностью совместим с SB.</value>
+  </data>
+  <data name="String502" xml:space="preserve">
+    <value>Псевдонимы связаны только с IDE, исходный код может быть скопирован/вставлен из IDE без преобразования.</value>
   </data>
   <data name="String51" xml:space="preserve">
     <value>В настоящее время расширенной помощи нет.</value>

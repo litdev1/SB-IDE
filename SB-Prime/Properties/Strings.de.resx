@@ -1443,6 +1443,12 @@
   <data name="Label497" xml:space="preserve">
     <value>Name des Alias</value>
   </data>
+  <data name="Label498" xml:space="preserve">
+    <value>Verwenden von Aliasen umschalten</value>
+  </data>
+  <data name="Label499" xml:space="preserve">
+    <value>Aktivieren von Aliasen</value>
+  </data>
   <data name="Label5" xml:space="preserve">
     <value>Numlock (Numlock)</value>
   </data>
@@ -1994,6 +2000,15 @@
   </data>
   <data name="String50" xml:space="preserve">
     <value>OK, um mit geladenen Erweiterungen fortzufahren.</value>
+  </data>
+  <data name="String500" xml:space="preserve">
+    <value>Konvertiert zwischen Dateiquellcode und SB-Prime-IDE, sodass Speichern, Laden, Veröffentlichen, Importieren, Graduieren, Ausführen usw. die Standard-SB-Befehle verwenden, während die IDE und IntelliSense die Aliase verwenden.</value>
+  </data>
+  <data name="String501" xml:space="preserve">
+    <value>Die Quelldatei kann ohne Konflikte direkt oder mit Publish geteilt werden - sie ist vollständig SB-kompatibel.</value>
+  </data>
+  <data name="String502" xml:space="preserve">
+    <value>Die Aliase sind nur mit der IDE verknüpft, der Quellcode kann ohne Konvertierung aus der IDE kopiert/eingefügt werden.</value>
   </data>
   <data name="String51" xml:space="preserve">
     <value>Derzeit gibt es keine erweiterte Hilfe.</value>
