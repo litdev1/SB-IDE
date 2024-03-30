@@ -603,7 +603,7 @@ namespace SB_Prime
                 }
 
                 string vbproj = FileFilter.ReadAllText(result);
-                vbproj = vbproj.Replace("<HintPath>$(programfiles)\\ (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>", "<HintPath>$(programfiles)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>");
+                vbproj = vbproj.Replace("<HintPath>$(programfiles)\\ (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>", "<HintPath>$(programfiles) (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>");
                 vbproj = vbproj.Replace("<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>", "<TargetFrameworkVersion>" + runtime + "</TargetFrameworkVersion>");
                 //vcproj = vcproj.Replace("<Project ToolsVersion=\"3.5\" DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">", "<Project ToolsVersion=\"15.0\" DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">");
                 FileFilter.WriteAllText(result, vbproj);
