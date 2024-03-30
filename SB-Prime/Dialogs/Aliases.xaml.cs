@@ -81,9 +81,9 @@ namespace SB_Prime.Dialogs
 
         private void buttonHelp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Properties.Strings.String500 + "\n\n" +
-                Properties.Strings.String501 + "\n\n" +
-                Properties.Strings.String502,
+            MessageBox.Show(Properties.Strings.Label500 + "\n\n" +
+                Properties.Strings.Label501 + "\n\n" +
+                Properties.Strings.Label502,
                 "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

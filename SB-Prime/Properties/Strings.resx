@@ -1455,6 +1455,15 @@
   <data name="Label50" xml:space="preserve">
     <value>Save As</value>
   </data>
+  <data name="Label500" xml:space="preserve">
+    <value>Converts between file source code and SB-Prime IDE so that Save, Load, Publish, Import, Graduate, Run etc use the default SB commands, while the IDE and intellisense use the aliases.</value>
+  </data>
+  <data name="Label501" xml:space="preserve">
+    <value>The source file can be shared directly or with Publish without conflicts - it raimains fully SB compatible.</value>
+  </data>
+  <data name="Label502" xml:space="preserve">
+    <value>The aliases are only associated with the IDE, souce code can be copied/pasted from IDE with no conversion.</value>
+  </data>
   <data name="Label51" xml:space="preserve">
     <value>Save all programs</value>
   </data>
@@ -2000,15 +2009,6 @@
   </data>
   <data name="String50" xml:space="preserve">
     <value>OK to continue with extensions loaded.</value>
-  </data>
-  <data name="String500" xml:space="preserve">
-    <value>Converts between file source code and SB-Prime IDE so that Save, Load, Publish, Import, Graduate, Run etc use the default SB commands, while the IDE and intellisense use the aliases.</value>
-  </data>
-  <data name="String501" xml:space="preserve">
-    <value>The source file can be shared directly or with Publish without conflicts - it raimains fully SB compatible.</value>
-  </data>
-  <data name="String502" xml:space="preserve">
-    <value>The aliases are only associated with the IDE, souce code can be copied/pasted from IDE with no conversion.</value>
   </data>
   <data name="String51" xml:space="preserve">
     <value>There is currently no extended help.</value>
