@@ -494,7 +494,7 @@ namespace SB_Prime
         {
             try
             {
-                string source = FileFilter.ReadAllText(fileName);
+                string source = File.ReadAllText(fileName);
                 string output = Path.ChangeExtension(fileName, ".exe");
                 if (File.Exists(output)) File.Delete(output);
 
@@ -569,7 +569,7 @@ namespace SB_Prime
                 Type CompilerType = assembly.GetType("Microsoft.SmallBasic.Compiler");
 
                 List<string> errors = new List<string>();
-                string source = FileFilter.ReadAllText(fileName);
+                string source = File.ReadAllText(fileName);
                 var Compiler = CompileVB.Invoke(null, new object[] { source, errors });
                 if (errors.Count > 0)
                 {
@@ -719,13 +719,13 @@ namespace SB_Prime
                     string projectFile = targetDirectory + "\\_SmallBasicProgram.cs";
                     if (File.Exists(projectFile))
                     {
-                        string prog = FileFilter.ReadAllText(projectFile);
+                        string prog = File.ReadAllText(projectFile);
                         prog = prog.Replace("static void _Main()", "static void Main()");
                         if (bConsole)
                         {
                             prog = prog.Replace("SmallBasicApplication.BeginProgram();", "SmallBasicApplication.BeginProgram();\r\n\t\t//Initialise and hide TextWindow for Console App\r\n\t\tTextWindow.Show();\r\n\t\tTextWindow.Hide();");
                         }
-                        FileFilter.WriteAllText(projectFile, prog);
+                        File.WriteAllText(projectFile, prog);
                     }
                 }
 

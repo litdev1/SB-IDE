@@ -57,8 +57,8 @@ namespace SB_Prime
             {
                 foreach (KeyValuePair<string, string> kvp in Aliases)
                 {
-                    result = Regex.Replace(result, kvp.Value + @"\.", kvp.Key + @".", RegexOptions.IgnoreCase);
-                    result = Regex.Replace(result, @"\." + kvp.Value, @"." + kvp.Key, RegexOptions.IgnoreCase);
+                    result = Regex.Replace(result, @"\b" + kvp.Value + @"\.", kvp.Key + @".", RegexOptions.IgnoreCase);
+                    result = Regex.Replace(result, @"\." + kvp.Value + @"\b", @"." + kvp.Key, RegexOptions.IgnoreCase);
                 }
             }
             else
@@ -104,8 +104,8 @@ namespace SB_Prime
             {
                 foreach (KeyValuePair<string, string> kvp in Aliases)
                 {
-                    result = Regex.Replace(result, kvp.Key + @"\.", kvp.Value + @".", RegexOptions.IgnoreCase);
-                    result = Regex.Replace(result, @"\." + kvp.Key, @"." + kvp.Value, RegexOptions.IgnoreCase);
+                    result = Regex.Replace(result, @"\b" + kvp.Key + @"\.", kvp.Value + @".", RegexOptions.IgnoreCase);
+                    result = Regex.Replace(result, @"\." + kvp.Key + @"\b", @"." + kvp.Value, RegexOptions.IgnoreCase);
                 }
             }
             else
