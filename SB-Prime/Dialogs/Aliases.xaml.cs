@@ -40,15 +40,17 @@ namespace SB_Prime.Dialogs
                 aliases.Add(new AliasesData() { Default = kvp.Key, Alias = kvp.Value });
             }
             enableAliases.IsChecked = FileFilter.EnableAliases;
+
+            Validate();
         }
 
         private void Done_Click(object sender, RoutedEventArgs e)
         {
+            Validate();
             FileFilter.Aliases.Clear();
             foreach (AliasesData alias in aliases)
             {
-                if (alias.Default.Length < 2 || alias.Alias.Length < 2) continue;
-                if (!alias.Default.All(Char.IsLetter) || !alias.Alias.All(Char.IsLetter)) continue;
+                if (!alias.Valid) continue;
                 FileFilter.Aliases[alias.Default] = alias.Alias;
             }
             FileFilter.EnableAliases = (bool)enableAliases.IsChecked;
@@ -70,12 +72,11 @@ namespace SB_Prime.Dialogs
                 foreach (string line in lines)
                 {
                     string[] values = line.Split(new char[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (values.Length != 2) continue;
+                    if (values.Length <= 2) continue;
 
                     aliases.Add(new AliasesData() { Default = values[0], Alias = values[1] });
                 }
-                dataGridAliases.ItemsSource = null;
-                dataGridAliases.ItemsSource = aliases;
+                Validate();
             }
         }
 
@@ -86,11 +87,55 @@ namespace SB_Prime.Dialogs
                 Properties.Strings.Label502,
                 "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void Validate()
+        {
+            foreach (AliasesData alias in aliases)
+            {
+                alias.Valid = false;
+                if (null == alias.Default || null == alias.Alias) continue;
+                if (alias.Default.Length < 2 || alias.Alias.Length < 2) continue;
+                if (!alias.Default.All(Char.IsLetter) || !alias.Alias.All(Char.IsLetter)) continue;
+                bool bDefault = false;
+                bool bAlias = true;
+                foreach (SBObject obj in SBObjects.objects)
+                {
+                    if (obj.name.ToUpperInvariant() == alias.Default.ToUpperInvariant())
+                    {
+                        bDefault = true;
+                    }
+                    if (obj.name.ToUpperInvariant() == alias.Alias.ToUpperInvariant())
+                    {
+                        bAlias = false;
+                    }
+                    foreach (Member member in obj.members)
+                    {
+                        if (member.name.ToUpperInvariant() == alias.Default.ToUpperInvariant())
+                        {
+                            bDefault = true;
+                        }
+                        if (member.name.ToUpperInvariant() == alias.Alias.ToUpperInvariant())
+                        {
+                            bAlias = false;
+                        }
+                    }
+                }
+                alias.Valid = bDefault && bAlias;
+            }
+            dataGridAliases.ItemsSource = null;
+            dataGridAliases.ItemsSource = aliases;
+        }
+
+        private void buttonValidate_Click(object sender, RoutedEventArgs e)
+        {
+            Validate();
+        }
     }
 
     public class AliasesData
     {
         public string Default { get; set; }
         public string Alias { get; set; }
+        public bool Valid { get; set; }
     }
 }

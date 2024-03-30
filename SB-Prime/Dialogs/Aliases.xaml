@@ -9,6 +9,18 @@
     <Grid>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label495 }" Margin="10,10,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <DataGrid x:Name="dataGridAliases" HeadersVisibility="Column" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,41,10,29" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray" IsTextSearchEnabled="True" KeyDown="dataGridAliases_KeyDown">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Valid}" Value="True">
+                            <Setter Property="Background" Value="#FFAAFFAA"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Valid}" Value="False">
+                            <Setter Property="Background" Value="#FFFFAAAA"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -25,9 +37,10 @@
                 <DataGridTextColumn Header="{ x:Static local:Strings.Label497 }" IsReadOnly="False" Binding="{Binding Alias}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="Done" Content="{ x:Static local:Strings.Label240 }" HorizontalAlignment="Right" Margin="0,0,9.8,4.4" VerticalAlignment="Bottom" Width="75" Click="Done_Click" ToolTip="{ x:Static local:Strings.Label239 }"/>
-        <Button x:Name="buttonCancel" Content="{ x:Static local:Strings.Label242 }" HorizontalAlignment="Right" Margin="0,0,89.8,4.4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click" ToolTip="{ x:Static local:Strings.Label241 }"/>
-        <Button x:Name="buttonHelp" Content="{ x:Static local:Strings.Label453 }" Margin="0,0,170,4.4" VerticalAlignment="Bottom" Click="buttonHelp_Click" HorizontalAlignment="Right" Width="75"/>
+        <Button x:Name="Done" Content="{ x:Static local:Strings.Label240 }" HorizontalAlignment="Right" Margin="0,0,9.8,4" VerticalAlignment="Bottom" Width="75" Click="Done_Click" ToolTip="{ x:Static local:Strings.Label239 }"/>
+        <Button x:Name="buttonCancel" Content="{ x:Static local:Strings.Label242 }" HorizontalAlignment="Right" Margin="0,0,89.8,4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click" ToolTip="{ x:Static local:Strings.Label241 }"/>
+        <Button x:Name="buttonHelp" Content="{ x:Static local:Strings.Label453 }" Margin="0,0,250,4" VerticalAlignment="Bottom" Click="buttonHelp_Click" HorizontalAlignment="Right" Width="75"/>
         <CheckBox x:Name="enableAliases" Content="{ x:Static local:Strings.Label499 }" HorizontalAlignment="Left" Margin="10,0,0,6" VerticalAlignment="Bottom" ToolTip="{ x:Static local:Strings.Label498 }"/>
+        <Button x:Name="buttonValidate" Content="Validate" Margin="0,0,170,4" VerticalAlignment="Bottom" Click="buttonValidate_Click" HorizontalAlignment="Right" Width="75"/>
     </Grid>
 </Window>
