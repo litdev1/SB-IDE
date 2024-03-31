@@ -1464,8 +1464,32 @@
   <data name="Label502" xml:space="preserve">
     <value>उपनाम केवल आईडीई से जुड़े होते हैं, सॉस कोड को आईडीई से बिना किसी रूपांतरण के कॉपी/पेस्ट किया जा सकता है।</value>
   </data>
+  <data name="Label503" xml:space="preserve">
+    <value>मान्य</value>
+  </data>
+  <data name="Label504" xml:space="preserve">
+    <value>नामों को मान्य करें, अमान्य सहेजा नहीं जाएगा</value>
+  </data>
+  <data name="Label505" xml:space="preserve">
+    <value>उपनाम को टैब deliminateded पाठ फ़ाइल में निर्यात करें</value>
+  </data>
+  <data name="Label506" xml:space="preserve">
+    <value>निर्यातित माल</value>
+  </data>
+  <data name="Label507" xml:space="preserve">
+    <value>एक टैब deliminateded पाठ फ़ाइल से उपनाम आयात करें</value>
+  </data>
+  <data name="Label508" xml:space="preserve">
+    <value>आयात</value>
+  </data>
+  <data name="Label509" xml:space="preserve">
+    <value>सभी उपनाम हटाएं</value>
+  </data>
   <data name="Label51" xml:space="preserve">
     <value>सभी प्रोग्राम सहेजें</value>
+  </data>
+  <data name="Label510" xml:space="preserve">
+    <value>स्पष्ट</value>
   </data>
   <data name="Label52" xml:space="preserve">
     <value>सभी को बचाओ</value>

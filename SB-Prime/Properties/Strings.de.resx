@@ -1464,8 +1464,32 @@
   <data name="Label502" xml:space="preserve">
     <value>Die Aliase sind nur mit der IDE verknüpft, der Quellcode kann ohne Konvertierung aus der IDE kopiert/eingefügt werden.</value>
   </data>
+  <data name="Label503" xml:space="preserve">
+    <value>Validieren</value>
+  </data>
+  <data name="Label504" xml:space="preserve">
+    <value>Namen validieren, ungültige Namen werden nicht gespeichert</value>
+  </data>
+  <data name="Label505" xml:space="preserve">
+    <value>Exportieren von Aliasen in eine tabulatorbereinigte Textdatei</value>
+  </data>
+  <data name="Label506" xml:space="preserve">
+    <value>Exportieren</value>
+  </data>
+  <data name="Label507" xml:space="preserve">
+    <value>Importieren von Aliasen aus einer Textdatei mit Tabulatorentfernung</value>
+  </data>
+  <data name="Label508" xml:space="preserve">
+    <value>Importieren</value>
+  </data>
+  <data name="Label509" xml:space="preserve">
+    <value>Alle Aliase löschen</value>
+  </data>
   <data name="Label51" xml:space="preserve">
     <value>Alle Programme speichern</value>
+  </data>
+  <data name="Label510" xml:space="preserve">
+    <value>Klar</value>
   </data>
   <data name="Label52" xml:space="preserve">
     <value>Alle speichern</value>
