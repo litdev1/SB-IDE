@@ -4102,6 +4102,15 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Validate.
+        /// </summary>
+        public static string Label503 {
+            get {
+                return ResourceManager.GetString("Label503", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save all programs.
         /// </summary>
         public static string Label51 {

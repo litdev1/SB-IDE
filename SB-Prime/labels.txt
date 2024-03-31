@@ -1,2 +1,1 @@
-Label498	Toggle the use of aliases
-Label499	Enable aliases
+Label503	Validate
