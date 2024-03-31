@@ -72,7 +72,7 @@ namespace SB_Prime.Dialogs
                 foreach (string line in lines)
                 {
                     string[] values = line.Split(new char[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (values.Length <= 2) continue;
+                    if (values.Length < 2) continue;
 
                     aliases.Add(new AliasesData() { Default = values[0], Alias = values[1] });
                 }
