@@ -1467,8 +1467,29 @@
   <data name="Label503" xml:space="preserve">
     <value>Validate</value>
   </data>
+  <data name="Label504" xml:space="preserve">
+    <value>Validate names, invalid will not be saved</value>
+  </data>
+  <data name="Label505" xml:space="preserve">
+    <value>Export aliases to a tab deliminated text file</value>
+  </data>
+  <data name="Label506" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Label507" xml:space="preserve">
+    <value>Import aliases from a tab deliminated text file</value>
+  </data>
+  <data name="Label508" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Label509" xml:space="preserve">
+    <value>Delete all aliases</value>
+  </data>
   <data name="Label51" xml:space="preserve">
     <value>Save all programs</value>
+  </data>
+  <data name="Label510" xml:space="preserve">
+    <value>Clear</value>
   </data>
   <data name="Label52" xml:space="preserve">
     <value>Save All</value>

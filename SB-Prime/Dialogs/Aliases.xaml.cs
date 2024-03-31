@@ -1,6 +1,7 @@
 ﻿using Humanizer;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -24,7 +25,6 @@ namespace SB_Prime.Dialogs
     /// </summary>
     public partial class Aliases : Window
     {
-        MainWindow mainWindow;
         private List<AliasesData> aliases = new List<AliasesData>();
 
         public Aliases()
@@ -73,7 +73,6 @@ namespace SB_Prime.Dialogs
                 {
                     string[] values = line.Split(new char[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);
                     if (values.Length < 2) continue;
-
                     aliases.Add(new AliasesData() { Default = values[0], Alias = values[1] });
                 }
                 Validate();
@@ -128,6 +127,50 @@ namespace SB_Prime.Dialogs
 
         private void buttonValidate_Click(object sender, RoutedEventArgs e)
         {
+            Validate();
+        }
+
+        private void buttonExport_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            saveFileDialog.FileName = "Aliases";
+            saveFileDialog.Filter = "Alias files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog.FilterIndex = 1;
+            saveFileDialog.RestoreDirectory = true;
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                List<string> data = new List<string>();
+                foreach (AliasesData alias in aliases)
+                {
+                    data.Add(alias.Default + '\t' + alias.Alias);
+                }
+                File.WriteAllLines(saveFileDialog.FileName, data.ToArray());
+            }
+        }
+
+        private void buttonImport_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Filter = "Alias files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.FilterIndex = 1;
+            openFileDialog.RestoreDirectory = true;
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string[] data = File.ReadAllLines(openFileDialog.FileName);
+                aliases.Clear();
+                foreach (string line in data)
+                {
+                    string[] values = line.Split(new char[] { ' ', ',', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (values.Length < 2) continue;
+                    aliases.Add(new AliasesData() { Default = values[0], Alias = values[1] });
+                }
+            }
+            Validate();
+        }
+
+        private void buttonClear_Click(object sender, RoutedEventArgs e)
+        {
+            aliases.Clear();
             Validate();
         }
     }

@@ -1,1 +1,7 @@
-Label503	Validate
+Label504	Validate names, invalid will not be saved
+Label505	Export aliases to a tab deliminated text file
+Label506	Export
+Label507	Import aliases from a tab deliminated text file
+Label508	Import
+Label509	Delete all aliases
+Label510	Clear

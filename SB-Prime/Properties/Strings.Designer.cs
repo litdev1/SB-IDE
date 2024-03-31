@@ -4111,11 +4111,74 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Validate names, invalid will not be saved.
+        /// </summary>
+        public static string Label504 {
+            get {
+                return ResourceManager.GetString("Label504", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export aliases to a tab deliminated text file.
+        /// </summary>
+        public static string Label505 {
+            get {
+                return ResourceManager.GetString("Label505", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string Label506 {
+            get {
+                return ResourceManager.GetString("Label506", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import aliases from a tab deliminated text file.
+        /// </summary>
+        public static string Label507 {
+            get {
+                return ResourceManager.GetString("Label507", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import.
+        /// </summary>
+        public static string Label508 {
+            get {
+                return ResourceManager.GetString("Label508", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete all aliases.
+        /// </summary>
+        public static string Label509 {
+            get {
+                return ResourceManager.GetString("Label509", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save all programs.
         /// </summary>
         public static string Label51 {
             get {
                 return ResourceManager.GetString("Label51", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string Label510 {
+            get {
+                return ResourceManager.GetString("Label510", resourceCulture);
             }
         }
         
