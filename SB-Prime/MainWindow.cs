@@ -211,7 +211,7 @@ namespace SB_Prime
                 TextWrapping = TextWrapping.Wrap,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 FontSize = 24 + zoom
-        };
+            };
             canvasInfo.Children.Add(tb);
             tb.Measure(size);
             double canvasWidth = viewGrid.ColumnDefinitions[2].MaxWidth - 10; // Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));

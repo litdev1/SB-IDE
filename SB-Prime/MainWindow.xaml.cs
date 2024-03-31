@@ -7,6 +7,7 @@ using System.Drawing.Printing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -241,6 +242,59 @@ namespace SB_Prime
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             InitIntellisense();
+
+            string versionURL = "https://litdev.uk/downloads/SB-Prime.version";
+            string tempFile = System.IO.Path.GetTempFileName();
+            if (DownloadZip(versionURL, tempFile))
+            {
+                Version newVersion = new Version(File.ReadAllText(tempFile));
+                Version curVersion = Assembly.GetExecutingAssembly().GetName().Version;
+                if (newVersion > curVersion)
+                {
+                    Title += " - a new version is available";
+                }
+            }
+            if (File.Exists(tempFile))
+            {
+                File.Delete(tempFile);
+            }
+        }
+
+        private bool DownloadZip(string zipURL, string zipFile)
+        {
+            try
+            {
+                FileInfo fileInf = new FileInfo(zipFile);
+                Uri uri = new Uri(zipURL);
+                WebRequest.DefaultWebProxy.Credentials = CredentialCache.DefaultCredentials;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(uri);
+
+                int bufferSize = 2048;
+                byte[] buffer = new byte[bufferSize];
+
+                using (FileStream fs = fileInf.OpenWrite())
+                {
+                    WebResponse webResponse = webRequest.GetResponse();
+                    Stream stream = webResponse.GetResponseStream();
+
+                    int readCount;
+                    do
+                    {
+                        readCount = stream.Read(buffer, 0, bufferSize);
+                        fs.Write(buffer, 0, readCount);
+                    } while (readCount > 0);
+                    stream.Close();
+                    fs.Close();
+                    webResponse.Close();
+                }
+
+                return fileInf.Exists && fileInf.Length > 0;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

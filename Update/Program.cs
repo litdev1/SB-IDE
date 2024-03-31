@@ -110,19 +110,21 @@ namespace Update
             int bufferSize = 2048;
             byte[] buffer = new byte[bufferSize];
 
-            FileStream fs = fileInf.OpenWrite();
-            WebResponse webResponse = webRequest.GetResponse();
-            Stream stream = webResponse.GetResponseStream();
-
-            int readCount;
-            do
+            using (FileStream fs = fileInf.OpenWrite())
             {
-                readCount = stream.Read(buffer, 0, bufferSize);
-                fs.Write(buffer, 0, readCount);
-            } while (readCount > 0);
-            stream.Close();
-            fs.Close();
-            webResponse.Close();
+                WebResponse webResponse = webRequest.GetResponse();
+                Stream stream = webResponse.GetResponseStream();
+
+                int readCount;
+                do
+                {
+                    readCount = stream.Read(buffer, 0, bufferSize);
+                    fs.Write(buffer, 0, readCount);
+                } while (readCount > 0);
+                stream.Close();
+                fs.Close();
+                webResponse.Close();
+            }
 
             bool bSuccess = fileInf.Exists && fileInf.Length > 0;
         }
