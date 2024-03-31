@@ -107,7 +107,7 @@
                                 </ListBox.Background>
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <ListBoxItem Content="{Binding Ellipsis}" MouseDoubleClick="ClickMRU" ></ListBoxItem>
+                                        <ListBoxItem Content="{Binding Ellipsis}" MouseUp="ClickMRU" ></ListBoxItem>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
