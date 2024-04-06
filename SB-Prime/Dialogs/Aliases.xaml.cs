@@ -94,7 +94,7 @@ namespace SB_Prime.Dialogs
                 alias.Valid = false;
                 if (null == alias.Default || null == alias.Alias) continue;
                 if (alias.Default.Length < 2 || alias.Alias.Length < 2) continue;
-                if (!alias.Default.All(Char.IsLetter) || !alias.Alias.All(Char.IsLetter)) continue;
+                //if (!alias.Default.All(Char.IsLetter) || !alias.Alias.All(Char.IsLetter)) continue;
                 bool bDefault = false;
                 bool bAlias = true;
                 foreach (SBObject obj in SBObjects.objects)
