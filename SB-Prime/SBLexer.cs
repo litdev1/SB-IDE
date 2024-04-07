@@ -291,12 +291,13 @@ namespace SB_Prime
             textArea.Styles[STYLE_COMMENT].Italic = true;
             textArea.Styles[STYLE_KEYWORD].Bold = true;
 
+            styles.Clear();
             styles.Add(new SBStyle(STYLE_COMMENT, new Regex("^[\'].*")));
             styles.Add(new SBStyle(STYLE_STRING, new Regex("^[\"][^\"\\n]*[\"\\n]")));
             styles.Add(new SBStyle(STYLE_OPERATOR, new Regex("^[\\+|\\-|*|/|<|>|=]|^( AND | OR )")));
             styles.Add(new SBStyle(STYLE_SPACE, new Regex("^[\\s]")));
             styles.Add(new SBStyle(STYLE_KEYWORD, new Regex("^[\\W]("+keywords.ToUpperInvariant()+")[\\W]")));
-            styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*[\\.][A-Za-z_][\\w]*")));
+            styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*[\\.][" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*")));
             styles.Add(new SBStyle(STYLE_SUBROUTINE, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*[(]")));
             styles.Add(new SBStyle(STYLE_LABEL, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*[ ]*[:]")));
             styles.Add(new SBStyle(STYLE_VARIABLE, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "\\w]*[\\W]")));
