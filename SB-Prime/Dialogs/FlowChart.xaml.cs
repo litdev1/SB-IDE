@@ -419,12 +419,12 @@ namespace SB_Prime.Dialogs
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.GOTO));
                 }
-                else if (Regex.Match(lineLower, "^[a-z_" + MainWindow.exRegex + "][" + MainWindow.exRegex + "\\w]*[ ]*[:]").Success)
+                else if (Regex.Match(lineLower, "^[" + MainWindow.exRegex + "a-z_]+[ ]*[:]").Success)
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.LABEL));
                     labels[lineLower.Substring(0, lineLower.Length - 1).Trim()] = codeLines.Last();
                 }
-                else if (Regex.Match(lineLower, "^[a-z_" + MainWindow.exRegex + "][" + MainWindow.exRegex + "\\w]*[ ]*[()]").Success)
+                else if (Regex.Match(lineLower, "^[" + MainWindow.exRegex + "a-z_]+[ ]*[(]").Success)
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.CALL));
                 }
