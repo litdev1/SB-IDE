@@ -42,7 +42,7 @@
                 <DataGridTemplateColumn Header="{ x:Static local:Strings.Label360 }" IsReadOnly="True" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Description}" Margin="2" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Description}" Margin="2" TextWrapping="WrapWithOverflow"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

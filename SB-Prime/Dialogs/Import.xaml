@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="{ x:Static local:Strings.Label350 }" Height="177.616" Width="300" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="textBoxImport" Height="23" Margin="10,78,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top" SpellCheck.IsEnabled="True" KeyDown="textBoxImport_KeyDown"/>
+        <TextBox x:Name="textBoxImport" Height="23" Margin="10,78,9.6,0" VerticalAlignment="Top" SpellCheck.IsEnabled="True" KeyDown="textBoxImport_KeyDown"/>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label351 }" Margin="10,10,9.6,0" VerticalAlignment="Top" RenderTransformOrigin="-0.908,-2.063" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>
         <Button x:Name="buttonOK" Content="{ x:Static local:Strings.Label353 }" HorizontalAlignment="Right" Margin="0,0,93.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonOK_Click" ToolTip="{ x:Static local:Strings.Label352 }"/>
         <Button x:Name="buttonCancel" Content="{ x:Static local:Strings.Label355 }" HorizontalAlignment="Right" Margin="0,0,9.6,10.4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click" ToolTip="{ x:Static local:Strings.Label354 }"/>

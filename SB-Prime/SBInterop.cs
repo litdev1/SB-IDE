@@ -220,6 +220,8 @@ namespace SB_Prime
                                 Member member = new Member();
                                 SBObjects.keywords.Add(member);
                                 member.name = xmlNode.Attributes["name"].InnerText.Substring(40);
+                                int pos = member.name.IndexOf('.');
+                                if (pos >= 0) member.name = member.name.Substring(pos + 1);
                                 member.type = MemberTypes.Custom;
                                 member.summary = "";
 

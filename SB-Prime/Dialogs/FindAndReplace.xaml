@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="{ x:Static local:Strings.Label313 }" Height="235" Width="540.362" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" Closing="Window_Closing" Loaded="Window_Loaded" MinWidth="220" MinHeight="100">
     <Grid Margin="0">
-        <TextBox x:Name="textBoxFind" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="200"/>
+        <TextBox x:Name="textBoxFind" Margin="10,40,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="200"/>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label314 }" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="textBoxReplace" Margin="215,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="200"/>
+        <TextBox x:Name="textBoxReplace" Margin="215,40,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="200"/>
         <Label x:Name="label_Copy" Content="{ x:Static local:Strings.Label315 }" Margin="215,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" HorizontalContentAlignment="Center"/>
         <Button x:Name="buttonFindPrevious" Content="{ x:Static local:Strings.Label317 }" Margin="0,0,9.6,82.2" VerticalAlignment="Bottom" Click="buttonFindPrevious_Click" ToolTip="{ x:Static local:Strings.Label316 }" HorizontalAlignment="Right" Width="91"/>
         <Button x:Name="buttonFindNext" Content="{ x:Static local:Strings.Label319 }" Margin="0,0,9.6,58.2" VerticalAlignment="Bottom" Click="buttonFindNext_Click" ToolTip="{ x:Static local:Strings.Label318 }" HorizontalAlignment="Right" Width="91"/>

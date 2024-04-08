@@ -56,7 +56,7 @@
             </ListBox>
             <Button x:Name="buttonDelete" Content="{ x:Static local:Strings.Label443 }" Margin="10,0,10.4,58.4" Height="19" VerticalAlignment="Bottom" Click="buttonDelete_Click"/>
             <Label x:Name="label" Content="{ x:Static local:Strings.Label444 }" HorizontalAlignment="Left" Margin="9,0,0,107.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
-            <TextBox x:Name="textBoxSnap" Margin="104,0,10.4,106.4" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label445 }" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxSnap_TextChanged"/>
+            <TextBox x:Name="textBoxSnap" Margin="104,0,10.4,106.4" Text="{ x:Static local:Strings.Label445 }" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxSnap_TextChanged"/>
             <Button x:Name="buttonImport" Content="{ x:Static local:Strings.Label446 }" Margin="10,0,10.4,10.4" Height="19" VerticalAlignment="Bottom" Click="buttonImport_Click">
                 <Button.ToolTip>
                     <TextBlock> 
@@ -68,9 +68,9 @@
             </Button>
             <Button x:Name="buttonDeleteAll" Content="{ x:Static local:Strings.Label447 }" Margin="10,0,10.4,34.4" Height="19" VerticalAlignment="Bottom" Click="buttonDeleteAll_Click"/>
             <Label x:Name="label_Copy" Content="{ x:Static local:Strings.Label448 }" HorizontalAlignment="Left" Margin="8,0,0,135.4" Height="26" VerticalAlignment="Bottom" Width="90" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
-            <TextBox x:Name="textBoxHeight" Margin="103,0,11.4,134.4" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label449 }" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxHeight_TextChanged"/>
+            <TextBox x:Name="textBoxHeight" Margin="103,0,11.4,134.4" Text="{ x:Static local:Strings.Label449 }" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxHeight_TextChanged"/>
             <Label x:Name="label_Copy1" Content="{ x:Static local:Strings.Label450 }" HorizontalAlignment="Left" Margin="8,0,0,163.4" Height="26" VerticalAlignment="Bottom" Width="91" HorizontalContentAlignment="Right" RenderTransformOrigin="0.503,0.146"/>
-            <TextBox x:Name="textBoxWidth" Margin="104,0,10.4,162.4" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label451 }" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxWidth_TextChanged"/>
+            <TextBox x:Name="textBoxWidth" Margin="104,0,10.4,162.4" Text="{ x:Static local:Strings.Label451 }" Height="23" VerticalAlignment="Bottom" TextChanged="textBoxWidth_TextChanged"/>
             <Slider x:Name="sliderScale" Margin="10,0,10.4,190.4" RenderTransformOrigin="0.75,0.611" Height="18" VerticalAlignment="Bottom" Minimum="-10" ValueChanged="sliderScale_ValueChanged" SmallChange="1" LargeChange="2"/>
             <Label x:Name="label_Copy2" Content="{ x:Static local:Strings.Label452 }" Margin="9,0,10.4,213.4" Height="26" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" RenderTransformOrigin="0.503,0.146"/>
             <Button x:Name="buttonHelp" Content="{ x:Static local:Strings.Label453 }" Margin="10,0,10.4,82.4" Height="19" VerticalAlignment="Bottom" Click="buttonHelp_Click"/>

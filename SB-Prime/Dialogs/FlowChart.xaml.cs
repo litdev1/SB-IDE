@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICSharpCode.Decompiler.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -12,7 +13,7 @@ using System.Windows.Shapes;
 
 namespace SB_Prime.Dialogs
 {
-    public enum eBlock { START, END, CALL, SUB, ENDSUB, IF, ELSE, ELSEIF, ENDIF, FOR, ENDFOR, WHILE, ENDWHILE, GOTO, LABEL, STATEMENT };
+    public enum eBlock { START, END, CALL, SUB, ENDSUB, IF, ELSE, ELSEIF, ENDIF, FOR, ENDFOR, NEXT, WHILE, ENDWHILE, WEND, GOTO, LABEL, STATEMENT, FUNCTION, ENDFUNCTION, };
     public enum eShape { ELLIPSE, RECTANGLE, DIAMOND };
 
     /// <summary>
@@ -26,6 +27,7 @@ namespace SB_Prime.Dialogs
         private SBDocument sbDocument;
         private List<CodeLine> codeLines = new List<CodeLine>();
         List<string> subs = new List<string>();
+        List<string> functions = new List<string>();
 
         //Potential options
         public static bool groupStatements = true;
@@ -88,6 +90,7 @@ namespace SB_Prime.Dialogs
                 canvas.Children.Clear();
                 codeLines.Clear();
                 subs.Clear();
+                functions.Clear();
                 sbDocument = mainWindow.GetActiveDocument();
                 //scaleView = 1;
                 //scaleTransform.ScaleX = 1.0;
@@ -103,7 +106,7 @@ namespace SB_Prime.Dialogs
                     int row = codeLine.row;
                     int col = codeLine.col;
 
-                    if (codeLine.block != eBlock.START && codeLine.block != eBlock.SUB && codeLine.block != eBlock.ELSE && codeLine.block != eBlock.ELSEIF)
+                    if (codeLine.block != eBlock.START && codeLine.block != eBlock.SUB && codeLine.block != eBlock.FUNCTION && codeLine.block != eBlock.ELSE && codeLine.block != eBlock.ELSEIF)
                     {
                         ConnectEndIf(row, col, 0, col);
                     }
@@ -196,7 +199,7 @@ namespace SB_Prime.Dialogs
                         }
                     }
 
-                        if (codeLine.block == eBlock.ENDIF)
+                    if (codeLine.block == eBlock.ENDIF)
                     {
                         int rowIf = codeLine.rootLine.row;
                         for (int colIf = 0; colIf <= maxcol; colIf++)
@@ -209,7 +212,7 @@ namespace SB_Prime.Dialogs
                         }
                     }
 
-                    if (codeLine.block == eBlock.ENDFOR || codeLine.block == eBlock.ENDWHILE || codeLine.block == eBlock.GOTO)
+                    if (codeLine.block == eBlock.ENDFOR || codeLine.block == eBlock.NEXT || codeLine.block == eBlock.ENDWHILE || codeLine.block == eBlock.WEND || codeLine.block == eBlock.GOTO)
                     {
                         ConnectLoop(codeLine.row, codeLine.col, codeLine.rootLine.row, codeLine.rootLine.col);
                     }
@@ -224,6 +227,7 @@ namespace SB_Prime.Dialogs
                             break;
                         case eBlock.START:
                         case eBlock.SUB:
+                        case eBlock.FUNCTION:
                             color = MainWindow.IntToColor(MainWindow.CHART_START_COLOR);
                             break;
                         case eBlock.GOTO:
@@ -233,10 +237,12 @@ namespace SB_Prime.Dialogs
                             break;
                         case eBlock.FOR:
                         case eBlock.ENDFOR:
+                        case eBlock.NEXT:
                             color = MainWindow.IntToColor(MainWindow.CHART_FOR_COLOR);
                             break;
                         case eBlock.WHILE:
                         case eBlock.ENDWHILE:
+                        case eBlock.WEND:
                             color = MainWindow.IntToColor(MainWindow.CHART_WHILE_COLOR);
                             break;
                         default:
@@ -325,6 +331,7 @@ namespace SB_Prime.Dialogs
             Stack<CodeLine> sIf = new Stack<CodeLine>();
             Stack<CodeLine> sFor = new Stack<CodeLine>();
             Stack<CodeLine> sWhile = new Stack<CodeLine>();
+            Stack<CodeLine> sFunction = new Stack<CodeLine>();
             Dictionary<string, CodeLine> labels = new Dictionary<string, CodeLine>();
 
             codeLines.Add(new CodeLine(-1, Properties.Strings.String122, eBlock.START));
@@ -342,6 +349,16 @@ namespace SB_Prime.Dialogs
                 else if (lineLower == "endsub")
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.ENDSUB, sSub.Pop()));
+                    codeLines.Last().rootLine.rootLine = codeLines.Last();
+                }
+                else if (Regex.Match(lineLower, "^(function)[\\W]").Success)
+                {
+                    codeLines.Add(new CodeLine(i, line, eBlock.FUNCTION));
+                    sFunction.Push(codeLines.Last());
+                }
+                else if (lineLower == "endfunction")
+                {
+                    codeLines.Add(new CodeLine(i, line, eBlock.ENDFUNCTION, sFunction.Pop()));
                     codeLines.Last().rootLine.rootLine = codeLines.Last();
                 }
                 else if (Regex.Match(lineLower, "^(if)[\\W]").Success)
@@ -378,6 +395,11 @@ namespace SB_Prime.Dialogs
                     codeLines.Add(new CodeLine(i, line, eBlock.ENDFOR, sFor.Pop()));
                     codeLines.Last().rootLine.rootLine = codeLines.Last();
                 }
+                else if (lineLower == "next")
+                {
+                    codeLines.Add(new CodeLine(i, line, eBlock.NEXT, sFor.Pop()));
+                    codeLines.Last().rootLine.rootLine = codeLines.Last();
+                }
                 else if (Regex.Match(lineLower, "^(while)[\\W]").Success)
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.WHILE));
@@ -386,6 +408,11 @@ namespace SB_Prime.Dialogs
                 else if (lineLower == "endwhile")
                 {
                     codeLines.Add(new CodeLine(i, line, eBlock.ENDWHILE, sWhile.Pop()));
+                    codeLines.Last().rootLine.rootLine = codeLines.Last();
+                }
+                else if (lineLower == "wend")
+                {
+                    codeLines.Add(new CodeLine(i, line, eBlock.WEND, sWhile.Pop()));
                     codeLines.Last().rootLine.rootLine = codeLines.Last();
                 }
                 else if (Regex.Match(lineLower, "^(goto)[\\W]").Success)
@@ -449,6 +476,26 @@ namespace SB_Prime.Dialogs
                 if (codeLine.block == eBlock.ENDSUB) sub = "";
             }
 
+            // Identify functions
+            string function = "";
+            foreach (CodeLine codeLine in codeLines)
+            {
+                if (codeLine.block == eBlock.FUNCTION)
+                {
+                    function = codeLine.code.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Last().ToLowerInvariant();
+                    functions.Add(function);
+                    foreach (CodeLine codeLineCall in codeLines)
+                    {
+                        if (codeLineCall.block == eBlock.CALL && codeLineCall.code.StartsWith(function, StringComparison.OrdinalIgnoreCase))
+                        {
+                            codeLineCall.rootLine = codeLine;
+                        }
+                    }
+                }
+                codeLine.function = function;
+                if (codeLine.block == eBlock.ENDFUNCTION) function = "";
+            }
+
             // Set row and col locations
             int col = 0;
             int row = 0;
@@ -456,12 +503,13 @@ namespace SB_Prime.Dialogs
             int ifLevel = 0;
             maxrow = 0;
             maxcol = 0;
-            for (int iSub = -1; iSub < subs.Count; iSub++)
+            foreach (CodeLine codeLine in codeLines)
             {
-                foreach (CodeLine codeLine in codeLines)
+                List<string> routines = subs.Concat(functions).ToList();
+                for (int iSub = -1; iSub < routines.Count; iSub++)
                 {
                     if (iSub < 0 && codeLine.sub != "") continue;
-                    if (iSub >= 0 && codeLine.sub != subs[iSub]) continue;
+                    if (iSub >= 0 && codeLine.sub != routines[iSub]) continue;
 
                     if (codeLine.block == eBlock.IF)
                     {
@@ -973,6 +1021,7 @@ namespace SB_Prime.Dialogs
         public eBlock block;
         public CodeLine rootLine;
         public string sub;
+        public string function;
         public int row = -1;
         public int col = -1;
         public int nextCol;
@@ -1005,6 +1054,7 @@ namespace SB_Prime.Dialogs
                     break;
                 case eBlock.START:
                 case eBlock.SUB:
+                case eBlock.FUNCTION:
                 case eBlock.LABEL:
                     grid = GetBlock(color, codeLine.code, width, height, eShape.ELLIPSE);
                     break;

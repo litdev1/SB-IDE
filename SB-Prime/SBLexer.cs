@@ -15,6 +15,7 @@
 //You should have received a copy of the GNU General Public License 
 //along with SB-Prime for Small Basic.  If not, see <http://www.gnu.org/licenses/>. 
 
+using ICSharpCode.Decompiler.CSharp;
 using ICSharpCode.Decompiler.TypeSystem;
 using ScintillaNET;
 using System;
@@ -71,14 +72,31 @@ namespace SB_Prime
         public int toolTipPosition = 0;
         int theme = 0;
         string keywords = "Sub|EndSub|For|To|Step|EndFor|If|Then|Else|ElseIf|EndIf|While|EndWhile|Goto";
+
         Regex keyword1 = new Regex("^[\\W](IF|SUB|WHILE|FOR)[\\W]");
         Regex keyword2 = new Regex("^[\\W](ENDSUB|ENDFOR|ENDIF|ENDWHILE)[\\W]");
         Regex keyword3 = new Regex("^[\\W](ELSE|ELSEIF)[\\W]");
+
 
         public SBLexer(SBDocument sbDocument, Scintilla textArea)
         {
             this.sbDocument = sbDocument;
             this.textArea = textArea;
+
+            if (SBInterop.Variant == SBInterop.eVariant.SmallVisualBasic)
+            {
+                keywords = "";
+                for (int i = 0; i < SBObjects.keywords.Count; i++)
+                {
+                    if (i > 0) keywords += "|";
+                    keywords += SBObjects.keywords[i].name;
+                }
+                if (keywords.IndexOf("Function") < 0) keywords += "|Function";
+                if (keywords.IndexOf("EndFunction") < 0) keywords += "|EndFunction";
+                keyword1 = new Regex("^[\\W](IF|SUB|WHILE|FOR|FUNCTION)[\\W]");
+                keyword2 = new Regex("^[\\W](ENDSUB|ENDFOR|NEXT|ENDIF|ENDWHILE|WEND|ENDFUNCTION)[\\W]");
+                keyword3 = new Regex("^[\\W](ELSE|ELSEIF)[\\W]");
+            }
 
             if (false)
             {

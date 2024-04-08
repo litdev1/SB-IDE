@@ -8,7 +8,7 @@
         Title="{ x:Static local:Strings.Label387 }" Height="81.6" Width="428.8" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label388 }" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxNumSides" HorizontalAlignment="Left" Height="23" Margin="276,14,0,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label389 }" VerticalAlignment="Top" Width="53" KeyDown="textBoxNumSides_KeyDown"/>
+        <TextBox x:Name="textBoxNumSides" HorizontalAlignment="Left" Height="23" Margin="276,14,0,0" Text="{ x:Static local:Strings.Label389 }" VerticalAlignment="Top" Width="53" KeyDown="textBoxNumSides_KeyDown"/>
         <Button x:Name="buttonDone" Content="{ x:Static local:Strings.Label390 }" Margin="334,14,10.4,0" VerticalAlignment="Top" Click="buttonDone_Click" Height="22"/>
     </Grid>
 </Window>

@@ -9,7 +9,7 @@
     <Grid>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label292 }" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Button x:Name="buttonSearcherBrowse" ToolTip="{ x:Static local:Strings.Label293 }" Content="{ x:Static local:Strings.Label294 }" HorizontalAlignment="Right" Margin="0,10,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherBrowse_Click"/>
-        <TextBox x:Name="textBoxSearcherRoot" Height="23" Margin="87,10,146.6,0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="textBoxSearcherRoot_KeyDown"/>
+        <TextBox x:Name="textBoxSearcherRoot" Height="23" Margin="87,10,146.6,0" VerticalAlignment="Top" KeyDown="textBoxSearcherRoot_KeyDown"/>
         <Grid Margin="10,41,146.6,9.4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -41,16 +41,16 @@
             <Grid x:Name="gridSearcherPreview" Margin="0" Grid.Row="2"/>
         </Grid>
         <Button x:Name="buttonSearcherOpen" ToolTip="{ x:Static local:Strings.Label299 }" Content="{ x:Static local:Strings.Label300 }" HorizontalAlignment="Right" Margin="0,267,8.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherOpen_Click"/>
-        <TextBox x:Name="textBoxCount" ToolTip="{ x:Static local:Strings.Label301 }" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,239,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
+        <TextBox x:Name="textBoxCount" ToolTip="{ x:Static local:Strings.Label301 }" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,239,9.6,0" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
         <GroupBox x:Name="groupBox" Header="{ x:Static local:Strings.Label302 }" Margin="0,34,9.6,0" VerticalAlignment="Top" Height="200" HorizontalAlignment="Right" Width="132">
             <Grid>
                 <CheckBox x:Name="checkBoxSearcherWord" ToolTip="{ x:Static local:Strings.Label303 }" Content="{ x:Static local:Strings.Label304 }" Margin="0,6,-0.2,0" VerticalAlignment="Top"/>
                 <CheckBox x:Name="checkBoxSearcherCase" ToolTip="{ x:Static local:Strings.Label305 }" Content="{ x:Static local:Strings.Label306 }" Margin="0,26,-0.2,0" VerticalAlignment="Top"/>
                 <CheckBox x:Name="checkBoxSearcherPath" ToolTip="{ x:Static local:Strings.Label307 }" Content="{ x:Static local:Strings.Label308 }" Margin="0,46,0.8,0" VerticalAlignment="Top"/>
                 <Label x:Name="label1" Content="{ x:Static local:Strings.Label309 }" Margin="0,66,-0.2,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.497,0.211"/>
-                <TextBox x:Name="textBoxSearcherText" ToolTip="{ x:Static local:Strings.Label310 }" Height="23" Margin="0,97,0.8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBoxSearcherText" ToolTip="{ x:Static local:Strings.Label310 }" Height="23" Margin="0,97,0.8,0" VerticalAlignment="Top"/>
                 <Button x:Name="buttonSearcherFilter" ToolTip="{ x:Static local:Strings.Label311 }" Content="{ x:Static local:Strings.Label312 }" Margin="0,125,-0.2,0" VerticalAlignment="Top" Click="buttonSearcherFilter_Click"/>
-                <TextBox x:Name="textBoxMatches" ToolTip ="The number of filter matches in the selected file" IsReadOnly="True" Height="23" Margin="0,149,1,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" AllowDrop="False"/>
+                <TextBox x:Name="textBoxMatches" ToolTip ="The number of filter matches in the selected file" IsReadOnly="True" Height="23" Margin="0,149,1,0" VerticalAlignment="Top" Width="119" AllowDrop="False"/>
             </Grid>
         </GroupBox>
     </Grid>

@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="{ x:Static local:Strings.Label392 }" Height="168.8" Width="596.8" Loaded="Window_Loaded" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid >
-        <TextBox x:Name="textBoxDir" IsReadOnly="True" Margin="10,10,10.4,0" TextWrapping="Wrap" Height="70" VerticalAlignment="Top" Text="{ x:Static local:Strings.Label393 }"/>
+        <TextBox x:Name="textBoxDir" IsReadOnly="True" Margin="10,10,10.4,0" TextWrapping="WrapWithOverflow" Height="70" VerticalAlignment="Top" Text="{ x:Static local:Strings.Label393 }"/>
         <Button x:Name="buttonCancel" Content="{ x:Static local:Strings.Label394 }" Margin="0,97,10.4,0" Click="buttonCancel_Click" HorizontalAlignment="Right" Width="75" Height="23" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxFound" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="10,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{ x:Static local:Strings.Label395 }"/>
-        <TextBox x:Name="textBoxFailed" IsReadOnly="True" Height="23" Margin="135,97,90.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{ x:Static local:Strings.Label396 }"/>
+        <TextBox x:Name="textBoxFound" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="10,97,0,0" VerticalAlignment="Top" Width="120" Text="{ x:Static local:Strings.Label395 }"/>
+        <TextBox x:Name="textBoxFailed" IsReadOnly="True" Height="23" Margin="135,97,90.4,0" VerticalAlignment="Top" Text="{ x:Static local:Strings.Label396 }"/>
 
     </Grid>
 </Window>

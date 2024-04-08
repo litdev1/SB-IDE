@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="{ x:Static local:Strings.Label279 }" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged" Closing="Window_Closing" MinWidth="220" MinHeight="100">
     <Grid x:Name="gridMain">
-        <TextBox x:Name="textBoxSearchText" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{ x:Static local:Strings.Label280 }" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="textBoxSearchText" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" Text="{ x:Static local:Strings.Label280 }" VerticalAlignment="Top" Width="200"/>
         <Button x:Name="buttonSearch" Content="{ x:Static local:Strings.Label282 }" HorizontalAlignment="Left" Margin="215,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonSearch_Click" ToolTip="{ x:Static local:Strings.Label281 }"/>
         <Button x:Name="buttonCollapse" Content="{ x:Static local:Strings.Label284 }" HorizontalAlignment="Left" Margin="530,10,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.943,0.646" Click="buttonCollapse_Click" ToolTip="{ x:Static local:Strings.Label283 }"/>
         <Button x:Name="buttonExpand" Content="{ x:Static local:Strings.Label286 }" HorizontalAlignment="Left" Margin="635,10,0,0" VerticalAlignment="Top" Width="100" Click="buttonExpand_Click" ToolTip="{ x:Static local:Strings.Label285 }"/>

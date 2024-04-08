@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="{ x:Static local:Strings.Label397 }" Height="395.4" Width="400" Icon="/SB-Prime;component/AppIcon.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="textBoxPublish" Height="23" Margin="10,78,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxPublish" Height="23" Margin="10,78,9.6,0" VerticalAlignment="Top"/>
         <Label x:Name="label" Content="{ x:Static local:Strings.Label398 }" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB"/>
         <Button x:Name="buttonClose" Content="{ x:Static local:Strings.Label400 }" HorizontalAlignment="Right" Margin="0,0,9.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonClose_Click" ToolTip="{ x:Static local:Strings.Label399 }"/>
         <Label x:Name="label_Copy" Content="{ x:Static local:Strings.Label401 }" Margin="10,47,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <Button x:Name="buttonOpen" Content="{ x:Static local:Strings.Label403 }" HorizontalAlignment="Right" Margin="0,0,139.6,9.8" VerticalAlignment="Bottom" Width="125" Click="buttonOpen_Click" ToolTip="{ x:Static local:Strings.Label402 }"/>
-        <TextBox x:Name="textBoxTitle" Height="23" Margin="10,136,9.6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxTitle" Height="23" Margin="10,136,9.6,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy1" Content="{ x:Static local:Strings.Label404 }" Margin="10,106,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <Label x:Name="label_Copy3" Content="{ x:Static local:Strings.Label405 }" Margin="10,164,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="textBoxDescription" Height="69" Margin="9,195,10.6,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="textBoxDescription" Height="69" Margin="9,195,10.6,0" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto"/>
         <Label x:Name="label_Copy2" Content="{ x:Static local:Strings.Label406 }" Margin="9,269,10.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
         <ComboBox x:Name="comboBoxCategory" Margin="9,300,10.6,0" VerticalAlignment="Top">
             <ComboBoxItem Content="{ x:Static local:Strings.Label407 }"/>

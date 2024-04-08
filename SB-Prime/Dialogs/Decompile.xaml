@@ -10,12 +10,12 @@
         <Label x:Name="label" Content="{ x:Static local:Strings.Label244 }" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="16" Foreground="#FF1155BB" Height="32"/>
         <TextBlock TextWrapping="WrapWithOverflow" Margin="10,37,10,0" VerticalAlignment="Top" Height="77"><Run Text="{ x:Static local:Strings.Label245 }"/><Run Text="{ x:Static local:Strings.String120 }"/><LineBreak/><Run/><LineBreak/><Run Text="{ x:Static local:Strings.String121 }"/></TextBlock>
         <Label Content="{ x:Static local:Strings.Label246 }" Margin="9,183,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="557"/>
-        <TextBox x:Name="textBoxDecompileFolder" Height="23" Margin="9,214,90,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="textBoxDecompileFolder_TextChanged"/>
+        <TextBox x:Name="textBoxDecompileFolder" Height="23" Margin="9,214,90,0" VerticalAlignment="Top" TextChanged="textBoxDecompileFolder_TextChanged"/>
         <Button x:Name="buttonDecompileFolder" Content="{ x:Static local:Strings.Label248 }" Margin="0,214,10,0" VerticalAlignment="Top" Height="23" Click="buttonDecompileFolder_Click" RenderTransformOrigin="0.583,-0.061" ToolTip="{ x:Static local:Strings.Label247 }" HorizontalAlignment="Right" Width="75"/>
         <Button x:Name="buttonDecompileCancel" Content="{ x:Static local:Strings.Label250 }" Margin="0,255,10,0" Click="buttonDecompileCancel_Click" ToolTip="{ x:Static local:Strings.Label249 }" HorizontalAlignment="Right" Width="75" Height="19" VerticalAlignment="Top"/>
         <Button x:Name="buttonDecompileContinue" Content="{ x:Static local:Strings.Label252 }" Margin="0,255,90,0" Click="buttonDecompileContinue_Click" ToolTip="{ x:Static local:Strings.Label251 }" HorizontalAlignment="Right" Width="75" Height="19" VerticalAlignment="Top"/>
         <Label Content="{ x:Static local:Strings.Label253 }" Margin="9,119,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="557"/>
-        <TextBox x:Name="textBoxDecompileSource" Height="23" Margin="9,149,90,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="textBoxDecompileSource_TextChanged"/>
+        <TextBox x:Name="textBoxDecompileSource" Height="23" Margin="9,149,90,0" VerticalAlignment="Top" TextChanged="textBoxDecompileSource_TextChanged"/>
         <Button x:Name="buttonDecompileSource" Content="{ x:Static local:Strings.Label255 }" Margin="0,149,10,0" VerticalAlignment="Top" Height="23" Click="buttonDecompileSource_Click" RenderTransformOrigin="0.583,-0.061" ToolTip="{ x:Static local:Strings.Label254 }" HorizontalAlignment="Right" Width="75"/>
         <CheckBox x:Name="checkBoxConsole" Content="{ x:Static local:Strings.Label257 }" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" ToolTip="{ x:Static local:Strings.Label256 }"/>
     </Grid>
