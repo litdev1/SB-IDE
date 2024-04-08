@@ -93,6 +93,7 @@ namespace SB_Prime
                 }
                 if (keywords.IndexOf("Function") < 0) keywords += "|Function";
                 if (keywords.IndexOf("EndFunction") < 0) keywords += "|EndFunction";
+                if (keywords.IndexOf("Return") < 0) keywords += "|Return";
                 keyword1 = new Regex("^[\\W](IF|SUB|WHILE|FOR|FUNCTION)[\\W]");
                 keyword2 = new Regex("^[\\W](ENDSUB|ENDFOR|NEXT|ENDIF|ENDWHILE|WEND|ENDFUNCTION)[\\W]");
                 keyword3 = new Regex("^[\\W](ELSE|ELSEIF)[\\W]");
