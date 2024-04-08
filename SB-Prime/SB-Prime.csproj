@@ -205,6 +205,11 @@
     <Compile Include="FileFilter.cs" />
     <Compile Include="HotKeyManager.cs" />
     <Compile Include="MainWindow.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -321,11 +326,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -333,8 +333,8 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.ar.resx" />
     <EmbeddedResource Include="Properties\Strings.de.resx">
@@ -672,13 +672,16 @@
     <Resource Include="images\Link-Greenfish.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Link-jZip.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\NumberMargin.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Aliases.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-7Zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-dotPeek.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

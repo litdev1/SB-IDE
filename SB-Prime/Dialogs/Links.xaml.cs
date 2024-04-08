@@ -42,10 +42,10 @@ namespace SB_Prime.Dialogs
             });
             links.Add(new LinkData()
             {
-                Name = "ILSpy",
+                Name = "dotPeek",
                 Description = Properties.Strings.String77 + "\n" + Properties.Strings.String78 + "\n" + Properties.Strings.String79,
-                Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_ILSpy) },
-                URL = "https://github.com/icsharpcode/ILSpy/releases/tag/v4.0-beta2"
+                Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_dotPeek) },
+                URL = "https://www.jetbrains.com/decompiler/"
             });
             links.Add(new LinkData()
             {
@@ -63,10 +63,10 @@ namespace SB_Prime.Dialogs
             });
             links.Add(new LinkData()
             {
-                Name = "jZip",
+                Name = "7Zip",
                 Description = Properties.Strings.String85 + "\n" + Properties.Strings.String86,
-                Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_jZip) },
-                URL = "http://www.jzip.com"
+                Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_7Zip) },
+                URL = "https://www.7-zip.org/"
             });
             links.Add(new LinkData()
             {

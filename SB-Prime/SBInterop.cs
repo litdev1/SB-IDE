@@ -55,6 +55,9 @@ namespace SB_Prime
         public static string Language = "";
         public static int Version = 0;
 
+        public enum eVariant { SmallBasic, SmallVisualBasic }
+        public static eVariant Variant = eVariant.SmallBasic;
+
         public SBInterop()
         {
             if (MainWindow.InstallDir == "")
@@ -86,8 +89,23 @@ namespace SB_Prime
         {
             try
             {
-                Assembly assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\SB.exe");
-                Type ServiceType = assembly.GetType("Microsoft.SmallBasic.com.smallbasic.Service");
+                Assembly assembly = null;
+                if (File.Exists(MainWindow.InstallDir + "\\SB.exe"))
+                {
+                    Variant = eVariant.SmallBasic;
+                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\SB.exe");
+                }
+                else if (File.Exists(MainWindow.InstallDir + "\\sVB.exe"))
+                {
+                    Variant = eVariant.SmallVisualBasic;
+                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\sVB.exe");
+                }
+                if (null == assembly)
+                {
+                    MainWindow.Errors.Add(new Error("Cannot find SB.exe or sVB.exe"));
+                    return;
+                }
+                Type ServiceType = assembly.GetType("Microsoft." + Variant.ToString() + ".com.smallbasic.Service");
                 ConstructorInfo ctor = ServiceType.GetConstructor(Type.EmptyTypes);
                 Service = ctor.Invoke(null);
                 SaveProgram = ServiceType.GetMethod("SaveProgram");
@@ -106,11 +124,24 @@ namespace SB_Prime
         {
             try
             {
-                Assembly assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\SmallBasicCompiler.exe");
-                Type CompilerType = assembly.GetType("Microsoft.SmallBasic.Compiler");
+                Assembly assembly = null;
+                if (Variant == eVariant.SmallBasic)
+                {
+                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\SmallBasicCompiler.exe");
+                }
+                else if (Variant == eVariant.SmallVisualBasic)
+                {
+                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\sVBCompiler.exe");
+                }
+                if (null == assembly)
+                {
+                    MainWindow.Errors.Add(new Error("Cannot find SmallBasicCompiler.exe or sVBCompiler.exe"));
+                    return;
+                }
+                Type CompilerType = assembly.GetType("Microsoft." + Variant.ToString() + ".Compiler");
 
                 assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\LanguageService.dll");
-                Type CSType = assembly.GetType("Microsoft.SmallBasic.LanguageService.CompilerService");
+                Type CSType = assembly.GetType("Microsoft." + Variant.ToString() + ".LanguageService.CompilerService");
                 MethodInfo[] methods = CSType.GetMethods();
                 foreach (MethodInfo method in methods)
                 {
@@ -122,6 +153,10 @@ namespace SB_Prime
                     {
                         CompileVB = method;
                     }
+                }
+                if (null == CompileProgram && Variant == eVariant.SmallVisualBasic)
+                {
+                    CompileProgram = CompileVB;
                 }
             }
             catch (Exception ex)
@@ -136,7 +171,7 @@ namespace SB_Prime
             {
                 extensions.Clear();
                 SBObjects.objects.Clear();
-                extensions.Add("\\SmallBasicLibrary");
+                extensions.Add("\\" + Variant.ToString() + "Library");
                 string path = MainWindow.InstallDir + "\\lib\\";
                 string[] files = Directory.GetFiles(path, "*.dll");
                 foreach (string file in files)
@@ -148,14 +183,14 @@ namespace SB_Prime
                 }
 
                 Assembly assembly = Assembly.LoadFrom(MainWindow.InstallDir + extensions[0] + ".dll");
-                Type SmallBasicTypeAttribute = assembly.GetType("Microsoft.SmallBasic.Library.SmallBasicTypeAttribute");
-                Type HideFromIntellisenseAttribute = assembly.GetType("Microsoft.SmallBasic.Library.HideFromIntellisenseAttribute");
-                Type Primitive = assembly.GetType("Microsoft.SmallBasic.Library.Primitive");
+                Type SmallBasicTypeAttribute = assembly.GetType("Microsoft." + Variant.ToString() + ".Library." + Variant.ToString() + "TypeAttribute");
+                Type HideFromIntellisenseAttribute = assembly.GetType("Microsoft." + Variant.ToString() + ".Library.HideFromIntellisenseAttribute");
+                Type Primitive = assembly.GetType("Microsoft." + Variant.ToString() + ".Library.Primitive");
 
                 foreach (string extension in extensions)
                 {
                     if (extension.Contains("SBDebugger")) continue;
-                    if (!bLoadExtensions && !extension.Contains("SmallBasicLibrary")) continue;
+                    if (!bLoadExtensions && !extension.Contains(Variant.ToString() + "Library")) continue;
 
                     XmlDocument doc = new XmlDocument();
                     SBObject obj = null;
@@ -176,11 +211,11 @@ namespace SB_Prime
                         doc.Load(MainWindow.InstallDir + extension + ".xml");
                     }
 
-                    if (extension.Contains("SmallBasicLibrary"))
+                    if (extension.Contains(Variant.ToString() + "Library"))
                     {
                         foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
                         {
-                            if (xmlNode.Attributes["name"].InnerText.StartsWith("M:Microsoft.SmallBasic.Library.Keywords."))
+                            if (xmlNode.Attributes["name"].InnerText.StartsWith("M:Microsoft." + Variant.ToString() + ".Library.Keywords."))
                             {
                                 Member member = new Member();
                                 SBObjects.keywords.Add(member);
@@ -403,13 +438,17 @@ namespace SB_Prime
 
         public void CompileExtension(string cs, string name, bool bOverwrite = false)
         {
+            if (Variant != eVariant.SmallBasic)
+            {
+                cs = cs.Replace(eVariant.SmallBasic.ToString(), Variant.ToString());
+            }
             string tempPath = Path.GetTempFileName();
             File.Delete(tempPath);
             tempPath = Path.GetDirectoryName(tempPath) + "\\SBDebugger.dll";
             try
             {
                 string extPath = MainWindow.InstallDir + "\\lib\\" + name + ".dll";
-                string sblPath = MainWindow.InstallDir + "\\SmallBasicLibrary.dll";
+                string sblPath = MainWindow.InstallDir + "\\" + Variant.ToString() + "Library.dll";
 
                 if (File.Exists(extPath) && !bOverwrite)
                 {
@@ -498,7 +537,15 @@ namespace SB_Prime
                 string output = Path.ChangeExtension(fileName, ".exe");
                 if (File.Exists(output)) File.Delete(output);
 
-                string compiler = MainWindow.InstallDir + "\\SmallBasicCompiler.exe";
+                string compiler = MainWindow.InstallDir;
+                if (Variant == eVariant.SmallBasic)
+                {
+                    compiler += "\\SmallBasicCompiler.exe";
+                }
+                else if (Variant == eVariant.SmallVisualBasic)
+                {
+                    compiler += "\\sVBCompiler.exe";
+                }
                 Process process = new Process();
                 ProcessStartInfo psi = new ProcessStartInfo();
                 psi.FileName = compiler;
@@ -565,8 +612,23 @@ namespace SB_Prime
         {
             try
             {
-                Assembly assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\SmallBasicCompiler.exe");
-                Type CompilerType = assembly.GetType("Microsoft.SmallBasic.Compiler");
+                Assembly assembly = null;
+                if (Variant == eVariant.SmallBasic)
+                {
+                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\SmallBasicCompiler.exe");
+                }
+                else if (Variant == eVariant.SmallVisualBasic)
+                {
+                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\sVBCompiler.exe");
+                    MainWindow.Errors.Add(new Error("Graduate : " + "Not supported for sVB"));
+                    return "";
+                }
+                if (null == assembly)
+                {
+                    MainWindow.Errors.Add(new Error("Cannot find SmallBasicCompiler.exe or sVBCompiler.exe"));
+                    return "";
+                }
+                Type CompilerType = assembly.GetType("Microsoft." + Variant.ToString() + ".Compiler");
 
                 List<string> errors = new List<string>();
                 string source = File.ReadAllText(fileName);
@@ -581,7 +643,7 @@ namespace SB_Prime
                     return "";
                 }
 
-                Type VisualBasicExporterType = assembly.GetType("Microsoft.SmallBasic.VisualBasicExporter");
+                Type VisualBasicExporterType = assembly.GetType("Microsoft." + Variant.ToString() + ".VisualBasicExporter");
                 ConstructorInfo ctor = VisualBasicExporterType.GetConstructor(new Type[] { CompilerType });
                 var VisualBasicExporter = ctor.Invoke(new object[] { Compiler });
                 MethodInfo ExportToVisualBasicProject = VisualBasicExporterType.GetMethod("ExportToVisualBasicProject");
@@ -592,7 +654,7 @@ namespace SB_Prime
                 string runtime;
                 try
                 {
-                    string sblPath = MainWindow.InstallDir + "\\SmallBasicLibrary.dll";
+                    string sblPath = MainWindow.InstallDir + "\\" + Variant.ToString() + "Library.dll";
                     Assembly sblAssembly = Assembly.LoadFile(sblPath);
                     TargetFrameworkAttribute attrib = (TargetFrameworkAttribute)sblAssembly.GetCustomAttribute(typeof(TargetFrameworkAttribute));
                     runtime = attrib.FrameworkName.Substring(attrib.FrameworkName.Length - 4);

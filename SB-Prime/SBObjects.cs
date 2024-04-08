@@ -195,9 +195,9 @@ namespace SB_Prime
 
     public class SBObject : IComparable
     {
-        public string extension;
-        public string name;
-        public string summary;
+        public string extension = "";
+        public string name = "";
+        public string summary = "";
         public List<Member> members = new List<Member>();
 
         public int CompareTo(object obj)
@@ -210,11 +210,11 @@ namespace SB_Prime
 
     public class Member : IComparable
     {
-        public string name;
+        public string name = "";
         public MemberTypes type;
-        public string summary;
+        public string summary = "";
         public Dictionary<string, string> arguments = new Dictionary<string, string>();
-        public string returns;
+        public string returns = "";
         public Dictionary<string, string> other = new Dictionary<string, string>();
 
         public int CompareTo(object obj)

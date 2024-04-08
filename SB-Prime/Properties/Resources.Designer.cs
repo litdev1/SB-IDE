@@ -533,6 +533,26 @@ namespace SB_Prime.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Link_7Zip {
+            get {
+                object obj = ResourceManager.GetObject("Link_7Zip", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Link_dotPeek {
+            get {
+                object obj = ResourceManager.GetObject("Link_dotPeek", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Link_Greenfish {
             get {
                 object obj = ResourceManager.GetObject("Link_Greenfish", resourceCulture);
@@ -546,16 +566,6 @@ namespace SB_Prime.Properties {
         internal static System.Drawing.Bitmap Link_ILSpy {
             get {
                 object obj = ResourceManager.GetObject("Link_ILSpy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Link_jZip {
-            get {
-                object obj = ResourceManager.GetObject("Link_jZip", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
