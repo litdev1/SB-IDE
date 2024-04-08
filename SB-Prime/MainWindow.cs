@@ -94,6 +94,13 @@ namespace SB_Prime
             sbInterop = new SBInterop();
             sbPlugin = new SBplugin(this);
 
+            //Set Valid aliases
+            FileFilter.Aliases.Clear();
+            foreach (KeyValuePair<string,string> kvp in FileFilter.AllAliases)
+            {
+                if (Aliases.IsValid(kvp.Key, kvp.Value)) FileFilter.Aliases[kvp.Key] = kvp.Value;
+            }
+
             // CREATE CONTROLS
             for (int i = tabControlSB1.Items.Count - 1; i >= 0; i--) tabControlSB1.Items.RemoveAt(i);
             for (int i = tabControlSB2.Items.Count - 1; i >= 0; i--) tabControlSB2.Items.RemoveAt(i);
@@ -452,12 +459,12 @@ namespace SB_Prime
                 }
                 if (File.Exists(data[0]) && lines.Count > 0) bookmarks[data[0]] = lines;
             }
-            FileFilter.Aliases.Clear();
+            FileFilter.AllAliases.Clear();
             foreach (string alias in Properties.Settings.Default.Aliases)
             {
                 string[] data = alias.Split(new char[] { DelimBP }, StringSplitOptions.RemoveEmptyEntries);
                 if (data.Length != 2) continue;
-                FileFilter.Aliases[data[0]] = data[1];
+                FileFilter.AllAliases[data[0]] = data[1];
             }
             FileFilter.EnableAliases = Properties.Settings.Default.EnableAliases;
 
@@ -611,7 +618,7 @@ namespace SB_Prime
                 Properties.Settings.Default.Bookmarks.Add(data);
             }
             Properties.Settings.Default.Aliases.Clear();
-            foreach (KeyValuePair<string, string> kvp in FileFilter.Aliases)
+            foreach (KeyValuePair<string, string> kvp in FileFilter.AllAliases)
             {
                 string data = kvp.Key + DelimBP.ToString() + kvp.Value;
                 Properties.Settings.Default.Aliases.Add(data);

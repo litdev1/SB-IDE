@@ -10,10 +10,11 @@ namespace SB_Prime
 {
     public static class FileFilter
     {
-        private static Dictionary<string,string> aliases = new Dictionary<string, string>();
+        private static Dictionary<string, string> aliases = new Dictionary<string, string>();
+        private static Dictionary<string, string> allAliases = new Dictionary<string, string>();
         public static bool EnableAliases = true;
 
-        public static Dictionary<string,string> Aliases
+        public static Dictionary<string, string> Aliases
         {
             get
             {
@@ -21,6 +22,13 @@ namespace SB_Prime
             }
         }
 
+        public static Dictionary<string, string> AllAliases
+        {
+            get
+            {
+                return allAliases;
+            }
+        }
 
         public static void WriteAllText(string path, string contents)
         {

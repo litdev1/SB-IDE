@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,7 +36,7 @@ namespace SB_Prime.Dialogs
             FontSize = 12 + MainWindow.zoom;
 
             dataGridAliases.ItemsSource = aliases;
-            foreach (KeyValuePair<string, string> kvp in FileFilter.Aliases)
+            foreach (KeyValuePair<string, string> kvp in FileFilter.AllAliases)
             {
                 aliases.Add(new AliasesData() { Default = kvp.Key, Alias = kvp.Value });
             }
@@ -48,8 +49,10 @@ namespace SB_Prime.Dialogs
         {
             Validate();
             FileFilter.Aliases.Clear();
+            FileFilter.AllAliases.Clear();
             foreach (AliasesData alias in aliases)
             {
+                FileFilter.AllAliases[alias.Default] = alias.Alias;
                 if (!alias.Valid) continue;
                 FileFilter.Aliases[alias.Default] = alias.Alias;
             }
@@ -91,38 +94,43 @@ namespace SB_Prime.Dialogs
         {
             foreach (AliasesData alias in aliases)
             {
-                alias.Valid = false;
-                if (null == alias.Default || null == alias.Alias) continue;
-                if (alias.Default.Length < 2 || alias.Alias.Length < 2) continue;
-                //if (!alias.Default.All(Char.IsLetter) || !alias.Alias.All(Char.IsLetter)) continue;
-                bool bDefault = false;
-                bool bAlias = true;
-                foreach (SBObject obj in SBObjects.objects)
-                {
-                    if (obj.name.ToUpperInvariant() == alias.Default.ToUpperInvariant())
-                    {
-                        bDefault = true;
-                    }
-                    if (obj.name.ToUpperInvariant() == alias.Alias.ToUpperInvariant())
-                    {
-                        bAlias = false;
-                    }
-                    foreach (Member member in obj.members)
-                    {
-                        if (member.name.ToUpperInvariant() == alias.Default.ToUpperInvariant())
-                        {
-                            bDefault = true;
-                        }
-                        if (member.name.ToUpperInvariant() == alias.Alias.ToUpperInvariant())
-                        {
-                            bAlias = false;
-                        }
-                    }
-                }
-                alias.Valid = bDefault && bAlias;
+                alias.Valid = IsValid(alias.Default, alias.Alias);
             }
             dataGridAliases.ItemsSource = null;
             dataGridAliases.ItemsSource = aliases;
+        }
+
+        public static bool IsValid(string _default, string _alias)
+        {
+            if (null == _default || null == _alias) return false;
+            if (_default.Length < 2 || _alias.Length < 2) return false;
+            if (!Regex.IsMatch(_default, "^[" + MainWindow.exRegex + "A-Za-z_]+$")) return false;
+            if (!Regex.IsMatch(_alias, "^[" + MainWindow.exRegex + "A-Za-z_]+$")) return false;
+            bool bDefault = false;
+            bool bAlias = true;
+            foreach (SBObject obj in SBObjects.objects)
+            {
+                if (obj.name.ToUpperInvariant() == _default.ToUpperInvariant())
+                {
+                    bDefault = true;
+                }
+                if (obj.name.ToUpperInvariant() == _alias.ToUpperInvariant())
+                {
+                    bAlias = false;
+                }
+                foreach (Member member in obj.members)
+                {
+                    if (member.name.ToUpperInvariant() == _default.ToUpperInvariant())
+                    {
+                        bDefault = true;
+                    }
+                    if (member.name.ToUpperInvariant() == _alias.ToUpperInvariant())
+                    {
+                        bAlias = false;
+                    }
+                }
+            }
+            return bDefault && bAlias;
         }
 
         private void buttonValidate_Click(object sender, RoutedEventArgs e)
