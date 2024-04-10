@@ -6082,7 +6082,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download zip binaries and extract (no installation)..
+        ///   Looks up a localized string similar to A lightweight, but full featured alternative to VS..
         /// </summary>
         public static string String79 {
             get {

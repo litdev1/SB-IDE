@@ -103,9 +103,8 @@ namespace SB_Prime.Dialogs
         public static bool IsValid(string _default, string _alias)
         {
             if (null == _default || null == _alias) return false;
-            if (_default.Length < 2 || _alias.Length < 2) return false;
-            if (!Regex.IsMatch(_default, "^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]+$")) return false;
-            if (!Regex.IsMatch(_alias, "^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]+$")) return false;
+            if (!Regex.IsMatch(_default, "^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*$")) return false;
+            if (!Regex.IsMatch(_alias, "^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*$")) return false;
             bool bDefault = false;
             bool bAlias = true;
             foreach (SBObject obj in SBObjects.objects)

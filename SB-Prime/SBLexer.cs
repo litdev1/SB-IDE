@@ -316,10 +316,10 @@ namespace SB_Prime
             styles.Add(new SBStyle(STYLE_OPERATOR, new Regex("^[\\+|\\-|*|/|<|>|=]|^( AND | OR )")));
             styles.Add(new SBStyle(STYLE_SPACE, new Regex("^[\\s]")));
             styles.Add(new SBStyle(STYLE_KEYWORD, new Regex("^[\\W]("+keywords.ToUpperInvariant()+")[\\W]")));
-            styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]+[\\.][" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]+")));
-            styles.Add(new SBStyle(STYLE_SUBROUTINE, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]+[ ]*[(]")));
-            styles.Add(new SBStyle(STYLE_LABEL, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]+[ ]*[:]")));
-            styles.Add(new SBStyle(STYLE_VARIABLE, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]+[\\W]")));
+            styles.Add(new SBStyle(STYLE_OBJECT, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*[\\.][" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*")));
+            styles.Add(new SBStyle(STYLE_SUBROUTINE, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*[ ]*[(]")));
+            styles.Add(new SBStyle(STYLE_LABEL, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*[ ]*[:]")));
+            styles.Add(new SBStyle(STYLE_VARIABLE, new Regex("^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*[\\W]")));
             styles.Add(new SBStyle(STYLE_LITERAL, new Regex("^[-?\\d*\\.?\\d*]")));
 
             // Configure the lexer styles

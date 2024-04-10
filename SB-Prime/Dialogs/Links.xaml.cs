@@ -42,8 +42,15 @@ namespace SB_Prime.Dialogs
             });
             links.Add(new LinkData()
             {
+                Name = "SharpDevelop",
+                Description = Properties.Strings.String79,
+                Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_SharpDevelop) },
+                URL = "https://sharpdevelop.software.informer.com/download/#downloading"
+            });
+            links.Add(new LinkData()
+            {
                 Name = "dotPeek",
-                Description = Properties.Strings.String77 + "\n" + Properties.Strings.String78 + "\n" + Properties.Strings.String79,
+                Description = Properties.Strings.String77 + "\n" + Properties.Strings.String78,
                 Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_dotPeek) },
                 URL = "https://www.jetbrains.com/decompiler/"
             });

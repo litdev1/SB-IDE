@@ -412,13 +412,13 @@
   <data name="NumberMargin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\NumberMargin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Aliases" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Aliases.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Link_7Zip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Link-7Zip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Link_dotPeek" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Link-dotPeek.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Link_SharpDevelop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Link-SharpDevelop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

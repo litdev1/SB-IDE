@@ -63,16 +63,6 @@ namespace SB_Prime.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Aliases {
-            get {
-                object obj = ResourceManager.GetObject("Aliases", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap AppIcon {
             get {
                 object obj = ResourceManager.GetObject("AppIcon", resourceCulture);
@@ -586,6 +576,16 @@ namespace SB_Prime.Properties {
         internal static System.Drawing.Bitmap Link_Paint_Net {
             get {
                 object obj = ResourceManager.GetObject("Link_Paint_Net", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Link_SharpDevelop {
+            get {
+                object obj = ResourceManager.GetObject("Link_SharpDevelop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
