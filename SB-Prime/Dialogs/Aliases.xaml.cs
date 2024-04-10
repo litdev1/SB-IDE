@@ -27,6 +27,7 @@ namespace SB_Prime.Dialogs
     public partial class Aliases : Window
     {
         private List<AliasesData> aliases = new List<AliasesData>();
+        private static string word = "^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*$";
 
         public Aliases()
         {
@@ -103,8 +104,8 @@ namespace SB_Prime.Dialogs
         public static bool IsValid(string _default, string _alias)
         {
             if (null == _default || null == _alias) return false;
-            if (!Regex.IsMatch(_default, "^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*$")) return false;
-            if (!Regex.IsMatch(_alias, "^[" + MainWindow.exRegex + "A-Za-z_][" + MainWindow.exRegex + "A-Za-z_0-9]*$")) return false;
+            if (!Regex.IsMatch(_default, word)) return false;
+            if (!Regex.IsMatch(_alias, word)) return false;
             bool bDefault = false;
             bool bAlias = true;
             foreach (SBObject obj in SBObjects.objects)
