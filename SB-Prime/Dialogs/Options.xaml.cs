@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ICSharpCode.Decompiler.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -33,7 +34,13 @@ namespace SB_Prime.Dialogs
 
             FontSize = 12 + MainWindow.zoom;
 
-            textBoxInstallation.Text = MainWindow.InstallDir;
+            comboBoxInstallation.Items.Add(MainWindow.InstallDir);
+            comboBoxInstallation.SelectedItem = MainWindow.InstallDir;
+            foreach (string installDir in MainWindow.InstallDirExtra)
+            {
+                if (installDir == MainWindow.InstallDir) continue;
+                comboBoxInstallation.Items.Add(installDir);
+            }
             checkBoxQuoteInserts.IsChecked = MainWindow.quoteInserts;
             checkBoxHEXColors.IsChecked = MainWindow.hexColors;
             checkBoxLoadExtensions.IsChecked = MainWindow.loadExtensions;
@@ -81,12 +88,16 @@ namespace SB_Prime.Dialogs
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.ShowNewFolderButton = true;
-            fbd.SelectedPath = textBoxInstallation.Text;
+            fbd.SelectedPath = comboBoxInstallation.SelectedItem.ToString();
             DialogResult result = fbd.ShowDialog();
 
             if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
             {
-                textBoxInstallation.Text = fbd.SelectedPath;
+                if (!comboBoxInstallation.Items.Contains(fbd.SelectedPath))
+                {
+                    comboBoxInstallation.Items.Add(fbd.SelectedPath);
+                }
+                comboBoxInstallation.SelectedItem = fbd.SelectedPath;
             }
         }
 
@@ -97,11 +108,21 @@ namespace SB_Prime.Dialogs
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            if (MainWindow.InstallDir != textBoxInstallation.Text)
+            string InstallDir = "";
+            if (null != comboBoxInstallation.SelectedItem)
             {
-                if (!Directory.Exists(textBoxInstallation.Text)) textBoxInstallation.Text = "";
-                MainWindow.InstallDir = textBoxInstallation.Text;
-                mainWindow.sbInterop = new SBInterop();
+                InstallDir = comboBoxInstallation.SelectedItem.ToString();
+            }
+            if (!Directory.Exists(InstallDir)) InstallDir = "";
+            MainWindow.InstallDir = InstallDir;
+            mainWindow.sbInterop = new SBInterop();
+            MainWindow.InstallDirExtra.Clear();
+            foreach (var installDir in comboBoxInstallation.Items)
+            {
+                if (null == installDir) continue;
+                if (installDir == comboBoxInstallation.SelectedItem) continue;
+                if (MainWindow.InstallDirExtra.Contains(installDir)) continue;
+                MainWindow.InstallDirExtra.Add(installDir.ToString());
             }
             MainWindow.quoteInserts = (bool)checkBoxQuoteInserts.IsChecked;
             MainWindow.hexColors = (bool)checkBoxHEXColors.IsChecked;
@@ -115,6 +136,12 @@ namespace SB_Prime.Dialogs
             else MainWindow.indentSpaces = 2;
             MainWindow.lexerFont = ((TextBlock)(comboBoxLexerFont.SelectedItem)).Tag.ToString();
             Close();
+        }
+
+        private void buttonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            comboBoxInstallation.Items.Remove(comboBoxInstallation.SelectedItem);
+            comboBoxInstallation.SelectedIndex = 0;
         }
     }
 }

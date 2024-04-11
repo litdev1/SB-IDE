@@ -41,6 +41,7 @@ namespace SB_Prime
         public static Member showMember = null;
         public static Member showMemberLast = null;
         public static string InstallDir = "";
+        public static List<string> InstallDirExtra = new List<string>();
         public static string ImportProgram = "";
         public static bool ignoreBP = false;
         public static bool dualScreen = false;
@@ -416,6 +417,11 @@ namespace SB_Prime
             }
             FileSearcher.RootPath = Properties.Settings.Default.RootPath;
             InstallDir = Properties.Settings.Default.InstallDir;
+            InstallDirExtra.Clear();
+            for (i = 0; i < Properties.Settings.Default.InstallDirExtra.Count; i++)
+            {
+                InstallDirExtra.Add(Properties.Settings.Default.InstallDirExtra[i]);
+            }
             mainGrid.RowDefinitions[2].Height = new GridLength(Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 150);
             viewGrid.ColumnDefinitions[2].Width = new GridLength(Properties.Settings.Default.IntellisenseWidth > 0 ? viewGrid.ColumnDefinitions[2].MaxWidth : 0);
             var ideColors = IDEColors;
@@ -582,6 +588,11 @@ namespace SB_Prime
             }
             Properties.Settings.Default.RootPath = FileSearcher.RootPath;
             Properties.Settings.Default.InstallDir = InstallDir;
+            Properties.Settings.Default.InstallDirExtra.Clear();
+            for (int i = 0; i < InstallDirExtra.Count; i++)
+            {
+                Properties.Settings.Default.InstallDirExtra.Add(InstallDirExtra[i]);
+            }
             Properties.Settings.Default.OutputHeight = mainGrid.RowDefinitions[2].ActualHeight;
             Properties.Settings.Default.IntellisenseWidth = viewGrid.ColumnDefinitions[2].ActualWidth;
             Properties.Settings.Default.Colors.Clear();
