@@ -702,5 +702,8 @@
   <ItemGroup>
     <Resource Include="images\Link-SharpDevelop.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Upload.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

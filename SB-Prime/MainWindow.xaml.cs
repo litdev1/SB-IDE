@@ -1101,6 +1101,11 @@ namespace SB_Prime
             aliases.ShowDialog();
         }
 
+        private void ToolsUpload_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://litdev.uk/game_images/upload.html");
+        }
+
         /*
 private bool mRestoreForDragMove;
 
