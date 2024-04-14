@@ -5488,7 +5488,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insert Comment &apos; at caret ShiftCtrl+?.
+        ///   Looks up a localized string similar to Insert Comment &apos; at caret Ctrl+Shift?.
         /// </summary>
         public static string String183 {
             get {
