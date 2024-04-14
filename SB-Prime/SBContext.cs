@@ -70,6 +70,7 @@ namespace SB_Prime
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String98, null, (s, ea) => sbDocument.Comment(true)));
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String99, null, (s, ea) => sbDocument.Comment(false)));
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String100, null, (s, ea) => sbDocument.UnCommentFile()));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String183, null, (s, ea) => sbDocument.CommentAt()));
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String101, null, (s, ea) => sbDocument.FoldAll(FoldAction.Contract)));
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String102, null, (s, ea) => sbDocument.FoldAll(FoldAction.Expand)));

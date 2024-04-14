@@ -5488,6 +5488,15 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert Comment &apos; at caret ShiftCtrl+?.
+        /// </summary>
+        public static string String183 {
+            get {
+                return ResourceManager.GetString("String183", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy Code from Current Document.
         /// </summary>
         public static string String19 {

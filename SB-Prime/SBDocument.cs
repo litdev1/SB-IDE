@@ -245,6 +245,7 @@ namespace SB_Prime
             HotKeyManager.AddHotKey(textArea, GoBackwards, Keys.B, true);
             HotKeyManager.AddHotKey(textArea, GoForwards, Keys.B, true, true);
             HotKeyManager.AddHotKey(textArea, Comment, Keys.OemQuestion, true);
+            HotKeyManager.AddHotKey(textArea, CommentAt, Keys.OemQuestion, true, true);
 
             // remove conflicting hotkeys from scintilla
             textArea.ClearCmdKey(Keys.Control | Keys.N);
@@ -545,6 +546,28 @@ namespace SB_Prime
             textArea.FoldAll(foldAction);
         }
 
+        public void CommentAt()
+        {
+            string next = textArea.GetTextRange(textArea.CurrentPosition, 1);
+            string previous = textArea.CurrentPosition == 0 ? "" : textArea.GetTextRange(textArea.CurrentPosition - 1, 1);
+            if (next == "'")
+            {
+                textArea.SetTargetRange(textArea.CurrentPosition, textArea.CurrentPosition + 1);
+                textArea.ReplaceTarget("");
+            }
+            else if (previous == "'")
+            {
+                textArea.SetTargetRange(textArea.CurrentPosition - 1, textArea.CurrentPosition);
+                textArea.ReplaceTarget("");
+            }
+            else
+            {
+                textArea.InsertText(textArea.CurrentPosition, "'");
+            }
+
+            lexer.IsDirty = true;
+        }
+
         public void Comment()
         {
             int lineA = textArea.LineFromPosition(textArea.SelectionStart);
@@ -581,7 +604,7 @@ namespace SB_Prime
 
             textArea.SetTargetRange(iStart, iEnd);
             textArea.ReplaceTarget(selected);
-            textArea.CurrentPosition = textArea.Lines[lineA].Position+1;
+            textArea.CurrentPosition = textArea.Lines[lineA].Position + 1;
             lexer.IsDirty = true;
         }
 
