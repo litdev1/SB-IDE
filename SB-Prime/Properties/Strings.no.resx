@@ -421,7 +421,7 @@
     <value>Lagre alle</value>
   </data>
   <data name="Label190" xml:space="preserve">
-    <value>Vis/skjul vis mellomrom</value>
+    <value>Vis/skjul mellomrom</value>
   </data>
   <data name="Label191" xml:space="preserve">
     <value>Vis mellomrom</value>
@@ -664,7 +664,7 @@
     <value>Tekstboks</value>
   </data>
   <data name="Label263" xml:space="preserve">
-    <value>Beskrivelse: __________</value>
+    <value>Beskrivelse</value>
   </data>
   <data name="Label264" xml:space="preserve">
     <value>Tekstboks</value>
@@ -862,7 +862,7 @@
     <value>Erstatte</value>
   </data>
   <data name="Label322" xml:space="preserve">
-    <value>Erstatt alle forekomster av Søk-teksten med Erstatt-teksten</value>
+    <value>Erstatte alle forekomster av Søk-teksten med Erstatt-teksten</value>
   </data>
   <data name="Label323" xml:space="preserve">
     <value>Erstatt alle</value>
@@ -988,13 +988,13 @@
     <value>Trykke</value>
   </data>
   <data name="Label360" xml:space="preserve">
-    <value>Beskrivelse: __________</value>
+    <value>Beskrivelse</value>
   </data>
   <data name="Label361" xml:space="preserve">
     <value>Lenke</value>
   </data>
   <data name="Label362" xml:space="preserve">
-    <value>Klikk for å åpne koblingen</value>
+    <value>Klikk for å åpne lenken</value>
   </data>
   <data name="Label363" xml:space="preserve">
     <value>Alternativer</value>
@@ -1339,7 +1339,7 @@
     <value>Ring stakk</value>
   </data>
   <data name="Label466" xml:space="preserve">
-    <value>Ekstra regex for verktøytips intellisense variabelnavn (f.eks russisk а-яА-ЯёЁ)</value>
+    <value>Ekstra Regex for verktøytips intellisense variabelnavn (f.eks russisk а-яА-ЯёЁ)</value>
   </data>
   <data name="Label467" xml:space="preserve">
     <value>Rektangel</value>
@@ -1425,14 +1425,71 @@
   <data name="Label491" xml:space="preserve">
     <value>TreeView</value>
   </data>
+  <data name="Label492" xml:space="preserve">
+    <value>Aliaser</value>
+  </data>
+  <data name="Label493" xml:space="preserve">
+    <value>Angi objekt- og metodealiaser</value>
+  </data>
+  <data name="Label494" xml:space="preserve">
+    <value>Aliaser</value>
+  </data>
+  <data name="Label495" xml:space="preserve">
+    <value>Angi aliaser for objekt, metode, egenskap eller hendelsesnavn</value>
+  </data>
+  <data name="Label496" xml:space="preserve">
+    <value>Standard navn</value>
+  </data>
+  <data name="Label497" xml:space="preserve">
+    <value>Alias navn</value>
+  </data>
+  <data name="Label498" xml:space="preserve">
+    <value>Veksle mellom bruk av aliaser</value>
+  </data>
+  <data name="Label499" xml:space="preserve">
+    <value>Aktivere aliaser</value>
+  </data>
   <data name="Label5" xml:space="preserve">
     <value>Numlock</value>
   </data>
   <data name="Label50" xml:space="preserve">
     <value>Lagre som</value>
   </data>
+  <data name="Label500" xml:space="preserve">
+    <value>Konverterer mellom filkildekoden og SB-Prime IDE slik at Lagre, Load, Publish, Import, Graduate, Run etc bruke standard SB kommandoer, mens IDE og intellisense bruke aliaser.</value>
+  </data>
+  <data name="Label501" xml:space="preserve">
+    <value>Kildefilen kan deles direkte eller med Publiser uten konflikter - den er fullstendig SB-kompatibel.</value>
+  </data>
+  <data name="Label502" xml:space="preserve">
+    <value>Aliasene er bare knyttet til IDE, souce koden kan kopieres / limes inn fra IDE uten konvertering.</value>
+  </data>
+  <data name="Label503" xml:space="preserve">
+    <value>Validere</value>
+  </data>
+  <data name="Label504" xml:space="preserve">
+    <value>Valider navn, ugyldig vil ikke bli lagret</value>
+  </data>
+  <data name="Label505" xml:space="preserve">
+    <value>Eksportere aliaser til en tabulatordelt tekstfil</value>
+  </data>
+  <data name="Label506" xml:space="preserve">
+    <value>Eksport</value>
+  </data>
+  <data name="Label507" xml:space="preserve">
+    <value>Importere aliaser fra en tabulatordelt tekstfil</value>
+  </data>
+  <data name="Label508" xml:space="preserve">
+    <value>Importere</value>
+  </data>
+  <data name="Label509" xml:space="preserve">
+    <value>Slett alle aliaser</value>
+  </data>
   <data name="Label51" xml:space="preserve">
     <value>Lagre alle programmer</value>
+  </data>
+  <data name="Label510" xml:space="preserve">
+    <value>Klar</value>
   </data>
   <data name="Label52" xml:space="preserve">
     <value>Lagre alle</value>
@@ -1666,7 +1723,7 @@
     <value>dekompilere en gyldig .Net-samling til Microsoft C# (dll eller exe), og åpne deretter mappen som inneholder den dekompilerte C#-kildekoden.</value>
   </data>
   <data name="String121" xml:space="preserve">
-    <value>Hvis det lykkes, og Visual Studio er installert, åpner du prosjektfilen (*.csproj).</value>
+    <value>Hvis det er vellykket, og Visual Studio er installert, åpner du prosjektfilen (*.csproj).</value>
   </data>
   <data name="String122" xml:space="preserve">
     <value>START</value>
@@ -1869,6 +1926,9 @@
   <data name="String182" xml:space="preserve">
     <value>Skriftfamilien for kildekoden</value>
   </data>
+  <data name="String183" xml:space="preserve">
+    <value>Sett inn kommentar "på caret Ctrl + Shift +?</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Kopier kode fra gjeldende dokument</value>
   </data>
@@ -1885,7 +1945,7 @@
     <value>Denne mappen inneholder allerede filer.</value>
   </data>
   <data name="String23" xml:space="preserve">
-    <value>Velg en annen plassering eller tøm denne mappen og prøv på nytt.</value>
+    <value>Velg en annen plassering eller tøm denne mappen og prøv igjen.</value>
   </data>
   <data name="String24" xml:space="preserve">
     <value>Flytskjema mislyktes, sannsynligvis på grunn av kodefeil - sjekk programkompileringer.</value>
@@ -1900,7 +1960,7 @@
     <value>Høyreklikk på et element for å velge det overordnede elementet (EndFor, EndWhile, EndIf, Else eller ElseIf) eller velg koblingen (Goto eller Sub)</value>
   </data>
   <data name="String28" xml:space="preserve">
-    <value>Et merket element flyttes nær toppen av visningen</value>
+    <value>Et valgt element flyttes nær toppen av visningen</value>
   </data>
   <data name="String29" xml:space="preserve">
     <value>Under en feilsøkingsøkt velges den gjeldende midlertidige linjen</value>
@@ -1930,13 +1990,13 @@
     <value>Egenskapene til en valgt form vises på høyre panel, de kan endres ved å redigere eller bruke Set-knappen.</value>
   </data>
   <data name="String37" xml:space="preserve">
-    <value>Merk flere figurer ved å merke en figur mens Skift-tasten holdes nede, eller ved å merke en runde gruppe figurer (Skift hvis du vil legge til i gjeldende merkede figurer).</value>
+    <value>Merk flere figurer ved å merke en figur med Skift-tasten nede eller ved å merke en rund gruppe figurer (Skift for å legge til i gjeldende merkede figurer).</value>
   </data>
   <data name="String38" xml:space="preserve">
     <value>Deslect alle figurer ved å venstreklikke på backgound.</value>
   </data>
   <data name="String39" xml:space="preserve">
-    <value>Flytte, endre størrelse på (bruke hjørnehåndtak) eller endre egenskaper for en figur (hold nede Skift for å bruke på flere merkede figurer).</value>
+    <value>Flytte, endre størrelse på (bruke hjørnehåndtak) eller endre egenskapene for en figur (hold nede Skift for å bruke på flere merkede figurer).</value>
   </data>
   <data name="String4" xml:space="preserve">
     <value>Importerte programdetaljer</value>
@@ -1951,7 +2011,7 @@
     <value>Trykk DEL over en figur for å slette den.</value>
   </data>
   <data name="String43" xml:space="preserve">
-    <value>Høyreklikk for flere alternativer, inkludert kopier og lim inn kode til gjeldende dokument, eller kopier merkede figurer (nye kopierte figurer ligger over originalene, så de kan deretter flyttes som en gruppe ved hjelp av Skift-tasten).</value>
+    <value>Høyreklikk for flere alternativer, inkludert kopier og lim inn kode til gjeldende dokument, eller kopier merkede figurer (nye kopierte figurer ligger over originalene, slik at de kan flyttes som en gruppe ved hjelp av Skift-tasten).</value>
   </data>
   <data name="String44" xml:space="preserve">
     <value>Gjeldende kode vises i kodevinduet.  Dette kan redigeres og bruke \"Import From Code\" for å legge til gjeldende kode i gjeldende visning.</value>
@@ -1987,153 +2047,153 @@
     <value>For å aktivere feilsøking kompileres og installeres en tilleggsmodul direkte i lib-mappen første gang SB-Prime startes, noe som krever UAC-tillatelse (User Account Control).</value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value>I tillegg kan UAC være nødvendig første gang en feilsøkingsøkt utføres for å tillate nødvendig kommunikasjon mellom programmer.</value>
+    <value></value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value>Feilsøking krever kjøring for å bryte punkter eller "tråkke" gjennom koden.  Når de er satt på pause, kan verdier vises ved å holde musen over en variabel, eller ved å legge til variabelnavn i overvåkningslisten i feilsøkingsfanen.  Overvåkningslistevariabler kan vises etter hvert som de endres, og kan også endres.  Matriseverdier med []-syntaks kan også vises og endres.</value>
+    <value></value>
   </data>
   <data name="String56" xml:space="preserve">
-    <value>Det finnes ingen ressurser for dette programmet.  Avslutte.</value>
+    <value></value>
   </data>
   <data name="String57" xml:space="preserve">
-    <value>Tillatelse til å opprette utvidelse lib-mappen er nødvendig</value>
+    <value></value>
   </data>
   <data name="String58" xml:space="preserve">
-    <value>Velkommen til Small Basic Prime</value>
+    <value></value>
   </data>
   <data name="String59" xml:space="preserve">
-    <value>Kunne ikke importere program med ID</value>
+    <value></value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value>Farge på hvitt</value>
+    <value></value>
   </data>
   <data name="String60" xml:space="preserve">
-    <value>Vellykket importert program med ID</value>
+    <value></value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value>Vellykket avsluttet kjøring med prosess</value>
+    <value></value>
   </data>
   <data name="String62" xml:space="preserve">
-    <value>Kan ikke blande feilsøkings- og ikke-feilsøkingskjøringer</value>
+    <value></value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value>Kan ikke kompilere et program som allerede kjører</value>
+    <value></value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value>Kunne ikke publisere programmet (kanskje for kort eller for langt)</value>
+    <value></value>
   </data>
   <data name="String65" xml:space="preserve">
-    <value>Vellykket publisert program med ID</value>
+    <value></value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value>Vellykket uteksaminert program for å</value>
+    <value></value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value>Kan ikke kjøre saken siden exe ikke er kompilert</value>
+    <value></value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value>Vellykket startet kjøring med prosess</value>
+    <value></value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value>Vellykket dekompilert montering til</value>
+    <value></value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value>Ekte farge</value>
+    <value></value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value>Plugin Legg til: Kunne ikke legge til en plugin i gruppen</value>
+    <value></value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value>Vellykket avsluttet kjøring med prosess</value>
+    <value></value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value>Opprett nye figurer fra kodevinduet.</value>
+    <value></value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value>Du kan lime inn hvilken som helst kode her først.</value>
+    <value></value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value>Merk at de fleste argumenter skal være bokstavelige, ikke variabler.</value>
+    <value></value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value>Microsoft Visual Studio Community utviklingsmiljø.</value>
+    <value></value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value>Skriv dine egne Small Basic-utvidelser og større prosjekter.</value>
+    <value></value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value>Vis og dekompiler .Net-samlinger.  Finn ut hvordan utvidelser fungerer.</value>
+    <value></value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value>Viktig for å komme under panseret på Small Basic.</value>
+    <value></value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>A lightweight, but full featured alternative to VS.</value>
+    <value></value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value>Svart-hvitt</value>
+    <value></value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value>Lag og manipuler bilder, inkludert enkelt å gi png-bilder gjennomsiktig bakgrunn og lage animerte GIF-er.</value>
+    <value></value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value>Sjekk ut tryllestavvalgverktøyet.</value>
+    <value></value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value>Utmerket tekstredigeringsalternativ til notisblokk.</value>
+    <value></value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value>En stor nedlasting, men et profesjonelt nivå IDE.</value>
+    <value></value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>Nyttig å raskt se på eller redigere de fleste tekstlesbare filformater.</value>
+    <value></value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>Fil zip-komprimering.</value>
+    <value></value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>Den beste måten å dele flere dokumenter på i én enkelt komprimert fil.</value>
+    <value></value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>Opprett og rediger ikoner.</value>
+    <value></value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>Ikonformater er ganske vanskelige uten et enkelt verktøy som dette.</value>
+    <value></value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Angre CTRL+Z</value>
+    <value></value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Intellisense</value>
+    <value></value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Gjør om CTRL+Y</value>
+    <value></value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Klipp ut CTRL+X</value>
+    <value></value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>Kopier CTRL+C</value>
+    <value></value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value>Lim inn CTRL+V</value>
+    <value></value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value>Slette</value>
+    <value></value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>Merk alle CTRL+A</value>
+    <value></value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Finn CTRL+F</value>
+    <value></value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>Søk og erstatt CTRL+H</value>
+    <value></value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Kommenter merkede linjer Ctrl+?</value>
+    <value></value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>Un-kommentar valgte linjer Ctrl +?</value>
+    <value></value>
   </data>
 </root>

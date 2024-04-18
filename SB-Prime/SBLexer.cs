@@ -322,8 +322,8 @@ namespace SB_Prime
             styles.Add(new SBStyle(STYLE_VARIABLE, new Regex("^" + word + "[\\W]")));
             styles.Add(new SBStyle(STYLE_LITERAL, new Regex("^[-?\\d*\\.?\\d*]")));
 
-            // Configure the lexer styles
-            textArea.Lexer = Lexer.Container;
+            textArea.LexerName = "";
+            //textArea.Lexer = Lexer.Container;
 
             const int SCI_CALLTIPSETBACK = 2205;
             const int SCI_CALLTIPSETFORE = 2206;

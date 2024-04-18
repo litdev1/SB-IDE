@@ -814,7 +814,7 @@
     <value>Включить путь к файлу в поиск</value>
   </data>
   <data name="Label308" xml:space="preserve">
-    <value>Включить путь к файлу</value>
+    <value>Inkluder filbane</value>
   </data>
   <data name="Label309" xml:space="preserve">
     <value>Фильтр текста</value>
@@ -1926,6 +1926,9 @@
   <data name="String182" xml:space="preserve">
     <value>Семейство шрифтов для исходного кода</value>
   </data>
+  <data name="String183" xml:space="preserve">
+    <value>Вставить комментарий ' в каретку Ctrl+Shift+?</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Копирование кода из текущего документа</value>
   </data>
@@ -1984,7 +1987,7 @@
     <value>Выберите фигуру, щелкнув по ней или синий маркер перемещения.</value>
   </data>
   <data name="String36" xml:space="preserve">
-    <value>Свойства выбранной фигуры отображаются на правой панели, их можно изменить с помощью редактирования или с помощью кнопки Установить.</value>
+    <value></value>
   </data>
   <data name="String37" xml:space="preserve">
     <value>Выберите несколько фигур, выделив фигуру с удерживаемой клавишей Shift или выделив группу фигур (Shift для добавления к текущим выбранным фигурам).</value>
@@ -2038,159 +2041,159 @@
     <value>В настоящее время расширенной помощи нет.</value>
   </data>
   <data name="String52" xml:space="preserve">
-    <value>SB-Prime должен работать с любой установленной версией Small Basic, отладка работает на Small Basic версии 1.1 и выше.</value>
+    <value></value>
   </data>
   <data name="String53" xml:space="preserve">
-    <value>Чтобы включить отладку, расширение компилируется и устанавливается в папку lib при первом запуске SB-Prime, требуя разрешения контроля учетных записей (UAC).</value>
+    <value></value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value>Кроме того, контроль учетных записей может потребоваться при первом выполнении сеанса отладки, чтобы обеспечить необходимое взаимодействие между приложениями.</value>
+    <value></value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value>Отладка требует выполнения до точек останова или «пошагового выполнения» кода.  После паузы значения можно просмотреть, наведя курсор мыши на переменную или добавив имена переменных в список наблюдения на вкладке отладки.  Переменные списка наблюдения могут просматриваться по мере их изменения, а также могут быть изменены.  Значения массивов с синтаксисом [] также можно просматривать и изменять.</value>
+    <value></value>
   </data>
   <data name="String56" xml:space="preserve">
-    <value>Для этого приложения не существует ресурсов.  Бросить.</value>
+    <value></value>
   </data>
   <data name="String57" xml:space="preserve">
-    <value>Требуется разрешение на создание папки extension lib</value>
+    <value></value>
   </data>
   <data name="String58" xml:space="preserve">
-    <value>Добро пожаловать в Small Basic Prime</value>
+    <value></value>
   </data>
   <data name="String59" xml:space="preserve">
-    <value>Не удалось импортировать программу с идентификатором</value>
+    <value></value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value>Цвет на белом</value>
+    <value></value>
   </data>
   <data name="String60" xml:space="preserve">
-    <value>Успешно импортированная программа с идентификатором</value>
+    <value></value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value>Успешно завершенный запуск с процессом</value>
+    <value></value>
   </data>
   <data name="String62" xml:space="preserve">
-    <value>Невозможно смешивать отладочные и неотладочные запуски</value>
+    <value></value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value>Не удается скомпилировать программу, которая уже запущена</value>
+    <value></value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value>Не удалось опубликовать программу (возможно, слишком короткая или слишком длинная)</value>
+    <value></value>
   </data>
   <data name="String65" xml:space="preserve">
-    <value>Успешно опубликованная программа с идентификатором</value>
+    <value></value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value>Успешно окончивший программу</value>
+    <value></value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value>Не удается запустить case, так как exe не был успешно скомпилирован</value>
+    <value></value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value>Успешно запущен запуск с процессом</value>
+    <value></value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value>Успешно декомпилированная сборка в</value>
+    <value></value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value>Естественная цветопередача</value>
+    <value></value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value>Plugin Add : Не удалось добавить плагин в группу</value>
+    <value></value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value>Успешно завершенный запуск с процессом</value>
+    <value></value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value>Создание новых фигур в окне кода.</value>
+    <value></value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value>Вы можете сначала вставить сюда любой код.</value>
+    <value></value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value>Обратите внимание, что большинство аргументов должны быть литералами, а не переменными.</value>
+    <value></value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value>Среда разработки Microsoft Visual Studio Community.</value>
+    <value></value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value>Создавайте свои собственные небольшие расширения Basic и более крупные проекты.</value>
+    <value></value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value>Просмотр и декомпиляция сборок .Net.  Узнайте, как работают расширения.</value>
+    <value></value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value>Незаменим для того, чтобы залезть под капот Small Basic.</value>
+    <value></value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>A lightweight, but full featured alternative to VS.</value>
+    <value></value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value>Черно-белое</value>
+    <value></value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value>Создавайте изображения и управляйте ими, в том числе легко придавайте изображениям в формате png прозрачный фон и создавайте анимированные GIF-файлы.</value>
+    <value></value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value>Ознакомьтесь с инструментом выбора волшебной палочки.</value>
+    <value></value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value>Отличный текстовый редактор, альтернатива блокноту.</value>
+    <value></value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value>Большая загрузка, но IDE профессионального уровня.</value>
+    <value></value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>Полезно для быстрого просмотра или редактирования большинства текстовых форматов файлов.</value>
+    <value></value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>Сжатие zip-архива файла.</value>
+    <value></value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>Лучший способ поделиться несколькими документами в одном сжатом файле.</value>
+    <value></value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>Создавайте и редактируйте иконки.</value>
+    <value></value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>Форматы иконок довольно сложны без такого простого инструмента, как этот.</value>
+    <value></value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Отменить Ctrl+Z</value>
+    <value></value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Технология Intellisense</value>
+    <value></value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Повторить Ctrl+Y</value>
+    <value></value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Нажмите Ctrl+X</value>
+    <value></value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>Копировать Ctrl+C</value>
+    <value></value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value>Вставить Ctrl+V</value>
+    <value></value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value>Удалить</value>
+    <value></value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>Выделите все Ctrl+A</value>
+    <value></value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Найдите Ctrl+F</value>
+    <value></value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>Поиск и замена Ctrl+H</value>
+    <value></value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Комментарий к выделенным строкам Ctrl+?</value>
+    <value></value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>Раскомментировать выделенные строки Ctrl+?</value>
+    <value></value>
   </data>
 </root>

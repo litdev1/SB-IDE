@@ -1926,6 +1926,9 @@
   <data name="String182" xml:space="preserve">
     <value>Die Schriftfamilie für den Quellcode</value>
   </data>
+  <data name="String183" xml:space="preserve">
+    <value>Kommentar ' an der Einfügemarke einfügen Strg+Umschalt+?</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Code aus aktuellem Dokument kopieren</value>
   </data>
@@ -2125,72 +2128,72 @@
     <value>Unverzichtbar, um unter die Haube von Small Basic zu kommen.</value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>A lightweight, but full featured alternative to VS.</value>
+    <value>Eine leichte, aber voll ausgestattete Alternative zu VS.</value>
   </data>
   <data name="String8" xml:space="preserve">
     <value>Schwarz und Weiß</value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value>Erstellen und bearbeiten Sie Bilder, einschließlich des einfachen Versehens von PNG-Bildern mit transparenten Hintergründen und der Erstellung animierter GIFs.</value>
+    <value></value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value>Schauen Sie sich das Zauberstab-Auswahlwerkzeug an.</value>
+    <value></value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value>Ausgezeichnete Texteditor-Alternative zum Notizblock.</value>
+    <value></value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value>Ein großer Download, aber eine professionelle IDE.</value>
+    <value></value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>Nützlich, um die meisten textlesbaren Dateiformate schnell anzuzeigen oder zu bearbeiten.</value>
+    <value></value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>Komprimierung der Datei-Zip-Datei.</value>
+    <value></value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>Der beste Weg, um mehrere Dokumente in einer einzigen komprimierten Datei freizugeben.</value>
+    <value></value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>Erstellen und Bearbeiten von Symbolen.</value>
+    <value></value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>Icon-Formate sind ohne ein einfaches Tool wie dieses ziemlich knifflig.</value>
+    <value></value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Rückgängigmachen Strg+Z</value>
+    <value></value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Intellisense</value>
+    <value></value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Wiederholen Strg+Y</value>
+    <value></value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Ausschneiden Strg+X</value>
+    <value></value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>Kopieren Strg+C</value>
+    <value></value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value>Einfügen Strg+V</value>
+    <value></value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value>Löschen</value>
+    <value></value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>Alles auswählen Strg+A</value>
+    <value></value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Suchen Sie Strg+F</value>
+    <value></value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>Suchen und Ersetzen Strg+H</value>
+    <value></value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Ausgewählte Zeilen kommentieren Strg+?</value>
+    <value></value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>Ausgewählte Zeilen auskommentieren Strg+?</value>
+    <value></value>
   </data>
 </root>

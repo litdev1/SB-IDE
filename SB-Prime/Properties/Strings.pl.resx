@@ -664,7 +664,7 @@
     <value>Pole tekstowe</value>
   </data>
   <data name="Label263" xml:space="preserve">
-    <value>Opis:__________</value>
+    <value>Opis</value>
   </data>
   <data name="Label264" xml:space="preserve">
     <value>Pole tekstowe</value>
@@ -988,7 +988,7 @@
     <value>Drukować</value>
   </data>
   <data name="Label360" xml:space="preserve">
-    <value>Opis:__________</value>
+    <value>Opis</value>
   </data>
   <data name="Label361" xml:space="preserve">
     <value>Łącze</value>
@@ -1425,14 +1425,71 @@
   <data name="Label491" xml:space="preserve">
     <value>Widok drzewa</value>
   </data>
+  <data name="Label492" xml:space="preserve">
+    <value>Aliasy</value>
+  </data>
+  <data name="Label493" xml:space="preserve">
+    <value>Ustawianie aliasów obiektów i metod</value>
+  </data>
+  <data name="Label494" xml:space="preserve">
+    <value>Aliasy</value>
+  </data>
+  <data name="Label495" xml:space="preserve">
+    <value>Ustawianie aliasów nazw obiektów, metod, właściwości lub zdarzeń</value>
+  </data>
+  <data name="Label496" xml:space="preserve">
+    <value>Nazwa domyślna</value>
+  </data>
+  <data name="Label497" xml:space="preserve">
+    <value>Nazwa aliasu</value>
+  </data>
+  <data name="Label498" xml:space="preserve">
+    <value>Przełączanie użycia aliasów</value>
+  </data>
+  <data name="Label499" xml:space="preserve">
+    <value>Włączanie aliasów</value>
+  </data>
   <data name="Label5" xml:space="preserve">
     <value>Blokada numeryczna</value>
   </data>
   <data name="Label50" xml:space="preserve">
     <value>Zapisz jako</value>
   </data>
+  <data name="Label500" xml:space="preserve">
+    <value>Konwertuje między kodem źródłowym pliku a SB-Prime IDE, dzięki czemu funkcje Zapisz, Ładuj, Publikuj, Importuj, Ukończ, Uruchom itp. używają domyślnych poleceń SB, podczas gdy IDE i IntelliSense używają aliasów.</value>
+  </data>
+  <data name="Label501" xml:space="preserve">
+    <value>Plik źródłowy może być udostępniany bezpośrednio lub za pomocą Publish bez konfliktów - jest w pełni kompatybilny z SB.</value>
+  </data>
+  <data name="Label502" xml:space="preserve">
+    <value>Aliasy są skojarzone tylko z IDE, kod souce można skopiować/wkleić z IDE bez konwersji.</value>
+  </data>
+  <data name="Label503" xml:space="preserve">
+    <value>Walidować</value>
+  </data>
+  <data name="Label504" xml:space="preserve">
+    <value>Sprawdź poprawność nazw, nieprawidłowe nie zostaną zapisane</value>
+  </data>
+  <data name="Label505" xml:space="preserve">
+    <value>Eksportowanie aliasów do pliku tekstowego z usuniętą kartą</value>
+  </data>
+  <data name="Label506" xml:space="preserve">
+    <value>Eksport</value>
+  </data>
+  <data name="Label507" xml:space="preserve">
+    <value>Importowanie aliasów z pliku tekstowego z usuniętym tabulatorem</value>
+  </data>
+  <data name="Label508" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Label509" xml:space="preserve">
+    <value>Usuwanie wszystkich aliasów</value>
+  </data>
   <data name="Label51" xml:space="preserve">
     <value>Zapisz wszystkie programy</value>
+  </data>
+  <data name="Label510" xml:space="preserve">
+    <value>Jasny</value>
   </data>
   <data name="Label52" xml:space="preserve">
     <value>Zapisz wszystko</value>
@@ -1869,6 +1926,9 @@
   <data name="String182" xml:space="preserve">
     <value>Rodzina czcionek dla kodu źródłowego</value>
   </data>
+  <data name="String183" xml:space="preserve">
+    <value>Wstaw komentarz ' przy daszku Ctrl+Shift+?</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Kopiuj kod z bieżącego dokumentu</value>
   </data>
@@ -1948,192 +2008,192 @@
     <value>Posuń zaznaczone kształty za pomocą strzałek (przytrzymaj Shift, aby przesunąć je o odległość przyciągania).</value>
   </data>
   <data name="String42" xml:space="preserve">
-    <value>Naciśnij Delete nad kształtem, aby go usunąć.</value>
+    <value></value>
   </data>
   <data name="String43" xml:space="preserve">
-    <value>Kliknij prawym przyciskiem myszy, aby uzyskać dostęp do dodatkowych opcji, w tym kopiowania i wklejania kodu do bieżącego dokumentu lub kopiowania zaznaczonych kształtów (nowe skopiowane kształty leżą na oryginałach, dzięki czemu można je następnie przesuwać jako grupę za pomocą Shift).</value>
+    <value></value>
   </data>
   <data name="String44" xml:space="preserve">
-    <value>Bieżący kod jest wyświetlany w oknie kodu.  Można to edytować i użyć \"Importuj z kodu\", aby dodać bieżący kod do bieżącego widoku.</value>
+    <value></value>
   </data>
   <data name="String45" xml:space="preserve">
-    <value>Pytania i sugestie mile widziane.</value>
+    <value></value>
   </data>
   <data name="String46" xml:space="preserve">
-    <value>Tekst w</value>
+    <value></value>
   </data>
   <data name="String47" xml:space="preserve">
-    <value>zmienił się</value>
+    <value></value>
   </data>
   <data name="String48" xml:space="preserve">
-    <value>Czy chcesz zapisać zmiany?</value>
+    <value></value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>Usuń zaznaczenie \"Załaduj biblioteki rozszerzeń dlls podczas uruchamiania\" w Opcjach zaawansowanych &gt; i uruchom ponownie, aby zmodyfikować zainstalowane rozszerzenia.</value>
+    <value></value>
   </data>
   <data name="String5" xml:space="preserve">
-    <value>Przełącz pliki różnic na podzielonym ekranie</value>
+    <value></value>
   </data>
   <data name="String50" xml:space="preserve">
-    <value>OK, aby kontynuować z załadowanymi rozszerzeniami.</value>
+    <value></value>
   </data>
   <data name="String51" xml:space="preserve">
-    <value>Obecnie nie ma rozszerzonej pomocy.</value>
+    <value></value>
   </data>
   <data name="String52" xml:space="preserve">
-    <value>SB-Prime powinien działać z każdą zainstalowaną wersją Small Basic, debugowanie działa na Small Basic w wersji 1.1 i nowszych.</value>
+    <value></value>
   </data>
   <data name="String53" xml:space="preserve">
-    <value>Aby umożliwić debugowanie, rozszerzenie jest bezpośrednio kompilowane i instalowane w folderze lib przy pierwszym uruchomieniu SB-Prime, co wymaga uprawnień Kontroli konta użytkownika (UAC).</value>
+    <value></value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value>Ponadto kontrola konta użytkownika może być wymagana przy pierwszym wykonywaniu sesji debugowania, aby umożliwić wymaganą komunikację między aplikacjami.</value>
+    <value></value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value>Debugowanie wymaga uruchomienia w celu przerwania punktów lub "przechodzenia" przez kod.  Po wstrzymaniu wartości można wyświetlić, umieszczając kursor myszy na zmiennej lub dodając nazwy zmiennych do listy obserwowanych na karcie debugowania.  Zmienne listy obserwacyjnej mogą być wyświetlane w miarę ich zmian, a także mogą być modyfikowane.  Wartości tablicowe ze składnią [] mogą być również przeglądane i modyfikowane.</value>
+    <value></value>
   </data>
   <data name="String56" xml:space="preserve">
-    <value>Nie istnieją żadne zasoby dla tej aplikacji.  Rzucenie.</value>
+    <value></value>
   </data>
   <data name="String57" xml:space="preserve">
-    <value>Wymagane jest uprawnienie do tworzenia folderu biblioteki rozszerzeń</value>
+    <value></value>
   </data>
   <data name="String58" xml:space="preserve">
-    <value>Witamy w Small Basic Prime</value>
+    <value></value>
   </data>
   <data name="String59" xml:space="preserve">
-    <value>Nie udało się zaimportować programu z identyfikatorem</value>
+    <value></value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value>Kolor na białym tle</value>
+    <value></value>
   </data>
   <data name="String60" xml:space="preserve">
-    <value>Pomyślnie zaimportowano program z identyfikatorem</value>
+    <value></value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value>Pomyślnie zakończono przebieg z procesem</value>
+    <value></value>
   </data>
   <data name="String62" xml:space="preserve">
-    <value>Nie można mieszać przebiegów debugowania i bez debugowania</value>
+    <value></value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value>Nie można skompilować programu, który jest już uruchomiony</value>
+    <value></value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value>Nie udało się opublikować programu (być może za krótko lub za długo)</value>
+    <value></value>
   </data>
   <data name="String65" xml:space="preserve">
-    <value>Pomyślnie opublikowano program z identyfikatorem</value>
+    <value></value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value>Pomyślnie ukończony program do</value>
+    <value></value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value>Nie można uruchomić przypadku, ponieważ plik exe nie został pomyślnie skompilowany</value>
+    <value></value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value>Pomyślnie uruchomiono uruchamianie z procesem</value>
+    <value></value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value>Pomyślnie zdekompilowany zestaw do</value>
+    <value></value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value>Prawdziwy kolor</value>
+    <value></value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value>Dodawanie wtyczki : Nie można dodać wtyczki w grupie</value>
+    <value></value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value>Pomyślnie zakończono przebieg z procesem</value>
+    <value></value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value>Utwórz nowe kształty w oknie kodu.</value>
+    <value></value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value>Możesz najpierw wkleić dowolny kod tutaj.</value>
+    <value></value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value>Należy pamiętać, że większość argumentów powinna być literałami, a nie zmiennymi.</value>
+    <value></value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value>Środowisko programistyczne Microsoft Visual Studio Community.</value>
+    <value></value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value>Pisz własne rozszerzenia Small Basic i większe projekty.</value>
+    <value></value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value>Wyświetlanie i dekompilowanie zestawów .Net.  Dowiedz się, jak działają rozszerzenia.</value>
+    <value></value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value>Niezbędny do dostania się pod maskę Small Basic.</value>
+    <value></value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>A lightweight, but full featured alternative to VS.</value>
+    <value></value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value>Czerń i biel</value>
+    <value></value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value>Twórz i manipuluj obrazami, w tym łatwo nadając obrazom png przezroczyste tło i tworząc animowane gify.</value>
+    <value></value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value>Sprawdź narzędzie do zaznaczania magicznej różdżki.</value>
+    <value></value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value>Doskonała alternatywa dla edytora tekstu dla notatnika.</value>
+    <value></value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value>Duży plik do pobrania, ale IDE na poziomie profesjonalnym.</value>
+    <value></value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>Przydatne do szybkiego przeglądania lub edytowania większości formatów plików czytelnych dla tekstu.</value>
+    <value></value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>Kompresja plików zip.</value>
+    <value></value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>Najlepszy sposób na udostępnianie wielu dokumentów w jednym skompresowanym pliku.</value>
+    <value></value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>Twórz i edytuj ikony.</value>
+    <value></value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>Formaty ikon są dość trudne bez prostego narzędzia, takiego jak to.</value>
+    <value></value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Cofnij Ctrl+Z</value>
+    <value></value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Funkcja IntelliSense</value>
+    <value></value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Ponów Ctrl+Y</value>
+    <value></value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Wytnij Ctrl+X</value>
+    <value></value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>Kopiuj Ctrl+C</value>
+    <value></value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value>Wklej Ctrl+V</value>
+    <value></value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value>Usunąć</value>
+    <value></value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>Zaznacz wszystko Ctrl+A</value>
+    <value></value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Znajdź Ctrl+F</value>
+    <value></value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>Znajdź i zamień Ctrl+H</value>
+    <value></value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Komentarz Zaznaczone wiersze Ctrl+?</value>
+    <value></value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>Odkomentuj zaznaczone wiersze Ctrl+?</value>
+    <value></value>
   </data>
 </root>

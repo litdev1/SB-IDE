@@ -1926,6 +1926,9 @@
   <data name="String182" xml:space="preserve">
     <value>عائلة الخطوط للشفرة المصدرية</value>
   </data>
+  <data name="String183" xml:space="preserve">
+    <value>إدراج تعليق ' في علامة الإقحام Ctrl + Shift +؟</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>نسخ الرمز من المستند الحالي</value>
   </data>
@@ -2125,7 +2128,7 @@
     <value>ضروري للوقوف تحت غطاء محرك السيارة الصغيرة الأساسية.</value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>A lightweight, but full featured alternative to VS.</value>
+    <value>بديل خفيف الوزن ولكنه كامل الميزات ل VS.</value>
   </data>
   <data name="String8" xml:space="preserve">
     <value>أبيض وأسود</value>
