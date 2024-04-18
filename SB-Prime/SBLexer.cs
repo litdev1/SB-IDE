@@ -77,7 +77,6 @@ namespace SB_Prime
         Regex keyword2 = new Regex("^[\\W](ENDSUB|ENDFOR|ENDIF|ENDWHILE)[\\W]");
         Regex keyword3 = new Regex("^[\\W](ELSE|ELSEIF)[\\W]");
 
-
         public SBLexer(SBDocument sbDocument, Scintilla textArea)
         {
             this.sbDocument = sbDocument;
