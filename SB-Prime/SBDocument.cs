@@ -675,9 +675,9 @@ namespace SB_Prime
                     iEnd = line.EndPosition;
                     string text = line.Text;
                     int pos = text.TakeWhile(c => char.IsWhiteSpace(c)).Count();
-                    if (pos < text.Length - 1 && text[pos] == '\'' && text[pos+1] == ' ')
+                    if (pos < text.Length - 1 && text[pos] == '\'')
                     {
-                        text = text.Remove(pos, 2);
+                        text = text.Remove(pos, 1);
                         textArea.SetTargetRange(iStart, iEnd);
                         textArea.ReplaceTarget(text);
                     }
