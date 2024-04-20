@@ -1103,7 +1103,7 @@ namespace SB_Prime
 
         private void ToolsUpload_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://litdev.uk/game_images/upload.html");
+            Process.Start("https://litdev.uk/game_images/upload.png");
         }
 
         /*
