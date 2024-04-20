@@ -671,15 +671,18 @@ namespace SB_Prime
                 if (iLine < textArea.Lines.Count)
                 {
                     line = textArea.Lines[iLine];
-                    iStart = line.Position;
-                    iEnd = line.EndPosition;
                     string text = line.Text;
-                    int pos = text.TakeWhile(c => char.IsWhiteSpace(c)).Count();
-                    if (pos < text.Length - 1 && text[pos] == '\'')
+                    if (!text.StartsWith(search)) //Not for a repeated line
                     {
-                        text = text.Remove(pos, 1);
-                        textArea.SetTargetRange(iStart, iEnd);
-                        textArea.ReplaceTarget(text);
+                        iStart = line.Position;
+                        iEnd = line.EndPosition;
+                        int pos = text.TakeWhile(c => char.IsWhiteSpace(c)).Count();
+                        if (pos < text.Length - 1 && text[pos] == '\'')
+                        {
+                            text = text.Remove(pos, 1);
+                            textArea.SetTargetRange(iStart, iEnd);
+                            textArea.ReplaceTarget(text);
+                        }
                     }
                 }
 
