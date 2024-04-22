@@ -1081,35 +1081,20 @@ namespace SB_Prime
             //MenuItem itemCut = new MenuItem();
             //itemCut.Header = Properties.Strings.String91;
             //itemCut.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Cut) };
-            //itemCut.Click += new RoutedEventHandler(Cut);
+            //itemCut.Click += delegate (object _sender, RoutedEventArgs _e) { tbFind.Cut(); };
             //contextMenu.Items.Add(itemCut);
 
             MenuItem itemCopy = new MenuItem();
             itemCopy.Header = Properties.Strings.String92;
             itemCopy.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Copy) };
-            itemCopy.Click += new RoutedEventHandler(Copy);
+            itemCopy.Click += delegate (object _sender, RoutedEventArgs _e) { tbFind.Copy(); };
             contextMenu.Items.Add(itemCopy);
 
             MenuItem itemPaste = new MenuItem();
             itemPaste.Header = Properties.Strings.String93;
             itemPaste.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Paste) };
-            itemPaste.Click += new RoutedEventHandler(Paste);
+            itemPaste.Click += delegate (object _sender, RoutedEventArgs _e) { tbFind.Paste(); };
             contextMenu.Items.Add(itemPaste);
-        }
-
-        private void Cut(object sender, RoutedEventArgs e)
-        {
-            tbFind.Cut();
-        }
-
-        private void Copy(object sender, RoutedEventArgs e)
-        {
-            tbFind.Copy();
-        }
-
-        private void Paste(object sender, RoutedEventArgs e)
-        {
-            tbFind.Paste();
         }
 
         private void ToolsLinks_Click(object sender, RoutedEventArgs e)
