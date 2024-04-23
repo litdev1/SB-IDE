@@ -850,6 +850,7 @@ namespace SB_Prime.Dialogs
         {
             try
             {
+                dataGridProperties.CommitEdit();
                 properties.Clear();
                 if (null != currentShape)
                 {
@@ -1046,7 +1047,14 @@ namespace SB_Prime.Dialogs
                         properties.RemoveAt(2);
                     }
                 }
-                dataGridProperties.Items.Refresh();
+                try
+                {
+                    dataGridProperties.Items.Refresh();
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
             catch (Exception ex)
             {
