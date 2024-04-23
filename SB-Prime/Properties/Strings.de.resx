@@ -2029,7 +2029,7 @@
     <value>Möchten Sie die Änderungen speichern?</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>Deaktivieren Sie "Erweiterungs-DLLs beim Start laden" in Erweitert-&gt;Optionen und starten Sie neu, um installierte Erweiterungen zu ändern.</value>
+    <value>Deaktivieren Sie "Erweiterungs-DLLs beim Start laden" unter Erweitert-&gt;Optionen und starten Sie sie neu, um die installierten Erweiterungen zu ändern.</value>
   </data>
   <data name="String5" xml:space="preserve">
     <value>Unterschiedliche Dateien im geteilten Bildschirm ein- und ausschalten</value>
@@ -2134,66 +2134,66 @@
     <value>Schwarz und Weiß</value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value></value>
+    <value>Erstellen und bearbeiten Sie Bilder, einschließlich des einfachen Versehens von PNG-Bildern mit transparenten Hintergründen und der Erstellung animierter GIFs.</value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value></value>
+    <value>Schauen Sie sich das Zauberstab-Auswahlwerkzeug an.</value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value></value>
+    <value>Ausgezeichnete Texteditor-Alternative zum Notizblock.</value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value></value>
+    <value>Ein großer Download, aber eine professionelle IDE.</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value></value>
+    <value>Nützlich, um die meisten textlesbaren Dateiformate schnell anzuzeigen oder zu bearbeiten.</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value></value>
+    <value>Komprimierung der Datei-Zip-Datei.</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value></value>
+    <value>Der beste Weg, um mehrere Dokumente in einer einzigen komprimierten Datei freizugeben.</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value></value>
+    <value>Erstellen und Bearbeiten von Symbolen.</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value></value>
+    <value>Icon-Formate sind ohne ein einfaches Tool wie dieses ziemlich knifflig.</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value></value>
+    <value>Rückgängigmachen Strg+Z</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value></value>
+    <value>Intellisense</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value></value>
+    <value>Wiederholen Strg+Y</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value></value>
+    <value>Ausschneiden Strg+X</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value></value>
+    <value>Kopieren Strg+C</value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value></value>
+    <value>Einfügen Strg+V</value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value></value>
+    <value>Löschen</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value></value>
+    <value>Alles auswählen Strg+A</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value></value>
+    <value>Suchen Sie Strg+F</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value></value>
+    <value>Suchen und Ersetzen Strg+H</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value></value>
+    <value>Ausgewählte Zeilen kommentieren Strg+?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value></value>
+    <value>Ausgewählte Zeilen auskommentieren Strg+?</value>
   </data>
 </root>

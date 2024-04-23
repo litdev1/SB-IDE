@@ -1039,7 +1039,7 @@
     <value>हेक्स मानों के रूप में रंग सम्मिलित करें</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>स्टार्टअप पर लोड एक्सटेंशन dlls</value>
+    <value>लोड एक्सटेंशन dlls स्टार्टअप पर</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>प्रिंट आवर्धन</value>
@@ -1324,7 +1324,7 @@
     <value>जायदाद</value>
   </data>
   <data name="Label461" xml:space="preserve">
-    <value>मूल्य</value>
+    <value></value>
   </data>
   <data name="Label462" xml:space="preserve">
     <value>चर और कॉल स्टैक</value>
@@ -2095,105 +2095,105 @@
     <value>प्रक्रिया के साथ सफलतापूर्वक चलाना प्रारंभ किया</value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value></value>
+    <value>असेंबली को सफलतापूर्वक decompiled किया गया</value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value></value>
+    <value>असली रंग</value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value></value>
+    <value>प्लगइन जोड़ें: समूह में एक प्लगइन जोड़ने में विफल</value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value></value>
+    <value>प्रक्रिया के साथ रन को सफलतापूर्वक समाप्त कर दिया गया</value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value></value>
+    <value>कोड विंडो से नई आकृतियाँ बनाएँ।</value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value></value>
+    <value>आप पहले यहां कोई भी कोड पेस्ट कर सकते हैं।</value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value></value>
+    <value>ध्यान दें कि अधिकांश तर्क शाब्दिक होने चाहिए, चर नहीं।</value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value></value>
+    <value>Microsoft Visual Studio सामुदायिक विकास वातावरण।</value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value></value>
+    <value>अपने स्वयं के छोटे बुनियादी एक्सटेंशन और बड़ी परियोजनाएं लिखें।</value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value></value>
+    <value>देखें और .Net असेंबली decompile।  जानें कि एक्सटेंशन कैसे काम करते हैं.</value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value></value>
+    <value>स्मॉल बेसिक के हुड के नीचे आने के लिए आवश्यक।</value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value></value>
+    <value>वीएस के लिए एक हल्का, लेकिन पूर्ण विशेषताओं वाला विकल्प।</value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value></value>
+    <value>काले और सफेद</value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value></value>
+    <value>छवियों को बनाएं और हेरफेर करें, जिसमें आसानी से png छवियों को पारदर्शी पृष्ठभूमि देना और एनिमेटेड gif बनाना शामिल है।</value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value></value>
+    <value>जादू की छड़ी चयन उपकरण देखें।</value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value></value>
+    <value>नोटपैड के लिए उत्कृष्ट पाठ संपादक विकल्प।</value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value></value>
+    <value>एक बड़ा डाउनलोड, लेकिन एक पेशेवर स्तर आईडीई।</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value></value>
+    <value>अधिकांश पाठ पठनीय फ़ाइल स्वरूपों को जल्दी से देखने या संपादित करने के लिए उपयोगी।</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value></value>
+    <value>फ़ाइल ज़िप संपीड़न।</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value></value>
+    <value>एक संपीड़ित फ़ाइल में एकाधिक दस्तावेज़ साझा करने का सबसे अच्छा तरीका।</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value></value>
+    <value>आइकन बनाएं और संपादित करें।</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value></value>
+    <value>इस तरह के एक सरल उपकरण के बिना आइकन प्रारूप काफी मुश्किल हैं।</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value></value>
+    <value>Ctrl+Z पूर्ववत् करें</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value></value>
+    <value>इंटेलिसेंस</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value></value>
+    <value>Ctrl+Y फिर से करें</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value></value>
+    <value>Ctrl+X काटें</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value></value>
+    <value>Ctrl+C कॉपी करें</value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value></value>
+    <value>Ctrl+V चिपकाएँ</value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value></value>
+    <value>मिटाना</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value></value>
+    <value>सभी Ctrl+A का चयन करें</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value></value>
+    <value>Ctrl+F ढूँढें</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value></value>
+    <value>Ctrl+H ढूँढें और बदलें</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value></value>
+    <value>टिप्पणी चयनित पंक्तियाँ Ctrl+?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value></value>
+    <value>अन-कमेंट चयनित लाइनें Ctrl+?</value>
   </data>
 </root>

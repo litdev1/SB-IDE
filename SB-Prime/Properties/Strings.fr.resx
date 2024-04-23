@@ -727,7 +727,7 @@
     <value>Rechercher le texte dans les API d’extension</value>
   </data>
   <data name="Label282" xml:space="preserve">
-    <value></value>
+    <value>Rechercher</value>
   </data>
   <data name="Label283" xml:space="preserve">
     <value>Réduire tous les éléments de l’arborescence</value>
@@ -2002,198 +2002,198 @@
     <value>Détails du programme importé</value>
   </data>
   <data name="String40" xml:space="preserve">
-    <value></value>
+    <value>Les triangles, les lignes et les polygones sont redimensionnés en déplaçant les coins individuels.</value>
   </data>
   <data name="String41" xml:space="preserve">
-    <value></value>
+    <value>Déplacez les formes sélectionnées à l’aide des touches fléchées (maintenez la touche Maj enfoncée pour vous déplacer de la distance d’accrochage).</value>
   </data>
   <data name="String42" xml:space="preserve">
-    <value></value>
+    <value>Appuyez sur Supprimer sur une forme pour la supprimer.</value>
   </data>
   <data name="String43" xml:space="preserve">
-    <value></value>
+    <value>Cliquez avec le bouton droit de la souris pour accéder à des options supplémentaires, notamment copier et coller du code dans le document actif, ou copier les formes sélectionnées (les nouvelles formes copiées se trouvent sur les originaux et peuvent ensuite être déplacées en tant que groupe à l’aide de la touche Maj).</value>
   </data>
   <data name="String44" xml:space="preserve">
-    <value></value>
+    <value>Le code actuel s’affiche dans la fenêtre de code.  Cela peut être modifié et utiliser \"Importer à partir du code\ » pour ajouter le code actuel à la vue actuelle.</value>
   </data>
   <data name="String45" xml:space="preserve">
-    <value></value>
+    <value>Les questions et suggestions sont les bienvenues.</value>
   </data>
   <data name="String46" xml:space="preserve">
-    <value></value>
+    <value>Le texte de l’article</value>
   </data>
   <data name="String47" xml:space="preserve">
-    <value></value>
+    <value>a changé</value>
   </data>
   <data name="String48" xml:space="preserve">
-    <value></value>
+    <value>Voulez-vous enregistrer les modifications ?</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value></value>
+    <value>Décochez la case « Charger les dll d’extension au démarrage » dans Advanced-&gt;Options et redémarrez pour modifier les extensions installées.</value>
   </data>
   <data name="String5" xml:space="preserve">
-    <value></value>
+    <value>Activer/désactiver les fichiers de différence en écran partagé</value>
   </data>
   <data name="String50" xml:space="preserve">
-    <value></value>
+    <value>OK pour continuer avec les extensions chargées.</value>
   </data>
   <data name="String51" xml:space="preserve">
-    <value></value>
+    <value>Il n’y a actuellement pas d’aide étendue.</value>
   </data>
   <data name="String52" xml:space="preserve">
-    <value></value>
+    <value>SB-Prime devrait fonctionner avec n’importe quelle version installée de Small Basic, le débogage fonctionne à partir de la version 1.1 de Small Basic.</value>
   </data>
   <data name="String53" xml:space="preserve">
-    <value></value>
+    <value>Pour activer le débogage, une extension est directement compilée et installée dans le dossier lib la première fois que SB-Prime est démarré, ce qui nécessite une autorisation de contrôle de compte d’utilisateur (UAC).</value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value></value>
+    <value>En outre, le contrôle de compte d’utilisateur peut être requis la première fois qu’une session de débogage est effectuée pour permettre la communication requise entre les applications.</value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value></value>
+    <value>Le débogage nécessite l’exécution de points d’arrêt ou l’exécution pas à pas dans le code.  Une fois en pause, les valeurs peuvent être affichées en passant la souris sur une variable ou en ajoutant des noms de variables à la liste de surveillance dans l’onglet de débogage.  Les variables de la liste de surveillance peuvent être visualisées au fur et à mesure qu’elles changent et peuvent également être modifiées.  Les valeurs de tableau avec la syntaxe [] peuvent également être visualisées et modifiées.</value>
   </data>
   <data name="String56" xml:space="preserve">
-    <value></value>
+    <value>Il n’existe aucune ressource pour cette application.  Quitter.</value>
   </data>
   <data name="String57" xml:space="preserve">
-    <value></value>
+    <value>L’autorisation de créer un dossier lib d’extension est requise</value>
   </data>
   <data name="String58" xml:space="preserve">
-    <value></value>
+    <value>Bienvenue chez Small Basic Prime</value>
   </data>
   <data name="String59" xml:space="preserve">
-    <value></value>
+    <value>Echec de l’importation du programme avec ID</value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value></value>
+    <value>Couleur sur blanc</value>
   </data>
   <data name="String60" xml:space="preserve">
-    <value></value>
+    <value>Programme importé avec succès avec ID</value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value></value>
+    <value>Exécution terminée avec succès avec le processus</value>
   </data>
   <data name="String62" xml:space="preserve">
-    <value></value>
+    <value>Impossible de mélanger les exécutions de débogage et de non-débogage</value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value></value>
+    <value>Impossible de compiler un programme déjà en cours d’exécution</value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value></value>
+    <value>Échec de la publication du programme (peut-être trop court ou trop long)</value>
   </data>
   <data name="String65" xml:space="preserve">
-    <value></value>
+    <value>Programme publié avec succès avec ID</value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value></value>
+    <value>Programme d’études supérieures réussies à</value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value></value>
+    <value>Impossible d’exécuter le cas car exe n’a pas été compilé avec succès</value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value></value>
+    <value>Exécution réussie avec le processus</value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value></value>
+    <value>Assemblage décompilé avec succès en</value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value></value>
+    <value>Couleurs vraies</value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value></value>
+    <value>Plugin Add : Echec de l’ajout d’un plugin dans le groupe</value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value></value>
+    <value>Exécution terminée avec succès avec le processus</value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value></value>
+    <value>Créez de nouvelles formes à partir de la fenêtre de code.</value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value></value>
+    <value>Vous pouvez d’abord coller n’importe quel code ici.</value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value></value>
+    <value>Notez que la plupart des arguments doivent être des littéraux, et non des variables.</value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value></value>
+    <value>Environnement de développement Microsoft Visual Studio Community.</value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value></value>
+    <value>Écrivez vos propres extensions Small Basic et des projets plus importants.</value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value></value>
+    <value>Affichez et décompilez les assemblys .Net.  Découvrez comment fonctionnent les extensions.</value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value></value>
+    <value>Indispensable pour se mettre sous le capot de Small Basic.</value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value></value>
+    <value>Une alternative légère, mais complète à VS.</value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value></value>
+    <value>Noir et blanc</value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value></value>
+    <value>Créez et manipulez des images, notamment en donnant facilement des arrière-plans transparents aux images png et en créant des gifs animés.</value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value></value>
+    <value>Jetez un coup d’œil à l’outil de sélection de la baguette magique.</value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value></value>
+    <value>Excellente alternative à l’éditeur de texte au bloc-notes.</value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value></value>
+    <value>Un gros téléchargement, mais un IDE de niveau professionnel.</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value></value>
+    <value>Utile pour consulter ou modifier rapidement la plupart des formats de fichiers lisibles en texte.</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value></value>
+    <value>Compression zip du fichier.</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value></value>
+    <value>La meilleure façon de partager plusieurs documents dans un seul fichier compressé.</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value></value>
+    <value>Créez et modifiez des icônes.</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value></value>
+    <value>Les formats d’icônes sont assez délicats sans un outil simple comme celui-ci.</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value></value>
+    <value>Annuler Ctrl+Z</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value></value>
+    <value>Intellisense (en anglais)</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value></value>
+    <value>Rétablir Ctrl+Y</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value></value>
+    <value>Couper Ctrl+X</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value></value>
+    <value>Copier Ctrl+C</value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value></value>
+    <value>Coller Ctrl+V</value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value></value>
+    <value>Supprimer</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value></value>
+    <value>Tout sélectionner Ctrl+A</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value></value>
+    <value>Trouver Ctrl+F</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value></value>
+    <value>Rechercher et remplacer Ctrl+H</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value></value>
+    <value>Commenter les lignes sélectionnées Ctrl+ ?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value></value>
+    <value>Décommenter les lignes sélectionnées Ctrl+ ?</value>
   </data>
 </root>
