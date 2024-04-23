@@ -187,6 +187,13 @@ namespace SB_Prime
                 Type HideFromIntellisenseAttribute = assembly.GetType("Microsoft." + Variant.ToString() + ".Library.HideFromIntellisenseAttribute");
                 Type Primitive = assembly.GetType("Microsoft." + Variant.ToString() + ".Library.Primitive");
 
+                string tempPath = Path.GetTempPath();
+                string[] strings = Directory.GetFiles(tempPath, "*.sbprime");
+                foreach (string file in strings)
+                {
+                    File.Delete(file);
+                }
+
                 foreach (string extension in extensions)
                 {
                     if (extension.Contains("SBDebugger")) continue;
@@ -259,6 +266,7 @@ namespace SB_Prime
                     {
                         string tempFile = System.IO.Path.GetTempFileName();
                         File.Delete(tempFile);
+                        tempFile = Path.ChangeExtension(tempFile, "sbprime");
                         File.Copy(MainWindow.InstallDir + extension + ".dll", tempFile);
                         assembly = Assembly.LoadFrom(tempFile);
                         Type[] types = assembly.GetTypes();
@@ -358,7 +366,6 @@ namespace SB_Prime
                             }
                             if (null != obj) obj.members.Sort();
                         }
-                        File.Delete(tempFile);
                     }
                     catch (Exception ex)
                     {
