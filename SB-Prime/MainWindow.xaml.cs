@@ -1084,17 +1084,23 @@ namespace SB_Prime
             //itemCut.Click += delegate (object _sender, RoutedEventArgs _e) { tbFind.Cut(); };
             //contextMenu.Items.Add(itemCut);
 
-            MenuItem itemCopy = new MenuItem();
-            itemCopy.Header = Properties.Strings.String92;
-            itemCopy.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Copy) };
-            itemCopy.Click += delegate (object _sender, RoutedEventArgs _e) { tbFind.Copy(); };
-            contextMenu.Items.Add(itemCopy);
+            //MenuItem itemCopy = new MenuItem();
+            //itemCopy.Header = Properties.Strings.String92;
+            //itemCopy.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Copy) };
+            //itemCopy.Click += delegate (object _sender, RoutedEventArgs _e) { tbFind.Copy(); };
+            //contextMenu.Items.Add(itemCopy);
 
             MenuItem itemPaste = new MenuItem();
             itemPaste.Header = Properties.Strings.String93;
             itemPaste.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Paste) };
             itemPaste.Click += delegate (object _sender, RoutedEventArgs _e) { tbFind.Paste(); };
             contextMenu.Items.Add(itemPaste);
+
+            MenuItem itemDelete = new MenuItem();
+            itemDelete.Header = Properties.Strings.String94;
+            itemDelete.Icon = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Delete) };
+            itemDelete.Click += delegate (object _sender, RoutedEventArgs _e) { tbFind.Clear(); };
+            contextMenu.Items.Add(itemDelete);
         }
 
         private void ToolsLinks_Click(object sender, RoutedEventArgs e)
