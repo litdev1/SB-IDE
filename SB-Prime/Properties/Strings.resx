@@ -2029,7 +2029,7 @@
     <value>Do you want to save the changes?</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>Uncheck \"Load extension dlls on startup\" in Advanced-&gt;Options and restart to modify installed extensions.</value>
+    <value>Uncheck "Load extension dlls on startup" in Advanced-&gt;Options and restart to modify installed extensions.</value>
   </data>
   <data name="String5" xml:space="preserve">
     <value>Toggle difference files in split screen</value>

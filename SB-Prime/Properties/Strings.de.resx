@@ -2029,7 +2029,7 @@
     <value>Möchten Sie die Änderungen speichern?</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>Deaktivieren Sie \"Erweiterungs-DLLs beim Start laden\" in Erweitert-&gt;Optionen und starten Sie neu, um installierte Erweiterungen zu ändern.</value>
+    <value>Deaktivieren Sie "Erweiterungs-DLLs beim Start laden" in Erweitert-&gt;Optionen und starten Sie neu, um installierte Erweiterungen zu ändern.</value>
   </data>
   <data name="String5" xml:space="preserve">
     <value>Unterschiedliche Dateien im geteilten Bildschirm ein- und ausschalten</value>

@@ -2029,7 +2029,7 @@
     <value>¿Quieres guardar los cambios?</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>Desmarque \"Cargar dlls de extensión al inicio\" en Opciones avanzadas y &gt;reinicie para modificar las extensiones instaladas.</value>
+    <value>Desmarque "Cargar dlls de extensión al inicio" en Opciones avanzadas y &gt;reinicie para modificar las extensiones instaladas.</value>
   </data>
   <data name="String5" xml:space="preserve">
     <value>Alternar archivos de diferencia en pantalla dividida</value>

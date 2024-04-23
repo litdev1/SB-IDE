@@ -5794,7 +5794,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uncheck \&quot;Load extension dlls on startup\&quot; in Advanced-&gt;Options and restart to modify installed extensions..
+        ///   Looks up a localized string similar to Uncheck &quot;Load extension dlls on startup&quot; in Advanced-&gt;Options and restart to modify installed extensions..
         /// </summary>
         public static string String49 {
             get {
