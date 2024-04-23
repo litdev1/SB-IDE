@@ -2824,7 +2824,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Load extension dlls on startup (turn off and restart to use Extension Manager).
+        ///   Looks up a localized string similar to Load extension dlls on startup.
         /// </summary>
         public static string Label376 {
             get {

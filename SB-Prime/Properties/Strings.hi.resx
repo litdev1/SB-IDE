@@ -1039,7 +1039,7 @@
     <value>हेक्स मानों के रूप में रंग सम्मिलित करें</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>स्टार्टअप पर लोड एक्सटेंशन dlls (एक्सटेंशन मैनेजर का उपयोग करने के लिए बंद करें और पुनरारंभ करें)</value>
+    <value>स्टार्टअप पर लोड एक्सटेंशन dlls</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>प्रिंट आवर्धन</value>

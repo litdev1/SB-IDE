@@ -1039,7 +1039,7 @@
     <value>Wstaw kolory jako wartości szesnastkowe</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Załaduj biblioteki DLL rozszerzeń podczas uruchamiania (wyłącz i uruchom ponownie, aby użyć Menedżera rozszerzeń)</value>
+    <value>Załaduj biblioteki DLL rozszerzeń podczas uruchamiania</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>Powiększenie wydruku</value>

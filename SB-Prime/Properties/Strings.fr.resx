@@ -1039,7 +1039,7 @@
     <value>Insérer des couleurs sous forme de valeurs hexadécimales</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Charger les DLL d’extension au démarrage (désactiver et redémarrer pour utiliser le gestionnaire d’extensions)</value>
+    <value>Charger les DLL d’extension au démarrage</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>Grossissement de l’impression</value>

@@ -1708,12 +1708,9 @@ namespace SB_Prime
 
         private void ExtensionManager()
         {
-            if (!loadExtensions || MessageBox.Show(Properties.Strings.String49 + "\n\n" + Properties.Strings.String50, "SB-Prime", MessageBoxButton.OKCancel, MessageBoxImage.Information) == MessageBoxResult.OK)
-            {
-                EMWindow windowEM = new EMWindow(Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "settings"), InstallDir);
-                windowEM.ShowDialog();
-                sbInterop = new SBInterop();
-            }
+            EMWindow windowEM = new EMWindow(Path.ChangeExtension(Assembly.GetExecutingAssembly().Location, "settings"), InstallDir);
+            windowEM.ShowDialog();
+            sbInterop = new SBInterop();
         }
 
         public void FindNext()

@@ -1039,7 +1039,7 @@
     <value>将颜色作为十六进制值插入</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>启动时加载扩展 dll（关闭并重新启动以使用扩展管理器）</value>
+    <value>启动时加载扩展 dll</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>打印放大倍率</value>

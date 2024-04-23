@@ -1039,7 +1039,7 @@
     <value>Insert colors as Hex values</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Load extension dlls on startup (turn off and restart to use Extension Manager)</value>
+    <value>Load extension dlls on startup</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>Print Magnification</value>

@@ -1039,7 +1039,7 @@
     <value>Farben als Hexadezimalwerte einfügen</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Laden von Erweiterungs-DLLs beim Start (Deaktivieren und Neustarten, um den Erweiterungs-Manager zu verwenden)</value>
+    <value>Laden von Erweiterungs-DLLs beim Start</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>Druck-Vergrößerung</value>

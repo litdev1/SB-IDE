@@ -1039,7 +1039,7 @@
     <value>Sette inn farger som hex-verdier</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Last inn dl-filer for utvidelser ved oppstart (slå av og start på nytt for å bruke Extension Manager)</value>
+    <value>Last inn dl-filer for utvidelser ved oppstart</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>Forstørrelse av utskrift</value>

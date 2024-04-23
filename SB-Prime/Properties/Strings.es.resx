@@ -1039,7 +1039,7 @@
     <value>Insertar colores como valores hexadecimales</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Cargar archivos dll de extensión en el inicio (desactive y reinicie para usar el Administrador de extensiones)</value>
+    <value>Cargar archivos dll de extensión en el inicio</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>Ampliación de impresión</value>

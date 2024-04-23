@@ -182,7 +182,8 @@ namespace SB_Prime
                     }
                 }
 
-                Assembly assembly = Assembly.LoadFrom(MainWindow.InstallDir + extensions[0] + ".dll");
+                Assembly assembly = Assembly.Load(File.ReadAllBytes(MainWindow.InstallDir + extensions[0] + ".dll"));
+                //Assembly assembly = Assembly.LoadFrom(MainWindow.InstallDir + extensions[0] + ".dll");
                 Type SmallBasicTypeAttribute = assembly.GetType("Microsoft." + Variant.ToString() + ".Library." + Variant.ToString() + "TypeAttribute");
                 Type HideFromIntellisenseAttribute = assembly.GetType("Microsoft." + Variant.ToString() + ".Library.HideFromIntellisenseAttribute");
                 Type Primitive = assembly.GetType("Microsoft." + Variant.ToString() + ".Library.Primitive");
@@ -257,7 +258,8 @@ namespace SB_Prime
 
                     try
                     {
-                        assembly = Assembly.LoadFrom(MainWindow.InstallDir + extension + ".dll");
+                        assembly = Assembly.Load(File.ReadAllBytes(MainWindow.InstallDir + extension + ".dll"));
+                        //assembly = Assembly.LoadFrom(MainWindow.InstallDir + extension + ".dll");
                         Type[] types = assembly.GetTypes();
                         foreach (Type type in types)
                         {

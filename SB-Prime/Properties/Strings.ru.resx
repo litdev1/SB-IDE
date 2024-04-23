@@ -1039,7 +1039,7 @@
     <value>Вставка цветов в виде шестнадцатеричных значений</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Загрузка библиотек DLL расширений при запуске (выключите и перезапустите для использования Extension Manager)</value>
+    <value>Загрузка библиотек DLL расширений при запуске</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>Увеличение печати</value>
