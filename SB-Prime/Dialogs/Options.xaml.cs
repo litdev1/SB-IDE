@@ -115,9 +115,11 @@ namespace SB_Prime.Dialogs
                 InstallDir = comboBoxInstallation.SelectedItem.ToString();
             }
             if (!Directory.Exists(InstallDir)) InstallDir = "";
-            bool newInstallDir = MainWindow.InstallDir != InstallDir;
-            MainWindow.InstallDir = InstallDir;
-            if (newInstallDir) mainWindow.sbInterop = new SBInterop();
+            if (MainWindow.InstallDir != InstallDir)
+            {
+                MainWindow.InstallDir = InstallDir;
+                mainWindow.sbInterop = new SBInterop();
+            }
             MainWindow.InstallDirExtra.Clear();
             foreach (var installDir in comboBoxInstallation.Items)
             {
