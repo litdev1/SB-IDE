@@ -592,7 +592,8 @@ namespace SB_Prime
             int wordStartPos = textArea.WordStartPosition(currentPos, true);
             string currentWord = textArea.GetWordFromPosition(wordStartPos);
             string lastWord = "";
-            if (textArea.GetCharAt(wordStartPos-1) == '.')
+            bool isObject = textArea.GetCharAt(wordStartPos + currentWord.Length) == '.';
+            if (textArea.GetCharAt(wordStartPos - 1) == '.')
             {
                 lastWord = textArea.GetWordFromPosition(textArea.WordStartPosition(wordStartPos - 2, true));
             }
@@ -608,10 +609,10 @@ namespace SB_Prime
                     sbDocument.debug.GetHover(currentWord);
                 }
             }
-            if (currentWord != "" && sbObjects.GetObjects(currentWord) != "")
+            if (isObject && currentWord != "" && sbObjects.GetObjects(currentWord) != "")
             {
                 showObjectData(currentWord, e.Position);
-             }
+            }
             else if (lastWord != "" && currentWord != "" && sbObjects.GetMembers(lastWord, currentWord) != "")
             {
                 showMethodData(lastWord, currentWord, e.Position);
