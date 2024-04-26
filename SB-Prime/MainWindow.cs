@@ -62,6 +62,7 @@ namespace SB_Prime
         public static short printMagnification = 0;
         public static int printColours = 0;
         public static bool showNumberMargin = true;
+        public static bool parseLineVariables = false;
         public static SearchFlags searchFlags = SearchFlags.None;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
@@ -478,6 +479,7 @@ namespace SB_Prime
             printMagnification = Properties.Settings.Default.PrintMagnification;
             printColours = Properties.Settings.Default.PrintColours;
             showNumberMargin = Properties.Settings.Default.ShowNumberMargin;
+            parseLineVariables = Properties.Settings.Default.ParseLineVariables;
         }
 
         private void ResetSettings()
@@ -639,6 +641,7 @@ namespace SB_Prime
             Properties.Settings.Default.PrintMagnification = printMagnification;
             Properties.Settings.Default.PrintColours = printColours;
             Properties.Settings.Default.ShowNumberMargin = showNumberMargin;
+            Properties.Settings.Default.ParseLineVariables = parseLineVariables;
 
             Properties.Settings.Default.Save();
         }

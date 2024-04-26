@@ -18,20 +18,21 @@
         <CheckBox x:Name="checkBoxQuoteInserts" Content="{ x:Static local:Strings.Label374 }" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxHEXColors" Content="{ x:Static local:Strings.Label375 }" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBoxLoadExtensions" Content="{ x:Static local:Strings.Label376 }" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_PrintMagnification" Content="{ x:Static local:Strings.Label377 }" HorizontalAlignment="Left" Margin="13,119,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxPrintMagnification" Height="23" Margin="128,123,0,0" Text="{ x:Static local:Strings.Label379 }" VerticalAlignment="Top" ToolTip="{ x:Static local:Strings.Label378 }" HorizontalAlignment="Left" Width="51"/>
-        <Label x:Name="label_PrintColours" Content="{ x:Static local:Strings.Label380 }" HorizontalAlignment="Left" Margin="184,119,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxPrintColours" HorizontalAlignment="Left" Margin="267,123,0,0" VerticalAlignment="Top" Width="120" Height="23" IsReadOnly="True" ToolTip="{ x:Static local:Strings.Label381 }"/>
-        <RadioButton x:Name="radioButton1" Content="{ x:Static local:Strings.Label382 }" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" GroupName="Indent"/>
-        <RadioButton x:Name="radioButton2" Content="{ x:Static local:Strings.Label383 }" HorizontalAlignment="Left" Margin="41,150,0,0" VerticalAlignment="Top" GroupName="Indent"/>
-        <RadioButton x:Name="radioButton4" Content="{ x:Static local:Strings.Label384 }" HorizontalAlignment="Left" Margin="72,150,0,0" VerticalAlignment="Top" GroupName="Indent"/>
-        <Label x:Name="label_Indent" Content="{ x:Static local:Strings.Label385 }" HorizontalAlignment="Left" Margin="103,144,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Regex" Content="{ x:Static local:Strings.String178 }" HorizontalAlignment="Left" Margin="13,171,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoxRegex" Height="23" Margin="131,173,10,0" Text="{x:Static local:Strings.Label379}" VerticalAlignment="Top" ToolTip="{ x:Static local:Strings.Label466 }"/>
+        <Label x:Name="label_PrintMagnification" Content="{ x:Static local:Strings.Label377 }" HorizontalAlignment="Left" Margin="13,168,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxPrintMagnification" Height="23" Margin="128,171,0,0" Text="{ x:Static local:Strings.Label379 }" VerticalAlignment="Top" ToolTip="{ x:Static local:Strings.Label378 }" HorizontalAlignment="Left" Width="51"/>
+        <Label x:Name="label_PrintColours" Content="{ x:Static local:Strings.Label380 }" HorizontalAlignment="Left" Margin="184,168,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxPrintColours" HorizontalAlignment="Left" Margin="267,171,0,0" VerticalAlignment="Top" Width="120" Height="23" IsReadOnly="True" ToolTip="{ x:Static local:Strings.Label381 }"/>
+        <RadioButton x:Name="radioButton1" Content="{ x:Static local:Strings.Label382 }" HorizontalAlignment="Left" Margin="16,199,0,0" VerticalAlignment="Top" GroupName="Indent"/>
+        <RadioButton x:Name="radioButton2" Content="{ x:Static local:Strings.Label383 }" HorizontalAlignment="Left" Margin="47,199,0,0" VerticalAlignment="Top" GroupName="Indent"/>
+        <RadioButton x:Name="radioButton4" Content="{ x:Static local:Strings.Label384 }" HorizontalAlignment="Left" Margin="78,199,0,0" VerticalAlignment="Top" GroupName="Indent"/>
+        <Label x:Name="label_Indent" Content="{ x:Static local:Strings.Label385 }" HorizontalAlignment="Left" Margin="103,193,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Regex" Content="{ x:Static local:Strings.String178 }" HorizontalAlignment="Left" Margin="13,219,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxRegex" Height="23" Margin="131,221,10,0" Text="{x:Static local:Strings.Label379}" VerticalAlignment="Top" ToolTip="{ x:Static local:Strings.Label466 }"/>
         <CheckBox x:Name="checkBoxTopmost" Content="{ x:Static local:Strings.String180 }" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_LexerFont" Content="{x:Static local:Strings.String181}" HorizontalAlignment="Left" Margin="13,199,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxLexerFont" HorizontalAlignment="Left" Margin="131,201,0,0" VerticalAlignment="Top" Width="134" Height="23" IsReadOnly="True" ToolTip="{x:Static local:Strings.String182}"/>
+        <Label x:Name="label_LexerFont" Content="{x:Static local:Strings.String181}" HorizontalAlignment="Left" Margin="13,247,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxLexerFont" HorizontalAlignment="Left" Margin="131,249,0,0" VerticalAlignment="Top" Width="134" Height="23" IsReadOnly="True" ToolTip="{x:Static local:Strings.String182}"/>
         <ComboBox x:Name="comboBoxInstallation" Margin="174,10,82,0" VerticalAlignment="Top" Height="23" IsEditable="True"/>
         <Button x:Name="buttonDelete" Content="Delete" HorizontalAlignment="Right" Margin="0,33,7,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonDelete_Click" Height="23" ToolTip="Delete installation folder from list"/>
+        <CheckBox x:Name="checkBoxParseLineVariables" Content="Parse variables as they are typed" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

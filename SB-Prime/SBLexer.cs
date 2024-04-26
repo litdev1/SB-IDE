@@ -259,9 +259,16 @@ namespace SB_Prime
                 }
             }
 
+            ResetVariables();
             isFormatting = false;
             isDirty = true;
             System.Windows.Input.Mouse.OverrideCursor = cursor;
+        }
+
+        private void ResetVariables()
+        {
+            sbObjects.variables.Clear();
+            textArea.StartStyling(0);
         }
 
         private void InitSyntaxColoring()
@@ -493,10 +500,12 @@ namespace SB_Prime
                                 string variable = text.Substring(0, length).Trim();
                                 if (!sbObjects.variables.Contains(variable, StringComparer.OrdinalIgnoreCase) &&
                                     !sbObjects.subroutines.Contains(variable, StringComparer.OrdinalIgnoreCase) &&
-                                    !sbObjects.labels.Contains(variable, StringComparer.OrdinalIgnoreCase) &&
-                                    (textArea.CurrentLine != line || (line == 0 && textArea.Lines.Count() > 0)))
+                                    !sbObjects.labels.Contains(variable, StringComparer.OrdinalIgnoreCase))
                                 {
-                                    sbObjects.variables.Add(variable);
+                                    if (MainWindow.parseLineVariables || (textArea.CurrentLine != line || (line == 0 && textArea.Lines.Count() > 0)))
+                                    {
+                                        sbObjects.variables.Add(variable);
+                                    }
                                 }
                             }
                             else if (style.style == STYLE_SUBROUTINE)
