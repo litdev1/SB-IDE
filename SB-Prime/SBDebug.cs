@@ -587,7 +587,7 @@ namespace SB_Prime
                     tcpServer = null;
                     tcpListener = null;
                     int id = (null == sbDocument.Proc) ? -1 : sbDocument.Proc.Id;
-                    if (!process.HasExited) process.Kill();
+                    if (null != process && !process.HasExited) process.Kill();
                     if (null != sbDocument.Proc)
                     {
                         sbDocument.ClearHighlights();
