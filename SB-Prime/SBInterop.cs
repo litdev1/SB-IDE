@@ -272,7 +272,7 @@ namespace SB_Prime
                         Type[] types = assembly.GetTypes();
                         foreach (Type type in types)
                         {
-                            if (type.IsPublic && type.IsDefined(SmallBasicTypeAttribute, false))
+                            if (type.IsPublic && type.IsDefined(SmallBasicTypeAttribute, false) && !type.IsDefined(HideFromIntellisenseAttribute, false))
                             {
                                 obj = new SBObject();
                                 SBObjects.objects.Add(obj);
