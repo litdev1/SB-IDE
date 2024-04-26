@@ -502,7 +502,7 @@ namespace SB_Prime
                                     !sbObjects.subroutines.Contains(variable, StringComparer.OrdinalIgnoreCase) &&
                                     !sbObjects.labels.Contains(variable, StringComparer.OrdinalIgnoreCase))
                                 {
-                                    if (MainWindow.parseLineVariables || (textArea.CurrentLine != line || (line == 0 && textArea.Lines.Count() > 0)))
+                                    if ((MainWindow.parseLineVariables && text.Last() != '.') || (textArea.CurrentLine != line || (line == 0 && textArea.Lines.Count() > 0)))
                                     {
                                         sbObjects.variables.Add(variable);
                                     }
