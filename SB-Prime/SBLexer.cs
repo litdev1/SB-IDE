@@ -502,9 +502,17 @@ namespace SB_Prime
                                     !sbObjects.subroutines.Contains(variable, StringComparer.OrdinalIgnoreCase) &&
                                     !sbObjects.labels.Contains(variable, StringComparer.OrdinalIgnoreCase))
                                 {
-                                    if ((MainWindow.parseLineVariables && text.Last() != '.') || (textArea.CurrentLine != line || (line == 0 && textArea.Lines.Count() > 0)))
+                                    if (textArea.CurrentLine != line || (line == 0 && textArea.Lines.Count() > 0)) //First line on file open
                                     {
                                         sbObjects.variables.Add(variable);
+                                    }
+                                    else if (MainWindow.parseLineVariables)
+                                    {
+                                        string regex = style.regex.ToString().Replace("[\\W]", "[\\s]*[=]");
+                                        if (Regex.Match(text, regex).Success)
+                                        {
+                                            sbObjects.variables.Add(variable);
+                                        }
                                     }
                                 }
                             }
