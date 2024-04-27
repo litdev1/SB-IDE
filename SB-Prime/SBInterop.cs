@@ -187,11 +187,18 @@ namespace SB_Prime
                 Type HideFromIntellisenseAttribute = assembly.GetType("Microsoft." + Variant.ToString() + ".Library.HideFromIntellisenseAttribute");
                 Type Primitive = assembly.GetType("Microsoft." + Variant.ToString() + ".Library.Primitive");
 
-                string tempPath = Path.GetTempPath();
-                string[] strings = Directory.GetFiles(tempPath, "*.sbprime");
-                foreach (string file in strings)
+                try
                 {
-                    File.Delete(file);
+                    string tempPath = Path.GetTempPath();
+                    string[] strings = Directory.GetFiles(tempPath, "*.sbprime");
+                    foreach (string file in strings)
+                    {
+                        File.Delete(file);
+                    }
+                }
+                catch
+                {
+
                 }
 
                 foreach (string extension in extensions)
