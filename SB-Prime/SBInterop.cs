@@ -582,7 +582,7 @@ namespace SB_Prime
 
                 if (!result.Contains("0 errors"))
                 {
-                    bool ok = (bool)CompileProgram.Invoke(null, new object[] { source, output, errors });
+                    bool ok = (bool)CompileProgram.Invoke(null, new object[] { source, output, errors }); //doesn't find extensions
                     MainWindow.Errors.Add(new Error("Compile : " + "Errors were found"));
                     foreach (string error in errors)
                     {
@@ -595,6 +595,14 @@ namespace SB_Prime
                             if (debug) row = (row - 1) / 2;
                             string message = "Compile : (row=" + row + ",col=" + col + ") ";
                             for (int i = 2; i < bits.Length; i++) message += bits[i];
+                            int pos = message.IndexOf(" Cannot find object '");
+                            if (pos >= 0)
+                            {
+                                string obj = message.Substring(pos + 21);
+                                pos = obj.IndexOf("'");
+                                obj = obj.Substring(0, pos);
+                                if (SBObjects.objects.Find(x => x.name == obj).name == obj) continue;
+                            }
                             MainWindow.Errors.Add(new Error(message) { Row = row, Col = col, Level = 1});
                         }
                         else
