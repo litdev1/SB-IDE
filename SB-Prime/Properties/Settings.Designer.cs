@@ -349,7 +349,7 @@ namespace SB_Prime.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("а-яА-ЯёЁ\\u0900-\\u097F\\u0621-\\u064A\\u4E00-\\u9FFF")]
         public string ExRegex {
             get {
                 return ((string)(this["ExRegex"]));

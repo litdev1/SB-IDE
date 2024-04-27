@@ -84,7 +84,7 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="ExRegex" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">а-яА-ЯёЁ\u0900-\u097F\u0621-\u064A\u4E00-\u9FFF</Value>
     </Setting>
     <Setting Name="Topmost" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
