@@ -485,14 +485,7 @@ namespace SB_Prime
         private void ResetSettings()
         {
             Properties.Settings.Default.Reset();
-            var ideColors = IDEColors;
-            ideColors.Clear();
-            for (int i = 0; i < DefaultColors.Count; i++)
-            {
-                ideColors[DefaultColors.ElementAt(i).Key] = DefaultColors.ElementAt(i).Value;
-            }
-            IDEColors = ideColors;
-            debugData.Clear();
+            Properties.Settings.Default.UpgradeRequired = false;
             LoadSettings();
         }
 
