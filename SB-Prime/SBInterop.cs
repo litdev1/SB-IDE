@@ -132,29 +132,6 @@ namespace SB_Prime
                 Assembly assembly = null;
                 Assembly.LoadFrom(MainWindow.InstallDir + "\\StringResources.dll");
 
-                /*
-                //Old fallback method and used for graduate
-                //assembly = Assembly.LoadFrom("C:\\Users\\steve\\Documents\\Visual Studio 2022\\Projects\\SmallBasicCompiler\\Test\\bin\\Debug\\LanguageService.dll");
-                assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\LanguageService.dll");
-                Type CSType = assembly.GetType("Microsoft." + Variant.ToString() + ".LanguageService.CompilerService");
-                MethodInfo[] methods = CSType.GetMethods();
-                foreach (MethodInfo method in methods)
-                {
-                    if (method.Name == "Compile" && method.ReturnType == typeof(bool))
-                    {
-                        CompileProgram = method;
-                    }
-                    else if (method.Name == "Compile" && method.ReturnType == CompilerType)
-                    {
-                        CompileVB = method;
-                    }
-                }
-                if (null == CompileProgram && Variant == eVariant.SmallVisualBasic)
-                {
-                    CompileProgram = CompileVB;
-                }
-                */
-
                 if (Variant == eVariant.SmallBasic)
                 {
                     //assembly = Assembly.LoadFrom("C:\\Users\\steve\\Documents\\Visual Studio 2022\\Projects\\SmallBasicCompiler\\Test\\bin\\Debug\\SmallBasicCompiler.exe");
