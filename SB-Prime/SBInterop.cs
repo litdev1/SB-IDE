@@ -31,6 +31,7 @@ using ICSharpCode.Decompiler.CSharp;
 using ICSharpCode.Decompiler.Metadata;
 using System.Threading;
 using System.Reflection.PortableExecutable;
+using System.Collections;
 
 namespace SB_Prime
 {
@@ -45,7 +46,11 @@ namespace SB_Prime
         MethodInfo SubmitRating = null;
         MethodInfo LoadProgram = null;
         MethodInfo CompileProgram = null;
-        MethodInfo CompileVB = null;
+        Type CompilerType = null;
+        MethodInfo CompileMethod = null;
+        object Compiler = null;
+        List<Assembly> assemblies = new List<Assembly>();
+
         List<string> extensions = new List<string>();
 #if DEBUG
         bool overwriteSBDebug = true;
@@ -80,9 +85,9 @@ namespace SB_Prime
             }
 
             LoadSB();
+            LoadExtensions(MainWindow.loadExtensions);
             LoadCompiler();
             CompileExtension(Properties.Resources.SBClient, "SBDebugger", overwriteSBDebug);
-            LoadExtensions(MainWindow.loadExtensions);
         }
 
         private void LoadSB()
@@ -125,27 +130,17 @@ namespace SB_Prime
             try
             {
                 Assembly assembly = null;
-                if (Variant == eVariant.SmallBasic)
-                {
-                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\SmallBasicCompiler.exe");
-                }
-                else if (Variant == eVariant.SmallVisualBasic)
-                {
-                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\sVBCompiler.exe");
-                }
-                if (null == assembly)
-                {
-                    MainWindow.Errors.Add(new Error("Cannot find SmallBasicCompiler.exe or sVBCompiler.exe"));
-                    return;
-                }
-                Type CompilerType = assembly.GetType("Microsoft." + Variant.ToString() + ".Compiler");
+                Assembly.LoadFrom(MainWindow.InstallDir + "\\StringResources.dll");
 
+                /*
+                //Old fallback method and used for graduate
+                //assembly = Assembly.LoadFrom("C:\\Users\\steve\\Documents\\Visual Studio 2022\\Projects\\SmallBasicCompiler\\Test\\bin\\Debug\\LanguageService.dll");
                 assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\LanguageService.dll");
                 Type CSType = assembly.GetType("Microsoft." + Variant.ToString() + ".LanguageService.CompilerService");
                 MethodInfo[] methods = CSType.GetMethods();
                 foreach (MethodInfo method in methods)
                 {
-                    if (method.Name == "Compile" && method.ReturnType == typeof(Boolean))
+                    if (method.Name == "Compile" && method.ReturnType == typeof(bool))
                     {
                         CompileProgram = method;
                     }
@@ -157,6 +152,45 @@ namespace SB_Prime
                 if (null == CompileProgram && Variant == eVariant.SmallVisualBasic)
                 {
                     CompileProgram = CompileVB;
+                }
+                */
+
+                if (Variant == eVariant.SmallBasic)
+                {
+                    //assembly = Assembly.LoadFrom("C:\\Users\\steve\\Documents\\Visual Studio 2022\\Projects\\SmallBasicCompiler\\Test\\bin\\Debug\\SmallBasicCompiler.exe");
+                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\SmallBasicCompiler.exe");
+                    CompilerType = assembly.GetType("Microsoft." + Variant.ToString() + ".Compiler");
+                    Compiler = Activator.CreateInstance(CompilerType);
+                    CompileMethod = CompilerType.GetMethod("Compile", new Type[] { typeof(TextReader) });
+
+                    try
+                    {
+                        MethodInfo methodInfo = CompilerType.GetMethod("AddAssemblyTypesToList", BindingFlags.NonPublic | BindingFlags.Instance);
+                        FieldInfo fieldInfo = CompilerType.GetField("_libraryFiles", BindingFlags.NonPublic | BindingFlags.Instance);
+                        List<string> _libraryFiles = (List<string>)fieldInfo.GetValue(Compiler);
+                        foreach (Assembly _assembly in assemblies)
+                        {
+                            methodInfo.Invoke(Compiler, new object[] { _assembly });
+                            _libraryFiles.Add(_assembly.Location);
+                        }
+                        fieldInfo.SetValue(Compiler, _libraryFiles);
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                else if (Variant == eVariant.SmallVisualBasic)
+                {
+                    assembly = Assembly.LoadFrom(MainWindow.InstallDir + "\\sVBCompiler.exe");
+                    CompilerType = assembly.GetType("Microsoft." + Variant.ToString() + ".Compiler");
+                    Compiler = Activator.CreateInstance(CompilerType);
+                    CompileMethod = CompilerType.GetMethod("Compile", new Type[] { typeof(TextReader), typeof(bool) });
+                }
+                if (null == assembly)
+                {
+                    MainWindow.Errors.Add(new Error("Cannot find SmallBasicCompiler.exe or sVBCompiler.exe"));
+                    return;
                 }
             }
             catch (Exception ex)
@@ -275,12 +309,14 @@ namespace SB_Prime
                         File.Delete(tempFile);
                         tempFile = Path.ChangeExtension(tempFile, "sbprime");
                         File.Copy(MainWindow.InstallDir + extension + ".dll", tempFile);
+                        //tempFile = MainWindow.InstallDir + extension + ".dll";
                         assembly = Assembly.LoadFrom(tempFile);
                         Type[] types = assembly.GetTypes();
                         foreach (Type type in types)
                         {
                             if (type.IsPublic && type.IsDefined(SmallBasicTypeAttribute, false) && !type.IsDefined(HideFromIntellisenseAttribute, false))
                             {
+                                assemblies.Add(assembly);
                                 obj = new SBObject();
                                 SBObjects.objects.Add(obj);
                                 obj.extension = extension.Split('\\').Last();
@@ -582,7 +618,38 @@ namespace SB_Prime
 
                 if (!result.Contains("0 errors"))
                 {
-                    bool ok = (bool)CompileProgram.Invoke(null, new object[] { source, output, errors }); //doesn't find extensions
+                    try
+                    {
+                        try
+                        {
+                            IList _errors = null;
+                            if (Variant == eVariant.SmallBasic)
+                            {
+                                TextReader _source = new StringReader(source);
+                                _errors = (IList)CompileMethod.Invoke(Compiler, new object[] { _source });
+                            }
+                            else if (Variant == eVariant.SmallVisualBasic)
+                            {
+                                TextReader _source = new StringReader(source);
+                                _errors = (IList)CompileMethod.Invoke(Compiler, new object[] { _source, false });
+                            }
+
+                            foreach (var error in _errors)
+                            {
+                                errors.Add(error.ToString());
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            bool ok = (bool)CompileProgram.Invoke(null, new object[] { source, output, errors }); //doesn't find extensions
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        bool ok = (bool)CompileProgram.Invoke(null, new object[] { source, output, errors }); //doesn't find extensions
+                    }
                     MainWindow.Errors.Add(new Error("Compile : " + "Errors were found"));
                     foreach (string error in errors)
                     {
@@ -595,14 +662,6 @@ namespace SB_Prime
                             if (debug) row = (row - 1) / 2;
                             string message = "Compile : (row=" + row + ",col=" + col + ") ";
                             for (int i = 2; i < bits.Length; i++) message += bits[i];
-                            int pos = message.IndexOf(" Cannot find object '");
-                            if (pos >= 0)
-                            {
-                                string obj = message.Substring(pos + 21);
-                                pos = obj.IndexOf("'");
-                                obj = obj.Substring(0, pos);
-                                if (SBObjects.objects.Find(x => x.name == obj).name == obj) continue;
-                            }
                             MainWindow.Errors.Add(new Error(message) { Row = row, Col = col, Level = 1});
                         }
                         else
@@ -640,6 +699,35 @@ namespace SB_Prime
         {
             try
             {
+                List<string> errors = new List<string>();
+                string source = File.ReadAllText(fileName);
+                IList _errors = null;
+                if (Variant == eVariant.SmallBasic)
+                {
+                    TextReader _source = new StringReader(source);
+                    _errors = (IList)CompileMethod.Invoke(Compiler, new object[] { _source });
+                }
+                else if (Variant == eVariant.SmallVisualBasic)
+                {
+                    TextReader _source = new StringReader(source);
+                    _errors = (IList)CompileMethod.Invoke(Compiler, new object[] { _source, false });
+                }
+
+                foreach (var error in _errors)
+                {
+                    errors.Add(error.ToString());
+                }
+
+                if (errors.Count > 0)
+                {
+                    MainWindow.Errors.Add(new Error("Graduate : Compilation errors"));
+                    for (int i = 0; i < errors.Count; i++)
+                    {
+                        MainWindow.Errors.Add(new Error("Graduate : " + errors[i]));
+                    }
+                    return "";
+                }
+
                 Assembly assembly = null;
                 if (Variant == eVariant.SmallBasic)
                 {
@@ -656,21 +744,6 @@ namespace SB_Prime
                     MainWindow.Errors.Add(new Error("Cannot find SmallBasicCompiler.exe or sVBCompiler.exe"));
                     return "";
                 }
-                Type CompilerType = assembly.GetType("Microsoft." + Variant.ToString() + ".Compiler");
-
-                List<string> errors = new List<string>();
-                string source = File.ReadAllText(fileName);
-                var Compiler = CompileVB.Invoke(null, new object[] { source, errors });
-                if (errors.Count > 0)
-                {
-                    MainWindow.Errors.Add(new Error("Graduate : Compilation errors"));
-                    for (int i = 0; i < errors.Count; i++)
-                    {
-                        MainWindow.Errors.Add(new Error("Graduate : " + errors[i]));
-                    }
-                    return "";
-                }
-
                 Type VisualBasicExporterType = assembly.GetType("Microsoft." + Variant.ToString() + ".VisualBasicExporter");
                 ConstructorInfo ctor = VisualBasicExporterType.GetConstructor(new Type[] { CompilerType });
                 var VisualBasicExporter = ctor.Invoke(new object[] { Compiler });
