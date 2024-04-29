@@ -348,6 +348,10 @@ namespace SB_Prime
                                             node1 = xmlNode.FirstChild;
                                             if (node1.Name == "summary") obj.summary = node1.InnerText.Trim();
                                         }
+                                    }
+                                    foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
+                                    {
+                                        if (xmlNode.Attributes["name"].InnerText == "T:" + type.FullName) continue;
                                         else if (null != node1 && xmlNode.Attributes["name"].InnerText.EndsWith(dllName))
                                         {
                                             foreach (XmlNode node in xmlNode.ChildNodes)
@@ -379,7 +383,7 @@ namespace SB_Prime
                                         }
                                         else if (null != node1 && !xmlNode.Attributes["name"].InnerText.Contains(type.FullName))
                                         {
-                                            break;
+                                            //break;
                                         }
                                     }
                                }
