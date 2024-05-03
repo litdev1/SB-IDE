@@ -75,7 +75,7 @@ namespace SB_Prime
         public static int CHART_STATEMENT_COLOR = 0x0000FF;
         public static int CHART_CODE_COLOR = 0xFFFFFF;
 
-        public Dictionary<string, int> DefaultColors { get; }
+        public Dictionary<string, int> DefaultColors { get; set; }
         public StackVariables stackVariables = null;
         public string exeFolder;
 
