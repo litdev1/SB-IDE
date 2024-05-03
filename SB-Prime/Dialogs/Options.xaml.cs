@@ -15,7 +15,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static ScintillaPrinting.PageSettings;
 
 namespace SB_Prime.Dialogs
 {
@@ -49,9 +48,9 @@ namespace SB_Prime.Dialogs
             textBoxPrintMagnification.Text = MainWindow.printMagnification.ToString();
             textBoxRegex.Text = MainWindow.exRegex;
             comboBoxPrintColours.Items.Clear();
-            comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String114, Tag = (int)PrintColorMode.ColorOnWhite });
-            comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String115, Tag = (int)PrintColorMode.Normal });
-            comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String116, Tag = (int)PrintColorMode.BlackOnWhite });
+            comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String114, Tag = (int)ScintillaPrinting.PageSettings.PrintColorMode.ColorOnWhite });
+            comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String115, Tag = (int)ScintillaPrinting.PageSettings.PrintColorMode.Normal });
+            comboBoxPrintColours.Items.Add(new TextBlock() { Text = Properties.Strings.String116, Tag = (int)ScintillaPrinting.PageSettings.PrintColorMode.BlackOnWhite });
             comboBoxPrintColours.SelectedItem = comboBoxPrintColours.Items.OfType<TextBlock>().SingleOrDefault(x => (int)x.Tag == MainWindow.printColours);
             if (MainWindow.indentSpaces == 1) radioButton1.IsChecked = true;
             else if (MainWindow.indentSpaces == 4) radioButton4.IsChecked = true;

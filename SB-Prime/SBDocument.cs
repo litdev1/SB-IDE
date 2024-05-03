@@ -841,11 +841,16 @@ namespace SB_Prime
 
     public class LineStack
     {
-        public int MaxItems { get; set; } = 100;
+        public int MaxItems { get; set; }
 
         public List<int> backwards = new List<int>();
         public List<int> forwards = new List<int>();
         public bool bActive = false;
+
+        public LineStack()
+        {
+            MaxItems = 100;
+        }
 
         public void PushBackwards(int iLine)
         {
