@@ -263,16 +263,11 @@ namespace SB_Prime
                                         case "returns":
                                             member.returns = node.InnerText.Trim();
                                             break;
-                                        case "example":
-                                            member.other[node.Name] = node.InnerText.Trim();
-                                            break;
-                                        case "remarks":
-                                            member.arguments[node.Name] = node.InnerText.Trim();
-                                            break;
                                         case "value":
                                             member.arguments[node.Name] = node.InnerText.Trim();
                                             break;
                                         default:
+                                            member.other[char.ToUpper(node.Name[0]) + node.Name.Substring(1)] = node.InnerText.Trim();
                                             break;
                                     }
                                 }
@@ -369,16 +364,11 @@ namespace SB_Prime
                                                     case "returns":
                                                         member.returns = node.InnerText.Trim();
                                                         break;
-                                                    case "example":
-                                                        member.other[node.Name] = node.InnerText.Trim();
-                                                        break;
-                                                    case "remarks":
-                                                        member.arguments[node.Name] = node.InnerText.Trim();
-                                                        break;
                                                     case "value":
                                                         member.arguments[node.Name] = node.InnerText.Trim();
                                                         break;
                                                     default:
+                                                        member.other[char.ToUpper(node.Name[0]) + node.Name.Substring(1)] = node.InnerText.Trim();
                                                         break;
                                                 }
                                             }
