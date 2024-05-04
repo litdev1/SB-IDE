@@ -1380,6 +1380,8 @@ namespace SB_Prime
             statusCaps.Content = Keyboard.IsKeyToggled(Key.CapsLock) ? Properties.Strings.String173 : "";
             statusNumlock.Content = Keyboard.IsKeyToggled(Key.NumLock) ? Properties.Strings.String174 : "";
             statusInsert.Content = Keyboard.IsKeyToggled(Key.Insert) ? Properties.Strings.String175 : "";
+            statusAliases.Content = FileFilter.EnableAliases ? Properties.Strings.Label492 : "";
+            statusSBPath.Content = InstallDir;
             if (null == activeDocument.debug) statusRun.Content = "";
             else if (activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String176 + " " + ((TabHeader)activeTab.Header).FileName;
             else if (!activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String177 + " " + ((TabHeader)activeTab.Header).FileName;
