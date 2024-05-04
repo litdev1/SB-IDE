@@ -417,6 +417,7 @@ namespace SB_Prime
                 lastObject = textArea.GetWordFromPosition(wordStartPos);
                 AutoCData = sbObjects.GetMembers(lastObject, currentWord).Trim();
                 textArea.AutoCShow(lenEntered, AutoCData);
+                //textArea.AutoCSelect(currentWord);
                 AutoCMode = 2;
                 AutoCTimer.Enabled = true;
             }
@@ -426,6 +427,7 @@ namespace SB_Prime
                 textArea.AutoCStops(" ");
                 AutoCData = (sbObjects.GetKeywords(currentWord) + sbObjects.GetObjects(currentWord) + sbObjects.GetSubroutines(currentWord) + sbObjects.GetLabels(currentWord) + sbObjects.GetVariables(currentWord)).Trim();
                 textArea.AutoCShow(lenEntered, AutoCData);
+                //textArea.AutoCSelect(currentWord);
                 lastObject = "";
                 AutoCMode = 1;
                 AutoCTimer.Enabled = true;
