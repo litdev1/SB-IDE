@@ -404,7 +404,8 @@ namespace SB_Prime
             string currentWord = textArea.GetWordFromPosition(wordStartPos);
             int lenEntered = currentPos - wordStartPos;
             textArea.AutoCSetFillUps("");
-            textArea.AutoCStops("");         
+            textArea.AutoCStops("");
+            textArea.AutoCAutoHide = !MainWindow.keywordContains;
 
             if (style == STYLE_COMMENT || style == STYLE_STRING) return;
 
