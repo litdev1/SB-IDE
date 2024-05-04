@@ -1382,6 +1382,7 @@ namespace SB_Prime
             statusInsert.Content = Keyboard.IsKeyToggled(Key.Insert) ? Properties.Strings.String175 : "";
             statusAliases.Content = FileFilter.EnableAliases ? Properties.Strings.Label492 : "";
             statusSBPath.Content = InstallDir;
+            statusIcon.Source = ImageSourceFromBitmap(SBInterop.Variant == SBInterop.eVariant.SmallVisualBasic ? Properties.Resources.sVB : Properties.Resources.AppIcon);
             if (null == activeDocument.debug) statusRun.Content = "";
             else if (activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String176 + " " + ((TabHeader)activeTab.Header).FileName;
             else if (!activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String177 + " " + ((TabHeader)activeTab.Header).FileName;

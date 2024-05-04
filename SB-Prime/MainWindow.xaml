@@ -62,6 +62,8 @@
             <StatusBarItem x:Name="statusRun" Content=""/>
             <StatusBarItem HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
+                    <Image x:Name="statusIcon" Source="Images\AppIcon.png"/>
+                    <Separator/>
                     <StatusBarItem x:Name="statusSBPath" Content=""/>
                     <Separator/>
                     <StatusBarItem x:Name="statusAliases" Content="{ x:Static local:Strings.Label492 }"/>
