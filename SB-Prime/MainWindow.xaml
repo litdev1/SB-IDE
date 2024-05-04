@@ -62,7 +62,7 @@
             <StatusBarItem x:Name="statusRun" Content=""/>
             <StatusBarItem HorizontalAlignment="Right">
                 <StackPanel Orientation="Horizontal">
-                    <StatusBarItem x:Name="statusSBPath" Content="SB Path"/>
+                    <StatusBarItem x:Name="statusSBPath" Content=""/>
                     <Separator/>
                     <StatusBarItem x:Name="statusAliases" Content="{ x:Static local:Strings.Label492 }"/>
                     <Separator/>
