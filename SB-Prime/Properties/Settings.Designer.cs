@@ -509,5 +509,17 @@ namespace SB_Prime.Properties {
                 this["ParseLineVariables"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool KeywordContains {
+            get {
+                return ((bool)(this["KeywordContains"]));
+            }
+            set {
+                this["KeywordContains"] = value;
+            }
+        }
     }
 }

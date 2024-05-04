@@ -63,6 +63,7 @@ namespace SB_Prime
         public static int printColours = 0;
         public static bool showNumberMargin = true;
         public static bool parseLineVariables = false;
+        public static bool keywordContains = true;
         public static SearchFlags searchFlags = SearchFlags.None;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
@@ -480,6 +481,7 @@ namespace SB_Prime
             printColours = Properties.Settings.Default.PrintColours;
             showNumberMargin = Properties.Settings.Default.ShowNumberMargin;
             parseLineVariables = Properties.Settings.Default.ParseLineVariables;
+            keywordContains = Properties.Settings.Default.KeywordContains;
         }
 
         private void ResetSettings()
@@ -635,6 +637,7 @@ namespace SB_Prime
             Properties.Settings.Default.PrintColours = printColours;
             Properties.Settings.Default.ShowNumberMargin = showNumberMargin;
             Properties.Settings.Default.ParseLineVariables = parseLineVariables;
+            Properties.Settings.Default.KeywordContains = keywordContains;
 
             Properties.Settings.Default.Save();
         }

@@ -45,6 +45,7 @@ namespace SB_Prime.Dialogs
             checkBoxLoadExtensions.IsChecked = MainWindow.loadExtensions;
             checkBoxTopmost.IsChecked = MainWindow.topmost;
             checkBoxParseLineVariables.IsChecked = MainWindow.parseLineVariables;
+            checkBoxKeywordContains.IsChecked = MainWindow.keywordContains;
             textBoxPrintMagnification.Text = MainWindow.printMagnification.ToString();
             textBoxRegex.Text = MainWindow.exRegex;
             comboBoxPrintColours.Items.Clear();
@@ -132,6 +133,7 @@ namespace SB_Prime.Dialogs
             MainWindow.loadExtensions = (bool)checkBoxLoadExtensions.IsChecked;
             MainWindow.topmost = (bool)checkBoxTopmost.IsChecked;
             MainWindow.parseLineVariables = (bool)checkBoxParseLineVariables.IsChecked;
+            MainWindow.keywordContains = (bool)checkBoxKeywordContains.IsChecked;
             short.TryParse(textBoxPrintMagnification.Text, out MainWindow.printMagnification);
             MainWindow.exRegex = textBoxRegex.Text;
             MainWindow.printColours = (int)((TextBlock)comboBoxPrintColours.SelectedItem).Tag;

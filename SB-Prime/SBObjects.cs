@@ -39,10 +39,19 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (Member member in keywords)
             {
-                //if (member.name.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || member.name.ToUpperInvariant().Contains(input.ToUpperInvariant()))
-                if (member.name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || member.name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                if (MainWindow.keywordContains)
                 {
-                    data.Add(member.name + "?0");
+                    if (member.name.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || member.name.ToUpperInvariant().Contains(input.ToUpperInvariant()))
+                    {
+                        data.Add(member.name + "?0");
+                    }
+                }
+                else
+                {
+                    if (member.name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || member.name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                    {
+                        data.Add(member.name + "?0");
+                    }
                 }
             }
             data = data.Distinct().ToList();
@@ -63,18 +72,37 @@ namespace SB_Prime
                 string name = "";
                 if (FileFilter.EnableAliases && FileFilter.Aliases.TryGetValue(label.name, out name))
                 {
-                    //if (name.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || name.ToUpperInvariant().Contains(input.ToUpperInvariant()))
-                    if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                    if (MainWindow.keywordContains)
                     {
-                        data.Add(name + "?1");
-                        continue;
+                        if (name.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || name.ToUpperInvariant().Contains(input.ToUpperInvariant()))
+                        {
+                            data.Add(name + "?1");
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                        {
+                            data.Add(name + "?1");
+                            continue;
+                        }
                     }
                 }
                 name = label.name;
-                //if (name.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || name.ToUpperInvariant().Contains(input.ToUpperInvariant()))
-                if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                if (MainWindow.keywordContains)
                 {
-                    data.Add(name + "?1");
+                    if (name.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || name.ToUpperInvariant().Contains(input.ToUpperInvariant()))
+                    {
+                        data.Add(name + "?1");
+                    }
+                }
+                else
+                {
+                    if (name.StartsWith(input, StringComparison.OrdinalIgnoreCase) || name.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                    {
+                        data.Add(name + "?1");
+                    }
                 }
             }
             data = data.Distinct().ToList();
@@ -107,20 +135,40 @@ namespace SB_Prime
                         {
                             memberName = member.name;
                         }
-                        //if (memberName.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || memberName.ToUpperInvariant().Contains(input.ToUpperInvariant()))
-                        if (memberName.StartsWith(input, StringComparison.OrdinalIgnoreCase) || memberName.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                        if (MainWindow.keywordContains)
                         {
-                            switch (member.type)
+                            if (memberName.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || memberName.ToUpperInvariant().Contains(input.ToUpperInvariant()))
                             {
-                                case MemberTypes.Method:
-                                    data.Add(memberName + "?2");
-                                    break;
-                                case MemberTypes.Property:
-                                    data.Add(memberName + "?3");
-                                    break;
-                                case MemberTypes.Event:
-                                    data.Add(memberName + "?4");
-                                    break;
+                                switch (member.type)
+                                {
+                                    case MemberTypes.Method:
+                                        data.Add(memberName + "?2");
+                                        break;
+                                    case MemberTypes.Property:
+                                        data.Add(memberName + "?3");
+                                        break;
+                                    case MemberTypes.Event:
+                                        data.Add(memberName + "?4");
+                                        break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (memberName.StartsWith(input, StringComparison.OrdinalIgnoreCase) || memberName.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                            {
+                                switch (member.type)
+                                {
+                                    case MemberTypes.Method:
+                                        data.Add(memberName + "?2");
+                                        break;
+                                    case MemberTypes.Property:
+                                        data.Add(memberName + "?3");
+                                        break;
+                                    case MemberTypes.Event:
+                                        data.Add(memberName + "?4");
+                                        break;
+                                }
                             }
                         }
                     }
@@ -142,10 +190,19 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (string label in variables)
             {
-                //if (label.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || label.ToUpperInvariant().Contains(input.ToUpperInvariant()))
-                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                if (MainWindow.keywordContains)
                 {
-                    data.Add(label + "?5");
+                    if (label.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || label.ToUpperInvariant().Contains(input.ToUpperInvariant()))
+                    {
+                        data.Add(label + "?5");
+                    }
+                }
+                else
+                {
+                    if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                    {
+                        data.Add(label + "?5");
+                    }
                 }
             }
             data = data.Distinct().ToList();
@@ -163,10 +220,19 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (string label in subroutines)
             {
-                //if (label.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || label.ToUpperInvariant().Contains(input.ToUpperInvariant()))
-                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                if (MainWindow.keywordContains)
                 {
-                    data.Add(label + "?6");
+                    if (label.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || label.ToUpperInvariant().Contains(input.ToUpperInvariant()))
+                    {
+                        data.Add(label + "?6");
+                    }
+                }
+                else
+                {
+                    if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                    {
+                        data.Add(label + "?6");
+                    }
                 }
             }
             data = data.Distinct().ToList();
@@ -184,10 +250,19 @@ namespace SB_Prime
             List<string> data = new List<string>();
             foreach (string label in labels)
             {
-                //if (label.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || label.ToUpperInvariant().Contains(input.ToUpperInvariant()))
-                if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                if (MainWindow.keywordContains)
                 {
-                    data.Add(label + "?7");
+                    if (label.IndexOf(input, StringComparison.OrdinalIgnoreCase) >= 0 || label.ToUpperInvariant().Contains(input.ToUpperInvariant()))
+                    {
+                        data.Add(label + "?7");
+                    }
+                }
+                else
+                {
+                    if (label.StartsWith(input, StringComparison.OrdinalIgnoreCase) || label.ToUpperInvariant().StartsWith(input.ToUpperInvariant()))
+                    {
+                        data.Add(label + "?7");
+                    }
                 }
             }
             data = data.Distinct().ToList();

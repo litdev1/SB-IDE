@@ -34,5 +34,6 @@
         <ComboBox x:Name="comboBoxInstallation" Margin="174,10,82,0" VerticalAlignment="Top" Height="23" IsEditable="True"/>
         <Button x:Name="buttonDelete" Content="Delete" HorizontalAlignment="Right" Margin="0,33,7,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonDelete_Click" Height="23" ToolTip="Delete installation folder from list"/>
         <CheckBox x:Name="checkBoxParseLineVariables" Content="Parse variables as they are typed" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBoxKeywordContains" Content="Include partial matches for auto complete suggestions" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
