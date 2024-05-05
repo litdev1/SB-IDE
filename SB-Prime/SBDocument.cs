@@ -37,6 +37,7 @@ namespace SB_Prime
         private SBContext sbContext;
         private string filepath = "";
         public TabItem Tab;
+        public SBLayout Layout;
         public SBDebug debug = null;
         public Process Proc = null;
         public SearchManager searchManager = new SearchManager();

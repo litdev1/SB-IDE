@@ -83,6 +83,21 @@
     <StartupObject>SB_Prime.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AvalonDock, Version=4.72.1.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.AvalonDock.4.72.1\lib\net40\AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="AvalonDock.Themes.Aero, Version=4.72.1.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.AvalonDock.Themes.Aero.4.72.1\lib\net40\AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="AvalonDock.Themes.Expression, Version=4.72.1.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.AvalonDock.Themes.Expression.4.72.1\lib\net40\AvalonDock.Themes.Expression.dll</HintPath>
+    </Reference>
+    <Reference Include="AvalonDock.Themes.Metro, Version=4.72.1.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.AvalonDock.Themes.Metro.4.72.1\lib\net40\AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="AvalonDock.Themes.VS2013, Version=4.72.1.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.AvalonDock.Themes.VS2013.4.72.1\lib\net40\AvalonDock.Themes.VS2013.dll</HintPath>
+    </Reference>
     <Reference Include="ExtensionManagerLibrary">
       <HintPath>..\..\ExtensionManager\ExtensionManagerLibrary\bin\Release\ExtensionManagerLibrary.dll</HintPath>
     </Reference>
@@ -205,6 +220,9 @@
       <DependentUpon>StackVariables.xaml</DependentUpon>
     </Compile>
     <Compile Include="Diff.cs" />
+    <Compile Include="Docker.xaml.cs">
+      <DependentUpon>Docker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FileFilter.cs" />
     <Compile Include="HotKeyManager.cs" />
     <Compile Include="MainWindow.cs" />
@@ -309,6 +327,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\StackVariables.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Docker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

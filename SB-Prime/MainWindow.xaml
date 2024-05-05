@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Prime.Properties"
+        xmlns:sbprime="clr-namespace:SB_Prime"
         mc:Ignorable="d"
         Title="Small Basic Prime" Height="600" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" Icon="AppIcon.ico" WindowStartupLocation="Manual" Initialized="Window_Initialized" MinWidth="600" MinHeight="400">
     <Window.Resources>
@@ -17,25 +18,6 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="TabItem">
                         <Border Name="Border" BorderThickness="2,2,2,0" BorderBrush="{DynamicResource SplitterBrush}" CornerRadius="8,8,0,0" Margin="2,0">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="4,2"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#AFFF" />
-                            </Trigger>
-                            <!--<Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#4FFF" />
-                            </Trigger>-->
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="RoundedTabItem2" TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TabItem">
-                        <Border Name="Border" BorderThickness="2,0,2,2" BorderBrush="{DynamicResource SplitterBrush}" CornerRadius="0,0,8,8" Margin="2,0">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="4,2"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -291,6 +273,7 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="6" />
                     <ColumnDefinition Width="350" MaxWidth="350" />
+                    <!--<ColumnDefinition Width="500" />-->
                 </Grid.ColumnDefinitions>
                 <Grid x:Name="wrapperGrid" Grid.Row="0" Margin="0,0,0,0">
                     <Grid x:Name="documentGrid" Margin="0,0,0,0" >
@@ -307,8 +290,8 @@
                     <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
                     <TabControl x:Name="tabControlSB2" Grid.Column="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="tabControlSB2_SelectionChanged" MouseDown="tabControlSB2_MouseDown" GotFocus="tabControlSB2_GotFocus">
                             <TabItem Header="{ x:Static local:Strings.Label210 }" Style="{StaticResource RoundedTabItem}">
-                            <Grid Background="#FFE5E5E5"/>
-                        </TabItem>
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
                     </TabControl>
                 </Grid>
             </Grid>
@@ -320,10 +303,11 @@
                         </Canvas.Background>
                     </Canvas>
                 </ScrollViewer>
+                <!--<sbprime:Docker x:Name="docker" Grid.Column="3" DockPanel.Dock="Bottom"/>-->
             </Grid>
             <GridSplitter Margin="0" Grid.Row="1" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
             <TabControl x:Name="tabControlResults" Margin="0" Grid.Row="2" HorizontalContentAlignment="Stretch" TabStripPlacement="Bottom" VerticalContentAlignment="Stretch">
-                <TabItem x:Name="tabOutput" Style="{StaticResource RoundedTabItem2}">
+                <TabItem x:Name="tabOutput" Style="{StaticResource RoundedTabItem}">
                     <TabItem.Header>
                         <TextBlock Text="{ x:Static local:Strings.Label211 }" FontWeight="Bold"/>
                     </TabItem.Header>
@@ -348,7 +332,7 @@
                         </DataGrid>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="tabDebug" Style="{StaticResource RoundedTabItem2}">
+                <TabItem x:Name="tabDebug" Style="{StaticResource RoundedTabItem}">
                     <TabItem.Header>
                         <TextBlock Text="{ x:Static local:Strings.Label213 }" FontWeight="Bold"/>
                     </TabItem.Header>

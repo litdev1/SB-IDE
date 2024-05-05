@@ -82,6 +82,7 @@ namespace SB_Prime
         SBplugin sbPlugin;
         SBDocument activeDocument;
         TabItem activeTab;
+        SBLayout activeLayout;
         Timer threadTimer;
         bool debugUpdated = false;
         bool highlightsUpdated = false;
@@ -772,9 +773,7 @@ namespace SB_Prime
             int num = 1;
             while (nums.Contains(num)) num++;
             WindowsFormsHost host = new WindowsFormsHost();
-            System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel();
             activeDocument = new SBDocument();
-            panel.Contains(activeDocument.TextArea);
             host.Child = activeDocument.TextArea;
             activeDocument.TextArea.PreviewKeyDown += Window_PreviewKeyDown;
             GetTabContol(iTab).Items.Add(new TabItem());
