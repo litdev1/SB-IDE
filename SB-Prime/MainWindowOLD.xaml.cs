@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Windows;
@@ -12,9 +13,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
 using System.Windows.Input;
 using System.Windows.Media;
-
-//#define OLDWindows
-#if !OLDWindows
 
 namespace SB_Prime
 {
@@ -1170,5 +1168,3 @@ private void Window_MouseMove(object sender, MouseEventArgs e)
 */
     }
 }
-
-#endif

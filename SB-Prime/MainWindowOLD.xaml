@@ -1,0 +1,389 @@
+﻿<Window x:Class="SB_Prime.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_Prime.Properties"
+        xmlns:sbprime="clr-namespace:SB_Prime"
+        mc:Ignorable="d"
+        Title="Small Basic Prime" Height="600" Width="1000" Loaded="Window_Loaded" Closing="Window_Closing" Icon="AppIcon.ico" WindowStartupLocation="Manual" Initialized="Window_Initialized" MinWidth="600" MinHeight="400">
+    <Window.Resources>
+        <CollectionViewSource x:Key="DebugDataSource"  CollectionViewType="ListCollectionView"/>
+        <SolidColorBrush x:Key="SplitterBrush" Color="#FF96AFFF"/>
+        <SolidColorBrush x:Key="SelectionBrush" Color="#FFC0D0FF"/>
+        <SolidColorBrush x:Key="GridBrushBackground" Color="#FFDFE9F5"/>
+        <SolidColorBrush x:Key="GridBrushForeground" Color="#FF000000"/>
+        <Style x:Key="RoundedTabItem" TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border Name="Border" BorderThickness="2,2,2,0" BorderBrush="{DynamicResource SplitterBrush}" CornerRadius="8,8,0,0" Margin="2,0">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="4,2"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#AFFF" />
+                            </Trigger>
+                            <!--<Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#4FFF" />
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <DockPanel Margin="0" PreviewKeyDown="Window_PreviewKeyDown">
+        <StatusBar x:Name="statusBar" Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
+            <StatusBarItem x:Name="statusVersion" Content="{ x:Static local:Strings.Label2 }"/>
+            <Separator/>
+            <StatusBarItem x:Name="statusLines" Content="{ x:Static local:Strings.Label3 }"/>
+            <Separator/>
+            <StatusBarItem x:Name="statusPosition" Content=""/>
+            <Separator/>
+            <StatusBarItem x:Name="statusRun" Content=""/>
+            <StatusBarItem HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="statusIcon" Source="Images\AppIcon.png"/>
+                    <Separator/>
+                    <StatusBarItem x:Name="statusSBPath" Content=""/>
+                    <Separator/>
+                    <StatusBarItem x:Name="statusAliases" Content="{ x:Static local:Strings.Label492 }"/>
+                    <Separator/>
+                    <StatusBarItem x:Name="statusCaps" Content="{ x:Static local:Strings.Label4 }"/>
+                    <Separator/>
+                    <StatusBarItem x:Name="statusNumlock" Content="{ x:Static local:Strings.Label5 }"/>
+                    <Separator/>
+                    <StatusBarItem x:Name="statusInsert" Content="{ x:Static local:Strings.Label6 }"/>
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+        <Ribbon x:Name="ribbon" VerticalAlignment="Top"  DockPanel.Dock="Top" Margin="0" SelectedIndex="0" SelectionChanged="ribbon_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" Loaded="ribbon_Loaded" BorderBrush="{DynamicResource SplitterBrush}" CheckedBackground="{DynamicResource SelectionBrush}" CheckedBorderBrush="{DynamicResource SelectionBrush}" PressedBackground="{DynamicResource SelectionBrush}" PressedBorderBrush="{DynamicResource SelectionBrush}" MouseOverBackground="{DynamicResource SelectionBrush}" FocusedBackground="{DynamicResource SelectionBrush}" FocusedBorderBrush="{DynamicResource SelectionBrush}" MouseOverBorderBrush="{DynamicResource SelectionBrush}">
+            <!-- Help Pane, located at the right-hand side -->
+            <Ribbon.HelpPaneContent>
+                <RibbonButton SmallImageSource="Images\Help.png" Click="helpClick" ToolTip="{ x:Static local:Strings.Label7 }"/>
+            </Ribbon.HelpPaneContent>
+            <!-- Quick Access Toolbar - located at the upper-left corner -->
+            <Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <!--<RibbonButton Label="{ x:Static local:Strings.Label9 }" SmallImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="{ x:Static local:Strings.Label8 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label11 }" SmallImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="{ x:Static local:Strings.Label10 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label13 }" SmallImageSource="Images/Close file.png" KeyTip="C" Click="fileClose_Click" ToolTipTitle="{ x:Static local:Strings.Label12 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label15 }" SmallImageSource="Images/Save.png" KeyTip="C" Click="fileSave_Click" ToolTipTitle="{ x:Static local:Strings.Label14 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label17 }" SmallImageSource="Images/Save as.png" KeyTip="C" Click="fileSaveAs_Click" ToolTipTitle="{ x:Static local:Strings.Label16 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label19 }" SmallImageSource="Images/Save all.png" KeyTip="C" Click="fileSaveAll_Click" ToolTipTitle="{ x:Static local:Strings.Label18 }"/>-->
+               </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
+            <!-- Application Menu, located at the left-hand side (down arrow) -->
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu KeyTip="F" Label="{ x:Static local:Strings.Label20 }">
+                    <RibbonApplicationMenu.AuxiliaryPaneContent>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" BorderBrush="DarkBlue" BorderThickness="0">
+                                <StackPanel Orientation="Vertical">
+                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Left"
+                                       VerticalContentAlignment="Center" Content="{ x:Static local:Strings.Label21 }" FontWeight="Bold"  />
+                                </StackPanel>
+                            </Border>
+                            <ListBox Name="MRUlist" Grid.Row="1">
+                                <ListBox.Background>
+                                    <ImageBrush ImageSource="images/appworkspace.png"/>
+                                </ListBox.Background>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ListBoxItem Content="{Binding Ellipsis}" MouseDoubleClick="ClickMRU" ></ListBoxItem>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </RibbonApplicationMenu.AuxiliaryPaneContent>
+                    <RibbonApplicationMenu.SmallImageSource>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry Rect="0,0,100,80"></RectangleGeometry>
+                                    </GeometryDrawing.Geometry>
+                                    <GeometryDrawing.Brush>
+                                        <VisualBrush Stretch="Fill">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="{ x:Static local:Strings.Label22 }" Foreground="White"/>
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </GeometryDrawing.Brush>
+                                </GeometryDrawing>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </RibbonApplicationMenu.SmallImageSource>
+                    <RibbonApplicationMenuItem x:Name="fileNew" Header="{ x:Static local:Strings.Label24 }" ImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="{ x:Static local:Strings.Label23 }"/>
+                    <RibbonApplicationMenuItem x:Name="fileOpen" Header="{ x:Static local:Strings.Label26 }" ImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="{ x:Static local:Strings.Label25 }"/>
+                    <RibbonApplicationMenuItem x:Name="fileClose" Header="{ x:Static local:Strings.Label28 }" ImageSource="Images/Close file.png" KeyTip="C" Click="fileClose_Click" ToolTipTitle="{ x:Static local:Strings.Label27 }"/>
+                    <RibbonApplicationMenuItem x:Name="fileSave" Header="{ x:Static local:Strings.Label30 }" ImageSource="Images/Save.png" KeyTip="SV" Click="fileSave_Click" ToolTipTitle="{ x:Static local:Strings.Label29 }"/>
+                    <RibbonApplicationMenuItem x:Name="fileSaveAs" Header="{ x:Static local:Strings.Label32 }" ImageSource="Images/Save as.png" KeyTip="SA" Click="fileSaveAs_Click" ToolTipTitle="{ x:Static local:Strings.Label31 }"/>
+                    <RibbonApplicationMenuItem x:Name="fileSaveAll" Header="{ x:Static local:Strings.Label34 }" ImageSource="Images/Save all.png" KeyTip="A" Click="fileSaveAll_Click" ToolTipTitle="{ x:Static local:Strings.Label33 }"/>
+                    <RibbonApplicationMenuItem x:Name="filePrint" Header="{ x:Static local:Strings.Label36 }" ImageSource="Images/Print.png" KeyTip="P" Click="filePrint_Click" ToolTipTitle="{ x:Static local:Strings.Label35 }"/>
+                    <RibbonApplicationMenuItem x:Name="fileExit" Header="{ x:Static local:Strings.Label38 }" ImageSource="Images/Close.png" KeyTip="X" Click="fileExit_Click" ToolTipTitle="{ x:Static local:Strings.Label37 }"/>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <!-- Ribbon Tab #1: Home -->
+            <RibbonTab Header="{ x:Static local:Strings.Label39 }" KeyTip="H" >
+                <!-- Home/File group-->
+                <RibbonGroup x:Name="FileGroup" Header="{ x:Static local:Strings.Label40 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label42 }" SmallImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="{ x:Static local:Strings.Label41 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label44 }" SmallImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="{ x:Static local:Strings.Label43 }"/>
+                    <!--<RibbonButton Label="{ x:Static local:Strings.Label46 }" SmallImageSource="Images/Close file.png" KeyTip="CL" Click="fileClose_Click" ToolTipTitle="{ x:Static local:Strings.Label45 }"/>-->
+                    <RibbonButton Label="{ x:Static local:Strings.Label48 }" SmallImageSource="Images/Save.png" KeyTip="SV" Click="fileSave_Click" ToolTipTitle="{ x:Static local:Strings.Label47 }"/>
+                    <!--<RibbonButton Label="{ x:Static local:Strings.Label50 }" SmallImageSource="Images/Save as.png" KeyTip="SA" Click="fileSaveAs_Click" ToolTipTitle="{ x:Static local:Strings.Label49 }"/>-->
+                    <!--<RibbonButton Label="{ x:Static local:Strings.Label52 }" SmallImageSource="Images/Save all.png" KeyTip="A" Click="fileSaveAll_Click" ToolTipTitle="{ x:Static local:Strings.Label51 }"/>-->
+                </RibbonGroup>
+                <!-- Home/Program group-->
+                <RibbonGroup x:Name="Program" Header="{ x:Static local:Strings.Label53 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label55 }" LargeImageSource="Images/Stop playing.png" KeyTip="ST" Click="programStop_Click" ToolTipTitle="{ x:Static local:Strings.Label54 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label57 }" LargeImageSource="Images/Play.png" KeyTip="R" Click="programRun_Click" ToolTipTitle="{ x:Static local:Strings.Label56 }"/>
+                </RibbonGroup>
+                <!-- Home/Edit group-->
+                <RibbonGroup x:Name="EditGroup" Header="{ x:Static local:Strings.Label58 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label60 }" SmallImageSource="Images/Copy.png" KeyTip="CP" Click="editCopy_Click" ToolTipTitle="{ x:Static local:Strings.Label59 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label62 }" SmallImageSource="Images/Paste.png" KeyTip="V" Click="editPaste_Click" ToolTipTitle="{ x:Static local:Strings.Label61 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label64 }" SmallImageSource="Images/Cut.png" KeyTip="X" Click="editCut_Click" ToolTipTitle="{ x:Static local:Strings.Label63 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label66 }" SmallImageSource="Images/Delete.png" KeyTip="D" Click="editDelete_Click" ToolTipTitle="{ x:Static local:Strings.Label65 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label68 }" SmallImageSource="Images/Undo.png" KeyTip="Z" Click="editUndo_Click" ToolTipTitle="{ x:Static local:Strings.Label67 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label70 }" SmallImageSource="Images/Redo.png" KeyTip="Y" Click="editRedo_Click" ToolTipTitle="{ x:Static local:Strings.Label69 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label72 }" SmallImageSource="Images/Selection.png" KeyTip="SE" Click="editSelectAll_Click" ToolTipTitle="{ x:Static local:Strings.Label71 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label74 }" SmallImageSource="Images/Collapse.png" KeyTip="CA" Click="editCollapse_Click" ToolTipTitle="{ x:Static local:Strings.Label73 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label76 }" SmallImageSource="Images/Expand.png" KeyTip="EA" Click="editExpand_Click" ToolTipTitle="{ x:Static local:Strings.Label75 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label78 }" SmallImageSource="Images/Form.png" KeyTip="FM" Click="editFormat_Click" ToolTipTitle="{ x:Static local:Strings.Label77 }"/>
+                    <RibbonButton Name="EditPrevious" Label="{ x:Static local:Strings.Label80 }" SmallImageSource="Images/Previous.png" KeyTip="EP" Click="editBackwards_Click" ToolTipTitle="{ x:Static local:Strings.Label79 }"/>
+                    <RibbonButton Name="EditNext" Label="{ x:Static local:Strings.Label82 }" SmallImageSource="Images/Next.png" KeyTip="EN" Click="editForwards_Click" ToolTipTitle="{ x:Static local:Strings.Label81 }"/>
+                </RibbonGroup>
+                <!-- Home/Web group-->
+                <RibbonGroup x:Name="Web" Header="{ x:Static local:Strings.Label83 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label85 }" LargeImageSource="Images/Import.png" KeyTip="I" Click="webImport_Click" ToolTipTitle="{ x:Static local:Strings.Label84 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label87 }" LargeImageSource="Images/Publish.png" KeyTip="P" Click="webPublish_Click" ToolTipTitle="{ x:Static local:Strings.Label86 }"/>
+                </RibbonGroup>
+                <!-- Home/Search group-->
+                <RibbonGroup x:Name="Search" Header="{ x:Static local:Strings.Label88 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label90 }" SmallImageSource="Images/Up.png" KeyTip="FP" Click="searchPrevious_Click" ToolTipTitle="{ x:Static local:Strings.Label89 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label92 }" SmallImageSource="Images/Down.png" KeyTip="FN" Click="searchNext_Click" ToolTipTitle="{ x:Static local:Strings.Label91 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label94 }" SmallImageSource="Images/Find.png" KeyTip="H" Click="searchReplace_Click" ToolTipTitle="{ x:Static local:Strings.Label93 }"/>
+                    <RibbonToggleButton Name="toggleHighlight" Label="{ x:Static local:Strings.Label96 }" SmallImageSource="Images/Highlight.png" KeyTip="FH" Click="fileHightlight_Click" ToolTipTitle="{ x:Static local:Strings.Label95 }"/>
+                    <RibbonToggleButton Name="toggleWholeWord" Label="{ x:Static local:Strings.Label98 }" SmallImageSource="Images/Text.png" KeyTip="FW" Click="fileWholeWord_Click" ToolTipTitle="{ x:Static local:Strings.Label97 }"/>
+                    <RibbonToggleButton Name="toggleCaseSensitive" Label="{ x:Static local:Strings.Label100 }" SmallImageSource="Images/Text_uppercase.png" KeyTip="CS" Click="fileCaseSensitive_Click" ToolTipTitle="{ x:Static local:Strings.Label99 }"/>
+                    <RibbonTextBox x:Name="tbFind" Label="{ x:Static local:Strings.Label101 }" KeyTip="FD" KeyDown="tbFind_KeyDown" TextBoxWidth="160"/>
+                    <RibbonComboBox x:Name="cbFindControl" Label="{ x:Static local:Strings.Label102 }" KeyTip="FDH">
+                        <RibbonGallery x:Name="cbFind" SelectionChanged="cbFind_SelectionChanged">
+                            <RibbonGalleryCategory x:Name="cbFindText"/>
+                        </RibbonGallery>
+                    </RibbonComboBox>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="{ x:Static local:Strings.Label103 }" KeyTip="D" >
+                <RibbonGroup x:Name="FileGroup2" Header="{ x:Static local:Strings.Label104 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label106 }" SmallImageSource="Images/New file.png" KeyTip="N" Click="fileNew_Click" ToolTipTitle="{ x:Static local:Strings.Label105 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label108 }" SmallImageSource="Images/Open file.png" KeyTip="O" Click="fileOpen_Click" ToolTipTitle="{ x:Static local:Strings.Label107 }"/>
+                    <!--<RibbonButton Label="{ x:Static local:Strings.Label110 }" SmallImageSource="Images/Close file.png" KeyTip="CL" Click="fileClose_Click" ToolTipTitle="{ x:Static local:Strings.Label109 }"/>-->
+                    <RibbonButton Label="{ x:Static local:Strings.Label112 }" SmallImageSource="Images/Save.png" KeyTip="SV" Click="fileSave_Click" ToolTipTitle="{ x:Static local:Strings.Label111 }"/>
+                    <!--<RibbonButton Label="{ x:Static local:Strings.Label114 }" SmallImageSource="Images/Save as.png" KeyTip="SA" Click="fileSaveAs_Click" ToolTipTitle="{ x:Static local:Strings.Label113 }"/>-->
+                    <!--<RibbonButton Label="{ x:Static local:Strings.Label116 }" SmallImageSource="Images/Save all.png" KeyTip="A" Click="fileSaveAll_Click" ToolTipTitle="{ x:Static local:Strings.Label115 }"/>-->
+                </RibbonGroup>                <!-- Debug/Debug group-->
+                <RibbonGroup x:Name="DebugGroup" Header="{ x:Static local:Strings.Label117 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label119 }" LargeImageSource="Images/Stop playing.png" KeyTip="ST" Click="debugStop_Click" ToolTipTitle="{ x:Static local:Strings.Label118 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label121 }" LargeImageSource="Images/Pause.png" KeyTip="P" Click="debugPause_Click" ToolTipTitle="{ x:Static local:Strings.Label120 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label123 }" LargeImageSource="Images/StepOut.png" KeyTip="SO" Click="debugStepOut_Click" ToolTipTitle="{ x:Static local:Strings.Label122 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label125 }" LargeImageSource="Images/StepOver.png" KeyTip="SV" Click="debugStepOver_Click" ToolTipTitle="{ x:Static local:Strings.Label124 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label127 }" LargeImageSource="Images/Step.png" KeyTip="SP" Click="debugStep_Click" ToolTipTitle="{ x:Static local:Strings.Label126 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label129 }" LargeImageSource="Images/Play.png" KeyTip="R" Click="debugDebug_Click" ToolTipTitle="{ x:Static local:Strings.Label128 }"/>
+                </RibbonGroup>
+                <!-- Debug/Breakpoint group-->
+                <RibbonGroup x:Name="BreakpointGroup" Header="{ x:Static local:Strings.Label130 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label132 }" SmallImageSource="Images/Breakpoint.png" KeyTip="BB" Click="breakpointToggle_Click" ToolTipTitle="{ x:Static local:Strings.Label131 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label134 }" SmallImageSource="Images/BreakpointOff.png" KeyTip="BC" Click="breakpointClear_Click" ToolTipTitle="{ x:Static local:Strings.Label133 }"/>
+                    <RibbonToggleButton Label="{ x:Static local:Strings.Label136 }" SmallImageSource="Images/BreakpointIgnore.png" KeyTip="BI" Click="breakpointIgnore_Click" ToolTipTitle="{ x:Static local:Strings.Label135 }"/>
+                </RibbonGroup>
+                <!-- Debug/Bookmark group-->
+                <RibbonGroup x:Name="Bookmarks" Header="{ x:Static local:Strings.Label137 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label139 }" SmallImageSource="Images/Bookmark.png" KeyTip="KB" Click="bookmarkToggle_Click" ToolTipTitle="{ x:Static local:Strings.Label138 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label141 }" SmallImageSource="Images/BookmarkNext.png" KeyTip="KN" Click="bookmarkNext_Click" ToolTipTitle="{ x:Static local:Strings.Label140 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label143 }" SmallImageSource="Images/BookmarkPrevious.png" KeyTip="KP" Click="bookmarkPrevious_Click" ToolTipTitle="{ x:Static local:Strings.Label142 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label145 }" SmallImageSource="Images/BookmarkOff.png" KeyTip="KC" Click="bookmarkClear_Click" ToolTipTitle="{ x:Static local:Strings.Label144 }"/>
+                </RibbonGroup>
+                <!-- Debug/Tools group-->
+                <RibbonGroup x:Name="DebugTools" Header="{ x:Static local:Strings.Label146 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label148 }" LargeImageSource="Images/Frames.png" KeyTip="SV" Click="toolsStack_Click" ToolTipTitle="{ x:Static local:Strings.Label147 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label150 }" LargeImageSource="Images/bug_link.png" KeyTip="DG" Click="toolsDebugGuide_Click" ToolTipTitle="{ x:Static local:Strings.Label149 }"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="{ x:Static local:Strings.Label151 }" KeyTip="T" >
+                <!-- Tools/Tools group-->
+                <RibbonGroup x:Name="Tools" Header="{ x:Static local:Strings.Label152 }">
+                    <RibbonButton Name="ToolsShapesEditor" Label="{ x:Static local:Strings.Label154 }" LargeImageSource="Images/Dialog.png" KeyTip="SE" Click="ToolsShapesEditor_Click" ToolTipTitle="{ x:Static local:Strings.Label153 }"/>
+                    <RibbonButton Name="ToolsFlowChart" Label="{ x:Static local:Strings.Label156 }" LargeImageSource="Images/FlowChart.png" KeyTip="FC" Click="ToolsFlowChart_Click" ToolTipTitle="{ x:Static local:Strings.Label155 }"/>
+                    <RibbonButton Name="ToolsColor" Label="{ x:Static local:Strings.Label158 }" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="{ x:Static local:Strings.Label157 }"/>
+                    <RibbonButton Name="ToolsFont" Label="{ x:Static local:Strings.Label160 }" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="{ x:Static local:Strings.Label159 }"/>
+                    <RibbonButton Name="ToolsLinks" Label="{ x:Static local:Strings.Label162 }" LargeImageSource="Images/Link.png" KeyTip="TL" Click="ToolsLinks_Click" ToolTipTitle="{ x:Static local:Strings.Label161 }"/>
+                    <RibbonButton Name="ToolsExtensionSearcher" Label="{ x:Static local:Strings.Label164 }" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="{ x:Static local:Strings.Label163 }"/>
+                    <RibbonButton Name="ToolsFileSearcher" Label="{ x:Static local:Strings.Label166 }" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="{ x:Static local:Strings.Label165 }"/>
+                    <RibbonButton Name="ToolsAliases" Label="{ x:Static local:Strings.Label492 }" LargeImageSource="Images/Aliases.png" KeyTip="AL" Click="ToolsAliases_Click" ToolTipTitle="{ x:Static local:Strings.Label493 }"/>
+                    <RibbonButton Name="ToolsUpload" Label="Upload" LargeImageSource="Images/Upload.png" KeyTip="AL" Click="ToolsUpload_Click" ToolTipTitle="Upload resources to web (images)"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="{ x:Static local:Strings.Label167 }" KeyTip="A" >
+                <!-- Advanced/Extend group-->
+                <RibbonGroup x:Name="Extend" Header="{ x:Static local:Strings.Label168 }">
+                    <RibbonButton Label="{ x:Static local:Strings.Label170 }" LargeImageSource="Images/Objects.png" KeyTip="EM" Click="extensionsManage_Click" ToolTipTitle="{ x:Static local:Strings.Label169 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label172 }" LargeImageSource="Images/Graduate.png" KeyTip="G" Click="graduateVB_Click" ToolTipTitle="{ x:Static local:Strings.Label171 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label174 }" LargeImageSource="Images/Link-ILSpy.png" KeyTip="D" Click="decompileCS_Click" ToolTipTitle="{ x:Static local:Strings.Label173 }"/>
+                </RibbonGroup>
+                <!-- Advanced/View group-->
+                <RibbonGroup x:Name="View" Header="{ x:Static local:Strings.Label175 }">
+                    <RibbonToggleButton Name="toggleSplit" Label="{ x:Static local:Strings.Label177 }" SmallImageSource="Images/Monitors.png" KeyTip="SS" Click="viewDual_Click" ToolTipTitle="{ x:Static local:Strings.Label176 }"/>
+                    <RibbonToggleButton Name="toggleWrap" Label="{ x:Static local:Strings.Label179 }" SmallImageSource="Images/WordWrap.png" KeyTip="WW" Click="viewWrap_Click" ToolTipTitle="{ x:Static local:Strings.Label178 }"/>
+                    <RibbonToggleButton Name="toggleIndent" Label="{ x:Static local:Strings.Label181 }" SmallImageSource="Images/Indent.png" KeyTip="I" Click="viewIndent_Click" ToolTipTitle="{ x:Static local:Strings.Label180 }" IsChecked="True"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label183 }" SmallImageSource="Images/Zoom In.png" KeyTip="+" Click="viewZoomIn_Click" ToolTipTitle="{ x:Static local:Strings.Label182 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label185 }" SmallImageSource="Images/Zoom Out.png" KeyTip="-" Click="viewZoomOut_Click" ToolTipTitle="{ x:Static local:Strings.Label184 }"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label187 }" SmallImageSource="Images/Zoom.png" KeyTip="0" Click="viewZoomReset_Click" ToolTipTitle="{ x:Static local:Strings.Label186 }"/>
+                    <RibbonToggleButton Name="toggleTheme" Label="{ x:Static local:Strings.Label189 }" SmallImageSource="Images/Contrast.png" KeyTip="TH" Click="viewTheme_Click" ToolTipTitle="{ x:Static local:Strings.Label188 }"/>
+                    <RibbonToggleButton Name="toggleWhiteSpace" Label="{ x:Static local:Strings.Label191 }" SmallImageSource="Images/WhiteSpace.png" KeyTip="WS" Click="viewWhitespace_Click" ToolTipTitle="{ x:Static local:Strings.Label190 }"/>
+                    <RibbonToggleButton Name="toggleNumberMargin" Label="{ x:Static local:Strings.Label193 }" SmallImageSource="Images/NumberMargin.png" KeyTip="NM" Click="viewNumberMargin_Click" ToolTipTitle="{ x:Static local:Strings.Label192 }"/>
+                    <RibbonTextBox x:Name="viewLanguage" Label="{ x:Static local:Strings.Label195 }" KeyTip="L" TextBoxWidth="30" ToolTipTitle="{ x:Static local:Strings.Label194 }" TextChanged="viewLanguage_TextChanged"/>
+                </RibbonGroup>
+                <!-- Advanced/Settings group-->
+                <RibbonGroup x:Name="Settings" Header="{ x:Static local:Strings.Label196 }">
+                    <RibbonButton Name="settingsColor" Label="{ x:Static local:Strings.Label198 }" LargeImageSource="Images/Color palette.png" KeyTip="SC" Click="settingsColor_Click" ToolTipTitle="{ x:Static local:Strings.Label197 }"/>
+                    <RibbonButton Name="settingsExport" Label="{ x:Static local:Strings.Label200 }" SmallImageSource="Images/SettingsSave.png" KeyTip="SE" Click="settingsExport_Click" ToolTipTitle="{ x:Static local:Strings.Label199 }"/>
+                    <RibbonButton Name="settingsImport" Label="{ x:Static local:Strings.Label202 }" SmallImageSource="Images/SettingsLoad.png" KeyTip="SI" Click="settingsImport_Click" ToolTipTitle="{ x:Static local:Strings.Label201 }"/>
+                    <RibbonButton Name="settingsReset" Label="{ x:Static local:Strings.Label204 }" SmallImageSource="Images/Settings.png" KeyTip="SR" Click="settingsReset_Click" ToolTipTitle="{ x:Static local:Strings.Label203 }"/>
+                    <RibbonButton Name="settingsOptions" Label="{ x:Static local:Strings.Label206 }" LargeImageSource="Images/Options.png" KeyTip="SO" Click="settingsOptions_Click" ToolTipTitle="{ x:Static local:Strings.Label205 }"/>
+                    <RibbonButton Name="settingsUpdate" Label="{ x:Static local:Strings.Label208 }" LargeImageSource="Images/Update.png" KeyTip="SU" Click="settingsUpdate_Click" ToolTipTitle="{ x:Static local:Strings.Label207 }"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        <Grid x:Name="mainGrid" Margin="0,0,0,0" DockPanel.Dock="Bottom" Background="{DynamicResource GridBrushBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="6"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="viewGrid" Grid.Row="0" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="6" />
+                    <ColumnDefinition Width="350" MaxWidth="350" />
+                    <!--<ColumnDefinition Width="500" />-->
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="wrapperGrid" Grid.Row="0" Margin="0,0,0,0">
+                    <Grid x:Name="documentGrid" Margin="0,0,0,0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="6"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TabControl x:Name="tabControlSB1" Grid.Column="0" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="tabControlSB1_SelectionChanged" MouseDown="tabControlSB1_MouseDown" GotFocus="tabControlSB1_GotFocus">
+                            <TabItem Header="{ x:Static local:Strings.Label209 }" Style="{StaticResource RoundedTabItem}">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                    </TabControl>
+                    <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
+                    <TabControl x:Name="tabControlSB2" Grid.Column="2" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectionChanged="tabControlSB2_SelectionChanged" MouseDown="tabControlSB2_MouseDown" GotFocus="tabControlSB2_GotFocus">
+                            <TabItem Header="{ x:Static local:Strings.Label210 }" Style="{StaticResource RoundedTabItem}">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                    </TabControl>
+                </Grid>
+            </Grid>
+            <GridSplitter Margin="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
+                <ScrollViewer Grid.Column="2" Margin="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Canvas x:Name="canvasInfo" Margin="0" VerticalAlignment="Stretch" MinHeight="2000" >
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="images/appworkspace.png"/>
+                        </Canvas.Background>
+                    </Canvas>
+                </ScrollViewer>
+                <!--<sbprime:Docker x:Name="docker" Grid.Column="3" DockPanel.Dock="Bottom"/>-->
+            </Grid>
+            <GridSplitter Margin="0" Grid.Row="1" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
+            <TabControl x:Name="tabControlResults" Margin="0" Grid.Row="2" HorizontalContentAlignment="Stretch" TabStripPlacement="Bottom" VerticalContentAlignment="Stretch">
+                <TabItem x:Name="tabOutput" Style="{StaticResource RoundedTabItem}">
+                    <TabItem.Header>
+                        <TextBlock Text="{ x:Static local:Strings.Label211 }" FontWeight="Bold"/>
+                    </TabItem.Header>
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="dataGridResults" HeadersVisibility="Column" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" SelectionChanged="dataGridResults_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}" LoadingRow="dataGridResults_LoadingRow" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource GridBrushForeground}"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="8,4,8,4" />
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{ x:Static local:Strings.Label212 }" Width="1*" Binding="{Binding Message}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabDebug" Style="{StaticResource RoundedTabItem}">
+                    <TabItem.Header>
+                        <TextBlock Text="{ x:Static local:Strings.Label213 }" FontWeight="Bold"/>
+                    </TabItem.Header>
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="dataGridDebug" HeadersVisibility="Column" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource GridBrushForeground}"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="8,4,8,4" />
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{ x:Static local:Strings.Label214 }" Binding="{Binding Variable}"/>
+                                <DataGridTextColumn Header="{ x:Static local:Strings.Label215 }" Binding="{Binding Value}"/>
+                                <DataGridTemplateColumn Header="{ x:Static local:Strings.Label216 }">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{ x:Static local:Strings.Label218 }" Click="debugDataSet" ToolTip="{ x:Static local:Strings.Label217 }" Tag="{Binding}" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{ x:Static local:Strings.Label219 }">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{ x:Static local:Strings.Label221 }" Click="debugDataRefresh" ToolTip="{ x:Static local:Strings.Label220 }" Tag="{Binding}" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header="{ x:Static local:Strings.Label222 }">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{ x:Static local:Strings.Label224 }" Click="debugDataDelete" ToolTip="{ x:Static local:Strings.Label223 }" Tag="{Binding}" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="{ x:Static local:Strings.Label225 }" Binding="{Binding LessThan}"/>
+                                <DataGridTextColumn Header="{ x:Static local:Strings.Label226 }" Binding="{Binding GreaterThan}"/>
+                                <DataGridTextColumn Header="{ x:Static local:Strings.Label227 }" Binding="{Binding Equal}"/>
+                                <DataGridCheckBoxColumn Header="{ x:Static local:Strings.Label228 }" Binding="{Binding Changes}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</Window>
