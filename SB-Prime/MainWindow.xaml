@@ -316,9 +316,9 @@
                                 </LayoutAnchorablePane>
                             </LayoutAnchorablePaneGroup>
                         </LayoutPanel>
-                        <LayoutAnchorablePaneGroup DockHeight="300" DockMinHeight="200">
+                        <LayoutAnchorablePaneGroup DockHeight="300" DockMinHeight="100">
                             <LayoutAnchorablePane>
-                                <LayoutAnchorable AutoHideMinHeight="200" AutoHideHeight="300"
+                                <LayoutAnchorable AutoHideMinHeight="100" AutoHideHeight="300"
                                 x:Name="dock_Output"
                                 Title="Output"
                                 CanClose="False"
@@ -350,7 +350,7 @@
                                         </DataGrid>
                                     </Grid>
                                 </LayoutAnchorable>
-                                <LayoutAnchorable AutoHideMinHeight="200" AutoHideHeight="300"
+                                <LayoutAnchorable AutoHideMinHeight="100" AutoHideHeight="300"
                                 x:Name="dock_Debug"
                                 Title="Debug"
                                 CanClose="False"
