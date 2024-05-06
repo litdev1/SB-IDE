@@ -808,6 +808,7 @@ namespace SB_Prime
             }
             activeLayout.Active = false;
             activeDocument.Dispose();
+            activeDocument = null;
             activeLayout.Close();
             if (DocumentPaneGroup.ChildrenCount == 0) AddDocument();
             return System.Windows.Forms.DialogResult.OK;
@@ -834,7 +835,6 @@ namespace SB_Prime
             {
                 if (CheckAccess())
                 {
-                    UpdateTabHeader();
                     UpdateDebug();
                     UpdateOutput();
                     UpdateRun();
@@ -844,12 +844,12 @@ namespace SB_Prime
                     UpdateZoom();
                     UpdateHotKey();
                     UpdateLine();
+                    UpdateTabHeader();
                 }
                 else
                 {
                     Dispatcher.Invoke(() =>
                     {
-                        UpdateTabHeader();
                         UpdateDebug();
                         UpdateOutput();
                         UpdateRun();
@@ -859,6 +859,7 @@ namespace SB_Prime
                         UpdateZoom();
                         UpdateHotKey();
                         UpdateLine();
+                        UpdateTabHeader();
                     });
                 }
             }
@@ -886,17 +887,17 @@ namespace SB_Prime
         private void UpdateTabHeader()
         {
             activeLayout.SetDirty(activeDocument.IsDirty);
-            if (MarkedForDelete.Count > 0)
-            {
-                activeLayout = MarkedForDelete.Dequeue();
-                activeDocument = GetDocument();
-                DeleteDocument();
-            }
             if (MarkedForFocus.Count > 0)
             {
                 WindowsFormsHost host = MarkedForFocus.Dequeue();
                 host.Focus();
                 SetFocus();
+            }
+            if (MarkedForDelete.Count > 0)
+            {
+                activeLayout = MarkedForDelete.Dequeue();
+                activeDocument = GetDocument();
+                DeleteDocument();
             }
         }
 
