@@ -1,4 +1,5 @@
 ﻿using AvalonDock.Layout;
+using AvalonDock.Layout.Serialization;
 using AvalonDock.Themes;
 using ExtensionManagerLibrary;
 using SB_Prime.Dialogs;
@@ -479,6 +480,9 @@ namespace SB_Prime
             showNumberMargin = Properties.Settings.Default.ShowNumberMargin;
             parseLineVariables = Properties.Settings.Default.ParseLineVariables;
             keywordContains = Properties.Settings.Default.KeywordContains;
+
+            //var layoutSerializer = new XmlLayoutSerializer(dockManager);
+            //layoutSerializer.Deserialize(@".\AvalonDock.Layout.config");
         }
 
         private void ResetSettings()
@@ -626,6 +630,9 @@ namespace SB_Prime
             Properties.Settings.Default.KeywordContains = keywordContains;
 
             Properties.Settings.Default.Save();
+
+            //var layoutSerializer = new XmlLayoutSerializer(dockManager);
+            //layoutSerializer.Serialize(@".\AvalonDock.Layout.config");
         }
 
         private void ExportSettings()
