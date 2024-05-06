@@ -1929,6 +1929,15 @@
   <data name="String183" xml:space="preserve">
     <value>Insert Comment ' at caret Ctrl+Shift+?</value>
   </data>
+  <data name="String184" xml:space="preserve">
+    <value>First file to compare</value>
+  </data>
+  <data name="String185" xml:space="preserve">
+    <value>Second file to compare</value>
+  </data>
+  <data name="String186" xml:space="preserve">
+    <value>End compare</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Copy Code from Current Document</value>
   </data>

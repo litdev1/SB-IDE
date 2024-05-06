@@ -5497,6 +5497,33 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First file to compare.
+        /// </summary>
+        public static string String184 {
+            get {
+                return ResourceManager.GetString("String184", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Second file to compare.
+        /// </summary>
+        public static string String185 {
+            get {
+                return ResourceManager.GetString("String185", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End compare.
+        /// </summary>
+        public static string String186 {
+            get {
+                return ResourceManager.GetString("String186", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy Code from Current Document.
         /// </summary>
         public static string String19 {
