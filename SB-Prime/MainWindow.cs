@@ -807,6 +807,7 @@ namespace SB_Prime
                 }
             }
             activeLayout.Active = false;
+            activeDocument.Dispose();
             activeLayout.Close();
             if (DocumentPaneGroup.ChildrenCount == 0) AddDocument();
             return System.Windows.Forms.DialogResult.OK;
