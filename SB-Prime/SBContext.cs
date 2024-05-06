@@ -64,8 +64,8 @@ namespace SB_Prime
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String95, null, (s, ea) => textArea.SelectAll()));
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String96, null, OpenFindDialog) { Enabled = null != sbDocument.Tab });
-            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String97, null, OpenReplaceDialog) { Enabled = null != sbDocument.Tab });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String96, null, OpenFindDialog) { Enabled = null != sbDocument.Layout });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String97, null, OpenReplaceDialog) { Enabled = null != sbDocument.Layout });
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String98, null, (s, ea) => sbDocument.Comment(true)));
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String99, null, (s, ea) => sbDocument.Comment(false)));
@@ -85,10 +85,30 @@ namespace SB_Prime
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String106, null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Html)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String107, null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Rtf)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String108, null, OpenContainingFolder) { Enabled = null != sbDocument.Tab && File.Exists(((TabHeader)sbDocument.Tab.Header).FilePath) });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String108, null, OpenContainingFolder) { Enabled = null != sbDocument.Layout && File.Exists(sbDocument.Layout.FilePath) });
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String109, null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
-            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String110, null, OpenFlowChart) { Enabled = null != sbDocument.Tab });
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String110, null, OpenFlowChart) { Enabled = null != sbDocument.Layout });
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String111, null, (s, ea) => sbDocument.Lexer.Format()));
+            menu.Items.Add(new ToolStripSeparator());
+            menu.Items.Add(new ToolStripMenuItem("First file to compare", null, (s, ea) => FirstCompare()));
+            menu.Items.Add(new ToolStripMenuItem("Second file to compare", null, (s, ea) => SecondCompare()));
+            menu.Items.Add(new ToolStripMenuItem("End compare", null, (s, ea) => EndCompare()));
+        }
+
+        private void FirstCompare()
+        {
+            SBDiff.doc1 = sbDocument;
+        }
+
+        private void SecondCompare()
+        {
+            SBDiff.doc2 = sbDocument;
+        }
+
+        private void EndCompare()
+        {
+            SBDiff.doc1 = null;
+            SBDiff.doc2 = null;
         }
 
         private void OnClosed(object sender, ToolStripDropDownClosedEventArgs e)
@@ -122,7 +142,7 @@ namespace SB_Prime
         {
             try
             {
-                string path = Path.GetDirectoryName(((TabHeader)sbDocument.Tab.Header).FilePath);
+                string path = Path.GetDirectoryName(sbDocument.Layout.FilePath);
                 Process.Start("explorer.exe", "\"" + path + "\"");
             }
             catch

@@ -264,6 +264,150 @@
         </Ribbon>
         <Grid x:Name="mainGrid" Margin="0,0,0,0" DockPanel.Dock="Bottom" Background="{DynamicResource GridBrushBackground}">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <DockingManager x:Name="dockManager"
+            Grid.Row="1"
+            AllowMixedOrientation="True"
+            AutoWindowSizeWhenOpened="True"
+            IsVirtualizingAnchorable="True"
+            IsVirtualizingDocument="True">
+                <DockingManager.DocumentHeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Margin="0,2,4,2" Source="{Binding IconSource}" />
+                            <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
+                        </StackPanel>
+                    </DataTemplate>
+                </DockingManager.DocumentHeaderTemplate>
+                <LayoutRoot PropertyChanged="OnLayoutRootPropertyChanged">
+                    <LayoutPanel Orientation="Vertical">
+                        <LayoutPanel Orientation="Horizontal">
+                            <LayoutDocumentPaneGroup x:Name="DocumentPaneGroup">
+                                <!--<LayoutDocumentPane x:Name="LayoutDocumentPane1">
+                                <LayoutDocument x:Name="doc1" Title="Document 1" IconSource="AppIcon.ico">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Left" Margin="85,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="18"/>
+                                        <TextBox Grid.Row="1" Text="Document 1 Content" />
+                                    </Grid>
+                                </LayoutDocument>
+                            </LayoutDocumentPane>-->
+                            </LayoutDocumentPaneGroup>
+                            <LayoutAnchorablePaneGroup DockWidth="350">
+                                <LayoutAnchorablePane>
+                                    <LayoutAnchorable
+                                x:Name="dock_Intellisense"
+                                Title="Intellisense"
+                                CanClose="False"
+                                CanHide="False">
+                                        <ScrollViewer Grid.Column="2" Margin="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                            <Canvas x:Name="canvasInfo" Margin="0" VerticalAlignment="Stretch" MinHeight="2000">
+                                                <Canvas.Background>
+                                                    <ImageBrush ImageSource="images/appworkspace.png"/>
+                                                </Canvas.Background>
+                                            </Canvas>
+                                        </ScrollViewer>
+                                    </LayoutAnchorable>
+                                </LayoutAnchorablePane>
+                            </LayoutAnchorablePaneGroup>
+                        </LayoutPanel>
+                        <LayoutAnchorablePaneGroup DockHeight="300">
+                            <LayoutAnchorablePane>
+                                <LayoutAnchorable
+                                x:Name="dock_Output"
+                                Title="Output"
+                                CanClose="False"
+                                CanHide="False">
+                                    <Grid Background="#FFE5E5E5">
+                                        <DataGrid x:Name="dataGridResults" HeadersVisibility="Column" Margin="0" AutoGenerateColumns="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" GridLinesVisibility="None" SelectionChanged="dataGridResults_SelectionChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}" LoadingRow="dataGridResults_LoadingRow" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
+                                            <DataGrid.ColumnHeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>
+                                                    <Setter Property="Foreground" Value="{DynamicResource GridBrushForeground}"/>
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                    <Setter Property="Padding" Value="8,4,8,4" />
+                                                    <Setter Property="FontWeight" Value="Bold" />
+                                                </Style>
+                                            </DataGrid.ColumnHeaderStyle>
+                                            <DataGrid.Resources>
+                                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+                                            </DataGrid.Resources>
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="{ x:Static local:Strings.Label212 }" Width="1*" Binding="{Binding Message}">
+                                                    <DataGridTextColumn.ElementStyle>
+                                                        <Style>
+                                                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                                        </Style>
+                                                    </DataGridTextColumn.ElementStyle>
+                                                </DataGridTextColumn>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </Grid>
+                                </LayoutAnchorable>
+                                <LayoutAnchorable
+                                x:Name="dock_Debug"
+                                Title="Debug"
+                                CanClose="False"
+                                CanHide="False">
+                                    <Grid Background="#FFE5E5E5">
+                                        <DataGrid x:Name="dataGridDebug" HeadersVisibility="Column" DataContext="{StaticResource DebugDataSource}" ItemsSource="{Binding}" SelectionUnit="Cell" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" CellEditEnding="dataGridDebug_CellEditEnding" CurrentCellChanged="dataGridDebug_CurrentCellChanged" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}" RowBackground="{DynamicResource GridBrushBackground}">
+                                            <DataGrid.ColumnHeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Background" Value="{DynamicResource GridBrushBackground}"/>
+                                                    <Setter Property="Foreground" Value="{DynamicResource GridBrushForeground}"/>
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                    <Setter Property="Padding" Value="8,4,8,4" />
+                                                    <Setter Property="FontWeight" Value="Bold" />
+                                                </Style>
+                                            </DataGrid.ColumnHeaderStyle>
+                                            <DataGrid.Resources>
+                                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+                                            </DataGrid.Resources>
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="{ x:Static local:Strings.Label214 }" Binding="{Binding Variable}"/>
+                                                <DataGridTextColumn Header="{ x:Static local:Strings.Label215 }" Binding="{Binding Value}"/>
+                                                <DataGridTemplateColumn Header="{ x:Static local:Strings.Label216 }">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button Content="{ x:Static local:Strings.Label218 }" Click="debugDataSet" ToolTip="{ x:Static local:Strings.Label217 }" Tag="{Binding}" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}"/>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                                <DataGridTemplateColumn Header="{ x:Static local:Strings.Label219 }">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button Content="{ x:Static local:Strings.Label221 }" Click="debugDataRefresh" ToolTip="{ x:Static local:Strings.Label220 }" Tag="{Binding}" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}"/>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                                <DataGridTemplateColumn Header="{ x:Static local:Strings.Label222 }">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button Content="{ x:Static local:Strings.Label224 }" Click="debugDataDelete" ToolTip="{ x:Static local:Strings.Label223 }" Tag="{Binding}" Background="{DynamicResource GridBrushBackground}" Foreground="{DynamicResource GridBrushForeground}"/>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                                <DataGridTextColumn Header="{ x:Static local:Strings.Label225 }" Binding="{Binding LessThan}"/>
+                                                <DataGridTextColumn Header="{ x:Static local:Strings.Label226 }" Binding="{Binding GreaterThan}"/>
+                                                <DataGridTextColumn Header="{ x:Static local:Strings.Label227 }" Binding="{Binding Equal}"/>
+                                                <DataGridCheckBoxColumn Header="{ x:Static local:Strings.Label228 }" Binding="{Binding Changes}" />
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </Grid>
+                                </LayoutAnchorable>
+                            </LayoutAnchorablePane>
+                        </LayoutAnchorablePaneGroup>
+                    </LayoutPanel>
+                </LayoutRoot>
+            </DockingManager>
+            <!--<Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="6"/>
                 <RowDefinition Height="150"/>
@@ -273,7 +417,6 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="6" />
                     <ColumnDefinition Width="350" MaxWidth="350" />
-                    <!--<ColumnDefinition Width="500" />-->
                 </Grid.ColumnDefinitions>
                 <Grid x:Name="wrapperGrid" Grid.Row="0" Margin="0,0,0,0">
                     <Grid x:Name="documentGrid" Margin="0,0,0,0" >
@@ -303,7 +446,6 @@
                         </Canvas.Background>
                     </Canvas>
                 </ScrollViewer>
-                <!--<sbprime:Docker x:Name="docker" Grid.Column="3" DockPanel.Dock="Bottom"/>-->
             </Grid>
             <GridSplitter Margin="0" Grid.Row="1" HorizontalAlignment="Stretch" Background="{DynamicResource SplitterBrush}"/>
             <TabControl x:Name="tabControlResults" Margin="0" Grid.Row="2" HorizontalContentAlignment="Stretch" TabStripPlacement="Bottom" VerticalContentAlignment="Stretch">
@@ -383,7 +525,7 @@
                         </DataGrid>
                     </Grid>
                 </TabItem>
-            </TabControl>
+            </TabControl>-->
         </Grid>
     </DockPanel>
 </Window>

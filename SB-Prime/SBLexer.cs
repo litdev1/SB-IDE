@@ -642,7 +642,7 @@ namespace SB_Prime
                 {
                     MainWindow.showObject = null;
                     MainWindow.showMember = member;
-                    if (Position >= 0 && MainWindow.THIS.viewGrid.ColumnDefinitions[2].Width.Value == 0) sbDocument.TextArea.CallTipShow(Position, CallTipFormat(member.summary));
+                    if (Position >= 0 && !MainWindow.THIS.canvasInfo.IsVisible) sbDocument.TextArea.CallTipShow(Position, CallTipFormat(member.summary));
                     //sbDocument.TextArea.CallTipSetHlt(0, member.summary.Length);
                     break;
                 }
@@ -658,7 +658,7 @@ namespace SB_Prime
                 {
                     MainWindow.showObject = obj;
                     MainWindow.showMember = null;
-                    if (Position >= 0 && MainWindow.THIS.viewGrid.ColumnDefinitions[2].Width.Value == 0) sbDocument.TextArea.CallTipShow(Position, CallTipFormat(obj.summary));
+                    if (Position >= 0 && !MainWindow.THIS.canvasInfo.IsVisible) sbDocument.TextArea.CallTipShow(Position, CallTipFormat(obj.summary));
                     //sbDocument.TextArea.CallTipSetHlt(0, obj.summary.Length);
                     break;
                 }
@@ -687,7 +687,7 @@ namespace SB_Prime
                         {
                             MainWindow.showObject = null;
                             MainWindow.showMember = member;
-                            if (Position >= 0 && MainWindow.THIS.viewGrid.ColumnDefinitions[2].Width.Value == 0)
+                            if (Position >= 0 && !MainWindow.THIS.canvasInfo.IsVisible)
                             {
                                 string name = "";
                                 switch (member.type)

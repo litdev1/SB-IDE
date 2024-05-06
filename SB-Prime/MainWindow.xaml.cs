@@ -1,4 +1,5 @@
-﻿using SB_Prime.Dialogs;
+﻿using AvalonDock.Layout;
+using SB_Prime.Dialogs;
 using ScintillaNET;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Ribbon;
+using System.Windows.Forms.Integration;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -293,10 +295,7 @@ namespace SB_Prime
         {
             SaveSettings();
 
-            e.Cancel = CloseTab(tabControlSB1);
-            if (e.Cancel) return;
-
-            e.Cancel = CloseTab(tabControlSB2);
+            e.Cancel = CloseLayouts();
             if (e.Cancel) return;
 
             foreach (Window item in App.Current.Windows)
@@ -321,8 +320,7 @@ namespace SB_Prime
                 string path = openFileDialog.FileName;
                 AddDocument();
                 activeDocument.LoadDataFromFile(path);
-                activeTab.Header = new TabHeader(path);
-                SetTabHeaderStyle(activeTab);
+                activeLayout.SetPath(path);
             }
         }
 
@@ -363,56 +361,17 @@ namespace SB_Prime
 
         private void fileSaveAll_Click(object sender, RoutedEventArgs e)
         {
-            TabItem curTab = activeTab;
+            SBLayout curLayout = activeLayout;
 
-            for (int i = 0; i < tabControlSB1.Items.Count; i++)
+            foreach (var layout in GetLayouts())
             {
-                tabControlSB1.SelectedIndex = i;
-                activeTab = (TabItem)tabControlSB1.Items[i];
+                activeLayout = layout;
                 activeDocument = GetDocument();
                 if (activeDocument.IsDirty) SaveDocumentAs();
             }
 
-            for (int i = 0; i < tabControlSB2.Items.Count; i++)
-            {
-                tabControlSB2.SelectedIndex = i;
-                activeTab = (TabItem)tabControlSB2.Items[i];
-                activeDocument = GetDocument();
-                if (activeDocument.IsDirty) SaveDocumentAs();
-            }
-
-            activeTab = curTab;
+            activeLayout = curLayout;
             activeDocument = GetDocument();
-        }
-
-        private void tabControlSB1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Activate((TabControl)sender);
-        }
-
-        private void tabControlSB2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Activate((TabControl)sender);
-        }
-
-        private void tabControlSB1_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Activate((TabControl)sender);
-        }
-
-        private void tabControlSB2_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Activate((TabControl)sender);
-        }
-
-        private void tabControlSB1_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Activate((TabControl)sender);
-        }
-
-        private void tabControlSB2_GotFocus(object sender, RoutedEventArgs e)
-        {
-            Activate((TabControl)sender);
         }
 
         private void debugDebug_Click(object sender, RoutedEventArgs e)
@@ -600,11 +559,11 @@ namespace SB_Prime
             RibbonTab tab = (RibbonTab)ribbon.SelectedItem;
             if (tab.Header.Equals("Debug"))
             {
-                if (null != tabDebug) tabControlResults.SelectedItem = tabDebug;
+                if (null != dock_Debug) dock_Debug.IsActive = true;
             }
             else
             {
-                if (null != tabOutput) tabControlResults.SelectedItem = tabOutput;
+                if (null != dock_Output) dock_Output.IsActive = true;
             }
         }
 
@@ -674,8 +633,7 @@ namespace SB_Prime
             {
                 AddDocument();
                 activeDocument.LoadDataFromFile(MRU);
-                activeTab.Header = new TabHeader(MRU);
-                SetTabHeaderStyle(activeTab);
+                activeLayout.SetPath(MRU);
             }
         }
 
@@ -1124,6 +1082,16 @@ namespace SB_Prime
             Process.Start("https://litdev.uk/game_images/upload.php");
         }
 
+        private void OnLayoutRootPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            var activeContent = ((LayoutRoot)sender).ActiveContent;
+            if (activeContent != null && activeContent.GetType() == typeof(SBLayout))
+            {
+                activeLayout = (SBLayout)activeContent;
+                activePane = (LayoutDocumentPane)activeLayout.Parent;
+                activeDocument = activeLayout.Doc;
+            }
+        }
         /*
 private bool mRestoreForDragMove;
 

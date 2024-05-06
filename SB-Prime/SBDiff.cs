@@ -30,10 +30,11 @@ namespace SB_Prime
     static class SBDiff
     {
         public static bool bShowDiff = false;
+        public static SBDocument doc1 = null;
+        public static SBDocument doc2 = null;
+
         private static Timer timer = new Timer(_timer, null, 1000, 1000);
         private static bool bRefresh = false;
-        private static TabControl tabConstrol1 = MainWindow.THIS.tabControlSB1;
-        private static TabControl tabConstrol2 = MainWindow.THIS.tabControlSB2;
 
         private static void _timer(object state)
         {
@@ -42,6 +43,9 @@ namespace SB_Prime
                 MainWindow.THIS.Dispatcher.Invoke(() =>
                 {
                     if (bRefresh) ClearDiff();
+                    if (null != doc1 && null == doc1.Layout.Content) doc1 = null;
+                    if (null != doc2 && null == doc2.Layout.Content) doc2 = null;
+                    bShowDiff = null != doc1 || null != doc2;
                     if (bShowDiff)
                     {
                         SetDiff();
@@ -66,13 +70,9 @@ namespace SB_Prime
 
         private static void SetDiff()
         {
-            TabItem item1 = (TabItem)tabConstrol1.Items[tabConstrol1.SelectedIndex];
-            SBDocument doc1 = (SBDocument)item1.Tag;
-            TabItem item2 = (TabItem)tabConstrol2.Items[tabConstrol2.SelectedIndex];
-            SBDocument doc2 = (SBDocument)item2.Tag;
+            if (null == doc1 || null == doc2 || doc1 == doc2) return;
 
             Diff.Item[] items = Diff.DiffText(doc1.TextArea.Text, doc2.TextArea.Text, true, true, true);
-
             foreach (Diff.Item item in items)
             {
                 Marker marker1 = doc1.TextArea.Markers[SBDocument.DELETED_MARKER];
@@ -94,20 +94,17 @@ namespace SB_Prime
 
         private static void ClearDiff()
         {
-            foreach (TabItem item in tabConstrol1.Items)
+            if (null != doc1)
             {
-                SBDocument doc = (SBDocument)item.Tag;
-                foreach (Line line in doc.TextArea.Lines)
+                foreach (Line line in doc1.TextArea.Lines)
                 {
                     line.MarkerDelete(SBDocument.DELETED_MARKER);
                     line.MarkerDelete(SBDocument.INSERTED_MARKER);
                 }
             }
-
-            foreach (TabItem item in tabConstrol2.Items)
+            if (null != doc2)
             {
-                SBDocument doc = (SBDocument)item.Tag;
-                foreach (Line line in doc.TextArea.Lines)
+                foreach (Line line in doc2.TextArea.Lines)
                 {
                     line.MarkerDelete(SBDocument.DELETED_MARKER);
                     line.MarkerDelete(SBDocument.INSERTED_MARKER);

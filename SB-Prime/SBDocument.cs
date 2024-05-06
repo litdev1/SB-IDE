@@ -27,6 +27,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Forms.Integration;
 
 namespace SB_Prime
 {
@@ -36,7 +37,6 @@ namespace SB_Prime
         private SBLexer lexer;
         private SBContext sbContext;
         private string filepath = "";
-        public TabItem Tab;
         public SBLayout Layout;
         public SBDebug debug = null;
         public Process Proc = null;
@@ -448,8 +448,7 @@ namespace SB_Prime
                         string path = a.GetValue(0).ToString();
 
                         LoadDataFromFile(path);
-                        Tab.Header = new TabHeader(path);
-                        MainWindow.THIS.SetTabHeaderStyle(Tab);
+                        Layout.SetPath(path);
                     }
                 }
             };
@@ -718,7 +717,7 @@ namespace SB_Prime
         private void GenerateKeystrokes(string keys)
         {
             HotKeyManager.Enable = false;
-            textArea.Focus();
+            ((WindowsFormsHost)Layout.Content).Focus();
             SendKeys.Send(keys);
             HotKeyManager.Enable = true;
         }

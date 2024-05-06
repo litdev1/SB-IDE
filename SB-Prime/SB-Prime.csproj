@@ -220,9 +220,6 @@
       <DependentUpon>StackVariables.xaml</DependentUpon>
     </Compile>
     <Compile Include="Diff.cs" />
-    <Compile Include="Docker.xaml.cs">
-      <DependentUpon>Docker.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FileFilter.cs" />
     <Compile Include="HotKeyManager.cs" />
     <Compile Include="MainWindow.cs" />
@@ -331,10 +328,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\StackVariables.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Docker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

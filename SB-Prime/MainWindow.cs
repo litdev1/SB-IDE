@@ -1,4 +1,6 @@
-﻿using ExtensionManagerLibrary;
+﻿using AvalonDock.Layout;
+using AvalonDock.Themes;
+using ExtensionManagerLibrary;
 using SB_Prime.Dialogs;
 using ScintillaNET;
 using System;
@@ -20,7 +22,6 @@ using System.Windows.Forms.Integration;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -62,10 +63,11 @@ namespace SB_Prime
         public static SearchFlags searchFlags = SearchFlags.None;
         public static Size size = new Size(double.PositiveInfinity, double.PositiveInfinity);
         public static bool CompileError = false;
-        public static Queue<TabItem> MarkedForDelete = new Queue<TabItem>();
+        public static Queue<SBLayout> MarkedForDelete = new Queue<SBLayout>();
         public static Queue<string> MarkedForOpen = new Queue<string>();
         public static Queue<string> MarkedForWatch = new Queue<string>();
         public static Queue<Action> MarkedForHotKey = new Queue<Action>();
+        public static Queue<WindowsFormsHost> MarkedForFocus = new Queue<WindowsFormsHost>();
         public static bool GetStackVariables = false;
         public static Dictionary<string, List<int>> breakpoints = new Dictionary<string, List<int>>();
         public static Dictionary<string, List<int>> bookmarks = new Dictionary<string, List<int>>();
@@ -76,7 +78,8 @@ namespace SB_Prime
         public SBInterop sbInterop;
         SBplugin sbPlugin;
         SBDocument activeDocument;
-        TabItem activeTab;
+        LayoutDocumentPane activePane;
+        SBLayout activeLayout;
         Timer threadTimer;
         bool debugUpdated = false;
         bool highlightsUpdated = false;
@@ -100,10 +103,10 @@ namespace SB_Prime
             }
 
             // CREATE CONTROLS
-            for (int i = tabControlSB1.Items.Count - 1; i >= 0; i--) tabControlSB1.Items.RemoveAt(i);
-            for (int i = tabControlSB2.Items.Count - 1; i >= 0; i--) tabControlSB2.Items.RemoveAt(i);
-            documentGrid.ColumnDefinitions[1].MaxWidth = dualScreen ? 6 : 0;
-            documentGrid.ColumnDefinitions[2].MaxWidth = dualScreen ? double.PositiveInfinity : 0;
+            dockManager.Theme = new Vs2013LightTheme();
+            activePane = new LayoutDocumentPane();
+            DocumentPaneGroup.Children.Clear();
+            DocumentPaneGroup.Children.Add(activePane);
 
             toggleSplit.IsChecked = dualScreen;
             toggleWrap.IsChecked = wrap;
@@ -117,10 +120,8 @@ namespace SB_Prime
             viewLanguage.Text = SBInterop.Language;
 
             // DEFAULT FILE
-            AddDocument(1);
-            AddDocument(2);
-            Activate(tabControlSB1);
-            tabControlSB1.Focus();
+            AddDocument();
+
             App app = (App)Application.Current;
             for (int i = 0; i < app.Arguments.Length; i++)
             {
@@ -128,8 +129,7 @@ namespace SB_Prime
                 if (i == 0)
                 {
                     activeDocument.LoadDataFromFile(app.Arguments[i]);
-                    activeTab.Header = new TabHeader(app.Arguments[i]);
-                    SetTabHeaderStyle(activeTab);
+                    activeLayout.SetPath(app.Arguments[i]);
                 }
                 else
                 {
@@ -190,9 +190,9 @@ namespace SB_Prime
             return activeDocument;
         }
 
-        public TabItem GetActiveTab()
+        public SBLayout GetActiveLayout()
         {
-            return activeTab;
+            return activeLayout;
         }
 
         private void SetWindowColors()
@@ -219,7 +219,7 @@ namespace SB_Prime
             };
             canvasInfo.Children.Add(tb);
             tb.Measure(size);
-            double canvasWidth = viewGrid.ColumnDefinitions[2].MaxWidth - 10; // Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
+            double canvasWidth = 350 - 10; // Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
             Canvas.SetLeft(tb, (canvasWidth - tb.DesiredSize.Width) / 2);
             Canvas.SetTop(tb, 25);
 
@@ -256,7 +256,7 @@ namespace SB_Prime
             };
             button.ToolTip = Properties.Strings.String2;
             button.Click += new RoutedEventHandler(ClickIntellisenseToggle);
-            wrapperGrid.Children.Add(button);
+            //wrapperGrid.Children.Add(button);
 
             Image img2 = new Image()
             {
@@ -274,7 +274,7 @@ namespace SB_Prime
             };
             button2.ToolTip = Properties.Strings.String3;
             button2.Click += new RoutedEventHandler(viewDual_Click);
-            wrapperGrid.Children.Add(button2);
+            //wrapperGrid.Children.Add(button2);
 
             Image img3 = new Image()
             {
@@ -296,7 +296,7 @@ namespace SB_Prime
             };
             button3.ToolTip = Properties.Strings.String4;
             button3.Click += new RoutedEventHandler(details_Click);
-            wrapperGrid.Children.Add(button3);
+            //wrapperGrid.Children.Add(button3);
 
             Image img4 = new Image()
             {
@@ -318,13 +318,13 @@ namespace SB_Prime
             };
             button4.ToolTip = Properties.Strings.String5;
             button4.Click += new RoutedEventHandler(difference_Click);
-            wrapperGrid.Children.Add(button4);
-            wrapperGrid.Children[4].Visibility = dualScreen ? Visibility.Visible : Visibility.Hidden;
+            //wrapperGrid.Children.Add(button4);
+            //wrapperGrid.Children[4].Visibility = dualScreen ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void details_Click(object sender, RoutedEventArgs e)
         {
-            Details details = new Details(((TabHeader)activeTab.Header).FileName, sbInterop);
+            Details details = new Details(activeLayout.FileName, sbInterop);
             details.Owner = GetWindow(this);
             details.ShowDialog();
         }
@@ -332,26 +332,26 @@ namespace SB_Prime
         private void difference_Click(object sender, RoutedEventArgs e)
         {
             SBDiff.UpdateDiff();
-            wrapperGrid.Children[4].Effect = SBDiff.bShowDiff ? new DropShadowEffect
-            {
-                Color = Colors.DarkCyan,
-                Direction = 0,
-                ShadowDepth = 0,
-                BlurRadius = 8,
-                Opacity = 1,
-            } : null;
+            //wrapperGrid.Children[4].Effect = SBDiff.bShowDiff ? new DropShadowEffect
+            //{
+            //    Color = Colors.DarkCyan,
+            //    Direction = 0,
+            //    ShadowDepth = 0,
+            //    BlurRadius = 8,
+            //    Opacity = 1,
+            //} : null;
         }
 
         private void ClickIntellisenseToggle(object sender, RoutedEventArgs e)
         {
-            if (viewGrid.ColumnDefinitions[2].Width.Value > 0)
-            {
-                viewGrid.ColumnDefinitions[2].Width = new GridLength(0);
-            }
-            else
-            {
-                viewGrid.ColumnDefinitions[2].Width = new GridLength(viewGrid.ColumnDefinitions[2].MaxWidth);
-            }
+            //if (viewGrid.ColumnDefinitions[2].Width.Value > 0)
+            //{
+            //    viewGrid.ColumnDefinitions[2].Width = new GridLength(0);
+            //}
+            //else
+            //{
+            //    viewGrid.ColumnDefinitions[2].Width = new GridLength(viewGrid.ColumnDefinitions[2].MaxWidth);
+            //}
         }
 
         private void GridDebugClick(object sender, RoutedEventArgs e)
@@ -419,8 +419,8 @@ namespace SB_Prime
             {
                 InstallDirExtra.Add(Properties.Settings.Default.InstallDirExtra[i]);
             }
-            mainGrid.RowDefinitions[2].Height = new GridLength(Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 150);
-            viewGrid.ColumnDefinitions[2].Width = new GridLength(Properties.Settings.Default.IntellisenseWidth > 0 ? viewGrid.ColumnDefinitions[2].MaxWidth : 0);
+            //mainGrid.RowDefinitions[2].Height = new GridLength(Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 150);
+            //viewGrid.ColumnDefinitions[2].Width = new GridLength(Properties.Settings.Default.IntellisenseWidth > 0 ? viewGrid.ColumnDefinitions[2].MaxWidth : 0);
             var ideColors = IDEColors;
             for (i = 0; i < Properties.Settings.Default.Colors.Count; i++)
             {
@@ -542,15 +542,10 @@ namespace SB_Prime
             {
                 if (!File.Exists(Properties.Settings.Default.MRU[i])) Properties.Settings.Default.MRU.RemoveAt(i);
             }
-            foreach (TabItem tab in tabControlSB2.Items)
+            foreach (var layout in GetLayouts())
             {
-                SBDocument doc = (SBDocument)tab.Tag;
-                if (Properties.Settings.Default.MRU.Contains(doc.Filepath)) Properties.Settings.Default.MRU.Remove(doc.Filepath);
-                if (File.Exists(doc.Filepath)) Properties.Settings.Default.MRU.Insert(0, doc.Filepath);
-            }
-            foreach (TabItem tab in tabControlSB1.Items)
-            {
-                SBDocument doc = (SBDocument)tab.Tag;
+                activeLayout = layout;
+                SBDocument doc = activeLayout.Doc;
                 if (Properties.Settings.Default.MRU.Contains(doc.Filepath)) Properties.Settings.Default.MRU.Remove(doc.Filepath);
                 if (File.Exists(doc.Filepath)) Properties.Settings.Default.MRU.Insert(0, doc.Filepath);
             }
@@ -585,23 +580,17 @@ namespace SB_Prime
             {
                 Properties.Settings.Default.InstallDirExtra.Add(InstallDirExtra[i]);
             }
-            Properties.Settings.Default.OutputHeight = mainGrid.RowDefinitions[2].ActualHeight;
-            Properties.Settings.Default.IntellisenseWidth = viewGrid.ColumnDefinitions[2].ActualWidth;
+            //Properties.Settings.Default.OutputHeight = mainGrid.RowDefinitions[2].ActualHeight;
+            //Properties.Settings.Default.IntellisenseWidth = viewGrid.ColumnDefinitions[2].ActualWidth;
             Properties.Settings.Default.Colors.Clear();
             foreach (KeyValuePair<string,int> kvp in IDEColors)
             {
                 Properties.Settings.Default.Colors.Add(kvp.Key + "?" + kvp.Value);
             }
 
-            foreach (TabItem tab in tabControlSB1.Items)
+            foreach(var layout in GetLayouts())
             {
-                activeTab = tab;
-                activeDocument = GetDocument();
-                activeDocument.SetMarks();
-            }
-            foreach (TabItem tab in tabControlSB2.Items)
-            {
-                activeTab = tab;
+                activeLayout = layout;
                 activeDocument = GetDocument();
                 activeDocument.SetMarks();
             }
@@ -702,13 +691,11 @@ namespace SB_Prime
             }
         }
 
-        private bool CloseTab(TabControl tabControl) // true is cancel
+        private bool CloseLayouts() // true is cancel
         {
-            int count = tabControl.Items.Count;
-            for (int i = count - 1; i >= 0; i--)
+            foreach (var layout in GetLayouts())
             {
-                tabControl.SelectedIndex = i;
-                activeTab = (TabItem)tabControl.Items[i];
+                activeLayout = layout;
                 activeDocument = GetDocument();
                 if (DeleteDocument() == System.Windows.Forms.DialogResult.Cancel)
                 {
@@ -721,7 +708,7 @@ namespace SB_Prime
         private void SaveDocumentAs()
         {
             System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            saveFileDialog.FileName = ((TabHeader)activeTab.Header).FileName;
+            saveFileDialog.FileName = activeLayout.FileName;
             saveFileDialog.Filter = "Small Basic files (*.sb)|*.sb|Formatted HTML (*.html)|*.html|All files (*.*)|*.*";
             saveFileDialog.FilterIndex = 1;
             saveFileDialog.RestoreDirectory = true;
@@ -730,8 +717,7 @@ namespace SB_Prime
                 if (saveFileDialog.FileName.ToLowerInvariant().EndsWith(".sb"))
                 {
                     activeDocument.SaveDataToFile(saveFileDialog.FileName);
-                    activeTab.Header = new TabHeader(saveFileDialog.FileName);
-                    SetTabHeaderStyle(activeTab);
+                    activeLayout.SetPath(saveFileDialog.FileName);
                     if (Properties.Settings.Default.MRU.Contains(activeDocument.Filepath)) Properties.Settings.Default.MRU.Remove(activeDocument.Filepath);
                     if (File.Exists(activeDocument.Filepath)) Properties.Settings.Default.MRU.Insert(0, activeDocument.Filepath);
                 }
@@ -743,48 +729,36 @@ namespace SB_Prime
             }
         }
 
-        private void AddDocument(int iTab = -1)
+        private List<SBLayout> GetLayouts()
+        {
+            return dockManager.Layout.Descendents().OfType<SBLayout>().ToList();
+        }
+
+        private void AddDocument()
         {
             List<int> nums = new List<int>();
-            foreach (TabItem tabItem in tabControlSB1.Items)
+            foreach (var layout in GetLayouts())
             {
-                if (((TabHeader)tabItem.Header).FileName.StartsWith("Untitled"))
+                if (layout.FileName.StartsWith("Untitled"))
                 {
                     int i;
-                    int.TryParse(((TabHeader)tabItem.Header).FileName.Substring(8), out i);
-                    nums.Add(i);
-                }
-            }
-            foreach (TabItem tabItem in tabControlSB2.Items)
-            {
-                if (((TabHeader)tabItem.Header).FileName.StartsWith("Untitled"))
-                {
-                    int i;
-                    int.TryParse(((TabHeader)tabItem.Header).FileName.Substring(8), out i);
+                    int.TryParse(layout.FileName.Substring(8), out i);
                     nums.Add(i);
                 }
             }
             int num = 1;
             while (nums.Contains(num)) num++;
-            WindowsFormsHost host = new WindowsFormsHost();
             activeDocument = new SBDocument();
-            host.Child = activeDocument.TextArea;
             activeDocument.TextArea.PreviewKeyDown += Window_PreviewKeyDown;
-            GetTabContol(iTab).Items.Add(new TabItem());
-            activeTab = (TabItem)GetTabContol(iTab).Items[GetTabContol(iTab).Items.Count - 1];
-            activeTab.Content = host;
-            activeTab.Header = new TabHeader("Untitled" + num);
-            SetTabHeaderStyle(activeTab);
-            activeTab.Tag = activeDocument;
-            activeDocument.Tab = activeTab;
+            activeLayout = AddDocument(activeDocument);
+            activeLayout.SetPath("Untitled" + num);
+            activeLayout.Doc = activeDocument;
+            activeDocument.Layout = activeLayout;
             activeDocument.WrapMode = wrap ? WrapMode.Whitespace : WrapMode.None;
             activeDocument.IndentationGuides = indent ? IndentView.LookBoth : IndentView.None;
             activeDocument.ViewWhitespace = whitespace ? WhitespaceMode.VisibleAlways : WhitespaceMode.Invisible;
             activeDocument.TextArea.Zoom = zoom;
             activeDocument.Theme = theme;
-
-            GetTabContol(iTab).SelectedIndex = GetTabContol(iTab).Items.Count - 1;
-            activeTab.Focus();
         }
 
         private System.Windows.Forms.DialogResult DeleteDocument()
@@ -793,8 +767,12 @@ namespace SB_Prime
 
             if (activeDocument.IsDirty)
             {
-                System.Windows.Forms.DialogResult dlg = System.Windows.Forms.MessageBox.Show(Properties.Strings.String46 + " " + ((TabHeader)activeTab.Header).FileName + " " + Properties.Strings.String47 +"\n\n" + Properties.Strings.String48, "SB-Prime", System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Question);
-                if (dlg == System.Windows.Forms.DialogResult.Cancel) return dlg;
+                System.Windows.Forms.DialogResult dlg = System.Windows.Forms.MessageBox.Show(Properties.Strings.String46 + " " + activeLayout.FileName + " " + Properties.Strings.String47 +"\n\n" + Properties.Strings.String48, "SB-Prime", System.Windows.Forms.MessageBoxButtons.YesNoCancel, System.Windows.Forms.MessageBoxIcon.Question);
+                if (dlg == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    activeLayout.Active = true;
+                    return dlg;
+                }
                 else if (dlg == System.Windows.Forms.DialogResult.Yes)
                 {
                     if (activeDocument.Filepath != "")
@@ -804,7 +782,7 @@ namespace SB_Prime
                     else
                     {
                         System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-                        saveFileDialog.FileName = ((TabHeader)activeTab.Header).FileName;
+                        saveFileDialog.FileName = activeLayout.FileName;
                         saveFileDialog.Filter = "Small Basic files (*.sb)|*.sb|All files (*.*)|*.*";
                         saveFileDialog.FilterIndex = 1;
                         saveFileDialog.RestoreDirectory = true;
@@ -813,63 +791,34 @@ namespace SB_Prime
                         else if (dlg == System.Windows.Forms.DialogResult.OK)
                         {
                             activeDocument.SaveDataToFile(saveFileDialog.FileName);
-                            activeTab.Header = new TabHeader(System.IO.Path.GetFileName(saveFileDialog.FileName));
-                            SetTabHeaderStyle(activeTab);
+                            activeLayout.SetPath(saveFileDialog.FileName);
                         }
                     }
                 }
             }
-            int curTabControl = GetTabContol() == tabControlSB1 ? 1 : 2;
-            if (GetTabContol().Items.Count > 1)
-            {
-                int nextSelected = Math.Max(0, GetTabContol().SelectedIndex - 1);
-                GetTabContol(curTabControl).Items.Remove(activeTab);
-                activeTab = (TabItem)GetTabContol(curTabControl).Items[nextSelected];
-                activeDocument = GetDocument();
-            }
-            else
-            {
-                GetTabContol(curTabControl).Items.Remove(activeTab);
-                AddDocument(curTabControl);
-            }
+            activeLayout.Active = false;
+            activeLayout.Close();
+            if (DocumentPaneGroup.ChildrenCount == 0) AddDocument();
             return System.Windows.Forms.DialogResult.OK;
-        }
-
-        private TabControl GetTabContol(int iTab)
-        {
-            if (iTab < 0) return GetTabContol();
-            else return iTab == 1 ? tabControlSB1 : tabControlSB2;
-        }
-
-        private TabControl GetTabContol()
-        {
-            return (TabControl)activeTab.Parent;
         }
 
         private SBDocument GetDocument()
         {
-            SetFocus();
-            return (SBDocument)activeTab.Tag;
+            return activeLayout.Doc;
         }
 
         private void SetFocus()
         {
-            if (null == activeTab || null == activeDocument) return;
-            ((WindowsFormsHost)activeTab.Content).Child.Focus();
-        }
-
-        private void Activate(TabControl tabControl)
-        {
-            if (tabControl.SelectedIndex >= 0)
-            {
-                activeTab = (TabItem)tabControl.Items[tabControl.SelectedIndex];
-                activeDocument = GetDocument();
-            }
+            if (null == activeLayout || null == activeDocument) return;
+            activeLayout.IsActive = true;
+            activeLayout.IsSelected = true;
+            activeDocument.TextArea.Focus();
+            activeDocument.TextArea.GotoPosition(0);
         }
 
         private void ThreadTimerCallback(object state)
         {
-            if (null == activeTab || null == activeDocument) return;
+            if (null == activeLayout || null == activeDocument) return;
             try
             {
                 if (CheckAccess())
@@ -925,24 +874,18 @@ namespace SB_Prime
 
         private void UpdateTabHeader()
         {
-            TabHeader tabHeader = ((TabHeader)activeTab.Header);
-            if (null != tabHeader)
+            activeLayout.SetDirty(activeDocument.IsDirty);
+            if (MarkedForDelete.Count > 0)
             {
-                tabHeader.SetDirty(activeDocument.IsDirty);
-                if (MarkedForDelete.Count > 0)
-                {
-                    TabControl selectedTab = GetTabContol();
-                    int selectedIndex = selectedTab.SelectedIndex;
-
-                    activeTab = MarkedForDelete.Dequeue();
-                    activeDocument = GetDocument();
-                    int deletedIndex = GetTabContol().Items.IndexOf(activeTab);
-                    GetTabContol().SelectedIndex = deletedIndex;
-                    DeleteDocument();
-
-                    selectedTab.SelectedIndex = GetTabContol() != selectedTab || deletedIndex > selectedIndex ? selectedIndex : selectedIndex - 1;
-                    Activate(selectedTab);
-                }
+                activeLayout = MarkedForDelete.Dequeue();
+                activeDocument = GetDocument();
+                DeleteDocument();
+            }
+            if (MarkedForFocus.Count > 0)
+            {
+                WindowsFormsHost host = MarkedForFocus.Dequeue();
+                host.Focus();
+                SetFocus();
             }
         }
 
@@ -993,7 +936,7 @@ namespace SB_Prime
             }
             if (CompileError)
             {
-                tabControlResults.SelectedItem = tabOutput;
+                dock_Debug.IsActive = true;
                 CompileError = false;
             }
         }
@@ -1026,6 +969,7 @@ namespace SB_Prime
                 double left = 10;
                 double top = 10;
                 string name;
+                double canvasWidth = Math.Max(canvasInfo.ActualWidth, 200);
 
                 if (null != obj && obj != showObjectLast)
                 {
@@ -1049,7 +993,7 @@ namespace SB_Prime
                     TextBlock tb = new TextBlock()
                     {
                         Text = name,
-                        Width = 250,
+                        Width = canvasWidth - 100,
                         TextWrapping = TextWrapping.Wrap,
                         FontSize = 18 + zoom
                     };
@@ -1062,7 +1006,7 @@ namespace SB_Prime
                     tb = new TextBlock()
                     {
                         Text = FormatIntellisense(obj.summary),
-                        Width = 250,
+                        Width = canvasWidth - 100,
                         TextWrapping  = TextWrapping.Wrap,
                         FontSize = 14 + zoom
                     };
@@ -1124,7 +1068,7 @@ namespace SB_Prime
                         tb = new TextBlock()
                         {
                             Text = name,
-                            Width = 300,
+                            Width = canvasWidth - 50,
                             TextWrapping = TextWrapping.Wrap,
                             FontSize = 12 + zoom
                         };
@@ -1139,7 +1083,7 @@ namespace SB_Prime
                             tb.ToolTip = new TextBlock()
                             {
                                 Text = FormatIntellisense(mem.summary),
-                                Width = 200,
+                                Width = canvasWidth - 150,
                                 TextWrapping = TextWrapping.Wrap,
                                 FontSize = 12 + zoom
                             };
@@ -1205,7 +1149,7 @@ namespace SB_Prime
                     TextBlock tb = new TextBlock()
                     {
                         Text = name,
-                        Width = 250,
+                        Width = canvasWidth - 100,
                         TextWrapping = TextWrapping.Wrap,
                         FontSize = 18 + zoom
                     };
@@ -1218,7 +1162,7 @@ namespace SB_Prime
                     tb = new TextBlock()
                     {
                         Text = FormatIntellisense(member.summary),
-                        Width = 250,
+                        Width = canvasWidth - 100,
                         TextWrapping = TextWrapping.Wrap,
                         FontSize = 14 + zoom
                     };
@@ -1233,7 +1177,7 @@ namespace SB_Prime
                         tb = new TextBlock()
                         {
                             Text = Properties.Strings.String11,
-                            Width = 300,
+                            Width = canvasWidth - 50,
                             TextWrapping = TextWrapping.Wrap,
                             FontSize = 14 + zoom,
                             FontWeight = FontWeights.Bold
@@ -1249,7 +1193,7 @@ namespace SB_Prime
                             tb = new TextBlock()
                             {
                                 Text = pair.Key,
-                                Width = 300,
+                                Width = canvasWidth - 50,
                                 TextWrapping = TextWrapping.Wrap,
                                 FontSize = 14 + zoom,
                                 Foreground = new SolidColorBrush(Colors.Crimson)
@@ -1263,7 +1207,7 @@ namespace SB_Prime
                             tb = new TextBlock()
                             {
                                 Text = FormatIntellisense(pair.Value),
-                                Width = 300,
+                                Width = canvasWidth - 50,
                                 TextWrapping = TextWrapping.Wrap,
                                 FontSize = 12 + zoom
                             };
@@ -1280,7 +1224,7 @@ namespace SB_Prime
                         tb = new TextBlock()
                         {
                             Text = Properties.Strings.String12,
-                            Width = 300,
+                            Width = canvasWidth - 50,
                             TextWrapping = TextWrapping.Wrap,
                             FontSize = 14 + zoom,
                             FontWeight = FontWeights.Bold
@@ -1294,7 +1238,7 @@ namespace SB_Prime
                         tb = new TextBlock()
                         {
                             Text = FormatIntellisense(member.returns),
-                            Width = 300,
+                            Width = canvasWidth - 50,
                             TextWrapping = TextWrapping.Wrap,
                             FontSize = 12 + zoom
                         };
@@ -1312,7 +1256,7 @@ namespace SB_Prime
                             tb = new TextBlock()
                             {
                                 Text = pair.Key,
-                                Width = 300,
+                                Width = canvasWidth - 50,
                                 TextWrapping = TextWrapping.Wrap,
                                 FontSize = 14 + zoom,
                                 FontWeight = FontWeights.Bold
@@ -1326,7 +1270,7 @@ namespace SB_Prime
                             tb = new TextBlock()
                             {
                                 Text = FormatIntellisense(pair.Value),
-                                Width = 300,
+                                Width = canvasWidth - 50,
                                 TextWrapping = TextWrapping.Wrap,
                                 FontSize = 12 + zoom
                             };
@@ -1364,8 +1308,7 @@ namespace SB_Prime
                 AddDocument();
                 string path = MarkedForOpen.Dequeue();
                 activeDocument.LoadDataFromFile(path);
-                activeTab.Header = new TabHeader(path);
-                SetTabHeaderStyle(activeTab);
+                activeLayout.SetPath(path);
             }
         }
 
@@ -1380,8 +1323,8 @@ namespace SB_Prime
             statusSBPath.Content = InstallDir;
             statusIcon.Source = ImageSourceFromBitmap(SBInterop.Variant == SBInterop.eVariant.SmallVisualBasic ? Properties.Resources.sVB : Properties.Resources.AppIcon);
             if (null == activeDocument.debug) statusRun.Content = "";
-            else if (activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String176 + " " + ((TabHeader)activeTab.Header).FileName;
-            else if (!activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String177 + " " + ((TabHeader)activeTab.Header).FileName;
+            else if (activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String176 + " " + activeLayout.FileName;
+            else if (!activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String177 + " " + activeLayout.FileName;
         }
 
         private void UpdateZoom()
@@ -1672,14 +1615,14 @@ namespace SB_Prime
 
         public void Publish()
         {
-            string key = sbInterop.Publish(activeDocument.TextArea.Text, ((TabHeader)activeTab.Header).BaseID);
+            string key = sbInterop.Publish(activeDocument.TextArea.Text, activeLayout.BaseID);
             if (key == "error")
             {
                 Errors.Add(new Error("Publish : " + Properties.Strings.String64));
             }
             else
             {
-                ((TabHeader)activeTab.Header).BaseID = key;
+                activeLayout.BaseID = key;
                 Errors.Add(new Error("Publish : " + Properties.Strings.String65 + " " + key));
                 Publish publish = new Publish(sbInterop, key);
                 publish.Owner = GetWindow(this);
@@ -1696,8 +1639,8 @@ namespace SB_Prime
             {
                 AddDocument();
                 activeDocument.LoadDataFromText(ImportProgram);
-                ((TabHeader)activeTab.Header).FilePath = import.textBoxImport.Text;
-                ((TabHeader)activeTab.Header).BaseID = import.textBoxImport.Text;
+                activeLayout.SetPath(import.textBoxImport.Text);
+                activeLayout.BaseID = import.textBoxImport.Text;
             }
         }
 
@@ -1722,22 +1665,17 @@ namespace SB_Prime
         {
             dualScreen = !dualScreen;
             toggleSplit.IsChecked = dualScreen;
-            documentGrid.ColumnDefinitions[1].MaxWidth = dualScreen ? 6 : 0;
-            documentGrid.ColumnDefinitions[2].MaxWidth = dualScreen ? double.PositiveInfinity : 0;
-            wrapperGrid.Children[4].Visibility = dualScreen ? Visibility.Visible : Visibility.Hidden;
+            //documentGrid.ColumnDefinitions[1].MaxWidth = dualScreen ? 6 : 0;
+            //documentGrid.ColumnDefinitions[2].MaxWidth = dualScreen ? double.PositiveInfinity : 0;
+            //wrapperGrid.Children[4].Visibility = dualScreen ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void Wrap()
         {
             wrap = !wrap;
-            foreach (TabItem tab in tabControlSB2.Items)
+            foreach (var layout in GetLayouts())
             {
-                SBDocument doc = (SBDocument)tab.Tag;
-                doc.WrapMode = wrap ? WrapMode.Whitespace : WrapMode.None;
-            }
-            foreach (TabItem tab in tabControlSB1.Items)
-            {
-                SBDocument doc = (SBDocument)tab.Tag;
+                SBDocument doc = layout.Doc;
                 doc.WrapMode = wrap ? WrapMode.Whitespace : WrapMode.None;
             }
         }
@@ -1745,14 +1683,9 @@ namespace SB_Prime
         private void Indent()
         {
             indent = !indent;
-            foreach (TabItem tab in tabControlSB2.Items)
+            foreach (var layout in GetLayouts())
             {
-                SBDocument doc = (SBDocument)tab.Tag;
-                doc.IndentationGuides = indent ? IndentView.LookBoth : IndentView.None;
-            }
-                foreach (TabItem tab in tabControlSB1.Items)
-            {
-                SBDocument doc = (SBDocument)tab.Tag;
+                SBDocument doc = layout.Doc;
                 doc.IndentationGuides = indent ? IndentView.LookBoth : IndentView.None;
             }
         }
@@ -1760,14 +1693,9 @@ namespace SB_Prime
         private void Whitespace()
         {
             whitespace = !whitespace;
-            foreach (TabItem tab in tabControlSB2.Items)
+            foreach (var layout in GetLayouts())
             {
-                SBDocument doc = (SBDocument)tab.Tag;
-                doc.ViewWhitespace = whitespace ? WhitespaceMode.VisibleAlways : WhitespaceMode.Invisible;
-            }
-            foreach (TabItem tab in tabControlSB1.Items)
-            {
-                SBDocument doc = (SBDocument)tab.Tag;
+                SBDocument doc = layout.Doc;
                 doc.ViewWhitespace = whitespace ? WhitespaceMode.VisibleAlways : WhitespaceMode.Invisible;
             }
         }
@@ -1775,14 +1703,9 @@ namespace SB_Prime
         private void NumberMargin()
         {
             showNumberMargin = !showNumberMargin;
-            foreach (TabItem tab in tabControlSB2.Items)
+            foreach (var layout in GetLayouts())
             {
-                SBDocument doc = (SBDocument)tab.Tag;
-                doc.TextArea.Margins[SBDocument.NUMBER_MARGIN].Width = MainWindow.showNumberMargin ? Math.Max(50, 10 * (int)Math.Log10(doc.TextArea.Lines.Count)) : 0;
-            }
-            foreach (TabItem tab in tabControlSB1.Items)
-            {
-                SBDocument doc = (SBDocument)tab.Tag;
+                SBDocument doc = layout.Doc;
                 doc.TextArea.Margins[SBDocument.NUMBER_MARGIN].Width = MainWindow.showNumberMargin ? Math.Max(50, 10 * (int)Math.Log10(doc.TextArea.Lines.Count)) : 0;
             }
         }
@@ -1792,7 +1715,7 @@ namespace SB_Prime
             try
             {
                 ScintillaPrinting.Printing printer = new ScintillaPrinting.Printing(activeDocument.TextArea);
-                printer.PrintDocument.DocumentName = activeDocument.Filepath == "" ? ((TabHeader)activeTab.Header).FilePath : activeDocument.Filepath;
+                printer.PrintDocument.DocumentName = activeDocument.Filepath == "" ? activeLayout.FilePath : activeDocument.Filepath;
                 printer.PageSettings = new ScintillaPrinting.PageSettings() { ColorMode = (ScintillaPrinting.PageSettings.PrintColorMode)printColours, FontMagnification = printMagnification };
                 //printer.PrintPreview();
                 printer.Print();
@@ -1837,14 +1760,9 @@ namespace SB_Prime
         {
             activeDocument.ZoomIn();
             zoom = activeDocument.TextArea.Zoom;
-            foreach (TabItem tab in tabControlSB2.Items)
+            foreach (var layout in GetLayouts())
             {
-                SBDocument doc = (SBDocument)tab.Tag;
-                doc.TextArea.Zoom = zoom;
-            }
-            foreach (TabItem tab in tabControlSB1.Items)
-            {
-                SBDocument doc = (SBDocument)tab.Tag;
+                SBDocument doc = layout.Doc;
                 doc.TextArea.Zoom = zoom;
             }
         }
@@ -1853,14 +1771,9 @@ namespace SB_Prime
         {
             activeDocument.ZoomOut();
             zoom = activeDocument.TextArea.Zoom;
-            foreach (TabItem tab in tabControlSB2.Items)
+            foreach (var layout in GetLayouts())
             {
-                SBDocument doc = (SBDocument)tab.Tag;
-                doc.TextArea.Zoom = zoom;
-            }
-            foreach (TabItem tab in tabControlSB1.Items)
-            {
-                SBDocument doc = (SBDocument)tab.Tag;
+                SBDocument doc = layout.Doc;
                 doc.TextArea.Zoom = zoom;
             }
         }
@@ -1869,14 +1782,9 @@ namespace SB_Prime
         {
             activeDocument.ZoomDefault();
             zoom = activeDocument.TextArea.Zoom;
-            foreach (TabItem tab in tabControlSB2.Items)
+            foreach (var layout in GetLayouts())
             {
-                SBDocument doc = (SBDocument)tab.Tag;
-                doc.TextArea.Zoom = zoom;
-            }
-            foreach (TabItem tab in tabControlSB1.Items)
-            {
-                SBDocument doc = (SBDocument)tab.Tag;
+                SBDocument doc = layout.Doc;
                 doc.TextArea.Zoom = zoom;
             }
         }
@@ -1884,14 +1792,13 @@ namespace SB_Prime
         private void Theme()
         {
             theme = (theme + 1) % 2;
-            foreach (TabItem tab in tabControlSB2.Items)
+            if (theme == 0)
+                dockManager.Theme = new Vs2013LightTheme();
+            else
+                dockManager.Theme = new Vs2013DarkTheme();
+            foreach (var layout in GetLayouts())
             {
-                SBDocument doc = (SBDocument)tab.Tag;
-                doc.Theme = theme;
-            }
-            foreach (TabItem tab in tabControlSB1.Items)
-            {
-                SBDocument doc = (SBDocument)tab.Tag;
+                SBDocument doc = layout.Doc;
                 doc.Theme = theme;
             }
         }
@@ -1922,9 +1829,25 @@ namespace SB_Prime
             decompile.Owner = GetWindow(this);
             decompile.ShowDialog();
         }
-        public void SetTabHeaderStyle(TabItem tab)
+
+        private SBLayout AddDocument(SBDocument doc)
         {
-            tab.Style = (System.Windows.Style)FindResource("RoundedTabItem");
+            WindowsFormsHost host = new WindowsFormsHost();
+            host.Loaded += new RoutedEventHandler(OnHostLoaded);
+            host.Child = doc.TextArea;
+            activeLayout = new SBLayout();
+            activeLayout.Doc = doc;
+            activeLayout.Content = host;
+            activeLayout.IconSource = ImageSourceFromBitmap(new System.Drawing.Bitmap(Properties.Resources.AppIcon, 16, 16));
+            activePane.Children.Add(activeLayout);
+
+            return activeLayout; //These are equivalent to original tabs
+        }
+
+        private void OnHostLoaded(object sender, RoutedEventArgs e)
+        {
+            WindowsFormsHost host = (WindowsFormsHost)sender;
+            MarkedForFocus.Enqueue(host);
         }
 
         protected virtual void Dispose(bool disposing)
@@ -1940,74 +1863,6 @@ namespace SB_Prime
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
-    }
-
-    public class TabHeader : Grid
-    {
-        private string filePath;
-        private string fileName;
-        private string baseID;
-        private TextBlock textBlock = new TextBlock() { FontWeight = FontWeights.Bold, FontSize = 12 + MainWindow.zoom };
-
-        public string FileName
-        {
-            get { return fileName; }
-        }
-
-        public string FilePath
-        {
-            get { return filePath; }
-            set
-            {
-                filePath = value;
-                fileName = Path.GetFileName(filePath);
-                ToolTip = new TextBlock() { Text = filePath };
-            }
-        }
-
-        public string BaseID
-        {
-            get { return baseID; }
-            set { baseID = value; }
-        }
-
-        public TabHeader(string _filePath)
-        {
-            ImageSource imgSource = MainWindow.ImageSourceFromBitmap(Properties.Resources.Erase);
-            Image img = new Image()
-            {
-                Width = 14,
-                Height = 14,
-                Source = imgSource
-            };
-            Button button = new Button() { Content = img,
-                Background = new SolidColorBrush(Colors.Transparent), BorderBrush = new SolidColorBrush(Colors.Transparent) };
-
-            baseID = "SBProgram";
-            filePath = _filePath;
-            fileName = Path.GetFileName(filePath);
-            Children.Add(textBlock);
-            Children.Add(button);
-            VerticalAlignment = VerticalAlignment.Center;
-            ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength() });
-            ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength() });
-            SetColumn(textBlock, 0);
-            SetColumn(button, 1);
-            textBlock.Text = fileName + " ";
-            button.Click += new RoutedEventHandler(OnClick);
-            ToolTip = new TextBlock() { Text = filePath };
-        }
-
-        public void SetDirty(bool isDirty)
-        {
-            if (isDirty) textBlock.Text = fileName + " * ";
-            else textBlock.Text = fileName + " ";
-        }
-
-        private void OnClick(Object sender, RoutedEventArgs e)
-        {
-            MainWindow.MarkedForDelete.Enqueue((TabItem)Parent);
         }
     }
 
@@ -2158,6 +2013,50 @@ namespace SB_Prime
             Row = -1;
             Col = -1;
             Level = 0;
+        }
+    }
+
+    public class SBLayout : LayoutDocument
+    {
+        private SBDocument doc = null;
+        private string filePath = "";
+        private string fileName = "";
+        private string baseID = "";
+        private bool active = true;
+
+        public SBLayout()
+        {
+            Closing += new EventHandler<CancelEventArgs>(OnClosing);
+        }
+
+        public void SetPath(string _filePath)
+        {
+            filePath = _filePath;
+            fileName = Path.GetFileName(filePath);
+            Title = fileName;
+            ToolTip = filePath;
+        }
+
+        public void SetDirty(bool isDirty)
+        {
+            if (isDirty) Title = fileName + " *";
+            else Title = fileName;
+        }
+
+        public SBDocument Doc { get { return doc; } set { doc = value; } }
+        public string BaseID { get { return baseID; } set { baseID = value; } }
+        public string FilePath { get { return filePath; } }
+        public string FileName { get { return fileName; } }
+        public bool Active { get { return active; } set { active = value; } }
+
+        private void OnClosing(Object sender, CancelEventArgs e)
+        {
+            if (active)
+            {
+                MainWindow.MarkedForDelete.Enqueue(this);
+                e.Cancel = true;
+            }
+            active = false;
         }
     }
 }
