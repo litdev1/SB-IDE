@@ -34,6 +34,8 @@ namespace SB_Prime
         public static ObservableCollection<Error> Errors = new ObservableCollection<Error>();
         public static SBObject showObject = null;
         public static SBObject showObjectLast = null;
+        public static double canvasWidth = 0;
+        public static double canvasWidthLast = 0;
         public static Member showMember = null;
         public static Member showMemberLast = null;
         public static string InstallDir = "";
@@ -219,7 +221,7 @@ namespace SB_Prime
             };
             canvasInfo.Children.Add(tb);
             tb.Measure(size);
-            double canvasWidth = 350 - 10; // Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
+            canvasWidth = 350 - 10; // Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
             Canvas.SetLeft(tb, (canvasWidth - tb.DesiredSize.Width) / 2);
             Canvas.SetTop(tb, 25);
 
@@ -969,9 +971,9 @@ namespace SB_Prime
                 double left = 10;
                 double top = 10;
                 string name;
-                double canvasWidth = Math.Max(canvasInfo.ActualWidth, 200);
+                canvasWidth = Math.Max(canvasInfo.ActualWidth, 200);
 
-                if (null != obj && obj != showObjectLast)
+                if (null != obj && (obj != showObjectLast || canvasWidth != canvasWidthLast))
                 {
                     canvasInfo.Children.Clear();
 
@@ -1092,7 +1094,7 @@ namespace SB_Prime
 
                     canvasInfo.MinHeight = top + 20;
                 }
-                else if (null != member && member != showMemberLast)
+                else if (null != member && (member != showMemberLast || canvasWidth != canvasWidthLast))
                 {
                     canvasInfo.Children.Clear();
 
@@ -1287,7 +1289,9 @@ namespace SB_Prime
 
                 showObjectLast = obj;
                 showMemberLast = member;
-            }
+                canvasWidthLast = canvasWidth;
+
+    }
             catch (Exception ex)
             {
 
