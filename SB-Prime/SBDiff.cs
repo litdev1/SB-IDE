@@ -29,10 +29,11 @@ namespace SB_Prime
 {
     static class SBDiff
     {
-        public static bool bShowDiff = false;
+        public static bool bEndDiff = false;
         public static SBDocument doc1 = null;
         public static SBDocument doc2 = null;
 
+        private static bool bShowDiff = false;
         private static Timer timer = new Timer(_timer, null, 1000, 1000);
         private static bool bRefresh = false;
 
@@ -42,6 +43,13 @@ namespace SB_Prime
             {
                 MainWindow.THIS.Dispatcher.Invoke(() =>
                 {
+                    if (bEndDiff)
+                    {
+                        ClearDiff();
+                        doc1 = null;
+                        doc2 = null;
+                        bEndDiff = false;
+                    }
                     if (bRefresh) ClearDiff();
                     if (null != doc1 && null == doc1.Layout.Content) doc1 = null;
                     if (null != doc2 && null == doc2.Layout.Content) doc2 = null;

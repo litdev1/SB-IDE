@@ -107,8 +107,7 @@ namespace SB_Prime
 
         private void EndCompare()
         {
-            SBDiff.doc1 = null;
-            SBDiff.doc2 = null;
+            SBDiff.bEndDiff = true;
         }
 
         private void OnClosed(object sender, ToolStripDropDownClosedEventArgs e)
