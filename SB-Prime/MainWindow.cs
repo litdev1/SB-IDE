@@ -87,6 +87,7 @@ namespace SB_Prime
         bool debugUpdated = false;
         bool highlightsUpdated = false;
         object lockRun = new object();
+        SBInterop.eVariant lastVariant = SBInterop.eVariant.None;
 
         private void InitWindow()
         {
@@ -1332,7 +1333,11 @@ namespace SB_Prime
             statusInsert.Content = Keyboard.IsKeyToggled(Key.Insert) ? Properties.Strings.String175 : "";
             statusAliases.Content = FileFilter.EnableAliases ? Properties.Strings.Label492 : "";
             statusSBPath.Content = InstallDir;
-            statusIcon.Source = ImageSourceFromBitmap(SBInterop.Variant == SBInterop.eVariant.SmallVisualBasic ? Properties.Resources.sVB : Properties.Resources.AppIcon);
+            if (SBInterop.Variant != lastVariant)
+            {
+                statusIcon.Source = ImageSourceFromBitmap(SBInterop.Variant == SBInterop.eVariant.SmallVisualBasic ? Properties.Resources.sVB : Properties.Resources.AppIcon);
+                lastVariant = SBInterop.Variant;
+            }
             if (null == activeDocument.debug) statusRun.Content = "";
             else if (activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String176 + " " + activeLayout.FileName;
             else if (!activeDocument.debug.IsDebug()) statusRun.Content = Properties.Strings.String177 + " " + activeLayout.FileName;

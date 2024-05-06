@@ -60,7 +60,7 @@ namespace SB_Prime
         public static string Language = "";
         public static int Version = 0;
 
-        public enum eVariant { SmallBasic, SmallVisualBasic }
+        public enum eVariant { None, SmallBasic, SmallVisualBasic }
         public static eVariant Variant = eVariant.SmallBasic;
 
         public SBInterop()
