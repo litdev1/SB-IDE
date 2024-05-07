@@ -193,7 +193,7 @@ namespace SB_Prime.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("150")]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
         public double OutputHeight {
             get {
                 return ((double)(this["OutputHeight"]));

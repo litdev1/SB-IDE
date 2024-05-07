@@ -45,7 +45,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="OutputHeight" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">150</Value>
+      <Value Profile="(Default)">300</Value>
     </Setting>
     <Setting Name="HighlightAll" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

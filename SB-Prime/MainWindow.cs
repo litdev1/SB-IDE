@@ -423,8 +423,9 @@ namespace SB_Prime
             {
                 InstallDirExtra.Add(Properties.Settings.Default.InstallDirExtra[i]);
             }
-            //mainGrid.RowDefinitions[2].Height = new GridLength(Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 150);
-            //viewGrid.ColumnDefinitions[2].Width = new GridLength(Properties.Settings.Default.IntellisenseWidth > 0 ? viewGrid.ColumnDefinitions[2].MaxWidth : 0);
+            //dock_Output.AutoHideHeight = Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 300;
+            //dock_Debug.AutoHideHeight = Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 300;
+            //dock_Intellisense.AutoHideWidth = Properties.Settings.Default.IntellisenseWidth > 0 ? Properties.Settings.Default.IntellisenseWidth : 350;
             var ideColors = IDEColors;
             for (i = 0; i < Properties.Settings.Default.Colors.Count; i++)
             {
@@ -587,8 +588,8 @@ namespace SB_Prime
             {
                 Properties.Settings.Default.InstallDirExtra.Add(InstallDirExtra[i]);
             }
-            //Properties.Settings.Default.OutputHeight = mainGrid.RowDefinitions[2].ActualHeight;
-            //Properties.Settings.Default.IntellisenseWidth = viewGrid.ColumnDefinitions[2].ActualWidth;
+            //Properties.Settings.Default.OutputHeight = dataGridResults.ActualHeight;
+            //Properties.Settings.Default.IntellisenseWidth = canvasInfo.ActualWidth;
             Properties.Settings.Default.Colors.Clear();
             foreach (KeyValuePair<string,int> kvp in IDEColors)
             {
@@ -835,6 +836,7 @@ namespace SB_Prime
             {
                 if (CheckAccess())
                 {
+                    if (null == activeLayout || null == activeDocument) return;
                     UpdateDebug();
                     UpdateOutput();
                     UpdateRun();
@@ -850,6 +852,7 @@ namespace SB_Prime
                 {
                     Dispatcher.Invoke(() =>
                     {
+                        if (null == activeLayout || null == activeDocument) return;
                         UpdateDebug();
                         UpdateOutput();
                         UpdateRun();
