@@ -2069,7 +2069,7 @@ namespace SB_Prime
 
         private void OnClosing(Object sender, CancelEventArgs e)
         {
-            if (active)
+            if (active && null != doc)
             {
                 MainWindow.MarkedForDelete.Enqueue(this);
                 e.Cancel = true;
