@@ -298,9 +298,9 @@
                                 </LayoutDocument>
                             </LayoutDocumentPane>-->
                             </LayoutDocumentPaneGroup>
-                            <LayoutAnchorablePaneGroup DockWidth="350" DockMinWidth="250">
+                            <LayoutAnchorablePaneGroup x:Name="pane_Intellisense" DockWidth="350" DockMinWidth="200">
                                 <LayoutAnchorablePane>
-                                    <LayoutAnchorable AutoHideMinWidth="250" AutoHideWidth="350"
+                                    <LayoutAnchorable AutoHideMinWidth="200" AutoHideWidth="350"
                                 x:Name="dock_Intellisense"
                                 Title="Intellisense"
                                 CanClose="False"
@@ -316,7 +316,7 @@
                                 </LayoutAnchorablePane>
                             </LayoutAnchorablePaneGroup>
                         </LayoutPanel>
-                        <LayoutAnchorablePaneGroup DockHeight="300" DockMinHeight="100">
+                        <LayoutAnchorablePaneGroup x:Name="pane_Output" DockHeight="300" DockMinHeight="100">
                             <LayoutAnchorablePane>
                                 <LayoutAnchorable AutoHideMinHeight="100" AutoHideHeight="300"
                                 x:Name="dock_Output"

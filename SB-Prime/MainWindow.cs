@@ -223,7 +223,7 @@ namespace SB_Prime
             };
             canvasInfo.Children.Add(tb);
             tb.Measure(size);
-            canvasWidth = 350 - 10; // Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
+            canvasWidth = pane_Intellisense.DockWidth.Value - 10; // Math.Max(canvasInfo.ActualWidth, Math.Max(20 + tb.DesiredSize.Width, 200));
             Canvas.SetLeft(tb, (canvasWidth - tb.DesiredSize.Width) / 2);
             Canvas.SetTop(tb, 25);
 
@@ -423,9 +423,11 @@ namespace SB_Prime
             {
                 InstallDirExtra.Add(Properties.Settings.Default.InstallDirExtra[i]);
             }
-            //dock_Output.AutoHideHeight = Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 300;
-            //dock_Debug.AutoHideHeight = Properties.Settings.Default.OutputHeight > 0 ? Properties.Settings.Default.OutputHeight : 300;
-            //dock_Intellisense.AutoHideWidth = Properties.Settings.Default.IntellisenseWidth > 0 ? Properties.Settings.Default.IntellisenseWidth : 350;
+            pane_Output.DockHeight = new GridLength(Math.Max(Properties.Settings.Default.OutputHeight, pane_Output.DockMinHeight));
+            dock_Output.AutoHideHeight = pane_Output.DockHeight.Value;
+            dock_Debug.AutoHideHeight = pane_Output.DockHeight.Value;
+            pane_Intellisense.DockWidth = new GridLength(Math.Max(Properties.Settings.Default.IntellisenseWidth, pane_Intellisense.DockMinWidth));
+            dock_Intellisense.AutoHideWidth = pane_Intellisense.DockWidth.Value;
             var ideColors = IDEColors;
             for (i = 0; i < Properties.Settings.Default.Colors.Count; i++)
             {
@@ -588,8 +590,8 @@ namespace SB_Prime
             {
                 Properties.Settings.Default.InstallDirExtra.Add(InstallDirExtra[i]);
             }
-            //Properties.Settings.Default.OutputHeight = dataGridResults.ActualHeight;
-            //Properties.Settings.Default.IntellisenseWidth = canvasInfo.ActualWidth;
+            Properties.Settings.Default.OutputHeight = pane_Output.DockHeight.Value;
+            Properties.Settings.Default.IntellisenseWidth = pane_Intellisense.DockWidth.Value;
             Properties.Settings.Default.Colors.Clear();
             foreach (KeyValuePair<string,int> kvp in IDEColors)
             {
@@ -633,8 +635,8 @@ namespace SB_Prime
 
             Properties.Settings.Default.Save();
 
-            //var layoutSerializer = new XmlLayoutSerializer(dockManager);
-            //layoutSerializer.Serialize(@".\AvalonDock.Layout.config");
+            var layoutSerializer = new XmlLayoutSerializer(dockManager);
+            layoutSerializer.Serialize(@".\AvalonDock.Layout.config");
         }
 
         private void ExportSettings()
@@ -984,7 +986,7 @@ namespace SB_Prime
                 double left = 10;
                 double top = 10;
                 string name;
-                canvasWidth = Math.Max(canvasInfo.ActualWidth, 200);
+                canvasWidth = pane_Intellisense.DockWidth.Value;
 
                 if (null != obj && (obj != showObjectLast || canvasWidth != canvasWidthLast))
                 {
