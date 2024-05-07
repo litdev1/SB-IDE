@@ -424,10 +424,7 @@ namespace SB_Prime
                 InstallDirExtra.Add(Properties.Settings.Default.InstallDirExtra[i]);
             }
             pane_Output.DockHeight = new GridLength(Math.Max(Properties.Settings.Default.OutputHeight, pane_Output.DockMinHeight));
-            dock_Output.AutoHideHeight = pane_Output.DockHeight.Value;
-            dock_Debug.AutoHideHeight = pane_Output.DockHeight.Value;
             pane_Intellisense.DockWidth = new GridLength(Math.Max(Properties.Settings.Default.IntellisenseWidth, pane_Intellisense.DockMinWidth));
-            dock_Intellisense.AutoHideWidth = pane_Intellisense.DockWidth.Value;
             var ideColors = IDEColors;
             for (i = 0; i < Properties.Settings.Default.Colors.Count; i++)
             {

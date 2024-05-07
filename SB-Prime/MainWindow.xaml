@@ -300,7 +300,7 @@
                             </LayoutDocumentPaneGroup>
                             <LayoutAnchorablePaneGroup x:Name="pane_Intellisense" DockWidth="350" DockMinWidth="200">
                                 <LayoutAnchorablePane>
-                                    <LayoutAnchorable AutoHideMinWidth="200" AutoHideWidth="350"
+                                    <LayoutAnchorable
                                 x:Name="dock_Intellisense"
                                 Title="Intellisense"
                                 CanClose="False"
@@ -318,7 +318,7 @@
                         </LayoutPanel>
                         <LayoutAnchorablePaneGroup x:Name="pane_Output" DockHeight="300" DockMinHeight="100">
                             <LayoutAnchorablePane>
-                                <LayoutAnchorable AutoHideMinHeight="100" AutoHideHeight="300"
+                                <LayoutAnchorable
                                 x:Name="dock_Output"
                                 Title="Output"
                                 CanClose="False"
@@ -350,7 +350,7 @@
                                         </DataGrid>
                                     </Grid>
                                 </LayoutAnchorable>
-                                <LayoutAnchorable AutoHideMinHeight="100" AutoHideHeight="300"
+                                <LayoutAnchorable
                                 x:Name="dock_Debug"
                                 Title="Debug"
                                 CanClose="False"
