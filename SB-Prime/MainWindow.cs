@@ -632,8 +632,8 @@ namespace SB_Prime
 
             Properties.Settings.Default.Save();
 
-            var layoutSerializer = new XmlLayoutSerializer(dockManager);
-            layoutSerializer.Serialize(@".\AvalonDock.Layout.config");
+            //var layoutSerializer = new XmlLayoutSerializer(dockManager);
+            //layoutSerializer.Serialize(@".\AvalonDock.Layout.config");
         }
 
         private void ExportSettings()
