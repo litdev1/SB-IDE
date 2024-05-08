@@ -674,6 +674,7 @@ namespace SB_Prime
             if (error.Row > 0 && error.Col > 0 && error.Row <= activeDocument.TextArea.Lines.Count)
             {
                 activeDocument.SelectLine(error.Row - 1);
+                activeLayout.IsActive = true;
             }
         }
 
