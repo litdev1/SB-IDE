@@ -33,7 +33,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <DockPanel Margin="0" PreviewKeyDown="Window_PreviewKeyDown">
+    <DockPanel x:Name="dockPanel" Margin="0" PreviewKeyDown="Window_PreviewKeyDown">
         <StatusBar x:Name="statusBar" Height="30" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" VerticalContentAlignment="Bottom" Margin="0" HorizontalContentAlignment="Stretch">
             <StatusBarItem x:Name="statusVersion" Content="{ x:Static local:Strings.Label2 }"/>
             <Separator/>
