@@ -952,7 +952,7 @@ namespace SB_Prime
             }
             if (CompileError)
             {
-                dock_Debug.IsActive = true;
+                dock_Output.IsActive = true;
                 CompileError = false;
             }
         }

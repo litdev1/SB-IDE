@@ -49,7 +49,7 @@ namespace SB_Prime
         Type CompilerType = null;
         MethodInfo CompileMethod = null;
         object Compiler = null;
-        List<Assembly> assemblies = new List<Assembly>();
+        List<Assembly> extensionAssemblies = new List<Assembly>();
 
         List<string> extensions = new List<string>();
 #if DEBUG
@@ -86,6 +86,8 @@ namespace SB_Prime
 
             LoadSB();
             LoadExtensions(MainWindow.loadExtensions);
+            //LoadCompiler();
+            Compiler = null;
             CompileExtension(Properties.Resources.SBClient, "SBDebugger", overwriteSBDebug);
         }
 
@@ -144,7 +146,7 @@ namespace SB_Prime
                         MethodInfo methodInfo = CompilerType.GetMethod("AddAssemblyTypesToList", BindingFlags.NonPublic | BindingFlags.Instance);
                         FieldInfo fieldInfo = CompilerType.GetField("_libraryFiles", BindingFlags.NonPublic | BindingFlags.Instance);
                         List<string> _libraryFiles = (List<string>)fieldInfo.GetValue(Compiler);
-                        foreach (Assembly _assembly in assemblies)
+                        foreach (Assembly _assembly in extensionAssemblies)
                         {
                             methodInfo.Invoke(Compiler, new object[] { _assembly });
                             _libraryFiles.Add(_assembly.Location);
@@ -179,6 +181,7 @@ namespace SB_Prime
         {
             try
             {
+                extensionAssemblies.Clear();
                 extensions.Clear();
                 SBObjects.objects.Clear();
                 extensions.Add("\\" + Variant.ToString() + "Library");
@@ -287,7 +290,7 @@ namespace SB_Prime
                         {
                             if (type.IsPublic && type.IsDefined(SmallBasicTypeAttribute, false) && !type.IsDefined(HideFromIntellisenseAttribute, false))
                             {
-                                assemblies.Add(assembly);
+                                if (!extensionAssemblies.Contains(assembly)) extensionAssemblies.Add(assembly);
                                 obj = new SBObject();
                                 SBObjects.objects.Add(obj);
                                 obj.extension = extension.Split('\\').Last();
@@ -588,7 +591,6 @@ namespace SB_Prime
                 {
                     try
                     {
-
                         try
                         {
                             if (null == Compiler)
