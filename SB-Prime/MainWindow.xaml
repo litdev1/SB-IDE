@@ -164,6 +164,7 @@
                 <RibbonGroup x:Name="Web" Header="{ x:Static local:Strings.Label83 }">
                     <RibbonButton Label="{ x:Static local:Strings.Label85 }" LargeImageSource="Images/Import.png" KeyTip="I" Click="webImport_Click" ToolTipTitle="{ x:Static local:Strings.Label84 }"/>
                     <RibbonButton Label="{ x:Static local:Strings.Label87 }" LargeImageSource="Images/Publish.png" KeyTip="P" Click="webPublish_Click" ToolTipTitle="{ x:Static local:Strings.Label86 }"/>
+                    <RibbonButton Label="Rating" LargeImageSource="Images/Details.png" KeyTip="D" Click="webDetails_Click" ToolTipTitle="Details and rating of published program"/>
                 </RibbonGroup>
                 <!-- Home/Search group-->
                 <RibbonGroup x:Name="Search" Header="{ x:Static local:Strings.Label88 }">
@@ -225,10 +226,12 @@
                     <RibbonButton Name="ToolsColor" Label="{ x:Static local:Strings.Label158 }" LargeImageSource="Images/Pantone.png" KeyTip="TC" Click="ToolsColor_Click" ToolTipTitle="{ x:Static local:Strings.Label157 }"/>
                     <RibbonButton Name="ToolsFont" Label="{ x:Static local:Strings.Label160 }" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="{ x:Static local:Strings.Label159 }"/>
                     <RibbonButton Name="ToolsLinks" Label="{ x:Static local:Strings.Label162 }" LargeImageSource="Images/Link.png" KeyTip="TL" Click="ToolsLinks_Click" ToolTipTitle="{ x:Static local:Strings.Label161 }"/>
+                    <RibbonButton Name="ToolsAliases" Label="{ x:Static local:Strings.Label492 }" LargeImageSource="Images/Aliases.png" KeyTip="AL" Click="ToolsAliases_Click" ToolTipTitle="{ x:Static local:Strings.Label493 }"/>
+                    <RibbonButton Name="ToolsUpload" Label="Web Resources" LargeImageSource="Images/Upload.png" KeyTip="AL" Click="ToolsUpload_Click" ToolTipTitle="Upload resources to web (images/sounds)"/>
+                    <RibbonButton Name="ToolsForum" Label="User Forum" LargeImageSource="Images/Forum.png" KeyTip="AF" Click="ToolsForum_Click" ToolTipTitle="Small Basic forum (Q&amp;A for SB, SB-Prime, LitDev)"/>
+                    <RibbonButton Name="ToolsWeb" Label="LitDev Website" LargeImageSource="Images/Web.png" KeyTip="AW" Click="ToolsLitDev_Click" ToolTipTitle="LitDev website (Additional Small Basic resources)"/>
                     <RibbonButton Name="ToolsExtensionSearcher" Label="{ x:Static local:Strings.Label164 }" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="{ x:Static local:Strings.Label163 }"/>
                     <RibbonButton Name="ToolsFileSearcher" Label="{ x:Static local:Strings.Label166 }" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="{ x:Static local:Strings.Label165 }"/>
-                    <RibbonButton Name="ToolsAliases" Label="{ x:Static local:Strings.Label492 }" LargeImageSource="Images/Aliases.png" KeyTip="AL" Click="ToolsAliases_Click" ToolTipTitle="{ x:Static local:Strings.Label493 }"/>
-                    <RibbonButton Name="ToolsUpload" Label="Upload" LargeImageSource="Images/Upload.png" KeyTip="AL" Click="ToolsUpload_Click" ToolTipTitle="Upload resources to web (images)"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="{ x:Static local:Strings.Label167 }" KeyTip="A" >
@@ -240,13 +243,13 @@
                 </RibbonGroup>
                 <!-- Advanced/View group-->
                 <RibbonGroup x:Name="View" Header="{ x:Static local:Strings.Label175 }">
-                    <RibbonToggleButton Name="toggleSplit" Label="{ x:Static local:Strings.Label177 }" SmallImageSource="Images/Monitors.png" KeyTip="SS" Click="viewDual_Click" ToolTipTitle="{ x:Static local:Strings.Label176 }"/>
+                    <!--<RibbonToggleButton Name="toggleSplit" Label="{ x:Static local:Strings.Label177 }" SmallImageSource="Images/Monitors.png" KeyTip="SS" Click="viewDual_Click" ToolTipTitle="{ x:Static local:Strings.Label176 }"/>-->
+                    <RibbonToggleButton Name="toggleTheme" Label="{ x:Static local:Strings.Label189 }" SmallImageSource="Images/Contrast.png" KeyTip="TH" Click="viewTheme_Click" ToolTipTitle="{ x:Static local:Strings.Label188 }"/>
                     <RibbonToggleButton Name="toggleWrap" Label="{ x:Static local:Strings.Label179 }" SmallImageSource="Images/WordWrap.png" KeyTip="WW" Click="viewWrap_Click" ToolTipTitle="{ x:Static local:Strings.Label178 }"/>
                     <RibbonToggleButton Name="toggleIndent" Label="{ x:Static local:Strings.Label181 }" SmallImageSource="Images/Indent.png" KeyTip="I" Click="viewIndent_Click" ToolTipTitle="{ x:Static local:Strings.Label180 }" IsChecked="True"/>
                     <RibbonButton Label="{ x:Static local:Strings.Label183 }" SmallImageSource="Images/Zoom In.png" KeyTip="+" Click="viewZoomIn_Click" ToolTipTitle="{ x:Static local:Strings.Label182 }"/>
                     <RibbonButton Label="{ x:Static local:Strings.Label185 }" SmallImageSource="Images/Zoom Out.png" KeyTip="-" Click="viewZoomOut_Click" ToolTipTitle="{ x:Static local:Strings.Label184 }"/>
                     <RibbonButton Label="{ x:Static local:Strings.Label187 }" SmallImageSource="Images/Zoom.png" KeyTip="0" Click="viewZoomReset_Click" ToolTipTitle="{ x:Static local:Strings.Label186 }"/>
-                    <RibbonToggleButton Name="toggleTheme" Label="{ x:Static local:Strings.Label189 }" SmallImageSource="Images/Contrast.png" KeyTip="TH" Click="viewTheme_Click" ToolTipTitle="{ x:Static local:Strings.Label188 }"/>
                     <RibbonToggleButton Name="toggleWhiteSpace" Label="{ x:Static local:Strings.Label191 }" SmallImageSource="Images/WhiteSpace.png" KeyTip="WS" Click="viewWhitespace_Click" ToolTipTitle="{ x:Static local:Strings.Label190 }"/>
                     <RibbonToggleButton Name="toggleNumberMargin" Label="{ x:Static local:Strings.Label193 }" SmallImageSource="Images/NumberMargin.png" KeyTip="NM" Click="viewNumberMargin_Click" ToolTipTitle="{ x:Static local:Strings.Label192 }"/>
                     <RibbonTextBox x:Name="viewLanguage" Label="{ x:Static local:Strings.Label195 }" KeyTip="L" TextBoxWidth="30" ToolTipTitle="{ x:Static local:Strings.Label194 }" TextChanged="viewLanguage_TextChanged"/>

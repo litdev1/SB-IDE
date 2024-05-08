@@ -726,6 +726,12 @@
   <ItemGroup>
     <Resource Include="images\sVB.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Forum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Web.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Scintilla.NET.5.3.2.9\build\scintilla.net.targets" Condition="Exists('..\packages\Scintilla.NET.5.3.2.9\build\scintilla.net.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

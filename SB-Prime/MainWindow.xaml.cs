@@ -621,7 +621,8 @@ namespace SB_Prime
                 Properties.Strings.String52 + "\n\n" +
                 Properties.Strings.String53 + "\n\n" +
                 Properties.Strings.String54 + "\n\n" +
-                Properties.Strings.String55 + "\n\n",
+                Properties.Strings.String55 + "\n\n" +
+                Properties.Strings.String187 + "\n\n",
                 "SB-Prime", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -1092,48 +1093,65 @@ namespace SB_Prime
                 activeDocument = activeLayout.Doc;
             }
         }
+
+        private void ToolsForum_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://litdev.uk/mybb");
+        }
+
+        private void ToolsLitDev_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://litdev.uk");
+        }
+
+        private void webDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Details details = new Details(activeLayout.FileName, sbInterop);
+            details.Owner = GetWindow(this);
+            details.ShowDialog();
+        }
         /*
 private bool mRestoreForDragMove;
 
 private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 {
-   if (e.ClickCount == 2)
-   {
-       if (ResizeMode != ResizeMode.CanResize &&
-           ResizeMode != ResizeMode.CanResizeWithGrip)
-       {
-           return;
-       }
+if (e.ClickCount == 2)
+{
+if (ResizeMode != ResizeMode.CanResize &&
+ResizeMode != ResizeMode.CanResizeWithGrip)
+{
+return;
+}
 
-       WindowState = WindowState == WindowState.Maximized
-           ? WindowState.Normal
-           : WindowState.Maximized;
-   }
-   else
-   {
-       mRestoreForDragMove = WindowState == WindowState.Maximized;
-       DragMove();
-   }
+WindowState = WindowState == WindowState.Maximized
+? WindowState.Normal
+: WindowState.Maximized;
+}
+else
+{
+mRestoreForDragMove = WindowState == WindowState.Maximized;
+DragMove();
+}
 }
 
 private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 {
-   if (mRestoreForDragMove)
-   {
-       mRestoreForDragMove = false;
+if (mRestoreForDragMove)
+{
+mRestoreForDragMove = false;
 
-       var point = PointToScreen(e.MouseDevice.GetPosition(this));
+var point = PointToScreen(e.MouseDevice.GetPosition(this));
 
-       Left = point.X - (RestoreBounds.Width * 0.5);
-       Top = point.Y;
+Left = point.X - (RestoreBounds.Width * 0.5);
+Top = point.Y;
 
-       WindowState = WindowState.Normal;
-   }
+WindowState = WindowState.Normal;
+}
 }
 
 private void Window_MouseMove(object sender, MouseEventArgs e)
 {
-   mRestoreForDragMove = false;
+mRestoreForDragMove = false;
 }
 */
     }

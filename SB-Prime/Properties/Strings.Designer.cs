@@ -3985,7 +3985,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Aliases.
+        ///   Looks up a localized string similar to Command Aliases.
         /// </summary>
         public static string Label492 {
             get {
@@ -5520,6 +5520,15 @@ namespace SB_Prime.Properties {
         public static string String186 {
             get {
                 return ResourceManager.GetString("String186", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check the links and resources on the Tools tab..
+        /// </summary>
+        public static string String187 {
+            get {
+                return ResourceManager.GetString("String187", resourceCulture);
             }
         }
         

@@ -112,7 +112,7 @@ namespace SB_Prime
             DocumentPaneGroup.Children.Clear();
             DocumentPaneGroup.Children.Add(activePane);
 
-            toggleSplit.IsChecked = dualScreen;
+            //toggleSplit.IsChecked = dualScreen;
             toggleWrap.IsChecked = wrap;
             toggleIndent.IsChecked = indent;
             toggleWhiteSpace.IsChecked = whitespace;
@@ -835,35 +835,37 @@ namespace SB_Prime
             {
                 if (CheckAccess())
                 {
-                    if (null == activeLayout || null == activeDocument) return;
-                    UpdateDebug();
-                    UpdateOutput();
-                    UpdateRun();
-                    UpdateIntellisense(showObject, showMember);
-                    UpdateFileSeracher();
-                    UpdateStatusBar();
-                    UpdateZoom();
-                    UpdateHotKey();
-                    UpdateLine();
-                    UpdateTabHeader();
+                    DoTimerUpdates();
                 }
                 else
                 {
                     Dispatcher.Invoke(() =>
                     {
-                        if (null == activeLayout || null == activeDocument) return;
-                        UpdateDebug();
-                        UpdateOutput();
-                        UpdateRun();
-                        UpdateIntellisense(showObject, showMember);
-                        UpdateFileSeracher();
-                        UpdateStatusBar();
-                        UpdateZoom();
-                        UpdateHotKey();
-                        UpdateLine();
-                        UpdateTabHeader();
+                        DoTimerUpdates();
                     });
                 }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void DoTimerUpdates()
+        {
+            if (null == activeLayout || null == activeDocument) return;
+            try
+            {
+                UpdateDebug();
+                UpdateOutput();
+                UpdateRun();
+                UpdateIntellisense(showObject, showMember);
+                UpdateFileSeracher();
+                UpdateStatusBar();
+                UpdateZoom();
+                UpdateHotKey();
+                UpdateLine();
+                UpdateTabHeader();
             }
             catch (Exception ex)
             {
@@ -1684,7 +1686,7 @@ namespace SB_Prime
         private void DualScreen()
         {
             dualScreen = !dualScreen;
-            toggleSplit.IsChecked = dualScreen;
+            //toggleSplit.IsChecked = dualScreen;
             //documentGrid.ColumnDefinitions[1].MaxWidth = dualScreen ? 6 : 0;
             //documentGrid.ColumnDefinitions[2].MaxWidth = dualScreen ? double.PositiveInfinity : 0;
             //wrapperGrid.Children[4].Visibility = dualScreen ? Visibility.Visible : Visibility.Hidden;
