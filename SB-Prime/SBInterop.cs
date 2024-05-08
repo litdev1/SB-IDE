@@ -86,7 +86,6 @@ namespace SB_Prime
 
             LoadSB();
             LoadExtensions(MainWindow.loadExtensions);
-            LoadCompiler();
             CompileExtension(Properties.Resources.SBClient, "SBDebugger", overwriteSBDebug);
         }
 
@@ -172,7 +171,7 @@ namespace SB_Prime
             }
             catch (Exception ex)
             {
-                MainWindow.Errors.Add(new Error("Load LanguageService.dll : " + ex.Message));
+                MainWindow.Errors.Add(new Error("Load Compiler : " + ex.Message));
             }
         }
 
@@ -589,8 +588,13 @@ namespace SB_Prime
                 {
                     try
                     {
+
                         try
                         {
+                            if (null == Compiler)
+                            {
+                                LoadCompiler(); //This loads extensions and prevents extension dlls from being deleted
+                            }
                             IList _errors = null;
                             if (Variant == eVariant.SmallBasic)
                             {
