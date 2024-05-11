@@ -825,7 +825,7 @@ namespace SB_Prime
             activeLayout.IsActive = true;
             activeLayout.IsSelected = true;
             activeDocument.TextArea.Focus();
-            activeDocument.TextArea.GotoPosition(0);
+            //activeDocument.TextArea.GotoPosition(0);
         }
 
         private void ThreadTimerCallback(object state)

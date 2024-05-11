@@ -85,14 +85,14 @@ namespace SB_Prime
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String106, null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Html)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String107, null, (s, ea) => textArea.CopyAllowLine(CopyFormat.Rtf)) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripSeparator());
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String184, null, (s, ea) => FirstCompare()));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String185, null, (s, ea) => SecondCompare()));
+            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String186, null, (s, ea) => EndCompare()));
+            menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String108, null, OpenContainingFolder) { Enabled = null != sbDocument.Layout && File.Exists(sbDocument.Layout.FilePath) });
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String109, null, (s, ea) => sbDocument.AddWatch()) { Enabled = textArea.SelectedText.Length > 0 });
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String110, null, OpenFlowChart) { Enabled = null != sbDocument.Layout });
             menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String111, null, (s, ea) => sbDocument.Lexer.Format()));
-            menu.Items.Add(new ToolStripSeparator());
-            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String184, null, (s, ea) => FirstCompare()));
-            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String185, null, (s, ea) => SecondCompare()));
-            menu.Items.Add(new ToolStripMenuItem(Properties.Strings.String186, null, (s, ea) => EndCompare()));
         }
 
         private void FirstCompare()

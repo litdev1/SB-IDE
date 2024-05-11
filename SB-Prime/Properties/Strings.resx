@@ -433,7 +433,7 @@
     <value>View Number Margin</value>
   </data>
   <data name="Label194" xml:space="preserve">
-    <value>Change the intellisence locale (e.g. 'de' for German, restart SB-Prime to take effect)</value>
+    <value>Change the intellisence locale, over-rides interface locale (e.g. 'de' for German, restart SB-Prime)</value>
   </data>
   <data name="Label195" xml:space="preserve">
     <value>Language Code</value>

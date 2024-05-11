@@ -1006,7 +1006,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change the intellisence locale (e.g. &apos;de&apos; for German, restart SB-Prime to take effect).
+        ///   Looks up a localized string similar to Change the intellisence locale, over-rides interface locale (e.g. &apos;de&apos; for German, restart SB-Prime).
         /// </summary>
         public static string Label194 {
             get {
