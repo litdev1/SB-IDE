@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>رئيس أساسي صغير</value>
+    <value></value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>打开现有程序</value>
@@ -127,7 +127,7 @@
     <value>区分大小写</value>
   </data>
   <data name="Label101" xml:space="preserve">
-    <value>找到</value>
+    <value></value>
   </data>
   <data name="Label102" xml:space="preserve">
     <value>历史</value>
@@ -145,7 +145,7 @@
     <value>新增功能</value>
   </data>
   <data name="Label107" xml:space="preserve">
-    <value>打开现有程序 （Ctrl+O）</value>
+    <value></value>
   </data>
   <data name="Label108" xml:space="preserve">
     <value>打开</value>
@@ -166,7 +166,7 @@
     <value>救</value>
   </data>
   <data name="Label113" xml:space="preserve">
-    <value>将当前程序保存到新文件</value>
+    <value></value>
   </data>
   <data name="Label114" xml:space="preserve">
     <value>另存为</value>
@@ -433,7 +433,7 @@
     <value>查看数字边距</value>
   </data>
   <data name="Label194" xml:space="preserve">
-    <value>更改智能语言环境（例如，德语为“de”，重新启动 SB-Prime 以生效）</value>
+    <value>更改智能语言环境，覆盖界面语言环境（例如，德语为“de”，重新启动 SB-Prime）</value>
   </data>
   <data name="Label195" xml:space="preserve">
     <value>语言代码</value>
@@ -1426,7 +1426,7 @@
     <value>树视图</value>
   </data>
   <data name="Label492" xml:space="preserve">
-    <value>别名</value>
+    <value>命令别名</value>
   </data>
   <data name="Label493" xml:space="preserve">
     <value>设置对象和方法别名</value>
@@ -1929,6 +1929,18 @@
   <data name="String183" xml:space="preserve">
     <value>在插入符号 Ctrl+Shift+ 插入注释 ' ？</value>
   </data>
+  <data name="String184" xml:space="preserve">
+    <value>第一个要比较的文件</value>
+  </data>
+  <data name="String185" xml:space="preserve">
+    <value>要比较的第二个文件</value>
+  </data>
+  <data name="String186" xml:space="preserve">
+    <value>结束比较</value>
+  </data>
+  <data name="String187" xml:space="preserve">
+    <value>检查“工具”选项卡上的链接和资源。</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>从当前文档复制代码</value>
   </data>
@@ -2089,111 +2101,111 @@
     <value>成功毕业课程</value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value>由于 exe 未成功编译，因此无法运行大小写</value>
+    <value></value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value>已成功启动进程运行</value>
+    <value></value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value>成功反编译汇编为</value>
+    <value></value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value>本色</value>
+    <value></value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value>插件添加：无法在组中添加插件</value>
+    <value></value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value>已成功终止使用进程运行</value>
+    <value></value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value>从代码窗口创建新形状。</value>
+    <value></value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value>您可以先将任何代码粘贴到此处。</value>
+    <value></value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value>请注意，大多数参数应该是文字，而不是变量。</value>
+    <value></value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value>Microsoft Visual Studio 社区开发环境。</value>
+    <value></value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value>编写自己的 Small Basic 扩展和更大的项目。</value>
+    <value></value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value>查看和反编译 .Net 程序集。 了解扩展程序的工作原理。</value>
+    <value></value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value>对于了解 Small Basic 的引擎盖至关重要。</value>
+    <value></value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>VS 的轻量级但功能齐全的替代品。</value>
+    <value></value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value>黑与白</value>
+    <value></value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value>创建和操作图像，包括轻松为 png 图像提供透明背景和创建动画 gif。</value>
+    <value></value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value>查看魔杖选择工具。</value>
+    <value></value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value>记事本的优秀文本编辑器替代品。</value>
+    <value></value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value>下载量很大，但专业级的IDE。</value>
+    <value></value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>对于快速查看或编辑大多数文本可读文件格式很有用。</value>
+    <value></value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>文件压缩。</value>
+    <value></value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>在单个压缩文件中共享多个文档的最佳方式。</value>
+    <value></value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>创建和编辑图标。</value>
+    <value></value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>如果没有像这样的简单工具，图标格式是相当棘手的。</value>
+    <value></value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>撤消 Ctrl+Z</value>
+    <value></value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>智能感知</value>
+    <value></value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>重做 Ctrl+Y</value>
+    <value></value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>剪切 Ctrl+X</value>
+    <value></value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>复制 Ctrl+C</value>
+    <value></value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value>粘贴 Ctrl+V</value>
+    <value></value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value>删除</value>
+    <value></value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>全选 Ctrl+A</value>
+    <value></value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>查找 Ctrl+F</value>
+    <value></value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>查找并替换 Ctrl+H</value>
+    <value></value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>注释选定的行 Ctrl+？</value>
+    <value></value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>取消注释所选行 Ctrl+？</value>
+    <value></value>
   </data>
 </root>

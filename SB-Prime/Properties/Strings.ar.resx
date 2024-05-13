@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>رئيس أساسي صغير</value>
+    <value>小基本 Prime</value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>فتح برنامج موجود</value>
@@ -136,7 +136,7 @@
     <value>تصحيح</value>
   </data>
   <data name="Label104" xml:space="preserve">
-    <value>ملف</value>
+    <value></value>
   </data>
   <data name="Label105" xml:space="preserve">
     <value>بدء تشغيل برنامج جديد (Ctrl+N)</value>
@@ -175,7 +175,7 @@
     <value>حفظ جميع البرامج</value>
   </data>
   <data name="Label116" xml:space="preserve">
-    <value>حفظ الكل</value>
+    <value></value>
   </data>
   <data name="Label117" xml:space="preserve">
     <value>تصحيح</value>
@@ -208,7 +208,7 @@
     <value>خطوة فوق</value>
   </data>
   <data name="Label126" xml:space="preserve">
-    <value>خطوة من خلال البرنامج الحالي ، أو بدء وإيقاف مؤقت في البيان الأول (F11)</value>
+    <value></value>
   </data>
   <data name="Label127" xml:space="preserve">
     <value>درج</value>
@@ -433,7 +433,7 @@
     <value>عرض الرقم الهامش</value>
   </data>
   <data name="Label194" xml:space="preserve">
-    <value>قم بتغيير لغة الذكاء (على سبيل المثال ، "de" للغة الألمانية ، أعد تشغيل SB-Prime لتصبح سارية المفعول)</value>
+    <value>تغيير لغة الذكاء ، والإعدادات المحلية لواجهة الركوب (على سبيل المثال ، "de" للغة الألمانية ، أعد تشغيل SB-Prime)</value>
   </data>
   <data name="Label195" xml:space="preserve">
     <value>رمز اللغة</value>
@@ -1039,7 +1039,7 @@
     <value>إدراج الألوان كقيم سداسية عشرية</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>تحميل ملحق dll عند بدء التشغيل (إيقاف التشغيل وإعادة التشغيل لاستخدام إدارة الملحقات)</value>
+    <value>تحميل ملحق dll عند بدء التشغيل</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>تكبير الطباعة</value>
@@ -1426,7 +1426,7 @@
     <value>تريفيو</value>
   </data>
   <data name="Label492" xml:space="preserve">
-    <value>الاسماء المستعاره</value>
+    <value>الأسماء المستعارة للأوامر</value>
   </data>
   <data name="Label493" xml:space="preserve">
     <value>تعيين الأسماء المستعارة للكائن والأسلوب</value>
@@ -1929,6 +1929,18 @@
   <data name="String183" xml:space="preserve">
     <value>إدراج تعليق ' في علامة الإقحام Ctrl + Shift +؟</value>
   </data>
+  <data name="String184" xml:space="preserve">
+    <value>أول ملف للمقارنة</value>
+  </data>
+  <data name="String185" xml:space="preserve">
+    <value>الملف الثاني للمقارنة</value>
+  </data>
+  <data name="String186" xml:space="preserve">
+    <value>نهاية المقارنة</value>
+  </data>
+  <data name="String187" xml:space="preserve">
+    <value>تحقق من الروابط والموارد في علامة التبويب أدوات.</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>نسخ الرمز من المستند الحالي</value>
   </data>
@@ -2029,7 +2041,7 @@
     <value>هل تريد حفظ التغييرات؟</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>قم بإلغاء تحديد "تحميل dlls الامتداد عند بدء التشغيل " في خيارات متقدمة &gt; وأعد التشغيل لتعديل الملحقات المثبتة.</value>
+    <value>قم بإلغاء تحديد "تحميل ملفات dll للملحق عند بدء التشغيل" في خيارات &gt; متقدمة وأعد التشغيل لتعديل الملحقات المثبتة.</value>
   </data>
   <data name="String5" xml:space="preserve">
     <value>تبديل ملفات الفرق في تقسيم الشاشة</value>

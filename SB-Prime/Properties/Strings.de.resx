@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>Kleine Basis-Festbrennweite</value>
+    <value>小基本 Prime</value>
   </data>
   <data name="Label10" xml:space="preserve">
-    <value>Öffnen eines vorhandenen Programms</value>
+    <value>Öffnen Sie ein vorhandenes Programm</value>
   </data>
   <data name="Label100" xml:space="preserve">
     <value>Groß-/Kleinschreibung beachten</value>
@@ -139,7 +139,7 @@
     <value>Datei</value>
   </data>
   <data name="Label105" xml:space="preserve">
-    <value>Neues Programm starten (Strg+N)</value>
+    <value>Starten Sie ein neues Programm (Strg+N)</value>
   </data>
   <data name="Label106" xml:space="preserve">
     <value>Neu</value>
@@ -157,7 +157,7 @@
     <value>Offen</value>
   </data>
   <data name="Label110" xml:space="preserve">
-    <value>Schließen</value>
+    <value></value>
   </data>
   <data name="Label111" xml:space="preserve">
     <value>Aktuelles Programm speichern (Strg+S)</value>
@@ -181,13 +181,13 @@
     <value>Debuggen</value>
   </data>
   <data name="Label118" xml:space="preserve">
-    <value>Aktuelles Programm beenden (Umschalt+F6)</value>
+    <value>Aktuelles Programm stoppen (Umschalt+F6)</value>
   </data>
   <data name="Label119" xml:space="preserve">
     <value>Aufhören</value>
   </data>
   <data name="Label12" xml:space="preserve">
-    <value>Aktuelles Programm schließen</value>
+    <value></value>
   </data>
   <data name="Label120" xml:space="preserve">
     <value>Aktuelles Programm pausieren</value>
@@ -202,7 +202,7 @@
     <value>Ausschreiten</value>
   </data>
   <data name="Label124" xml:space="preserve">
-    <value>Überspringen der nächsten Anweisung, wenn es sich um eine Unterroutine handelt (F10)</value>
+    <value>Überspringen Sie die nächste Anweisung, wenn es sich um eine Unterroutine handelt (F10)</value>
   </data>
   <data name="Label125" xml:space="preserve">
     <value>Treten Sie über</value>
@@ -226,7 +226,7 @@
     <value>Haltepunkte</value>
   </data>
   <data name="Label131" xml:space="preserve">
-    <value>Umschalten des Haltepunkts in der aktuellen Zeile (F9)</value>
+    <value>Haltepunkt an aktueller Zeile umschalten (F9)</value>
   </data>
   <data name="Label132" xml:space="preserve">
     <value>Haltepunkt umschalten</value>
@@ -235,10 +235,10 @@
     <value>Alle Haltepunkte löschen</value>
   </data>
   <data name="Label134" xml:space="preserve">
-    <value>Löschen von Haltepunkten</value>
+    <value>Haltepunkte löschen</value>
   </data>
   <data name="Label135" xml:space="preserve">
-    <value>Alle Haltepunkte ignorieren</value>
+    <value></value>
   </data>
   <data name="Label136" xml:space="preserve">
     <value>Haltepunkte ignorieren</value>
@@ -247,10 +247,10 @@
     <value>Lesezeichen</value>
   </data>
   <data name="Label138" xml:space="preserve">
-    <value>Lesezeichen in der aktuellen Zeile ein- und ausschalten</value>
+    <value>Lesezeichen in der aktuellen Zeile umschalten</value>
   </data>
   <data name="Label139" xml:space="preserve">
-    <value>Lesezeichen ein- und ausschalten</value>
+    <value>Toggle Lesezeichen</value>
   </data>
   <data name="Label14" xml:space="preserve">
     <value>Aktuelles Programm speichern</value>
@@ -262,7 +262,7 @@
     <value>Nächstes Lesezeichen</value>
   </data>
   <data name="Label142" xml:space="preserve">
-    <value>Zum vorherigen Lesezeichen wechseln</value>
+    <value>Zum vorherigen Lesezeichen nach oben wechseln</value>
   </data>
   <data name="Label143" xml:space="preserve">
     <value>Vorheriges Lesezeichen</value>
@@ -277,10 +277,10 @@
     <value>Werkzeuge</value>
   </data>
   <data name="Label147" xml:space="preserve">
-    <value>Alle Variablen und Aufrufliste anzeigen</value>
+    <value>Alle Variablen und die Aufrufliste anzeigen</value>
   </data>
   <data name="Label148" xml:space="preserve">
-    <value>Variablen &amp; Aufrufliste</value>
+    <value>Variablen und Aufrufliste</value>
   </data>
   <data name="Label149" xml:space="preserve">
     <value>Leitfaden zum Debuggen anzeigen</value>
@@ -298,7 +298,7 @@
     <value>Werkzeuge</value>
   </data>
   <data name="Label153" xml:space="preserve">
-    <value>Ein Formen- und Steuerelement-Editor</value>
+    <value>Ein Shapes- und Steuerelement-Editor</value>
   </data>
   <data name="Label154" xml:space="preserve">
     <value>Formen-Editor</value>
@@ -310,19 +310,19 @@
     <value>Flussdiagramm</value>
   </data>
   <data name="Label157" xml:space="preserve">
-    <value>Einfügen von Farbnamen in das Dokument</value>
+    <value>Farbnamen in Dokument einfügen</value>
   </data>
   <data name="Label158" xml:space="preserve">
     <value>Farben einfügen</value>
   </data>
   <data name="Label159" xml:space="preserve">
-    <value>Einfügen von Schriftnamen in das Dokument</value>
+    <value>Schriftnamen in Dokument einfügen</value>
   </data>
   <data name="Label16" xml:space="preserve">
     <value>Aktuelles Programm in einer neuen Datei speichern</value>
   </data>
   <data name="Label160" xml:space="preserve">
-    <value>Schriftarten einfügen</value>
+    <value>Einfügen von Schriftarten</value>
   </data>
   <data name="Label161" xml:space="preserve">
     <value>Nützliche Links und kostenlose Ressourcen</value>
@@ -331,7 +331,7 @@
     <value>Verknüpfungen</value>
   </data>
   <data name="Label163" xml:space="preserve">
-    <value>Durchsuchen von Erweiterungsobjekten</value>
+    <value>Sucherweiterungsobjekte</value>
   </data>
   <data name="Label164" xml:space="preserve">
     <value>Erweiterungen suchen</value>
@@ -349,7 +349,7 @@
     <value>Ausdehnen</value>
   </data>
   <data name="Label169" xml:space="preserve">
-    <value>Verwalten von Erweiterungen</value>
+    <value>Nebenstellen verwalten</value>
   </data>
   <data name="Label17" xml:space="preserve">
     <value>Speichern unter</value>
@@ -358,13 +358,13 @@
     <value>Erweiterungs-Manager</value>
   </data>
   <data name="Label171" xml:space="preserve">
-    <value>Abschluss des aktuellen Programms für Visual Basic</value>
+    <value>Graduiertenprogramm für Visual Basic</value>
   </data>
   <data name="Label172" xml:space="preserve">
     <value>Absolvent</value>
   </data>
   <data name="Label173" xml:space="preserve">
-    <value>Dekompilieren von .NET-Assemblys (DLL oder EXE) in C# mit ILSpy</value>
+    <value>Dekompilieren von .Net-Assemblys (DLL oder EXE) in C# mit ILSpy</value>
   </data>
   <data name="Label174" xml:space="preserve">
     <value>Dekompilieren</value>
@@ -373,7 +373,7 @@
     <value>Ansehen</value>
   </data>
   <data name="Label176" xml:space="preserve">
-    <value>Programmlayout mit geteiltem Bildschirm umschalten</value>
+    <value>Splitscreen-Programmlayout umschalten</value>
   </data>
   <data name="Label177" xml:space="preserve">
     <value>Bildschirmaufteilung</value>
@@ -388,10 +388,10 @@
     <value>Alle Programme speichern</value>
   </data>
   <data name="Label180" xml:space="preserve">
-    <value>Umschalten von Einzugshilfslinien</value>
+    <value>Einzugshilfslinien umschalten</value>
   </data>
   <data name="Label181" xml:space="preserve">
-    <value>Führungen zum Einrücken</value>
+    <value>Hilfslinien einrücken</value>
   </data>
   <data name="Label182" xml:space="preserve">
     <value>Vergrößern (größere Schrift)</value>
@@ -412,7 +412,7 @@
     <value>Zoom zurücksetzen</value>
   </data>
   <data name="Label188" xml:space="preserve">
-    <value>Verwenden eines dunklen Designs (umgekehrtes Video)</value>
+    <value>Verwenden Sie ein dunkles Design (umgekehrtes Video)</value>
   </data>
   <data name="Label189" xml:space="preserve">
     <value>Dunkles Thema</value>
@@ -421,19 +421,19 @@
     <value>Alle speichern</value>
   </data>
   <data name="Label190" xml:space="preserve">
-    <value>Leerzeichen ein- und ausblenden</value>
+    <value>Leerzeichen anzeigen umschalten</value>
   </data>
   <data name="Label191" xml:space="preserve">
-    <value>Whitespace anzeigen</value>
+    <value>Leerzeichen anzeigen</value>
   </data>
   <data name="Label192" xml:space="preserve">
-    <value>Zahlenrand ein- und ausschalten</value>
+    <value>Nummernrand anzeigen umschalten</value>
   </data>
   <data name="Label193" xml:space="preserve">
     <value>Zahlenrand anzeigen</value>
   </data>
   <data name="Label194" xml:space="preserve">
-    <value>Ändern Sie das Intellisence-Gebietsschema (z. B. 'de' für Deutsch, starten Sie SB-Prime neu, um wirksam zu werden)</value>
+    <value>Ändern Sie das Intellisence-Gebietsschema, überschreiben Sie das Interface-Gebietsschema (z.B. 'de' für Deutsch, SB-Prime neu starten)</value>
   </data>
   <data name="Label195" xml:space="preserve">
     <value>Sprachcode</value>
@@ -442,7 +442,7 @@
     <value>Einstellungen</value>
   </data>
   <data name="Label197" xml:space="preserve">
-    <value>Ändern der Anwendungsfarben</value>
+    <value>Ändern Sie die Anwendungsfarben</value>
   </data>
   <data name="Label198" xml:space="preserve">
     <value>IDE-Farben</value>
@@ -460,13 +460,13 @@
     <value>Export-Einstellungen</value>
   </data>
   <data name="Label201" xml:space="preserve">
-    <value>Importieren Sie Einstellungen aus einer Datei, starten Sie SB-Prime neu, um die volle Wirkung zu erzielen</value>
+    <value>Importieren Sie Einstellungen aus einer Datei, starten Sie SB-Prime neu, um die volle Wirkung zu entfalten</value>
   </data>
   <data name="Label202" xml:space="preserve">
-    <value>Einstellungen importieren</value>
+    <value>Import-Einstellungen</value>
   </data>
   <data name="Label203" xml:space="preserve">
-    <value>Setzen Sie die Einstellungen auf die Standardeinstellungen zurück und starten Sie SB-Prime neu, um die volle Wirkung zu entfalten</value>
+    <value>Setzen Sie die Einstellungen auf die Standardeinstellungen zurück, starten Sie SB-Prime neu, um die volle Wirkung zu entfalten</value>
   </data>
   <data name="Label204" xml:space="preserve">
     <value>Einstellungen zurücksetzen</value>
@@ -517,13 +517,13 @@
     <value>Garnitur</value>
   </data>
   <data name="Label219" xml:space="preserve">
-    <value>Aktualisieren von Daten</value>
+    <value>Daten aktualisieren</value>
   </data>
   <data name="Label22" xml:space="preserve">
     <value>Datei</value>
   </data>
   <data name="Label220" xml:space="preserve">
-    <value>Aktualisieren Sie den Wert der watch-Variablen</value>
+    <value>Aktualisieren des Werts der Watch-Variablen</value>
   </data>
   <data name="Label221" xml:space="preserve">
     <value>Auffrischen</value>
@@ -547,7 +547,7 @@
     <value>Unterbrechung if =</value>
   </data>
   <data name="Label228" xml:space="preserve">
-    <value>Unterbrechen, wenn sich Änderungen ändern</value>
+    <value>Pause, wenn sich Änderungen ändern</value>
   </data>
   <data name="Label229" xml:space="preserve">
     <value>IDE-Farben</value>
@@ -565,7 +565,7 @@
     <value>Farbe</value>
   </data>
   <data name="Label233" xml:space="preserve">
-    <value>Klicken Sie hier, um die Farbe festzulegen</value>
+    <value>Klicken Sie, um die Farbe festzulegen</value>
   </data>
   <data name="Label234" xml:space="preserve">
     <value>Rot</value>
@@ -577,7 +577,7 @@
     <value>Blau</value>
   </data>
   <data name="Label237" xml:space="preserve">
-    <value>Zurücksetzen auf die Standardeinstellungen</value>
+    <value>Auf Standardeinstellungen zurücksetzen</value>
   </data>
   <data name="Label238" xml:space="preserve">
     <value>Fehlwert</value>
@@ -592,7 +592,7 @@
     <value>Fertig</value>
   </data>
   <data name="Label241" xml:space="preserve">
-    <value>Schließen, ohne Änderungen zu übernehmen</value>
+    <value>Schließen ohne Änderungen</value>
   </data>
   <data name="Label242" xml:space="preserve">
     <value>Abbrechen</value>
@@ -601,16 +601,16 @@
     <value>Dekompilieren</value>
   </data>
   <data name="Label244" xml:space="preserve">
-    <value>Dekompilieren nach C#</value>
+    <value>Dekompilieren in C#</value>
   </data>
   <data name="Label245" xml:space="preserve">
     <value>Dieser Assistent wird </value>
   </data>
   <data name="Label246" xml:space="preserve">
-    <value>Ausgabespeicherort (muss ein leerer Ordner sein - verwenden Sie 'Neuen Ordner erstellen')</value>
+    <value>Ausgabespeicherort (muss ein leerer Ordner sein - verwenden Sie 'Make New Folder')</value>
   </data>
   <data name="Label247" xml:space="preserve">
-    <value>Navigieren Sie zum Speicherort, um die dekompilierte Projektmappe zu exportieren</value>
+    <value>Navigieren Sie zum Speicherort zum Exportieren der dekompilierten Lösung</value>
   </data>
   <data name="Label248" xml:space="preserve">
     <value>Blättern</value>
@@ -619,7 +619,7 @@
     <value>Schließen ohne Aktion</value>
   </data>
   <data name="Label25" xml:space="preserve">
-    <value>Öffnen eines vorhandenen Programms</value>
+    <value>Öffnen Sie ein vorhandenes Programm</value>
   </data>
   <data name="Label250" xml:space="preserve">
     <value>Abbrechen</value>
@@ -631,16 +631,16 @@
     <value>Dekompilieren</value>
   </data>
   <data name="Label253" xml:space="preserve">
-    <value>Quelldatei (.NET dll oder exe)</value>
+    <value>Quelldatei (.Net dll oder exe)</value>
   </data>
   <data name="Label254" xml:space="preserve">
-    <value>Navigieren Sie zur Quelldatei, um sie zu dekompilieren</value>
+    <value>Navigieren Sie zur zu dekompilierenden Quelldatei</value>
   </data>
   <data name="Label255" xml:space="preserve">
     <value>Blättern</value>
   </data>
   <data name="Label256" xml:space="preserve">
-    <value>Wenn diese Option aktiviert ist, kann TextWindow in dekompilierten EXE-Dateien verwendet werden</value>
+    <value>Wenn diese Option ausgewählt ist, kann TextWindow in dekompilierter exe verwendet werden</value>
   </data>
   <data name="Label257" xml:space="preserve">
     <value>Als Konsolenanwendung exportieren</value>
@@ -715,25 +715,25 @@
     <value>ID neu laden</value>
   </data>
   <data name="Label279" xml:space="preserve">
-    <value>Extension Searcher</value>
+    <value>Suche nach Erweiterungen</value>
   </data>
   <data name="Label28" xml:space="preserve">
     <value>Schließen</value>
   </data>
   <data name="Label280" xml:space="preserve">
-    <value>Suchtext</value>
+    <value>Text suchen</value>
   </data>
   <data name="Label281" xml:space="preserve">
-    <value>Suchen Sie nach dem Text in Erweiterungs-APIs</value>
+    <value>Suchen nach dem Text in Erweiterungs-APIs</value>
   </data>
   <data name="Label282" xml:space="preserve">
     <value>Suchen</value>
   </data>
   <data name="Label283" xml:space="preserve">
-    <value>Alle Elemente in der Struktur ausblenden</value>
+    <value>Alle Elemente im Baum ausblenden</value>
   </data>
   <data name="Label284" xml:space="preserve">
-    <value>Alle ausblenden</value>
+    <value>Alle einklappen</value>
   </data>
   <data name="Label285" xml:space="preserve">
     <value>Erweitern Sie alle untergeordneten Elemente am ausgewählten Element</value>
@@ -793,19 +793,19 @@
     <value>Offen</value>
   </data>
   <data name="Label301" xml:space="preserve">
-    <value>Der Besprechungsfilter für die Anzahl der Dateien</value>
+    <value>Die Anzahl der Dateien Besprechungsfilter</value>
   </data>
   <data name="Label302" xml:space="preserve">
-    <value>Filtersuche</value>
+    <value>Suche filtern</value>
   </data>
   <data name="Label303" xml:space="preserve">
-    <value>Filtern Sie nur nach ganzen Wörtern</value>
+    <value>Nur nach ganzen Wörtern filtern</value>
   </data>
   <data name="Label304" xml:space="preserve">
     <value>Ganzes Wort</value>
   </data>
   <data name="Label305" xml:space="preserve">
-    <value>Filtern Sie nur nach Übereinstimmungen mit Groß-/Kleinschreibung</value>
+    <value>Filtern Sie nur nach Groß-/Kleinschreibungsübereinstimmungen</value>
   </data>
   <data name="Label306" xml:space="preserve">
     <value>Groß-/Kleinschreibung beachten</value>
@@ -817,7 +817,7 @@
     <value>Dateipfad einschließen</value>
   </data>
   <data name="Label309" xml:space="preserve">
-    <value>Text filtern</value>
+    <value>Filtern von Text</value>
   </data>
   <data name="Label31" xml:space="preserve">
     <value>Aktuelles Programm in einer neuen Datei speichern</value>
@@ -841,28 +841,28 @@
     <value>Ersetzen</value>
   </data>
   <data name="Label316" xml:space="preserve">
-    <value>Suchen des vorherigen Vorkommens des Suchen-Textes</value>
+    <value>Suchen des vorherigen Vorkommens des Suchtexts</value>
   </data>
   <data name="Label317" xml:space="preserve">
     <value>Vorherige suchen</value>
   </data>
   <data name="Label318" xml:space="preserve">
-    <value>Suchen Sie das nächste Vorkommen des Suchen-Textes</value>
+    <value>Suchen des nächsten Vorkommens des Suchtexts</value>
   </data>
   <data name="Label319" xml:space="preserve">
-    <value>Weitersuchen</value>
+    <value>Weiter suchen</value>
   </data>
   <data name="Label32" xml:space="preserve">
     <value>Speichern unter</value>
   </data>
   <data name="Label320" xml:space="preserve">
-    <value>Ersetzen Sie das aktuelle Vorkommen und suchen Sie das nächste Vorkommen</value>
+    <value>Ersetzen Sie das aktuelle Vorkommen und suchen Sie das nächste</value>
   </data>
   <data name="Label321" xml:space="preserve">
     <value>Ersetzen</value>
   </data>
   <data name="Label322" xml:space="preserve">
-    <value>Ersetzen Sie alle vorkommenden Vorkommen des Suchen-Textes durch den Ersetzen-Text</value>
+    <value>Ersetzen Sie alle Vorkommen des Suchtextes durch den Text ersetzen</value>
   </data>
   <data name="Label323" xml:space="preserve">
     <value>Alle ersetzen</value>
@@ -871,19 +871,19 @@
     <value>Flussdiagramm</value>
   </data>
   <data name="Label325" xml:space="preserve">
-    <value>Verkleinern, um mehr zu sehen (kleiner)</value>
+    <value>Verkleinern, um mehr anzuzeigen (kleiner)</value>
   </data>
   <data name="Label326" xml:space="preserve">
     <value>Verkleinern</value>
   </data>
   <data name="Label327" xml:space="preserve">
-    <value>Vergrößern, um weniger (größer) zu sehen</value>
+    <value>Vergrößern, um weniger zu sehen (größer)</value>
   </data>
   <data name="Label328" xml:space="preserve">
     <value>Vergrößern</value>
   </data>
   <data name="Label329" xml:space="preserve">
-    <value>Zum Starten zoomen</value>
+    <value>Zoomen, um zu starten</value>
   </data>
   <data name="Label33" xml:space="preserve">
     <value>Alle Programme speichern</value>
@@ -892,7 +892,7 @@
     <value>Anfangen</value>
   </data>
   <data name="Label331" xml:space="preserve">
-    <value>Vergrößern bis zum Ende des Hauptcodes</value>
+    <value>Vergrößern Sie das Ende des Hauptcodes</value>
   </data>
   <data name="Label332" xml:space="preserve">
     <value>Ende</value>
@@ -904,19 +904,19 @@
     <value>Aktualisieren</value>
   </data>
   <data name="Label335" xml:space="preserve">
-    <value>Zoomen des Flussdiagramms zum Auswählen des Elements an der Dokumentposition</value>
+    <value>Zoomen Sie das Flussdiagramm, um das Element am Speicherort des Dokuments auszuwählen</value>
   </data>
   <data name="Label336" xml:space="preserve">
     <value>Synchronisieren von</value>
   </data>
   <data name="Label337" xml:space="preserve">
-    <value>Scrollen Sie durch das Dokument, um das ausgewählte Flussdiagrammelement anzuzeigen</value>
+    <value>Dokument scrollen, um das ausgewählte Flussdiagrammelement anzuzeigen</value>
   </data>
   <data name="Label338" xml:space="preserve">
     <value>Synchronisieren mit</value>
   </data>
   <data name="Label339" xml:space="preserve">
-    <value>Informationen zur Verwendung des Flussdiagramms</value>
+    <value>Informationen zur Verwendung von Flussdiagrammen</value>
   </data>
   <data name="Label34" xml:space="preserve">
     <value>Alle speichern</value>
@@ -931,10 +931,10 @@
     <value>Exportieren nach Visual Basic</value>
   </data>
   <data name="Label343" xml:space="preserve">
-    <value>Ausgabe-Speicherort</value>
+    <value>Ausgabeort</value>
   </data>
   <data name="Label344" xml:space="preserve">
-    <value>Navigieren Sie zum Speicherort, um eine abgestufte Lösung zu exportieren</value>
+    <value>Navigieren Sie zum Speicherort, um abgestufte Lösung zu exportieren</value>
   </data>
   <data name="Label345" xml:space="preserve">
     <value>Blättern</value>
@@ -958,7 +958,7 @@
     <value>Importieren</value>
   </data>
   <data name="Label351" xml:space="preserve">
-    <value>Importieren eines Programms aus dem Internet</value>
+    <value>Importieren eines Programms aus dem Web</value>
   </data>
   <data name="Label352" xml:space="preserve">
     <value>Programm-ID importieren und schließen</value>
@@ -979,7 +979,7 @@
     <value>Verknüpfungen</value>
   </data>
   <data name="Label358" xml:space="preserve">
-    <value>Im Folgenden finden Sie einige Links zu wichtigen kostenlosen Entwicklerressourcen</value>
+    <value>Nachfolgend finden Sie einige Links zu wichtigen kostenlosen Entwicklerressourcen</value>
   </data>
   <data name="Label359" xml:space="preserve">
     <value>Name</value>
@@ -1009,19 +1009,19 @@
     <value>Aktualisieren Sie SB-Prime auf die neueste Version</value>
   </data>
   <data name="Label367" xml:space="preserve">
-    <value>Auf den neuesten Stand aktualisieren</value>
+    <value>Update auf neueste</value>
   </data>
   <data name="Label368" xml:space="preserve">
-    <value>Kleiner einfacher Installationspfad</value>
+    <value>Kleiner grundlegender Installationspfad</value>
   </data>
   <data name="Label369" xml:space="preserve">
     <value>Textfeld</value>
   </data>
   <data name="Label37" xml:space="preserve">
-    <value>Beenden Sie SB-Prime</value>
+    <value>SB-Prime beenden</value>
   </data>
   <data name="Label370" xml:space="preserve">
-    <value>Navigieren Sie zum Small Basic-Installationsordner</value>
+    <value>Navigieren Sie zum Installationsordner Small Basic</value>
   </data>
   <data name="Label371" xml:space="preserve">
     <value>Blättern</value>
@@ -1039,13 +1039,13 @@
     <value>Farben als Hexadezimalwerte einfügen</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>Laden von Erweiterungs-DLLs beim Start</value>
+    <value>Erweiterungs-DLLs beim Start laden</value>
   </data>
   <data name="Label377" xml:space="preserve">
-    <value>Druck-Vergrößerung</value>
+    <value>Druckvergrößerung</value>
   </data>
   <data name="Label378" xml:space="preserve">
-    <value>Vergrößern (&gt;0) oder Verkleinern (&lt;0) der Druckschriftgröße</value>
+    <value>Erhöhen (&gt;0) oder Verringern (&lt;0) der Druckschriftgröße</value>
   </data>
   <data name="Label379" xml:space="preserve">
     <value>Textfeld</value>
@@ -1054,7 +1054,7 @@
     <value>Ausgang</value>
   </data>
   <data name="Label380" xml:space="preserve">
-    <value>Farben drucken</value>
+    <value>Druckfarben</value>
   </data>
   <data name="Label381" xml:space="preserve">
     <value>Farbgebung für den Druck</value>
@@ -1090,13 +1090,13 @@
     <value>Fertig</value>
   </data>
   <data name="Label391" xml:space="preserve">
-    <value>WidthAndHeight</value>
+    <value>BreiteundHöhe</value>
   </data>
   <data name="Label392" xml:space="preserve">
     <value>Fortschritt</value>
   </data>
   <data name="Label393" xml:space="preserve">
-    <value>Durchsuchte Ordner</value>
+    <value>Gesuchte Ordner</value>
   </data>
   <data name="Label394" xml:space="preserve">
     <value>Abbrechen</value>
@@ -1114,7 +1114,7 @@
     <value>Ihr Programm wurde im Web veröffentlicht</value>
   </data>
   <data name="Label399" xml:space="preserve">
-    <value>Legen Sie die zusätzlichen Details fest, und schließen Sie</value>
+    <value>Legen Sie die zusätzlichen Details fest und schließen Sie</value>
   </data>
   <data name="Label4" xml:space="preserve">
     <value>Mützen</value>
@@ -1123,13 +1123,13 @@
     <value>Datei</value>
   </data>
   <data name="Label400" xml:space="preserve">
-    <value>Aktualisieren und Schließen</value>
+    <value>Aktualisieren und schließen</value>
   </data>
   <data name="Label401" xml:space="preserve">
-    <value>Unten finden Sie die ID für Ihr Programm, die Sie freigeben können</value>
+    <value>Unten finden Sie die ID für Ihr Programm, das Sie freigeben können</value>
   </data>
   <data name="Label402" xml:space="preserve">
-    <value>Veröffentlichtes Programm in Internet Explorer öffnen (SilverLight erforderlich)</value>
+    <value>Öffnen des veröffentlichten Programms in Internet Explorer (SilverLight erforderlich)</value>
   </data>
   <data name="Label403" xml:space="preserve">
     <value>Im Browser öffnen</value>
@@ -1153,7 +1153,7 @@
     <value>Probe</value>
   </data>
   <data name="Label41" xml:space="preserve">
-    <value>Neues Programm starten (Strg+N)</value>
+    <value>Starten Sie ein neues Programm (Strg+N)</value>
   </data>
   <data name="Label410" xml:space="preserve">
     <value>Übung</value>
@@ -1222,19 +1222,19 @@
     <value>Öffnen eines vorhandenen Programms (Strg+O)</value>
   </data>
   <data name="Label430" xml:space="preserve">
-    <value>ComboBox (Kombinationsfeld)</value>
+    <value>ComboBox</value>
   </data>
   <data name="Label431" xml:space="preserve">
-    <value>DataView (Datenansicht)</value>
+    <value>Datenansicht</value>
   </data>
   <data name="Label432" xml:space="preserve">
-    <value>DocumentViewer</value>
+    <value>Dokument-Viewer</value>
   </data>
   <data name="Label433" xml:space="preserve">
-    <value>ListBox (ListBox)</value>
+    <value>ListBox</value>
   </data>
   <data name="Label434" xml:space="preserve">
-    <value>ListView</value>
+    <value>Listenansicht</value>
   </data>
   <data name="Label435" xml:space="preserve">
     <value>MediaPlayer</value>
@@ -1261,7 +1261,7 @@
     <value>Schieberegler</value>
   </data>
   <data name="Label442" xml:space="preserve">
-    <value>TreeView (Baumansicht)</value>
+    <value>Baumansicht</value>
   </data>
   <data name="Label443" xml:space="preserve">
     <value>Ausgewählte Formen löschen</value>
@@ -1294,7 +1294,7 @@
     <value>1000</value>
   </data>
   <data name="Label452" xml:space="preserve">
-    <value>Ansicht "Skalieren"</value>
+    <value>Ansicht skalieren</value>
   </data>
   <data name="Label453" xml:space="preserve">
     <value>Hilfe</value>
@@ -1327,7 +1327,7 @@
     <value>Wert</value>
   </data>
   <data name="Label462" xml:space="preserve">
-    <value>Variablen &amp; Aufrufliste</value>
+    <value>Variablen und Aufrufliste</value>
   </data>
   <data name="Label463" xml:space="preserve">
     <value>Variable</value>
@@ -1339,7 +1339,7 @@
     <value>Aufrufliste</value>
   </data>
   <data name="Label466" xml:space="preserve">
-    <value>Zusätzlicher regulärer Ausdruck für Tooltip-IntelliSense-Variablennamen (z. B. russisch а-яА-ЯёЁ)</value>
+    <value>Zusätzlicher Regex für Tooltip-Intellisense-Variablennamen (z. B. Russisch а-яА-ЯёЁ)</value>
   </data>
   <data name="Label467" xml:space="preserve">
     <value>Rechteck</value>
@@ -1381,22 +1381,22 @@
     <value>Kontrollkästchen</value>
   </data>
   <data name="Label479" xml:space="preserve">
-    <value>ComboBox (Kombinationsfeld)</value>
+    <value>ComboBox</value>
   </data>
   <data name="Label48" xml:space="preserve">
     <value>Retten</value>
   </data>
   <data name="Label480" xml:space="preserve">
-    <value>DataView (Datenansicht)</value>
+    <value>Datenansicht</value>
   </data>
   <data name="Label481" xml:space="preserve">
-    <value>DocumentViewer</value>
+    <value>Dokument-Viewer</value>
   </data>
   <data name="Label482" xml:space="preserve">
-    <value>ListBox (ListBox)</value>
+    <value>ListBox</value>
   </data>
   <data name="Label483" xml:space="preserve">
-    <value>ListView</value>
+    <value>Listenansicht</value>
   </data>
   <data name="Label484" xml:space="preserve">
     <value>MediaPlayer</value>
@@ -1423,10 +1423,10 @@
     <value>Schieberegler</value>
   </data>
   <data name="Label491" xml:space="preserve">
-    <value>TreeView (Baumansicht)</value>
+    <value>Baumansicht</value>
   </data>
   <data name="Label492" xml:space="preserve">
-    <value>Decknamen</value>
+    <value>Befehls-Aliasnamen</value>
   </data>
   <data name="Label493" xml:space="preserve">
     <value>Festlegen von Objekt- und Methodenaliasen</value>
@@ -1441,43 +1441,43 @@
     <value>Standardname</value>
   </data>
   <data name="Label497" xml:space="preserve">
-    <value>Name des Alias</value>
+    <value>Aliasname</value>
   </data>
   <data name="Label498" xml:space="preserve">
-    <value>Verwenden von Aliasen umschalten</value>
+    <value>Schalten Sie die Verwendung von Aliasen um</value>
   </data>
   <data name="Label499" xml:space="preserve">
     <value>Aktivieren von Aliasen</value>
   </data>
   <data name="Label5" xml:space="preserve">
-    <value>Numlock (Numlock)</value>
+    <value>Numlock</value>
   </data>
   <data name="Label50" xml:space="preserve">
     <value>Speichern unter</value>
   </data>
   <data name="Label500" xml:space="preserve">
-    <value>Konvertiert zwischen Dateiquellcode und SB-Prime-IDE, sodass Speichern, Laden, Veröffentlichen, Importieren, Graduieren, Ausführen usw. die Standard-SB-Befehle verwenden, während die IDE und IntelliSense die Aliase verwenden.</value>
+    <value>Konvertiert zwischen Dateiquellcode und SB-Prime IDE, so dass Speichern, Laden, Veröffentlichen, Importieren, Graduieren, Ausführen usw. die Standardbefehle von SB verwenden, während die IDE und Intellisense die Aliase verwenden.</value>
   </data>
   <data name="Label501" xml:space="preserve">
-    <value>Die Quelldatei kann ohne Konflikte direkt oder mit Publish geteilt werden - sie ist vollständig SB-kompatibel.</value>
+    <value>Die Quelldatei kann direkt oder ohne Konflikte mit Publish geteilt werden - sie ist vollständig SB-kompatibel.</value>
   </data>
   <data name="Label502" xml:space="preserve">
-    <value>Die Aliase sind nur mit der IDE verknüpft, der Quellcode kann ohne Konvertierung aus der IDE kopiert/eingefügt werden.</value>
+    <value>Die Aliase sind nur mit der IDE verknüpft, Quellcode kann ohne Konvertierung aus der IDE kopiert/eingefügt werden.</value>
   </data>
   <data name="Label503" xml:space="preserve">
     <value>Validieren</value>
   </data>
   <data name="Label504" xml:space="preserve">
-    <value>Namen validieren, ungültige Namen werden nicht gespeichert</value>
+    <value>Namen validieren, ungültig wird nicht gespeichert</value>
   </data>
   <data name="Label505" xml:space="preserve">
-    <value>Exportieren von Aliasen in eine tabulatorbereinigte Textdatei</value>
+    <value>Exportieren von Aliasen in eine tabulatorseitige Textdatei</value>
   </data>
   <data name="Label506" xml:space="preserve">
     <value>Exportieren</value>
   </data>
   <data name="Label507" xml:space="preserve">
-    <value>Importieren von Aliasen aus einer Textdatei mit Tabulatorentfernung</value>
+    <value>Aliase aus einer Textdatei importieren, die aus der Registerkarte entfernt wurde</value>
   </data>
   <data name="Label508" xml:space="preserve">
     <value>Importieren</value>
@@ -1498,7 +1498,7 @@
     <value>Programm</value>
   </data>
   <data name="Label54" xml:space="preserve">
-    <value>Aktuelles Programm beenden (Umschalt+F5)</value>
+    <value>Aktuelles Programm stoppen (Umschalt+F5)</value>
   </data>
   <data name="Label55" xml:space="preserve">
     <value>Aufhören</value>
@@ -1528,7 +1528,7 @@
     <value>Kleister</value>
   </data>
   <data name="Label63" xml:space="preserve">
-    <value>Aktuelle Auswahl in die Zwischenablage löschen</value>
+    <value>Aktuelle Auswahl in der Zwischenablage löschen</value>
   </data>
   <data name="Label64" xml:space="preserve">
     <value>Schneiden</value>
@@ -1546,7 +1546,7 @@
     <value>Aufmachen</value>
   </data>
   <data name="Label69" xml:space="preserve">
-    <value>Letzte Aktion wiederholen</value>
+    <value>Letzte Aktion wiederherstellen</value>
   </data>
   <data name="Label7" xml:space="preserve">
     <value>Hilfe</value>
@@ -1558,16 +1558,16 @@
     <value>Komplettes Programm auswählen</value>
   </data>
   <data name="Label72" xml:space="preserve">
-    <value>Alles auswählen</value>
+    <value>Alle auswählen</value>
   </data>
   <data name="Label73" xml:space="preserve">
-    <value>Alle Faltungen ausblenden</value>
+    <value>Alle Falten einklappen</value>
   </data>
   <data name="Label74" xml:space="preserve">
-    <value>Alle ausblenden</value>
+    <value>Alle einklappen</value>
   </data>
   <data name="Label75" xml:space="preserve">
-    <value>Alle Faltungen aufklappen</value>
+    <value>Alle Falten aufklappen</value>
   </data>
   <data name="Label76" xml:space="preserve">
     <value>Alle aufklappen</value>
@@ -1597,7 +1597,7 @@
     <value>Web</value>
   </data>
   <data name="Label84" xml:space="preserve">
-    <value>Importieren eines Programms aus dem Internet</value>
+    <value>Importieren eines Programms aus dem Web</value>
   </data>
   <data name="Label85" xml:space="preserve">
     <value>Importieren</value>
@@ -1612,7 +1612,7 @@
     <value>Suchen</value>
   </data>
   <data name="Label89" xml:space="preserve">
-    <value>Schnellsuche vorheriges</value>
+    <value>Vorherige Schnellsuche</value>
   </data>
   <data name="Label9" xml:space="preserve">
     <value>Neu</value>
@@ -1621,10 +1621,10 @@
     <value>Vorherige suchen</value>
   </data>
   <data name="Label91" xml:space="preserve">
-    <value>Schnelle Suche nach dem Nächsten</value>
+    <value>Schnellsuche weiter</value>
   </data>
   <data name="Label92" xml:space="preserve">
-    <value>Weitersuchen</value>
+    <value>Weiter suchen</value>
   </data>
   <data name="Label93" xml:space="preserve">
     <value>Dialogfeld "Suchen und Ersetzen"</value>
@@ -1636,31 +1636,31 @@
     <value>Alle gefundenen Instanzen hervorheben</value>
   </data>
   <data name="Label96" xml:space="preserve">
-    <value>Alle hervorheben</value>
+    <value>Alle markieren</value>
   </data>
   <data name="Label97" xml:space="preserve">
-    <value>Suchen und Hervorheben nur ganzer Wortübereinstimmungen</value>
+    <value>Suchen und markieren Sie nur ganze Wortübereinstimmungen</value>
   </data>
   <data name="Label98" xml:space="preserve">
     <value>Ganzes Wort</value>
   </data>
   <data name="Label99" xml:space="preserve">
-    <value>Suchen und Hervorheben von Treffern, bei denen die Groß-/Kleinschreibung beachtet wird</value>
+    <value>Suchen und markieren Sie nur Übereinstimmungen, bei denen die Groß-/Kleinschreibung beachtet wird</value>
   </data>
   <data name="String1" xml:space="preserve">
-    <value>Verwenden Sie die Umschalttaste, um mehrere Formen auszuwählen, um sie gemeinsam zu verschieben oder zu ändern</value>
+    <value>Verwenden Sie die Umschalttaste, um mehrere Formen auszuwählen, um sie zusammen zu verschieben oder zu ändern</value>
   </data>
   <data name="String10" xml:space="preserve">
-    <value>IntelliSense wird hier angezeigt, wenn Sie mit der Maus auf Objekte und Methoden zeigen und wenn Sie potenzielle Optionen eingeben und anzeigen.</value>
+    <value>IntelliSense wird hier angezeigt, wenn Sie mit der Maus auf Objekte und Methoden zeigen sowie wenn Sie potenzielle Optionen eingeben und anzeigen.</value>
   </data>
   <data name="String100" xml:space="preserve">
-    <value>Befehle zum Aufheben von Dateikommentaren</value>
+    <value>Befehle zum Auskommentieren von Dateien</value>
   </data>
   <data name="String101" xml:space="preserve">
-    <value>Klappen Falten</value>
+    <value>Zusammenklappen Falten</value>
   </data>
   <data name="String102" xml:space="preserve">
-    <value>Falten erweitern</value>
+    <value>Folding erweitern</value>
   </data>
   <data name="String103" xml:space="preserve">
     <value>Zurück navigieren Strg+B</value>
@@ -1681,7 +1681,7 @@
     <value>Enthaltenden Ordner öffnen</value>
   </data>
   <data name="String109" xml:space="preserve">
-    <value>Zum Debuggen hinzufügen Uhr Strg+Umschalt+W</value>
+    <value>Zur Debug-Überwachung hinzufügen Strg+Umschalt+W</value>
   </data>
   <data name="String11" xml:space="preserve">
     <value>Argumente</value>
@@ -1705,7 +1705,7 @@
     <value>Echte Farbe</value>
   </data>
   <data name="String116" xml:space="preserve">
-    <value>Schwarz und Weiß</value>
+    <value>Schwarz-Weiß</value>
   </data>
   <data name="String117" xml:space="preserve">
     <value>Bitte warten...</value>
@@ -1720,7 +1720,7 @@
     <value>Ertrag</value>
   </data>
   <data name="String120" xml:space="preserve">
-    <value>Dekompilieren Sie eine gültige .NET-Assembly in Microsoft C# (DLL oder EXE), und öffnen Sie dann den Ordner, der den dekompilierten C#-Quellcode enthält.</value>
+    <value>Dekompilieren Sie eine gültige .NET-Assembly in Microsoft C# (DLL oder EXE), und öffnen Sie dann den Ordner mit dem dekompilierten C#-Quellcode.</value>
   </data>
   <data name="String121" xml:space="preserve">
     <value>Wenn dies erfolgreich ist und Visual Studio installiert ist, öffnen Sie die Projektdatei (*.csproj).</value>
@@ -1738,10 +1738,10 @@
     <value>Hauptfenster</value>
   </data>
   <data name="String126" xml:space="preserve">
-    <value>Layout des Dokuments</value>
+    <value>Dokumenten-Layout</value>
   </data>
   <data name="String127" xml:space="preserve">
-    <value>Dokumenten-Lexer</value>
+    <value>Dokument Lexer</value>
   </data>
   <data name="String128" xml:space="preserve">
     <value>Flussdiagramm</value>
@@ -1750,7 +1750,7 @@
     <value>Hintergrund</value>
   </data>
   <data name="String13" xml:space="preserve">
-    <value>Zusätzlich kann in diesem Fenster eine Popup-Beschreibung für Methoden angezeigt werden, indem Sie beim Betrachten eines Objekts mit der Maus über Methoden, Eigenschaften oder Ereignisse fahren.</value>
+    <value>Zusätzlich kann in diesem Fenster eine Popup-Beschreibung für Methoden angezeigt werden, indem Sie beim Anzeigen eines Objekts mit der Maus über Methoden, Eigenschaften oder Ereignisse fahren.</value>
   </data>
   <data name="String130" xml:space="preserve">
     <value>Vordergrund</value>
@@ -1762,10 +1762,10 @@
     <value>Auswahl</value>
   </data>
   <data name="String133" xml:space="preserve">
-    <value>Hintergrund am Rand</value>
+    <value>Hintergrund des Randes</value>
   </data>
   <data name="String134" xml:space="preserve">
-    <value>Rand Vordergrund</value>
+    <value>Rand-Vordergrund</value>
   </data>
   <data name="String135" xml:space="preserve">
     <value>Faltbarer Hintergrund</value>
@@ -1774,13 +1774,13 @@
     <value>Klappbarer Vordergrund</value>
   </data>
   <data name="String137" xml:space="preserve">
-    <value>Lesezeichen-Hintergrund</value>
+    <value>Hintergrund mit Lesezeichen versehen</value>
   </data>
   <data name="String138" xml:space="preserve">
     <value>Lesezeichen Vordergrund</value>
   </data>
   <data name="String139" xml:space="preserve">
-    <value>Hintergrund des Haltepunkts</value>
+    <value>Haltepunkt-Hintergrund</value>
   </data>
   <data name="String14" xml:space="preserve">
     <value>Form auswählen</value>
@@ -1792,19 +1792,19 @@
     <value>Auswählen</value>
   </data>
   <data name="String142" xml:space="preserve">
-    <value>Debuggen hervorheben</value>
+    <value>Debuggen markieren</value>
   </data>
   <data name="String143" xml:space="preserve">
-    <value>Markieren Sie die Suche</value>
+    <value>Markieren Suchen</value>
   </data>
   <data name="String144" xml:space="preserve">
-    <value>Markiert Gelöscht</value>
+    <value>Markiert gelöscht</value>
   </data>
   <data name="String145" xml:space="preserve">
-    <value>Hervorhebung eingefügt</value>
+    <value>Highlight eingefügt</value>
   </data>
   <data name="String146" xml:space="preserve">
-    <value>CallTip Vordergrund</value>
+    <value>CallTip-Vordergrund</value>
   </data>
   <data name="String147" xml:space="preserve">
     <value>CallTip-Hintergrund</value>
@@ -1816,7 +1816,7 @@
     <value>Vordergrund</value>
   </data>
   <data name="String15" xml:space="preserve">
-    <value>Auswahl der Form aufheben</value>
+    <value>Shape abwählen</value>
   </data>
   <data name="String150" xml:space="preserve">
     <value>Hintergrund</value>
@@ -1876,7 +1876,7 @@
     <value>Code</value>
   </data>
   <data name="String168" xml:space="preserve">
-    <value>SB-Prime-Version</value>
+    <value>SB-Prime-Ausführung</value>
   </data>
   <data name="String169" xml:space="preserve">
     <value>Debug-Erweiterung</value>
@@ -1897,7 +1897,7 @@
     <value>Feststelltaste</value>
   </data>
   <data name="String174" xml:space="preserve">
-    <value>Num-Taste</value>
+    <value>Num-Sperre</value>
   </data>
   <data name="String175" xml:space="preserve">
     <value>Einfügen</value>
@@ -1909,31 +1909,43 @@
     <value>Ausgeführte</value>
   </data>
   <data name="String178" xml:space="preserve">
-    <value>Variabler regulärer Ausdruck</value>
+    <value>Variabler Regex</value>
   </data>
   <data name="String179" xml:space="preserve">
-    <value>Zusätzlicher regulärer Ausdruck für Tooltip-IntelliSense-Variablennamen</value>
+    <value>Zusätzlicher Regex für Intellisense-Variablennamen im Tooltip</value>
   </data>
   <data name="String18" xml:space="preserve">
-    <value>Einfügen von Code in das aktuelle Dokument</value>
+    <value>Code in aktuelles Dokument einfügen</value>
   </data>
   <data name="String180" xml:space="preserve">
-    <value>Tool-Fenster sollen "immer im Vordergrund" sein</value>
+    <value>Toolfenster sind "immer im Vordergrund"</value>
   </data>
   <data name="String181" xml:space="preserve">
-    <value>Schriftart im Quellcode</value>
+    <value>Quellcode-Schriftart</value>
   </data>
   <data name="String182" xml:space="preserve">
     <value>Die Schriftfamilie für den Quellcode</value>
   </data>
   <data name="String183" xml:space="preserve">
-    <value>Kommentar ' an der Einfügemarke einfügen Strg+Umschalt+?</value>
+    <value>Kommentar einfügen ' bei Einfügezeichen Strg+Umschalt+?</value>
+  </data>
+  <data name="String184" xml:space="preserve">
+    <value>Erste Datei zum Vergleichen</value>
+  </data>
+  <data name="String185" xml:space="preserve">
+    <value>Zweite Datei zum Vergleichen</value>
+  </data>
+  <data name="String186" xml:space="preserve">
+    <value>Ende des Vergleichs</value>
+  </data>
+  <data name="String187" xml:space="preserve">
+    <value>Überprüfen Sie die Links und Ressourcen auf der Registerkarte Tools.</value>
   </data>
   <data name="String19" xml:space="preserve">
     <value>Code aus aktuellem Dokument kopieren</value>
   </data>
   <data name="String2" xml:space="preserve">
-    <value>Umschalten der IntelliSense-Ansicht</value>
+    <value>IntelliSense-Ansicht umschalten</value>
   </data>
   <data name="String20" xml:space="preserve">
     <value>Klar</value>
@@ -1945,10 +1957,10 @@
     <value>Dieser Ordner enthält bereits Dateien.</value>
   </data>
   <data name="String23" xml:space="preserve">
-    <value>Wählen Sie einen anderen Speicherort oder leeren Sie diesen Ordner, und versuchen Sie es erneut.</value>
+    <value>Wählen Sie einen anderen Speicherort oder leeren Sie diesen Ordner und versuchen Sie es erneut.</value>
   </data>
   <data name="String24" xml:space="preserve">
-    <value>Das Flussdiagramm ist fehlgeschlagen, wahrscheinlich aufgrund eines Codefehlers - überprüfen Sie, ob das Programm kompiliert wird.</value>
+    <value>Das Flussdiagramm ist fehlgeschlagen, wahrscheinlich wegen eines Codefehlers - überprüfen Sie die Kompilierung des Programms.</value>
   </data>
   <data name="String25" xml:space="preserve">
     <value>Möchten Sie fortfahren?</value>
@@ -1957,19 +1969,19 @@
     <value>Klicken Sie mit der linken Maustaste auf ein Element, um es auszuwählen</value>
   </data>
   <data name="String27" xml:space="preserve">
-    <value>Klicken Sie mit der rechten Maustaste auf ein Element, um das übergeordnete Element auszuwählen (EndFor, EndWhile, EndIf, Else oder ElseIf) oder den zugehörigen Link auszuwählen (Gehe zu oder Unter)</value>
+    <value>Klicken Sie mit der rechten Maustaste auf ein Element, um das übergeordnete Element auszuwählen (EndFor, EndWhile, EndIf, Else oder ElseIf) oder den zugehörigen Link auszuwählen (Gehe zu oder Untergeordnet).</value>
   </data>
   <data name="String28" xml:space="preserve">
-    <value>Ein ausgewähltes Element wird in den oberen Rand der Ansicht verschoben</value>
+    <value>Ein ausgewähltes Element wird an den oberen Rand der Ansicht verschoben</value>
   </data>
   <data name="String29" xml:space="preserve">
     <value>Während einer Debug-Sitzung wird die aktuell angehaltene Zeile ausgewählt</value>
   </data>
   <data name="String3" xml:space="preserve">
-    <value>Programmlayout mit geteiltem Bildschirm umschalten</value>
+    <value>Splitscreen-Programmlayout umschalten</value>
   </data>
   <data name="String30" xml:space="preserve">
-    <value>Farben können in IDE-Farben festgelegt werden, und das dunkle Design wird angewendet, wenn es ausgewählt ist</value>
+    <value>Farben können in IDE-Farben festgelegt werden, und das dunkle Design wird angewendet, wenn ausgewählt</value>
   </data>
   <data name="String31" xml:space="preserve">
     <value>Der Formen-Editor konnte keine Eigenschaftseingabe festlegen.</value>
@@ -1981,19 +1993,19 @@
     <value>Der Formen-Editor konnte einige Formen nicht aus dem Code importieren.</value>
   </data>
   <data name="String34" xml:space="preserve">
-    <value>Fügen Sie Formen oder Steuerelemente hinzu, indem Sie im linken Bereich auf den Namen der Form klicken.</value>
+    <value>Fügen Sie Formen oder Steuerelemente hinzu, indem Sie im linken Bereich auf den Formnamen klicken.</value>
   </data>
   <data name="String35" xml:space="preserve">
     <value>Wählen Sie eine Form aus, indem Sie darauf klicken oder den blauen Ziehpunkt verschieben.</value>
   </data>
   <data name="String36" xml:space="preserve">
-    <value>Die Eigenschaften einer ausgewählten Form werden im rechten Bereich angezeigt, sie können durch Bearbeiten oder Verwenden der Schaltfläche Festlegen geändert werden.</value>
+    <value>Die Eigenschaften einer ausgewählten Form werden im rechten Bereich angezeigt, sie können durch Bearbeiten oder mit der Schaltfläche Festlegen geändert werden.</value>
   </data>
   <data name="String37" xml:space="preserve">
-    <value>Wählen Sie mehrere Formen aus, indem Sie eine Form bei gedrückter Umschalttaste auswählen oder indem Sie eine Gruppe von Formen runden (Umschalttaste, um sie zu den aktuell ausgewählten Formen hinzuzufügen).</value>
+    <value>Wählen Sie mehrere Formen aus, indem Sie eine Form mit gedrückter Umschalttaste auswählen oder indem Sie eine Gruppe von Formen runden (Umschalttaste, um sie zu den aktuell ausgewählten Formen hinzuzufügen).</value>
   </data>
   <data name="String38" xml:space="preserve">
-    <value>Entferne alle Formen, indem du mit der linken Maustaste auf den Hintergrund klickst.</value>
+    <value>Verzerren Sie alle Formen, indem Sie mit der linken Maustaste auf den Hintergrund klicken.</value>
   </data>
   <data name="String39" xml:space="preserve">
     <value>Verschieben, Ändern der Größe (mithilfe von Eckgriffen) oder Ändern der Eigenschaften einer Form (Halten Sie die Umschalttaste gedrückt, um sie auf mehrere ausgewählte Formen anzuwenden).</value>
@@ -2005,16 +2017,16 @@
     <value>Die Größe von Dreiecken, Linien und Polygonen wird durch Verschieben einzelner Ecken geändert.</value>
   </data>
   <data name="String41" xml:space="preserve">
-    <value>Verschieben Sie ausgewählte Formen mit den Pfeiltasten (halten Sie die Umschalttaste gedrückt, um sich um den Fangabstand zu bewegen).</value>
+    <value>Verschieben ausgewählter Formen mit den Pfeiltasten (halten Sie die Umschalttaste gedrückt, um sich um den Fangabstand zu bewegen).</value>
   </data>
   <data name="String42" xml:space="preserve">
-    <value>Drücken Sie die ENTF-Taste über einer Form, um sie zu löschen.</value>
+    <value>Drücken Sie die Entf-Taste über einer Form, um sie zu löschen.</value>
   </data>
   <data name="String43" xml:space="preserve">
-    <value>Klicken Sie mit der rechten Maustaste, um zusätzliche Optionen anzuzeigen, z. B. das Kopieren und Einfügen von Code in das aktuelle Dokument oder das Kopieren ausgewählter Formen (neue kopierte Formen liegen über den Originalen und können dann mit der Umschalttaste als Gruppe verschoben werden).</value>
+    <value>Klicken Sie mit der rechten Maustaste, um zusätzliche Optionen anzuzeigen, z. B. Kopieren und Einfügen von Code in das aktuelle Dokument oder Kopieren ausgewählter Formen (neu kopierte Formen liegen über den Originalen und können dann mit der Umschalttaste als Gruppe verschoben werden).</value>
   </data>
   <data name="String44" xml:space="preserve">
-    <value>Der aktuelle Code wird im Codefenster angezeigt.  Dieser kann bearbeitet werden und mit \"Aus Code importieren\" den aktuellen Code zur aktuellen Ansicht hinzufügen.</value>
+    <value>Der aktuelle Code wird im Codefenster angezeigt.  Dies kann bearbeitet werden und mit \"Aus Code importieren\" den aktuellen Code zur aktuellen Ansicht hinzufügen.</value>
   </data>
   <data name="String45" xml:space="preserve">
     <value>Fragen und Anregungen sind willkommen.</value>
@@ -2023,16 +2035,16 @@
     <value>Der Text in</value>
   </data>
   <data name="String47" xml:space="preserve">
-    <value>hat sich verändert</value>
+    <value>hat sich geändert</value>
   </data>
   <data name="String48" xml:space="preserve">
     <value>Möchten Sie die Änderungen speichern?</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>Deaktivieren Sie "Erweiterungs-DLLs beim Start laden" unter Erweitert-&gt;Optionen und starten Sie sie neu, um die installierten Erweiterungen zu ändern.</value>
+    <value>Deaktivieren Sie "Erweiterungs-DLLs beim Start laden" in den erweiterten &gt;Optionen und starten Sie neu, um installierte Erweiterungen zu ändern.</value>
   </data>
   <data name="String5" xml:space="preserve">
-    <value>Unterschiedliche Dateien im geteilten Bildschirm ein- und ausschalten</value>
+    <value>Differenzdateien im geteilten Bildschirm umschalten</value>
   </data>
   <data name="String50" xml:space="preserve">
     <value>OK, um mit geladenen Erweiterungen fortzufahren.</value>
@@ -2041,159 +2053,159 @@
     <value>Derzeit gibt es keine erweiterte Hilfe.</value>
   </data>
   <data name="String52" xml:space="preserve">
-    <value>SB-Prime sollte mit jeder installierten Version von Small Basic funktionieren, das Debugging funktioniert ab Small Basic Version 1.1.</value>
+    <value>SB-Prime sollte mit jeder installierten Version von Small Basic funktionieren, das Debuggen funktioniert ab Small Basic Version 1.1.</value>
   </data>
   <data name="String53" xml:space="preserve">
-    <value>Um das Debuggen zu aktivieren, wird beim ersten Start von SB-Prime eine Erweiterung direkt kompiliert und im Ordner lib installiert, wobei die Berechtigung für die Benutzerkontensteuerung (User Account Control, UAC) erforderlich ist.</value>
+    <value>Um das Debuggen zu ermöglichen, wird eine Erweiterung beim ersten Start von SB-Prime direkt kompiliert und im lib-Ordner installiert, wobei die Berechtigung der Benutzerkontensteuerung (User Account Control, UAC) erforderlich ist.</value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value>Darüber hinaus kann die Benutzerkontensteuerung erforderlich sein, wenn zum ersten Mal eine Debugsitzung ausgeführt wird, um die erforderliche Kommunikation zwischen Anwendungen zu ermöglichen.</value>
+    <value></value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value>Das Debuggen erfordert das Ausführen bis zu Haltepunkten oder das "Durchlaufen" des Codes.  Nach dem Anhalten können die Werte angezeigt werden, indem Sie mit der Maus über eine Variable fahren oder Variablennamen zur Überwachungsliste auf der Registerkarte "Debuggen" hinzufügen.  Beobachtungslistenvariablen können angezeigt werden, wenn sie sich ändern, und können auch geändert werden.  Array-Werte mit []-Syntax können ebenfalls angezeigt und geändert werden.</value>
+    <value></value>
   </data>
   <data name="String56" xml:space="preserve">
-    <value>Für diese Anwendung sind keine Ressourcen vorhanden.  Kündigung.</value>
+    <value></value>
   </data>
   <data name="String57" xml:space="preserve">
-    <value>Die Berechtigung zum Erstellen des Erweiterungsordners lib ist erforderlich</value>
+    <value></value>
   </data>
   <data name="String58" xml:space="preserve">
-    <value>Willkommen bei Small Basic Prime</value>
+    <value></value>
   </data>
   <data name="String59" xml:space="preserve">
-    <value>Fehler beim Importieren des Programms mit ID</value>
+    <value></value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value>Farbe auf Weiß</value>
+    <value></value>
   </data>
   <data name="String60" xml:space="preserve">
-    <value>Erfolgreich importiertes Programm mit ID</value>
+    <value></value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value>Erfolgreich beendeter Lauf mit Prozess</value>
+    <value></value>
   </data>
   <data name="String62" xml:space="preserve">
-    <value>Debug- und Nicht-Debug-Ausführungen können nicht gemischt werden</value>
+    <value></value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value>Ein Programm, das bereits ausgeführt wird, kann nicht kompiliert werden.</value>
+    <value></value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value>Fehler beim Veröffentlichen des Programms (möglicherweise zu kurz oder zu lang)</value>
+    <value></value>
   </data>
   <data name="String65" xml:space="preserve">
-    <value>Erfolgreich veröffentlichtes Programm mit ID</value>
+    <value></value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value>Erfolgreich abgeschlossenes Studium zum</value>
+    <value></value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value>Die Groß-/Kleinschreibung kann nicht ausgeführt werden, da exe nicht erfolgreich kompiliert wurde</value>
+    <value></value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value>Erfolgreich gestartete Ausführung mit Prozess</value>
+    <value></value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value>Die Assembly wurde erfolgreich dekompiliert, um</value>
+    <value></value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value>Echte Farbe</value>
+    <value></value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value>Plugin hinzufügen: Fehler beim Hinzufügen eines Plugins in der Gruppe</value>
+    <value></value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value>Erfolgreich beendeter Lauf mit Prozess</value>
+    <value></value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value>Erstellen Sie neue Formen aus dem Codefenster.</value>
+    <value></value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value>Sie können hier zuerst einen beliebigen Code einfügen.</value>
+    <value></value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value>Beachten Sie, dass es sich bei den meisten Argumenten um Literale und nicht um Variablen handeln sollte.</value>
+    <value></value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value>Microsoft Visual Studio Community-Entwicklungsumgebung.</value>
+    <value></value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value>Schreiben Sie Ihre eigenen Small Basic-Erweiterungen und größere Projekte.</value>
+    <value></value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value>Anzeigen und Dekompilieren von .NET-Assemblys.  Finden Sie heraus, wie Erweiterungen funktionieren.</value>
+    <value></value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value>Unverzichtbar, um unter die Haube von Small Basic zu kommen.</value>
+    <value></value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value>Eine leichte, aber voll ausgestattete Alternative zu VS.</value>
+    <value></value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value>Schwarz und Weiß</value>
+    <value></value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value>Erstellen und bearbeiten Sie Bilder, einschließlich des einfachen Versehens von PNG-Bildern mit transparenten Hintergründen und der Erstellung animierter GIFs.</value>
+    <value></value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value>Schauen Sie sich das Zauberstab-Auswahlwerkzeug an.</value>
+    <value></value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value>Ausgezeichnete Texteditor-Alternative zum Notizblock.</value>
+    <value></value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value>Ein großer Download, aber eine professionelle IDE.</value>
+    <value></value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>Nützlich, um die meisten textlesbaren Dateiformate schnell anzuzeigen oder zu bearbeiten.</value>
+    <value></value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>Komprimierung der Datei-Zip-Datei.</value>
+    <value></value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>Der beste Weg, um mehrere Dokumente in einer einzigen komprimierten Datei freizugeben.</value>
+    <value></value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>Erstellen und Bearbeiten von Symbolen.</value>
+    <value></value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>Icon-Formate sind ohne ein einfaches Tool wie dieses ziemlich knifflig.</value>
+    <value></value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Rückgängigmachen Strg+Z</value>
+    <value></value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Intellisense</value>
+    <value></value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Wiederholen Strg+Y</value>
+    <value></value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Ausschneiden Strg+X</value>
+    <value></value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>Kopieren Strg+C</value>
+    <value></value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value>Einfügen Strg+V</value>
+    <value></value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value>Löschen</value>
+    <value></value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>Alles auswählen Strg+A</value>
+    <value></value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Suchen Sie Strg+F</value>
+    <value></value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>Suchen und Ersetzen Strg+H</value>
+    <value></value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Ausgewählte Zeilen kommentieren Strg+?</value>
+    <value></value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>Ausgewählte Zeilen auskommentieren Strg+?</value>
+    <value></value>
   </data>
 </root>

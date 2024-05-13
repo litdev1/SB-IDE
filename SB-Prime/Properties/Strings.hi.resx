@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>छोटा बेसिक प्राइम</value>
+    <value>小基本 Prime</value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>कोई मौजूदा प्रोग्राम खोलें</value>
   </data>
   <data name="Label100" xml:space="preserve">
-    <value>केस सेंसिटिव</value>
+    <value>मामला संवेदनशील</value>
   </data>
   <data name="Label101" xml:space="preserve">
     <value>खोज</value>
@@ -133,7 +133,7 @@
     <value>इतिहास</value>
   </data>
   <data name="Label103" xml:space="preserve">
-    <value>डीबग</value>
+    <value></value>
   </data>
   <data name="Label104" xml:space="preserve">
     <value>रेती</value>
@@ -142,7 +142,7 @@
     <value>कोई नया प्रोग्राम प्रारंभ करें (Ctrl+N)</value>
   </data>
   <data name="Label106" xml:space="preserve">
-    <value>नया</value>
+    <value></value>
   </data>
   <data name="Label107" xml:space="preserve">
     <value>कोई मौजूदा प्रोग्राम खोलें (Ctrl+O)</value>
@@ -151,7 +151,7 @@
     <value>खोलना</value>
   </data>
   <data name="Label109" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम बंद करें</value>
+    <value></value>
   </data>
   <data name="Label11" xml:space="preserve">
     <value>खोलना</value>
@@ -166,7 +166,7 @@
     <value>रक्षा कर</value>
   </data>
   <data name="Label113" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम को नई फ़ाइल में सहेजें</value>
+    <value></value>
   </data>
   <data name="Label114" xml:space="preserve">
     <value>इस रूप में सहेजें</value>
@@ -175,7 +175,7 @@
     <value>सभी प्रोग्राम सहेजें</value>
   </data>
   <data name="Label116" xml:space="preserve">
-    <value>सभी को बचाओ</value>
+    <value></value>
   </data>
   <data name="Label117" xml:space="preserve">
     <value>डीबग</value>
@@ -184,13 +184,13 @@
     <value>वर्तमान प्रोग्राम रोकें (Shift+F6)</value>
   </data>
   <data name="Label119" xml:space="preserve">
-    <value>रुको</value>
+    <value></value>
   </data>
   <data name="Label12" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम बंद करें</value>
+    <value>वर्तमान कार्यक्रम बंद करें</value>
   </data>
   <data name="Label120" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम रोकें</value>
+    <value>वर्तमान कार्यक्रम रोकें</value>
   </data>
   <data name="Label121" xml:space="preserve">
     <value>रुकना</value>
@@ -199,16 +199,16 @@
     <value>वर्तमान सबरूटीन से बाहर निकलें</value>
   </data>
   <data name="Label123" xml:space="preserve">
-    <value>स्टेप आउट</value>
+    <value>बाहर निकलो</value>
   </data>
   <data name="Label124" xml:space="preserve">
-    <value>अगले कथन पर कदम रखें यदि यह एक सबरूटीन (F10) है</value>
+    <value>अगले कथन पर कदम यदि यह एक सबरूटीन (F10) है</value>
   </data>
   <data name="Label125" xml:space="preserve">
     <value>स्टेप ओवर</value>
   </data>
   <data name="Label126" xml:space="preserve">
-    <value>वर्तमान कार्यक्रम के माध्यम से कदम, या पहले कथन पर प्रारंभ और विराम (F11)</value>
+    <value></value>
   </data>
   <data name="Label127" xml:space="preserve">
     <value>कहीं जाना</value>
@@ -217,7 +217,7 @@
     <value>वर्तमान प्रोग्राम प्रारंभ/फिर से शुरू करें (F6)</value>
   </data>
   <data name="Label129" xml:space="preserve">
-    <value>प्रारंभ/फिर से शुरू</value>
+    <value>प्रारंभ/फिर से शुरू करें</value>
   </data>
   <data name="Label13" xml:space="preserve">
     <value>बंद करना</value>
@@ -232,7 +232,7 @@
     <value>टॉगल ब्रेकपॉइंट</value>
   </data>
   <data name="Label133" xml:space="preserve">
-    <value>सभी ब्रेकपॉइंट साफ़ करें</value>
+    <value>सभी ब्रेकपॉइंट्स साफ़ करें</value>
   </data>
   <data name="Label134" xml:space="preserve">
     <value>ब्रेकपॉइंट्स साफ़ करें</value>
@@ -250,19 +250,19 @@
     <value>वर्तमान लाइन पर बुकमार्क टॉगल करें</value>
   </data>
   <data name="Label139" xml:space="preserve">
-    <value>टॉगल बुकमार्क</value>
+    <value>बुकमार्क टॉगल करें</value>
   </data>
   <data name="Label14" xml:space="preserve">
     <value>वर्तमान प्रोग्राम सहेजें</value>
   </data>
   <data name="Label140" xml:space="preserve">
-    <value>अगले बुकमार्क पर जाने के लिए नीचे</value>
+    <value>नीचे अगले बुकमार्क पर जाएँ</value>
   </data>
   <data name="Label141" xml:space="preserve">
     <value>अगला बुकमार्क</value>
   </data>
   <data name="Label142" xml:space="preserve">
-    <value>पिछले बुकमार्क अप पर ले जाना</value>
+    <value>पिछले बुकमार्क अप पर ले जाएँ</value>
   </data>
   <data name="Label143" xml:space="preserve">
     <value>पिछला बुकमार्क</value>
@@ -289,7 +289,7 @@
     <value>रक्षा कर</value>
   </data>
   <data name="Label150" xml:space="preserve">
-    <value>डीबग गाइड</value>
+    <value>डिबग गाइड</value>
   </data>
   <data name="Label151" xml:space="preserve">
     <value>औजार</value>
@@ -298,13 +298,13 @@
     <value>औजार</value>
   </data>
   <data name="Label153" xml:space="preserve">
-    <value>एक आकृति और नियंत्रण संपादक</value>
+    <value>एक आकार और नियंत्रण संपादक</value>
   </data>
   <data name="Label154" xml:space="preserve">
     <value>आकार संपादक</value>
   </data>
   <data name="Label155" xml:space="preserve">
-    <value>फ्लो चार्ट प्रदर्शित करना</value>
+    <value>फ़्लो चार्ट प्रदर्शित करना</value>
   </data>
   <data name="Label156" xml:space="preserve">
     <value>प्रवाह चार्ट</value>
@@ -313,13 +313,13 @@
     <value>दस्तावेज़ में रंग नाम सम्मिलित करना</value>
   </data>
   <data name="Label158" xml:space="preserve">
-    <value>रंग सम्मिलित करें</value>
+    <value>रंग डालें</value>
   </data>
   <data name="Label159" xml:space="preserve">
     <value>दस्तावेज़ में फ़ॉन्ट नाम सम्मिलित करना</value>
   </data>
   <data name="Label16" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम को नई फ़ाइल में सहेजें</value>
+    <value>वर्तमान प्रोग्राम को एक नई फ़ाइल में सहेजें</value>
   </data>
   <data name="Label160" xml:space="preserve">
     <value>फ़ॉन्ट्स सम्मिलित करें</value>
@@ -331,13 +331,13 @@
     <value>लिंक्स</value>
   </data>
   <data name="Label163" xml:space="preserve">
-    <value>खोज एक्सटेंशन ऑब्जेक्ट</value>
+    <value>एक्सटेंशन ऑब्जेक्ट खोजें</value>
   </data>
   <data name="Label164" xml:space="preserve">
     <value>खोज एक्सटेंशन</value>
   </data>
   <data name="Label165" xml:space="preserve">
-    <value>छोटी मूल फ़ाइलों में सामग्री खोजें</value>
+    <value>छोटी बुनियादी फ़ाइलों में सामग्री खोजें</value>
   </data>
   <data name="Label166" xml:space="preserve">
     <value>फ़ाइल खोजकर्ता</value>
@@ -358,13 +358,13 @@
     <value>विस्तार प्रबंधक</value>
   </data>
   <data name="Label171" xml:space="preserve">
-    <value>Visual Basic में वर्तमान कार्यक्रम स्नातक करें</value>
+    <value>Visual Basic के लिए स्नातक वर्तमान प्रोग्राम</value>
   </data>
   <data name="Label172" xml:space="preserve">
     <value>स्नातक</value>
   </data>
   <data name="Label173" xml:space="preserve">
-    <value>Decompile .Net असेंबली (dll या exe) C# करने के लिए ILSpy का उपयोग कर</value>
+    <value>.Net असेंबली (dll या exe) को C# में ILSpy का उपयोग करके डीकंपाइल करें</value>
   </data>
   <data name="Label174" xml:space="preserve">
     <value>डीकंपाइल</value>
@@ -373,7 +373,7 @@
     <value>देखना</value>
   </data>
   <data name="Label176" xml:space="preserve">
-    <value>टॉगल स्प्लिट स्क्रीन प्रोग्राम लेआउट</value>
+    <value>स्प्लिट स्क्रीन प्रोग्राम लेआउट टॉगल करें</value>
   </data>
   <data name="Label177" xml:space="preserve">
     <value>स्प्लिट स्क्रीन</value>
@@ -382,7 +382,7 @@
     <value>पाठ लपेटें मोड टॉगल करें</value>
   </data>
   <data name="Label179" xml:space="preserve">
-    <value>वर्ड रैप</value>
+    <value>शब्द लपेटें</value>
   </data>
   <data name="Label18" xml:space="preserve">
     <value>सभी प्रोग्राम सहेजें</value>
@@ -400,7 +400,7 @@
     <value>ज़ूम इन करें</value>
   </data>
   <data name="Label184" xml:space="preserve">
-    <value>ज़ूम आउट करें (छोटा फ़ॉन्ट)</value>
+    <value>ज़ूम आउट (छोटा फ़ॉन्ट)</value>
   </data>
   <data name="Label185" xml:space="preserve">
     <value>ज़ूम आउट करें</value>
@@ -412,28 +412,28 @@
     <value>ज़ूम रीसेट करें</value>
   </data>
   <data name="Label188" xml:space="preserve">
-    <value>डार्क थीम का उपयोग करें (रिवर्स वीडियो)</value>
+    <value>डार्क थीम का उपयोग करें (वीडियो उल्टा करें)</value>
   </data>
   <data name="Label189" xml:space="preserve">
     <value>डार्क थीम</value>
   </data>
   <data name="Label19" xml:space="preserve">
-    <value>सभी को बचाओ</value>
+    <value>सभी सहेजें</value>
   </data>
   <data name="Label190" xml:space="preserve">
-    <value>टॉगल शो व्हाइटस्पेस</value>
+    <value>टॉगल दिखाएँ व्हाइटस्पेस</value>
   </data>
   <data name="Label191" xml:space="preserve">
     <value>व्हाइटस्पेस देखें</value>
   </data>
   <data name="Label192" xml:space="preserve">
-    <value>टॉगल दिखाएँ संख्या मार्जिन</value>
+    <value>टॉगल शो नंबर मार्जिन</value>
   </data>
   <data name="Label193" xml:space="preserve">
     <value>संख्या मार्जिन देखें</value>
   </data>
   <data name="Label194" xml:space="preserve">
-    <value>इंटेलिसेंस लोकेल बदलें (उदाहरण के लिए जर्मन के लिए 'de', प्रभावी होने के लिए SB-Prime को पुनरारंभ करें)</value>
+    <value>इंटेलिसेंस लोकेल बदलें, ओवर-राइड इंटरफ़ेस लोकेल (उदाहरण के लिए जर्मन के लिए 'de', SB-Prime को पुनरारंभ करें)</value>
   </data>
   <data name="Label195" xml:space="preserve">
     <value>भाषा कोड</value>
@@ -442,13 +442,13 @@
     <value>सेटिंग्स</value>
   </data>
   <data name="Label197" xml:space="preserve">
-    <value>अनुप्रयोग रंग परिवर्तित करें</value>
+    <value>अनुप्रयोग रंग परिवर्तित करना</value>
   </data>
   <data name="Label198" xml:space="preserve">
     <value>आईडीई रंग</value>
   </data>
   <data name="Label199" xml:space="preserve">
-    <value>किसी फ़ाइल में सेटिंग्स निर्यात करें</value>
+    <value>किसी फ़ाइल में सेटिंग्स निर्यात करना</value>
   </data>
   <data name="Label2" xml:space="preserve">
     <value>विवरण</value>
@@ -460,7 +460,7 @@
     <value>निर्यात सेटिंग्स</value>
   </data>
   <data name="Label201" xml:space="preserve">
-    <value>फ़ाइल से सेटिंग्स आयात करें, पूर्ण प्रभाव लेने के लिए SB-Prime को पुनरारंभ करें</value>
+    <value>फ़ाइल से सेटिंग्स आयात करें, पूर्ण प्रभावी होने के लिए SB-Prime को पुनरारंभ करें</value>
   </data>
   <data name="Label202" xml:space="preserve">
     <value>आयात सेटिंग्स</value>
@@ -478,7 +478,7 @@
     <value>विकल्प</value>
   </data>
   <data name="Label207" xml:space="preserve">
-    <value>SB-Prime को नवीनतम संस्करण में अपडेट करें</value>
+    <value>एसबी-प्राइम को नवीनतम संस्करण में अपडेट करें</value>
   </data>
   <data name="Label208" xml:space="preserve">
     <value>आधुनिकीकरणअ</value>
@@ -496,7 +496,7 @@
     <value>आउटपुट</value>
   </data>
   <data name="Label212" xml:space="preserve">
-    <value>आउटपुट, त्रुटियाँ और चेतावनियाँ</value>
+    <value>आउटपुट, त्रुटियां और चेतावनियां</value>
   </data>
   <data name="Label213" xml:space="preserve">
     <value>डीबग</value>
@@ -511,7 +511,7 @@
     <value>मूल्य बदलें</value>
   </data>
   <data name="Label217" xml:space="preserve">
-    <value>घड़ी चर का मूल्य बदलें</value>
+    <value>घड़ी चर का मान बदलें</value>
   </data>
   <data name="Label218" xml:space="preserve">
     <value>अस्त हो</value>
@@ -529,7 +529,7 @@
     <value>आराम देना</value>
   </data>
   <data name="Label222" xml:space="preserve">
-    <value>घड़ी निकालें</value>
+    <value>वॉच हटाएं</value>
   </data>
   <data name="Label223" xml:space="preserve">
     <value>घड़ी चर हटाएं</value>
@@ -538,16 +538,16 @@
     <value>मिटाना</value>
   </data>
   <data name="Label225" xml:space="preserve">
-    <value>ब्रेक अगर &lt;</value>
+    <value>तोड़ो अगर &lt;</value>
   </data>
   <data name="Label226" xml:space="preserve">
-    <value>ब्रेक अगर &gt;</value>
+    <value>अगर &gt; तो तोड़ें</value>
   </data>
   <data name="Label227" xml:space="preserve">
     <value>ब्रेक अगर =</value>
   </data>
   <data name="Label228" xml:space="preserve">
-    <value>यदि परिवर्तन होता है तो ब्रेक करें</value>
+    <value>अगर बदल जाए तो तोड़ें</value>
   </data>
   <data name="Label229" xml:space="preserve">
     <value>आईडीई रंग</value>
@@ -583,7 +583,7 @@
     <value>डिफ़ॉल्ट</value>
   </data>
   <data name="Label239" xml:space="preserve">
-    <value>परिवर्तन बंद करें और लागू करें</value>
+    <value>परिवर्तनों को बंद करें और लागू करें</value>
   </data>
   <data name="Label24" xml:space="preserve">
     <value>नया</value>
@@ -601,16 +601,16 @@
     <value>डीकंपाइल</value>
   </data>
   <data name="Label244" xml:space="preserve">
-    <value>C को डीकंपाइल करें#</value>
+    <value>सी को डीकंपाइल करें#</value>
   </data>
   <data name="Label245" xml:space="preserve">
-    <value>यह विज़ार्ड करेगा </value>
+    <value>यह जादूगर होगा </value>
   </data>
   <data name="Label246" xml:space="preserve">
     <value>आउटपुट स्थान (एक खाली फ़ोल्डर होना चाहिए - 'नया फ़ोल्डर बनाएं' का उपयोग करें)</value>
   </data>
   <data name="Label247" xml:space="preserve">
-    <value>असंकलित समाधान निर्यात करने के लिए स्थान पर ब्राउज़ करें</value>
+    <value>विघटित समाधान निर्यात करने के लिए स्थान पर ब्राउज़ करें</value>
   </data>
   <data name="Label248" xml:space="preserve">
     <value>चरना</value>
@@ -634,13 +634,13 @@
     <value>स्रोत फ़ाइल (.Net dll या exe)</value>
   </data>
   <data name="Label254" xml:space="preserve">
-    <value>डीकंपाइल करने के लिए स्रोत फ़ाइल पर ब्राउज़ करें</value>
+    <value>डीकंपाइल करने के लिए स्रोत फ़ाइल ब्राउज़ करें</value>
   </data>
   <data name="Label255" xml:space="preserve">
     <value>चरना</value>
   </data>
   <data name="Label256" xml:space="preserve">
-    <value>यदि चयनित TextWindow को decompiled exe में उपयोग करने की अनुमति देता है</value>
+    <value>यदि चयनित है तो टेक्स्टविंडो को डीकंपाइल एक्सई में उपयोग करने की अनुमति देता है</value>
   </data>
   <data name="Label257" xml:space="preserve">
     <value>कंसोल एप्लिकेशन के रूप में निर्यात करें</value>
@@ -649,58 +649,58 @@
     <value>आयातित कार्यक्रम विवरण</value>
   </data>
   <data name="Label259" xml:space="preserve">
-    <value>प्रोग्राम ID</value>
+    <value>प्रोग्राम आईडी</value>
   </data>
   <data name="Label26" xml:space="preserve">
     <value>खोलना</value>
   </data>
   <data name="Label260" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label261" xml:space="preserve">
     <value>उपाधि</value>
   </data>
   <data name="Label262" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label263" xml:space="preserve">
     <value>या क़िस्‍म</value>
   </data>
   <data name="Label264" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label265" xml:space="preserve">
     <value>कोटि</value>
   </data>
   <data name="Label266" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label267" xml:space="preserve">
     <value>लोकप्रियता</value>
   </data>
   <data name="Label268" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label269" xml:space="preserve">
     <value>रेटिंग की संख्या</value>
   </data>
   <data name="Label27" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम बंद करें</value>
+    <value>वर्तमान कार्यक्रम बंद करें</value>
   </data>
   <data name="Label270" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label271" xml:space="preserve">
     <value>समग्र रेटिंग</value>
   </data>
   <data name="Label272" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label273" xml:space="preserve">
     <value>मेरी रेटिंग</value>
   </data>
   <data name="Label274" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label275" xml:space="preserve">
     <value>कार्यक्रम के लिए अपनी रेटिंग सबमिट करें, यह प्रति आईडी केवल एक बार किया जा सकता है</value>
@@ -712,7 +712,7 @@
     <value>प्रोग्राम ID के लिए विवरण प्राप्त करें</value>
   </data>
   <data name="Label278" xml:space="preserve">
-    <value>पुनः लोड आईडी</value>
+    <value>आईडी पुनः लोड करें</value>
   </data>
   <data name="Label279" xml:space="preserve">
     <value>एक्सटेंशन खोजकर्ता</value>
@@ -736,19 +736,19 @@
     <value>सभी को संक्षिप्त करें</value>
   </data>
   <data name="Label285" xml:space="preserve">
-    <value>चयनित आइटम पर सभी चाइल्ड आइटम्स विस्तृत करें</value>
+    <value>चयनित आइटम पर सभी चाइल्ड आइटम विस्तृत करें</value>
   </data>
   <data name="Label286" xml:space="preserve">
-    <value>चयन का विस्तार करें</value>
+    <value>चयन विस्तृत करें</value>
   </data>
   <data name="Label287" xml:space="preserve">
-    <value>अगली पुनरावृत्ति पर जाने के लिए</value>
+    <value>अगली घटना पर जाने के लिए</value>
   </data>
   <data name="Label288" xml:space="preserve">
     <value>अगला</value>
   </data>
   <data name="Label289" xml:space="preserve">
-    <value>पिछली पुनरावृत्ति पर जाने के लिए</value>
+    <value>पिछली घटना पर जाने के लिए</value>
   </data>
   <data name="Label29" xml:space="preserve">
     <value>वर्तमान प्रोग्राम सहेजें</value>
@@ -772,7 +772,7 @@
     <value>फ़ाइल का नाम</value>
   </data>
   <data name="Label296" xml:space="preserve">
-    <value>लाइन काउंट</value>
+    <value>लाइन गणना</value>
   </data>
   <data name="Label297" xml:space="preserve">
     <value>खजूर</value>
@@ -793,22 +793,22 @@
     <value>खोलना</value>
   </data>
   <data name="Label301" xml:space="preserve">
-    <value>फ़ाइलों की संख्या मीटिंग फ़िल्टर</value>
+    <value>फ़िल्टर मीटिंग फ़ाइलों की संख्या</value>
   </data>
   <data name="Label302" xml:space="preserve">
     <value>फ़िल्टर खोज</value>
   </data>
   <data name="Label303" xml:space="preserve">
-    <value>केवल पूर्ण शब्दों पर फ़िल्टर करें</value>
+    <value>केवल पूरे शब्दों पर फ़िल्टर करें</value>
   </data>
   <data name="Label304" xml:space="preserve">
-    <value>पूरा शब्द</value>
+    <value>संपूर्ण शब्द</value>
   </data>
   <data name="Label305" xml:space="preserve">
-    <value>केवल केस मिलान पर फ़िल्टर करें</value>
+    <value>केवल मामला मिलान पर फ़िल्टर करें</value>
   </data>
   <data name="Label306" xml:space="preserve">
-    <value>केस सेंसिटिव</value>
+    <value>मामला संवेदनशील</value>
   </data>
   <data name="Label307" xml:space="preserve">
     <value>खोज में फ़ाइल पथ नाम शामिल करें</value>
@@ -820,13 +820,13 @@
     <value>पाठ फ़िल्टर करें</value>
   </data>
   <data name="Label31" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम को नई फ़ाइल में सहेजें</value>
+    <value>वर्तमान प्रोग्राम को एक नई फ़ाइल में सहेजें</value>
   </data>
   <data name="Label310" xml:space="preserve">
-    <value>केवल फ़िल्टर टेक्स्ट वाली फ़ाइलें दिखाएँ</value>
+    <value>केवल फ़िल्टर टेक्स्ट वाली फ़ाइलें दिखाएं</value>
   </data>
   <data name="Label311" xml:space="preserve">
-    <value>फ़ाइलों पर फ़िल्टर करें, सभी फ़ाइलों को फिर से दिखाने के लिए रिक्त फ़िल्टर पाठ</value>
+    <value>फ़ाइलों पर फ़िल्टर करें, सभी फ़ाइलों को पुनः दिखाने के लिए पाठ को रिक्त करें</value>
   </data>
   <data name="Label312" xml:space="preserve">
     <value>फ़िल्टर लागू करें</value>
@@ -841,13 +841,13 @@
     <value>बदलें</value>
   </data>
   <data name="Label316" xml:space="preserve">
-    <value>ढूँढें पाठ की पिछली पुनरावृत्ति ढूँढें</value>
+    <value>ढूँढें पाठ की पिछली घटना ढूँढना</value>
   </data>
   <data name="Label317" xml:space="preserve">
-    <value>पिछला पता लगाएं</value>
+    <value>पिछला खोजें</value>
   </data>
   <data name="Label318" xml:space="preserve">
-    <value>ढूँढें पाठ की अगली पुनरावृत्ति ढूँढें</value>
+    <value>ढूँढें पाठ की अगली घटना ढूँढें</value>
   </data>
   <data name="Label319" xml:space="preserve">
     <value>अगला खोजें</value>
@@ -856,28 +856,28 @@
     <value>इस रूप में सहेजें</value>
   </data>
   <data name="Label320" xml:space="preserve">
-    <value>वर्तमान घटना को बदलें और अगला ज्ञात करें</value>
+    <value>वर्तमान घटना को बदलें और अगला ज्ञात कीजिए</value>
   </data>
   <data name="Label321" xml:space="preserve">
     <value>बदलें</value>
   </data>
   <data name="Label322" xml:space="preserve">
-    <value>ढूँढें पाठ के सभी घटनाक्रमों को बदलें पाठ के साथ बदलें</value>
+    <value>पाठ ढूँढें की सभी घटनाओं को बदलें पाठ से बदलें</value>
   </data>
   <data name="Label323" xml:space="preserve">
-    <value>सभी को बदलें</value>
+    <value>सभी बदलें</value>
   </data>
   <data name="Label324" xml:space="preserve">
     <value>प्रवाह चार्ट</value>
   </data>
   <data name="Label325" xml:space="preserve">
-    <value>अधिक (छोटा) देखने के लिए ज़ूम आउट करें</value>
+    <value>अधिक देखने के लिए ज़ूम आउट करें (छोटा)</value>
   </data>
   <data name="Label326" xml:space="preserve">
     <value>ज़ूम आउट करें</value>
   </data>
   <data name="Label327" xml:space="preserve">
-    <value>कम (बड़ा) देखने के लिए ज़ूम इन करें</value>
+    <value>कम देखने के लिए ज़ूम इन करें (बड़ा)</value>
   </data>
   <data name="Label328" xml:space="preserve">
     <value>ज़ूम इन करें</value>
@@ -898,13 +898,13 @@
     <value>समाप्ति</value>
   </data>
   <data name="Label333" xml:space="preserve">
-    <value>वर्तमान दस्तावेज़ से प्रवाह चार्ट अपडेट करें</value>
+    <value>वर्तमान दस्तावेज़ से फ़्लो चार्ट अपडेट करें</value>
   </data>
   <data name="Label334" xml:space="preserve">
     <value>आधुनिकीकरणअ</value>
   </data>
   <data name="Label335" xml:space="preserve">
-    <value>दस्तावेज़ स्थान पर आइटम का चयन करने के लिए ज़ूम फ़्लो चार्ट</value>
+    <value>दस्तावेज़ स्थान पर आइटम का चयन करने के लिए ज़ूम फ्लो चार्ट</value>
   </data>
   <data name="Label336" xml:space="preserve">
     <value>से सिंक करें</value>
@@ -913,13 +913,13 @@
     <value>चयनित फ्लो चार्ट आइटम देखने के लिए दस्तावेज़ स्क्रॉल करें</value>
   </data>
   <data name="Label338" xml:space="preserve">
-    <value>सिंक करने के लिए</value>
+    <value>करने के लिए सिंक</value>
   </data>
   <data name="Label339" xml:space="preserve">
     <value>फ़्लो चार्ट का उपयोग करने के बारे में जानकारी</value>
   </data>
   <data name="Label34" xml:space="preserve">
-    <value>सभी को बचाओ</value>
+    <value>सभी सहेजें</value>
   </data>
   <data name="Label340" xml:space="preserve">
     <value>सूचना-विषयक</value>
@@ -952,7 +952,7 @@
     <value>स्नातक</value>
   </data>
   <data name="Label35" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम मुद्रित करें (देखें उन्नत-&gt;मुद्रण सेटिंग्स के लिए विकल्प)</value>
+    <value>वर्तमान प्रोग्राम मुद्रित करें (उन्नत-&gt;मुद्रण सेटिंग्स के लिए विकल्प) देखें</value>
   </data>
   <data name="Label350" xml:space="preserve">
     <value>आयात</value>
@@ -1006,16 +1006,16 @@
     <value>गैलरी पर एसबी-प्राइम</value>
   </data>
   <data name="Label366" xml:space="preserve">
-    <value>SB-Prime को नवीनतम संस्करण में अपडेट करें</value>
+    <value>एसबी-प्राइम को नवीनतम संस्करण में अपडेट करें</value>
   </data>
   <data name="Label367" xml:space="preserve">
-    <value>नवीनतम में अपडेट करें</value>
+    <value>नवीनतम के लिए अद्यतन करें</value>
   </data>
   <data name="Label368" xml:space="preserve">
-    <value>छोटा मूल स्थापना पथ</value>
+    <value>छोटा बुनियादी स्थापना पथ</value>
   </data>
   <data name="Label369" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label37" xml:space="preserve">
     <value>एसबी-प्राइम से बाहर निकलें</value>
@@ -1039,7 +1039,7 @@
     <value>हेक्स मानों के रूप में रंग सम्मिलित करें</value>
   </data>
   <data name="Label376" xml:space="preserve">
-    <value>लोड एक्सटेंशन dlls स्टार्टअप पर</value>
+    <value>स्टार्टअप पर लोड एक्सटेंशन dlls</value>
   </data>
   <data name="Label377" xml:space="preserve">
     <value>प्रिंट आवर्धन</value>
@@ -1048,7 +1048,7 @@
     <value>मुद्रण फ़ॉन्ट आकार बढ़ाएँ (&gt;0) या घटाएँ (&lt;0)</value>
   </data>
   <data name="Label379" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label38" xml:space="preserve">
     <value>निकासी</value>
@@ -1057,7 +1057,7 @@
     <value>प्रिंट रंग</value>
   </data>
   <data name="Label381" xml:space="preserve">
-    <value>मुद्रण के लिए उपयोग किए जाने वाले रंग</value>
+    <value>मुद्रण के लिए प्रयुक्त रंग</value>
   </data>
   <data name="Label382" xml:space="preserve">
     <value>1</value>
@@ -1081,7 +1081,7 @@
     <value>बहुभुज के लिए भुजाओं की संख्या दर्ज करें (&gt; 3)</value>
   </data>
   <data name="Label389" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label39" xml:space="preserve">
     <value>को</value>
@@ -1090,7 +1090,7 @@
     <value>समाज-सम्मत</value>
   </data>
   <data name="Label391" xml:space="preserve">
-    <value>चौड़ाई और ऊंचाई</value>
+    <value>चौड़ाई और ऊँचाई</value>
   </data>
   <data name="Label392" xml:space="preserve">
     <value>जारी रहना</value>
@@ -1102,7 +1102,7 @@
     <value>रद्द करना</value>
   </data>
   <data name="Label395" xml:space="preserve">
-    <value>0 फ़ाइलें मिली</value>
+    <value>0 फ़ाइलें मिलीं</value>
   </data>
   <data name="Label396" xml:space="preserve">
     <value>0 फ़ोल्डर या फ़ाइलें संसाधित नहीं की जा सकीं</value>
@@ -1123,22 +1123,22 @@
     <value>रेती</value>
   </data>
   <data name="Label400" xml:space="preserve">
-    <value>अपडेट करें और बंद करें</value>
+    <value>अद्यतन करें और बंद करें</value>
   </data>
   <data name="Label401" xml:space="preserve">
-    <value>नीचे आपके प्रोग्राम के लिए आईडी है जिसे आप साझा कर सकते हैं</value>
+    <value>नीचे आपके प्रोग्राम की आईडी दी गई है जिसे आप साझा कर सकते हैं</value>
   </data>
   <data name="Label402" xml:space="preserve">
-    <value>Internet Explorer में प्रकाशित प्रोग्राम खोलें (SilverLight आवश्यक)</value>
+    <value>प्रकाशित प्रोग्राम Internet Explorer में खोलें (SilverLight आवश्यक)</value>
   </data>
   <data name="Label403" xml:space="preserve">
     <value>ब्राउज़र में खोलें</value>
   </data>
   <data name="Label404" xml:space="preserve">
-    <value>वैकल्पिक शीर्षक (255 अधिकतम)</value>
+    <value>वैकल्पिक शीर्षक (अधिकतम 255)</value>
   </data>
   <data name="Label405" xml:space="preserve">
-    <value>वैकल्पिक विवरण (1024 अधिकतम)</value>
+    <value>वैकल्पिक विवरण (अधिकतम 1024)</value>
   </data>
   <data name="Label406" xml:space="preserve">
     <value>कोटि</value>
@@ -1201,13 +1201,13 @@
     <value>घुंडी</value>
   </data>
   <data name="Label424" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label425" xml:space="preserve">
     <value>मल्टीलाइनटेक्स्टबॉक्स</value>
   </data>
   <data name="Label426" xml:space="preserve">
-    <value>LDControls</value>
+    <value>एलडी कॉन्ट्रोल</value>
   </data>
   <data name="Label427" xml:space="preserve">
     <value>बहुभुज</value>
@@ -1228,10 +1228,10 @@
     <value>डेटा दृश्य</value>
   </data>
   <data name="Label432" xml:space="preserve">
-    <value>दस्तावेज़ व्यूअर</value>
+    <value>दस्तावेज़व्यूअर</value>
   </data>
   <data name="Label433" xml:space="preserve">
-    <value>सूची बॉक्स</value>
+    <value>सूचीबॉक्स</value>
   </data>
   <data name="Label434" xml:space="preserve">
     <value>सूची दृश्य</value>
@@ -1285,10 +1285,10 @@
     <value>1000</value>
   </data>
   <data name="Label45" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम बंद करें</value>
+    <value>वर्तमान कार्यक्रम बंद करें</value>
   </data>
   <data name="Label450" xml:space="preserve">
-    <value>चौड़ाई देखें</value>
+    <value>देखने की चौड़ाई</value>
   </data>
   <data name="Label451" xml:space="preserve">
     <value>1000</value>
@@ -1324,7 +1324,7 @@
     <value>जायदाद</value>
   </data>
   <data name="Label461" xml:space="preserve">
-    <value></value>
+    <value>मूल्य</value>
   </data>
   <data name="Label462" xml:space="preserve">
     <value>चर और कॉल स्टैक</value>
@@ -1339,7 +1339,7 @@
     <value>कॉल स्टैक</value>
   </data>
   <data name="Label466" xml:space="preserve">
-    <value>टूलटिप intellisense चर नामों के लिए अतिरिक्त Regex (जैसे रूसी а-яА-ЯёЁ)</value>
+    <value>टूलटिप इंटेलिसेंस चर नामों के लिए अतिरिक्त रेगेक्स (जैसे रूसी а-яА-ЯёЁ)</value>
   </data>
   <data name="Label467" xml:space="preserve">
     <value>आयत</value>
@@ -1366,7 +1366,7 @@
     <value>घुंडी</value>
   </data>
   <data name="Label474" xml:space="preserve">
-    <value>टेक्स्टबॉक्स</value>
+    <value>पाठ बॉक्स</value>
   </data>
   <data name="Label475" xml:space="preserve">
     <value>मल्टीलाइनटेक्स्टबॉक्स</value>
@@ -1390,10 +1390,10 @@
     <value>डेटा दृश्य</value>
   </data>
   <data name="Label481" xml:space="preserve">
-    <value>दस्तावेज़ व्यूअर</value>
+    <value>दस्तावेज़व्यूअर</value>
   </data>
   <data name="Label482" xml:space="preserve">
-    <value>सूची बॉक्स</value>
+    <value>सूचीबॉक्स</value>
   </data>
   <data name="Label483" xml:space="preserve">
     <value>सूची दृश्य</value>
@@ -1417,7 +1417,7 @@
     <value>रिचटेक्स्टबॉक्स</value>
   </data>
   <data name="Label49" xml:space="preserve">
-    <value>वर्तमान प्रोग्राम को नई फ़ाइल में सहेजें</value>
+    <value>वर्तमान प्रोग्राम को एक नई फ़ाइल में सहेजें</value>
   </data>
   <data name="Label490" xml:space="preserve">
     <value>स्लाइडर</value>
@@ -1426,7 +1426,7 @@
     <value>ट्रीव्यू</value>
   </data>
   <data name="Label492" xml:space="preserve">
-    <value>उपनाम</value>
+    <value>कमांड उपनाम</value>
   </data>
   <data name="Label493" xml:space="preserve">
     <value>ऑब्जेक्ट और विधि उपनाम सेट करें</value>
@@ -1441,7 +1441,7 @@
     <value>डिफ़ॉल्ट नाम</value>
   </data>
   <data name="Label497" xml:space="preserve">
-    <value>उपनाम नाम</value>
+    <value>उपनाम का नाम</value>
   </data>
   <data name="Label498" xml:space="preserve">
     <value>उपनामों के उपयोग को टॉगल करें</value>
@@ -1456,13 +1456,13 @@
     <value>इस रूप में सहेजें</value>
   </data>
   <data name="Label500" xml:space="preserve">
-    <value>फ़ाइल स्रोत कोड और SB-Prime IDE के बीच कनवर्ट करता है ताकि सहेजें, लोड करें, प्रकाशित करें, आयात करें, स्नातक करें, चलाएं आदि डिफ़ॉल्ट SB कमांड का उपयोग करें, जबकि IDE और intellisense उपनामों का उपयोग करें।</value>
+    <value>फ़ाइल स्रोत कोड और एसबी-प्राइम आईडीई के बीच कनवर्ट करता है ताकि सहेजें, लोड, प्रकाशित, आयात, स्नातक, रन आदि डिफ़ॉल्ट एसबी कमांड का उपयोग करें, जबकि आईडीई और इंटेलिसेंस उपनाम का उपयोग करें।</value>
   </data>
   <data name="Label501" xml:space="preserve">
-    <value>स्रोत फ़ाइल को सीधे या बिना किसी संघर्ष के प्रकाशित के साथ साझा किया जा सकता है - यह पूरी तरह से एसबी संगत है।</value>
+    <value>स्रोत फ़ाइल को सीधे या बिना किसी विरोध के प्रकाशित करें के साथ साझा किया जा सकता है - यह पूरी तरह से एसबी संगत है।</value>
   </data>
   <data name="Label502" xml:space="preserve">
-    <value>उपनाम केवल आईडीई से जुड़े होते हैं, सॉस कोड को आईडीई से बिना किसी रूपांतरण के कॉपी/पेस्ट किया जा सकता है।</value>
+    <value>उपनाम केवल आईडीई से जुड़े हैं, स्रोत कोड को आईडीई से बिना किसी रूपांतरण के कॉपी/पेस्ट किया जा सकता है।</value>
   </data>
   <data name="Label503" xml:space="preserve">
     <value>मान्य</value>
@@ -1471,13 +1471,13 @@
     <value>नामों को मान्य करें, अमान्य सहेजा नहीं जाएगा</value>
   </data>
   <data name="Label505" xml:space="preserve">
-    <value>उपनाम को टैब deliminateded पाठ फ़ाइल में निर्यात करें</value>
+    <value>उपनामों को एक टैब deliated पाठ फ़ाइल में निर्यात करें</value>
   </data>
   <data name="Label506" xml:space="preserve">
     <value>निर्यातित माल</value>
   </data>
   <data name="Label507" xml:space="preserve">
-    <value>एक टैब deliminateded पाठ फ़ाइल से उपनाम आयात करें</value>
+    <value>किसी टैब dremoved पाठ फ़ाइल से उपनाम आयात करना</value>
   </data>
   <data name="Label508" xml:space="preserve">
     <value>आयात</value>
@@ -1492,7 +1492,7 @@
     <value>स्पष्ट</value>
   </data>
   <data name="Label52" xml:space="preserve">
-    <value>सभी को बचाओ</value>
+    <value>सभी सहेजें</value>
   </data>
   <data name="Label53" xml:space="preserve">
     <value>प्रोग्राम</value>
@@ -1513,7 +1513,7 @@
     <value>संपादन करना</value>
   </data>
   <data name="Label59" xml:space="preserve">
-    <value>वर्तमान चयन को क्लिपबोर्ड पर कॉपी करें</value>
+    <value>वर्तमान चयन की क्लिपबोर्ड पर प्रतिलिपि बनाएँ</value>
   </data>
   <data name="Label6" xml:space="preserve">
     <value>अंतःस्‍थापित करना</value>
@@ -1555,13 +1555,13 @@
     <value>दोहराएँ</value>
   </data>
   <data name="Label71" xml:space="preserve">
-    <value>पूरा प्रोग्राम चुनें</value>
+    <value>पूरा कार्यक्रम का चयन करें</value>
   </data>
   <data name="Label72" xml:space="preserve">
     <value>सभी का चयन करें</value>
   </data>
   <data name="Label73" xml:space="preserve">
-    <value>सभी तह संक्षिप्त करें</value>
+    <value>सभी तह को संक्षिप्त करें</value>
   </data>
   <data name="Label74" xml:space="preserve">
     <value>सभी को संक्षिप्त करें</value>
@@ -1618,7 +1618,7 @@
     <value>नया</value>
   </data>
   <data name="Label90" xml:space="preserve">
-    <value>पिछला पता लगाएं</value>
+    <value>पिछला खोजें</value>
   </data>
   <data name="Label91" xml:space="preserve">
     <value>त्वरित खोज अगला</value>
@@ -1627,7 +1627,7 @@
     <value>अगला खोजें</value>
   </data>
   <data name="Label93" xml:space="preserve">
-    <value>संवाद ढूँढें और बदलें</value>
+    <value>संवाद ढूँढना और बदलना</value>
   </data>
   <data name="Label94" xml:space="preserve">
     <value>ढूँढें और बदलें</value>
@@ -1636,22 +1636,22 @@
     <value>पाए गए सभी उदाहरणों को हाइलाइट करें</value>
   </data>
   <data name="Label96" xml:space="preserve">
-    <value>सभी को हाइलाइट करें</value>
+    <value>सभी हाइलाइट करें</value>
   </data>
   <data name="Label97" xml:space="preserve">
-    <value>केवल पूरे शब्द मिलान खोजें और हाइलाइट करें</value>
+    <value>केवल संपूर्ण शब्द मिलान खोजें और हाइलाइट करें</value>
   </data>
   <data name="Label98" xml:space="preserve">
-    <value>पूरा शब्द</value>
+    <value>संपूर्ण शब्द</value>
   </data>
   <data name="Label99" xml:space="preserve">
     <value>केवल केस संवेदी मिलान खोजें और हाइलाइट करें</value>
   </data>
   <data name="String1" xml:space="preserve">
-    <value>एकाधिक आकृतियों का चयन करने, एक साथ ले जाने या संशोधित करने के लिए Shift का उपयोग करना</value>
+    <value>एकाधिक आकृतियों का चयन करने, एक साथ ले जाने या संशोधित करने के लिए Shift का उपयोग करें</value>
   </data>
   <data name="String10" xml:space="preserve">
-    <value>Intellisense यहां तब दिखाई देगा जब आप ऑब्जेक्ट्स और विधियों पर होवर करते हैं और साथ ही जब आप संभावित विकल्पों को टाइप करते हैं और देखते हैं।</value>
+    <value>Intellisense यहाँ दिखाई देगा जब आप ऑब्जेक्ट्स और विधियों पर होवर करते हैं और साथ ही जब आप संभावित विकल्प टाइप करते हैं और देखते हैं।</value>
   </data>
   <data name="String100" xml:space="preserve">
     <value>अन-कमेंट फ़ाइल कमांड</value>
@@ -1663,13 +1663,13 @@
     <value>तह का विस्तार करें</value>
   </data>
   <data name="String103" xml:space="preserve">
-    <value>वापस नेविगेट करें Ctrl+B</value>
+    <value>Ctrl+B वापस नेविगेट करें</value>
   </data>
   <data name="String104" xml:space="preserve">
     <value>आगे नेविगेट करें Ctrl+Shift+B</value>
   </data>
   <data name="String105" xml:space="preserve">
-    <value>चयन को क्लिपबोर्ड पर HTML पाठ के रूप में कॉपी करें</value>
+    <value>HTML पाठ के रूप में क्लिपबोर्ड पर चयन की प्रतिलिपि बनाएँ</value>
   </data>
   <data name="String106" xml:space="preserve">
     <value>HTML के रूप में क्लिपबोर्ड पर चयन की प्रतिलिपि बनाएँ</value>
@@ -1678,7 +1678,7 @@
     <value>RTF के रूप में क्लिपबोर्ड पर चयन कॉपी करें</value>
   </data>
   <data name="String108" xml:space="preserve">
-    <value>युक्त फ़ोल्डर खोलें</value>
+    <value>फ़ोल्डर खोलें</value>
   </data>
   <data name="String109" xml:space="preserve">
     <value>डीबग वॉच में जोड़ें Ctrl+Shift+W</value>
@@ -1690,10 +1690,10 @@
     <value>फ्लो चार्ट प्रदर्शित करें</value>
   </data>
   <data name="String111" xml:space="preserve">
-    <value>कार्यक्रम स्वरूपित करें</value>
+    <value>प्रारूप कार्यक्रम</value>
   </data>
   <data name="String112" xml:space="preserve">
-    <value>रंग सम्मिलित करें</value>
+    <value>रंग डालें</value>
   </data>
   <data name="String113" xml:space="preserve">
     <value>फ़ॉन्ट सम्मिलित करें</value>
@@ -1720,10 +1720,10 @@
     <value>देता</value>
   </data>
   <data name="String120" xml:space="preserve">
-    <value>Microsoft C# (dll या exe) के लिए कोई मान्य .Net असेंबली decompile और उसके बाद फ़ोल्डर जिसमें c# स्रोत कोड decompiled खोलें।</value>
+    <value>Microsoft C# (dll या exe) के लिए कोई मान्य .Net असेंबली decompile करें, और उसके बाद decompiled C# स्रोत कोड वाले फ़ोल्डर खोलें।</value>
   </data>
   <data name="String121" xml:space="preserve">
-    <value>यदि सफल होता है, और विजुअल स्टूडियो स्थापित है, तो प्रोजेक्ट फ़ाइल (*.csproj) खोलें।</value>
+    <value>सफल होने पर, और विजुअल स्टूडियो स्थापित है, तो प्रोजेक्ट फ़ाइल (*.csproj) खोलें।</value>
   </data>
   <data name="String122" xml:space="preserve">
     <value>चौंक</value>
@@ -1735,7 +1735,7 @@
     <value>अनसेट</value>
   </data>
   <data name="String125" xml:space="preserve">
-    <value>मुख्य विंडो</value>
+    <value>मुख्य खिड़की</value>
   </data>
   <data name="String126" xml:space="preserve">
     <value>दस्तावेज़ लेआउट</value>
@@ -1762,7 +1762,7 @@
     <value>संग्रह</value>
   </data>
   <data name="String133" xml:space="preserve">
-    <value>मार्जिन पृष्ठभूमि</value>
+    <value>मार्जिन बैकग्राउंड</value>
   </data>
   <data name="String134" xml:space="preserve">
     <value>मार्जिन अग्रभूमि</value>
@@ -1771,7 +1771,7 @@
     <value>तह पृष्ठभूमि</value>
   </data>
   <data name="String136" xml:space="preserve">
-    <value>तह अग्रभूमि</value>
+    <value>फोल्डिंग फोरग्राउंड</value>
   </data>
   <data name="String137" xml:space="preserve">
     <value>बुकमार्क पृष्ठभूमि</value>
@@ -1780,13 +1780,13 @@
     <value>बुकमार्क अग्रभूमि</value>
   </data>
   <data name="String139" xml:space="preserve">
-    <value>ब्रेकपॉइंट पृष्ठभूमि</value>
+    <value>ब्रेकपॉइंट बैकग्राउंड</value>
   </data>
   <data name="String14" xml:space="preserve">
     <value>आकृति का चयन करें</value>
   </data>
   <data name="String140" xml:space="preserve">
-    <value>ब्रेकपॉइंट अग्रभूमि</value>
+    <value>ब्रेकपॉइंट फोरग्राउंड</value>
   </data>
   <data name="String141" xml:space="preserve">
     <value>चुनना</value>
@@ -1801,13 +1801,13 @@
     <value>हाइलाइट हटाया गया</value>
   </data>
   <data name="String145" xml:space="preserve">
-    <value>हाइलाइट डाला गया</value>
+    <value>हाइलाइट सम्मिलित किया गया</value>
   </data>
   <data name="String146" xml:space="preserve">
     <value>कॉलटिप अग्रभूमि</value>
   </data>
   <data name="String147" xml:space="preserve">
-    <value>कॉलटिप पृष्ठभूमि</value>
+    <value>CallTip पृष्ठभूमि</value>
   </data>
   <data name="String148" xml:space="preserve">
     <value>कॉलटिप हाइलाइट</value>
@@ -1849,7 +1849,7 @@
     <value>पृष्ठभूमि</value>
   </data>
   <data name="String16" xml:space="preserve">
-    <value>चयनित आकृतियों की प्रतिलिपि बनाएँ</value>
+    <value>चयनित आकृतियों की प्रतिलिपि बनाना</value>
   </data>
   <data name="String160" xml:space="preserve">
     <value>मुख्य आकर्षण</value>
@@ -1909,7 +1909,7 @@
     <value>भागना</value>
   </data>
   <data name="String178" xml:space="preserve">
-    <value>परिवर्तनीय रेगेक्स</value>
+    <value>चर रेगेक्स</value>
   </data>
   <data name="String179" xml:space="preserve">
     <value>टूलटिप intellisense चर नामों के लिए अतिरिक्त Regex</value>
@@ -1918,7 +1918,7 @@
     <value>वर्तमान दस्तावेज़ में कोड चिपकाएँ</value>
   </data>
   <data name="String180" xml:space="preserve">
-    <value>टूल विंडो 'हमेशा शीर्ष पर' रहने के लिए</value>
+    <value>टूल विंडो 'हमेशा शीर्ष पर' होनी चाहिए</value>
   </data>
   <data name="String181" xml:space="preserve">
     <value>स्रोत-कोड फ़ॉन्ट</value>
@@ -1927,28 +1927,40 @@
     <value>स्रोत कोड के लिए फ़ॉन्ट परिवार</value>
   </data>
   <data name="String183" xml:space="preserve">
-    <value>कैरेट Ctrl+Shift+ पर टिप्पणी सम्मिलित करें?</value>
+    <value>सम्मिलित करें टिप्पणी ' कैरेट Ctrl+Shift+ पर?</value>
+  </data>
+  <data name="String184" xml:space="preserve">
+    <value>तुलना करने के लिए पहली फ़ाइल</value>
+  </data>
+  <data name="String185" xml:space="preserve">
+    <value>तुलना करने के लिए दूसरी फ़ाइल</value>
+  </data>
+  <data name="String186" xml:space="preserve">
+    <value>अंत तुलना</value>
+  </data>
+  <data name="String187" xml:space="preserve">
+    <value>उपकरण टैब पर लिंक्स और संसाधनों की जाँच करें.</value>
   </data>
   <data name="String19" xml:space="preserve">
     <value>वर्तमान दस्तावेज़ से कोड कॉपी करें</value>
   </data>
   <data name="String2" xml:space="preserve">
-    <value>टॉगल करें intellisense दृश्य</value>
+    <value>टॉगल intellisense दृश्य</value>
   </data>
   <data name="String20" xml:space="preserve">
     <value>स्पष्ट</value>
   </data>
   <data name="String21" xml:space="preserve">
-    <value>घड़ी की स्थिति साफ़ करें</value>
+    <value>देखने की शर्तें साफ़ करें</value>
   </data>
   <data name="String22" xml:space="preserve">
-    <value>इस फ़ोल्डर में पहले से ही फ़ाइलें हैं.</value>
+    <value>इस फ़ोल्डर में पहले से फ़ाइलें हैं.</value>
   </data>
   <data name="String23" xml:space="preserve">
-    <value>कोई अन्य स्थान चुनें या यह फ़ोल्डर खाली करें और पुन: प्रयास करें.</value>
+    <value>कोई अन्य स्थान चुनें या यह फ़ोल्डर रिक्त करें और पुनः प्रयास करें.</value>
   </data>
   <data name="String24" xml:space="preserve">
-    <value>फ्लो चार्ट विफल रहा, शायद कोड त्रुटि के कारण - प्रोग्राम संकलन की जांच करें।</value>
+    <value>फ्लो चार्ट विफल रहा, शायद कोड त्रुटि के कारण - प्रोग्राम संकलित की जांच करें।</value>
   </data>
   <data name="String25" xml:space="preserve">
     <value>क्या आप जारी रखना चाहते हैं?</value>
@@ -1957,25 +1969,25 @@
     <value>किसी आइटम का चयन करने के लिए उस पर बायाँ-क्लिक करें</value>
   </data>
   <data name="String27" xml:space="preserve">
-    <value>किसी आइटम के पैरेंट (EndFor, EndWhile, EndIf, Else या ElseIf) का चयन करने के लिए उस पर राइट क्लिक करें या उसके लिंक (Goto या Sub) का चयन करें</value>
+    <value>किसी आइटम को उसके पैरेंट (EndFor, EndWhile, EndIf, Else या ElseIf) का चयन करने के लिए राइट क्लिक करें या उसके लिंक (Goto या Sub) का चयन करें</value>
   </data>
   <data name="String28" xml:space="preserve">
-    <value>किसी चयनित आइटम को दृश्य के शीर्ष के निकट ले जाया जाएगा</value>
+    <value>एक चयनित आइटम को दृश्य के शीर्ष के पास ले जाया जाएगा</value>
   </data>
   <data name="String29" xml:space="preserve">
-    <value>डीबग सत्र के दौरान, वर्तमान रुकी हुई पंक्ति का चयन किया जाएगा</value>
+    <value>डीबग सत्र के दौरान, वर्तमान रुकी हुई रेखा का चयन किया जाएगा</value>
   </data>
   <data name="String3" xml:space="preserve">
-    <value>टॉगल स्प्लिट स्क्रीन प्रोग्राम लेआउट</value>
+    <value>स्प्लिट स्क्रीन प्रोग्राम लेआउट टॉगल करें</value>
   </data>
   <data name="String30" xml:space="preserve">
-    <value>रंगों को आईडीई रंगों में सेट किया जा सकता है, और चयनित होने पर डार्क थीम लागू की जाती है</value>
+    <value>रंग आईडीई रंग में सेट किया जा सकता है, और डार्क थीम यदि चयनित लागू किया जाता है</value>
   </data>
   <data name="String31" xml:space="preserve">
-    <value>आकृतियाँ संपादक गुण इनपुट सेट करने में विफल.</value>
+    <value>आकृति संपादक गुण इनपुट सेट करने में विफल.</value>
   </data>
   <data name="String32" xml:space="preserve">
-    <value>आकार संपादक कुछ आकृतियों को कोड में निर्यात करने में विफल रहा।</value>
+    <value>आकृतियाँ संपादक कुछ आकृतियों को कोड में निर्यात करने में विफल.</value>
   </data>
   <data name="String33" xml:space="preserve">
     <value>आकृतियाँ संपादक कोड से कुछ आकृतियाँ आयात करने में विफल.</value>
@@ -1984,25 +1996,25 @@
     <value>बाएँ फलक पर आकृति नाम क्लिक करके आकृतियाँ या नियंत्रण जोड़ें.</value>
   </data>
   <data name="String35" xml:space="preserve">
-    <value>किसी आकृति या नीले रंग के ले जाएँ हैंडल पर क्लिक करके उसका चयन करें.</value>
+    <value>किसी आकृति पर क्लिक करके या नीले रंग के ले जाएँ हैंडल का चयन करें.</value>
   </data>
   <data name="String36" xml:space="preserve">
-    <value>चयनित आकृति के गुण दाएं पैनल पर दिखाए जाते हैं, उन्हें संपादित करके या सेट बटन का उपयोग करके बदला जा सकता है।</value>
+    <value>चयनित आकृति के गुण दाएं पैनल पर दिखाए जाते हैं, उन्हें संपादन या सेट बटन का उपयोग करके बदला जा सकता है।</value>
   </data>
   <data name="String37" xml:space="preserve">
-    <value>नीचे दबी Shift कुंजी के साथ किसी आकृति का चयन करके या आकृतियों के समूह के चारों ओर का चयन करके एकाधिक आकृतियों का चयन करें (वर्तमान चयनित आकृतियों में जोड़ने के लिए Shift).</value>
+    <value>नीचे रखी गई Shift कुंजी के साथ किसी आकृति का चयन करके या आकृतियों के समूह को गोल करके (वर्तमान चयनित आकृतियों में जोड़ने के लिए Shift) का चयन करके एकाधिक आकृतियों का चयन करें.</value>
   </data>
   <data name="String38" xml:space="preserve">
-    <value>बैकगाउंड पर बाएं क्लिक करके सभी आकृतियों को हटा दें।</value>
+    <value>बैकगाउंड पर बाएँ क्लिक करके सभी आकृतियों को हटा दें।</value>
   </data>
   <data name="String39" xml:space="preserve">
-    <value>ले जाएँ, आकार बदलें (कोने के हैंडल का उपयोग करके) या किसी आकृति के गुणों को परिवर्तित करें (एकाधिक चयनित आकृतियों पर लागू करने के लिए Shift दबाए रखें).</value>
+    <value>ले जाएँ, आकार बदलें (कोने के हैंडल का उपयोग करके) या किसी आकृति के गुण परिवर्तित करें (एकाधिक चयनित आकृतियों पर लागू करने के लिए Shift दबाए रखना).</value>
   </data>
   <data name="String4" xml:space="preserve">
     <value>आयातित कार्यक्रम विवरण</value>
   </data>
   <data name="String40" xml:space="preserve">
-    <value>त्रिकोण, रेखाओं और बहुभुजों को अलग-अलग कोनों को स्थानांतरित करके आकार दिया जाता है।</value>
+    <value>अलग-अलग कोनों को हिलाकर त्रिकोण, रेखाएं और बहुभुज का आकार बदला जाता है।</value>
   </data>
   <data name="String41" xml:space="preserve">
     <value>तीर कुंजियों का उपयोग करके चयनित आकृतियों को नज करें (स्नैप दूरी से स्थानांतरित करने के लिए Shift दबाए रखें)।</value>
@@ -2011,25 +2023,25 @@
     <value>किसी आकृति को हटाने के लिए उस पर Delete दबाएँ.</value>
   </data>
   <data name="String43" xml:space="preserve">
-    <value>अतिरिक्त विकल्पों के लिए राइट क्लिक करें, जिसमें वर्तमान दस्तावेज़ में कोड कॉपी और पेस्ट करें, या चयनित आकृतियों की प्रतिलिपि बनाएँ (नई कॉपी की गई आकृतियाँ मूल पर झूठ बोलती हैं, इसलिए फिर शिफ्ट कुंजी का उपयोग करके समूह के रूप में ले जाया जा सकता है)।</value>
+    <value>अतिरिक्त विकल्पों के लिए राइट क्लिक करें, जिसमें वर्तमान दस्तावेज़ में कोड कॉपी और पेस्ट करना शामिल है, या चयनित आकृतियों की प्रतिलिपि बनाएँ (नए कॉपी किए गए आकार मूल पर झूठ बोलते हैं, इसलिए फिर शिफ्ट कुंजी का उपयोग करके समूह के रूप में ले जाया जा सकता है)।</value>
   </data>
   <data name="String44" xml:space="preserve">
-    <value>वर्तमान कोड कोड विंडो में दिखाया गया है।  इसे संपादित किया जा सकता है और वर्तमान कोड को वर्तमान दृश्य में जोड़ने के लिए \"कोड से आयात करें" का उपयोग किया जा सकता है।</value>
+    <value>वर्तमान कोड कोड विंडो में दिखाया गया है।  इसे संपादित किया जा सकता है और वर्तमान कोड को वर्तमान दृश्य में जोड़ने के लिए \"Import From Code\" का उपयोग किया जा सकता है।</value>
   </data>
   <data name="String45" xml:space="preserve">
     <value>प्रश्न और सुझावों का स्वागत है।</value>
   </data>
   <data name="String46" xml:space="preserve">
-    <value>पाठ में</value>
+    <value>में पाठ</value>
   </data>
   <data name="String47" xml:space="preserve">
     <value>बदल गया है</value>
   </data>
   <data name="String48" xml:space="preserve">
-    <value>क्या आप परिवर्तनों को सहेजना चाहते हैं?</value>
+    <value>क्या आप परिवर्तन सहेजना चाहते हैं?</value>
   </data>
   <data name="String49" xml:space="preserve">
-    <value>उन्नत-&gt;विकल्प में "स्टार्टअप पर लोड एक्सटेंशन dlls" को अनचेक करें और इंस्टॉल किए गए एक्सटेंशन को संशोधित करने के लिए पुनरारंभ करें।</value>
+    <value>उन्नत-&gt;विकल्प में "स्टार्टअप पर लोड एक्सटेंशन डीएलएलएस" को अनचेक करें और स्थापित एक्सटेंशन को संशोधित करने के लिए पुनरारंभ करें।</value>
   </data>
   <data name="String5" xml:space="preserve">
     <value>स्प्लिट स्क्रीन में अंतर फ़ाइलों को टॉगल करें</value>
@@ -2041,16 +2053,16 @@
     <value>वर्तमान में कोई विस्तारित सहायता नहीं है।</value>
   </data>
   <data name="String52" xml:space="preserve">
-    <value>एसबी-प्राइम को स्मॉल बेसिक के किसी भी स्थापित संस्करण के साथ काम करना चाहिए, डिबगिंग छोटे बेसिक संस्करण 1.1 पर काम करता है।</value>
+    <value>एसबी-प्राइम को स्मॉल बेसिक के किसी भी स्थापित संस्करण के साथ काम करना चाहिए, डिबगिंग स्मॉल बेसिक संस्करण 1.1 पर काम करता है।</value>
   </data>
   <data name="String53" xml:space="preserve">
-    <value>डीबगिंग को सक्षम करने के लिए एक एक्सटेंशन को सीधे संकलित किया जाता है और पहली बार SB-Prime शुरू होने पर lib फ़ोल्डर में स्थापित किया जाता है, जिसके लिए उपयोगकर्ता खाता नियंत्रण (UAC) अनुमति की आवश्यकता होती है।</value>
+    <value>डीबगिंग को सक्षम करने के लिए एक्सटेंशन को पहली बार SB-Prime प्रारंभ होने पर सीधे lib फ़ोल्डर में संकलित और स्थापित किया जाता है, जिसके लिए उपयोगकर्ता खाता नियंत्रण (UAC) अनुमति की आवश्यकता होती है।</value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value>इसके अतिरिक्त, UAC की आवश्यकता हो सकती है जब अनुप्रयोगों के बीच आवश्यक संचार की अनुमति देने के लिए पहली बार डीबग सत्र किया जाता है।</value>
+    <value>इसके अतिरिक्त, अनुप्रयोगों के बीच आवश्यक संचार की अनुमति देने के लिए पहली बार डीबग सत्र किए जाने पर यूएसी की आवश्यकता हो सकती है।</value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value>डिबगिंग के लिए कोड के माध्यम से अंक या 'स्टेपिंग' को तोड़ने के लिए दौड़ने की आवश्यकता होती है।  एक बार रोके जाने के बाद, मानों को माउस को एक चर पर मँडराकर, या डीबग टैब में वॉच लिस्ट में चर नाम जोड़कर देखा जा सकता है।  वॉच लिस्ट वैरिएबल को बदलते ही देखा जा सकता है और उन्हें संशोधित भी किया जा सकता है।  [] सिंटैक्स के साथ सरणी मानों को भी देखा और संशोधित किया जा सकता है।</value>
+    <value>डिबगिंग के लिए कोड के माध्यम से अंक तोड़ने या 'कदम' उठाने के लिए दौड़ने की आवश्यकता होती है।  एक बार रुकने के बाद, मानों को एक चर पर माउस को मँडराकर, या डीबग टैब में वॉच लिस्ट में चर नाम जोड़कर देखा जा सकता है।  वॉच लिस्ट चर को बदलते समय देखा जा सकता है और संशोधित भी किया जा सकता है।  [] सिंटैक्स के साथ सरणी मानों को भी देखा और संशोधित किया जा सकता है।</value>
   </data>
   <data name="String56" xml:space="preserve">
     <value>इस अनुप्रयोग के लिए कोई संसाधन मौजूद नहीं है.  छोड़ने।</value>
@@ -2071,7 +2083,7 @@
     <value>आईडी के साथ सफलतापूर्वक आयात किया गया प्रोग्राम</value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value>प्रक्रिया के साथ रन को सफलतापूर्वक समाप्त कर दिया गया</value>
+    <value>प्रक्रिया के साथ सफलतापूर्वक समाप्त किया गया रन</value>
   </data>
   <data name="String62" xml:space="preserve">
     <value>डीबग और गैर-डीबग रन को मिक्स नहीं कर सकता</value>
@@ -2080,22 +2092,22 @@
     <value>पहले से चल रहे प्रोग्राम को संकलित नहीं कर सकता</value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value>कार्यक्रम प्रकाशित करने में विफल (शायद बहुत छोटा या बहुत लंबा)</value>
+    <value>प्रोग्राम प्रकाशित करने में विफल (शायद बहुत छोटा या बहुत लंबा)</value>
   </data>
   <data name="String65" xml:space="preserve">
     <value>आईडी के साथ सफलतापूर्वक प्रकाशित कार्यक्रम</value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value>सफलतापूर्वक स्नातक कार्यक्रम के लिए</value>
+    <value>सफलतापूर्वक स्नातक कार्यक्रम</value>
   </data>
   <data name="String67" xml:space="preserve">
     <value>केस नहीं चला सकता क्योंकि exe सफलतापूर्वक संकलित नहीं किया गया है</value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value>प्रक्रिया के साथ सफलतापूर्वक चलाना प्रारंभ किया</value>
+    <value>प्रक्रिया के साथ सफलतापूर्वक प्रारंभ किया</value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value>असेंबली को सफलतापूर्वक decompiled किया गया</value>
+    <value>असेंबली को सफलतापूर्वक डीकंपाइल किया गया</value>
   </data>
   <data name="String7" xml:space="preserve">
     <value>असली रंग</value>
@@ -2104,25 +2116,25 @@
     <value>प्लगइन जोड़ें: समूह में एक प्लगइन जोड़ने में विफल</value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value>प्रक्रिया के साथ रन को सफलतापूर्वक समाप्त कर दिया गया</value>
+    <value>प्रक्रिया के साथ सफलतापूर्वक समाप्त किया गया रन</value>
   </data>
   <data name="String72" xml:space="preserve">
     <value>कोड विंडो से नई आकृतियाँ बनाएँ।</value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value>आप पहले यहां कोई भी कोड पेस्ट कर सकते हैं।</value>
+    <value>आप यहां पहले कोई भी कोड पेस्ट कर सकते हैं।</value>
   </data>
   <data name="String74" xml:space="preserve">
     <value>ध्यान दें कि अधिकांश तर्क शाब्दिक होने चाहिए, चर नहीं।</value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value>Microsoft Visual Studio सामुदायिक विकास वातावरण।</value>
+    <value>Microsoft Visual Studio सामुदायिक विकास परिवेश।</value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value>अपने स्वयं के छोटे बुनियादी एक्सटेंशन और बड़ी परियोजनाएं लिखें।</value>
+    <value>अपने खुद के छोटे बेसिक एक्सटेंशन और बड़ी परियोजनाएं लिखें।</value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value>देखें और .Net असेंबली decompile।  जानें कि एक्सटेंशन कैसे काम करते हैं.</value>
+    <value>देखें और .Net असेंबली को डीकंपाइल करें।  जानें कि एक्सटेंशन कैसे काम करते हैं.</value>
   </data>
   <data name="String78" xml:space="preserve">
     <value>स्मॉल बेसिक के हुड के नीचे आने के लिए आवश्यक।</value>
@@ -2146,13 +2158,13 @@
     <value>एक बड़ा डाउनलोड, लेकिन एक पेशेवर स्तर आईडीई।</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>अधिकांश पाठ पठनीय फ़ाइल स्वरूपों को जल्दी से देखने या संपादित करने के लिए उपयोगी।</value>
+    <value>अधिकांश पाठ पठनीय फ़ाइल स्वरूपों को त्वरित रूप से देखने या संपादित करने के लिए उपयोगी है।</value>
   </data>
   <data name="String85" xml:space="preserve">
     <value>फ़ाइल ज़िप संपीड़न।</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>एक संपीड़ित फ़ाइल में एकाधिक दस्तावेज़ साझा करने का सबसे अच्छा तरीका।</value>
+    <value>एक संपीड़ित फ़ाइल में कई दस्तावेज़ साझा करने का सबसे अच्छा तरीका।</value>
   </data>
   <data name="String87" xml:space="preserve">
     <value>आइकन बनाएं और संपादित करें।</value>
@@ -2185,7 +2197,7 @@
     <value>सभी Ctrl+A का चयन करें</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Ctrl+F ढूँढें</value>
+    <value>Ctrl+F खोजें</value>
   </data>
   <data name="String97" xml:space="preserve">
     <value>Ctrl+H ढूँढें और बदलें</value>
@@ -2194,6 +2206,6 @@
     <value>टिप्पणी चयनित पंक्तियाँ Ctrl+?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>अन-कमेंट चयनित लाइनें Ctrl+?</value>
+    <value>चयनित पंक्तियों को अन-टिप्पणी करें Ctrl+?</value>
   </data>
 </root>

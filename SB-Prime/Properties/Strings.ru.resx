@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value></value>
+    <value>小基本 Prime</value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>Откройте существующую программу</value>
@@ -133,7 +133,7 @@
     <value>История</value>
   </data>
   <data name="Label103" xml:space="preserve">
-    <value>Отлаживать</value>
+    <value></value>
   </data>
   <data name="Label104" xml:space="preserve">
     <value>Файл</value>
@@ -193,7 +193,7 @@
     <value>Приостановка текущей программы</value>
   </data>
   <data name="Label121" xml:space="preserve">
-    <value>Пауза</value>
+    <value></value>
   </data>
   <data name="Label122" xml:space="preserve">
     <value>Выход из текущей подпрограммы</value>
@@ -214,7 +214,7 @@
     <value>Шаг</value>
   </data>
   <data name="Label128" xml:space="preserve">
-    <value>Запуск/возобновление текущей программы (F6)</value>
+    <value></value>
   </data>
   <data name="Label129" xml:space="preserve">
     <value>Старт/Возобновить</value>
@@ -433,7 +433,7 @@
     <value>Поле для просмотров номеров</value>
   </data>
   <data name="Label194" xml:space="preserve">
-    <value>Измените языковой стандарт intellisence (например, 'de' для немецкого, перезапустите SB-Prime, чтобы он вступил в силу)</value>
+    <value>Измените языковой стандарт intellisence, переопределите локаль интерфейса (например, 'de' для немецкого, перезапустите SB-Prime)</value>
   </data>
   <data name="Label195" xml:space="preserve">
     <value>Код языка</value>
@@ -1426,7 +1426,7 @@
     <value>Древовидный вид</value>
   </data>
   <data name="Label492" xml:space="preserve">
-    <value>Псевдонимы</value>
+    <value>Псевдонимы команд</value>
   </data>
   <data name="Label493" xml:space="preserve">
     <value>Задание псевдонимов объектов и методов</value>
@@ -1929,6 +1929,18 @@
   <data name="String183" xml:space="preserve">
     <value>Вставить комментарий ' в каретку Ctrl+Shift+?</value>
   </data>
+  <data name="String184" xml:space="preserve">
+    <value>Первый файл для сравнения</value>
+  </data>
+  <data name="String185" xml:space="preserve">
+    <value>Второй файл для сравнения</value>
+  </data>
+  <data name="String186" xml:space="preserve">
+    <value>Конец сравнения</value>
+  </data>
+  <data name="String187" xml:space="preserve">
+    <value>Проверьте ссылки и ресурсы на вкладке Инструменты.</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Копирование кода из текущего документа</value>
   </data>
@@ -2140,60 +2152,60 @@
     <value>Ознакомьтесь с инструментом выбора волшебной палочки.</value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value>Отличный текстовый редактор, альтернатива блокноту.</value>
+    <value></value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value>Большая загрузка, но IDE профессионального уровня.</value>
+    <value></value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>Полезно для быстрого просмотра или редактирования большинства текстовых форматов файлов.</value>
+    <value></value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>Сжатие zip-архива файла.</value>
+    <value></value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>Лучший способ поделиться несколькими документами в одном сжатом файле.</value>
+    <value></value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>Создавайте и редактируйте иконки.</value>
+    <value></value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>Форматы иконок довольно сложны без такого простого инструмента, как этот.</value>
+    <value></value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Отменить Ctrl+Z</value>
+    <value></value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Технология Intellisense</value>
+    <value></value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Повторить Ctrl+Y</value>
+    <value></value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Нажмите Ctrl+X</value>
+    <value></value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>Копировать Ctrl+C</value>
+    <value></value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value>Вставить Ctrl+V</value>
+    <value></value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value>Удалить</value>
+    <value></value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>Выделите все Ctrl+A</value>
+    <value></value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Найдите Ctrl+F</value>
+    <value></value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>Поиск и замена Ctrl+H</value>
+    <value></value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Комментарий к выделенным строкам Ctrl+?</value>
+    <value></value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>Раскомментировать выделенные строки Ctrl+?</value>
+    <value></value>
   </data>
 </root>

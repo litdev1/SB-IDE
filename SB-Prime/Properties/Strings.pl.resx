@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value></value>
+    <value>小基本 Prime</value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>Otwieranie istniejącego programu</value>
@@ -169,7 +169,7 @@
     <value>Zapisz bieżący program do nowego pliku</value>
   </data>
   <data name="Label114" xml:space="preserve">
-    <value>Zapisz jako</value>
+    <value></value>
   </data>
   <data name="Label115" xml:space="preserve">
     <value>Zapisz wszystkie programy</value>
@@ -253,7 +253,7 @@
     <value>Przełącz zakładkę</value>
   </data>
   <data name="Label14" xml:space="preserve">
-    <value>Zapisz bieżący program</value>
+    <value></value>
   </data>
   <data name="Label140" xml:space="preserve">
     <value>Przejdź do następnej zakładki w dół</value>
@@ -262,7 +262,7 @@
     <value>Następna zakładka</value>
   </data>
   <data name="Label142" xml:space="preserve">
-    <value></value>
+    <value>Przejdź do poprzedniej zakładki w górę</value>
   </data>
   <data name="Label143" xml:space="preserve">
     <value>Poprzednia zakładka</value>
@@ -433,7 +433,7 @@
     <value>Margines na widok numeru</value>
   </data>
   <data name="Label194" xml:space="preserve">
-    <value>Zmień ustawienia regionalne inteligencji (np. 'de' dla języka niemieckiego, zrestartuj SB-Prime, aby zaczął obowiązywać)</value>
+    <value>Zmienia ustawienia regionalne inteligencji, nadpisuje ustawienia regionalne interfejsu (np. 'de' dla języka niemieckiego, restartuje SB-Prime)</value>
   </data>
   <data name="Label195" xml:space="preserve">
     <value>Kod języka</value>
@@ -1426,7 +1426,7 @@
     <value>Widok drzewa</value>
   </data>
   <data name="Label492" xml:space="preserve">
-    <value>Aliasy</value>
+    <value>Aliasy poleceń</value>
   </data>
   <data name="Label493" xml:space="preserve">
     <value>Ustawianie aliasów obiektów i metod</value>
@@ -1929,6 +1929,18 @@
   <data name="String183" xml:space="preserve">
     <value>Wstaw komentarz ' przy daszku Ctrl+Shift+?</value>
   </data>
+  <data name="String184" xml:space="preserve">
+    <value>Pierwszy plik do porównania</value>
+  </data>
+  <data name="String185" xml:space="preserve">
+    <value>Drugi plik do porównania</value>
+  </data>
+  <data name="String186" xml:space="preserve">
+    <value>Koniec porównania</value>
+  </data>
+  <data name="String187" xml:space="preserve">
+    <value>Sprawdź linki i zasoby na karcie Narzędzia.</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Kopiuj kod z bieżącego dokumentu</value>
   </data>
@@ -2146,54 +2158,54 @@
     <value>Duży plik do pobrania, ale IDE na poziomie profesjonalnym.</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value>Przydatne do szybkiego przeglądania lub edytowania większości formatów plików czytelnych dla tekstu.</value>
+    <value></value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value>Kompresja plików zip.</value>
+    <value></value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value>Najlepszy sposób na udostępnianie wielu dokumentów w jednym skompresowanym pliku.</value>
+    <value></value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value>Twórz i edytuj ikony.</value>
+    <value></value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value>Formaty ikon są dość trudne bez prostego narzędzia, takiego jak to.</value>
+    <value></value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value>Cofnij Ctrl+Z</value>
+    <value></value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value>Funkcja IntelliSense</value>
+    <value></value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value>Ponów Ctrl+Y</value>
+    <value></value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value>Wytnij Ctrl+X</value>
+    <value></value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value>Kopiuj Ctrl+C</value>
+    <value></value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value>Wklej Ctrl+V</value>
+    <value></value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value>Usunąć</value>
+    <value></value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value>Zaznacz wszystko Ctrl+A</value>
+    <value></value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value>Znajdź Ctrl+F</value>
+    <value></value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value>Znajdź i zamień Ctrl+H</value>
+    <value></value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value>Komentarz Zaznaczone wiersze Ctrl+?</value>
+    <value></value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value>Odkomentuj zaznaczone wiersze Ctrl+?</value>
+    <value></value>
   </data>
 </root>
