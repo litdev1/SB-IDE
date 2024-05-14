@@ -87,7 +87,6 @@ namespace SB_Prime
             LoadSB();
             LoadExtensions(MainWindow.loadExtensions);
             //LoadCompiler();
-            Compiler = null;
             CompileExtension(Properties.Resources.SBClient, "SBDebugger", overwriteSBDebug);
         }
 
@@ -611,6 +610,7 @@ namespace SB_Prime
 
                             foreach (var error in _errors)
                             {
+                                if (error.ToString().EndsWith("Cannot find object 'SBDebug'.")) continue;
                                 errors.Add(error.ToString());
                             }
                         }
