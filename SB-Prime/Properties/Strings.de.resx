@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>小基本 Prime</value>
+    <value>Kleines Basic Prime</value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>Öffnen Sie ein vorhandenes Programm</value>
@@ -157,7 +157,7 @@
     <value>Offen</value>
   </data>
   <data name="Label110" xml:space="preserve">
-    <value></value>
+    <value>Schließen</value>
   </data>
   <data name="Label111" xml:space="preserve">
     <value>Aktuelles Programm speichern (Strg+S)</value>
@@ -187,7 +187,7 @@
     <value>Aufhören</value>
   </data>
   <data name="Label12" xml:space="preserve">
-    <value></value>
+    <value>Aktuelles Programm schließen</value>
   </data>
   <data name="Label120" xml:space="preserve">
     <value>Aktuelles Programm pausieren</value>
@@ -238,7 +238,7 @@
     <value>Haltepunkte löschen</value>
   </data>
   <data name="Label135" xml:space="preserve">
-    <value></value>
+    <value>Alle Haltepunkte ignorieren</value>
   </data>
   <data name="Label136" xml:space="preserve">
     <value>Haltepunkte ignorieren</value>
@@ -2059,153 +2059,153 @@
     <value>Um das Debuggen zu ermöglichen, wird eine Erweiterung beim ersten Start von SB-Prime direkt kompiliert und im lib-Ordner installiert, wobei die Berechtigung der Benutzerkontensteuerung (User Account Control, UAC) erforderlich ist.</value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value></value>
+    <value>Darüber hinaus kann die Benutzerkontensteuerung erforderlich sein, wenn zum ersten Mal eine Debugsitzung ausgeführt wird, um die erforderliche Kommunikation zwischen Anwendungen zu ermöglichen.</value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value></value>
+    <value>Das Debuggen erfordert das Ausführen von Haltepunkten oder das "schrittweise" Durchlaufen des Codes.  Nach dem Anhalten können Werte angezeigt werden, indem Sie mit der Maus über eine Variable fahren oder der Beobachtungsliste auf der Registerkarte "Debug" Variablennamen hinzufügen.  Beobachtungslistenvariablen können angezeigt werden, wenn sie sich ändern, und können auch geändert werden.  Array-Werte mit []-Syntax können ebenfalls angezeigt und geändert werden.</value>
   </data>
   <data name="String56" xml:space="preserve">
-    <value></value>
+    <value>Für diese Anwendung sind keine Ressourcen vorhanden.  Kündigung.</value>
   </data>
   <data name="String57" xml:space="preserve">
-    <value></value>
+    <value>Die Berechtigung zum Erstellen eines Erweiterungsbibliotheksordners ist erforderlich</value>
   </data>
   <data name="String58" xml:space="preserve">
-    <value></value>
+    <value>Willkommen bei Small Basic Prime</value>
   </data>
   <data name="String59" xml:space="preserve">
-    <value></value>
+    <value>Fehler beim Importieren des Programms mit ID</value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value></value>
+    <value>Farbe auf Weiß</value>
   </data>
   <data name="String60" xml:space="preserve">
-    <value></value>
+    <value>Erfolgreich importiertes Programm mit ID</value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value></value>
+    <value>Erfolgreich beendeter Lauf mit Prozess</value>
   </data>
   <data name="String62" xml:space="preserve">
-    <value></value>
+    <value>Debug- und Nicht-Debug-Ausführungen können nicht gemischt werden</value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value></value>
+    <value>Ein Programm, das bereits ausgeführt wird, kann nicht kompiliert werden</value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value></value>
+    <value>Fehler beim Veröffentlichen des Programms (vielleicht zu kurz oder zu lang)</value>
   </data>
   <data name="String65" xml:space="preserve">
-    <value></value>
+    <value>Erfolgreich veröffentlichtes Programm mit ID</value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value></value>
+    <value>Erfolgreich abgeschlossenes Programm zum</value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value></value>
+    <value>Groß-/Kleinschreibung kann nicht ausgeführt werden, da exe nicht erfolgreich kompiliert wurde</value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value></value>
+    <value>Erfolgreich gestarteter Lauf mit Prozess</value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value></value>
+    <value>Erfolgreich dekompilierte Assembly in</value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value></value>
+    <value>Echte Farbe</value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value></value>
+    <value>Plugin hinzufügen : Fehler beim Hinzufügen eines Plugins in der Gruppe</value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value></value>
+    <value>Erfolgreich beendeter Lauf mit Prozess</value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value></value>
+    <value>Erstellen Sie neue Formen aus dem Codefenster.</value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value></value>
+    <value>Sie können hier zuerst einen beliebigen Code einfügen.</value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value></value>
+    <value>Beachten Sie, dass die meisten Argumente Literale und keine Variablen sein sollten.</value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value></value>
+    <value>Microsoft Visual Studio Community-Entwicklungsumgebung.</value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value></value>
+    <value>Schreiben Sie Ihre eigenen Small Basic-Erweiterungen und größere Projekte.</value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value></value>
+    <value>Anzeigen und Dekompilieren von .Net-Assemblys.  Finden Sie heraus, wie Erweiterungen funktionieren.</value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value></value>
+    <value>Unverzichtbar, um unter die Haube von Small Basic zu kommen.</value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value></value>
+    <value>Eine leichte, aber voll ausgestattete Alternative zu VS.</value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value></value>
+    <value>Schwarz-Weiß</value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value></value>
+    <value>Erstellen und bearbeiten Sie Bilder, einschließlich der einfachen Vergabe transparenter Hintergründe für PNG-Bilder und der Erstellung animierter GIFs.</value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value></value>
+    <value>Schauen Sie sich das Zauberstab-Auswahlwerkzeug an.</value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value></value>
+    <value>Ausgezeichnete Texteditor-Alternative zum Notizblock.</value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value></value>
+    <value>Ein großer Download, aber eine IDE auf professionellem Niveau.</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value></value>
+    <value>Nützlich, um die meisten textlesbaren Dateiformate schnell anzuzeigen oder zu bearbeiten.</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value></value>
+    <value>Datei-Zip-Komprimierung.</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value></value>
+    <value>Der beste Weg, um mehrere Dokumente in einer einzigen komprimierten Datei zu teilen.</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value></value>
+    <value>Erstellen und bearbeiten Sie Symbole.</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value></value>
+    <value>Symbolformate sind ohne ein einfaches Tool wie dieses ziemlich knifflig.</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value></value>
+    <value>Rückgängig machen Strg+Z</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value></value>
+    <value>Intellisense</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value></value>
+    <value>Wiederholen Strg+Y</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value></value>
+    <value>Ausschneiden Strg+X</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value></value>
+    <value>Kopieren Sie Strg+C</value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value></value>
+    <value>Einfügen Strg+V</value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value></value>
+    <value>Löschen</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value></value>
+    <value>Alle auswählen Strg+A</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value></value>
+    <value>Suchen Sie Strg+F</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value></value>
+    <value>Suchen und Ersetzen von Strg+H</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value></value>
+    <value>Ausgewählte Zeilen kommentieren Strg+?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value></value>
+    <value>Ausgewählte Zeilen auskommentieren Strg+?</value>
   </data>
 </root>

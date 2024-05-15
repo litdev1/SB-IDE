@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>小基本 Prime</value>
+    <value>Liten grunnleggende primtall</value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>Åpne et eksisterende program</value>
@@ -184,7 +184,7 @@
     <value>Stopp gjeldende program (Skift+F6)</value>
   </data>
   <data name="Label119" xml:space="preserve">
-    <value></value>
+    <value>Stopp</value>
   </data>
   <data name="Label12" xml:space="preserve">
     <value>Lukk gjeldende program</value>
@@ -2059,153 +2059,153 @@
     <value>For å aktivere feilsøking kompileres og installeres en tilleggsmodul direkte i lib-mappen første gang SB-Prime startes, noe som krever UAC-tillatelse (User Account Control).</value>
   </data>
   <data name="String54" xml:space="preserve">
-    <value></value>
+    <value>I tillegg kan UAC være nødvendig første gang en feilsøkingsøkt utføres for å tillate nødvendig kommunikasjon mellom programmer.</value>
   </data>
   <data name="String55" xml:space="preserve">
-    <value></value>
+    <value>Feilsøking krever kjøring for å bryte punkter eller "tråkke" gjennom koden.  Når de er satt på pause, kan verdier vises ved å holde musen over en variabel, eller ved å legge til variabelnavn i overvåkningslisten i feilsøkingsfanen.  Overvåkningslistevariabler kan vises etter hvert som de endres, og kan også endres.  Matriseverdier med []-syntaks kan også vises og endres.</value>
   </data>
   <data name="String56" xml:space="preserve">
-    <value></value>
+    <value>Det finnes ingen ressurser for dette programmet.  Avslutte.</value>
   </data>
   <data name="String57" xml:space="preserve">
-    <value></value>
+    <value>Tillatelse til å opprette utvidelse lib-mappen er nødvendig</value>
   </data>
   <data name="String58" xml:space="preserve">
-    <value></value>
+    <value>Velkommen til Small Basic Prime</value>
   </data>
   <data name="String59" xml:space="preserve">
-    <value></value>
+    <value>Kunne ikke importere program med ID</value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value></value>
+    <value>Farge på hvitt</value>
   </data>
   <data name="String60" xml:space="preserve">
-    <value></value>
+    <value>Vellykket importert program med ID</value>
   </data>
   <data name="String61" xml:space="preserve">
-    <value></value>
+    <value>Vellykket avsluttet kjøring med prosess</value>
   </data>
   <data name="String62" xml:space="preserve">
-    <value></value>
+    <value>Kan ikke blande feilsøkings- og ikke-feilsøkingskjøringer</value>
   </data>
   <data name="String63" xml:space="preserve">
-    <value></value>
+    <value>Kan ikke kompilere et program som allerede kjører</value>
   </data>
   <data name="String64" xml:space="preserve">
-    <value></value>
+    <value>Kunne ikke publisere programmet (kanskje for kort eller for langt)</value>
   </data>
   <data name="String65" xml:space="preserve">
-    <value></value>
+    <value>Vellykket publisert program med ID</value>
   </data>
   <data name="String66" xml:space="preserve">
-    <value></value>
+    <value>Vellykket uteksaminert program for å</value>
   </data>
   <data name="String67" xml:space="preserve">
-    <value></value>
+    <value>Kan ikke kjøre saken siden exe ikke er kompilert</value>
   </data>
   <data name="String68" xml:space="preserve">
-    <value></value>
+    <value>Vellykket startet kjøring med prosess</value>
   </data>
   <data name="String69" xml:space="preserve">
-    <value></value>
+    <value>Vellykket dekompilert montering til</value>
   </data>
   <data name="String7" xml:space="preserve">
-    <value></value>
+    <value>Ekte farge</value>
   </data>
   <data name="String70" xml:space="preserve">
-    <value></value>
+    <value>Plugin Legg til: Kunne ikke legge til en plugin i gruppen</value>
   </data>
   <data name="String71" xml:space="preserve">
-    <value></value>
+    <value>Vellykket avsluttet kjøring med prosess</value>
   </data>
   <data name="String72" xml:space="preserve">
-    <value></value>
+    <value>Opprett nye figurer fra kodevinduet.</value>
   </data>
   <data name="String73" xml:space="preserve">
-    <value></value>
+    <value>Du kan lime inn hvilken som helst kode her først.</value>
   </data>
   <data name="String74" xml:space="preserve">
-    <value></value>
+    <value>Merk at de fleste argumenter skal være bokstavelige, ikke variabler.</value>
   </data>
   <data name="String75" xml:space="preserve">
-    <value></value>
+    <value>Microsoft Visual Studio Community utviklingsmiljø.</value>
   </data>
   <data name="String76" xml:space="preserve">
-    <value></value>
+    <value>Skriv dine egne Small Basic-utvidelser og større prosjekter.</value>
   </data>
   <data name="String77" xml:space="preserve">
-    <value></value>
+    <value>Vis og dekompiler .Net-samlinger.  Finn ut hvordan utvidelser fungerer.</value>
   </data>
   <data name="String78" xml:space="preserve">
-    <value></value>
+    <value>Viktig for å komme under panseret på Small Basic.</value>
   </data>
   <data name="String79" xml:space="preserve">
-    <value></value>
+    <value>Et lett, men fullverdig alternativ til VS.</value>
   </data>
   <data name="String8" xml:space="preserve">
-    <value></value>
+    <value>Svart-hvitt</value>
   </data>
   <data name="String80" xml:space="preserve">
-    <value></value>
+    <value>Lag og manipuler bilder, inkludert enkelt å gi png-bilder gjennomsiktig bakgrunn og lage animerte GIF-er.</value>
   </data>
   <data name="String81" xml:space="preserve">
-    <value></value>
+    <value>Sjekk ut tryllestavvalgverktøyet.</value>
   </data>
   <data name="String82" xml:space="preserve">
-    <value></value>
+    <value>Utmerket tekstredigeringsalternativ til notisblokk.</value>
   </data>
   <data name="String83" xml:space="preserve">
-    <value></value>
+    <value>En stor nedlasting, men et profesjonelt nivå IDE.</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value></value>
+    <value>Nyttig å raskt se på eller redigere de fleste tekstlesbare filformater.</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value></value>
+    <value>Fil zip-komprimering.</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value></value>
+    <value>Den beste måten å dele flere dokumenter på i én enkelt komprimert fil.</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value></value>
+    <value>Opprett og rediger ikoner.</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value></value>
+    <value>Ikonformater er ganske vanskelige uten et enkelt verktøy som dette.</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value></value>
+    <value>Angre CTRL+Z</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value></value>
+    <value>Intellisense</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value></value>
+    <value>Gjør om CTRL+Y</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value></value>
+    <value>Klipp ut CTRL+X</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value></value>
+    <value>Kopier CTRL+C</value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value></value>
+    <value>Lim inn CTRL+V</value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value></value>
+    <value>Slette</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value></value>
+    <value>Merk alle CTRL+A</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value></value>
+    <value>Finn CTRL+F</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value></value>
+    <value>Søk og erstatt CTRL+H</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value></value>
+    <value>Kommenter merkede linjer Ctrl+?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value></value>
+    <value>Un-kommentar valgte linjer Ctrl +?</value>
   </data>
 </root>

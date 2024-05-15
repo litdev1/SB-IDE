@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>小基本 Prime</value>
+    <value>Mały podstawowy prime</value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>Otwieranie istniejącego programu</value>
@@ -169,7 +169,7 @@
     <value>Zapisz bieżący program do nowego pliku</value>
   </data>
   <data name="Label114" xml:space="preserve">
-    <value></value>
+    <value>Zapisz jako</value>
   </data>
   <data name="Label115" xml:space="preserve">
     <value>Zapisz wszystkie programy</value>
@@ -253,7 +253,7 @@
     <value>Przełącz zakładkę</value>
   </data>
   <data name="Label14" xml:space="preserve">
-    <value></value>
+    <value>Zapisz bieżący program</value>
   </data>
   <data name="Label140" xml:space="preserve">
     <value>Przejdź do następnej zakładki w dół</value>
@@ -2158,54 +2158,54 @@
     <value>Duży plik do pobrania, ale IDE na poziomie profesjonalnym.</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value></value>
+    <value>Przydatne do szybkiego przeglądania lub edytowania większości formatów plików czytelnych dla tekstu.</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value></value>
+    <value>Kompresja plików zip.</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value></value>
+    <value>Najlepszy sposób na udostępnianie wielu dokumentów w jednym skompresowanym pliku.</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value></value>
+    <value>Twórz i edytuj ikony.</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value></value>
+    <value>Formaty ikon są dość trudne bez prostego narzędzia, takiego jak to.</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value></value>
+    <value>Cofnij Ctrl+Z</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value></value>
+    <value>Funkcja IntelliSense</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value></value>
+    <value>Ponów Ctrl+Y</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value></value>
+    <value>Wytnij Ctrl+X</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value></value>
+    <value>Kopiuj Ctrl+C</value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value></value>
+    <value>Wklej Ctrl+V</value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value></value>
+    <value>Usunąć</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value></value>
+    <value>Zaznacz wszystko Ctrl+A</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value></value>
+    <value>Znajdź Ctrl+F</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value></value>
+    <value>Znajdź i zamień Ctrl+H</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value></value>
+    <value>Komentarz Zaznaczone wiersze Ctrl+?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value></value>
+    <value>Odkomentuj zaznaczone wiersze Ctrl+?</value>
   </data>
 </root>

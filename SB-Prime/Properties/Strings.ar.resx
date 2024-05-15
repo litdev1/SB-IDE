@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>小基本 Prime</value>
+    <value>رئيس أساسي صغير</value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>فتح برنامج موجود</value>
@@ -136,7 +136,7 @@
     <value>تصحيح</value>
   </data>
   <data name="Label104" xml:space="preserve">
-    <value></value>
+    <value>ملف</value>
   </data>
   <data name="Label105" xml:space="preserve">
     <value>بدء تشغيل برنامج جديد (Ctrl+N)</value>
@@ -175,7 +175,7 @@
     <value>حفظ جميع البرامج</value>
   </data>
   <data name="Label116" xml:space="preserve">
-    <value></value>
+    <value>حفظ الكل</value>
   </data>
   <data name="Label117" xml:space="preserve">
     <value>تصحيح</value>
@@ -208,7 +208,7 @@
     <value>خطوة فوق</value>
   </data>
   <data name="Label126" xml:space="preserve">
-    <value></value>
+    <value>خطوة من خلال البرنامج الحالي ، أو بدء وإيقاف مؤقت في البيان الأول (F11)</value>
   </data>
   <data name="Label127" xml:space="preserve">
     <value>درج</value>

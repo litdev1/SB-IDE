@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>小基本 Prime</value>
+    <value>Pequeño Prime Básico</value>
   </data>
   <data name="Label10" xml:space="preserve">
-    <value></value>
+    <value>Abrir un programa existente</value>
   </data>
   <data name="Label100" xml:space="preserve">
     <value>Distingue entre mayúsculas y minúscu</value>
@@ -2158,54 +2158,54 @@
     <value>Una gran descarga, pero un IDE de nivel profesional.</value>
   </data>
   <data name="String84" xml:space="preserve">
-    <value></value>
+    <value>Útil para ver o editar rápidamente la mayoría de los formatos de archivo legibles por texto.</value>
   </data>
   <data name="String85" xml:space="preserve">
-    <value></value>
+    <value>Compresión zip de archivos.</value>
   </data>
   <data name="String86" xml:space="preserve">
-    <value></value>
+    <value>La mejor manera de compartir varios documentos en un solo archivo comprimido.</value>
   </data>
   <data name="String87" xml:space="preserve">
-    <value></value>
+    <value>Crea y edita iconos.</value>
   </data>
   <data name="String88" xml:space="preserve">
-    <value></value>
+    <value>Los formatos de iconos son bastante complicados sin una herramienta simple como esta.</value>
   </data>
   <data name="String89" xml:space="preserve">
-    <value></value>
+    <value>Deshacer Ctrl+Z</value>
   </data>
   <data name="String9" xml:space="preserve">
-    <value></value>
+    <value>IntelliSense</value>
   </data>
   <data name="String90" xml:space="preserve">
-    <value></value>
+    <value>Rehacer Ctrl+Y</value>
   </data>
   <data name="String91" xml:space="preserve">
-    <value></value>
+    <value>Cortar Ctrl+X</value>
   </data>
   <data name="String92" xml:space="preserve">
-    <value></value>
+    <value>Copiar Ctrl+C</value>
   </data>
   <data name="String93" xml:space="preserve">
-    <value></value>
+    <value>Pegar Ctrl+V</value>
   </data>
   <data name="String94" xml:space="preserve">
-    <value></value>
+    <value>Borrar</value>
   </data>
   <data name="String95" xml:space="preserve">
-    <value></value>
+    <value>Seleccionar todo Ctrl+A</value>
   </data>
   <data name="String96" xml:space="preserve">
-    <value></value>
+    <value>Buscar Ctrl+F</value>
   </data>
   <data name="String97" xml:space="preserve">
-    <value></value>
+    <value>Buscar y reemplazar Ctrl+H</value>
   </data>
   <data name="String98" xml:space="preserve">
-    <value></value>
+    <value>Comentar líneas seleccionadas Ctrl+?</value>
   </data>
   <data name="String99" xml:space="preserve">
-    <value></value>
+    <value>¿Quitar el comentario de las líneas seleccionadas Ctrl+?</value>
   </data>
 </root>

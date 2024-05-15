@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label1" xml:space="preserve">
-    <value>小基本 Prime</value>
+    <value>स्मॉल बेसिक प्राइम</value>
   </data>
   <data name="Label10" xml:space="preserve">
     <value>कोई मौजूदा प्रोग्राम खोलें</value>
@@ -133,7 +133,7 @@
     <value>इतिहास</value>
   </data>
   <data name="Label103" xml:space="preserve">
-    <value></value>
+    <value>डीबग</value>
   </data>
   <data name="Label104" xml:space="preserve">
     <value>रेती</value>
@@ -142,7 +142,7 @@
     <value>कोई नया प्रोग्राम प्रारंभ करें (Ctrl+N)</value>
   </data>
   <data name="Label106" xml:space="preserve">
-    <value></value>
+    <value>नया</value>
   </data>
   <data name="Label107" xml:space="preserve">
     <value>कोई मौजूदा प्रोग्राम खोलें (Ctrl+O)</value>
@@ -151,7 +151,7 @@
     <value>खोलना</value>
   </data>
   <data name="Label109" xml:space="preserve">
-    <value></value>
+    <value>वर्तमान कार्यक्रम बंद करें</value>
   </data>
   <data name="Label11" xml:space="preserve">
     <value>खोलना</value>
@@ -166,7 +166,7 @@
     <value>रक्षा कर</value>
   </data>
   <data name="Label113" xml:space="preserve">
-    <value></value>
+    <value>वर्तमान प्रोग्राम को एक नई फ़ाइल में सहेजें</value>
   </data>
   <data name="Label114" xml:space="preserve">
     <value>इस रूप में सहेजें</value>
@@ -175,7 +175,7 @@
     <value>सभी प्रोग्राम सहेजें</value>
   </data>
   <data name="Label116" xml:space="preserve">
-    <value></value>
+    <value>सभी सहेजें</value>
   </data>
   <data name="Label117" xml:space="preserve">
     <value>डीबग</value>
@@ -184,7 +184,7 @@
     <value>वर्तमान प्रोग्राम रोकें (Shift+F6)</value>
   </data>
   <data name="Label119" xml:space="preserve">
-    <value></value>
+    <value>रुको</value>
   </data>
   <data name="Label12" xml:space="preserve">
     <value>वर्तमान कार्यक्रम बंद करें</value>
@@ -208,7 +208,7 @@
     <value>स्टेप ओवर</value>
   </data>
   <data name="Label126" xml:space="preserve">
-    <value></value>
+    <value>वर्तमान कार्यक्रम के माध्यम से कदम, या पहले बयान पर शुरू और रोकें (F11)</value>
   </data>
   <data name="Label127" xml:space="preserve">
     <value>कहीं जाना</value>
