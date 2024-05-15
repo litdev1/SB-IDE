@@ -78,7 +78,7 @@ namespace SB_Prime
 
         private static void SetDiff()
         {
-            if (null == doc1 || null == doc2 || doc1 == doc2) return;
+            if (null == doc1 || null == doc2 || doc1 == doc2 || null == doc1.Layout.Content || null == doc2.Layout.Content) return;
 
             Diff.Item[] items = Diff.DiffText(doc1.TextArea.Text, doc2.TextArea.Text, true, true, true);
             foreach (Diff.Item item in items)
@@ -104,7 +104,7 @@ namespace SB_Prime
         {
             try
             {
-                if (null != doc1)
+                if (null != doc1 && null != doc1.Layout.Content)
                 {
                     foreach (Line line in doc1.TextArea.Lines)
                     {
@@ -112,7 +112,7 @@ namespace SB_Prime
                         line.MarkerDelete(SBDocument.INSERTED_MARKER);
                     }
                 }
-                if (null != doc2)
+                if (null != doc2 & null != doc2.Layout.Content)
                 {
                     foreach (Line line in doc2.TextArea.Lines)
                     {
@@ -121,7 +121,7 @@ namespace SB_Prime
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 doc1 = null;
                 doc2 = null;
