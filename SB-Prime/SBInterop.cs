@@ -215,61 +215,63 @@ namespace SB_Prime
 
                 foreach (string extension in extensions)
                 {
-                    if (extension.Contains("SBDebugger")) continue;
                     if (!bLoadExtensions && !extension.Contains(Variant.ToString() + "Library")) continue;
 
-                    XmlDocument doc = new XmlDocument();
                     SBObject obj = null;
-                    if (File.Exists(MainWindow.InstallDir + extension + "." + Language + ".xml"))
+                    XmlDocument doc = new XmlDocument();
+                    if (!extension.Contains("SBDebugger"))
                     {
-                        doc.Load(MainWindow.InstallDir + extension + "." + Language + ".xml");
-                    }
-                    else if (null != Properties.Strings.Culture && File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.TwoLetterISOLanguageName + ".xml"))
-                    {
-                        doc.Load(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.TwoLetterISOLanguageName + ".xml");
-                    }
-                    else if (null != Properties.Strings.Culture && File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml"))
-                    {
-                        doc.Load(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml");
-                    }
-                    else
-                    {
-                        doc.Load(MainWindow.InstallDir + extension + ".xml");
-                    }
-
-                    if (extension.Contains(Variant.ToString() + "Library"))
-                    {
-                        foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
+                        if (File.Exists(MainWindow.InstallDir + extension + "." + Language + ".xml"))
                         {
-                            if (xmlNode.Attributes["name"].InnerText.StartsWith("M:Microsoft." + Variant.ToString() + ".Library.Keywords."))
-                            {
-                                Member member = new Member();
-                                SBObjects.keywords.Add(member);
-                                member.name = xmlNode.Attributes["name"].InnerText.Substring(40);
-                                int pos = member.name.IndexOf('.');
-                                if (pos >= 0) member.name = member.name.Substring(pos + 1);
-                                member.type = MemberTypes.Custom;
-                                member.summary = "";
+                            doc.Load(MainWindow.InstallDir + extension + "." + Language + ".xml");
+                        }
+                        else if (null != Properties.Strings.Culture && File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.TwoLetterISOLanguageName + ".xml"))
+                        {
+                            doc.Load(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.TwoLetterISOLanguageName + ".xml");
+                        }
+                        else if (null != Properties.Strings.Culture && File.Exists(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml"))
+                        {
+                            doc.Load(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml");
+                        }
+                        else
+                        {
+                            doc.Load(MainWindow.InstallDir + extension + ".xml");
+                        }
 
-                                foreach (XmlNode node in xmlNode.ChildNodes)
+                        if (extension.Contains(Variant.ToString() + "Library"))
+                        {
+                            foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
+                            {
+                                if (xmlNode.Attributes["name"].InnerText.StartsWith("M:Microsoft." + Variant.ToString() + ".Library.Keywords."))
                                 {
-                                    switch (node.Name)
+                                    Member member = new Member();
+                                    SBObjects.keywords.Add(member);
+                                    member.name = xmlNode.Attributes["name"].InnerText.Substring(40);
+                                    int pos = member.name.IndexOf('.');
+                                    if (pos >= 0) member.name = member.name.Substring(pos + 1);
+                                    member.type = MemberTypes.Custom;
+                                    member.summary = "";
+
+                                    foreach (XmlNode node in xmlNode.ChildNodes)
                                     {
-                                        case "summary":
-                                            member.summary = node.InnerText.Trim();
-                                            break;
-                                        case "param":
-                                            member.arguments[node.Attributes["name"].Value] = node.InnerText.Trim();
-                                            break;
-                                        case "returns":
-                                            member.returns = node.InnerText.Trim();
-                                            break;
-                                        case "value":
-                                            member.arguments[node.Name] = node.InnerText.Trim();
-                                            break;
-                                        default:
-                                            member.other[char.ToUpper(node.Name[0]) + node.Name.Substring(1)] = node.InnerText.Trim();
-                                            break;
+                                        switch (node.Name)
+                                        {
+                                            case "summary":
+                                                member.summary = node.InnerText.Trim();
+                                                break;
+                                            case "param":
+                                                member.arguments[node.Attributes["name"].Value] = node.InnerText.Trim();
+                                                break;
+                                            case "returns":
+                                                member.returns = node.InnerText.Trim();
+                                                break;
+                                            case "value":
+                                                member.arguments[node.Name] = node.InnerText.Trim();
+                                                break;
+                                            default:
+                                                member.other[char.ToUpper(node.Name[0]) + node.Name.Substring(1)] = node.InnerText.Trim();
+                                                break;
+                                        }
                                     }
                                 }
                             }
@@ -284,6 +286,11 @@ namespace SB_Prime
                         File.Copy(MainWindow.InstallDir + extension + ".dll", tempFile);
                         //tempFile = MainWindow.InstallDir + extension + ".dll";
                         assembly = Assembly.LoadFrom(tempFile);
+                        if (extension.Contains("SBDebugger"))
+                        {
+                            if (!extensionAssemblies.Contains(assembly)) extensionAssemblies.Add(assembly);
+                            continue;
+                        }
                         Type[] types = assembly.GetTypes();
                         foreach (Type type in types)
                         {
@@ -610,7 +617,6 @@ namespace SB_Prime
 
                             foreach (var error in _errors)
                             {
-                                if (error.ToString().EndsWith("Cannot find object 'SBDebug'.")) continue;
                                 errors.Add(error.ToString());
                             }
                         }
