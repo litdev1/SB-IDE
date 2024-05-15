@@ -1491,11 +1491,71 @@
   <data name="Label510" xml:space="preserve">
     <value>واضح</value>
   </data>
+  <data name="Label511" xml:space="preserve">
+    <value>تقييم الموقع</value>
+  </data>
+  <data name="Label512" xml:space="preserve">
+    <value>تفاصيل وتصنيف البرنامج المنشور</value>
+  </data>
+  <data name="Label513" xml:space="preserve">
+    <value>موارد الويب</value>
+  </data>
+  <data name="Label514" xml:space="preserve">
+    <value>تحميل الموارد إلى الويب (الصور / الأصوات)</value>
+  </data>
+  <data name="Label515" xml:space="preserve">
+    <value>منتدى المستخدمين</value>
+  </data>
+  <data name="Label516" xml:space="preserve">
+    <value>المنتدى الأساسي الصغير (سؤال وجواب ل SB و SB-Prime و LitDev)</value>
+  </data>
+  <data name="Label517" xml:space="preserve">
+    <value>موقع LitDev</value>
+  </data>
+  <data name="Label518" xml:space="preserve">
+    <value>موقع LitDev (موارد أساسية صغيرة إضافية)</value>
+  </data>
+  <data name="Label519" xml:space="preserve">
+    <value>الوثيقة 1</value>
+  </data>
   <data name="Label52" xml:space="preserve">
     <value>حفظ الكل</value>
   </data>
+  <data name="Label520" xml:space="preserve">
+    <value>محتوى المستند 1</value>
+  </data>
+  <data name="Label521" xml:space="preserve">
+    <value>التحسس الذكي</value>
+  </data>
+  <data name="Label522" xml:space="preserve">
+    <value>الناتج</value>
+  </data>
+  <data name="Label523" xml:space="preserve">
+    <value>تصحيح</value>
+  </data>
+  <data name="Label524" xml:space="preserve">
+    <value>رفع</value>
+  </data>
+  <data name="Label525" xml:space="preserve">
+    <value>تحميل الموارد إلى الويب (صور)</value>
+  </data>
+  <data name="Label526" xml:space="preserve">
+    <value>يمكن أن يكون هذا Visual Basic أو Visual Basic صغير (sVB) ، وتبديل المجمعين ومكتبات الأوامر</value>
+  </data>
+  <data name="Label527" xml:space="preserve">
+    <value>حذف مجلد التثبيت من القائمة</value>
+  </data>
+  <data name="Label528" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Label529" xml:space="preserve">
+    <value>تحليل المتغيرات أثناء كتابتها</value>
+  </data>
   <data name="Label53" xml:space="preserve">
     <value>برنامج</value>
+  </data>
+  <data name="Label530" xml:space="preserve">
+    <value>تضمين تطابقات جزئية لاقتراحات الإكمال التلقائي</value>
   </data>
   <data name="Label54" xml:space="preserve">
     <value>إيقاف البرنامج الحالي (Shift + F5)</value>

@@ -228,7 +228,7 @@
                     <RibbonButton Name="ToolsExtensionSearcher" Label="{ x:Static local:Strings.Label164 }" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="{ x:Static local:Strings.Label163 }"/>
                     <RibbonButton Name="ToolsFileSearcher" Label="{ x:Static local:Strings.Label166 }" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="{ x:Static local:Strings.Label165 }"/>
                     <RibbonButton Name="ToolsAliases" Label="{ x:Static local:Strings.Label492 }" LargeImageSource="Images/Aliases.png" KeyTip="AL" Click="ToolsAliases_Click" ToolTipTitle="{ x:Static local:Strings.Label493 }"/>
-                    <RibbonButton Name="ToolsUpload" Label="Upload" LargeImageSource="Images/Upload.png" KeyTip="AL" Click="ToolsUpload_Click" ToolTipTitle="Upload resources to web (images)"/>
+                    <RibbonButton Name="ToolsUpload" Label="{ x:Static local:Strings.Label524 }" LargeImageSource="Images/Upload.png" KeyTip="AL" Click="ToolsUpload_Click" ToolTipTitle="{ x:Static local:Strings.Label525 }"/>
                 </RibbonGroup>
             </RibbonTab>
             <RibbonTab Header="{ x:Static local:Strings.Label167 }" KeyTip="A" >

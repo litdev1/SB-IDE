@@ -164,7 +164,7 @@
                 <RibbonGroup x:Name="Web" Header="{ x:Static local:Strings.Label83 }">
                     <RibbonButton Label="{ x:Static local:Strings.Label85 }" LargeImageSource="Images/Import.png" KeyTip="I" Click="webImport_Click" ToolTipTitle="{ x:Static local:Strings.Label84 }"/>
                     <RibbonButton Label="{ x:Static local:Strings.Label87 }" LargeImageSource="Images/Publish.png" KeyTip="P" Click="webPublish_Click" ToolTipTitle="{ x:Static local:Strings.Label86 }"/>
-                    <RibbonButton Label="Rating" LargeImageSource="Images/Details.png" KeyTip="D" Click="webDetails_Click" ToolTipTitle="Details and rating of published program"/>
+                    <RibbonButton Label="{ x:Static local:Strings.Label511 }" LargeImageSource="Images/Details.png" KeyTip="D" Click="webDetails_Click" ToolTipTitle="{ x:Static local:Strings.Label512 }"/>
                 </RibbonGroup>
                 <!-- Home/Search group-->
                 <RibbonGroup x:Name="Search" Header="{ x:Static local:Strings.Label88 }">
@@ -227,9 +227,9 @@
                     <RibbonButton Name="ToolsFont" Label="{ x:Static local:Strings.Label160 }" LargeImageSource="Images/Writing pencil.png" KeyTip="TF" Click="ToolsFont_Click" ToolTipTitle="{ x:Static local:Strings.Label159 }"/>
                     <RibbonButton Name="ToolsLinks" Label="{ x:Static local:Strings.Label162 }" LargeImageSource="Images/Link.png" KeyTip="TL" Click="ToolsLinks_Click" ToolTipTitle="{ x:Static local:Strings.Label161 }"/>
                     <RibbonButton Name="ToolsAliases" Label="{ x:Static local:Strings.Label492 }" LargeImageSource="Images/Aliases.png" KeyTip="AL" Click="ToolsAliases_Click" ToolTipTitle="{ x:Static local:Strings.Label493 }"/>
-                    <RibbonButton Name="ToolsUpload" Label="Web Resources" LargeImageSource="Images/Upload.png" KeyTip="AL" Click="ToolsUpload_Click" ToolTipTitle="Upload resources to web (images/sounds)"/>
-                    <RibbonButton Name="ToolsForum" Label="User Forum" LargeImageSource="Images/Forum.png" KeyTip="AF" Click="ToolsForum_Click" ToolTipTitle="Small Basic forum (Q&amp;A for SB, SB-Prime, LitDev)"/>
-                    <RibbonButton Name="ToolsWeb" Label="LitDev Website" LargeImageSource="Images/Web.png" KeyTip="AW" Click="ToolsLitDev_Click" ToolTipTitle="LitDev website (Additional Small Basic resources)"/>
+                    <RibbonButton Name="ToolsUpload" Label="{ x:Static local:Strings.Label513 }" LargeImageSource="Images/Upload.png" KeyTip="AL" Click="ToolsUpload_Click" ToolTipTitle="{ x:Static local:Strings.Label514 }"/>
+                    <RibbonButton Name="ToolsForum" Label="{ x:Static local:Strings.Label515 }" LargeImageSource="Images/Forum.png" KeyTip="AF" Click="ToolsForum_Click" ToolTipTitle="{ x:Static local:Strings.Label516 }"/>
+                    <RibbonButton Name="ToolsWeb" Label="{ x:Static local:Strings.Label517 }" LargeImageSource="Images/Web.png" KeyTip="AW" Click="ToolsLitDev_Click" ToolTipTitle="{ x:Static local:Strings.Label518 }"/>
                     <RibbonButton Name="ToolsExtensionSearcher" Label="{ x:Static local:Strings.Label164 }" LargeImageSource="Images/Search computer.png" KeyTip="TE" Click="ToolsExtensionSearcher_Click" ToolTipTitle="{ x:Static local:Strings.Label163 }"/>
                     <RibbonButton Name="ToolsFileSearcher" Label="{ x:Static local:Strings.Label166 }" LargeImageSource="Images/Search folder.png" KeyTip="FS" Click="fileSearcher_Click" ToolTipTitle="{ x:Static local:Strings.Label165 }"/>
                 </RibbonGroup>
@@ -289,14 +289,14 @@
                         <LayoutPanel Orientation="Horizontal">
                             <LayoutDocumentPaneGroup x:Name="DocumentPaneGroup">
                                 <!--<LayoutDocumentPane x:Name="LayoutDocumentPane1">
-                                <LayoutDocument x:Name="doc1" Title="Document 1" IconSource="AppIcon.ico">
+                                <LayoutDocument x:Name="doc1" Title="{ x:Static local:Strings.Label519 }" IconSource="AppIcon.ico">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
                                         <TextBlock HorizontalAlignment="Left" Margin="85,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Height="18"/>
-                                        <TextBox Grid.Row="1" Text="Document 1 Content" />
+                                        <TextBox Grid.Row="1" Text="{ x:Static local:Strings.Label520 }" />
                                     </Grid>
                                 </LayoutDocument>
                             </LayoutDocumentPane>-->
@@ -305,7 +305,7 @@
                                 <LayoutAnchorablePane>
                                     <LayoutAnchorable AutoHideMinWidth="200" AutoHideMinHeight="100"
                                 x:Name="dock_Intellisense"
-                                Title="Intellisense"
+                                Title="{ x:Static local:Strings.Label521 }"
                                 CanClose="False"
                                 CanHide="False">
                                         <ScrollViewer Grid.Column="2" Margin="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -323,7 +323,7 @@
                             <LayoutAnchorablePane>
                                 <LayoutAnchorable AutoHideMinWidth="200" AutoHideMinHeight="100"
                                 x:Name="dock_Output"
-                                Title="Output"
+                                Title="{ x:Static local:Strings.Label522 }"
                                 CanClose="False"
                                 CanHide="False">
                                     <Grid Background="#FFE5E5E5">
@@ -355,7 +355,7 @@
                                 </LayoutAnchorable>
                                 <LayoutAnchorable AutoHideMinWidth="200" AutoHideMinHeight="100"
                                 x:Name="dock_Debug"
-                                Title="Debug"
+                                Title="{ x:Static local:Strings.Label523 }"
                                 CanClose="False"
                                 CanHide="False">
                                     <Grid Background="#FFE5E5E5">

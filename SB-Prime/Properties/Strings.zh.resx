@@ -1491,11 +1491,71 @@
   <data name="Label510" xml:space="preserve">
     <value>清楚</value>
   </data>
+  <data name="Label511" xml:space="preserve">
+    <value>额定值</value>
+  </data>
+  <data name="Label512" xml:space="preserve">
+    <value>已发布程序的详细信息和评级</value>
+  </data>
+  <data name="Label513" xml:space="preserve">
+    <value>网络资源</value>
+  </data>
+  <data name="Label514" xml:space="preserve">
+    <value>将资源上传到 Web（图像/声音）</value>
+  </data>
+  <data name="Label515" xml:space="preserve">
+    <value>用户论坛</value>
+  </data>
+  <data name="Label516" xml:space="preserve">
+    <value>小型基础论坛（SB、SB-Prime、LitDev 问答）</value>
+  </data>
+  <data name="Label517" xml:space="preserve">
+    <value>LitDev 网站</value>
+  </data>
+  <data name="Label518" xml:space="preserve">
+    <value>LitDev 网站（其他小型基本资源）</value>
+  </data>
+  <data name="Label519" xml:space="preserve">
+    <value>文件1</value>
+  </data>
   <data name="Label52" xml:space="preserve">
     <value>保存全部</value>
   </data>
+  <data name="Label520" xml:space="preserve">
+    <value>文档 1 内容</value>
+  </data>
+  <data name="Label521" xml:space="preserve">
+    <value>智能感知</value>
+  </data>
+  <data name="Label522" xml:space="preserve">
+    <value>输出</value>
+  </data>
+  <data name="Label523" xml:space="preserve">
+    <value>调试</value>
+  </data>
+  <data name="Label524" xml:space="preserve">
+    <value>上传</value>
+  </data>
+  <data name="Label525" xml:space="preserve">
+    <value>将资源上传到 Web（图像）</value>
+  </data>
+  <data name="Label526" xml:space="preserve">
+    <value>这可以是 Small Basic 或 Small Visual Basic （sVB）、切换编译器和命令库</value>
+  </data>
+  <data name="Label527" xml:space="preserve">
+    <value>从列表中删除安装文件夹</value>
+  </data>
+  <data name="Label528" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="Label529" xml:space="preserve">
+    <value>在键入变量时分析变量</value>
+  </data>
   <data name="Label53" xml:space="preserve">
     <value>程序</value>
+  </data>
+  <data name="Label530" xml:space="preserve">
+    <value>为自动完成建议添加部分匹配项</value>
   </data>
   <data name="Label54" xml:space="preserve">
     <value>停止当前程序 （Shift+F5）</value>

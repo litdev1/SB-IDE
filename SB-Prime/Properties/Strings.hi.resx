@@ -1491,11 +1491,71 @@
   <data name="Label510" xml:space="preserve">
     <value>स्पष्ट</value>
   </data>
+  <data name="Label511" xml:space="preserve">
+    <value>रेटिंग</value>
+  </data>
+  <data name="Label512" xml:space="preserve">
+    <value>प्रकाशित कार्यक्रम का विवरण और रेटिंग</value>
+  </data>
+  <data name="Label513" xml:space="preserve">
+    <value>वेब संसाधन</value>
+  </data>
+  <data name="Label514" xml:space="preserve">
+    <value>संसाधनों को वेब पर अपलोड करें (चित्र/ध्वनियां)</value>
+  </data>
+  <data name="Label515" xml:space="preserve">
+    <value>उपयोगकर्ता फोरम</value>
+  </data>
+  <data name="Label516" xml:space="preserve">
+    <value>छोटा बुनियादी मंच (SB, SB-Prime, LitDev के लिए Q &amp;amp; A)</value>
+  </data>
+  <data name="Label517" xml:space="preserve">
+    <value>LitDev वेबसाइट</value>
+  </data>
+  <data name="Label518" xml:space="preserve">
+    <value>LitDev वेबसाइट (अतिरिक्त लघु बुनियादी संसाधन)</value>
+  </data>
+  <data name="Label519" xml:space="preserve">
+    <value>दस्तावेज़ 1</value>
+  </data>
   <data name="Label52" xml:space="preserve">
     <value>सभी सहेजें</value>
   </data>
+  <data name="Label520" xml:space="preserve">
+    <value>दस्तावेज़ 1 सामग्री</value>
+  </data>
+  <data name="Label521" xml:space="preserve">
+    <value>इंटेलिसेंस</value>
+  </data>
+  <data name="Label522" xml:space="preserve">
+    <value>आउटपुट</value>
+  </data>
+  <data name="Label523" xml:space="preserve">
+    <value>डीबग</value>
+  </data>
+  <data name="Label524" xml:space="preserve">
+    <value>अपलोड</value>
+  </data>
+  <data name="Label525" xml:space="preserve">
+    <value>संसाधनों को वेब पर अपलोड करें (चित्र)</value>
+  </data>
+  <data name="Label526" xml:space="preserve">
+    <value>यह स्मॉल बेसिक या स्मॉल विजुअल बेसिक (sVB), स्विचिंग कंपाइलर्स और कमांड लाइब्रेरी हो सकता है</value>
+  </data>
+  <data name="Label527" xml:space="preserve">
+    <value>सूची से स्थापना फ़ोल्डर हटाएँ</value>
+  </data>
+  <data name="Label528" xml:space="preserve">
+    <value>मिटाना</value>
+  </data>
+  <data name="Label529" xml:space="preserve">
+    <value>पार्स चर के रूप में वे टाइप किए जाते हैं</value>
+  </data>
   <data name="Label53" xml:space="preserve">
     <value>प्रोग्राम</value>
+  </data>
+  <data name="Label530" xml:space="preserve">
+    <value>स्वतः पूर्ण सुझावों के लिए आंशिक मिलान शामिल करें</value>
   </data>
   <data name="Label54" xml:space="preserve">
     <value>वर्तमान प्रोग्राम रोकें (Shift+F5)</value>

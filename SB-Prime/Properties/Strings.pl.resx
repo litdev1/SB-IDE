@@ -1491,11 +1491,71 @@
   <data name="Label510" xml:space="preserve">
     <value>Jasny</value>
   </data>
+  <data name="Label511" xml:space="preserve">
+    <value>Ocena</value>
+  </data>
+  <data name="Label512" xml:space="preserve">
+    <value>Szczegóły i ocena opublikowanego programu</value>
+  </data>
+  <data name="Label513" xml:space="preserve">
+    <value>Zasoby internetowe</value>
+  </data>
+  <data name="Label514" xml:space="preserve">
+    <value>Przesyłanie zasobów do sieci (obrazy/dźwięki)</value>
+  </data>
+  <data name="Label515" xml:space="preserve">
+    <value>Forum użytkowników</value>
+  </data>
+  <data name="Label516" xml:space="preserve">
+    <value>Małe forum podstawowe (Q&amp;amp;A dla SB, SB-Prime, LitDev)</value>
+  </data>
+  <data name="Label517" xml:space="preserve">
+    <value>Strona internetowa LitDev</value>
+  </data>
+  <data name="Label518" xml:space="preserve">
+    <value>Strona internetowa LitDev (dodatkowe zasoby Small Basic)</value>
+  </data>
+  <data name="Label519" xml:space="preserve">
+    <value>Dokument 1</value>
+  </data>
   <data name="Label52" xml:space="preserve">
     <value>Zapisz wszystko</value>
   </data>
+  <data name="Label520" xml:space="preserve">
+    <value>Dokument 1 Spis treści</value>
+  </data>
+  <data name="Label521" xml:space="preserve">
+    <value>Funkcja IntelliSense</value>
+  </data>
+  <data name="Label522" xml:space="preserve">
+    <value>Wyjście</value>
+  </data>
+  <data name="Label523" xml:space="preserve">
+    <value>Debugować</value>
+  </data>
+  <data name="Label524" xml:space="preserve">
+    <value>Przesyłać</value>
+  </data>
+  <data name="Label525" xml:space="preserve">
+    <value>Przekazywanie zasobów do sieci (obrazy)</value>
+  </data>
+  <data name="Label526" xml:space="preserve">
+    <value>Może to być Small Basic lub Small Visual Basic (sVB), przełączanie kompilatorów i bibliotek poleceń</value>
+  </data>
+  <data name="Label527" xml:space="preserve">
+    <value>Usuń folder instalacyjny z listy</value>
+  </data>
+  <data name="Label528" xml:space="preserve">
+    <value>Usunąć</value>
+  </data>
+  <data name="Label529" xml:space="preserve">
+    <value>Analizowanie zmiennych podczas ich wpisywania</value>
+  </data>
   <data name="Label53" xml:space="preserve">
     <value>Program</value>
+  </data>
+  <data name="Label530" xml:space="preserve">
+    <value>Uwzględnianie częściowych dopasowań w sugestiach autouzupełniania</value>
   </data>
   <data name="Label54" xml:space="preserve">
     <value>Zatrzymaj bieżący program (Shift+F5)</value>

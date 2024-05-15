@@ -1491,11 +1491,71 @@
   <data name="Label510" xml:space="preserve">
     <value>Ясный</value>
   </data>
+  <data name="Label511" xml:space="preserve">
+    <value>Рейтинг</value>
+  </data>
+  <data name="Label512" xml:space="preserve">
+    <value>Детали и рейтинг опубликованной программы</value>
+  </data>
+  <data name="Label513" xml:space="preserve">
+    <value>Веб-ресурсы</value>
+  </data>
+  <data name="Label514" xml:space="preserve">
+    <value>Загрузка ресурсов в Интернет (изображения/звуки)</value>
+  </data>
+  <data name="Label515" xml:space="preserve">
+    <value>Форум пользователей</value>
+  </data>
+  <data name="Label516" xml:space="preserve">
+    <value>Малый базовый форум (вопросы и ответы для SB, SB-Prime, LitDev)</value>
+  </data>
+  <data name="Label517" xml:space="preserve">
+    <value>Веб-сайт LitDev</value>
+  </data>
+  <data name="Label518" xml:space="preserve">
+    <value>Веб-сайт LitDev (Дополнительные ресурсы Small Basic)</value>
+  </data>
+  <data name="Label519" xml:space="preserve">
+    <value>Документ 1</value>
+  </data>
   <data name="Label52" xml:space="preserve">
     <value>Сохранить все</value>
   </data>
+  <data name="Label520" xml:space="preserve">
+    <value>Содержание документа 1</value>
+  </data>
+  <data name="Label521" xml:space="preserve">
+    <value>Технология Intellisense</value>
+  </data>
+  <data name="Label522" xml:space="preserve">
+    <value>Выпуск</value>
+  </data>
+  <data name="Label523" xml:space="preserve">
+    <value>Отлаживать</value>
+  </data>
+  <data name="Label524" xml:space="preserve">
+    <value>Закачать</value>
+  </data>
+  <data name="Label525" xml:space="preserve">
+    <value>Загрузка ресурсов в Интернет (изображения)</value>
+  </data>
+  <data name="Label526" xml:space="preserve">
+    <value>Это может быть Small Basic или Small Visual Basic (sVB), коммутационные компиляторы и библиотеки команд</value>
+  </data>
+  <data name="Label527" xml:space="preserve">
+    <value>Удалить папку установки из списка</value>
+  </data>
+  <data name="Label528" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Label529" xml:space="preserve">
+    <value>Анализируйте переменные по мере их типизации</value>
+  </data>
   <data name="Label53" xml:space="preserve">
     <value>Программа</value>
+  </data>
+  <data name="Label530" xml:space="preserve">
+    <value>Включение частичных совпадений для предложений автозаполнения</value>
   </data>
   <data name="Label54" xml:space="preserve">
     <value>Остановка текущей программы (Shift+F5)</value>

@@ -1,7 +1,20 @@
-Label504	Validate names, invalid will not be saved
-Label505	Export aliases to a tab deliminated text file
-Label506	Export
-Label507	Import aliases from a tab deliminated text file
-Label508	Import
-Label509	Delete all aliases
-Label510	Clear
+Label511	Rating
+Label512	Details and rating of published program
+Label513	Web Resources
+Label514	Upload resources to web (images/sounds)
+Label515	User Forum
+Label516	Small Basic forum (Q&amp;A for SB, SB-Prime, LitDev)
+Label517	LitDev Website
+Label518	LitDev website (Additional Small Basic resources)
+Label519	Document 1
+Label520	Document 1 Content
+Label521	Intellisense
+Label522	Output
+Label523	Debug
+Label524	Upload
+Label525	Upload resources to web (images)
+Label526	This can be Small Basic or Small Visual Basic (sVB), switching compilers and command libraries
+Label527	Delete installation folder from list
+Label528	Delete
+Label529	Parse variables as they are typed
+Label530	Include partial matches for auto complete suggestions

@@ -1491,11 +1491,71 @@
   <data name="Label510" xml:space="preserve">
     <value>Clear</value>
   </data>
+  <data name="Label511" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="Label512" xml:space="preserve">
+    <value>Details and rating of published program</value>
+  </data>
+  <data name="Label513" xml:space="preserve">
+    <value>Web Resources</value>
+  </data>
+  <data name="Label514" xml:space="preserve">
+    <value>Upload resources to web (images/sounds)</value>
+  </data>
+  <data name="Label515" xml:space="preserve">
+    <value>User Forum</value>
+  </data>
+  <data name="Label516" xml:space="preserve">
+    <value>Small Basic forum (Q&amp;amp;A for SB, SB-Prime, LitDev)</value>
+  </data>
+  <data name="Label517" xml:space="preserve">
+    <value>LitDev Website</value>
+  </data>
+  <data name="Label518" xml:space="preserve">
+    <value>LitDev website (Additional Small Basic resources)</value>
+  </data>
+  <data name="Label519" xml:space="preserve">
+    <value>Document 1</value>
+  </data>
   <data name="Label52" xml:space="preserve">
     <value>Save All</value>
   </data>
+  <data name="Label520" xml:space="preserve">
+    <value>Document 1 Content</value>
+  </data>
+  <data name="Label521" xml:space="preserve">
+    <value>Intellisense</value>
+  </data>
+  <data name="Label522" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="Label523" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="Label524" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Label525" xml:space="preserve">
+    <value>Upload resources to web (images)</value>
+  </data>
+  <data name="Label526" xml:space="preserve">
+    <value>This can be Small Basic or Small Visual Basic (sVB), switching compilers and command libraries</value>
+  </data>
+  <data name="Label527" xml:space="preserve">
+    <value>Delete installation folder from list</value>
+  </data>
+  <data name="Label528" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Label529" xml:space="preserve">
+    <value>Parse variables as they are typed</value>
+  </data>
   <data name="Label53" xml:space="preserve">
     <value>Program</value>
+  </data>
+  <data name="Label530" xml:space="preserve">
+    <value>Include partial matches for auto complete suggestions</value>
   </data>
   <data name="Label54" xml:space="preserve">
     <value>Stop current program (Shift+F5)</value>

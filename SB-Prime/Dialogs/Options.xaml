@@ -31,9 +31,9 @@
         <CheckBox x:Name="checkBoxTopmost" Content="{ x:Static local:Strings.String180 }" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_LexerFont" Content="{x:Static local:Strings.String181}" HorizontalAlignment="Left" Margin="13,247,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBoxLexerFont" HorizontalAlignment="Left" Margin="131,249,0,0" VerticalAlignment="Top" Width="160" Height="23" IsReadOnly="True" ToolTip="{x:Static local:Strings.String182}"/>
-        <ComboBox x:Name="comboBoxInstallation" Margin="174,10,82,0" VerticalAlignment="Top" Height="23" IsEditable="True" ToolTip="This can be Small Basic or Small Visual Basic (sVB), switching compilers and command libraries"/>
-        <Button x:Name="buttonDelete" Content="Delete" HorizontalAlignment="Right" Margin="0,33,7,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonDelete_Click" Height="23" ToolTip="Delete installation folder from list"/>
-        <CheckBox x:Name="checkBoxParseLineVariables" Content="Parse variables as they are typed" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBoxKeywordContains" Content="Include partial matches for auto complete suggestions" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBoxInstallation" Margin="174,10,82,0" VerticalAlignment="Top" Height="23" IsEditable="True" ToolTip="{ x:Static local:Strings.Label526 }"/>
+        <Button x:Name="buttonDelete" Content="{ x:Static local:Strings.Label528 }" HorizontalAlignment="Right" Margin="0,33,7,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.506,0.5" Click="buttonDelete_Click" Height="23" ToolTip="{ x:Static local:Strings.Label527 }"/>
+        <CheckBox x:Name="checkBoxParseLineVariables" Content="{ x:Static local:Strings.Label529 }" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBoxKeywordContains" Content="{ x:Static local:Strings.Label530 }" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

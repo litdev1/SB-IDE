@@ -4183,6 +4183,87 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rating.
+        /// </summary>
+        public static string Label511 {
+            get {
+                return ResourceManager.GetString("Label511", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details and rating of published program.
+        /// </summary>
+        public static string Label512 {
+            get {
+                return ResourceManager.GetString("Label512", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web Resources.
+        /// </summary>
+        public static string Label513 {
+            get {
+                return ResourceManager.GetString("Label513", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload resources to web (images/sounds).
+        /// </summary>
+        public static string Label514 {
+            get {
+                return ResourceManager.GetString("Label514", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Forum.
+        /// </summary>
+        public static string Label515 {
+            get {
+                return ResourceManager.GetString("Label515", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Small Basic forum (Q&amp;amp;A for SB, SB-Prime, LitDev).
+        /// </summary>
+        public static string Label516 {
+            get {
+                return ResourceManager.GetString("Label516", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LitDev Website.
+        /// </summary>
+        public static string Label517 {
+            get {
+                return ResourceManager.GetString("Label517", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LitDev website (Additional Small Basic resources).
+        /// </summary>
+        public static string Label518 {
+            get {
+                return ResourceManager.GetString("Label518", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document 1.
+        /// </summary>
+        public static string Label519 {
+            get {
+                return ResourceManager.GetString("Label519", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save All.
         /// </summary>
         public static string Label52 {
@@ -4192,11 +4273,110 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Document 1 Content.
+        /// </summary>
+        public static string Label520 {
+            get {
+                return ResourceManager.GetString("Label520", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intellisense.
+        /// </summary>
+        public static string Label521 {
+            get {
+                return ResourceManager.GetString("Label521", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output.
+        /// </summary>
+        public static string Label522 {
+            get {
+                return ResourceManager.GetString("Label522", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debug.
+        /// </summary>
+        public static string Label523 {
+            get {
+                return ResourceManager.GetString("Label523", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload.
+        /// </summary>
+        public static string Label524 {
+            get {
+                return ResourceManager.GetString("Label524", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload resources to web (images).
+        /// </summary>
+        public static string Label525 {
+            get {
+                return ResourceManager.GetString("Label525", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This can be Small Basic or Small Visual Basic (sVB), switching compilers and command libraries.
+        /// </summary>
+        public static string Label526 {
+            get {
+                return ResourceManager.GetString("Label526", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete installation folder from list.
+        /// </summary>
+        public static string Label527 {
+            get {
+                return ResourceManager.GetString("Label527", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Label528 {
+            get {
+                return ResourceManager.GetString("Label528", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parse variables as they are typed.
+        /// </summary>
+        public static string Label529 {
+            get {
+                return ResourceManager.GetString("Label529", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Program.
         /// </summary>
         public static string Label53 {
             get {
                 return ResourceManager.GetString("Label53", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include partial matches for auto complete suggestions.
+        /// </summary>
+        public static string Label530 {
+            get {
+                return ResourceManager.GetString("Label530", resourceCulture);
             }
         }
         

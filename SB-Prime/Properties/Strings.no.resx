@@ -1491,11 +1491,71 @@
   <data name="Label510" xml:space="preserve">
     <value>Klar</value>
   </data>
+  <data name="Label511" xml:space="preserve">
+    <value>Vurdering</value>
+  </data>
+  <data name="Label512" xml:space="preserve">
+    <value>Detaljer og vurdering av publisert program</value>
+  </data>
+  <data name="Label513" xml:space="preserve">
+    <value>Webressurser</value>
+  </data>
+  <data name="Label514" xml:space="preserve">
+    <value>Last opp ressurser til web (bilder / lyder)</value>
+  </data>
+  <data name="Label515" xml:space="preserve">
+    <value>Brukerforum</value>
+  </data>
+  <data name="Label516" xml:space="preserve">
+    <value>Small Basic forum (Q &amp;amp; A for SB, SB-Prime, LitDev)</value>
+  </data>
+  <data name="Label517" xml:space="preserve">
+    <value>LitDevs nettsted</value>
+  </data>
+  <data name="Label518" xml:space="preserve">
+    <value>LitDev-nettsted (ytterligere små grunnleggende ressurser)</value>
+  </data>
+  <data name="Label519" xml:space="preserve">
+    <value>Dokument 1</value>
+  </data>
   <data name="Label52" xml:space="preserve">
     <value>Lagre alle</value>
   </data>
+  <data name="Label520" xml:space="preserve">
+    <value>Dokument 1 Innhold</value>
+  </data>
+  <data name="Label521" xml:space="preserve">
+    <value>Intellisense</value>
+  </data>
+  <data name="Label522" xml:space="preserve">
+    <value>Ytelse</value>
+  </data>
+  <data name="Label523" xml:space="preserve">
+    <value>Feilsøke</value>
+  </data>
+  <data name="Label524" xml:space="preserve">
+    <value>Opplasting</value>
+  </data>
+  <data name="Label525" xml:space="preserve">
+    <value>Last opp ressurser til web (bilder)</value>
+  </data>
+  <data name="Label526" xml:space="preserve">
+    <value>Dette kan være Small Basic eller Small Visual Basic (sVB), bytte kompilatorer og kommandobiblioteker</value>
+  </data>
+  <data name="Label527" xml:space="preserve">
+    <value>Slett installasjonsmappen fra listen</value>
+  </data>
+  <data name="Label528" xml:space="preserve">
+    <value>Slette</value>
+  </data>
+  <data name="Label529" xml:space="preserve">
+    <value>Analyser variabler etter hvert som de skrives</value>
+  </data>
   <data name="Label53" xml:space="preserve">
     <value>Program</value>
+  </data>
+  <data name="Label530" xml:space="preserve">
+    <value>Inkluder delvise treff for automatisk fullføringsforslag</value>
   </data>
   <data name="Label54" xml:space="preserve">
     <value>Stopp gjeldende program (Skift+F5)</value>
