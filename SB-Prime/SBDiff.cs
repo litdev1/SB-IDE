@@ -102,21 +102,29 @@ namespace SB_Prime
 
         private static void ClearDiff()
         {
-            if (null != doc1)
+            try
             {
-                foreach (Line line in doc1.TextArea.Lines)
+                if (null != doc1)
                 {
-                    line.MarkerDelete(SBDocument.DELETED_MARKER);
-                    line.MarkerDelete(SBDocument.INSERTED_MARKER);
+                    foreach (Line line in doc1.TextArea.Lines)
+                    {
+                        line.MarkerDelete(SBDocument.DELETED_MARKER);
+                        line.MarkerDelete(SBDocument.INSERTED_MARKER);
+                    }
+                }
+                if (null != doc2)
+                {
+                    foreach (Line line in doc2.TextArea.Lines)
+                    {
+                        line.MarkerDelete(SBDocument.DELETED_MARKER);
+                        line.MarkerDelete(SBDocument.INSERTED_MARKER);
+                    }
                 }
             }
-            if (null != doc2)
+            catch
             {
-                foreach (Line line in doc2.TextArea.Lines)
-                {
-                    line.MarkerDelete(SBDocument.DELETED_MARKER);
-                    line.MarkerDelete(SBDocument.INSERTED_MARKER);
-                }
+                doc1 = null;
+                doc2 = null;
             }
         }
     }
