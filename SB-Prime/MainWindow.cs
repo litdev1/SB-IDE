@@ -425,6 +425,8 @@ namespace SB_Prime
             }
             pane_Output.DockHeight = new GridLength(Math.Max(Properties.Settings.Default.OutputHeight, pane_Output.DockMinHeight));
             pane_Intellisense.DockWidth = new GridLength(Math.Max(Properties.Settings.Default.IntellisenseWidth, pane_Intellisense.DockMinWidth));
+            if (!Properties.Settings.Default.OutputPane) dock_Output.ToggleAutoHide();
+            if (!Properties.Settings.Default.IntellisensePane) dock_Intellisense.ToggleAutoHide();
             var ideColors = IDEColors;
             for (i = 0; i < Properties.Settings.Default.Colors.Count; i++)
             {
@@ -589,6 +591,8 @@ namespace SB_Prime
             }
             Properties.Settings.Default.OutputHeight = pane_Output.DockHeight.Value;
             Properties.Settings.Default.IntellisenseWidth = pane_Intellisense.DockWidth.Value;
+            Properties.Settings.Default.OutputPane = pane_Output.IsVisible;
+            Properties.Settings.Default.IntellisensePane = pane_Intellisense.IsVisible;
             Properties.Settings.Default.Colors.Clear();
             foreach (KeyValuePair<string,int> kvp in IDEColors)
             {

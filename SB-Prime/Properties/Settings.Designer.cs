@@ -521,5 +521,29 @@ namespace SB_Prime.Properties {
                 this["KeywordContains"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OutputPane {
+            get {
+                return ((bool)(this["OutputPane"]));
+            }
+            set {
+                this["OutputPane"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IntellisensePane {
+            get {
+                return ((bool)(this["IntellisensePane"]));
+            }
+            set {
+                this["IntellisensePane"] = value;
+            }
+        }
     }
 }
