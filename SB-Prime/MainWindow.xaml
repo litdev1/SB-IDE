@@ -303,7 +303,7 @@
                             </LayoutDocumentPaneGroup>
                             <LayoutAnchorablePaneGroup x:Name="pane_Intellisense" DockWidth="350" DockMinWidth="200">
                                 <LayoutAnchorablePane>
-                                    <LayoutAnchorable AutoHideMinWidth="200" AutoHideMinHeight="100"
+                                    <LayoutAnchorable AutoHideMinWidth="350" AutoHideMinHeight="300"
                                 x:Name="dock_Intellisense"
                                 Title="{ x:Static local:Strings.Label521 }"
                                 CanClose="False"
@@ -321,7 +321,7 @@
                         </LayoutPanel>
                         <LayoutAnchorablePaneGroup x:Name="pane_Output" DockHeight="300" DockMinHeight="100">
                             <LayoutAnchorablePane>
-                                <LayoutAnchorable AutoHideMinWidth="200" AutoHideMinHeight="100"
+                                <LayoutAnchorable AutoHideMinWidth="350" AutoHideMinHeight="300"
                                 x:Name="dock_Output"
                                 Title="{ x:Static local:Strings.Label522 }"
                                 CanClose="False"
@@ -353,7 +353,7 @@
                                         </DataGrid>
                                     </Grid>
                                 </LayoutAnchorable>
-                                <LayoutAnchorable AutoHideMinWidth="200" AutoHideMinHeight="100"
+                                <LayoutAnchorable AutoHideMinWidth="350" AutoHideMinHeight="300"
                                 x:Name="dock_Debug"
                                 Title="{ x:Static local:Strings.Label523 }"
                                 CanClose="False"

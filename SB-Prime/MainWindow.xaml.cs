@@ -557,7 +557,7 @@ namespace SB_Prime
         private void ribbon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RibbonTab tab = (RibbonTab)ribbon.SelectedItem;
-            if (null == dock_Debug || null == dock_Output || null == pane_Output|| !pane_Output.IsVisible) return;
+            if (null == dock_Debug || null == dock_Output || null == pane_Output || !pane_Output.IsVisible) return;
             if (tab.Header.Equals("Debug"))
             {
                 dock_Debug.IsActive = true;
