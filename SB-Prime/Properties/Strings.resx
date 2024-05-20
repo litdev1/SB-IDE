@@ -2001,6 +2001,9 @@
   <data name="String187" xml:space="preserve">
     <value>Check the links and resources on the Tools tab.</value>
   </data>
+  <data name="String188" xml:space="preserve">
+    <value>Debug a Small Basic program, including debugging into SmallBasicLibrary and extensions.</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Copy Code from Current Document</value>
   </data>

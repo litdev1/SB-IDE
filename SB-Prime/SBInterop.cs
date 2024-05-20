@@ -312,12 +312,12 @@ namespace SB_Prime
                                         MethodInfo methodInfo = (MethodInfo)memberInfo;
                                         if (!methodInfo.IsPublic || !methodInfo.IsStatic || methodInfo.IsDefined(HideFromIntellisenseAttribute, false)) continue;
                                         if (methodInfo.ReturnType != Primitive && methodInfo.ReturnType != typeof(void)) continue;
-                                        bool parmOK = true;
+                                        bool paramOK = true;
                                         foreach (ParameterInfo parameterInfo in methodInfo.GetParameters())
                                         {
-                                            if (parameterInfo.ParameterType != Primitive) parmOK = false;
+                                            if (parameterInfo.ParameterType != Primitive) paramOK = false;
                                         }
-                                        if (!parmOK) continue;
+                                        if (!paramOK) continue;
                                     }
                                     else if (memberInfo.MemberType == MemberTypes.Property)
                                     {

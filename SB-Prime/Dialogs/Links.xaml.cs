@@ -56,6 +56,13 @@ namespace SB_Prime.Dialogs
             });
             links.Add(new LinkData()
             {
+                Name = "dnSpy",
+                Description = Properties.Strings.String188,
+                Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_dnSpy) },
+                URL = "https://github.com/dnSpy/dnSpy/releases/"
+            });
+            links.Add(new LinkData()
+            {
                 Name = "Paint.Net",
                 Description = Properties.Strings.String80 + "\n" + Properties.Strings.String81,
                 Link = new Image() { Source = MainWindow.ImageSourceFromBitmap(Properties.Resources.Link_Paint_Net) },

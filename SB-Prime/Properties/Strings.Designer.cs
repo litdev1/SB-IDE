@@ -5713,6 +5713,15 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debug a Small Basic program, including debugging into SmallBasicLibrary and extensions..
+        /// </summary>
+        public static string String188 {
+            get {
+                return ResourceManager.GetString("String188", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy Code from Current Document.
         /// </summary>
         public static string String19 {
