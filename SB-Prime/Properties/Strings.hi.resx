@@ -2001,6 +2001,9 @@
   <data name="String187" xml:space="preserve">
     <value>उपकरण टैब पर लिंक्स और संसाधनों की जाँच करें.</value>
   </data>
+  <data name="String188" xml:space="preserve">
+    <value>Debug a Small Basic program, including debugging into SmallBasicLibrary and extensions.</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>वर्तमान दस्तावेज़ से कोड कॉपी करें</value>
   </data>

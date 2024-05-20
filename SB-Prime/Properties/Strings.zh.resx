@@ -2001,6 +2001,9 @@
   <data name="String187" xml:space="preserve">
     <value>检查“工具”选项卡上的链接和资源。</value>
   </data>
+  <data name="String188" xml:space="preserve">
+    <value>Debug a Small Basic program, including debugging into SmallBasicLibrary and extensions.</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>从当前文档复制代码</value>
   </data>

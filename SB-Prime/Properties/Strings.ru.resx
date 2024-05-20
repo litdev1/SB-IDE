@@ -2001,6 +2001,9 @@
   <data name="String187" xml:space="preserve">
     <value>Проверьте ссылки и ресурсы на вкладке Инструменты.</value>
   </data>
+  <data name="String188" xml:space="preserve">
+    <value>Debug a Small Basic program, including debugging into SmallBasicLibrary and extensions.</value>
+  </data>
   <data name="String19" xml:space="preserve">
     <value>Копирование кода из текущего документа</value>
   </data>
