@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SB-Prime", "SB-Prime\SB-Prime.csproj", "{3CC81221-CDC7-44E8-8A60-D9685B2CAFF1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBPlugins", "SBPlugins\SBPlugins.csproj", "{70C29965-7B5D-4EAD-8BF1-33AD8DA3586D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Update", "Update\Update.csproj", "{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBSamplePlugin", "..\SBSamplePlugin\SBSamplePlugin\SBSamplePlugin.csproj", "{20B1F5D1-5C23-44F2-8AAC-BCA48B7E2797}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20B1F5D1-5C23-44F2-8AAC-BCA48B7E2797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20B1F5D1-5C23-44F2-8AAC-BCA48B7E2797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20B1F5D1-5C23-44F2-8AAC-BCA48B7E2797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20B1F5D1-5C23-44F2-8AAC-BCA48B7E2797}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
