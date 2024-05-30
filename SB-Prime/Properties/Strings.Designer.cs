@@ -448,7 +448,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Toggle bookmark at current line.
+        ///   Looks up a localized string similar to Toggle bookmark at current line (Ctrl+M).
         /// </summary>
         public static string Label138 {
             get {
@@ -475,7 +475,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move to next bookmark down.
+        ///   Looks up a localized string similar to Move to next bookmark down (Ctrl+K).
         /// </summary>
         public static string Label140 {
             get {
@@ -493,7 +493,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move to previous bookmark up.
+        ///   Looks up a localized string similar to Move to previous bookmark up (Ctrl+Shift+K).
         /// </summary>
         public static string Label142 {
             get {
@@ -511,7 +511,7 @@ namespace SB_Prime.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clear all bookmarks.
+        ///   Looks up a localized string similar to Clear all bookmarks (Ctrl+Shift+M).
         /// </summary>
         public static string Label144 {
             get {

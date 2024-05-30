@@ -852,6 +852,26 @@ namespace SB_Prime
                 FindPrevious();
                 e.Handled = true;
             }
+            else if (e.Key == Key.M && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+            {
+                ToggleBM();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.M && e.KeyboardDevice.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift))
+            {
+                ClearBM();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.K && e.KeyboardDevice.Modifiers == ModifierKeys.Control)
+            {
+                NextBM();
+                e.Handled = true;
+            }
+            else if (e.Key == Key.K && e.KeyboardDevice.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift))
+            {
+                PreviousBM();
+                e.Handled = true;
+            }
         }
 
         //Forms - Hotkeys that work when TextArea has focus
@@ -921,6 +941,22 @@ namespace SB_Prime
             else if (e.KeyCode == System.Windows.Forms.Keys.F3 && e.Modifiers == System.Windows.Forms.Keys.Shift)
             {
                 FindPrevious();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.M && e.Modifiers == System.Windows.Forms.Keys.Control)
+            {
+                ToggleBM();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.M && e.Modifiers == (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift))
+            {
+                ClearBM();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.K && e.Modifiers == System.Windows.Forms.Keys.Control)
+            {
+                NextBM();
+            }
+            else if (e.KeyCode == System.Windows.Forms.Keys.K && e.Modifiers == (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift))
+            {
+                PreviousBM();
             }
         }
 

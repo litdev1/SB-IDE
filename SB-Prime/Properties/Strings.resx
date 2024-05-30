@@ -247,7 +247,7 @@
     <value>Bookmarks</value>
   </data>
   <data name="Label138" xml:space="preserve">
-    <value>Toggle bookmark at current line</value>
+    <value>Toggle bookmark at current line (Ctrl+M)</value>
   </data>
   <data name="Label139" xml:space="preserve">
     <value>Toggle Bookmark</value>
@@ -256,19 +256,19 @@
     <value>Save current program</value>
   </data>
   <data name="Label140" xml:space="preserve">
-    <value>Move to next bookmark down</value>
+    <value>Move to next bookmark down (Ctrl+K)</value>
   </data>
   <data name="Label141" xml:space="preserve">
     <value>Next Bookmark</value>
   </data>
   <data name="Label142" xml:space="preserve">
-    <value>Move to previous bookmark up</value>
+    <value>Move to previous bookmark up (Ctrl+Shift+K)</value>
   </data>
   <data name="Label143" xml:space="preserve">
     <value>Previous Bookmark</value>
   </data>
   <data name="Label144" xml:space="preserve">
-    <value>Clear all bookmarks</value>
+    <value>Clear all bookmarks (Ctrl+Shift+M)</value>
   </data>
   <data name="Label145" xml:space="preserve">
     <value>Clear Bookmarks</value>

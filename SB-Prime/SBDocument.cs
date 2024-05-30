@@ -262,6 +262,10 @@ namespace SB_Prime
             textArea.ClearCmdKey(Keys.Escape);
             textArea.ClearCmdKey(Keys.Control | Keys.B);
             textArea.ClearCmdKey(Keys.Control | Keys.Shift | Keys.B);
+            textArea.ClearCmdKey(Keys.Control | Keys.M);
+            textArea.ClearCmdKey(Keys.Control | Keys.Shift | Keys.M);
+            textArea.ClearCmdKey(Keys.Control | Keys.K);
+            textArea.ClearCmdKey(Keys.Control | Keys.Shift | Keys.K);
         }
 
         #region Numbers, Bookmarks, Code Folding
