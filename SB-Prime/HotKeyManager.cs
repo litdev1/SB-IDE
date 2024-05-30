@@ -13,7 +13,8 @@ namespace SB_Prime
         {
             form.KeyPreview = true;
 
-            form.KeyDown += delegate (object sender, KeyEventArgs e) {
+            form.KeyDown += delegate (object sender, KeyEventArgs e)
+            {
                 if (IsHotkey(e, key, ctrl, shift, alt))
                 {
                     function();
@@ -23,7 +24,8 @@ namespace SB_Prime
 
         public static void AddHotKey(Control control, Action function, Keys key, bool ctrl = false, bool shift = false, bool alt = false)
         {
-            control.KeyDown += delegate (object sender, KeyEventArgs e) {
+            control.KeyDown += delegate (object sender, KeyEventArgs e)
+            {
                 if (IsHotkey(e, key, ctrl, shift, alt))
                 {
                     function();

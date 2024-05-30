@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Update", "Update\Update.csproj", "{AEC84E72-FBF6-4BEC-9C28-CEF84C31DF54}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBSamplePlugin", "..\SBSamplePlugin\SBSamplePlugin\SBSamplePlugin.csproj", "{20B1F5D1-5C23-44F2-8AAC-BCA48B7E2797}"
+	ProjectSection(ProjectDependencies) = postProject
+		{70C29965-7B5D-4EAD-8BF1-33AD8DA3586D} = {70C29965-7B5D-4EAD-8BF1-33AD8DA3586D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
