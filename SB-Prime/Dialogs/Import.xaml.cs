@@ -91,10 +91,10 @@ namespace SB_Prime.Dialogs
             {
                 MainWindow.Errors.Add(new Error("Import : " + Properties.Strings.String60 + " " + textBoxImport.Text));
                 string search = "' The following line could be harmful and has been automatically commented.";
-                int count = (MainWindow.ImportProgram.Length - MainWindow.ImportProgram.Replace(search, "").Length) / search.Length;
+                int count = Regex.Matches(MainWindow.ImportProgram, search).Count;
                 if (count > 0)
                 {
-                    MessageBox.Show("There are " + count + " 'File' commands in this program that you can un-comment with right click option.\n\nEnsure to check the File commands are safe first!", "Import", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("There are " + count + " 'File' commands in this program that you can un-comment with right click option.\n\nEnsure to check the File commands are safe first,\nespecially any Delete commands!", "Import", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             Close();
