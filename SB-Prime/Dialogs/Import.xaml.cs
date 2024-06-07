@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -89,6 +90,12 @@ namespace SB_Prime.Dialogs
             else
             {
                 MainWindow.Errors.Add(new Error("Import : " + Properties.Strings.String60 + " " + textBoxImport.Text));
+                string search = "' The following line could be harmful and has been automatically commented.";
+                int count = (MainWindow.ImportProgram.Length - MainWindow.ImportProgram.Replace(search, "").Length) / search.Length;
+                if (count > 0)
+                {
+                    MessageBox.Show("There are " + count + " 'File' commands in this program that you can un-comment with right click option.\n\nEnsure to check the File commands are safe first!", "Import", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             Close();
         }
