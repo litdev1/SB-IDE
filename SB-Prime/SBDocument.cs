@@ -207,6 +207,11 @@ namespace SB_Prime
             get { return lexer.IsDirty; }
         }
 
+        public int NumFileComments
+        {
+            get { return lexer.NumFileComments; }
+        }
+
         public string Filepath
         {
             get { return filepath; }

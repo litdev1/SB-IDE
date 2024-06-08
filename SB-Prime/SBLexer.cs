@@ -61,6 +61,7 @@ namespace SB_Prime
         List<SBStyle> styles = new List<SBStyle>();
         int LastLineCount = 0;
         bool isDirty = false;
+        int numFileComments = 0;
         int maxStylingCount = 1000;
         bool isFormatting = false;
         string lastObject = "";
@@ -164,6 +165,12 @@ namespace SB_Prime
         {
             get { return isDirty; }
             set { isDirty = value; }
+        }
+
+        public int NumFileComments
+        {
+            get { return numFileComments; }
+            set { numFileComments = value; }
         }
 
         public int Theme

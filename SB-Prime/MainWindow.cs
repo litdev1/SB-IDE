@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -894,7 +895,17 @@ namespace SB_Prime
 
         private void UpdateTabHeader()
         {
-            activeLayout.SetDirty(activeDocument.IsDirty);
+            if (File.Exists(activeDocument.Filepath))
+            {
+                if (activeDocument.TextArea.Text == FileFilter.ReadAllText(activeDocument.Filepath))
+                {
+                    activeDocument.Lexer.IsDirty = false;
+                }
+            }
+            string search = "' The following line could be harmful and has been automatically commented.";
+            activeDocument.Lexer.NumFileComments = Regex.Matches(activeDocument.TextArea.Text, search).Count;
+
+            activeLayout.SetDirty(activeDocument.IsDirty, activeDocument.NumFileComments);
             if (MarkedForFocus.Count > 0)
             {
                 WindowsFormsHost host = MarkedForFocus.Dequeue();
@@ -2063,10 +2074,13 @@ namespace SB_Prime
             ToolTip = filePath;
         }
 
-        public void SetDirty(bool isDirty)
+        public void SetDirty(bool isDirty, int numFileComments)
         {
-            if (isDirty) Title = fileName + " *";
-            else Title = fileName;
+            string extra = "";
+            if (isDirty) extra += "*";
+            if (numFileComments > 0) extra += "!" + numFileComments;
+            if (extra.Length > 0) extra = " " + extra;
+            Title = fileName + extra;
         }
 
         public SBDocument Doc { get { return doc; } set { doc = value; } }
