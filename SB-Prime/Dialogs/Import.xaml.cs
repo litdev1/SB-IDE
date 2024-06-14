@@ -23,6 +23,25 @@ namespace SB_Prime.Dialogs
     {
         SBInterop sbInterop;
 
+        public static string GetKey()
+        {
+            string key = (string)Clipboard.GetData(DataFormats.Text);
+            key = null == key ? "" : key.Trim().ToUpper();
+            if (Regex.Match(key, "^[A-Z]{3}[0-9]{3}").Success ||
+                Regex.Match(key, "^[A-Z]{4}[0-9]{3}\\.[0-9]{3}").Success ||
+                Regex.Match(key, "^[A-Z]{4}[0-9]{2}\\.[0-9]{3}").Success ||
+                Regex.Match(key, "^[A-Z]{4}[0-9]{1}\\.[0-9]{3}").Success)
+            {
+                return key;
+            }
+            else if (Regex.Match(key, "^[A-Z]{4}[0-9]{3}").Success)
+            {
+                key += ".000";
+                return key;
+            }
+            return "";
+        }
+
         internal Import(SBInterop sbInterop)
         {
             this.sbInterop = sbInterop;
@@ -34,26 +53,9 @@ namespace SB_Prime.Dialogs
             label.FontSize = 16 + MainWindow.zoom;
 
             textBoxImport.Focus();
-            textBoxImport.Text = "";
-
-            string data = (string)Clipboard.GetData(DataFormats.Text);
-            data = null == data ? "" : data.Trim().ToUpper();
-            if (Regex.Match(data, "^[A-Z]{3}[0-9]{3}").Success || 
-                Regex.Match(data, "^[A-Z]{4}[0-9]{3}\\.[0-9]{3}").Success || 
-                Regex.Match(data, "^[A-Z]{4}[0-9]{2}\\.[0-9]{3}").Success ||
-                Regex.Match(data, "^[A-Z]{4}[0-9]{1}\\.[0-9]{3}").Success)
-            {
-                textBoxImport.Text = data;
-                textBoxImport.CaretIndex = data.Length;
-                textBoxImport.SelectAll();
-            }
-            else if (Regex.Match(data, "^[A-Z]{4}[0-9]{3}").Success)
-            {
-                data += ".000";
-                textBoxImport.Text = data;
-                textBoxImport.CaretIndex = data.Length;
-                textBoxImport.SelectAll();
-            }
+            textBoxImport.Text = GetKey();
+            textBoxImport.CaretIndex = textBoxImport.Text.Length;
+            textBoxImport.SelectAll();
         }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)

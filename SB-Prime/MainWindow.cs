@@ -1784,7 +1784,7 @@ namespace SB_Prime
                     }
 
                     DocumentPaginator paginator = ((IDocumentPaginatorSource)flowDocument).DocumentPaginator;
-                    pd.PrintDocument(paginator, Path.GetFileName(activeDocument.Filepath));
+                    pd.PrintDocument(paginator, Path.GetFileNameWithoutExtension(activeDocument.Filepath));
                 }
             }
             catch (Exception ex)
@@ -2069,7 +2069,7 @@ namespace SB_Prime
         public void SetPath(string _filePath)
         {
             filePath = _filePath;
-            fileName = Path.GetFileName(filePath);
+            fileName = Path.GetFileNameWithoutExtension(filePath);
             Title = fileName;
             ToolTip = filePath;
         }

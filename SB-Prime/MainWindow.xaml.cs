@@ -1144,7 +1144,11 @@ namespace SB_Prime
 
         private void webDetails_Click(object sender, RoutedEventArgs e)
         {
-            Details details = new Details(activeLayout.FileName, sbInterop);
+            string key = activeLayout.BaseID;
+            if (key == "") key = Dialogs.Import.GetKey();
+            if (key == "") key = activeLayout.FileName;
+
+            Details details = new Details(key, sbInterop);
             details.Owner = GetWindow(this);
             details.ShowDialog();
         }
