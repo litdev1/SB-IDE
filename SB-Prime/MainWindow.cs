@@ -814,8 +814,22 @@ namespace SB_Prime
             activeLayout.Active = false;
             activeDocument.Dispose();
             activeDocument = null;
-            activeLayout.Close();
-            if (DocumentPaneGroup.ChildrenCount == 0) AddDocument();
+            SBLayout oldLayout = activeLayout;
+            foreach (var layout in GetLayouts())
+            {
+                if (layout != oldLayout)
+                {
+                    activeLayout = layout;
+                    activeDocument = activeLayout.Doc;
+                    break;
+                }
+            }
+            if (null == activeDocument)
+            {
+                AddDocument();
+            }
+            oldLayout.Close();
+
             return System.Windows.Forms.DialogResult.OK;
         }
 
@@ -835,7 +849,7 @@ namespace SB_Prime
 
         private void ThreadTimerCallback(object state)
         {
-            if (null == activeLayout || null == activeDocument) return;
+            if (null == activeLayout) return;
             try
             {
                 if (CheckAccess())
@@ -858,7 +872,8 @@ namespace SB_Prime
 
         private void DoTimerUpdates()
         {
-            if (null == activeLayout || null == activeDocument) return;
+            if (null == activeLayout) return;
+            if (null == activeDocument) AddDocument();
             try
             {
                 UpdateDebug();
