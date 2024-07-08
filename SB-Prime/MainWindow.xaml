@@ -223,7 +223,7 @@
                 <RibbonGroup x:Name="Tools" Header="{ x:Static local:Strings.Label152 }">
                     <RibbonButton Name="ToolsShapesEditor" Label="{ x:Static local:Strings.Label154 }" LargeImageSource="Images/Dialog.png" KeyTip="S" Click="ToolsShapesEditor_Click" ToolTipTitle="{ x:Static local:Strings.Label153 }"/>
                     <RibbonButton Name="ToolsFlowChart" Label="{ x:Static local:Strings.Label156 }" LargeImageSource="Images/FlowChart.png" KeyTip="FC" Click="ToolsFlowChart_Click" ToolTipTitle="{ x:Static local:Strings.Label155 }"/>
-                    <RibbonButton Name="ToolsColor" Label="{ x:Static local:Strings.Label158 }" LargeImageSource="Images/Pantone.png" KeyTip="IF" Click="ToolsColor_Click" ToolTipTitle="{ x:Static local:Strings.Label157 }"/>
+                    <RibbonButton Name="ToolsColor" Label="{ x:Static local:Strings.Label158 }" LargeImageSource="Images/Pantone.png" KeyTip="IC" Click="ToolsColor_Click" ToolTipTitle="{ x:Static local:Strings.Label157 }"/>
                     <RibbonButton Name="ToolsFont" Label="{ x:Static local:Strings.Label160 }" LargeImageSource="Images/Writing pencil.png" KeyTip="IF" Click="ToolsFont_Click" ToolTipTitle="{ x:Static local:Strings.Label159 }"/>
                     <RibbonButton Name="ToolsLinks" Label="{ x:Static local:Strings.Label162 }" LargeImageSource="Images/Link.png" KeyTip="LK" Click="ToolsLinks_Click" ToolTipTitle="{ x:Static local:Strings.Label161 }"/>
                     <RibbonButton Name="ToolsAliases" Label="{ x:Static local:Strings.Label492 }" LargeImageSource="Images/Aliases.png" KeyTip="A" Click="ToolsAliases_Click" ToolTipTitle="{ x:Static local:Strings.Label493 }"/>
