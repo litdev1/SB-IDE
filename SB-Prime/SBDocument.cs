@@ -836,6 +836,7 @@ namespace SB_Prime
         {
             if (disposing)
             {
+                textArea.EmptyUndoBuffer();
                 textArea.Dispose();
                 lexer.Dispose();
             }

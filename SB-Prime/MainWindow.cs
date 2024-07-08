@@ -729,17 +729,17 @@ namespace SB_Prime
             saveFileDialog.RestoreDirectory = true;
             if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (saveFileDialog.FileName.ToLowerInvariant().EndsWith(".sb"))
+                if (saveFileDialog.FileName.ToLowerInvariant().EndsWith(".html"))
+                {
+                    string html = activeDocument.TextArea.GetTextRangeAsHtml(0, activeDocument.TextArea.TextLength);
+                    FileFilter.WriteAllText(saveFileDialog.FileName, html);
+                }
+                else
                 {
                     activeDocument.SaveDataToFile(saveFileDialog.FileName);
                     activeLayout.SetPath(saveFileDialog.FileName);
                     if (Properties.Settings.Default.MRU.Contains(activeDocument.Filepath)) Properties.Settings.Default.MRU.Remove(activeDocument.Filepath);
                     if (File.Exists(activeDocument.Filepath)) Properties.Settings.Default.MRU.Insert(0, activeDocument.Filepath);
-                }
-                else if (saveFileDialog.FileName.ToLowerInvariant().EndsWith(".html"))
-                {
-                    string html = activeDocument.TextArea.GetTextRangeAsHtml(0, activeDocument.TextArea.TextLength);
-                    FileFilter.WriteAllText(saveFileDialog.FileName, html);
                 }
             }
         }
