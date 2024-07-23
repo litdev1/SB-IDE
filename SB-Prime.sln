@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBSamplePlugin", "..\SBSamp
 		{70C29965-7B5D-4EAD-8BF1-33AD8DA3586D} = {70C29965-7B5D-4EAD-8BF1-33AD8DA3586D}
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SB-PrimeCore", "SB-PrimeCore\SB-PrimeCore.csproj", "{156A07B5-643C-4E94-B219-1B8FFB4507E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{20B1F5D1-5C23-44F2-8AAC-BCA48B7E2797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20B1F5D1-5C23-44F2-8AAC-BCA48B7E2797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20B1F5D1-5C23-44F2-8AAC-BCA48B7E2797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156A07B5-643C-4E94-B219-1B8FFB4507E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156A07B5-643C-4E94-B219-1B8FFB4507E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156A07B5-643C-4E94-B219-1B8FFB4507E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156A07B5-643C-4E94-B219-1B8FFB4507E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

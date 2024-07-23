@@ -1,0 +1,57 @@
+﻿<Window x:Class="SB_Prime.Dialogs.FileSearcher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_Prime.Properties"
+        mc:Ignorable="d"
+        Title="{ x:Static local:Strings.Label291 }" Height="600" Width="800" Deactivated="Window_Deactivated" Icon="/SB-Prime;component/AppIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing" MinWidth="220" MinHeight="100">
+    <Grid>
+        <Label x:Name="label" Content="{ x:Static local:Strings.Label292 }" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonSearcherBrowse" ToolTip="{ x:Static local:Strings.Label293 }" Content="{ x:Static local:Strings.Label294 }" HorizontalAlignment="Right" Margin="0,10,9.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherBrowse_Click"/>
+        <TextBox x:Name="textBoxSearcherRoot" Height="23" Margin="87,10,146.6,0" VerticalAlignment="Top" KeyDown="textBoxSearcherRoot_KeyDown"/>
+        <Grid Margin="10,41,146.6,9.4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="0" Grid.Row="0" >
+                <DataGrid x:Name="dataGridSearcher" HeadersVisibility="Column" IsReadOnly="True" ItemsSource="{Binding}" SelectionChanged="dataGridSearcher_SelectionChanged" AutoGenerateColumns="False" Margin="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Gray">
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="Padding" Value="8,4,8,4" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="{ x:Static local:Strings.Label295 }" Binding="{Binding FileName}"/>
+                        <DataGridTextColumn Header="{ x:Static local:Strings.Label296 }" Binding="{Binding LineCount}"/>
+                        <DataGridTextColumn Header="{ x:Static local:Strings.Label297 }" Binding="{Binding Date}"/>
+                        <DataGridTextColumn Header="{ x:Static local:Strings.Label298 }" Binding="{Binding Folder}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+            <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1"/>
+            <Grid x:Name="gridSearcherPreview" Margin="0" Grid.Row="2"/>
+        </Grid>
+        <Button x:Name="buttonSearcherOpen" ToolTip="{ x:Static local:Strings.Label299 }" Content="{ x:Static local:Strings.Label300 }" HorizontalAlignment="Right" Margin="0,267,8.6,0" VerticalAlignment="Top" Width="132" Click="buttonSearcherOpen_Click"/>
+        <TextBox x:Name="textBoxCount" ToolTip="{ x:Static local:Strings.Label301 }" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,239,9.6,0" VerticalAlignment="Top" Width="131" AllowDrop="False"/>
+        <GroupBox x:Name="groupBox" Header="{ x:Static local:Strings.Label302 }" Margin="0,34,9.6,0" VerticalAlignment="Top" Height="200" HorizontalAlignment="Right" Width="132">
+            <Grid>
+                <CheckBox x:Name="checkBoxSearcherWord" ToolTip="{ x:Static local:Strings.Label303 }" Content="{ x:Static local:Strings.Label304 }" Margin="0,6,-0.2,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="checkBoxSearcherCase" ToolTip="{ x:Static local:Strings.Label305 }" Content="{ x:Static local:Strings.Label306 }" Margin="0,26,-0.2,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="checkBoxSearcherPath" ToolTip="{ x:Static local:Strings.Label307 }" Content="{ x:Static local:Strings.Label308 }" Margin="0,46,0.8,0" VerticalAlignment="Top"/>
+                <Label x:Name="label1" Content="{ x:Static local:Strings.Label309 }" Margin="0,66,-0.2,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.497,0.211"/>
+                <TextBox x:Name="textBoxSearcherText" ToolTip="{ x:Static local:Strings.Label310 }" Height="23" Margin="0,97,0.8,0" VerticalAlignment="Top"/>
+                <Button x:Name="buttonSearcherFilter" ToolTip="{ x:Static local:Strings.Label311 }" Content="{ x:Static local:Strings.Label312 }" Margin="0,125,-0.2,0" VerticalAlignment="Top" Click="buttonSearcherFilter_Click"/>
+                <TextBox x:Name="textBoxMatches" ToolTip ="The number of filter matches in the selected file" IsReadOnly="True" Height="23" Margin="0,149,1,0" VerticalAlignment="Top" Width="119" AllowDrop="False"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -1,0 +1,430 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SB_Prime</RootNamespace>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>SB-IDE</ProductName>
+    <PublisherName>LitDev</PublisherName>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.1.3.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8B09D34ABAF0A38E68006828B0F7803434FE9D0F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SB-IDE_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SB_Prime.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExtensionManagerLibrary">
+      <HintPath>..\..\ExtensionManager\ExtensionManagerLibrary\bin\Release\ExtensionManagerLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Humanizer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Humanizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.Decompiler">
+      <HintPath>..\ICSharpCode.Decompiler.dll</HintPath>
+    </Reference>
+    <Reference Update="System.Windows.Controls.Ribbon">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="SintillaNetPrinting\PrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\IntellisenseEvent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\IntellisenseKeyword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\IntellisenseLabel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\IntellisenseMethod.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\IntellisenseObject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\IntellisenseProperty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\IntellisenseSubroutine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\IntellisenseVariable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\New file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Open file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Close file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Save as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Save all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Stop playing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Monitors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Form.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Selection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Publish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Objects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Collapse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Step.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Breakpoint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BreakpointIgnore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BreakpointOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Bookmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BookmarkNext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BookmarkOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BookmarkPrevious.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Indent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\WordWrap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\appworkspace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\WhiteSpace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Zoom in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Zoom out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Zoom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Erase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Graduate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Color palette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Help book.png" />
+    <Resource Include="images\Options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\StepOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\StepOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Search computer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SBPlugins\SBPlugins.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Plugin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Delete frame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Contrast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Writing pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Pantone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Search folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\List.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\SettingsLoad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\SettingsSave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Frames.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Highlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <FileAssociation Include=".sb">
+      <Visible>False</Visible>
+      <Description>Small Basic</Description>
+      <Progid>SB-IDE</Progid>
+      <DefaultIcon>AppIcon.ico</DefaultIcon>
+    </FileAssociation>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bug_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Text_uppercase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Details.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Stars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Flowchart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Dialog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\No_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Transform_move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\UnObjects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CopyShapes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Difference.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-ILSpy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-VS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-Paint.Net.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-Notepad++.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-Greenfish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\NumberMargin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Aliases.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-7Zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-dotPeek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-SharpDevelop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\sVB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Forum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Web.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Link-dnSpy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dirkster.AvalonDock" Version="4.72.1" />
+    <PackageReference Include="Dirkster.AvalonDock.Themes.Aero" Version="4.72.1" />
+    <PackageReference Include="Dirkster.AvalonDock.Themes.Expression" Version="4.72.1" />
+    <PackageReference Include="Dirkster.AvalonDock.Themes.Metro" Version="4.72.1" />
+    <PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="4.72.1" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Scintilla.NET" Version="5.3.2.9" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
+    <PackageReference Include="System.Reflection.Metadata" Version="8.0.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="MainWindowOLD.cs" />
+    <Compile Remove="MainWindowOLD.xaml.cs" />
+    <Compile Remove="Properties\SBClient.cs" />
+    <Compile Remove="SBClient.cs" />
+    <Page Remove="MainWindowOLD.xaml" />
+  </ItemGroup>
+</Project>

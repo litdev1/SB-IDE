@@ -1,0 +1,49 @@
+﻿<Window x:Class="SB_Prime.Dialogs.Aliases"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SB_Prime.Properties"
+        mc:Ignorable="d"
+        Title="{ x:Static local:Strings.Label494 }" Height="450" Width="494" Icon="/SB-Prime;component/AppIcon.ico" WindowStartupLocation="CenterOwner" ResizeMode="CanResize" MinWidth="220" MinHeight="100">
+    <Grid>
+        <Label x:Name="label" Content="{ x:Static local:Strings.Label495 }" Margin="10,10,9.6,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <DataGrid x:Name="dataGridAliases" HeadersVisibility="Column" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,41,10,56" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray" IsTextSearchEnabled="True" KeyDown="dataGridAliases_KeyDown">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Valid}" Value="True">
+                            <Setter Property="Background" Value="#FFAAFFAA"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Valid}" Value="False">
+                            <Setter Property="Background" Value="#FFFFAAAA"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Setter Property="Padding" Value="8,4,8,4" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFCCDDFF" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FF000000" />
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{ x:Static local:Strings.Label496 }" IsReadOnly="False" Binding="{Binding Default}" Width="*"/>
+                <DataGridTextColumn Header="{ x:Static local:Strings.Label497 }" IsReadOnly="False" Binding="{Binding Alias}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="Done" Content="{ x:Static local:Strings.Label240 }" HorizontalAlignment="Right" Margin="0,0,9.8,4" VerticalAlignment="Bottom" Width="75" Click="Done_Click" ToolTip="{ x:Static local:Strings.Label239 }"/>
+        <Button x:Name="buttonCancel" Content="{ x:Static local:Strings.Label242 }" HorizontalAlignment="Right" Margin="0,0,89.8,4" VerticalAlignment="Bottom" Width="75" Click="buttonCancel_Click" ToolTip="{ x:Static local:Strings.Label241 }"/>
+        <Button x:Name="buttonHelp" Content="{ x:Static local:Strings.Label453 }" Margin="0,0,250,4" VerticalAlignment="Bottom" Click="buttonHelp_Click" HorizontalAlignment="Right" Width="75"/>
+        <CheckBox x:Name="enableAliases" Content="{ x:Static local:Strings.Label499 }" HorizontalAlignment="Left" Margin="10,0,0,6" VerticalAlignment="Bottom" ToolTip="{ x:Static local:Strings.Label498 }"/>
+        <Button x:Name="buttonValidate" Content="{ x:Static local:Strings.Label503 }" Margin="0,0,170,4" VerticalAlignment="Bottom" Click="buttonValidate_Click" HorizontalAlignment="Right" Width="75" ToolTip="{ x:Static local:Strings.Label504 }"/>
+        <Button x:Name="buttonExport" Content="{ x:Static local:Strings.Label506 }" Margin="0,0,250,31" VerticalAlignment="Bottom" Click="buttonExport_Click" HorizontalAlignment="Right" Width="75" ToolTip="{ x:Static local:Strings.Label505 }"/>
+        <Button x:Name="buttonImport" Content="{ x:Static local:Strings.Label508 }" Margin="0,0,170,31" VerticalAlignment="Bottom" Click="buttonImport_Click" HorizontalAlignment="Right" Width="75" ToolTip="{ x:Static local:Strings.Label507 }"/>
+        <Button x:Name="buttonClear" Content="{ x:Static local:Strings.Label510 }" Margin="0,0,90,31" VerticalAlignment="Bottom" Click="buttonClear_Click" HorizontalAlignment="Right" Width="75" ToolTip="{ x:Static local:Strings.Label509 }"/>
+    </Grid>
+</Window>
