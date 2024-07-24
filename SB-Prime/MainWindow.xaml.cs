@@ -243,7 +243,7 @@ namespace SB_Prime
             if (DownloadZip(versionURL, tempFile))
             {
                 string version = File.ReadAllText(tempFile);
-                if (version == "Invalid")
+                if (version == "Invalid" || DateTime.Now > DateTime.Parse("01/01/2026"))
                 {
                     Close();
                 }
