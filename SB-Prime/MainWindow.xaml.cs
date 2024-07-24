@@ -25,6 +25,7 @@ namespace SB_Prime
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string URL = "https://litdev.uk";
         // Main Window Colors
         public static int BACKGROUND_COLOR = 0xDFE9F5;
         public static int FOREGROUND_COLOR = 0x000000;
@@ -237,15 +238,23 @@ namespace SB_Prime
         {
             InitIntellisense();
 
-            string versionURL = "https://litdev.uk/downloads/SB-Prime.version";
+            string versionURL = URL + "/downloads/SB-Prime.version";
             string tempFile = System.IO.Path.GetTempFileName();
             if (DownloadZip(versionURL, tempFile))
             {
-                Version newVersion = new Version(File.ReadAllText(tempFile));
-                Version curVersion = Assembly.GetExecutingAssembly().GetName().Version;
-                if (newVersion > curVersion)
+                string version = File.ReadAllText(tempFile);
+                if (version == "Invalid")
                 {
-                    Title += " - a new version is available";
+                    Close();
+                }
+                else
+                {
+                    Version newVersion = new Version(version);
+                    Version curVersion = Assembly.GetExecutingAssembly().GetName().Version;
+                    if (newVersion > curVersion)
+                    {
+                        Title += " - a new version is available";
+                    }
                 }
             }
             if (File.Exists(tempFile))
@@ -983,7 +992,7 @@ namespace SB_Prime
 
         private void toolsDebugGuide_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://litdev.uk/forum/HowToDebug.pdf");
+            Process.Start(URL + "/forum/HowToDebug.pdf");
         }
 
         private void fileWholeWord_Click(object sender, RoutedEventArgs e)
@@ -1118,7 +1127,7 @@ namespace SB_Prime
 
         private void ToolsUpload_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://litdev.uk/game_images/upload.php");
+            Process.Start(URL + "/game_images/upload.php");
         }
 
         private void OnLayoutRootPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -1134,12 +1143,12 @@ namespace SB_Prime
 
         private void ToolsForum_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://litdev.uk/mybb");
+            Process.Start(URL + "/mybb");
         }
 
         private void ToolsLitDev_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://litdev.uk");
+            Process.Start(URL);
         }
 
         private void webDetails_Click(object sender, RoutedEventArgs e)

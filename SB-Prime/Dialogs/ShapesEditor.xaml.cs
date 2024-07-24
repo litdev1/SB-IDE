@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Policy;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -2763,7 +2764,7 @@ namespace SB_Prime.Dialogs
                         Width = 100,
                         Height = 100,
                     };
-                    webBrowser.Navigate(new Uri("https://www.litdev.uk"));
+                    webBrowser.Navigate(new Uri(MainWindow.URL));
                     elt = webBrowser;
                     break;
                 case "CheckBox":
