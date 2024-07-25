@@ -682,6 +682,10 @@ namespace SB_Prime
         {
             try
             {
+                if (null == Compiler)
+                {
+                    LoadCompiler();
+                }
                 List<string> errors = new List<string>();
                 string source = File.ReadAllText(fileName);
                 IList _errors = null;
@@ -735,18 +739,7 @@ namespace SB_Prime
                 string result = (string)ExportToVisualBasicProject.Invoke(VisualBasicExporter, new object[] { projectName, projectPath });
 
                 // vbproj bugs
-                string runtime;
-                try
-                {
-                    string sblPath = MainWindow.InstallDir + "\\" + Variant.ToString() + "Library.dll";
-                    Assembly sblAssembly = Assembly.LoadFile(sblPath);
-                    TargetFrameworkAttribute attrib = (TargetFrameworkAttribute)sblAssembly.GetCustomAttribute(typeof(TargetFrameworkAttribute));
-                    runtime = attrib.FrameworkName.Substring(attrib.FrameworkName.Length - 4);
-                }
-                catch
-                {
-                    runtime = "v4.5";
-                }
+                string runtime = "v4.8";
 
                 string vbproj = FileFilter.ReadAllText(result);
                 vbproj = vbproj.Replace("<HintPath>$(programfiles)\\ (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>", "<HintPath>$(programfiles) (x86)\\Microsoft\\Small Basic\\SmallBasicLibrary.dll</HintPath>");
@@ -826,18 +819,7 @@ namespace SB_Prime
                     // Set runtime to SB runtime
                     // Update case target name
                     // Copy and rename paths for dlls
-                    string runtime;
-                    try
-                    {
-                        string sblPath = MainWindow.InstallDir + "\\SmallBasicLibrary.dll";
-                        Assembly sblAssembly = Assembly.LoadFile(sblPath);
-                        TargetFrameworkAttribute attrib = (TargetFrameworkAttribute)sblAssembly.GetCustomAttribute(typeof(TargetFrameworkAttribute));
-                        runtime = attrib.FrameworkName.Substring(attrib.FrameworkName.Length - 4);
-                    }
-                    catch
-                    {
-                        runtime = "v4.5";
-                    }
+                    string runtime = "v4.8";
 
                     string result = targetDirectory + "\\" + moduleDefinition.Name + ".csproj";
                     XmlDocument doc = new XmlDocument();

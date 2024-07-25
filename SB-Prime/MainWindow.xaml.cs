@@ -240,7 +240,7 @@ namespace SB_Prime
 
             string versionURL = URL + "/downloads/SB-Prime.version";
             string tempFile = System.IO.Path.GetTempFileName();
-            bool isValid = DateTime.Now < DateTime.Parse("01/01/2026");
+            bool isValid = true; // DateTime.Now < DateTime.Parse("01/01/2026");
             if (DownloadZip(versionURL, tempFile))
             {
                 string version = File.ReadAllText(tempFile);
