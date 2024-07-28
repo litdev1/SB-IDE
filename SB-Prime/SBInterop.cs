@@ -188,7 +188,7 @@ namespace SB_Prime
                 string[] files = Directory.GetFiles(path, "*.dll");
                 foreach (string file in files)
                 {
-                    if (file.EndsWith("SBDebugger.dll") || File.Exists(path + Path.GetFileNameWithoutExtension(file) + ".xml") || File.Exists(path + Path.GetFileNameWithoutExtension(file) + "."+Language+".xml"))
+                    //if (file.EndsWith("SBDebugger.dll") || File.Exists(path + Path.GetFileNameWithoutExtension(file) + ".xml") || File.Exists(path + Path.GetFileNameWithoutExtension(file) + "." + Language + ".xml"))
                     {
                         extensions.Add("\\lib\\"+ Path.GetFileNameWithoutExtension(file));
                     }
@@ -551,7 +551,7 @@ namespace SB_Prime
                     foreach (string extension in extensions)
                     {
                         string from = MainWindow.InstallDir + extension + ".dll";
-                        string to = path + "\\" + Path.GetFileNameWithoutExtension(extension) + ".dll";
+                        string to = path + "\\" + Path.GetFileName(extension) + ".dll";
                         File.Copy(from, to, true);
                     }
                 }
