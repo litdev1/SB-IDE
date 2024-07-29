@@ -233,12 +233,16 @@ namespace SB_Prime
                         {
                             doc.Load(MainWindow.InstallDir + extension + "." + Properties.Strings.Culture.Name + ".xml");
                         }
-                        else
+                        else if (File.Exists(MainWindow.InstallDir + extension + ".xml"))
                         {
                             doc.Load(MainWindow.InstallDir + extension + ".xml");
                         }
+                        else
+                        {
+                            doc = null;
+                        }
 
-                        if (extension.Contains(Variant.ToString() + "Library"))
+                        if (null != doc && extension.Contains(Variant.ToString() + "Library"))
                         {
                             foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
                             {
@@ -280,111 +284,114 @@ namespace SB_Prime
 
                     try
                     {
-                        string tempFile = System.IO.Path.GetTempFileName();
-                        File.Delete(tempFile);
-                        tempFile = Path.ChangeExtension(tempFile, "sbprime");
-                        File.Copy(MainWindow.InstallDir + extension + ".dll", tempFile);
-                        //tempFile = MainWindow.InstallDir + extension + ".dll";
-                        assembly = Assembly.LoadFrom(tempFile);
-                        if (extension.Contains("SBDebugger"))
+                        if (null != doc)
                         {
-                            if (!extensionAssemblies.Contains(assembly)) extensionAssemblies.Add(assembly);
-                            continue;
-                        }
-                        Type[] types = assembly.GetTypes();
-                        foreach (Type type in types)
-                        {
-                            if (type.IsPublic && type.IsDefined(SmallBasicTypeAttribute, false) && !type.IsDefined(HideFromIntellisenseAttribute, false))
+                            string tempFile = System.IO.Path.GetTempFileName();
+                            File.Delete(tempFile);
+                            tempFile = Path.ChangeExtension(tempFile, "sbprime");
+                            File.Copy(MainWindow.InstallDir + extension + ".dll", tempFile);
+                            //tempFile = MainWindow.InstallDir + extension + ".dll";
+                            assembly = Assembly.LoadFrom(tempFile);
+                            if (extension.Contains("SBDebugger"))
                             {
                                 if (!extensionAssemblies.Contains(assembly)) extensionAssemblies.Add(assembly);
-                                obj = new SBObject();
-                                SBObjects.objects.Add(obj);
-                                obj.extension = extension.Split('\\').Last();
-                                obj.name = type.Name;
-
-                                MemberInfo[] memberInfos = type.GetMembers();
-                                foreach (MemberInfo memberInfo in memberInfos)
+                                continue;
+                            }
+                            Type[] types = assembly.GetTypes();
+                            foreach (Type type in types)
+                            {
+                                if (type.IsPublic && type.IsDefined(SmallBasicTypeAttribute, false) && !type.IsDefined(HideFromIntellisenseAttribute, false))
                                 {
-                                    if (memberInfo.Name.StartsWith("add_") || memberInfo.Name.StartsWith("set_") || memberInfo.Name.StartsWith("get_")) continue;
+                                    if (!extensionAssemblies.Contains(assembly)) extensionAssemblies.Add(assembly);
+                                    obj = new SBObject();
+                                    SBObjects.objects.Add(obj);
+                                    obj.extension = extension.Split('\\').Last();
+                                    obj.name = type.Name;
 
-                                    if (memberInfo.MemberType == MemberTypes.Method)
+                                    MemberInfo[] memberInfos = type.GetMembers();
+                                    foreach (MemberInfo memberInfo in memberInfos)
                                     {
-                                        MethodInfo methodInfo = (MethodInfo)memberInfo;
-                                        if (!methodInfo.IsPublic || !methodInfo.IsStatic || methodInfo.IsDefined(HideFromIntellisenseAttribute, false)) continue;
-                                        if (methodInfo.ReturnType != Primitive && methodInfo.ReturnType != typeof(void)) continue;
-                                        bool paramOK = true;
-                                        foreach (ParameterInfo parameterInfo in methodInfo.GetParameters())
+                                        if (memberInfo.Name.StartsWith("add_") || memberInfo.Name.StartsWith("set_") || memberInfo.Name.StartsWith("get_")) continue;
+
+                                        if (memberInfo.MemberType == MemberTypes.Method)
                                         {
-                                            if (parameterInfo.ParameterType != Primitive) paramOK = false;
-                                        }
-                                        if (!paramOK) continue;
-                                    }
-                                    else if (memberInfo.MemberType == MemberTypes.Property)
-                                    {
-                                        if (((PropertyInfo)memberInfo).IsDefined(HideFromIntellisenseAttribute, false)) continue;
-                                    }
-                                    else if (memberInfo.MemberType == MemberTypes.Event)
-                                    {
-                                        if (((EventInfo)memberInfo).IsDefined(HideFromIntellisenseAttribute, false)) continue;
-                                    }
-                                    else
-                                    {
-                                        continue;
-                                    }
-
-                                    Member member = new Member();
-                                    obj.members.Add(member);
-                                    member.name = memberInfo.Name;
-                                    member.type = memberInfo.MemberType;
-                                    member.summary = "";
-
-                                    string[] array = memberInfo.ToString().Split(new char[] { ' ' });
-                                    string dllName = memberInfo.DeclaringType.FullName + ".";
-                                    for (int i = 1; i < array.Length; i++) dllName += array[i];
-                                    if (dllName.EndsWith("()")) dllName = dllName.Substring(0, dllName.Length - 2);
-
-                                    XmlNode node1 = null;
-                                    foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
-                                    {
-                                        if (xmlNode.Attributes["name"].InnerText == "T:" + type.FullName)
-                                        {
-                                            node1 = xmlNode.FirstChild;
-                                            if (node1.Name == "summary") obj.summary = node1.InnerText.Trim();
-                                            break;
-                                        }
-                                    }
-                                    if (node1 == null) continue;
-                                    foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
-                                    {
-                                        if (xmlNode.Attributes["name"].InnerText == "T:" + type.FullName) continue;
-                                        else if (xmlNode.Attributes["name"].InnerText.EndsWith(dllName))
-                                        {
-                                            foreach (XmlNode node in xmlNode.ChildNodes)
+                                            MethodInfo methodInfo = (MethodInfo)memberInfo;
+                                            if (!methodInfo.IsPublic || !methodInfo.IsStatic || methodInfo.IsDefined(HideFromIntellisenseAttribute, false)) continue;
+                                            if (methodInfo.ReturnType != Primitive && methodInfo.ReturnType != typeof(void)) continue;
+                                            bool paramOK = true;
+                                            foreach (ParameterInfo parameterInfo in methodInfo.GetParameters())
                                             {
-                                                switch (node.Name)
+                                                if (parameterInfo.ParameterType != Primitive) paramOK = false;
+                                            }
+                                            if (!paramOK) continue;
+                                        }
+                                        else if (memberInfo.MemberType == MemberTypes.Property)
+                                        {
+                                            if (((PropertyInfo)memberInfo).IsDefined(HideFromIntellisenseAttribute, false)) continue;
+                                        }
+                                        else if (memberInfo.MemberType == MemberTypes.Event)
+                                        {
+                                            if (((EventInfo)memberInfo).IsDefined(HideFromIntellisenseAttribute, false)) continue;
+                                        }
+                                        else
+                                        {
+                                            continue;
+                                        }
+
+                                        Member member = new Member();
+                                        obj.members.Add(member);
+                                        member.name = memberInfo.Name;
+                                        member.type = memberInfo.MemberType;
+                                        member.summary = "";
+
+                                        string[] array = memberInfo.ToString().Split(new char[] { ' ' });
+                                        string dllName = memberInfo.DeclaringType.FullName + ".";
+                                        for (int i = 1; i < array.Length; i++) dllName += array[i];
+                                        if (dllName.EndsWith("()")) dllName = dllName.Substring(0, dllName.Length - 2);
+
+                                        XmlNode node1 = null;
+                                        foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
+                                        {
+                                            if (xmlNode.Attributes["name"].InnerText == "T:" + type.FullName)
+                                            {
+                                                node1 = xmlNode.FirstChild;
+                                                if (node1.Name == "summary") obj.summary = node1.InnerText.Trim();
+                                                break;
+                                            }
+                                        }
+                                        if (node1 == null) continue;
+                                        foreach (XmlNode xmlNode in doc.SelectNodes("/doc/members/member"))
+                                        {
+                                            if (xmlNode.Attributes["name"].InnerText == "T:" + type.FullName) continue;
+                                            else if (xmlNode.Attributes["name"].InnerText.EndsWith(dllName))
+                                            {
+                                                foreach (XmlNode node in xmlNode.ChildNodes)
                                                 {
-                                                    case "summary":
-                                                        member.summary = node.InnerText.Trim();
-                                                        break;
-                                                    case "param":
-                                                        member.arguments[node.Attributes["name"].Value] = node.InnerText.Trim();
-                                                        break;
-                                                    case "returns":
-                                                        member.returns = node.InnerText.Trim();
-                                                        break;
-                                                    case "value":
-                                                        member.arguments[node.Name] = node.InnerText.Trim();
-                                                        break;
-                                                    default:
-                                                        member.other[char.ToUpper(node.Name[0]) + node.Name.Substring(1)] = node.InnerText.Trim();
-                                                        break;
+                                                    switch (node.Name)
+                                                    {
+                                                        case "summary":
+                                                            member.summary = node.InnerText.Trim();
+                                                            break;
+                                                        case "param":
+                                                            member.arguments[node.Attributes["name"].Value] = node.InnerText.Trim();
+                                                            break;
+                                                        case "returns":
+                                                            member.returns = node.InnerText.Trim();
+                                                            break;
+                                                        case "value":
+                                                            member.arguments[node.Name] = node.InnerText.Trim();
+                                                            break;
+                                                        default:
+                                                            member.other[char.ToUpper(node.Name[0]) + node.Name.Substring(1)] = node.InnerText.Trim();
+                                                            break;
+                                                    }
                                                 }
                                             }
                                         }
                                     }
-                               }
+                                }
+                                if (null != obj) obj.members.Sort();
                             }
-                            if (null != obj) obj.members.Sort();
                         }
                     }
                     catch (Exception ex)
