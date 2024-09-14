@@ -396,14 +396,14 @@ namespace SB_Prime
                                 }
                                 catch (Exception ex)
                                 {
-                                    MainWindow.Errors.Add(new Error("Load Extension: " + assembly.ManifestModule.ToString() + " Object: " + type.Name + " : " + ex.Message));
+                                    MainWindow.Errors.Add(new Error("Load Extension : " + assembly.ManifestModule.ToString() + " Object : " + type.Name + " : " + ex.Message));
                                 }
                             }
                         }
                     }
                     catch (Exception ex)
                     {
-                        MainWindow.Errors.Add(new Error("Load Extension: " + assembly.ManifestModule.ToString() + " : " + ex.Message));
+                        MainWindow.Errors.Add(new Error("Load Extension : " + assembly.ManifestModule.ToString() + " : " + ex.Message));
                     }
                 }
             }
